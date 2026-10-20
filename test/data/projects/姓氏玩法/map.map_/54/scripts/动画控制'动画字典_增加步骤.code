@@ -1,0 +1,9 @@
+begincodeV2
+name:动画控制'动画字典_增加步骤
+params:Dict 动画字典,Dict 步骤字典
+lines:
+if{varf Dict.步骤字典.readBool(String 是步骤:Bool 0)
+  List 动画步骤队列=varf Dict.动画字典.readList(String 动画步骤队列:Bool 0)
+  varf List.动画步骤队列.add(var 步骤字典)
+}
+endcode

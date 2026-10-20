@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'Open
+lines:
+Bool Open=fun create.bool(Bool 1)
+act 1.this.模型'手动刷新显示()
+endcode

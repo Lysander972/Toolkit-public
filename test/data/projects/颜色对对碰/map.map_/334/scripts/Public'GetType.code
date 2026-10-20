@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'GetType
+comment:得到子弹类型
+return:Long $type
+lines:
+Long $type=fun create.long(var Type)
+endcode

@@ -1,0 +1,20 @@
+begincodeV2
+name:造成伤害
+params:Mech $target
+lines:
+if{varf Mech.$target.isMap()
+  fun break()
+}
+Device $core=varf Mech.$target.getDevice(Float 0)
+Mech $self=act 1.this.getMech()
+Device $this=varf Mech.$self.getDevice(Float 0)
+if{varf Device.$core.callReturnBool0(String Public'IsAlive)
+  Long $thisFaction=varf Device.$this.callReturnLong0(String Public'GetFaction)
+  Long $targetFaction=varf Device.$core.callReturnLong0(String Public'GetFaction)
+  if{fun long.notEqual(var $thisFaction:var $targetFaction)
+    Float $atk=fun create.float(Float 15)
+    varf Mech.$target.callFun2(String Public'Damage:var $atk:var $thisFaction)
+/*    varf Device.$core.callFun2(String Public'Damage:var $atk:var $thisFaction)
+  }
+}
+endcode

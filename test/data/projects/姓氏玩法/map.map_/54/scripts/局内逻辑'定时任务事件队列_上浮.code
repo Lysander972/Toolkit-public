@@ -1,0 +1,24 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'定时任务事件队列_上浮
+params:Long 索引
+lines:
+while{fun long.gt(var 索引:Long 0)
+  Long 父节点=fun long.minus(var 索引:Long 1)
+  Long 父节点=fun long.RightShift(var 父节点:Long 1)
+  Float 父节点F=varf Long.父节点.toFloat()
+  Dict 父节点事件=varf List.局内'定时任务事件队列.readDict(var 父节点F)
+  Float 父节点事件生效=act 1101.this.定时任务事件结构'读取_生效时间(var 父节点事件)
+  Float 索引F=varf Long.索引.toFloat()
+  Dict 当前事件=varf List.局内'定时任务事件队列.readDict(var 索引F)
+  Float 当前事件生效=act 1101.this.定时任务事件结构'读取_生效时间(var 当前事件)
+  //如果当前事件更晚生效,终止交换
+  if{fun float.gte(var 当前事件生效:var 父节点事件生效)
+    fun break()
+  }
+  //互换位置
+  varf List.局内'定时任务事件队列.replace(var 父节点F:var 当前事件)
+  varf List.局内'定时任务事件队列.replace(var 索引F:var 父节点事件)
+  Long 索引=fun create.long(var 父节点)
+}
+endcode

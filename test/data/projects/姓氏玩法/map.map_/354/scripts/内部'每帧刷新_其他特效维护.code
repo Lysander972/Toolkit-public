@@ -1,0 +1,31 @@
+begincodeV2
+name:内部'每帧刷新_其他特效维护
+lines:
+Float 序号=varf List.其他特效维护.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  UIRawImage 图标=varf List.其他特效维护.readUIRawImage(var 序号)
+  Bool 存在=varf UIRawImage.图标.exist()
+  if{fun bool.not(var 存在)
+    varf List.其他特效维护.remove(var 序号)
+  }
+  if{fun create.bool(var 存在)
+    Bool 基于全局=varf UIRawImage.图标.customBool(String global)
+    if{fun create.bool(var 基于全局)
+      Vector3 布局坐标=varf UIRawImage.图标.getCanvasPos()
+      Vector3 实际偏移=fun vector3.add(var 布局坐标:var 图表布局坐标)
+      Float 透明度=act 1101.this.内部'工具_透明度计算(var 实际偏移)
+    }
+    if{fun bool.not(var 基于全局)
+      UIRect 父级=varf UIRawImage.图标.customUIRect(String parent)
+      Float 透明度=varf UIRect.父级.customFloat(String 透明度)
+    }
+    //得到透明度后刷新显示
+    Color 默认颜色=varf UIRawImage.图标.customColor(String basecolor)
+    Color 透明颜色=varf Color.默认颜色.copy()
+    varf Color.透明颜色.setA(Float 0)
+    Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+    varf UIRawImage.图标.setColor(var 生效颜色)
+  }
+}
+endcode

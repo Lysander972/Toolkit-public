@@ -1,0 +1,10 @@
+begincodeV2
+name:Public'SetColor
+params:Color color1,Color color2
+lines:
+act 362./边框.setMatCustomColor(String _PaintColor:var color1)
+act 362./边框.setMatCustomColor(String _EmmitColor:var color2)
+/*act 362./头像.setMatCustomColor(String _PaintColor:var color2)
+/*act 362./头像.setMatCustomColor(String _EmmitColor:var color2)
+fun break()
+endcode

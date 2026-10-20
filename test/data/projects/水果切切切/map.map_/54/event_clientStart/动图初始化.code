@@ -1,0 +1,6 @@
+begincodeV2
+name:动图初始化
+lines:
+act 1101.this.动图'初始化注册()
+act 1101.this.loopFun(String 动图'自动刷新:Float 0.05)
+endcode

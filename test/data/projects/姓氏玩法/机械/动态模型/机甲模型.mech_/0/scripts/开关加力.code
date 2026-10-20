@@ -1,0 +1,9 @@
+begincodeV2
+name:开关加力
+params:Bool 开启
+lines:
+Bool 是否激活=fun create.bool(var 开启)
+act 337./左.active(var 开启:Float 0)
+act 337./右.active(var 开启:Float 0)
+act 337./中.active(var 开启:Float 0)
+endcode

@@ -1,0 +1,29 @@
+begincodeV2
+color:112,0,255
+name:得到礼物'点赞
+params:Long count,Struct player
+lines:
+//这里从结构中得到score这个数据后，后面直接修改score就会直接改变结构里面的积分的数值，而不需要再设置进去
+Long score=varf Struct.player.getLong(String score:Bool 0)
+if{fun long.gt(var count:Long 0)
+  varf Long.score.addEqual(var count)
+  varf Long.ScorePool.addEqual(var count)
+  Bool 状态值'自动保存积分需求=fun create.bool(Bool 1)
+}
+//下面开始做点赞的具体处理
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.equal(var team:Long 1)
+  Long 升级强度=fun long.multiply(var count:Long 0)
+  act 1101./Scenario.炮塔'攻方放置或升级(var player:var 升级强度)
+  //添加樱桃技能
+  Long 技能数=fun long.multiply(var count:Long 2)
+  act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1000:var 技能数:var player)
+}
+if{fun long.equal(var team:Long 2)
+  Long 升级强度=fun long.multiply(var count:Long 0)
+  act 1101./Scenario.炮塔'守方放置或升级(var player:var 升级强度)
+  //添加子弹技能
+  Long 技能数=fun long.multiply(var count:Long 1)
+  act 1101./Scenario.技能'添加到守方玩家炮塔(String 20001:var 技能数:var player)
+}
+endcode

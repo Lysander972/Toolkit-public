@@ -1,0 +1,45 @@
+begincodeV2
+private:1
+name:Private_Physic'ResetPhysic
+comment:重置物理
+params:Vector3 $pos,Vector3 $direct,Float $layer,Color $color1,Color $color2,Float $height
+return:Bool $ret
+lines:
+Bool $ret=fun create.bool(Bool 0)
+act 1.this.Public'SetSize(var Size)
+act 1.this.Public'SetWeight(var Weight)
+act 1.this.Public'SetColor(var $color1:var $color2)
+act 1.this.Private_Physic'CheckLayer(var $layer)
+delay fun create.float(Float 0)
+varf Mech.Self.enablePhysics(Bool 0)
+delay fun create.float(Float 0)
+if{varf Vector3.$direct.equal(Vector3 0,0,0)
+  Vector3 $direct=fun creatVariable.Vector3(Float 0:Float 0:Float 1)
+}
+act 1.this.setRotKinematic(var $direct:Vector3 0,1,0)
+Float $height=fun float.multiply1(var $height:var Size:Float 0.5)
+Vector3 $offset=fun creatVariable.Vector3(Float 0:var $height:Float 0)
+Vector3 $pos=fun vector3.add(var $pos:var $offset)
+act 1.this.setPosKinematic(var $pos)
+if{fun create.bool(var EnablePhysic)
+  delay fun create.float(Float 0)
+  varf Mech.Self.enablePhysics(Bool 1)
+  act 1.this.Public'Open()
+  delay fun create.float(Float 0)
+  Vector3 $velocity=fun vector3.multilply(var $direct:var SpeedExp)
+  act 1.this.addForce(var $velocity:Enum 2)
+  if{fun create.bool(var NeedSpin)
+    act 1.this.fixedLoopAct(String Private_Physic'Spin_Cycle:Float 0)
+    act 1.this.Private_Physic'Spin_Cycle()
+  }
+  if{fun create.bool(var Turret)
+    act 1.this.fixedLoopAct(String Private_Physic'Force_Cycle:Float 0)
+    act 1.this.Private_Physic'Force_Cycle()
+  }
+  fun break()
+}
+if{fun bool.not(var EnablePhysic)
+  act 1.this.Public'Open()
+  fun break()
+}
+endcode

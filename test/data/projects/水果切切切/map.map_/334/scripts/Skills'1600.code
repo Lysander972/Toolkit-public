@@ -1,0 +1,27 @@
+begincodeV2
+skip:1
+private:1
+name:Skills'1600
+comment:果篮被动-持续召唤葡萄
+lines:
+if{fun create.bool(var Attr'Alive)
+  Vector3 pos=act 1.this.getPosition()
+  Vector3 pos=fun vector3.add(var pos:Vector3 0,50,0)
+  Float x=fun math.rand(Float -5:Float 5)
+  varf Vector3.pos.setX(var x)
+  Long 随机=fun long.rand(Long 0:Long 3)
+  if{fun long.equal(var 随机:Long 0)
+    =act 1.this.Launcher'PlaceBullet(Long 1100:var pos:var Creator:Float 1:Float 1:Float 0)
+  }
+  if{fun long.equal(var 随机:Long 1)
+    =act 1.this.Launcher'PlaceBullet(Long 1110:var pos:var Creator:Float 1:Float 1:Float 0)
+  }
+  if{fun long.equal(var 随机:Long 2)
+    =act 1.this.Launcher'PlaceBullet(Long 1120:var pos:var Creator:Float 1:Float 1:Float 0)
+  }
+  if{fun long.equal(var 随机:Long 3)
+    =act 1.this.Launcher'PlaceBullet(Long 1130:var pos:var Creator:Float 1:Float 1:Float 0)
+  }
+  delay fun create.float(Float 3)
+}
+endcode

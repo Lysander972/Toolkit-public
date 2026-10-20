@@ -1,0 +1,9 @@
+begincodeV2
+name:Public'SetLayer
+params:Float layer1,Float layer2
+lines:
+act 1.this.setLayer(var layer1)
+/*act 362./1.setLayer(var layer1)
+act 1100./攻击判定.setLayer(var layer2)
+act 1100./b.setLayer(Float 14)
+endcode

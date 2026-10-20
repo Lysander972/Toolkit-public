@@ -1,0 +1,75 @@
+begincodeV2
+name:平台适配器'得到礼物图名
+params:Long level
+return:String name
+lines:
+if{fun create.bool(var 模式'抖音)
+  if{fun long.equal(var level:Long 0)
+    String name=fun create.string(String 仙女棒.png)
+  }
+  if{fun long.equal(var level:Long 1)
+    String name=fun create.string(String 能力药丸.png)
+  }
+  if{fun long.equal(var level:Long 2)
+    String name=fun create.string(String 魔法镜.png)
+  }
+  if{fun long.equal(var level:Long 3)
+    String name=fun create.string(String 甜甜圈.png)
+  }
+  if{fun long.equal(var level:Long 4)
+    String name=fun create.string(String 能量电池.png)
+  }
+  if{fun long.equal(var level:Long 5)
+    String name=fun create.string(String 恶魔炸弹.png)
+  }
+  if{fun long.equal(var level:Long 6)
+    String name=fun create.string(String 神秘空投.png)
+  }
+}
+if{fun create.bool(var 模式'快手)
+  if{fun long.equal(var level:Long 0)
+    String name=fun create.string(String 助威火炬.png)
+  }
+  if{fun long.equal(var level:Long 1)
+    String name=fun create.string(String 火花.png)
+  }
+  if{fun long.equal(var level:Long 2)
+    String name=fun create.string(String 一叶知秋.png)
+  }
+  if{fun long.equal(var level:Long 3)
+    String name=fun create.string(String 助威火箭.png)
+  }
+  if{fun long.equal(var level:Long 4)
+    String name=fun create.string(String 雪糕刺客.png)
+  }
+  if{fun long.equal(var level:Long 5)
+    String name=fun create.string(String 冲鸭.png)
+  }
+  if{fun long.equal(var level:Long 6)
+    String name=fun create.string(String 魔法相机.png)
+  }
+}
+if{fun create.bool(var 模式'Tiktok)
+  if{fun long.equal(var level:Long 0)
+    String name=fun create.string(String coin_1.png)
+  }
+  if{fun long.equal(var level:Long 1)
+    String name=fun create.string(String coin_10.png)
+  }
+  if{fun long.equal(var level:Long 2)
+    String name=fun create.string(String coin_30.png)
+  }
+  if{fun long.equal(var level:Long 3)
+    String name=fun create.string(String coin_99.png)
+  }
+  if{fun long.equal(var level:Long 4)
+    String name=fun create.string(String coin_199.png)
+  }
+  if{fun long.equal(var level:Long 5)
+    String name=fun create.string(String coin_299.png)
+  }
+  if{fun long.equal(var level:Long 6)
+    String name=fun create.string(String coin_999.png)
+  }
+}
+endcode

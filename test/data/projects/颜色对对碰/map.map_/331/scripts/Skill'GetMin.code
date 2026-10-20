@@ -1,0 +1,9 @@
+begincodeV2
+color:169,0,255
+name:Skill'GetMin
+params:String $key,Long $min
+return:Long $ret
+lines:
+Long $value=varf Struct.SkillCount.getLong(var $key:Bool 0)
+Long $ret=fun long.min(var $value:var $min)
+endcode

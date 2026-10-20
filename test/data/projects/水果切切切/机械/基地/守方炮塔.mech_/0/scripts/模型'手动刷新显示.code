@@ -1,0 +1,41 @@
+begincodeV2
+name:模型'手动刷新显示
+lines:
+/*act 362./边框.enableCollide(var Open)
+/*act 362./冰冻外壳.enableCollide(var Open)
+//冰冻外壳
+Bool 冰冻外壳显示=fun bool.and1(var Open:var Frozen:var ShowNoumenon)
+act 362./冰冻外壳.show(var 冰冻外壳显示)
+if{fun create.bool(var 冰冻外壳显示)
+  act 362./冰冻外壳.setDynamicShader(String Device Transparent)
+  act 362./冰冻外壳.setDynamicMatPic(String _MainTex:String Frozen_Lake_2_BaseColorAdjusted8.png)
+  act 362./冰冻外壳.setMatCustomColor(String _PaintColor:Color 255,255,255,128)
+}
+//边框
+Bool 本体显示=fun bool.and(var Open:var ShowNoumenon)
+act 362./边框.show(var 本体显示)
+if{fun create.bool(var 本体显示)
+  act 362./边框.setDynamicShader(String Device emmit)
+  act 362./边框.setDynamicMatPic(String _MainTex:String 全白贴图.png)
+  act 362./边框.setDynamicMatPic(String _EmissionMap:String 全发光贴图.png)
+  act 362./边框.setMatCustomColor(String _PaintColor:var FrameBaseColor)
+  act 362./边框.setMatCustomColor(String _EmmitColor:var FrameEmmitColor)
+}
+//头像
+act 362./头像.show(var 本体显示)
+if{fun create.bool(var 本体显示)
+  act 362./头像.setDynamicShader(String Device emmit)
+  act 362./头像.setDynamicMatPic(String _MainTex:String 全白贴图.png)
+  act 362./头像.setDynamicMatURLPic(String _EmissionMap:var AvatarUrl)
+  act 362./头像.setMatCustomColor(String _PaintColor:Color 0,0,0,255)
+  act 362./头像.setMatCustomColor(String _EmmitColor:Color 255,255,255,255)
+}
+//头像框
+Bool 头像框显示=fun bool.and(var Open:var ShowFrame)
+act 362./头像框.show(var 头像框显示)
+if{fun create.bool(var 头像框显示)
+  act 362./头像框.setDynamicShader(String Device Transparent)
+  act 362./头像框.setMatCustomColor(String _PaintColor:Color 255,255,255,255)
+  act 362./头像框.setDynamicMatPic(String _MainTex:var FrameFile)
+}
+endcode

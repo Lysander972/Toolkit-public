@@ -1,0 +1,31 @@
+guid:4a9a4c2829ac4ad985c3e58a19c1b2e8
+meshes:
+[
+ {
+  n:SM_Prop_Medical_Machine_01
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[1.192093E-07,1.28959,2.384186E-07]
+bounds.size:[2.956347,2.579179,4.710198]

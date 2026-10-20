@@ -1,0 +1,31 @@
+begincodeV2
+skip:1
+name:内部'每帧刷新_更新摄像机_刷新跟随Alt
+comment:切换为每10秒,看向下一个位置
+lines:
+if{fun create.bool(var 摄像机'自动跟随中)
+  Float 当前时间=fun time.scaleTime()
+  Float 已持续=fun float.minus(var 当前时间:var 摄像机'特写开始时间)
+  if{fun float.gte(var 已持续:Float 10)
+    Float 摄像机'特写开始时间=fun time.scaleTime()
+    //默认为看向第一个队伍
+    Float 队伍排名=fun create.float(Float 0)
+    //只要当前有锁定的队伍,那么就基于当前锁定的队伍确定下一个位置
+    if{fun string.notEqual(var 摄像机'自动跟随队伍id:String )
+      Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 摄像机'自动跟随队伍id:Bool 0)
+      Struct 队伍=varf Struct.队伍映射.getStruct(String 队伍:Bool 0)
+      Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+      Float 下一名位置=fun float.add(var 队伍排名:Float 1)
+      Float 下一名位置=fun float.mod(var 下一名位置:var 场景'真实队伍数量)
+      Struct 队伍=varf List.激活队伍列表.readStruct(var 下一名位置)
+      //当遇到首个填充的位置时跳过回到第一名
+      if{act 1101./弹幕.队伍结构'读取_填充(var 队伍)
+        Float 下一名位置=fun create.float(Float 0)
+        Struct 队伍=varf List.激活队伍列表.readStruct(var 下一名位置)
+      }
+      Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+      String 摄像机'自动跟随队伍id=fun create.string(var 队伍id)
+    }
+  }
+}
+endcode

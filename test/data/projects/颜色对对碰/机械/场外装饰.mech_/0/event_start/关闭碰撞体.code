@@ -1,0 +1,8 @@
+begincodeV2
+name:关闭碰撞体
+lines:
+act 1.this.enableCollide(Bool 0)
+act 22./地面.switchCollider(Bool 0)
+act 22./棋盘预留位.switchCollider(Bool 0)
+act 362./2.enableCollide(Bool 0)
+endcode

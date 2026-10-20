@@ -1,0 +1,40 @@
+{
+  "mcp.port": 6060,
+  "lint.root": "assets",
+  "lint.run_on_startup": false,
+  "canvas_preview.default_width": 720,
+  "canvas_preview.default_height": 1280,
+  "canvas_preview.scale": 1.5,
+  "browser.render_worker_count": 4,
+  "browser.executable_path": "C:/edge/msedge.exe",
+  "code_lens.show_doc_buttons": false,
+  "resource_gen.comfyui.base_url": "http://127.0.0.1:8188",
+  "resource_gen.comfyui.api_key": "comfy-ui-fixture-key",
+  "resource_gen.comfyui.tripo_api_key": "",
+  "resource_gen.comfyui.model.text_to_image": "千问2.0-文生图",
+  "resource_gen.comfyui.model.image_to_image": "千问2.0-图像编辑",
+  "resource_gen.comfyui.model.image_to_video": "万相2.7-图生视频",
+  "resource_gen.comfyui.model.text_to_video": "万相2.5 Preview 文生视频",
+  "resource_gen.comfyui.model.text_to_music": "suno-single-v5.5",
+  "resource_gen.comfyui.model.image_to_3d": "hitem3d-v15/image-to-3d",
+  "llm.roles.planner": "zhipu/glm-4.6",
+  "llm.roles.coder": "deepseek/deepseek-reasoner",
+  "llm.roles.resource": "deepseek/deepseek-chat",
+  "llm.keys.deepseek": "sk-fixture-key",
+  "llm.keys.zhipu": "",
+  "llm.keys.openai": "",
+  "llm.keys.gemini": "",
+  "llm.keys.local_llm": "local-secret",
+  "llm.extra_sources": [
+    {
+      "id": "local/qwen3-vl",
+      "model": "qwen3-vl",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "base_url": "http://127.0.0.1:8000/v1",
+      "key": "local_llm"
+    }
+  ]
+}

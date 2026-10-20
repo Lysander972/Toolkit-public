@@ -1,0 +1,47 @@
+begincodeV2
+color:123,255,0
+name:队伍'施加效果_速度最快其他队伍
+comment:返回是否已经成功放置buff
+params:Struct 玩家,Long 效果层数,Float 每层速度变化,Float 每层数值变化,Float 持续时间,Long 互动事件和buff类型,Bool 延迟生效
+return:Bool 设置成功
+lines:
+Bool 设置成功=fun create.bool(Bool 0)
+//得到玩家队伍,如果玩家还没下场则没有效果
+Struct 玩家队伍=act 1101.this.队伍'得到玩家队伍(var 玩家)
+Bool 是队伍=act 1101.this.队伍结构'是队伍(var 玩家队伍)
+if{fun bool.not(var 是队伍)
+  fun break()
+}
+Long 玩家队伍id=act 1101.this.队伍结构'读取_id(var 玩家队伍)
+//如果队伍数量太少不会生效
+Float 激活队伍数量=varf List.局内'队伍_激活队伍列表.count()
+if{fun float.lt(var 激活队伍数量:Float 2)
+  fun break()
+}
+//不会对玩家自身队伍生效
+Long 最佳目标id=fun create.long(Long -1)
+Long 最佳目标值=fun create.long(Long 0)
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 激活队伍数量)
+  Struct 队伍=varf List.局内'队伍_激活队伍列表.readStruct(var 序号)
+  Long 队伍id=act 1101.this.队伍结构'读取_id(var 队伍)
+  if{fun long.notEqual(var 队伍id:var 玩家队伍id)
+    Long 当前值=act 1101.this.队伍结构'读取_speed(var 队伍)
+    Bool 条件1=fun long.equal(var 最佳目标id:Long -1)
+    Bool 条件2=fun long.gt(var 当前值:var 最佳目标值)
+    if{fun bool.or(var 条件1:var 条件2)
+      Long 最佳目标id=fun create.long(var 队伍id)
+      Long 最佳目标值=fun create.long(var 当前值)
+    }
+  }
+  varf Float.序号.addEqual(Float 1)
+}
+//如果存在这样的最佳目标,那么应用效果
+if{fun long.notEqual(var 最佳目标id:Long -1)
+  Struct 选中队伍=act 1101.this.队伍'得到特定队伍(var 最佳目标id)
+  if{act 1101.this.队伍结构'是队伍(var 选中队伍)
+    act 1101.this.队伍'施加效果_封装(var 玩家:var 玩家队伍:var 选中队伍:var 效果层数:var 每层速度变化:var 每层数值变化:var 持续时间:var 互动事件和buff类型:var 延迟生效)
+    Bool 设置成功=fun create.bool(Bool 1)
+  }
+}
+endcode

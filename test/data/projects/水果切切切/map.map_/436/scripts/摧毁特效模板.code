@@ -1,0 +1,9 @@
+begincodeV2
+name:摧毁特效模板
+params:Vector3 坐标,Float 整体缩放,Long 摧毁模式
+lines:
+Float 特效缩放=fun float.multiply(Float 0.2:var 整体缩放)
+if{fun long.equal(var 摧毁模式:Long 0)
+  act 336./特效发射器.发射(var 坐标:Float 46:var 特效缩放)
+}
+endcode

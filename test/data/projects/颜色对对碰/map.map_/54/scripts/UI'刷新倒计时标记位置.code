@@ -1,0 +1,23 @@
+begincodeV2
+name:UI'刷新倒计时标记位置
+comment:临时更新斩杀线位置
+lines:
+Float 斩杀线=act 1101./参数调节模块.读取(String 开始倒计时阈值:Float 0.9:Float 0.5:Float 1:Color 255,0,0,255)
+Float 退出斩杀线=act 1101./参数调节模块.读取(String 维持倒计时阈值:Float 0.75:Float 0.5:Float 1:Color 255,0,0,255)
+UIRect rect=varf Canvas.GameUI.readUIRect(String root/top/比分/斩杀线蓝)
+Float x=fun float.minus(Float 1:var 斩杀线)
+Vector3 pos=fun creatVariable.Vector3(var x:Float 0.5:Float 0)
+varf UIRect.rect.pos(var pos)
+UIRect rect=varf Canvas.GameUI.readUIRect(String root/top/比分/斩杀线红)
+Float x=fun create.float(var 斩杀线)
+Vector3 pos=fun creatVariable.Vector3(var x:Float 0.5:Float 0)
+varf UIRect.rect.pos(var pos)
+UIRect rect=varf Canvas.GameUI.readUIRect(String root/top/比分/退出斩杀线蓝)
+Float x=fun float.minus(Float 1:var 退出斩杀线)
+Vector3 pos=fun creatVariable.Vector3(var x:Float 0.5:Float 0)
+varf UIRect.rect.pos(var pos)
+UIRect rect=varf Canvas.GameUI.readUIRect(String root/top/比分/退出斩杀线红)
+Float x=fun create.float(var 退出斩杀线)
+Vector3 pos=fun creatVariable.Vector3(var x:Float 0.5:Float 0)
+varf UIRect.rect.pos(var pos)
+endcode

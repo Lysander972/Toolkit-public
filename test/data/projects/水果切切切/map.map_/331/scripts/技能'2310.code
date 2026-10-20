@@ -1,0 +1,52 @@
+begincodeV2
+color:221,0,255
+name:技能'2310
+comment:火炮
+lines:
+String key=fun create.string(String 2310)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Float cd=fun math.rand(Float 1:Float 1.1)
+  if{fun create.bool(var 冰冻'冰冻)
+    Float cd=fun float.multiply(var cd:Float 2)
+  }
+  //检测前摇是否已播放
+  Float 当前时间=fun time.scaleTime()
+  Bool 显示模型=fun float.lt(var 当前时间:var 炮塔模型'结束时间)
+  if{fun bool.not(var 显示模型)
+    Float 炮塔模型'开始时间=fun create.float(var 当前时间)
+    Float 炮塔模型'炮塔角度=fun create.float(Float 0)
+  }
+  //刷新结束时间
+  Float 炮塔模型'结束时间=fun float.add1(var 当前时间:Float 2:var cd)
+  if{fun bool.not(var 当前瞄准'有目标)
+    fun break()
+  }
+  Float 已用时间=fun float.minus(var 当前时间:var 炮塔模型'开始时间)
+  if{fun float.gte(var 已用时间:Float 2)
+    Vector3 方位角=fun creatVariable.Vector3(var 炮塔模型'炮塔角度:Float 0:Float 0)
+    Vector3 局部方向=act 1.this.Utils'AzimuthToVector(var 方位角)
+    Vector3 局部坐标=varf Vector3.局部方向.copy()
+    Vector3 局部坐标=varf Vector3.局部坐标.setLength(Float 3)
+    Vector3 局部坐标=fun vector3.add1(var 局部坐标:Vector3 0,2.5,0:Vector3 0,0,0)
+    Vector3 世界方向=act 1.this.localToWorldDir(var 局部方向)
+    Vector3 世界坐标=act 1.this.localToWorldPos(var 局部坐标)
+    Bool 发射成功=act 1.this.Launcher'指定坐标放置(var 世界坐标:var 世界方向:Long 2300:var 属性'玩家:Float 1:Float 0:Float 1:Bool 0:Float 0)
+    if{fun create.bool(var 发射成功)
+      fun screen.shake(Float 0.05:Float 2000:Float 0.95)
+      act 1.this.播放音效(String 火炮开火.ogg:Float 1)
+      Vector3 向前=fun creatVariable.Vector3(Float 0:Float 1:Float 0)
+      Vector3 向上=varf Vector3.世界方向.copy()
+      Float 烟雾大小=fun create.float(Float 10)
+      varf Device.map_handler.callFun4(String 粒子'炮口火焰特效:var 世界坐标:var 向前:var 向上:var 烟雾大小)
+      =act 1.this.Skills'Decrease(var key:Long 1)
+      act 1.this.炮塔模型'后坐力重置(Float 10)
+      delay fun create.float(var cd)
+    }
+  }
+}
+Long 剩余弹药=act 1.this.Skills'GetValue(var key)
+if{fun long.equal(var 剩余弹药:Long 0)
+  delay fun create.float(Float 3)
+  =act 1.this.Public'Damage(Float 9999:Long 0)
+}
+endcode

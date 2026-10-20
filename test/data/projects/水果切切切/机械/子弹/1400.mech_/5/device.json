@@ -1,0 +1,23 @@
+type:362
+pos:[0,-1.192093E-07,0]
+quat:[2.164891E-17,-0.7071065,-2.164889E-17,-0.7071071]
+ext:
+{
+ logicName:1
+ modelGuid:5fe94c6061f440ee8cfe818f3096ca57
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Device Transparent"
+ shader:
+ [
+  {
+   n:_PaintColor
+   type:Color
+   v:[1,1,1,1]
+  }
+  {
+   n:_Tiling
+   type:Vector
+   v:[1,1,0]
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+begincodeV2
+color:255,243,0
+name:Button_Game'Enter
+lines:
+String $text=varf UIInput.GameInputField.getText()
+Float $length=varf String.$text.length()
+if{fun float.gt(var $length:Float 0)
+  String $test=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "_0001Qzypt5TBz3HySUpWYnj0aFShivWFyC3","content"@1 "@@1","avatar_url"@1 "https@1//p26.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813_ogD5AAEheDINHKA9JgAhjIAAEA3zABzQLsVAfC.jpeg?from@33067671334","nickname"@1 "test","timestamp"@1 1}])
+/*  if{fun long.equal(var ID:Long 908422007291286577)
+/*    String $test=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "_000OeI9w9UCqepXxjcNiGMK8HJJCqCS5ETp","content"@1 "@@1","avatar_url"@1 "https@1//p3.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813_oQ59VwgfNAErc8DvAz9ltiCcnhADfAARwsAIjA.jpeg?from@33067671334","nickname"@1 "t2","timestamp"@1 1}])
+  }
+  String $test=varf String.$test.replace(String @@1:var $text)
+  fun simulate_comment(String live_comment:var $test)
+  varf UIInput.GameInputField.setText(String )
+}
+endcode

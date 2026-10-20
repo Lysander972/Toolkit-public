@@ -1,0 +1,10 @@
+begincodeV2
+name:下载玩家信息
+params:Struct 玩家
+lines:
+String uid=varf Struct.玩家.getString(String id:Bool 1)
+async Struct 排行榜信息=fun danmu.getByID(var uid)
+act 1.this.callMapFunc2(String 弹幕.玩家基础信息处理:var 玩家:var 排行榜信息)
+Mech self=act 1.this.getMech()
+varf Mech.self.Del(Float 0)
+endcode

@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "toolchain 来源 blob 3f27d84af1c11e2f36efbf4cd24120fb66ced8dd 与原文一致；删除的 SQLite/归档入口可在基础 PR 对照，保留合同与当前 tools 检查类别可核对。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "1269 行原文的现行架构、类型、环境、格式、输入校验、测试及指标合同列明保留；旧 Scenario 锚定、预算、SQLite、冻结记录与 archive 分别列明终止。没有用统一流程为由丢弃工具执行合同。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "以 Issue179 的完整正文和成熟工具优先要求解释替换边界，特别保留 HEAD/index 同树与修改失效目的，说明完整文件/测试取代类框架裁剪，区分 pnpm 平台表与 ubCode 支持平台。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "c4af0b45-2af8-4585-ac18-6bcfc697bca7",
+  "reviewed_fingerprint": "e24f0b3cebdb59b85b4dcc534863f872d504ac60fc58a2268d70bc9c164c6ecc",
+  "schema": 2,
+  "summary": "toolchain 的保留合同、终止机制和新检视边界逐类核对。"
+}

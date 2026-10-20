@@ -1,0 +1,12 @@
+begincodeV2
+guid:9a68763461a146a6a61da2a81fe7961b
+color:255,0,0
+name:Launcher'PlaceBulletRelative
+comment:放置静止的子弹@4局部坐标@5
+params:Long type,Vector3 position,Vector3 direction,Struct player,Float HPMul,Float crit,Float initHp
+return:Bool ret
+lines:
+Vector3 direction=act 1.this.localToWorldDir(var direction)
+Vector3 position=act 1.this.localToWorldPos(var position)
+Bool ret=act 1.this.Launcher'AbstractSetBullet(var position:var direction:var type:var Attr'Faction:var player:var HPMul:var crit:var initHp:Bool 0:Float 0)
+endcode

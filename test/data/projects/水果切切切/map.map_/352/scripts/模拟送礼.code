@@ -1,0 +1,6 @@
+begincodeV2
+name:模拟送礼
+params:Long 类型,Long 数量
+lines:
+act 1.this.callMapFunc3(String 弹幕.测试'发送玩家礼物消息:var AI玩家:var 类型:var 数量)
+endcode

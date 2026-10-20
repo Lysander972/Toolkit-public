@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ "$1" = rebase ]; then
+  pnpm install --frozen-lockfile </dev/null || exit $?
+  pnpm requirements review reconcile --rewrite || exit $?
+fi

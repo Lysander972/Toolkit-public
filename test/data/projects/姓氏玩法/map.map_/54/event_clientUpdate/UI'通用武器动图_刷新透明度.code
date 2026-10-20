@@ -1,0 +1,49 @@
+begincodeV2
+name:UI'通用武器动图_刷新透明度
+lines:
+Float 序号=varf List.UI'通用武器_维护节点表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  Canvas 武器布局=varf List.UI'通用武器_维护节点表.readCanvas(var 序号)
+  Bool 存在=varf Canvas.武器布局.exist()
+  if{fun bool.not(var 存在)
+    varf List.UI'通用武器_维护节点表.remove(var 序号)
+  }
+  if{fun create.bool(var 存在)
+    UIRect 根节点=varf Canvas.武器布局.readUIRect(String 根节点)
+    Bool 存在=varf UIRect.根节点.exist()
+    if{fun bool.not(var 存在)
+      varf List.UI'通用武器_维护节点表.remove(var 序号)
+    }
+    if{fun create.bool(var 存在)
+      Float 生效透明度=act 1101.this.动画控制'UI_获取生效透明度(var 根节点)
+      act 1101.this.通用武器动图'应用透明度(var 武器布局:var 生效透明度)
+      //刷新拖尾
+      UIRawImage 拖尾节点=varf Canvas.武器布局.readUIRawImage(String 根节点/拖尾)
+      Float 当前时间=fun time.time()
+      Vector3 初始坐标=varf UIRawImage.拖尾节点.customVector3(String 初始坐标)
+      Float 动图x周期=varf UIRawImage.拖尾节点.customFloat(String 动图x周期)
+      Float 动图y周期=varf UIRawImage.拖尾节点.customFloat(String 动图x周期)
+      Float 初始x相位=varf UIRawImage.拖尾节点.customFloat(String 初始x相位)
+      Float 初始y相位=varf UIRawImage.拖尾节点.customFloat(String 初始y相位)
+      Float 动画x幅度=varf UIRawImage.拖尾节点.customFloat(String 动画x幅度)
+      Float 动画y幅度=varf UIRawImage.拖尾节点.customFloat(String 动画y幅度)
+      Float x周期内时间=fun float.mod(var 当前时间:var 动图x周期)
+      Float y周期内时间=fun float.mod(var 当前时间:var 动图y周期)
+      Float x动画比例=fun float.division(var x周期内时间:var 动图x周期)
+      Float y动画比例=fun float.division(var y周期内时间:var 动图y周期)
+      Float x角度=fun float.multiply(var x动画比例:Float 360)
+      Float y角度=fun float.multiply(var y动画比例:Float 360)
+      Float x_sin=fun float.triangle.sin(var x角度)
+      Float y_sin=fun float.triangle.sin(var y角度)
+      Float x位移=fun float.multiply(var x_sin:var 动画x幅度)
+      Float y位移=fun float.multiply(var y_sin:var 动画y幅度)
+      Float x位移=fun float.add(var x位移:var 初始x相位)
+      Float y位移=fun float.add(var y位移:var 初始y相位)
+      Vector3 相对坐标=fun creatVariable.Vector3(var y位移:var x位移:Float 0)
+      Vector3 绝对坐标=fun vector3.add(var 相对坐标:var 初始坐标)
+      varf UIRawImage.拖尾节点.setCanvasPos(var 绝对坐标)
+    }
+  }
+}
+endcode

@@ -1,0 +1,8 @@
+begincodeV2
+name:方法1
+lines:
+act 359.this.setOffsetRot(Vector3 0,0,0:Vector3 0,0,1:Vector3 0,1,0)
+=act 359.this.generateEquipment(String :String )
+act 359.this.destroyEquipment()
+=act 359.this.getEquipMech()
+endcode

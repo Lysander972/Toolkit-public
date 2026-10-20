@@ -1,0 +1,34 @@
+begincodeV2
+color:255,0,0
+name:得到礼物'7
+params:Long $count,Struct $player
+lines:
+if{fun bool.not(var IsGM)
+  fun break()
+}
+if{fun bool.not(var $init)
+  Long $multiplier=act 1101.this.读取整数规则(String 礼物7积分)
+  Bool $init=fun create.bool(Bool 1)
+}
+Long $Add=fun long.multiply(var $multiplier:var $count)
+Long $score=varf Struct.$player.getLong(String score:Bool 0)
+varf Long.$score.addEqual(var $Add)
+varf Long.ScorePool.addEqual(var $Add)
+Long $likes=varf Struct.$player.getLong(String likes:Bool 0)
+varf Long.$likes.addEqual(Long 1)
+String $name=varf Struct.$player.getString(String name:Bool 0)
+Long $team=varf Struct.$player.getLong(String team:Bool 0)
+if{fun long.equal(var $team:Long 1)
+  varf Long.蓝队礼物积分.addEqual(var $Add)
+}
+if{fun long.equal(var $team:Long 2)
+  varf Long.红队礼物积分.addEqual(var $Add)
+}
+String $str=fun string.Format1(String 强化道具×%1:var $count)
+Mech M=fun createAIMech(String 礼物替身:Float 0:Vector3 0,-999,0:Vector3 0,0,1:Enum 0:Bool 0)
+varf Mech.M.callFun3(String 礼物特效:var $str:var $str:var $player)
+//从这里开始写自己的礼物处理逻辑
+act 1101./Scenario.Base'AddBullet(var $team:String 60:var $count:var $player)
+Long 普通子弹数=fun long.multiply(var $count:Long 1200)
+act 1101./Scenario.Base'AddBullet(var $team:String 0:var 普通子弹数:var $player)
+endcode

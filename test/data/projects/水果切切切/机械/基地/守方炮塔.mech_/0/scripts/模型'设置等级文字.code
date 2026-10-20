@@ -1,0 +1,7 @@
+begincodeV2
+name:模型'设置等级文字
+params:String 文字
+lines:
+UILabel label=act 1102./等级文字.getLabel()
+varf UILabel.label.text(var 文字)
+endcode

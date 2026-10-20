@@ -1,0 +1,17 @@
+begincodeV2
+color:255,0,0
+name:游戏'准备
+comment:开局前的准备
+lines:
+if{fun create.bool(var 局外功能设置'预设队伍)
+  Long 局内'基础value=fun create.long(Long 0)
+  Long 局内'基础speed=fun create.long(Long 10240)
+  Long 局内'无人队伍最小值=fun create.long(Long 0)
+  Long 局内'有人队伍最小值=fun create.long(Long 0)
+  Long 当前队伍数=fun create.long(var 局内'队伍_id计数)
+  Long 补充队伍数=fun long.minus(Long 20:var 当前队伍数)
+  if{fun long.gt(var 补充队伍数:Long 0)
+    act 1101.this.队伍'随机预设(var 补充队伍数)
+  }
+}
+endcode

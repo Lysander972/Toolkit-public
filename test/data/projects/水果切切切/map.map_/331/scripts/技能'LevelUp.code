@@ -1,0 +1,58 @@
+begincodeV2
+color:221,0,255
+name:技能'LevelUp
+lines:
+if{fun long.equal(var 属性'升级消耗:Long -1)
+  fun script.skip()
+  fun break()
+}
+if{act 1.this.Skills'GreaterOrEqual(String levelup:var 属性'升级消耗)
+  varf Long.属性'等级.addEqual(Long 1)
+  Long 属性'升级消耗=act 1.this.属性'更新等级属性()
+  if{fun long.notEqual(var 属性'升级消耗:Long -1)
+    while{act 1.this.Skills'GreaterOrEqual(String levelup:var 属性'升级消耗)
+      varf Long.属性'等级.addEqual(Long 1)
+      Long 属性'升级消耗=act 1.this.属性'更新等级属性()
+      if{fun long.equal(var 属性'升级消耗:Long -1)
+        fun break()
+      }
+    }
+  }
+  if{fun create.bool(var 属性'显示)
+    if{fun long.gt(var 属性'等级:Long 1)
+      Vector3 pos=act 1.this.getPosition()
+      varf Device.map_handler.callFun2(String Base'OnUpgrade:var pos:var 属性'炮塔缩放)
+      if{fun long.equal(var Attr'Type:Long 11)
+        Float 尺寸=fun create.float(var 属性'攻方炮塔缩放)
+        if{fun long.notEqual(var 属性'升级消耗:Long -1)
+          Long 当前消费=act 1.this.Skills'GetValue(String levelup)
+          Long 需求=fun long.minus(var 属性'升级消耗:var 当前消费)
+          String 提示=fun string.add3(String 到达:var 属性'等级:String 级\n还需:var 需求:String 提升到下一级)
+          act 1.this.callMapFunc2(String 弹幕.播报'上方升级:var 提示:var 属性'玩家)
+        }
+        if{fun long.equal(var 属性'升级消耗:Long -1)
+          String 提示=fun string.add1(String 到达:var 属性'等级:String 已到达最高等级!)
+          act 1.this.callMapFunc2(String 弹幕.播报'上方升级:var 提示:var 属性'玩家)
+        }
+      }
+      if{fun long.equal(var Attr'Type:Long 21)
+        Float 尺寸=fun create.float(var 属性'守方炮塔缩放)
+        if{fun long.notEqual(var 属性'升级消耗:Long -1)
+          Long 当前消费=act 1.this.Skills'GetValue(String levelup)
+          Long 需求=fun long.minus(var 属性'升级消耗:var 当前消费)
+          String 提示=fun string.add3(String 到达:var 属性'等级:String 级\n还需:var 需求:String 提升到下一级)
+          act 1.this.callMapFunc2(String 弹幕.播报'下方升级:var 提示:var 属性'玩家)
+        }
+        if{fun long.equal(var 属性'升级消耗:Long -1)
+          String 提示=fun string.add1(String 到达:var 属性'等级:String 已到达最高等级!)
+          act 1.this.callMapFunc2(String 弹幕.播报'下方升级:var 提示:var 属性'玩家)
+        }
+      }
+    }
+  }
+  Vector3 坐标=act 1.this.localToWorldPos(Vector3 0,0.1,0)
+  Float 序号=fun create.float(Float 1)
+  varf Device.map_handler.callFun3(String 发射特效:var 坐标:var 序号:var 尺寸)
+}
+delay fun create.float(Float 1)
+endcode

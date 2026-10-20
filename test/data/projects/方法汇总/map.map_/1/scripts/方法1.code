@@ -1,0 +1,10 @@
+begincodeV2
+name:方法1
+lines:
+Float a=fun float.add(Float 0:Float 0)
+// 回归测试插入行
+// 回归测试插入行
+// 回归测试插入行
+=fun string.AddColor(String :Color 0,0,0,255)
+=fun string.add(String :String )
+endcode

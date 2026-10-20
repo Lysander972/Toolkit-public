@@ -1,0 +1,25 @@
+begincodeV2
+name:内部'工具_计算进度条目标位置
+comment:原点相对于左上角
+params:Struct 队伍,UIRect 方框
+return:Vector3 坐标
+lines:
+Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+Float 上次更新=varf UIRect.方框.customFloat(String 排名更新时间)
+Float 上次排名=varf UIRect.方框.customFloat(String 排名)
+Float 当前时间=fun time.scaleTime()
+Float 已用时间=fun float.minus(var 当前时间:var 上次更新)
+if{fun float.gte(var 已用时间:Float 0.3)
+  if{fun float.notEqual(var 队伍排名:var 上次排名)
+    varf UIRect.方框.setCustomFloat(String 排名更新时间:var 当前时间)
+    varf UIRect.方框.setCustomFloat(String 排名:var 队伍排名)
+    Float 上次排名=fun create.float(var 队伍排名)
+  }
+}
+Float 基础x边距=fun create.float(Float 100)
+Float x偏移=fun float.multiply(Float 90:var 上次排名)
+Float x=fun float.add(var 基础x边距:var x偏移)
+Float y=fun create.float(Float 400)
+Vector3 坐标=fun creatVariable.Vector3(var x:var y:Float 0)
+/*Vector3 坐标=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+endcode

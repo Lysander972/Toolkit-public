@@ -1,0 +1,16 @@
+guid:e5f68e6d65e0453197c4307c487e518f
+meshes:
+[
+ {
+  n:Cube
+ }
+]
+matFolderName:69435f0b678041cbb9b1e2a4b3666b2e
+Albedo.UID:69435f0b678041cbb9b1e2a4b3666b2e
+Metal.UID:773cb57ce63043a6bc51776c159d3df0
+shaderName:"Shader Graphs/ParticleMesh"
+shader:
+[
+]
+bounds.center:[0,0,0]
+bounds.size:[2,2,2]

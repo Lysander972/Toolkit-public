@@ -1,0 +1,21 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setMass(Float 0)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.switchCollider(Bool 1)
+act 141.8.setMass(Float 1)
+act 141.8.setLayer(Float 0)
+act 141.8.show(Bool 1)
+act 141.8.switchCollider(Bool 0)
+act 1100./攻击判定.setMass(Float 0)
+act 1100./攻击判定.setLayer(Float 0)
+act 1100./攻击判定.show(Bool 0)
+act 1100./攻击判定.switchCollider(Bool 1)
+act 1100./爆炸判定.setMass(Float 0)
+act 1100./爆炸判定.setLayer(Float 0)
+act 1100./爆炸判定.show(Bool 0)
+act 1100./爆炸判定.switchCollider(Bool 1)
+act 1100./攻击判定.setTriggerEnterCB(String Public'OnCollision)
+endcode

@@ -1,0 +1,45 @@
+begincodeV2
+name:通用武器动图'回调_常驻动画入场结束检查
+params:UIRect 根节点
+lines:
+//得到当前武器UI布局
+Canvas 当前武器UI=varf UIRect.根节点.customCanvas(String 武器UI)
+//得到当前武器名
+String 武器名=varf UIRect.根节点.customString(String 武器名)
+//得到队伍关联武器字典
+UIRect 队伍根节点=varf UIRect.根节点.customUIRect(String 队伍根节点)
+Dict 队伍关联武器=varf UIRect.队伍根节点.customDict(String 关联武器)
+//检查是否已存在绑定武器,通常应该是已存在
+Bool 包含=varf Dict.队伍关联武器.contains(var 武器名)
+if{fun create.bool(var 包含)
+  //获取已存在UI布局
+  Canvas 已存在武器UI=varf Dict.队伍关联武器.readCanvas(var 武器名:Bool 0)
+  //获取已存在武器的根节点
+  UIRect 已存在武器根节点=varf Canvas.已存在武器UI.readUIRect(String 根节点)
+  //检查是否相同武器
+  Bool 同一武器=varf UIRect.根节点.equal(var 已存在武器根节点)
+  if{fun create.bool(var 同一武器)
+    //如果就是本武器作为已存在武器,那么不进行任何操作
+    //下一步的动画是循环动画
+    act 1101.this.通用武器动图'添加常驻武器循环动画(var 当前武器UI)
+  }
+  if{fun bool.not(var 同一武器)
+    //如果位置上已存在武器,那么把挂载的事件和层数转移到已有的武器上
+    //获取当前武器的层数和延迟事件表
+    Long 当前武器层数=varf UIRect.根节点.customLong(String 层数)
+    List 当前武器延迟事件表=act 1101.this.通用武器动图'得到挂载延迟事件列表(var 当前武器UI)
+    //buff层数显示的转移
+    act 1101.this.通用武器动图'附加层数修改(var 已存在武器UI:var 当前武器层数)
+    //延迟事件的转移
+    List 已存在武器延迟事件表=act 1101.this.通用武器动图'得到挂载延迟事件列表(var 已存在武器UI)
+    varf List.已存在武器延迟事件表.insertList(Float 0:var 当前武器延迟事件表)
+    //下一步的动画是消散动画
+    act 1101.this.通用武器动图'添加常驻武器消散动画(var 当前武器UI)
+  }
+}
+if{fun bool.not(var 包含)
+  //如果此时未绑定武器,那么说明buff层数已经不存在
+  //下一步的动画是离场
+  act 1101.this.通用武器动图'添加常驻武器离场动画(var 当前武器UI)
+}
+endcode

@@ -1,0 +1,13 @@
+begincodeV2
+name:饿汉加载
+lines:
+Long 预热数=fun create.long(Long 0)
+while{fun long.lt(var 预热数:Long 100)
+  Float randx=fun math.rand(Float -10000:Float 10000)
+  Float randy=fun math.rand(Float -10000:Float 10000)
+  Float randz=fun math.rand(Float 10000:Float 20000)
+  Vector3 pos=fun creatVariable.Vector3(var randx:var randy:var randz)
+  act 336.this.发射(var pos:Vector3 0,0,1:Float 1:Color 255,255,255,255:Float 0.1)
+  varf Long.预热数.addEqual(Long 1)
+}
+endcode

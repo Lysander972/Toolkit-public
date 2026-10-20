@@ -1,0 +1,14 @@
+begincodeV2
+guid:e9634c2534c14483b22cef0dd9d41915
+name:Utils'MoveByCameraLocal
+params:Vector3 $cameraLocal,Vector3 $localF,Vector3 $localU,Float $scale
+lines:
+Vector3 世界偏移=fun camera.localToWorldDir(var $cameraLocal:Float 0)
+Vector3 原点=fun camera.pos()
+Vector3 世界坐标=fun vector3.add(var 世界偏移:var 原点)
+Vector3 世界向前方向=fun camera.localToWorldDir(var $localF:Float 0)
+Vector3 世界向上方向=fun camera.localToWorldDir(var $localU:Float 0)
+act 1.this.setPosKinematic(var 世界坐标)
+act 1.this.setScale(var $scale)
+act 1.this.setRotKinematic(var 世界向前方向:var 世界向上方向)
+endcode

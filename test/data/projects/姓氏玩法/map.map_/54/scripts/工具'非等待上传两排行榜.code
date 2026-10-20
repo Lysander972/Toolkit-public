@@ -1,0 +1,11 @@
+begincodeV2
+name:工具'非等待上传两排行榜
+params:Dict 周榜上传,Dict 月榜上传
+lines:
+async Dict 周榜上传响应=fun dynamicCallRet(String DanmuAddRank:var 周榜上传)
+List 局内'周榜上传结果=varf Dict.周榜上传响应.readList(String List:Bool 1)
+Bool 局内'已上传周榜=fun create.bool(Bool 1)
+async Dict 月榜上传响应=fun dynamicCallRet(String DanmuAddRank:var 月榜上传)
+List 局内'月榜上传结果=varf Dict.月榜上传响应.readList(String List:Bool 1)
+Bool 局内'已上传月榜=fun create.bool(Bool 1)
+endcode

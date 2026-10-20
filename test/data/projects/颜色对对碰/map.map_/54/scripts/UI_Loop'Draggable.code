@@ -1,0 +1,12 @@
+begincodeV2
+color:255,243,0
+name:UI_Loop'Draggable
+lines:
+if{fun bool.not(var $init)
+  UIButton $skillPanel=varf Canvas.GameUI.readUIButton(String root/skillPanel)
+  UIButton $testingArea=varf Canvas.GameUI.readUIButton(String root/testingArea)
+  Bool $init=fun create.bool(Bool 1)
+}
+act 1101.this.UI'GameRefreshDraggable(var $skillPanel)
+act 1101.this.UI'GameRefreshDraggable(var $testingArea)
+endcode

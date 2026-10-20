@@ -1,0 +1,74 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格面板'加载
+params:UIRect 风格面板图层,String 主题
+lines:
+Bool 已存在=varf Canvas.UI_局内风格面板'主布局.exist()
+Bool 可复用=fun string.equal(var UI_局内风格面板'当前风格:var 主题)
+Bool 需要清除=fun bool.not(var 可复用)
+if{fun bool.and(var 已存在:var 需要清除)
+  UIRect 局内风格根节点=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点)
+  varf UIRect.局内风格根节点.del(Float 0)
+}
+if{fun bool.not(var 可复用)
+  fun ui.2dmode(Bool 1)
+  if{fun string.equal(var 主题:String 最强汉字)
+    Canvas UI_局内风格面板'主布局=fun create.canvas(Canvas guid@1433dcaa26f004ecca3e2097e033b1d0d)
+  }
+  if{fun string.equal(var 主题:String 姓氏之王)
+    Canvas UI_局内风格面板'主布局=fun create.canvas(Canvas guid@167321526910a4dec9c5968ab9e2976c9)
+  }
+  if{fun string.equal(var 主题:String 冲上云霄)
+    Canvas UI_局内风格面板'主布局=fun create.canvas(Canvas guid@18d617a3ed7fd460c95df877664e811f0)
+  }
+  if{varf Canvas.UI_局内风格面板'主布局.exist()
+    Bool UI_局内风格面板'初始化=fun create.bool(Bool 1)
+    UIRect 局内风格根节点=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点)
+    varf UIRect.风格面板图层.addSon(var 局内风格根节点)
+    //几个主要节点
+    //排行展示
+    UIRect UI_局内风格面板'展示区域=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/顶部功能面板/展示区域)
+    UILabel UI_局内风格面板'展示标题=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/顶部功能面板/展示区域/标题)
+    UILabel UI_局内风格面板'展示数值=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/顶部功能面板/展示区域/数值)
+    UILabel UI_局内风格面板'展示昵称=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/顶部功能面板/展示区域/昵称)
+    UIRawImage UI_局内风格面板'展示头像=varf Canvas.UI_局内风格面板'主布局.readUIRawImage(String 根节点/顶部功能面板/展示区域/头像遮罩/头像)
+    //礼物图
+    UIButton UI_局内风格面板'礼物图=varf Canvas.UI_局内风格面板'主布局.readUIButton(String 根节点/礼物面板)
+    UIRect 抖音提示=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/礼物面板/抖音提示)
+    varf UIRect.抖音提示.active(var 模式'抖音)
+    UIRect 快手提示=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/礼物面板/快手提示)
+    varf UIRect.快手提示.active(var 模式'快手)
+    //倒计时显示
+    UILabel UI_局内风格面板'倒计时文本=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/顶部标题区/倒计时/倒计时文本框)
+    UIRawImage UI_局内风格面板'倒计时时钟=varf Canvas.UI_局内风格面板'主布局.readUIRawImage(String 根节点/顶部标题区/倒计时/时钟图标/加速图标)
+    UIRawImage UI_局内风格面板'倒计时快进=varf Canvas.UI_局内风格面板'主布局.readUIRawImage(String 根节点/顶部标题区/倒计时/时钟图标/加速图标)
+    UIRawImage UI_局内风格面板'倒计时冻结=varf Canvas.UI_局内风格面板'主布局.readUIRawImage(String 根节点/顶部标题区/倒计时/时钟图标/锁定图标)
+    //积分池文本框
+    UILabel UI_局内风格面板'积分池文本=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/顶部标题区/积分池/积分池显示)
+    //冲刺提示
+    UIRect UI_局内风格面板'决战提示=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/顶部标题区/决战提示)
+    UIRect UI_局内风格面板'决战描边=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/顶部标题区/决战提示/边框特效)
+    UIRect UI_局内风格面板'决战加速框=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/加速边框)
+    UIRect UI_局内风格面板'决战弹窗=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/决战特效)
+    UILabel UI_局内风格面板'决战标题1=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/决战特效/标题1)
+    UILabel UI_局内风格面板'决战标题2=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/决战特效/标题2)
+    UILabel UI_局内风格面板'决战标题3=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/决战特效/标题3)
+    UILabel UI_局内风格面板'决战标题4=varf Canvas.UI_局内风格面板'主布局.readUILabel(String 根节点/决战特效/标题4)
+    UIRect UI_局内风格面板'冰冻效果框=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/冻结边框)
+    //底部开局按钮
+    UIRect UI_局内风格面板'底部区域=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/底部)
+    //礼物图片更新
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互4/图标:Long 0)
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互5/图标:Long 1)
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互6/图标:Long 3)
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互7/图标:Long 4)
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互8/图标:Long 5)
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互9/图标:Long 6)
+    act 1101.this.平台适配器'更新礼物图(var UI_局内风格面板'主布局:String 根节点/礼物面板/礼物子面板/交互10/图标:Long 7)
+  }
+}
+String UI_局内风格面板'当前风格=fun create.string(var 主题)
+Bool UI_局内风格面板'刷新积分池=fun create.bool(Bool 1)
+//加载礼物图坐标
+act 1101.this.UI_局内'拖动面板_初始化(var UI_局内风格面板'礼物图:String giftPanel)
+endcode

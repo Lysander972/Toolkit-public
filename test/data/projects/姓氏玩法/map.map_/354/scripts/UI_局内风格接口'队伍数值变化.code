@@ -1,0 +1,28 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'队伍数值变化
+params:Struct 玩家,Struct 队伍,Long 数值变化值
+lines:
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun create.bool(var 是否创建)
+  Canvas 队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+  UIRect 队伍根节点=varf Canvas.队伍UI布局.readUIRect(String 根节点)
+  UIRect 队伍公共锚定节点=varf UIRect.队伍根节点.customUIRect(String 公共锚定节点)
+  Vector3 数值产生位置=varf UIRect.队伍公共锚定节点.getCanvasPos()
+  Vector3 UI尺寸=fun screen.uiSize()
+  Float y=varf Vector3.UI尺寸.y()
+  Float y=fun float.multiply(var y:Float -1)
+  Vector3 左下转左上修正=fun creatVariable.Vector3(Float 0:var y:Float 0)
+  Vector3 数值产生位置=fun vector3.add(var 数值产生位置:var 左下转左上修正)
+  Vector3 实际偏移=fun vector3.add(var 数值产生位置:var 图表布局坐标)
+  Float 透明度=act 1101.this.内部'工具_透明度计算(var 实际偏移)
+  if{fun float.gte(var 透明度:Float 0.5)
+    act 1101./弹幕.数字效果'产生效果_数值变化(var 数值变化值:var 图表特效图层_悬浮:var 数值产生位置:var 平面UI开关)
+  }
+  //点击这里写注释
+  fun break()
+  =varf Struct.玩家.exist()
+}
+endcode

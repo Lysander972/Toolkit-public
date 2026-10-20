@@ -1,0 +1,14 @@
+[
+ {
+  name:存档'上次上传
+  type:Float
+ }
+ {
+  name:是GM
+  type:Bool
+ }
+ {
+  name:音效记录
+  type:Dict
+ }
+]

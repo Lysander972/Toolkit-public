@@ -1,0 +1,15 @@
+begincodeV2
+skip:1
+name:全部零件调整
+lines:
+fun mech.addStep()
+delay fun create.float(Float 10)
+Float max=fun mech.deviceNum()
+Float i=fun create.float(Float 0)
+while{fun float.lt(var i:var max)
+  Device dev=fun mech.getDevice(var i)
+  dvf dev.Device.setPos(Vector3 0,0,0)
+  dvf dev.Device.setRot(Vector3 0,0,-1:Vector3 0,1,0)
+  varf Float.i.addEqual(Float 1)
+}
+endcode

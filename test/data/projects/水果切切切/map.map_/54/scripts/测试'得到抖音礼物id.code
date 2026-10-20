@@ -1,0 +1,53 @@
+begincodeV2
+name:测试'得到抖音礼物id
+params:Long 礼物序号
+return:String 礼物id
+lines:
+Long contextId=act 1101.this.GetContextId()
+if{fun long.equal(var contextId:Long 1)
+  if{fun long.equal(var 礼物序号:Long 0)
+    String 礼物id=fun create.string(String n1/Dg1905sj1FyoBlQBvmbaDZFBNaKuKZH6zxHkv8Lg5x2cRfrKUTb8gzMs@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 1)
+    String 礼物id=fun create.string(String 28rYzVFNyXEXFC8HI+f/WG+I7a6lfl3OyZZjUS+CVuwCgYZrPrUdytGHu0c@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 2)
+    String 礼物id=fun create.string(String fJs8HKQ0xlPRixn8JAUiL2gFRiLD9S6IFCFdvZODSnhyo9YN8q7xUuVVyZI@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 3)
+    String 礼物id=fun create.string(String PJ0FFeaDzXUreuUBZH6Hs+b56Jh0tQjrq0bIrrlZmv13GSAL9Q1hf59fjGk@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 4)
+    String 礼物id=fun create.string(String IkkadLfz7O/a5UR45p/OOCCG6ewAWVbsuzR/Z+v1v76CBU+mTG/wPjqdpfg@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 5)
+    String 礼物id=fun create.string(String gx7pmjQfhBaDOG2XkWI2peZ66YFWkCWRjZXpTqb23O/epru+sxWyTV/3Ufs@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 6)
+    String 礼物id=fun create.string(String pGLo7HKNk1i4djkicmJXf6iWEyd+pfPBjbsHmd3WcX0Ierm2UdnRR7UINvI@3)
+  }
+}
+if{fun long.equal(var contextId:Long 2)
+  if{fun long.equal(var 礼物序号:Long 0)
+    String 礼物id=fun create.string(String n1/Dg1905sj1FyoBlQBvmbaDZFBNaKuKZH6zxHkv8Lg5x2cRfrKUTb8gzMs@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 1)
+    String 礼物id=fun create.string(String 28rYzVFNyXEXFC8HI+f/WG+I7a6lfl3OyZZjUS+CVuwCgYZrPrUdytGHu0c@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 2)
+    String 礼物id=fun create.string(String PJ0FFeaDzXUreuUBZH6Hs+b56Jh0tQjrq0bIrrlZmv13GSAL9Q1hf59fjGk@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 3)
+    String 礼物id=fun create.string(String IkkadLfz7O/a5UR45p/OOCCG6ewAWVbsuzR/Z+v1v76CBU+mTG/wPjqdpfg@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 4)
+    String 礼物id=fun create.string(String gx7pmjQfhBaDOG2XkWI2peZ66YFWkCWRjZXpTqb23O/epru+sxWyTV/3Ufs@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 5)
+    String 礼物id=fun create.string(String YbLESoUj053FWVYPWUNOAtp4FYnb+/eZbyrLi7ndArVFz14rivgxf0cFrKs@3)
+  }
+  if{fun long.equal(var 礼物序号:Long 6)
+    String 礼物id=fun create.string(String pGLo7HKNk1i4djkicmJXf6iWEyd+pfPBjbsHmd3WcX0Ierm2UdnRR7UINvI@3)
+  }
+}
+endcode

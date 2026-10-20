@@ -1,0 +1,34 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'主菜单_按钮刷新
+params:String 路径,String 设置项名称
+lines:
+UIButton 按钮=varf Canvas.UI_局外主菜单'布局.readUIButton(var 路径)
+Long 参数=varf UIButton.按钮.customLong(String 参数)
+Bool 是否启用=varf UIButton.按钮.customBool(String 是否启用)
+UIButton 选中子按钮=varf UIButton.按钮.customUIButton(String 选中)
+UIButton 不可用子按钮=varf UIButton.按钮.customUIButton(String 不可用)
+Bool 显示选中按钮=fun create.bool(Bool 0)
+Bool 显示不可用按钮=fun bool.not(var 是否启用)
+if{fun create.bool(var 是否启用)
+  if{fun string.equal(var 设置项名称:String 分辨率)
+    Long 当前值=fun create.long(var 局外功能设置'分辨率选项)
+  }
+  if{fun string.equal(var 设置项名称:String 玩法时长)
+    Long 当前值=fun create.long(var UI_局外主菜单'玩法时长)
+  }
+  if{fun string.equal(var 设置项名称:String 玩法模式)
+    Long 当前值=fun create.long(var UI_局外主菜单'玩法模式)
+  }
+  if{fun string.equal(var 设置项名称:String 获胜规则)
+    Long 当前值=fun create.long(var UI_局外主菜单'获胜规则)
+  }
+  if{fun string.equal(var 设置项名称:String 风格设置)
+    Long 当前值=fun create.long(var UI_局外主菜单'风格设置)
+  }
+  Bool 选中当前项=fun long.equal(var 参数:var 当前值)
+  Bool 显示选中按钮=fun create.bool(var 选中当前项)
+}
+varf UIButton.选中子按钮.active(var 显示选中按钮)
+varf UIButton.不可用子按钮.active(var 显示不可用按钮)
+endcode

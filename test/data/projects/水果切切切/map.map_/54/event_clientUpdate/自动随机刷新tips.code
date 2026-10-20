@@ -1,0 +1,12 @@
+begincodeV2
+name:自动随机刷新tips
+lines:
+if{fun bool.and(var GameStart:var 功能开关'攻略提示)
+  act 1101.this.UI_Tip'SetTip(Float -1)
+  delay fun create.float(Float 6)
+}
+if{fun bool.and(var GameStart:var 功能开关'攻略提示)
+  act 1101.this.UI_Tip'SelectRandom()
+  delay fun create.float(Float 6)
+}
+endcode

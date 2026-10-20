@@ -1,0 +1,11 @@
+begincodeV2
+name:工具'变换计算
+comment:角度1变换到角度2需要的值
+params:Float 角度1,Float 角度2
+return:Float 变换
+lines:
+Float 角度1=act 1101.this.工具'角度标准化(var 角度1)
+Float 角度2=act 1101.this.工具'角度标准化(var 角度2)
+Float 变换=fun float.minus(var 角度2:var 角度1)
+Float 变换=act 1101.this.工具'角度标准化(var 变换)
+endcode

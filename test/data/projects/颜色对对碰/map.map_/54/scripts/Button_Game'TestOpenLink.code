@@ -1,0 +1,6 @@
+begincodeV2
+color:255,243,0
+name:Button_Game'TestOpenLink
+lines:
+fun webview.open(String https@1//jy79528eio.feishu.cn/docx/I9pDd9ARDofQznxbRHBcpBQInkg?from@3from_copylink)
+endcode

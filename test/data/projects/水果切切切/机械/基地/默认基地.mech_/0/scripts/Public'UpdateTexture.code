@@ -1,0 +1,15 @@
+begincodeV2
+name:Public'UpdateTexture
+params:Bool frozen,Color frozenRim,Color frozenPaint,Float power,Float rate,Color defaultPaint,String url,Bool openFrame,String frameFile
+lines:
+fun break()
+=fun create.bool(var frozen)
+=fun create.color(var frozenRim)
+=fun create.color(var frozenPaint)
+=fun create.float(var power)
+=fun create.float(var rate)
+=fun create.color(var defaultPaint)
+=fun create.string(var url)
+=fun create.bool(var openFrame)
+=fun create.string(var frameFile)
+endcode

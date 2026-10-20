@@ -1,0 +1,30 @@
+guid:350ee4f6f6294a6e81b47db97960014c
+meshes:
+[
+ {
+  n:PricklyPear_Orange_Half
+ }
+]
+matFolderName:22365157774247f1ab01605f45d21c3c
+Albedo.UID:22365157774247f1ab01605f45d21c3c
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.09949055,0]
+bounds.size:[0.2657425,0.1989811,0.2657425]

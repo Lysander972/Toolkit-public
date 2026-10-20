@@ -1,0 +1,38 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'队伍数值变化
+params:Struct 玩家,Struct 队伍,Long 数值变化值
+lines:
+//标记突变需求
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 队伍idS=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 队伍idS)
+if{fun create.bool(var 是否创建)
+  Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 队伍idS:Bool 0)
+  Mech 队伍模型=varf Struct.队伍映射.getMech(String 队伍模型:Bool 0)
+  //标记为需要更新
+  if{fun long.gt(var 数值变化值:Long 0)
+    varf Mech.队伍模型.setCustomBool(String 刷新摄像机高度:Bool 1)
+    varf Mech.队伍模型.setCustomBool(String 刷新模型高度:Bool 1)
+  }
+  //记录本帧数值变化,添加到队列中
+  Bool 帧内数值变化=varf Mech.队伍模型.customBool(String 帧内数值变化)
+  if{fun bool.not(var 帧内数值变化)
+    varf Mech.队伍模型.setCustomBool(String 帧内数值变化:Bool 1)
+    varf List.数值变化检测表.add(var 队伍映射)
+  }
+  if{fun long.gt(var 数值变化值:Long 0)
+    Long 帧内累积增加数值=varf Mech.队伍模型.customLong(String 帧内累积增加数值)
+    varf Long.帧内累积增加数值.addEqual(var 数值变化值)
+    varf Mech.队伍模型.setCustomLong(String 帧内累积增加数值:var 帧内累积增加数值)
+  }
+  if{fun long.lt(var 数值变化值:Long 0)
+    Long 帧内累积减少数值=varf Mech.队伍模型.customLong(String 帧内累积减少数值)
+    varf Long.帧内累积减少数值.addEqual(var 数值变化值)
+    varf Mech.队伍模型.setCustomLong(String 帧内累积减少数值:var 帧内累积减少数值)
+  }
+}
+//无效操作
+fun break()
+=varf Struct.玩家.exist()
+endcode

@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "完整来源 blob adb9841d8abfe3cafc41a4f87c8665aeec5588d6 与 HEAD 旧规范一致，原文中的冲突段与解读中的覆盖范围能够直接对照。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "十项开发合同的官方依据、复用、根因定位、根执行、文本、指引和密钥边界均保留；完成条件中固定两个 worker/独立 workflow 的冲突被明确定位，没有笼统丢弃。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "统一测试配置和 50% workers 来自关联 toolchain/git-workflow 的现行原文，SQLite 登记只替换追踪载体，格式只读和 index 绑定不变。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "a801ae5d-c929-4c02-b8a8-ef0b17efdca7",
+  "reviewed_fingerprint": "b5df149e5c91e2b51119a0bc672928988a629a012839af277f7b955308b1f1fa",
+  "schema": 2,
+  "summary": "dev-tooling 全文与测试执行冲突的专项核对。"
+}

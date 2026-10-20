@@ -1,0 +1,66 @@
+begincodeV2
+name:数字效果'更新
+comment:刷新效果
+lines:
+Float index=varf List.数字效果'维护队列.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas UI=varf List.数字效果'维护队列.readCanvas(var index)
+  UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+  UILabel 文本框=varf Canvas.UI.readUILabel(String 背景/数值)
+  Float 初始时间=varf UIRect.背景.customFloat(String 初始时间)
+  Float 总时间=varf UIRect.背景.customFloat(String 持续)
+  Float 缩放=varf UIRect.背景.customFloat(String 缩放)
+  Bool 突出显示=varf UIRect.背景.customBool(String 突出显示)
+  Long 类型=varf UIRect.背景.customLong(String 类型)
+  Float 当前时间=fun time.scaleTime()
+  Vector3 初始位置=varf UIRect.背景.customVector3(String 初始位置)
+  Vector3 目标位置=varf UIRect.背景.customVector3(String 目标位置)
+  Float 持续时间=fun float.minus(var 当前时间:var 初始时间)
+  Float 比例=fun float.division(var 持续时间:var 总时间)
+  Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+/*  Float 平滑比例=fun float.SmoothStep(Float 0:Float 1:var 比例)
+  Vector3 当前位置=fun vector3.lerp(var 初始位置:var 目标位置:var 比例)
+  varf UIRect.背景.followDevice(Device :var 当前位置)
+  //缩放比例
+  Float 缩放比例=fun float.division(var 持续时间:Float 0.5)
+  Float 缩放比例=fun float.clamp(var 缩放比例:Float 0:Float 1)
+  if{fun create.bool(var 突出显示)
+    if{fun float.lte(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.division(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 0.5)
+      Float 实际缩放=fun float.multiply1(var 时间段比例:Float 1.5:var 缩放)
+      Float 实际缩放=fun float.max(var 实际缩放:Float 0.01)
+      varf UIRect.背景.scale(var 实际缩放)
+    }
+    if{fun float.gt(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.minus(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.division(var 时间段比例:Float 0.67)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 2)
+      Float 实际缩放=fun float.lerp(Float 1.5:Float 1:var 时间段比例)
+      Float 实际缩放=fun float.multiply(var 实际缩放:var 缩放)
+      varf UIRect.背景.scale(var 实际缩放)
+    }
+  }
+  if{fun bool.not(var 突出显示)
+    varf UIRect.背景.scale(var 缩放)
+  }
+  //颜色比例
+  Float 颜色比例=fun float.minus(var 比例:Float 0.5)
+  Float 颜色比例=fun float.multiply(var 颜色比例:Float 2)
+  Float 颜色比例=fun float.clamp(var 颜色比例:Float 0:Float 1)
+  Color 初始颜色=fun create.color(Color 255,255,255,255)
+  Color 显示颜色=varf Color.初始颜色.lerp(Color 255,255,255,0:var 颜色比例)
+  varf UILabel.文本框.setColor(var 显示颜色)
+  if{fun long.equal(var 类型:Long 3)
+    UIRawImage 图标=varf Canvas.UI.readUIRawImage(String 背景/图标)
+    Color 图标颜色=fun create.color(Color 255,255,255,255)
+    Color 图标颜色=varf Color.图标颜色.lerp(Color 255,255,255,0:var 颜色比例)
+    varf UIRawImage.图标.setColor(var 图标颜色)
+  }
+  if{fun float.gte(var 比例:Float 1)
+    varf List.数字效果'维护队列.remove(var index)
+    varf UIRect.背景.del(Float 0)
+  }
+}
+endcode

@@ -1,0 +1,14 @@
+begincodeV2
+name:方法1
+lines:
+act 337./1.active(Bool 1:Float 0)
+act 337./2.active(Bool 1:Float 0)
+act 337./3.active(Bool 1:Float 0)
+act 337./4.active(Bool 1:Float 0)
+act 337./5.active(Bool 1:Float 0)
+act 337./6.active(Bool 1:Float 0)
+act 337./7.active(Bool 1:Float 0)
+act 337./8.active(Bool 1:Float 0)
+act 337./9.active(Bool 1:Float 0)
+act 337./10.active(Bool 1:Float 0)
+endcode

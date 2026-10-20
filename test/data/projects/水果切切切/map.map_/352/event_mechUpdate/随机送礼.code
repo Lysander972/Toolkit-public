@@ -1,0 +1,40 @@
+begincodeV2
+name:随机送礼
+lines:
+/*fun break()
+delay fun math.rand(Float 1:Float 2)
+String uid=varf Struct.AI玩家.getString(String id:Bool 1)
+Float 随机=fun math.rand(Float 0:Float 1)
+if{fun float.lt(var 随机:Float 0.98)
+  Long count1=fun long.rand(Long 1:Long 5)
+  act 1.this.模拟点赞(var uid:var count1)
+  fun break()
+}
+if{fun float.lt(var 随机:Float 0.985)
+  Long count0=fun long.rand(Long 1:Long 20)
+  act 1.this.模拟送礼(Long 1:var count0)
+  fun break()
+}
+if{fun float.lt(var 随机:Float 0.989)
+  Long count0=fun long.rand(Long 1:Long 10)
+  act 1.this.模拟送礼(Long 2:var count0)
+  fun break()
+}
+if{fun float.lt(var 随机:Float 0.992)
+  Long count0=fun long.rand(Long 1:Long 5)
+  act 1.this.模拟送礼(Long 3:var count0)
+  fun break()
+}
+if{fun float.lt(var 随机:Float 0.995)
+  Long count0=fun long.rand(Long 1:Long 5)
+  act 1.this.模拟送礼(Long 4:var count0)
+  fun break()
+}
+if{fun float.lt(var 随机:Float 0.998)
+  Long count0=fun long.rand(Long 1:Long 3)
+  act 1.this.模拟送礼(Long 5:var count0)
+  fun break()
+}
+Long count0=fun long.rand(Long 1:Long 1)
+act 1.this.模拟送礼(Long 6:var count0)
+endcode

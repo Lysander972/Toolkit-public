@@ -1,0 +1,7 @@
+begincodeV2
+name:内部'特效_加速击中
+params:UIRect 根节点
+lines:
+fun break()
+=varf UIRect.根节点.exist()
+endcode

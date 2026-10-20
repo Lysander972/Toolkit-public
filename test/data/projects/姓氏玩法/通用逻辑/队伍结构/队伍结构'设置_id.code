@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+guid:022eacdf66b44a4a921e22637804847f
+color:255,255,255
+name:队伍结构'设置_id
+params:Struct 结构,Long id
+lines:
+varf Struct.结构.set(String id:var id)
+endcode

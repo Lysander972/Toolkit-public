@@ -1,0 +1,40 @@
+begincodeV2
+name:Player'CheckAndConstruct
+params:Dict msgObj
+return:Struct player
+lines:
+String uid=varf Dict.msgObj.readString(String uid:Bool 0)
+String name=varf Dict.msgObj.readString(String name:Bool 0)
+String avatarUrl=varf Dict.msgObj.readString(String avatarUrl:Bool 0)
+Bool isRec=varf Dict.msgObj.readBool(String isrec:Bool 0)
+String uidproxy=fun create.string(var uid)
+if{fun create.bool(var isRec)
+  String uidproxy=fun string.add(String @4record@5:var uid)
+}
+Struct player=varf Dict.PlayerMap.readStruct(var uidproxy:Bool 0)
+Bool exist=varf Struct.player.exist()
+if{fun create.bool(var exist)
+  if{fun string.notEqual(var uid:String )
+    String OldId=varf Struct.player.getString(String id:Bool 1)
+    if{fun string.notEqual(var OldId:var uid)
+      varf Struct.player.set(String id:var uid)
+    }
+  }
+  if{fun string.notEqual(var name:String )
+    String OldName=varf Struct.player.getString(String name:Bool 1)
+    if{fun string.notEqual(var OldName:var name)
+      varf Struct.player.set(String name:var name)
+    }
+  }
+  if{fun string.notEqual(var avatarUrl:String )
+    String OldUrl=varf Struct.player.getString(String avatarUrl:Bool 0)
+    if{fun string.notEqual(var OldUrl:var avatarUrl)
+      varf Struct.player.set(String avatarUrl:var avatarUrl)
+      act 1101./Scenario.炮塔'手动刷新(var player)
+    }
+  }
+}
+if{fun bool.not(var exist)
+  Struct player=act 1101.this.Player'New(var uid:var uidproxy:var name:var avatarUrl)
+}
+endcode

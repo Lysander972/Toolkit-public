@@ -1,0 +1,102 @@
+begincodeV2
+color:255,244,0
+name:UI'SettlementItem
+params:UIRect panel,List playerList,List 排行榜结果,Long $winner
+lines:
+Float i=fun create.float(Float 0)
+Float N=varf List.playerList.count()
+while{fun float.lt(var i:var N)
+  Canvas itemUI=fun create.canvas(Canvas canvas@1@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@3)
+  UIRect item=varf Canvas.itemUI.readUIRect(String item)
+  Struct $player=varf List.playerList.readStruct(var i)
+  Long $streak=varf Struct.$player.getLong(String streak:Bool 1)
+  Long $team=varf Struct.$player.getLong(String team:Bool 1)
+  if{fun long.equal(var $team:Long 0)
+    varf UIRect.item.setColor(Color 192,192,192,255,格子-中立)
+  }
+  if{fun long.equal(var $team:Long 1)
+    varf UIRect.item.setColor(Color 0,151,205,255,UI-蓝色)
+  }
+  if{fun long.equal(var $team:Long 2)
+    varf UIRect.item.setColor(Color 255,26,0,255,UI-红色)
+  }
+  if{fun long.lte(var $streak:Long 0)
+    UIRect rect=varf Canvas.itemUI.readUIRect(String item/连胜)
+    varf UIRect.rect.active(Bool 0)
+  }
+  if{fun long.gt(var $streak:Long 0)
+    Long 连胜加成=varf Struct.$player.getLong(String 连胜加成:Bool 1)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/连胜加成)
+    varf UILabel.label.text(var 连胜加成)
+    String s=fun string.Format1(String %1连胜:var $streak)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/连胜/label)
+    varf UILabel.label.text(var s)
+  }
+  if{fun long.equal(var $team:var $winner)
+    Long 抢夺积分池=varf Struct.$player.getLong(String 抢夺积分池:Bool 1)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/抢积分池)
+    varf UILabel.label.text(var 抢夺积分池)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/抢连胜)
+    Long 抢夺连胜=varf Struct.$player.getLong(String 抢夺连胜:Bool 1)
+    if{fun long.gt(var 抢夺连胜:Long 0)
+      String s=fun string.Format1(String 抢%1连:var 抢夺连胜)
+    }
+    if{fun long.lte(var 抢夺连胜:Long 0)
+      String s=fun create.string(String )
+    }
+    varf UILabel.label.text(var s)
+  }
+  UILabel 名次=varf Canvas.itemUI.readUILabel(String item/名次)
+  Float rank=fun float.add(var i:Float 1)
+  varf UILabel.名次.text(var rank)
+  UIRawImage rankIcon=varf Canvas.itemUI.readUIRawImage(String item/rankIcon)
+  Bool 是前三=fun float.gt(Float 4:var rank)
+  varf UIRawImage.rankIcon.active(var 是前三)
+  if{fun create.bool(var 是前三)
+    varf UILabel.名次.text(String )
+    if{fun float.Approximately(var rank:Float 1)
+      String s=fun create.string(String icon_color_medal_gold.png)
+    }
+    if{fun float.Approximately(var rank:Float 2)
+      String s=fun create.string(String icon_color_medal_silver.png)
+    }
+    if{fun float.Approximately(var rank:Float 3)
+      String s=fun create.string(String icon_color_medal_bronze.png)
+    }
+    varf UIRawImage.rankIcon.loadPic(var s)
+  }
+  String name=varf Struct.$player.getString(String name:Bool 1)
+  String name=act 1101.this.限制昵称长度(var name)
+  UILabel 昵称=varf Canvas.itemUI.readUILabel(String item/昵称)
+  varf UILabel.昵称.text(var name)
+  String uid=varf Struct.$player.getString(String id:Bool 1)
+  UIRawImage avatarIcon=varf Canvas.itemUI.readUIRawImage(String item/avatar/mask/Avatar)
+  varf UIRawImage.avatarIcon.SetDanmuAvatar(var uid)
+  UILabel 积分label=varf Canvas.itemUI.readUILabel(String item/积分)
+  Long $score=varf Struct.$player.getLong(String score:Bool 1)
+  varf UILabel.积分label.text(var $score)
+  Float 序号=varf List.排行榜结果.find2(String uid:var uid)
+  if{fun float.gte(var 序号:Float 0)
+    Dict D=varf List.排行榜结果.readDict(var 序号)
+    Long fromRank=varf Dict.D.readLong(String fromRank:Bool 0)
+    Long toRank=varf Dict.D.readLong(String toRank:Bool 0)
+    Bool 排名上升=fun long.gt(var fromRank:var toRank)
+    UIRawImage upIcon=varf Canvas.itemUI.readUIRawImage(String item/up)
+    varf UIRawImage.upIcon.active(var 排名上升)
+    UILabel 世界排名label=varf Canvas.itemUI.readUILabel(String item/世界排名)
+    if{fun long.lt(var toRank:Long 0)
+      varf UILabel.世界排名label.text(String 9999+)
+    }
+    if{fun long.gte(var toRank:Long 0)
+      varf Long.toRank.addEqual(Long 1)
+      varf UILabel.世界排名label.text(var toRank)
+    }
+  }
+  if{fun float.lt(var 序号:Float 0)
+    UILabel 世界排名label=varf Canvas.itemUI.readUILabel(String item/世界排名)
+    varf UILabel.世界排名label.text(String 9999+)
+  }
+  varf UIRect.panel.addSon(var item)
+  varf Float.i.addEqual(Float 1)
+}
+endcode

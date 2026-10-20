@@ -1,0 +1,6 @@
+begincodeV2
+name:功能设置'得到音量值
+return:Float ret
+lines:
+Float ret=fun create.float(var 功能设置'音量值)
+endcode

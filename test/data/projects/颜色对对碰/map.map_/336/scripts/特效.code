@@ -1,0 +1,6 @@
+begincodeV2
+name:特效
+params:Float index,Float scale
+lines:
+act 147.1.play(var index:var scale)
+endcode

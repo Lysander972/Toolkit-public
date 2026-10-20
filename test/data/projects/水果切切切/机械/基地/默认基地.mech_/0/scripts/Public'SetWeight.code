@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'SetWeight
+params:Float weight
+lines:
+=fun create.float(var weight)
+endcode

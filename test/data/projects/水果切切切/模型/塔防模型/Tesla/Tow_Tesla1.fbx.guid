@@ -1,0 +1,31 @@
+guid:fc93d39ea1d74f56971983e642b0aa5c
+meshes:
+[
+ {
+  n:tesla1
+ }
+]
+matFolderName:f4ad29edbb2b4512b14594d4f390e761
+Albedo.UID:f4ad29edbb2b4512b14594d4f390e761
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:1
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0.5
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+scale:10
+bounds.center:[0,0.01075383,8.519972E-06]
+bounds.size:[0.0146566,0.02196588,0.0146566]

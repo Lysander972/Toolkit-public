@@ -1,0 +1,30 @@
+begincodeV2
+color:221,0,255
+name:技能'21000
+comment:团队技能攒进度条
+lines:
+if{fun bool.not(var init)
+  Long context=act 1.this.GetContextId()
+  if{fun long.equal(var context:Long 1)
+    Long value1=fun create.long(Long 10)
+    Long value2=fun create.long(Long 9)
+  }
+  if{fun long.equal(var context:Long 2)
+    Long value1=fun create.long(Long 20)
+    Long value2=fun create.long(Long 19)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+String key0=fun create.string(String 21000)
+String key1=fun create.string(String 21001)
+if{act 1.this.Skills'GreaterOrEqual(var key0:var value1)
+  Long skill=act 1.this.Skills'GetValue(var key0)
+  while{fun long.gte(var skill:var value1)
+    =act 1.this.Skills'Decrease(var key0:var value2)
+    Struct player=act 1.this.Skills'Dequeue(var key0)
+    act 1.this.Public'AddBullet(var key1:Long 1:var player)
+    Long skill=act 1.this.Skills'GetValue(var key0)
+  }
+}
+=act 1.this.UI'刷新团队技能红()
+endcode

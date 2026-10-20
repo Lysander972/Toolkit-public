@@ -1,0 +1,23 @@
+begincodeV2
+color:8,0,255
+name:Public'TurretCollisionCheck
+comment:炮塔反弹
+params:Vector3 pos
+return:Bool alive
+lines:
+if{fun create.bool(var Attr'Turret)
+  Float now=fun time.scaleTime()
+  if{fun float.gte(var now:var Physic'炮塔反弹CD)
+    varf Vector3.pos.setY(Float 0)
+    Vector3 selfPos=act 1.this.getPosition()
+    varf Vector3.selfPos.setY(Float 0)
+    Vector3 direction=fun vector3.minus(var selfPos:var pos)
+    Vector3 direction=varf Vector3.direction.setLength(var Physic'SpeedExp)
+    Vector3 direction=fun vector3.multilply(var direction:Float 1.1)
+    act 1.this.addForce(var direction:Enum 2)
+    Device this=act 1.this.getDevice()
+    varf Device.this.laterCallFun0(String SpeedFix:Float 0)
+    Float Physic'炮塔反弹CD=fun float.add(var now:Float 3)
+  }
+}
+endcode

@@ -1,0 +1,10 @@
+begincodeV2
+guid:c4ed15f1dec44575bcbcfe046d7af9e0
+color:255,255,255
+name:玩家结构'读取_id
+comment:读取玩家id
+params:Struct 结构
+return:String ret
+lines:
+String ret=varf Struct.结构.getString(String id:Bool 0)
+endcode

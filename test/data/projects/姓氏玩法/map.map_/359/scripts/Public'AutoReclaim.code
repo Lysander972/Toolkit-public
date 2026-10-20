@@ -1,0 +1,8 @@
+begincodeV2
+name:Public'AutoReclaim
+params:String key
+lines:
+delay fun create.float(Float 0)
+Mech self=act 1.this.getMech()
+act 1.this.callMapFunc2(String Scenario.Model'OnReclaim:var self:var key)
+endcode

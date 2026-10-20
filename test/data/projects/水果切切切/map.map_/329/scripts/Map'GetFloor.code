@@ -1,0 +1,6 @@
+begincodeV2
+name:Map'GetFloor
+return:Device ret
+lines:
+Device ret=fun creatVariable.device(var Map'Floor)
+endcode

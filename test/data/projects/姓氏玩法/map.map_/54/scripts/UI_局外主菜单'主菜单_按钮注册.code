@@ -1,0 +1,16 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'主菜单_按钮注册
+params:String 路径,String 点击回调方法,Bool 是否启用,Long 参数
+lines:
+UIButton 按钮=varf Canvas.UI_局外主菜单'布局.readUIButton(var 路径)
+varf UIButton.按钮.clickCB1(var 点击回调方法:var 按钮)
+varf UIButton.按钮.setCustomLong(String 参数:var 参数)
+varf UIButton.按钮.setCustomBool(String 是否启用:var 是否启用)
+String 选中子按钮路径=fun string.add(var 路径:String /选中)
+UIButton 选中子按钮=varf Canvas.UI_局外主菜单'布局.readUIButton(var 选中子按钮路径)
+String 不可用子按钮路径=fun string.add(var 路径:String /不可用)
+UIButton 不可用子按钮=varf Canvas.UI_局外主菜单'布局.readUIButton(var 不可用子按钮路径)
+varf UIButton.按钮.setCustomUIButton(String 选中:var 选中子按钮)
+varf UIButton.按钮.setCustomUIButton(String 不可用:var 不可用子按钮)
+endcode

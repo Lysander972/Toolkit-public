@@ -1,0 +1,31 @@
+{
+  "$schema": "../../res/schemas/package.json",
+  "name": "@toolkit/host",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./host/Host.ts",
+    "./workspace": "./host/WorkspaceServices.ts"
+  },
+  "dependencies": {
+    "@toolkit/config": "workspace:*",
+    "@toolkit/analysis": "workspace:*",
+    "@angular-devkit/core": "21.2.25",
+    "@angular-devkit/schematics": "21.2.25",
+    "@effect/platform-node": "4.0.0",
+    "@toolkit/canvas": "workspace:*",
+    "@toolkit/project-model": "workspace:*",
+    "@toolkit/script": "workspace:*",
+    "chokidar": "5.0.0",
+    "canvaskit-wasm": "0.42.0",
+    "effect": "4.0.0",
+    "hjson": "3.2.2",
+    "mobx": "6.16.1",
+    "mobx-state-tree": "7.4.0",
+    "write-file-atomic": "7.0.0",
+    "pino": "10.4.0",
+    "typescript": "5.9.3",
+    "zod": "4.6.4"
+  }
+}

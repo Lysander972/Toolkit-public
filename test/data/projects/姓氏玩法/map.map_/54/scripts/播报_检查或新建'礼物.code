@@ -1,0 +1,30 @@
+begincodeV2
+color:255,255,255
+name:播报_检查或新建'礼物
+params:String 礼物类型,Long 礼物数量,Struct 玩家,Long 礼物优先级,Bool 开启叠加
+lines:
+if{fun create.bool(var 开启叠加)
+  String 播报key=act 1101.this.播报元素'索引key生成(var 玩家:var 礼物类型)
+  Bool 已存在播报=varf Dict.UI_局内'播报条目索引.contains(var 播报key)
+  if{fun create.bool(var 已存在播报)
+    Canvas 布局=varf Dict.UI_局内'播报条目索引.readCanvas(var 播报key:Bool 0)
+    act 1101.this.播报_检查或新建'修改标准布局(var 布局:var 礼物数量)
+  }
+  if{fun bool.not(var 已存在播报)
+    Float 优先级F=varf Long.礼物优先级.toFloat()
+    Float 优先级F=fun float.max(var 优先级F:Float 20)
+    Float 播放时长=fun create.float(Float 5)
+    //使用标准布局
+    Canvas 布局=act 1101.this.播报_检查或新建'创建标准布局(var 玩家:var 礼物类型:var 礼物数量)
+    act 1101.this.播报元素'注册(var 布局:var 播报key:var 优先级F:var 播放时长:var UI_局内'播报等待列表)
+  }
+}
+if{fun bool.not(var 开启叠加)
+  Float 优先级F=varf Long.礼物优先级.toFloat()
+  Float 优先级F=fun float.max(var 优先级F:Float 20)
+  Float 播放时长=fun create.float(Float 5)
+  //使用标准布局
+  Canvas 布局=act 1101.this.播报_检查或新建'创建标准布局(var 玩家:var 礼物类型:var 礼物数量)
+  act 1101.this.播报元素'注册(var 布局:String :var 优先级F:var 播放时长:var UI_局内'播报等待列表)
+}
+endcode

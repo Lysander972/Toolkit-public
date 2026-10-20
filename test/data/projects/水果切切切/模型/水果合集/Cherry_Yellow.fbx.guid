@@ -1,0 +1,34 @@
+guid:9a8f7e20178648b6ba3bf344a6955125
+meshes:
+[
+ {
+  n:Cherry_Yellow
+ }
+]
+matFolderName:5512dba075114fb9bf99ff36e59fba6f
+Albedo.UID:5512dba075114fb9bf99ff36e59fba6f
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+ColliderSize:[1,0.5,1]
+ColliderPos:[0,-0.08,0]
+bounds.center:[0,0.1328961,3.72529E-09]
+bounds.size:[0.2951472,0.2681651,0.137376]

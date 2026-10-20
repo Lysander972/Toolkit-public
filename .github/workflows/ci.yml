@@ -1,0 +1,116 @@
+name: tools
+
+on:
+  push:
+    branches: [main]
+    paths: &relevant-inputs
+      - 'tools/**'
+      - 'src/toolkit/**'
+      - 'src/frontend/**'
+      - 'src/canvas_render/**'
+      - 'src/preview/**'
+      - 'test/modules/**'
+      - 'test/data/**'
+      - 'res/**'
+      - 'legacy/**'
+      - 'openspec/**'
+      - 'requirements/**'
+      - '.agents/skills/**'
+      - 'package.json'
+      - '.github/pull_request_template.md'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'tsconfig.base.json'
+      - 'vite.config.mjs'
+      - 'preview.config.mjs'
+      - '.prettierignore'
+      - 'vitest.config.mjs'
+      - 'stryker.config.mjs'
+      - 'eslint.config.mjs'
+      - 'knip.config.ts'
+      - '.github/workflows/**'
+      - '.gitignore'
+      - '.gitattributes'
+      - '.editorconfig'
+      - 'docs/MechToolkit/**'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, closed]
+    paths: *relevant-inputs
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  tools:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+          fetch-depth: 0
+      - uses: actions/cache@v4
+        with:
+          path: .git/stryker-incremental.json
+          key: stryker-incremental-${{ github.sha }}
+          restore-keys: |
+            stryker-incremental-
+      - uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: '0.11.8'
+          enable-cache: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm pull-request:check -- "$GITHUB_EVENT_PATH"
+        if: github.event_name == 'pull_request'
+      - run: pnpm requirements:build
+      - run: pnpm exec run-p --max-parallel 3 --npm-path pnpm check check:schemas check:submodules
+      # 新分支首次 push 没有前代提交，以本次提交中的指标建立初始比较基线。
+      - run: pnpm test:metrics --base "${{ github.event.pull_request.base.sha || (github.event.created && github.sha) || github.event.before }}"
+        timeout-minutes: 330
+      - run: pnpm build:preview:assets
+        if: github.event_name == 'push'
+      - uses: actions/upload-artifact@v7
+        if: github.event_name == 'push'
+        with:
+          name: preview-site
+          path: _build/preview/site/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
+  audit:
+    if: github.event_name == 'push'
+    uses: ./.github/workflows/audit.yml
+  publish:
+    needs: [tools, audit]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: mechtoolkit-pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: preview-site
+          path: _build/preview/site/
+      - uses: peaceiris/actions-gh-pages@v4.1.0
+        with:
+          personal_token: ${{ secrets.MECHTOOLKIT_PAGES_TOKEN }}
+          external_repository: Lysander972/MechToolkit
+          publish_branch: gh-pages
+          publish_dir: _build/preview/site/
+          force_orphan: false
+          keep_files: false
+          commit_message: 'docs: publish product preview'

@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'BeforeChangeHP
+comment:HP变更前
+params:Float $oldHP,Float $newHP
+lines:
+=fun create.float(var $oldHP)
+=fun create.float(var $newHP)
+endcode

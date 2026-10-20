@@ -1,0 +1,7 @@
+[
+ Public'Damage
+ Public'IsWall
+ Public'IsAlive
+ Public'GetFaction
+ Public'GetAtk
+]

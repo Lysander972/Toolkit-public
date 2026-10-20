@@ -1,0 +1,27 @@
+begincodeV2
+name:通用武器动图'添加常驻武器离场动画
+comment:同时会打断循环动画
+params:Canvas 武器UI
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+Float 整体旋转角度=varf UIRect.根节点.customFloat(String 整体旋转角度)
+Dict 动画字典=act 1101.this.动画控制'动画字典_构造(Bool 0:String :String 弹幕.通用武器动图'回调_终止维护并移除)
+//步骤1@1 透明度逐渐过渡到0
+Vector3 坐标=fun creatVariable.Vector3(Float -2000:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_非物理目标(Float 2:Long 2:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 1:Float 0:String :String )
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+Bool 队首是入场动画=fun create.bool(Bool 0)
+List 动画队列=varf UIRect.根节点.customList(String 动画队列)
+Float 元素数量=varf List.动画队列.count()
+if{fun float.gte(var 元素数量:Float 1)
+  Dict 当前生效动画=varf List.动画队列.readDict(Float 0)
+  Bool 队首是入场动画=varf Dict.当前生效动画.readBool(String 是入场动画:Bool 0)
+}
+if{fun create.bool(var 队首是入场动画)
+  act 1101.this.动画控制'UI_添加动画(var 根节点:var 动画字典)
+}
+if{fun bool.not(var 队首是入场动画)
+  act 1101.this.动画控制'UI_添加动画_插入队首(var 根节点:var 动画字典)
+}
+endcode

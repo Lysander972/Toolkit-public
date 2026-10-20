@@ -1,0 +1,13 @@
+begincodeV2
+name:GiftModel'RegisterType
+comment:注册类型
+params:String $modelKey
+lines:
+List $bullet=fun create.list()
+List $bulletUnused=fun create.list()
+Bool $exist=varf Struct.Bullet.contains(var $modelKey)
+if{fun bool.not(var $exist)
+  varf Struct.Bullet.set(var $modelKey:var $bullet)
+  varf Struct.BulletUnused.set(var $modelKey:var $bulletUnused)
+}
+endcode

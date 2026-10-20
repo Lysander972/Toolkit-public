@@ -1,0 +1,10 @@
+begincodeV2
+guid:e98f2632c1cf4edf8d6e07a3f63c306a
+color:255,255,255
+name:玩家结构'读取_rankInTeam
+comment:读取玩家在队伍内的排名
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String rankInTeam:Bool 0)
+endcode

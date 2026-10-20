@@ -1,0 +1,18 @@
+begincodeV2
+color:255,243,0
+name:Game'Settlement
+comment:结算
+params:Long winner
+lines:
+if{fun bool.not(var settled)
+  act 1101./Scenario.玩法结束()
+  Bool GameStart=fun create.bool(Bool 0)
+  Dict data=fun map.load()
+  UIButton panel=varf Canvas.GameUI.readUIButton(String root/rightpanel/skillPanel)
+  Vector3 v=varf UIButton.panel.getCanvasPos()
+  varf Dict.data.insert(String 礼物图坐标:var v)
+  varf Dict.data.insert(String LastScorePool:var ScorePool)
+  act 1101.this.UI'EnterSettlement(var winner)
+  Bool settled=fun create.bool(Bool 1)
+}
+endcode

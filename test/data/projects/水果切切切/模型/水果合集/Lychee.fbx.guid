@@ -1,0 +1,30 @@
+guid:3ee1b455c83b461cad154a358d94f40b
+meshes:
+[
+ {
+  n:Lychee
+ }
+]
+matFolderName:7c558742dda54685aabbe40e504943b2
+Albedo.UID:7c558742dda54685aabbe40e504943b2
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[1.117587E-08,0.1183158,1.117587E-08]
+bounds.size:[0.2350079,0.2366317,0.235008]

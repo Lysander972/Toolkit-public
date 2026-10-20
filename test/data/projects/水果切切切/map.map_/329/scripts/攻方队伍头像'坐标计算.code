@@ -1,0 +1,24 @@
+begincodeV2
+name:攻方队伍头像'坐标计算
+params:Float 序号
+return:Vector3 global
+lines:
+Float 排序号=fun float.division(var 序号:Float 7)
+Float 排序号=varf Float.排序号.floor()
+Float 排内序号=fun float.mod(var 序号:Float 7)
+Float 水平位置号=fun float.add(var 排内序号:Float 1)
+Float 水平位置号=fun float.division(var 水平位置号:Float 2)
+Float 水平位置号=varf Float.水平位置号.floor()
+Float 方向=fun float.mod(var 排内序号:Float 2)
+Float 方向乘数=fun create.float(Float 1)
+if{fun float.Approximately(var 方向:Float 1)
+  Float 方向乘数=fun create.float(Float -1)
+}
+Float x方向偏移=fun float.multiply1(var 水平位置号:Float 8:var 方向乘数)
+Float z=fun float.multiply(var 地图宽度:Float 0.25)
+Float z=fun float.add(var 攻方区域长度:var z)
+Float y方向偏移=fun float.multiply(Float 8:var 排序号)
+Float y=fun float.add(Float 4:var y方向偏移)
+Vector3 relative=fun creatVariable.Vector3(var x方向偏移:var y:var z)
+Vector3 global=fun vector3.add(var relative:var ScenarioOffset)
+endcode

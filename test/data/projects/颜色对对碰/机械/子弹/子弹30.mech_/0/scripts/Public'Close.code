@@ -1,0 +1,7 @@
+begincodeV2
+name:Public'Close
+lines:
+/*act 242.4.disActive()
+act 362.5.show(Bool 0)
+act 362.5.enableCollide(Bool 0)
+endcode

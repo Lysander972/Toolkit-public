@@ -1,0 +1,28 @@
+begincodeV2
+name:音量调节
+lines:
+if{fun create.bool(var GameStart)
+  if{fun bool.not(var init)
+    UIButton b=varf Canvas.GameUI.readUIButton(String root/音量)
+    UIRect bar=varf Canvas.GameUI.readUIRect(String root/音量/bar)
+    Float x=fun create.float(Float 1)
+    Bool init=fun create.bool(Bool 1)
+  }
+  if{varf UIButton.b.pressing()
+    Vector3 pos=varf UIButton.b.touchPos(Bool 1)
+    Float x=varf Vector3.pos.x()
+    varf UIRect.bar.fillMode(Enum 0:var x)
+    fun audio.setVolume(var x)
+  }
+  if{fun keyboard.keyDown2(Enum 90)
+    varf Float.x.addEqual(Float 0.05)
+    varf UIRect.bar.fillMode(Enum 0:var x)
+    fun audio.setVolume(var x)
+  }
+  if{fun keyboard.keyDown2(Enum 89)
+    varf Float.x.minusEqual(Float 0.05)
+    varf UIRect.bar.fillMode(Enum 0:var x)
+    fun audio.setVolume(var x)
+  }
+}
+endcode

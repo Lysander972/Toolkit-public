@@ -1,0 +1,16 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'调试面板_按键监听
+comment:按下F点赞,按下Enter发信息
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  if{act 1101./主界面.工具'是GM()
+    if{fun keyboard.keyDown2(Enum 3)
+      act 1101.this.UI_局内'调试面板_按钮点击_确认输入()
+    }
+    if{fun keyboard.keyDown2(Enum 50)
+      act 1101.this.UI_局内'调试面板_按钮_模拟点赞()
+    }
+  }
+}
+endcode

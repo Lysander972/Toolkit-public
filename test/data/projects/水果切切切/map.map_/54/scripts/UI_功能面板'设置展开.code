@@ -1,0 +1,6 @@
+begincodeV2
+name:UI_功能面板'设置展开
+lines:
+UIRect 设置区=varf Canvas.GameUI.readUIRect(String root/SettingsForMobile)
+varf UIRect.设置区.active(Bool 1)
+endcode

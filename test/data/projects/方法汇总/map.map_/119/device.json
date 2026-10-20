@@ -1,0 +1,17 @@
+type:136
+pos:[4.396488,0,-1.086776]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ n0:[1,1,-1]
+ n1:[2,-1,0]
+ n2:[3,0,0]
+ fragments:10
+ thickness:0.01
+ posRandom:0.5
+ cables:3
+ wave:0
+ wave2:0.3
+ waveSpeed:5
+ waveSpeed2:1
+}

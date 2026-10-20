@@ -1,0 +1,14 @@
+begincodeV2
+name:Player'InfoAutoFill
+comment:自动补充玩家缺失的信息 包括选阵营功能
+params:Struct player
+return:Struct player
+lines:
+//前置过滤器已处理uid/昵称/头像缺失问题,此处只做自动选队
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.lt(var team:Long 1)
+  Long recommend=act 1101.this.Utils'GetRecommendedFaction()
+  String text=fun create.string(var recommend)
+  =act 1101.this.Player'SelectFaction(var text:var player)
+}
+endcode

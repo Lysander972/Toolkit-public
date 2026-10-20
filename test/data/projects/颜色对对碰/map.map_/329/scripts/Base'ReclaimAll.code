@@ -1,0 +1,6 @@
+begincodeV2
+name:Base'ReclaimAll
+lines:
+varf Mech.BuleBase.setActive(Bool 0)
+varf Mech.RedBase.setActive(Bool 0)
+endcode

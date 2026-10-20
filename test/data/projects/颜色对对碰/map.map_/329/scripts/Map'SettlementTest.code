@@ -1,0 +1,9 @@
+begincodeV2
+name:Map'SettlementTest
+params:Long $winner
+lines:
+Bool GameStarted=fun create.bool(Bool 0)
+act 1101./弹幕.Game'Settlement(var $winner:var BuleOccupied:var RedOccupied)
+delay fun create.float(Float 2)
+act 1101.this.Map'Reset()
+endcode

@@ -1,0 +1,14 @@
+begincodeV2
+color:255,255,255
+name:玩家'排行榜信息填充
+comment:只填充玩家信息
+params:Struct 玩家,Struct 排行榜信息
+lines:
+//读取排行榜数据
+Long rank=varf Struct.排行榜信息.getLong(String rank:Bool 1)
+Long wins=varf Struct.排行榜信息.getLong(String wins:Bool 1)
+//设置到玩家结构
+act 1101.this.玩家结构'设置_globalRank(var 玩家:var rank)
+act 1101.this.玩家结构'设置_streak(var 玩家:var wins)
+act 1101.this.玩家结构'设置_rank_completeness(var 玩家:Bool 1)
+endcode

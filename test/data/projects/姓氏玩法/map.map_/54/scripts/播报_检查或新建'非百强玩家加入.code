@@ -1,0 +1,29 @@
+begincodeV2
+color:255,255,255
+name:播报_检查或新建'非百强玩家加入
+params:Struct 玩家
+lines:
+String 播报key=act 1101.this.播报元素'索引key生成(var 玩家:String 入场)
+//先拼接显示内容
+//用户名部分
+String 用户名=act 1101.this.玩家结构'读取_name(var 玩家:Bool 1)
+//队伍名,如果没有得到队伍,则显示加入玩法
+Struct 队伍=act 1101.this.队伍'得到玩家队伍(var 玩家)
+String 队伍名=fun create.string(String 玩法)
+if{act 1101.this.队伍结构'是队伍(var 队伍)
+  String 队伍名=act 1101.this.队伍结构'读取_name(var 队伍)
+}
+//得到显示内容
+String 显示内容=fun string.Format2(String %1加入%2:var 用户名:var 队伍名)
+//拼接完毕,创建或者更新已有UI
+Bool 已存在播报=varf Dict.UI_局内'播报条目索引.contains(var 播报key)
+if{fun create.bool(var 已存在播报)
+  Canvas 布局=varf Dict.UI_局内'播报条目索引.readCanvas(var 播报key:Bool 0)
+  UILabel label=varf Canvas.布局.readUILabel(String background/panel/label)
+  varf UILabel.label.text(var 显示内容)
+}
+if{fun bool.not(var 已存在播报)
+  Canvas 布局=act 1101.this.播报_检查或新建'创建简略布局(var 显示内容)
+  act 1101.this.播报元素'注册(var 布局:var 播报key:Float 100:Float 3:var UI_局内'播报等待列表)
+}
+endcode

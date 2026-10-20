@@ -1,0 +1,25 @@
+guid:cf92491154af477298efd422fc4a7d49
+meshes:
+[
+ {
+  n:Hero_S_Superman_M01
+ }
+]
+matFolderName:8de8f0aa9143421d866d76a827d12b89
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+rotation:[270.0198,0,0]
+bounds.center:[4.656613E-10,0.002225609,0.01248024]
+bounds.size:[0.01587466,0.01001214,0.02495735]

@@ -1,0 +1,11 @@
+begincodeV2
+name:内部'每帧刷新_更新全局参数
+lines:
+Float 场景'位置数量=act 1101.this.工具'得到位置数量()
+Float 场景'位置间夹角=fun float.division(Float 360:var 场景'位置数量)
+Float 场景'真实队伍数量=varf List.激活队伍列表.count()
+//最大值至少按照50显示
+Long 最大值=act 1101./弹幕.队伍'读取全场最大值()
+Long 场景'进度条最大数值基准=fun long.max(var 最大值:Long 1024000)
+Long 场景'进度条最小数值基准=fun create.long(Long 0)
+endcode

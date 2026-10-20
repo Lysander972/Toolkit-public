@@ -1,0 +1,6 @@
+begincodeV2
+name:UI_局内风格接口'创建队伍
+params:Struct 队伍
+lines:
+act 1101.this.内部'队伍UI_创建(var 队伍)
+endcode

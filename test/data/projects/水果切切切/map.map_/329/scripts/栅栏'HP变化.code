@@ -1,0 +1,43 @@
+begincodeV2
+name:栅栏'HP变化
+params:Float HP,Struct player,Vector3 pos
+lines:
+if{fun create.bool(var 栅栏'生效中)
+  if{fun float.lt(var HP:Float 0)
+    Float 占比=fun float.division(var HP:var 栅栏'剩余HP)
+    Float 占比=fun float.multiply(var 占比:Float -1)
+    Float 占比=fun float.clamp(var 占比:Float 0.1:Float 1)
+    act 1101.this.栅栏'摇晃动作(var 占比)
+  }
+}
+Device core=varf Mech.栅栏'栅栏.getCoreDevice()
+if{fun float.gte(var HP:Float 0)
+  Float 绝对值=varf Float.HP.abs()
+  act 1101.this.数字效果'产生效果(var 绝对值:Long 1:Bool 0:var pos)
+  varf Device.core.callFun1(String Skills'2500_AddPlayer:var player)
+}
+if{fun float.gt(var 栅栏'剩余HP:Float 0)
+  if{fun float.lt(var HP:Float 0)
+    Float 绝对值=varf Float.HP.abs()
+    act 1101.this.数字效果'产生效果(var 绝对值:Long 2:Bool 0:var pos)
+  }
+}
+varf Float.栅栏'剩余HP.addEqual(var HP)
+Float 栅栏'剩余HP=fun float.max(var 栅栏'剩余HP:Float 0)
+varf Device.core.callFun0(String Skills'2500_ManualUpdateUI)
+if{fun create.bool(var 栅栏'生效中)
+  if{fun float.lt(var 栅栏'剩余HP:Float 0.5)
+    act 1101.this.栅栏'倒下动作()
+    Bool 栅栏'生效中=fun create.bool(Bool 0)
+    Bool 栅栏'自动回正=fun create.bool(Bool 0)
+  }
+}
+if{fun bool.not(var 栅栏'生效中)
+  if{fun float.gte(var 栅栏'剩余HP:Float 0.5)
+    act 1101.this.栅栏'竖起动作()
+    act 1101.this.栅栏'激活()
+    Bool 栅栏'生效中=fun create.bool(Bool 1)
+  }
+}
+act 1101.this.守方检测区'推送更新()
+endcode

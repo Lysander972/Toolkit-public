@@ -1,0 +1,27 @@
+begincodeV2
+color:169,0,255
+name:Skills'RegisterAndReset
+params:String key
+lines:
+/*Bool exist=varf Struct.SkillCount.contains(var key)
+/*if{fun bool.not(var exist)
+/*  Long value=fun create.long(Long 0)
+/*  varf Struct.SkillCount.set(var key:var value)
+}
+/*Bool exist=varf Struct.SkillPlayer.contains(var key)
+/*if{fun bool.not(var exist)
+/*  List list0=fun create.list()
+/*  varf Struct.SkillPlayer.set(var key:var list0)
+}
+/*Bool exist=varf Struct.SkillPlayerC.contains(var key)
+/*if{fun bool.not(var exist)
+/*  List list1=fun create.list()
+/*  varf Struct.SkillPlayerC.set(var key:var list1)
+}
+Long value=fun create.long(Long 0)
+varf Struct.SkillCount.set(var key:var value)
+List list0=fun create.list()
+varf Struct.SkillPlayer.set(var key:var list0)
+List list1=fun create.list()
+varf Struct.SkillPlayerC.set(var key:var list1)
+endcode

@@ -1,0 +1,17 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'调试面板_按钮_模拟点赞
+lines:
+if{act 1101./主界面.工具'是GM()
+  Long 点赞数量=fun create.long(Long 1)
+  Bool x10=fun keyboard.keyHeld2(Enum 123)
+  Bool x100=fun keyboard.keyHeld2(Enum 121)
+  if{fun create.bool(var x10)
+    Long 点赞数量=fun long.multiply(var 点赞数量:Long 10)
+  }
+  if{fun create.bool(var x100)
+    Long 点赞数量=fun long.multiply(var 点赞数量:Long 100)
+  }
+  act 1101.this.测试'发送点赞消息_默认玩家(var 点赞数量)
+}
+endcode

@@ -1,0 +1,5 @@
+begincodeV2
+name:初始化
+lines:
+act 337.this.active(Bool 0:Float 0)
+endcode

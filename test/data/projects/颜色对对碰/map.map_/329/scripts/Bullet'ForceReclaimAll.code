@@ -1,0 +1,15 @@
+begincodeV2
+color:0,138,255
+name:Bullet'ForceReclaimAll
+comment:强制回收全部子弹
+lines:
+act 1101.this.Bullet'ForceReclaimByModel(String 0)
+act 1101.this.Bullet'ForceReclaimByModel(String 1)
+act 1101.this.Bullet'ForceReclaimByModel(String 20)
+act 1101.this.Bullet'ForceReclaimByModel(String 30)
+act 1101.this.Bullet'ForceReclaimByModel(String 40)
+act 1101.this.Bullet'ForceReclaimByModel(String 41)
+act 1101.this.Bullet'ForceReclaimByModel(String 50)
+act 1101.this.Bullet'ForceReclaimByModel(String 51)
+act 1101.this.Bullet'ForceReclaimByModel(String 60)
+endcode

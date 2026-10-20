@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:超人模型
+ boolShowFollowIcon:true
+ mechFileGUID:22da06ffd36e49048c7e1a6911a32def
+}

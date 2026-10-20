@@ -1,0 +1,11 @@
+begincodeV2
+name:UI'刷新头像框
+lines:
+String 头像框名=act 1.this.UI'获得头像框名称(var 属性'玩家)
+Bool 显示头像框=fun string.notEqual(var 头像框名:String )
+act 1.this.模型'开关头像框(var 显示头像框)
+if{fun create.bool(var 显示头像框)
+  act 1.this.模型'设置头像框(var 头像框名)
+}
+act 1.this.模型'手动刷新显示()
+endcode

@@ -1,0 +1,33 @@
+guid:3448376959fa4d119cf3d0764702f2c6
+meshes:
+[
+ {
+  n:Apple_Green_Half
+ }
+]
+matFolderName:eec42005f6e545ba937c8f47a94d90db
+Albedo.UID:eec42005f6e545ba937c8f47a94d90db
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+bounds.center:[8.046627E-07,0.1907362,-0.06199647]
+bounds.size:[0.3120025,0.3814724,0.1760195]

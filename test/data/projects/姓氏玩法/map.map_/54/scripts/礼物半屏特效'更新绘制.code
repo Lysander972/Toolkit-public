@@ -1,0 +1,43 @@
+begincodeV2
+name:礼物半屏特效'更新绘制
+lines:
+//随后是更新已有的图标
+Float 当前时间=fun time.scaleTime()
+Float 序号=varf List.UI_局内'半屏特效_托管列表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  UIRawImage 特效动图=varf List.UI_局内'半屏特效_托管列表.readUIRawImage(var 序号)
+  Float 创建时间=varf UIRawImage.特效动图.customFloat(String 创建时间)
+  Float 总时长=varf UIRawImage.特效动图.customFloat(String 总时长)
+  Float 淡入=varf UIRawImage.特效动图.customFloat(String 淡入)
+  Float 淡入结束时间=fun float.add(var 创建时间:var 淡入)
+  Bool 淡入状态=fun float.lte(var 当前时间:var 淡入结束时间)
+  Float 动画结束时间=fun float.add(var 创建时间:var 总时长)
+  Bool 结束=fun float.gte(var 当前时间:var 动画结束时间)
+  Float 淡出=varf UIRawImage.特效动图.customFloat(String 淡出)
+  Float 淡出开始时间=fun float.minus(var 动画结束时间:var 淡出)
+  Bool 淡出状态=fun float.gte(var 当前时间:var 淡出开始时间)
+  Color 初始颜色=fun create.color(Color 0,0,0,0)
+  Color 最大颜色=fun create.color(Color 255,255,255,255)
+  Color 颜色=fun create.color(var 最大颜色)
+  if{fun create.bool(var 淡入状态)
+    Float 淡入比例=fun float.minus(var 当前时间:var 创建时间)
+    Float 淡入比例=fun float.division(var 淡入比例:var 淡入)
+    Float 淡入比例=fun float.clamp(var 淡入比例:Float 0:Float 1)
+    Color 颜色=varf Color.初始颜色.lerp(var 最大颜色:var 淡入比例)
+  }
+  if{fun create.bool(var 淡出状态)
+    Float 淡出比例=fun float.minus(var 当前时间:var 淡出开始时间)
+    Float 淡出比例=fun float.division(var 淡出比例:var 淡出)
+    Float 淡出比例=fun float.clamp(var 淡出比例:Float 0:Float 1)
+    Color 颜色=varf Color.最大颜色.lerp(var 初始颜色:var 淡出比例)
+  }
+  varf UIRawImage.特效动图.setColor(var 颜色)
+/*  fun debug.print(var 颜色:Color 255,255,255,255:Bool 0)
+  if{fun create.bool(var 结束)
+    varf UIRawImage.特效动图.del(Float 0)
+/*    fun debug.print(String 删除:Color 255,255,255,255:Bool 0)
+    varf List.UI_局内'半屏特效_托管列表.remove(var 序号)
+  }
+}
+endcode

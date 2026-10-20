@@ -1,0 +1,34 @@
+begincodeV2
+name:读取
+params:String 名称,Float 默认值,Float 最小值,Float 最大值,Color 颜色
+return:Float V
+lines:
+if{fun bool.not(var 是否为GM)
+  Float V=fun create.float(var 默认值)
+  fun break()
+}
+Bool 包含=varf Dict.UI字典.contains(var 名称)
+if{fun create.bool(var 包含)
+  UIInput 输入框=varf Dict.UI字典.readUIInput(var 名称:Bool 0)
+}
+if{fun bool.not(var 包含)
+  Canvas 参数调节滑动条=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgzmqKHlnZflupXmnb8DcG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACjQwAAEEIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAMAEQkABHR5cGUGBlVJUmVjdARuYW1lBg/ov5vluqbmnaHlupXmnb8DcG9zBAAAAAAAAAAAAAAAAAt3aWR0aEV4dGVuZBgBAAAAAAAAAARzaXplBAAAgD8AABBCAACAPwVjb2xvcgxkwqo+MP4cP7cPPz8AAAAAC0JvcmRlcldpZHRoAQAAgL8GUmFkaXVzAQAAAAAEc29ucxACABELAAR0eXBlBghVSUJ1dHRvbgRuYW1lBhLmu5HliqjmnaHmhJ/lupTljLoDcG9zBAAAAEAAAABAAAAAAAxwYXJlbnRBbmNob3IYAAAAAAAAAAAGYW5jaG9yGAAAAAAAAAAABHNpemUEAAByQwAAAEIAAIA/BWNvbG9yDAAAAAAAAIA/AAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAAVsYWJlbAYABHNvbnMQAQARCwAEdHlwZQYGVUlSZWN0BG5hbWUGD+i/m+W6puadoeWGheaguANwb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgDAAAAAAAAAAZhbmNob3IYAwAAAAAAAAALd2lkdGhFeHRlbmQYAQAAAAAAAAAMaGVpZ2h0RXh0ZW5kGAEAAAAAAAAABHNpemUEAACAPwAAgD8AAIA/BWNvbG9yDAAAgD8AAAAAAAAAAAAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAABEKAAR0eXBlBgZVSVJlY3QEbmFtZQYP6L+b5bqm5p2h6L655qGGA3BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAMAAAAAAAAABmFuY2hvchgDAAAAAAAAAAxoZWlnaHRFeHRlbmQYAQAAAAAAAAAEc2l6ZQQAAHZDAACAPwAAgD8FY29sb3IMR6ddPzxQbz8g9nY/AACAPwtCb3JkZXJXaWR0aAEAAABABlJhZGl1cwEAAAAAEQsABHR5cGUGB1VJTGFiZWwEbmFtZQYG5qCH6aKYA3BvcwQAAABAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAAAAAAAAAAABmFuY2hvchgAAAAAAAAAAARzaXplBAAAckMAABBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/DG91dGxpbmVDb2xvcgxJhyM+Vb8gPlu/ID4AAIA/D291dGxpbmVEaXN0YW5jZQQAAIA/AACAvwAAAAAEdGV4dAYEVEVYVAhGb250U2l6ZQEAAMBBEQsABHR5cGUGB1VJSW5wdXQEbmFtZQYJ6L6T5YWl5qGGA3BvcwQAAABAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAIAAAAAAAAABmFuY2hvchgCAAAAAAAAAARzaXplBAAAkEIAABBCAACAPwVjb2xvcgYP55WM6Z2i55So54Gw55m9BHRleHQGAzEwMAhGb250U2l6ZQEAAMBBCUFsaWdubWVudBgEAAAAAAAAAApsYWJlbENvbG9yDAAAAAAAAAAAAAAAAEaIbD8@3)
+  UIRect 模块底板=varf Canvas.参数调节滑动条.readUIRect(String 模块底板)
+  UILabel label=varf Canvas.参数调节滑动条.readUILabel(String 模块底板/标题)
+  varf UILabel.label.text(var 名称)
+  varf UIRect.参数列表底板.addSon(var 模块底板)
+  varf UIRect.模块底板.alignment(Enum 4)
+  varf UIRect.模块底板.pos(Vector3 0.5,0.5,0)
+  varf List.参数调节列表.add(var 参数调节滑动条)
+  UIInput 输入框=varf Canvas.参数调节滑动条.readUIInput(String 模块底板/输入框)
+  varf Dict.UI字典.insert(var 名称:var 输入框)
+  varf UIInput.输入框.setCustomString(String 名称:var 名称)
+  varf UIInput.输入框.setCustomFloat(String 最小:var 最小值)
+  varf UIInput.输入框.setCustomFloat(String 最大:var 最大值)
+  varf UIInput.输入框.setCustomFloat(String 默认:var 默认值)
+  varf UIInput.输入框.setCustomFloat(String 输出:var 默认值)
+  UIRect 内核=varf Canvas.参数调节滑动条.readUIRect(String 模块底板/进度条底板/滑动条感应区/进度条内核)
+  varf UIRect.内核.setColor(var 颜色)
+}
+Float V=varf UIInput.输入框.customFloat(String 输出)
+endcode

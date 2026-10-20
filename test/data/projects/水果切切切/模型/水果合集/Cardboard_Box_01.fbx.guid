@@ -1,0 +1,27 @@
+guid:efa03f2cd1b340e490d374f1a951bb9d
+meshes:
+[
+ {
+  n:Cardboard_Box_01
+ }
+]
+matFolderName:0551642dbfca4a3ca534e44f761d602d
+Albedo.UID:0551642dbfca4a3ca534e44f761d602d
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.1416384,0]
+bounds.size:[1.403983,0.2832768,0.9545291]

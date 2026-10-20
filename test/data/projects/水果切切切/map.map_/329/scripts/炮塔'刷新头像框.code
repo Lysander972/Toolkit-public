@@ -1,0 +1,16 @@
+begincodeV2
+name:炮塔'刷新头像框
+params:Struct player
+lines:
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.equal(var team:Long 1)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  Mech target=varf Dict.攻方炮塔记录.readMech(var uid:Bool 0)
+  varf Mech.target.callFun0(String UI'刷新头像框)
+}
+if{fun long.equal(var team:Long 2)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  Mech target=varf Dict.守方炮塔记录.readMech(var uid:Bool 0)
+  varf Mech.target.callFun0(String UI'刷新头像框)
+}
+endcode

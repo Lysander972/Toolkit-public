@@ -1,0 +1,5 @@
+begincodeV2
+name:Public'Open
+lines:
+act 1.this.播放效果(var Size)
+endcode

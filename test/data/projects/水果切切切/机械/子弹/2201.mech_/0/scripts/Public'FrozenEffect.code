@@ -1,0 +1,11 @@
+begincodeV2
+name:Public'FrozenEffect
+params:Bool open,Color color1,Color color2,Float power,Float rate
+lines:
+fun break()
+=fun create.bool(var open)
+=varf Color.color1.equal(Color 0,0,0,255)
+=varf Color.color2.equal(Color 0,0,0,255)
+=fun create.float(var power)
+=fun create.float(var rate)
+endcode

@@ -1,0 +1,15 @@
+type:1
+pos:[-2.235174E-07,-1.192093E-07,-1.954051E-14]
+enableManualWeld:true
+attach:
+[
+ 3
+ 4
+ 5
+ 6
+]
+ext:
+{
+ boolMechKinematic:true
+ boolHideCore:true
+}

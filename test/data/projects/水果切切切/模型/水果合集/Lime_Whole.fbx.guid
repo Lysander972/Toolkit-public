@@ -1,0 +1,30 @@
+guid:a1b42de8f9a348809d594989845c1692
+meshes:
+[
+ {
+  n:Lime_Whole
+ }
+]
+matFolderName:876fae443e3c4b07b59f0d6492257bdd
+Albedo.UID:876fae443e3c4b07b59f0d6492257bdd
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.005828E-07,0.1274181,5.289912E-07]
+bounds.size:[0.2293406,0.2548361,0.2293404]

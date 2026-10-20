@@ -1,0 +1,31 @@
+begincodeV2
+name:内部'事件_减速效果层数变化
+params:Struct 目标队伍,Long 层数变化,Long 级别
+lines:
+//找到目标队伍UI
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  act 1101.this.内部'队伍UI_创建(var 目标队伍)
+}
+Canvas 目标队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+//更新层数
+if{fun long.equal(var 级别:Long 1)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/1级减速状态动图)
+}
+if{fun long.equal(var 级别:Long 2)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/2级减速状态动图)
+}
+if{fun long.equal(var 级别:Long 3)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/3级减速状态动图)
+}
+if{fun long.equal(var 级别:Long 4)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/4级减速状态动图)
+}
+Long 层数=varf UIRawImage.动图.customLong(String 效果层数)
+varf Long.层数.addEqual(var 层数变化)
+varf UIRawImage.动图.setCustomLong(String 效果层数:var 层数)
+Bool 是否显示=fun long.gt(var 层数:Long 0)
+varf UIRawImage.动图.active(var 是否显示)
+endcode

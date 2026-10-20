@@ -1,0 +1,5 @@
+begincodeV2
+name:Generic'Reclaim
+lines:
+varf Device.map_handler.callFun2(String GiftModel'OnReclaim:var Self:var ModelKey)
+endcode

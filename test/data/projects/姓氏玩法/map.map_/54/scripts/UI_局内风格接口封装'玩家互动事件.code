@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口封装'玩家互动事件
+comment:1@1玩家入场;2@1玩家点赞;3@1玩家捣乱;10@1仙女棒;11@1药丸;12@1魔法镜;13@1甜甜圈;14@1能量电池;15@1爱的爆炸;16@1神秘空投
+params:Struct 玩家,Struct 发起者队伍,Struct 目标队伍,Long 事件类型,Dict 延迟事件,Long 层数
+lines:
+varf Device.局外功能设置'使用风格实现.callFun6(String UI_局内风格接口'玩家互动事件:var 玩家:var 发起者队伍:var 目标队伍:var 事件类型:var 延迟事件:var 层数)
+endcode

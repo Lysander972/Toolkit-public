@@ -1,0 +1,12 @@
+begincodeV2
+name:内部'工具_仙侠风颜色滤镜
+params:Color 初始颜色
+return:Color 返回颜色
+lines:
+Color 返回颜色=varf Color.初始颜色.copy()
+/*Vector3 hsv=varf Color.初始颜色.toHSV()
+/*Float 饱和度=varf Vector3.hsv.y()
+/*Float 饱和度=fun float.multiply(var 饱和度:Float 0.95)
+/*varf Vector3.hsv.setY(var 饱和度)
+/*Color 返回颜色=varf Vector3.hsv.toColor()
+endcode

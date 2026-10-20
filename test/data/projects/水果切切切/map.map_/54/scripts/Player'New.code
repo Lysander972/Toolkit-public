@@ -1,0 +1,36 @@
+begincodeV2
+color:255,243,0
+name:Player'New
+params:String uid,String uidproxy,String nickname,String avatarUrl
+return:Struct data
+lines:
+Bool exist=varf Dict.PlayerMap.contains(var uidproxy)
+if{fun create.bool(var exist)
+  Struct data=varf Dict.PlayerMap.readStruct(var uidproxy:Bool 0)
+  fun break()
+}
+Struct data=fun create.struct()
+varf Struct.data.set(String id:var uid)
+varf Struct.data.set(String idproxy:var uidproxy)
+varf Struct.data.set(String name:var nickname)
+varf Struct.data.set(String avatarUrl:var avatarUrl)
+Long score=fun create.long(Long 0)
+varf Struct.data.set(String score:var score)
+Long consume=fun create.long(Long 0)
+varf Struct.data.set(String consume:var consume)
+Long streak=fun create.long(Long 0)
+varf Struct.data.set(String streak:var streak)
+Long team=fun create.long(Long 0)
+varf Struct.data.set(String team:var team)
+Float HPMul=fun create.float(Float 1)
+varf Struct.data.set(String HPMul:var HPMul)
+Float rankBefore=fun create.float(Float -1)
+varf Struct.data.set(String rankBefore:var rankBefore)
+Bool firstgift=fun create.bool(Bool 0)
+varf Struct.data.set(String firstgift:var firstgift)
+Bool skillused=fun create.bool(Bool 0)
+varf Struct.data.set(String skillused:var skillused)
+Color Color=fun create.color(Color 127,127,127,255)
+varf Struct.data.set(String Color:var Color)
+varf Dict.PlayerMap.insert(var uidproxy:var data)
+endcode

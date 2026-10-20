@@ -1,0 +1,8 @@
+begincodeV2
+name:Map'Reset
+lines:
+act 1101.this.Grid'ReclaimAll()
+act 1101.this.Bullet'ForceReclaimAll()
+act 1101.this.Wall'ReclaimAll()
+act 1101.this.Base'ReclaimAll()
+endcode

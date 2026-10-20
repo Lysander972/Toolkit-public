@@ -1,0 +1,16 @@
+begincodeV2
+name:Bullet'ForceReclaimByModel
+comment:按照使用的模型强制回收子弹
+params:String $key
+lines:
+List $bullet=varf Struct.Bullet.getList(var $key:Bool 0)
+Float $index=varf List.$bullet.count()
+while{fun float.gt(var $index:Float 0)
+  varf Float.$index.minusEqual(Float 1)
+  Mech $obj=varf List.$bullet.readMech(var $index)
+/*  varf Mech.$obj.callFun0(String Public'ForceReclaim)
+  Float $value=fun create.float(Float 99999)
+  Long $faction=fun create.long(Long 0)
+  varf Mech.$obj.callFun2(String Public'Damage:var $value:var $faction)
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+name:技能'通用添加方法
+params:Mech target,String key,Long amount,Struct player
+lines:
+if{varf Mech.target.alive()
+  Device core=varf Mech.target.getCoreDevice()
+  varf Device.core.callFun3(String Public'AddBullet:var key:var amount:var player)
+}
+endcode

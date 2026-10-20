@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口封装'虚拟投射物结束移动
+params:UIRect 虚拟投射物
+lines:
+varf Device.局外功能设置'使用风格实现.callFun1(String UI_局内风格接口'虚拟投射物结束移动:var 虚拟投射物)
+endcode

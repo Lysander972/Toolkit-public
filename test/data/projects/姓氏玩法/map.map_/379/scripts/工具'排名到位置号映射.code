@@ -1,0 +1,12 @@
+begincodeV2
+name:工具'排名到位置号映射
+params:Float 排名
+return:Float 位置
+lines:
+if{fun float.Approximately(var 场景'排序方式:Float 0)
+  Float 位置=act 1101.this.连续排列'排名到位置号(var 排名)
+}
+if{fun float.Approximately(var 场景'排序方式:Float 1)
+  Float 位置=act 1101.this.两侧排列'排名到位置号(var 排名)
+}
+endcode

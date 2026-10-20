@@ -1,0 +1,30 @@
+guid:18783d4f8e2547b9925a4cf2385739bc
+meshes:
+[
+ {
+  n:YellowMelon_Cut
+ }
+]
+matFolderName:964cf08d4ef74e55bd1cba932deb0ae6
+Albedo.UID:964cf08d4ef74e55bd1cba932deb0ae6
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.00046096,0.3010986,-0.00471808]
+bounds.size:[0.4963274,0.6021972,0.4614727]

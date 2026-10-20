@@ -1,0 +1,24 @@
+begincodeV2
+color:221,0,255
+name:技能'2601
+comment:火力覆盖的大火球部分
+lines:
+String key=fun create.string(String 2601)
+String mutexKey=fun create.string(String 2601)
+Bool hasMutex=fun create.bool(Bool 0)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  if{varf Device.map_handler.callReturnBool1(String Mutex'GetMutex:var mutexKey)
+    Bool hasMutex=fun create.bool(Bool 1)
+    Struct player=act 1.this.Skills'GetFirstElement(var key)
+    Bool success=act 1.this.Launcher'指定坐标放置(Vector3 0,18,-120:Vector3 0,0,1:Long 2600:var player:Float 1:Float 0:Float 1:Bool 0:Float 0)
+    if{fun create.bool(var success)
+      =act 1.this.Skills'Decrease(var key:Long 1)
+    }
+  }
+}
+delay fun create.float(Float 0.5)
+if{fun create.bool(var hasMutex)
+  delay fun create.float(Float 2.5)
+  varf Device.map_handler.callFun1(String Mutex'ReleaseMutex:var mutexKey)
+}
+endcode

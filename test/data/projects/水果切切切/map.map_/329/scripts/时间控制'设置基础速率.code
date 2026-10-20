@@ -1,0 +1,7 @@
+begincodeV2
+name:时间控制'设置基础速率
+params:Float 基础速率
+lines:
+Float 时间控制'基础流速=fun create.float(var 基础速率)
+act 1101.this.时间控制'更新时间流速()
+endcode

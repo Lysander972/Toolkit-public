@@ -1,0 +1,7 @@
+begincodeV2
+guid:7c9b4d23d5c243129f9306e4d65ea080
+name:Public'SetWeight
+params:Float weight
+lines:
+act 362./1.setMass(var weight)
+endcode

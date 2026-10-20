@@ -1,0 +1,14 @@
+begincodeV2
+name:设置颜色
+params:Color color,Device dev,Bool alt
+lines:
+varf Device.dev.setDynamicShader(String Device emmit)
+if{fun create.bool(var alt)
+  varf Device.dev.setDynamicMatPic(String _MainTex:String 木板贴图.jpg)
+}
+if{fun bool.not(var alt)
+  varf Device.dev.setDynamicMatPic(String _MainTex:String 地砖贴图.jpg)
+}
+varf Device.dev.setDynamicMatPic(String _MetallicGlossMap:String 金属0染色1光泽0.png)
+varf Device.dev.setMatCustomColor(String _PaintColor:var color)
+endcode

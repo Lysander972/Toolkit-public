@@ -1,0 +1,34 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'每帧刷新
+lines:
+act 1101.this.内部'每帧刷新_更新全局参数()
+act 1101.this.内部'每帧循环_刷新缩略图显示()
+act 1101./弹幕.UI_局内'拖动面板_刷新特定面板_左上(var 队伍排行榜:String 队伍排行榜1)
+/*act 1101./弹幕.UI_局内'拖动面板_刷新特定面板_左下(var 第一名弹窗:String 第一名弹窗1)
+act 1101.this.内部'更新分摄像机窗口位置()
+Float 需刷新数量=varf List.数值变化检测表.count()
+if{fun float.gt(var 需刷新数量:Float 0)
+  act 1101.this.内部'数值变化效果生成()
+}
+//刷新进度条
+Float 激活队伍数量=varf List.激活队伍列表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 激活队伍数量)
+  Struct 队伍=varf List.激活队伍列表.readStruct(var 序号)
+  Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+  String 字符串id=fun create.string(var 队伍id)
+  Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+  if{fun create.bool(var 是否创建)
+    Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 字符串id:Bool 0)
+    act 1101.this.内部'每帧刷新_更新队伍映射(var 队伍映射)
+  }
+  varf Float.序号.addEqual(Float 1)
+}
+act 1101.this.内部'每帧刷新_更新分摄像机位置()
+act 1101.this.内部'每帧刷新_更新主摄像机位置()
+act 1101.this.加速线跟随摄像机()
+act 1101.this.内部'每帧刷新_刷新点赞图标()
+act 1101.this.内部'每帧刷新_模型动画处理()
+act 1101.this.内部'视频动图刷新()
+endcode

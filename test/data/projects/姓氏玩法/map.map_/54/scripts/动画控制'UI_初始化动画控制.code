@@ -1,0 +1,18 @@
+begincodeV2
+name:动画控制'UI_初始化动画控制
+params:UIRect 根节点
+lines:
+Bool 启用动画控制=varf UIRect.根节点.customBool(String 启用动画控制)
+if{fun bool.not(var 启用动画控制)
+  varf UIRect.根节点.setCustomBool(String 启用动画控制:Bool 1)
+  List 动画队列=fun create.list()
+  varf UIRect.根节点.setCustomList(String 动画队列:var 动画队列)
+  varf List.UI'动画控制_维护节点表.add(var 根节点)
+  varf UIRect.根节点.setCustomFloat(String 初始缩放:Float 1)
+  varf UIRect.根节点.setCustomFloat(String 初始透明度:Float 1)
+  varf UIRect.根节点.setCustomFloat(String 透明度:Float 1)
+  varf UIRect.根节点.setCustomFloat(String 角度:Float 0)
+  varf UIRect.根节点.setCustomVector3(String 速度:Vector3 0,0,0)
+  varf UIRect.根节点.setCustomVector3(String 坐标:Vector3 0,0,0)
+}
+endcode

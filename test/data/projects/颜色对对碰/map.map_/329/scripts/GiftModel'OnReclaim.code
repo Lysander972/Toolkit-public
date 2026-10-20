@@ -1,0 +1,10 @@
+begincodeV2
+color:0,138,255
+name:GiftModel'OnReclaim
+comment:回收事件
+params:Mech $obj,String $modelKey
+lines:
+List $unused=varf Struct.BulletUnused.getList(var $modelKey:Bool 0)
+varf List.$unused.add(var $obj)
+varf Mech.$obj.setActive(Bool 0)
+endcode

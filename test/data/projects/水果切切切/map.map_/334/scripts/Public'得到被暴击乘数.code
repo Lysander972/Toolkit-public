@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'得到被暴击乘数
+return:Float ret
+lines:
+Float ret=fun create.float(var Attr'被暴击乘数)
+endcode

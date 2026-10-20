@@ -1,0 +1,17 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'虚拟投射物刷新
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  Float 序号=varf List.局内'虚拟投射物注册表.count()
+  while{fun float.gt(var 序号:Float 0)
+    varf Float.序号.minusEqual(Float 1)
+    UIRect 虚拟投射物=varf List.局内'虚拟投射物注册表.readUIRect(var 序号)
+    Bool 结束=act 1101.this.虚拟投射物'刷新(var 虚拟投射物)
+    if{fun create.bool(var 结束)
+      act 1101.this.UI_局内风格接口封装'虚拟投射物结束移动(var 虚拟投射物)
+      varf List.局内'虚拟投射物注册表.remove(var 序号)
+    }
+  }
+}
+endcode

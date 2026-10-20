@@ -1,0 +1,36 @@
+begincodeV2
+name:工具'强制保留有效位数
+params:Float 数值,Bool 使用随机
+return:String 返回
+lines:
+Float 截取=fun float.round(var 数值:Float 3)
+String 返回=fun create.string(var 截取)
+Float 小数点位置=varf String.返回.find(String .:Bool 1)
+if{fun float.Approximately(var 小数点位置:Float -1)
+  String 返回=fun string.add(var 返回:String .000)
+}
+if{fun float.notEqual(var 小数点位置:Float -1)
+  Float 字数=varf String.返回.length()
+  Float 补全0数=fun float.minus(Float 3:var 字数)
+  Float 补全0数=fun float.add1(var 补全0数:var 小数点位置:Float 1)
+  if{fun bool.not(var 使用随机)
+    if{fun float.Approximately(var 补全0数:Float 3)
+      String 返回=fun string.add(var 返回:String 000)
+    }
+    if{fun float.Approximately(var 补全0数:Float 2)
+      String 返回=fun string.add(var 返回:String 00)
+    }
+    if{fun float.Approximately(var 补全0数:Float 1)
+      String 返回=fun string.add(var 返回:String 0)
+    }
+  }
+  if{fun create.bool(var 使用随机)
+    Float 循环=fun create.float(Float 0)
+    while{fun float.lt(var 循环:var 补全0数)
+      Long 随机补充=fun long.rand(Long 0:Long 9)
+      String 返回=fun string.add(var 返回:var 随机补充)
+      varf Float.循环.addEqual(Float 1)
+    }
+  }
+}
+endcode

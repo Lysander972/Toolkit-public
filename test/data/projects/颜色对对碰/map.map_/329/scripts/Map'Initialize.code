@@ -1,0 +1,176 @@
+begincodeV2
+name:Map'Initialize
+params:Long $width,Long $height,Vector3 $scenarioOffset,Float $initialMul,Float $highlandMul1,Float $highlandMul2
+return:Bool $ok
+lines:
+Bool $ok=fun create.bool(Bool 1)
+Long Width=fun create.long(var $width)
+Long Height=fun create.long(var $height)
+Vector3 ScenarioOffset=varf Vector3.$scenarioOffset.copy()
+//保存数据
+delay fun create.float(Float 0)
+fun ui.2dmode(Bool 1)
+Canvas 加载界面=fun create.canvas(Canvas canvas@1加载界面@3EAEAEQwABHR5cGUGBlVJUmVjdARuYW1lBgzliqDovb3lvLnnqpcDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAAC3dpZHRoRXh0ZW5kGAEAAAAAAAAADGhlaWdodEV4dGVuZBgBAAAAAAAAAARzaXplBAAAgD8AAIA/AACAPwVjb2xvcgwAAAAAAAAAAAAAAAApKTU/C0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxACABEMAAR0eXBlBghVSUJ1dHRvbgRuYW1lBgnlsY/olL3lmagDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAAC3dpZHRoRXh0ZW5kGAEAAAAAAAAADGhlaWdodEV4dGVuZBgBAAAAAAAAAARzaXplBAAAgD8AAIA/AACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAAC0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAFbGFiZWwGABEPAAR0eXBlBgZVSVJlY3QEbmFtZQYP5Lit5b+D5o+Q56S65qGGA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAFkQAAJZDAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/C0JvcmRlcldpZHRoAQAAgL8GUmFkaXVzAQAAAAANc2xpY2VkUGljR3VpZAYgOTEzNGYwYzllNzhhNDRkMWE2YTRhNjM3MDFlNDQ2MjYOc2xpY2VkQm9yZGVyTEIEAADqQgAA70IAAAAADnNsaWNlZEJvcmRlclJUBAAA6kIAAO9CAAAAAAxzbGljZWRSZWN0TEIEAAAAAAAAAAAAAAAADHNsaWNlZFJlY3RSVAQAAGpDAABvQwAAAAAEc29ucxABABEJAAR0eXBlBgdVSUxhYmVsBG5hbWUGBuagh+mimANQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgEAAAAAAAAAAZhbmNob3IYBAAAAAAAAAAEc2l6ZQQAAPpDAADIQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwR0ZXh0BhjliqDovb3kuK3vvIzor7fnqI3lgJkuLi4IRm9udFNpemUBAAAAQg@3@3)
+UIRect $rect=varf Canvas.加载界面.readUIRect(String 加载弹窗)
+delay fun create.float(Float 0.1)
+//物理效果
+Long $size=fun long.min(var $width:var $height)
+Float $yModifier=fun long.division(var Width:var $size)
+Float $xModifier=fun long.division(var Height:var $size)
+Float $tempF=varf Long.$size.toFloat()
+Float $threshold1=fun float.division(var $tempF:Float 2.5)
+Float $tempF=varf Long.$size.toFloat()
+Float $threshold2=fun float.division(var $tempF:Float 4)
+act 22./上边界.show(Bool 0)
+act 22./上边界.setBounciness(Float 0)
+act 22./下边界.show(Bool 0)
+act 22./下边界.setBounciness(Float 0)
+Float $tempF=varf Long.$size.toFloat()
+act 112./棋盘底面.setScale(var $tempF)
+Vector3 $tempP=act 112./棋盘底面.getPosition()
+Vector3 $tempP=fun vector3.multilply(var $tempP:var $tempF)
+Vector3 $tempP=fun vector3.add1(var $tempP:var ScenarioOffset:Vector3 0,-0.4,0)
+act 112./棋盘底面.setPosKinematic(var $tempP)
+Vector3 $tempP=act 22./上边界.getPosition()
+Vector3 $tempP=fun vector3.add(var $tempP:var ScenarioOffset)
+act 22./上边界.setPosKinematic(var $tempP)
+Vector3 $tempP=act 22./下边界.getPosition()
+Vector3 $tempP=fun vector3.add(var $tempP:var ScenarioOffset)
+act 22./下边界.setPosKinematic(var $tempP)
+Float $tempF1=varf Long.Width.toFloat()
+Float $tempF2=varf Long.Height.toFloat()
+Float $tempF2=fun float.multiply(var $tempF2:Float -1)
+Vector3 $front=fun creatVariable.Vector3(var $tempF1:Float 0:var $tempF2)
+act 362./背景板.setRotKinematic(var $front:Vector3 0,1,0)
+act 22./黑色遮罩.setRotKinematic(var $front:Vector3 0,1,0)
+//隐藏上下碰撞体
+act 1101.this.Bullet'ForceReclaimAll()
+act 1101.this.Grid'ReclaimAll()
+//回收全部格子
+Float $widthF=varf Long.$width.toFloat()
+Float $hightF=varf Long.$height.toFloat()
+Vector3 $offset=fun creatVariable.Vector3(var $widthF:Float 0:var $hightF)
+Vector3 $offset=fun vector3.minus(var $offset:Vector3 1,0,1)
+Vector3 $offset=fun vector3.multilply(var $offset:Float -0.5)
+//计算偏移量
+Long $half=fun long.RightShift(var $height:Long 1)
+Long $xLong=fun create.long(Long 0)
+while{fun long.lt(var $xLong:var $width)
+  Long $yLong=fun create.long(Long 0)
+  while{fun long.lt(var $yLong:var $height)
+    //加权曼哈顿
+    Float $xDistance1=varf Long.$xLong.toFloat()
+    varf Float.$xDistance1.addEqual(Float 1)
+    Float $xDistance1=fun float.multiply(var $xDistance1:var $xModifier)
+    Float $yDistance1=varf Long.$yLong.toFloat()
+    varf Float.$yDistance1.addEqual(Float 1)
+    Float $yDistance1=fun float.multiply(var $yDistance1:var $yModifier)
+    Float $distance1=fun float.add(var $xDistance1:var $yDistance1)
+    //加权曼哈顿
+    Long $tempL=fun long.minus(var Width:var $xLong)
+    Float $xDistance2=varf Long.$tempL.toFloat()
+/*    varf Float.$xDistance2.addEqual(Float 1)
+    Float $xDistance2=fun float.multiply(var $xDistance2:var $xModifier)
+    Long $tempL=fun long.minus(var Height:var $yLong)
+    Float $yDistance2=varf Long.$tempL.toFloat()
+/*    varf Float.$yDistance2.addEqual(Float 1)
+    Float $yDistance2=fun float.multiply(var $yDistance2:var $yModifier)
+    Float $distance2=fun float.add(var $xDistance2:var $yDistance2)
+    //血量倍数
+    Float $buleM0=fun float.multiply(Float 1:var $initialMul)
+    Float $buleM1=fun float.multiply(Float 1:Float 1)
+    Float $redM0=fun float.multiply(Float 1:var $initialMul)
+    Float $redM1=fun float.multiply(Float 1:Float 1)
+    if{fun float.lt(var $distance1:var $threshold1)
+      Float $buleM0=fun float.multiply1(Float 1:var $highlandMul1:var $initialMul)
+      Float $buleM1=fun float.multiply1(Float 1:var $highlandMul1:Float 1)
+    }
+    if{fun float.lt(var $distance1:var $threshold2)
+      Float $buleM0=fun float.multiply1(Float 1:var $highlandMul2:var $initialMul)
+      Float $buleM1=fun float.multiply1(Float 1:var $highlandMul2:Float 1)
+    }
+    if{fun float.lt(var $distance2:var $threshold1)
+      Float $redM0=fun float.multiply1(Float 1:var $highlandMul1:var $initialMul)
+      Float $redM1=fun float.multiply1(Float 1:var $highlandMul1:Float 1)
+    }
+    if{fun float.lt(var $distance2:var $threshold2)
+      Float $redM0=fun float.multiply1(Float 1:var $highlandMul2:var $initialMul)
+      Float $redM1=fun float.multiply1(Float 1:var $highlandMul2:Float 1)
+    }
+    if{fun float.Approximately(var $distance1:var $distance2)
+      if{fun long.lt(var $yLong:var $half)
+        Long $faction=fun create.long(Long 1)
+      }
+      if{fun long.gte(var $yLong:var $half)
+        Long $faction=fun create.long(Long 2)
+      }
+    }
+    if{fun float.gt(var $distance1:var $distance2)
+      Long $faction=fun create.long(Long 2)
+    }
+    if{fun float.lt(var $distance1:var $distance2)
+      Long $faction=fun create.long(Long 1)
+    }
+/*    if{fun long.lt(var $xLong:var $half)
+/*      Long $faction=fun create.long(Long 1)
+    }
+/*    if{fun long.gte(var $xLong:var $half)
+/*      Long $faction=fun create.long(Long 2)
+    }
+    Float $initialMax=fun float.multiply1(Float 1:var $highlandMul2:var $initialMul)
+    Float $occupiedMax=fun float.multiply1(Float 1:var $highlandMul2:Float 1)
+    act 1101.this.Grid'SetGrid(var $xLong:var $yLong:var $faction:var $offset:var $buleM0:var $buleM1:var $redM0:var $redM1:var $initialMax:var $occupiedMax)
+    varf Long.$yLong.addEqual(Long 1)
+  }
+  varf Long.$xLong.addEqual(Long 1)
+}
+//放置全部的格子
+Float $distance=fun float.min(var $widthF:var $hightF)
+Float $distance=fun float.division(var $distance:Float 0.46)
+Vector3 CameraAngle=fun creatVariable.Vector3(Float 180:Float 72:Float 0)
+Float CameraDistance=fun create.float(var $distance)
+act 1101.this.Camera'Update()
+Bool GameStarted=fun create.bool(Bool 1)
+//计算摄像机距离
+Float $x=fun create.float(Float 0)
+while{fun float.lt(var $x:var $widthF)
+  Vector3 $position=fun creatVariable.Vector3(var $x:Float 0:Float 0)
+  Vector3 $position=fun vector3.add2(var $position:Vector3 0.5,0,-0.5:var $offset:var ScenarioOffset)
+  =act 1101.this.Wall'SetWall(var $position:Vector3 0,0,-1)
+  Vector3 $position=fun creatVariable.Vector3(var $x:Float 0:var $hightF)
+  Vector3 $position=fun vector3.add2(var $position:Vector3 0.5,0,-0.5:var $offset:var ScenarioOffset)
+  =act 1101.this.Wall'SetWall(var $position:Vector3 0,0,1)
+  varf Float.$x.addEqual(Float 2)
+}
+Float $y=fun create.float(Float 0)
+while{fun float.lt(var $y:var $hightF)
+  Vector3 $position=fun creatVariable.Vector3(Float 0:Float 0:var $y)
+  Vector3 $position=fun vector3.add2(var $position:Vector3 -0.5,0,0.5:var $offset:var ScenarioOffset)
+  =act 1101.this.Wall'SetWall(var $position:Vector3 -1,0,0)
+  Vector3 $position=fun creatVariable.Vector3(var $widthF:Float 0:var $y)
+  Vector3 $position=fun vector3.add2(var $position:Vector3 -0.5,0,0.5:var $offset:var ScenarioOffset)
+  =act 1101.this.Wall'SetWall(var $position:Vector3 1,0,0)
+  varf Float.$y.addEqual(Float 2)
+}
+//以下是创建基地部分
+Vector3 $blueBaseP=fun vector3.add(Vector3 0.5,0.5,0.5:var $offset)
+Vector3 $blueBaseP=fun vector3.add(var $blueBaseP:var ScenarioOffset)
+act 1101.this.Base'SetBase(Long 1:var $blueBaseP:Vector3 1,0,1:Float 1000:var $size)
+Vector3 $redBaseP=fun vector3.minus(Vector3 -0.5,0.5,-0.5:var $offset)
+Vector3 $redBaseP=fun vector3.add(var $redBaseP:var ScenarioOffset)
+act 1101.this.Base'SetBase(Long 2:var $redBaseP:Vector3 -1,0,-1:Float 1000:var $size)
+//创建装饰物
+/*Bool $exist=varf Mech.Decorator.alive()
+/*Vector3 $backgroundP=fun vector3.add(Vector3 0,-0.4,0:var ScenarioOffset)
+/*if{fun bool.not(var $exist)
+/*  Mech Decorator=fun createAIMech(String 场景装饰:Float 0:var $backgroundP:Vector3 0,0,-1:Enum 0:Bool 0)
+/*  varf Mech.Decorator.enablePhysics(Bool 0)
+/*  varf Mech.Decorator.setLayer(Float 0)
+}
+/*varf Mech.Decorator.move(var $backgroundP:Enum 0)
+/*Float $tempF=varf Long.$size.toFloat()
+/*Float $tempF=fun float.division(var $tempF:Float 50)
+/*varf Mech.Decorator.scale(var $tempF)
+delay fun create.float(Float 0)
+varf UIRect.$rect.del(Float 0)
+endcode

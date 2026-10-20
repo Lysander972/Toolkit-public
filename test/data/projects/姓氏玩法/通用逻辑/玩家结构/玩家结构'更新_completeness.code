@@ -1,0 +1,22 @@
+begincodeV2
+private:1
+guid:8ee0aade18b64e94929778e83858a6ef
+color:255,255,255
+name:玩家结构'更新_completeness
+comment:由选队和排行榜数据下载分别触发
+params:Struct 结构
+lines:
+Bool 已下场=act 1101.this.玩家结构'是否已下场(var 结构)
+Bool 排行榜完整性=act 1101.this.玩家结构'读取_rank_completeness(var 结构)
+Bool 玩家数据完整性=fun bool.and(var 已下场:var 排行榜完整性)
+Bool 原完整性=act 1101.this.玩家结构'读取_completeness(var 结构)
+varf Struct.结构.set(String completeness:var 玩家数据完整性)
+if{fun bool.not(var 原完整性)
+  if{fun create.bool(var 玩家数据完整性)
+    Long 玩家队伍id=act 1101.this.玩家结构'读取_team(var 结构)
+    String 字符串id=fun create.string(var 玩家队伍id)
+    Struct 玩家队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+    =act 1101.this.UI_局内'事件_玩家加入(var 结构:var 玩家队伍)
+  }
+}
+endcode

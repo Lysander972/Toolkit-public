@@ -1,0 +1,21 @@
+begincodeV2
+guid:56cd0410f9a848538caee0b31d7c8e1d
+name:抛物线模拟'计算水平射程
+params:Float 初速度,Float 初始高度,Float 重力,Float 俯仰角
+return:Float result
+lines:
+Float 俯仰角sin=fun float.triangle.sin(var 俯仰角)
+Float 俯仰角cos=fun float.triangle.cos(var 俯仰角)
+Float 初速度纵向分量=fun float.multiply(var 初速度:var 俯仰角sin)
+Float temp1=fun float.pow(var 初速度纵向分量:Float 2)
+Float temp2=fun float.multiply1(Float 2:var 重力:var 初始高度)
+Float discriminant=fun float.add(var temp1:var temp2)
+if{fun float.lt(var discriminant:Float 0)
+  Float result=fun create.float(Float 0)
+}
+Float temp1=fun float.multiply1(Float 1:var 初速度:var 俯仰角sin)
+Float temp2=fun float.pow(var discriminant:Float 0.5)
+Float temp1=fun float.add(var temp1:var temp2)
+Float t_flight=fun float.division(var temp1:var 重力)
+Float result=fun float.multiply1(var 初速度:var 俯仰角cos:var t_flight)
+endcode

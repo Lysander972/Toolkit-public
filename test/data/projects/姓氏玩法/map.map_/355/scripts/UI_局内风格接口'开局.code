@@ -1,0 +1,18 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'开局
+lines:
+List 名称列表=varf Dict.队伍UI映射.names()
+Float 序号=varf List.名称列表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  String 队伍id=varf List.名称列表.readString(var 序号)
+  Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 队伍id:Bool 0)
+  Mech 队伍模型=varf Struct.队伍映射.getMech(String 队伍模型:Bool 0)
+  varf Mech.队伍模型.setCustomBool(String 刷新摄像机高度:Bool 1)
+  varf Mech.队伍模型.setCustomBool(String 刷新模型高度:Bool 1)
+  varf Mech.队伍模型.setCustomBool(String 刷新摄像机裁切:Bool 1)
+}
+act 337./场景加速线.active(Bool 1:Float 0)
+act 337./场景云.active(Bool 1:Float 0)
+endcode

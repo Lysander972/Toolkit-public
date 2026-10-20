@@ -1,0 +1,64 @@
+begincodeV2
+color:8,0,255
+name:Public'Initialize
+comment:子弹公共初始化方法
+params:Vector3 pos,Vector3 direction,Long type,Long faction,Struct player,Vector3 globalOffset,Float HPMul,Float 额外暴击率,Float initHP,Float manualSpeed
+lines:
+Bool Attr'Alive=fun create.bool(Bool 1)
+/*if{fun create.bool(var Initialized)
+/*  fun debug.print(String err:Color 255,0,0,255:Bool 0)
+}
+Bool Initialized=fun create.bool(Bool 0)
+Bool Attr'启用延迟死亡=fun create.bool(Bool 0)
+Float Attr'延迟死亡时间=fun create.float(Float 0)
+Long Attr'Type=fun create.long(var type)
+Long Attr'Faction=fun create.long(var faction)
+Struct Creator=varf Struct.player.ref()
+Vector3 GlobalOffset=varf Vector3.globalOffset.copy()
+//先计算模型放大倍数
+Float Attr'HPMul=fun create.float(var HPMul)
+Float Attr'模型放大倍数=fun float.pow(var Attr'HPMul:Float 0.15)
+Float Attr'模型放大倍数=fun float.clamp(var Attr'模型放大倍数:Float 1:Float 1.5)
+//初始化索敌修正
+varf Mech.Self.setCustomFloat(String 索敌修正:Float 0)
+//得到属性并会设置索敌修正
+Float Attr'HP=fun create.float(Float -1)
+act 1.this.Bullet'GetAttribute()
+varf Float.Attr'暴击率.addEqual(var 额外暴击率)
+Float Attr'maxHP=fun float.multiply(var Attr'maxHP:var Attr'HPMul)
+Float Attr'Atk=fun float.multiply(var Attr'Atk:var Attr'HPMul)
+if{fun float.gt(var Attr'maxHP:Float 10)
+  Float Attr'maxHP=varf Float.Attr'maxHP.floor()
+}
+//计算重量倍数
+Float Physic'Size=fun float.multiply(var Physic'Size:var Attr'模型放大倍数)
+Float Physic'Mass=fun float.multiply2(var Physic'Mass:var Attr'模型放大倍数:var Attr'模型放大倍数:var Attr'模型放大倍数)
+//相应地放大UI距离
+Float UI'Size=fun float.multiply(var UI'Size:var Attr'模型放大倍数)
+Float UI'Size=fun float.min(var UI'Size:var UI'MaxSize)
+Float UI'Distance=fun float.multiply(var UI'Distance:var Attr'模型放大倍数)
+Vector3 UI'LocalPos=fun vector3.multilply(var UI'LocalPos:var Attr'模型放大倍数)
+//若展示UI则申请一个并显示
+Mech UI'血量马甲=fun creatVariable.mech(Mech )
+Bool UI'循环已设置=fun create.bool(Bool 0)
+//得到UI后应用属性
+Float hp=fun float.multiply(var initHP:var Attr'maxHP)
+act 1.this.Private'UpdateHP(var hp)
+if{fun float.gte(var manualSpeed:Float 0)
+  Float Physic'SpeedExp=fun create.float(var manualSpeed)
+}
+//更新物理
+=act 1.this.Private_Physic'ResetPhysic(var pos:var direction:var Physic'Layer1:var Physic'Layer2)
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+if{fun create.bool(var UI'show)
+  act 1.this.UI'应用UI(var pos:var direction)
+}
+//启用技能
+act 1.this.Private_Skill'StartCycle()
+//启用炮塔功能
+/*act 1.this.Private_Turret'OnBirth()
+//防止UI闪烁问题
+Bool Initialized=fun create.bool(Bool 1)
+endcode

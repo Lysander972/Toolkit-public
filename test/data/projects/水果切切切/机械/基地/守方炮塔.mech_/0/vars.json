@@ -1,0 +1,34 @@
+[
+ {
+  name:AvatarUrl
+  type:String
+ }
+ {
+  name:FrameFile
+  type:String
+ }
+ {
+  name:ShowFrame
+  type:Bool
+ }
+ {
+  name:FrameBaseColor
+  type:Color
+ }
+ {
+  name:FrameEmmitColor
+  type:Color
+ }
+ {
+  name:Frozen
+  type:Bool
+ }
+ {
+  name:Open
+  type:Bool
+ }
+ {
+  name:ShowNoumenon
+  type:Bool
+ }
+]

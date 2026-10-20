@@ -1,0 +1,121 @@
+begincodeV2
+name:礼物半屏特效'更新应用
+lines:
+fun break()
+Float 当前时间=fun time.scaleTime()
+Float 全局冷却=varf Dict.UI_局内'半屏特效_全局状态.readFloat(String 全局冷却:Bool 0)
+if{fun float.lt(var 当前时间:var 全局冷却)
+  fun break()
+}
+Bool 成功播放=fun create.bool(Bool 0)
+//遍历全部,检查是否可以播放
+Float 数量=varf List.UI_局内'半屏特效_注册信息.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 数量)
+  Dict 注册信息=varf List.UI_局内'半屏特效_注册信息.readDict(var 序号)
+  Bool 保留=fun create.bool(Bool 1)
+  Float 失效时间=varf Dict.注册信息.readFloat(String 失效时间:Bool 0)
+  if{fun float.gte(var 当前时间:var 失效时间)
+    Bool 保留=fun create.bool(Bool 0)
+  }
+  if{fun create.bool(var 保留)
+    Struct 玩家=varf Dict.注册信息.readStruct(String 玩家:Bool 0)
+    String 玩家id=act 1101.this.玩家结构'读取_id(var 玩家)
+    Long 礼物类型=varf Dict.注册信息.readLong(String 礼物类型:Bool 0)
+    String 信息key=fun string.Format2(String %1@1@1%2:var 礼物类型:var 玩家id)
+    Float 特定礼物冷却=varf Dict.UI_局内'半屏特效_全局状态.readFloat(var 信息key:Bool 0)
+    if{fun float.gte(var 当前时间:var 特定礼物冷却)
+      Bool 成功播放=fun create.bool(Bool 1)
+      //根据礼物选择特效
+      if{fun long.equal(var 礼物类型:Long 1)
+        //仙女棒-金龙
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 1000:Float 1000)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 72:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 2:Float 0.2:Float 0.2)
+      }
+      if{fun long.equal(var 礼物类型:Long 2)
+        //能力药丸-冰龙
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 1000:Float 1000)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 66:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 2:Float 0.2:Float 0.2)
+      }
+      if{fun long.equal(var 礼物类型:Long 4)
+        //甜甜圈-金色双龙
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 1000:Float 1000)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 63:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 3:Float 0.3:Float 0.5)
+      }
+      if{fun long.equal(var 礼物类型:Long 5)
+        //能量电池-冰龙乱舞
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 1000:Float 1000)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 62:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 2:Float 0.3:Float 0.5)
+      }
+      if{fun long.equal(var 礼物类型:Long 6)
+        //爱的爆炸-雷霆紫龙
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 1000:Float 1000)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 74:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 4.3:Float 0.3:Float 0.5)
+      }
+      if{fun long.equal(var 礼物类型:Long 7)
+        //派对话筒-紫色双龙
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 600:Float 600)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 73:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 3.3:Float 0.3:Float 0.5)
+      }
+      if{fun long.equal(var 礼物类型:Long 8)
+        //神秘空投-特殊冰龙
+        fun ui.2dmode(Bool 1)
+        Canvas 特效布局=fun create.canvas(Canvas guid@1cce4d98420984a09aa51fbc5284d2071)
+        UIRawImage 特效动图=varf Canvas.特效布局.readUIRawImage(String 特效动图)
+        Vector3 图片尺寸=act 1101.this.礼物半屏特效'图片自适应(Float 700:Float 700)
+        varf UIRawImage.特效动图.size(var 图片尺寸)
+        act 1101.this.动图'应用动图(var 特效动图:Long 67:Long 1:Bool 0)
+        act 1101.this.礼物半屏特效'动图托管注册(var 特效动图:Float 4.3:Float 0.3:Float 0.3)
+      }
+      //更新个人特定礼物冷却
+      Float 特定礼物冷却=fun float.max(var 特定礼物冷却:var 当前时间)
+      varf Float.特定礼物冷却.addEqual(Float 1)
+      varf Dict.UI_局内'半屏特效_全局状态.insert(var 信息key:var 特定礼物冷却)
+      Bool 保留=fun create.bool(Bool 0)
+    }
+  }
+  if{fun bool.not(var 保留)
+    varf List.UI_局内'半屏特效_注册信息.remove(var 序号)
+    Float 数量=varf List.UI_局内'半屏特效_注册信息.count()
+  }
+  if{fun create.bool(var 保留)
+    varf Float.序号.addEqual(Float 1)
+  }
+}
+if{fun create.bool(var 成功播放)
+  //更新全局冷却
+  Float 全局冷却=fun float.max(var 全局冷却:var 当前时间)
+  varf Float.全局冷却.addEqual(Float 0.2)
+  varf Dict.UI_局内'半屏特效_全局状态.insert(String 全局冷却:var 全局冷却)
+}
+endcode

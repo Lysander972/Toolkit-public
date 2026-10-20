@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+name:Skills'1610_OnBirth
+comment:大西瓜战吼-初始化自身可召唤数量
+lines:
+if{fun create.bool(var Attr'Alive)
+  Long Skill'1610=fun create.long(Long 5)
+}
+endcode

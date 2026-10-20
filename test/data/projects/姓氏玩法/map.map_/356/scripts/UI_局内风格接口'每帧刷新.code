@@ -1,0 +1,24 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'每帧刷新
+lines:
+act 1101.this.内部'每帧刷新_更新相对位置()
+act 1101.this.内部'每帧刷新_更新旗帜相位()
+act 1101.this.内部'每帧刷新_更新全局参数()
+//刷新进度条
+Float 激活队伍数量=varf List.激活队伍列表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 激活队伍数量)
+  Struct 队伍=varf List.激活队伍列表.readStruct(var 序号)
+  Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+  String 字符串id=fun create.string(var 队伍id)
+  Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+  if{fun create.bool(var 是否创建)
+    Canvas 队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 0)
+    act 1101.this.内部'每帧刷新_更新队伍UI显示(var 队伍:var 队伍UI布局)
+  }
+  varf Float.序号.addEqual(Float 1)
+}
+act 1101.this.内部'每帧刷新_刷新点赞图标()
+act 1101.this.内部'每帧刷新_其他特效维护()
+endcode

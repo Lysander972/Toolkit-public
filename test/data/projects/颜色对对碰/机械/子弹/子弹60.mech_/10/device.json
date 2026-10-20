@@ -1,0 +1,15 @@
+type:131
+pos:[0,0,0]
+quat:[3.090861E-08,-0.7071071,-0.7071065,4.773829E-06]
+scale:4.8
+enableManualWeld:true
+attach:
+[
+]
+ext:
+{
+ _fresnelPower:0
+ _Color:[1,1,1,1]
+ _twirl:0.1
+ _twirl2:4
+}

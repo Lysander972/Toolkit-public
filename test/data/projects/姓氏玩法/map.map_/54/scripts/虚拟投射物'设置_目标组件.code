@@ -1,0 +1,6 @@
+begincodeV2
+name:虚拟投射物'设置_目标组件
+params:UIRect 虚拟投射物,UIRect 目标组件
+lines:
+varf UIRect.虚拟投射物.setCustomUIRect(String 目标组件:var 目标组件)
+endcode

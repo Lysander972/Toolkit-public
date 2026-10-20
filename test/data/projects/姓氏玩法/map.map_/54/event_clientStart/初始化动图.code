@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:初始化动图
+lines:
+act 1101.this.动图'初始化注册()
+act 1101.this.loopFun(String 动图'自动刷新:Float 0.05)
+endcode

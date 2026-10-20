@@ -1,0 +1,38 @@
+begincodeV2
+color:221,0,255
+name:技能'1900
+lines:
+String key=fun create.string(String 1900)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Bool 已有排行榜=varf Struct.属性'玩家.contains(String 排行榜名次)
+  if{fun create.bool(var 已有排行榜)
+    Long 排行榜名次=varf Struct.属性'玩家.getLong(String 排行榜名次:Bool 1)
+    Bool bool1=fun long.gte(var 排行榜名次:Long 0)
+    Bool bool2=fun long.lte(var 排行榜名次:Long 99)
+    if{fun bool.and(var bool1:var bool2)
+      if{fun long.lt(var 排行榜名次:Long 40)
+        Float hpMul=fun create.float(Float 1)
+      }
+      if{fun long.gte(var 排行榜名次:Long 40)
+        Float hpMul=fun create.float(Float 0.6)
+      }
+      Long rand=fun long.rand(Long 0:Long 1)
+      if{fun long.equal(var rand:Long 0)
+        Bool success=act 1.this.Launcher'攻方贴脸放置(Long 1900:var 属性'玩家:Vector3 0,0,-1:var hpMul:Float 0:Float 1)
+      }
+      if{fun long.equal(var rand:Long 1)
+        Bool success=act 1.this.Launcher'攻方贴脸放置(Long 1910:var 属性'玩家:Vector3 0,0,-1:var hpMul:Float 0:Float 1)
+      }
+      if{fun create.bool(var success)
+        String 提示=fun create.string(String 使用专属技能,召唤椰子!)
+        Long mode=fun create.long(Long 2)
+        Long value=fun create.long(Long 2)
+        act 1.this.callMapFunc4(String 弹幕.播报'礼物:var 提示:var 属性'玩家:var mode:var value)
+        =act 1.this.Skills'Decrease(var key:Long 1)
+        fun script.skip()
+      }
+    }
+  }
+}
+delay fun create.float(Float 1)
+endcode

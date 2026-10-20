@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:测试'默认玩家_得到avatarUrl
+return:String ret
+lines:
+String ret=fun create.string(String https@1//p26.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813_ogD5AAEheDINHKA9JgAhjIAAEA3zABzQLsVAfC.jpeg?from@33067671334)
+endcode

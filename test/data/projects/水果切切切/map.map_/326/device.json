@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:特效
+ boolShowFollowIcon:true
+ mechFileGUID:e8292b1d59764f6d8b7c6f5643ffe696
+}

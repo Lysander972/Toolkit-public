@@ -1,0 +1,12 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'互动操作_处理全部玩家
+lines:
+Float 玩家数量=varf List.局内'玩家_已下场列表.count()
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 玩家数量)
+  Struct 玩家=varf List.局内'玩家_已下场列表.readStruct(var 循环)
+  act 1101.this.局内逻辑'互动操作_处理特定玩家(var 玩家)
+  varf Float.循环.addEqual(Float 1)
+}
+endcode

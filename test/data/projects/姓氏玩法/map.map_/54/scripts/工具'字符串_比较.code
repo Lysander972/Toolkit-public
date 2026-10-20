@@ -1,0 +1,23 @@
+begincodeV2
+name:工具'字符串_比较
+params:String 字符串1,String 字符串2
+return:Long ret
+lines:
+if{fun bool.not(var init)
+  List 临时列表=fun create.list()
+  Bool init=fun create.bool(Bool 1)
+}
+if{fun string.equal(var 字符串1:var 字符串2)
+  Long ret=fun create.long(Long 0)
+  fun break()
+}
+varf List.临时列表.clear()
+varf List.临时列表.add1(var 字符串1:var 字符串2)
+varf List.临时列表.sort(Bool 0)
+String 更大字符串=varf List.临时列表.readString(Float 0)
+if{fun string.equal(var 更大字符串:var 字符串1)
+  Long ret=fun create.long(Long 1)
+  fun break()
+}
+Long ret=fun create.long(Long -1)
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:Map'GetOffset
+return:Vector3 ret
+lines:
+Vector3 ret=varf Vector3.ScenarioOffset.copy()
+endcode

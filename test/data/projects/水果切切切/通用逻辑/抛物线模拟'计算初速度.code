@@ -1,0 +1,16 @@
+begincodeV2
+guid:779fe16183eb45e5831b8bfae0c20bab
+name:抛物线模拟'计算初速度
+params:Float 初始高度,Float 重力,Float 预期射程,Float 俯仰角
+return:Float result
+lines:
+Float tan_theta=fun float.triangle.tan(var 俯仰角)
+Float temp1=fun float.multiply(var tan_theta:var 预期射程)
+Float temp1=fun float.add(var temp1:var 初始高度)
+Float temp1=fun float.division(var temp1:var 重力)
+Float temp1=fun float.multiply(var temp1:Float 2)
+Float t=fun float.pow(var temp1:Float 0.5)
+Float 俯仰角cos=fun float.triangle.cos(var 俯仰角)
+Float temp1=fun float.division(var 预期射程:var 俯仰角cos)
+Float result=fun float.division(var temp1:var t)
+endcode

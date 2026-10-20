@@ -1,0 +1,167 @@
+begincodeV2
+color:221,0,255
+name:技能'11001
+comment:团队技能释放
+lines:
+if{fun bool.not(var init)
+  Long context=act 1.this.GetContextId()
+  if{fun long.equal(var context:Long 1)
+    Float valueExp=fun create.float(Float 20)
+    Long value1=fun create.long(Long 1)
+    Long value2=fun create.long(Long 10)
+    Long value3=fun create.long(Long 19)
+    Long value4=fun create.long(Long 52)
+    Long value5=fun create.long(Long 99)
+    Long value6=fun create.long(Long 199)
+  }
+  if{fun long.equal(var context:Long 2)
+    Float valueExp=fun create.float(Float 20)
+    Long value1=fun create.long(Long 1)
+    Long value2=fun create.long(Long 10)
+    Long value3=fun create.long(Long 30)
+    Long value4=fun create.long(Long 99)
+    Long value5=fun create.long(Long 199)
+    Long value6=fun create.long(Long 299)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+String key0=fun create.string(String 11001)
+if{act 1.this.Skills'GreaterOrEqual(var key0:Long 1)
+  while{act 1.this.Skills'GreaterOrEqual(var key0:Long 1)
+    Struct player=act 1.this.Skills'Dequeue(var key0)
+    Bool 必出礼物6=fun long.gte(var 抽奖'礼物6未出:Long 39)
+    Bool 必出礼物5=fun long.gte(var 抽奖'礼物5未出:Long 18)
+    Bool 必出礼物4=fun long.gte(var 抽奖'礼物4未出:Long 22)
+    //队伍和类型
+    Long team=fun create.long(Long 1)
+    Long type=fun create.long(Long 0)
+    //计算平均价值与期望之差
+    Float 当前平均价值=fun long.division(var 抽奖'总价值:var 抽奖'总次数)
+    Float 补偿系数=fun float.minus(var valueExp:var 当前平均价值)
+    Float 补偿系数=fun float.division(var 补偿系数:Float 10)
+    Long 总权重=fun create.long(Long 22502)
+    Long 抽奖上限=fun long.minus(var 总权重:Long 1)
+    Long 随机抽奖=fun long.rand(Long 0:var 抽奖上限)
+    while{fun float.notEqual(var 补偿系数:Float 0)
+      Bool 正补偿=fun float.gt(var 补偿系数:Float 0)
+      Bool 负补偿=fun float.lt(var 补偿系数:Float 0)
+      if{fun create.bool(var 正补偿)
+        Long 抽奖上限=fun long.minus1(var 总权重:var 随机抽奖:Long 1)
+        Long 抽奖补偿=fun long.rand(Long 0:var 抽奖上限)
+        Bool 完全补偿=fun float.gte(var 补偿系数:Float 1)
+        if{fun create.bool(var 完全补偿)
+          varf Long.随机抽奖.addEqual(var 抽奖补偿)
+          varf Float.补偿系数.minusEqual(Float 1)
+        }
+        if{fun bool.not(var 完全补偿)
+          Float 抽奖补偿F=varf Long.抽奖补偿.toFloat()
+          Float 抽奖补偿F=fun float.multiply(var 抽奖补偿F:var 补偿系数)
+          Long 抽奖补偿=varf Float.抽奖补偿F.toLong()
+          varf Long.随机抽奖.addEqual(var 抽奖补偿)
+          Float 补偿系数=fun create.float(Float 0)
+        }
+      }
+      if{fun create.bool(var 负补偿)
+        Long 抽奖上限=fun create.long(var 随机抽奖)
+        Long 抽奖补偿=fun long.rand(Long 0:var 抽奖上限)
+        Bool 完全补偿=fun float.lte(var 补偿系数:Float -1)
+        if{fun create.bool(var 完全补偿)
+          varf Long.随机抽奖.minusEqual(var 抽奖补偿)
+          varf Float.补偿系数.addEqual(Float 1)
+        }
+        if{fun bool.not(var 完全补偿)
+          Float 抽奖补偿F=varf Long.抽奖补偿.toFloat()
+          Float 抽奖补偿F=fun float.multiply1(var 抽奖补偿F:var 补偿系数:Float -1)
+          Long 抽奖补偿=varf Float.抽奖补偿F.toLong()
+          varf Long.随机抽奖.minusEqual(var 抽奖补偿)
+          Float 补偿系数=fun create.float(Float 0)
+        }
+      }
+    }
+    Long 抽奖上限=fun long.minus(var 总权重:Long 1)
+    Long 随机抽奖=fun long.clamp(var 随机抽奖:Long 0:var 抽奖上限)
+    //计算随机数
+    Bool bool0=fun long.gte(var 随机抽奖:Long 0)
+    Bool bool1=fun long.lt(var 随机抽奖:Long 10000)
+    if{fun bool.and(var bool0:var bool1)
+      Long type=fun create.long(Long 1)
+      Long value=fun create.long(var value1)
+    }
+    Bool bool0=fun long.gte(var 随机抽奖:Long 10000)
+    Bool bool1=fun long.lt(var 随机抽奖:Long 15710)
+    if{fun bool.and(var bool0:var bool1)
+      Long type=fun create.long(Long 2)
+      Long value=fun create.long(var value2)
+    }
+    Bool bool0=fun long.gte(var 随机抽奖:Long 15710)
+    Bool bool1=fun long.lt(var 随机抽奖:Long 18970)
+    if{fun bool.and(var bool0:var bool1)
+      Long type=fun create.long(Long 3)
+      Long value=fun create.long(var value3)
+    }
+    Bool bool0=fun long.gte(var 随机抽奖:Long 18970)
+    Bool bool1=fun long.lt(var 随机抽奖:Long 20832)
+    if{fun bool.and(var bool0:var bool1)
+      Long type=fun create.long(Long 4)
+      Long value=fun create.long(var value4)
+    }
+    Bool bool0=fun long.gte(var 随机抽奖:Long 20832)
+    Bool bool1=fun long.lt(var 随机抽奖:Long 21895)
+    if{fun bool.and(var bool0:var bool1)
+      Long type=fun create.long(Long 5)
+      Long value=fun create.long(var value5)
+    }
+    Bool bool0=fun long.gte(var 随机抽奖:Long 21895)
+    Bool bool1=fun long.lt(var 随机抽奖:Long 22502)
+    if{fun bool.and(var bool0:var bool1)
+      Long type=fun create.long(Long 6)
+      Long value=fun create.long(var value6)
+    }
+    if{fun long.notEqual(var type:Long 1)
+      act 1.this.播放音效(String 中奖.ogg:Float 1)
+    }
+    if{fun long.lt(var type:Long 6)
+      if{fun create.bool(var 必出礼物6)
+        Long type=fun create.long(Long 6)
+        Long value=fun create.long(var value6)
+      }
+    }
+    if{fun long.lt(var type:Long 5)
+      if{fun create.bool(var 必出礼物5)
+        Long type=fun create.long(Long 5)
+        Long value=fun create.long(var value5)
+      }
+    }
+    if{fun long.lt(var type:Long 4)
+      if{fun create.bool(var 必出礼物4)
+        Long type=fun create.long(Long 4)
+        Long value=fun create.long(var value4)
+      }
+    }
+    if{fun long.equal(var type:Long 4)
+      Long 抽奖'礼物4未出=fun create.long(Long 0)
+    }
+    if{fun long.equal(var type:Long 5)
+      Long 抽奖'礼物5未出=fun create.long(Long 0)
+    }
+    if{fun long.equal(var type:Long 6)
+      Long 抽奖'礼物6未出=fun create.long(Long 0)
+    }
+    String 奖品=varf Device.map_handler.callReturnString3(String 技能'赠送礼物效果:var team:var type:var player)
+    String 提示=fun string.Format1(String 触发团队充能\n召唤%1!:var 奖品)
+    act 1.this.callMapFunc3(String 弹幕.播报'上方抽中奖品:var 提示:var player:var value)
+    varf Long.抽奖'总价值.addEqual(var value)
+    varf Long.抽奖'总次数.addEqual(Long 1)
+    if{fun long.notEqual(var type:Long 4)
+      varf Long.抽奖'礼物4未出.addEqual(Long 1)
+    }
+    if{fun long.notEqual(var type:Long 5)
+      varf Long.抽奖'礼物5未出.addEqual(Long 1)
+    }
+    if{fun long.notEqual(var type:Long 6)
+      varf Long.抽奖'礼物6未出.addEqual(Long 1)
+    }
+  }
+  =act 1.this.UI'刷新团队技能蓝()
+}
+endcode

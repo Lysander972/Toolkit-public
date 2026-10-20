@@ -1,0 +1,21 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'AfterChangeFaction
+comment:阵营变更时
+params:Long $oldFaction,Long $newFaction
+lines:
+varf Device.map_handler.callFun2(String Grid'OnOccupy:var $oldFaction:var $newFaction)
+if{fun long.equal(var $newFaction:Long 1)
+  act 1.this.Public'SetLayer(Float 9)
+/*  act 1.this.Public'SetLayer(Float 11)
+}
+if{fun long.equal(var $newFaction:Long 2)
+  act 1.this.Public'SetLayer(Float 10)
+/*  act 1.this.Public'SetLayer(Float 11)
+}
+if{fun long.equal(var $newFaction:Long 0)
+  act 1.this.Public'SetLayer(Float 11)
+}
+act 1.this.Rotating'SetTarget(var $newFaction)
+endcode

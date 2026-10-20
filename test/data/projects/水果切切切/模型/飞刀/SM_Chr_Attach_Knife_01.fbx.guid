@@ -1,0 +1,30 @@
+guid:bde3f1a72f974ce28da4568be80dc8dc
+meshes:
+[
+ {
+  n:SM_Chr_Attach_Knife_01
+ }
+]
+matFolderName:1906505bddae45deaf916d79b3e5451d
+Albedo.UID:1906505bddae45deaf916d79b3e5451d
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.004460504,0.143074]
+bounds.size:[0.05898594,0.07082955,0.4561912]

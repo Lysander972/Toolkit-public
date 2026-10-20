@@ -1,0 +1,8 @@
+begincodeV2
+name:Skill'GetFirstElement
+params:String $key
+return:Struct $player
+lines:
+List $playerList=varf Struct.SkillPlayer.getList(var $key:Bool 0)
+Struct $player=varf List.$playerList.readStruct(Float 0)
+endcode

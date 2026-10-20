@@ -1,0 +1,10 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新
+lines:
+act 1101.this.UI_局内风格面板'每帧刷新_启动按钮()
+act 1101.this.UI_局内风格面板'每帧刷新_下场提示()
+act 1101.this.UI_局内风格面板'每帧刷新_积分池显示()
+act 1101.this.UI_局内风格面板'每帧刷新_倒计时显示()
+act 1101.this.UI_局内风格面板'每帧刷新_决战提示()
+act 1101.this.UI_局内风格面板'每帧刷新_决战动画()
+endcode

@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:局外功能设置'分辨率_应用并上传
+comment:只更新选项,手动分辨率值的更新在每帧检测中实现
+params:Long 新分辨率选项
+lines:
+act 1101.this.局外功能设置'分辨率_应用(var 新分辨率选项)
+Dict data=fun map.load()
+varf Dict.data.insert(String 分辨率选项标志位:var 局外功能设置'分辨率选项)
+act 1101./主界面.工具'上传存档(Bool 1)
+endcode

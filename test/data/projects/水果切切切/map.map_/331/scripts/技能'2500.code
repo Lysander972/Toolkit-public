@@ -1,0 +1,17 @@
+begincodeV2
+color:221,0,255
+name:技能'2500
+comment:栅栏@4血量值@5
+lines:
+String key=fun create.string(String 2500)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Long skill=act 1.this.Skills'GetValue(var key)
+  Float temp=varf Long.skill.toFloat()
+  Float value=fun float.multiply(var temp:Float 1)
+  Vector3 pos=act 1.this.getPosition()
+  varf Vector3.pos.setZ(Float 30)
+  varf Device.map_handler.callFun3(String 栅栏'HP变化:var value:var 属性'玩家:var pos)
+  =act 1.this.Skills'Decrease(var key:var skill)
+}
+delay fun create.float(Float 0.3)
+endcode

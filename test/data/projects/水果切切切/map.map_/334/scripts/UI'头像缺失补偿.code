@@ -1,0 +1,12 @@
+begincodeV2
+name:UI'头像缺失补偿
+lines:
+Device core=varf Mech.UI'血量马甲.getCoreDevice()
+String url=varf Struct.Creator.getString(String avatarUrl:Bool 0)
+Bool 空头像=fun string.equal(var url:String )
+varf Device.core.callFun2(String Public'SetAvatar:var UI'showAvatar:var url)
+if{fun create.bool(var 空头像)
+  Device this=act 1.this.getDevice()
+  varf Device.this.laterCallFun0(String UI'头像缺失补偿:Float 1)
+}
+endcode

@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'帧率模式_初始化
+lines:
+Long 局内功能设置'帧率模式=fun create.long(Long 0)
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 帧率模式存档标志位)
+  Long 局内功能设置'帧率模式=varf Dict.data.readLong(String 帧率模式存档标志位:Bool 0)
+}
+act 1101.this.局内功能设置'帧率模式_应用并刷新()
+endcode

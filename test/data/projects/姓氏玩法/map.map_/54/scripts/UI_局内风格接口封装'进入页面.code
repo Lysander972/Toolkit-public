@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口封装'进入页面
+params:Bool 个人模式,Long 获胜规则
+lines:
+act 1101.this.UI_局内风格面板'进入页面()
+varf Device.局外功能设置'使用风格实现.callFun2(String UI_局内风格接口'进入页面:var 个人模式:var 获胜规则)
+act 1101.this.UI_局内风格接口封装'重置()
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+guid:13d9984dc9bc4ad697d14a11f7faa606
+name:玩家结构'设置_consume
+params:Struct 结构,Long consume
+lines:
+varf Struct.结构.set(String consume:var consume)
+endcode

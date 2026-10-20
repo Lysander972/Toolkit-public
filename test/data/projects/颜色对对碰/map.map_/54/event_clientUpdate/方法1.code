@@ -1,0 +1,10 @@
+begincodeV2
+name:方法1
+lines:
+/*if{fun keyboard.keyDown2(Enum 50)
+/*  UIButton $skillPanel=varf Canvas.GameUI.readUIButton(String root/skillPanel)
+/*  Vector3 $pos=varf UIButton.$skillPanel.getCanvasPos()
+/*  String $out=fun string.add(String 布局坐标:var $pos)
+/*  fun string.popNotify(var $out:Float 3)
+}
+endcode

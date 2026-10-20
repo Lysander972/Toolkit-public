@@ -1,0 +1,6 @@
+begincodeV2
+name:Settings1
+lines:
+Mech Self=act 1.this.getMech()
+varf Mech.Self.setCustomBool(String wall:Bool 1)
+endcode

@@ -1,0 +1,43 @@
+begincodeV2
+color:255,255,255
+name:工具'颜色id到颜色
+params:Long 选中颜色
+return:Color 颜色
+lines:
+if{fun long.equal(var 选中颜色:Long 0)
+  Color 颜色=fun create.color(Color 44,221,243,255)
+}
+if{fun long.equal(var 选中颜色:Long 1)
+  Color 颜色=fun create.color(Color 210,41,31,255)
+}
+if{fun long.equal(var 选中颜色:Long 2)
+  Color 颜色=fun create.color(Color 210,130,31,255)
+}
+if{fun long.equal(var 选中颜色:Long 3)
+  Color 颜色=fun create.color(Color 167,31,210,255)
+}
+if{fun long.equal(var 选中颜色:Long 4)
+  Color 颜色=fun create.color(Color 31,123,210,255)
+}
+if{fun long.equal(var 选中颜色:Long 5)
+  Color 颜色=fun create.color(Color 31,210,43,255)
+}
+if{fun long.equal(var 选中颜色:Long 6)
+  Color 颜色=fun create.color(Color 31,210,131,255)
+}
+if{fun long.equal(var 选中颜色:Long 7)
+  Color 颜色=fun create.color(Color 210,31,167,255)
+}
+if{fun long.equal(var 选中颜色:Long 8)
+  Color 颜色=fun create.color(Color 217,187,62,255)
+}
+if{fun long.equal(var 选中颜色:Long 9)
+  Color 颜色=fun create.color(Color 217,87,62,255)
+}
+if{fun long.equal(var 选中颜色:Long 10)
+  Color 颜色=fun create.color(Color 62,217,214,255)
+}
+if{fun long.equal(var 选中颜色:Long 11)
+  Color 颜色=fun create.color(Color 216,54,88,255)
+}
+endcode

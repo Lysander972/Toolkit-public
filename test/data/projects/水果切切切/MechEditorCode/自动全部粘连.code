@@ -1,0 +1,20 @@
+begincodeV2
+skip:1
+name:自动全部粘连
+lines:
+fun mech.addStep()
+fun debug.print(String 即将自动粘连:Color 255,255,255,255:Bool 0)
+delay fun create.float(Float 5)
+Float 全部=fun mech.deviceNum()
+List 列表=fun create.list()
+Float index=fun create.float(Float 1)
+while{fun float.lt(var index:var 全部)
+  Device 零件=fun mech.getDevice(var index)
+  varf List.列表.add(var 零件)
+  varf Float.index.addEqual(Float 1)
+}
+Device 零件=fun mech.getDevice(Float 0)
+dvf 零件.Device.setManualWeld(Bool 1:var 列表)
+fun debug.print(String 已自动粘连:Color 255,255,255,255:Bool 0)
+fun script.skip()
+endcode

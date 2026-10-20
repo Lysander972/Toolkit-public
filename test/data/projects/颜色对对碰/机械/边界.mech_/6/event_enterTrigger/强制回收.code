@@ -1,0 +1,9 @@
+begincodeV2
+name:强制回收
+lines:
+Mech $from=varf Device.$trigger.mech()
+Device $core=varf Mech.$from.getCoreDevice()
+Float $damage=fun create.float(Float 99999)
+Long $faction=fun create.long(Long 0)
+varf Device.$core.callFun2(String Public'Damage:var $damage:var $faction)
+endcode

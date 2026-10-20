@@ -1,0 +1,16 @@
+begincodeV2
+private:1
+name:Private_Physic'Force_Cycle
+comment:每帧施加拉力回正
+lines:
+//以下是自动防侧翻
+Vector3 向上方向=act 1.this.localToWorldDir(Vector3 0,1,0)
+Float 夹角=fun vector3.angle(var 向上方向:Vector3 0,1,0)
+if{fun float.gte(var 夹角:Float 20)
+  //启用强制旋转回正
+  Vector3 向前方向=act 1.this.localToWorldDir(Vector3 0,0,1)
+  Vector3 叉乘=fun vector3.cross(var 向前方向:var 向上方向)
+  Vector3 向前方向=fun vector3.cross(var 叉乘:Vector3 0,1,0)
+  act 1.this.setRotKinematic(var 向前方向:Vector3 0,1,0)
+}
+endcode

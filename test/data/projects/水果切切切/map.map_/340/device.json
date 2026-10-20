@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:碎片粒子
+ mechFileGUID:96ba5e2730eb4173bf2ab18643d23374
+}

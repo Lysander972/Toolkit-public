@@ -1,0 +1,6 @@
+begincodeV2
+name:Record'StartRecord
+lines:
+Bool Record'Activate=fun create.bool(Bool 1)
+List Record'Events=fun create.list()
+endcode

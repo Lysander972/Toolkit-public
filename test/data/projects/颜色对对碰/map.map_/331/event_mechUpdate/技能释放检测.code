@@ -1,0 +1,13 @@
+begincodeV2
+name:技能释放检测
+lines:
+act 1.this.技能'0()
+act 1.this.技能'1()
+act 1.this.技能'10()
+act 1.this.技能'20()
+act 1.this.技能'30()
+act 1.this.技能'40()
+act 1.this.技能'50()
+act 1.this.技能'60()
+act 1.this.技能'自动暖场()
+endcode

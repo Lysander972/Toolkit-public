@@ -1,0 +1,26 @@
+guid:bdd4209baccf4720a1af424b8a59908b
+meshes:
+[
+ {
+  n:SM_Ship_Station_03
+ }
+]
+matFolderName:c2bdfa604c8540139dcac56fa05cb892
+Albedo.UID:c2bdfa604c8540139dcac56fa05cb892
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,-16.82803,0]
+bounds.size:[268.3693,43.30042,275.5479]

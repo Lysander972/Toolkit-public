@@ -1,0 +1,13 @@
+begincodeV2
+name:Bullet'RegisterModelType
+comment:注册模型
+params:String $key
+lines:
+List $bullet=fun create.list()
+List $bulletUnused=fun create.list()
+Bool $exist=varf Struct.Bullet.contains(var $key)
+if{fun bool.not(var $exist)
+  varf Struct.Bullet.set(var $key:var $bullet)
+  varf Struct.BulletUnused.set(var $key:var $bulletUnused)
+}
+endcode

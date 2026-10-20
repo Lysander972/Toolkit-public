@@ -1,0 +1,14 @@
+[
+ {
+  name:加速2
+  type:Bool
+ }
+ {
+  name:加速3
+  type:Bool
+ }
+ {
+  name:加速4
+  type:Bool
+ }
+]

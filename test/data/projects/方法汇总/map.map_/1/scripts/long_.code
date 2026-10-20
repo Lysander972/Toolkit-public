@@ -1,0 +1,13 @@
+begincodeV2
+name:long_
+lines:
+Long l=fun create.long(Long 0)
+varf Long.l.addEqual(Long 1)
+varf Long.l.minusEqual(Long 1)
+varf Long.l.set(Long 0)
+=varf Long.l.inside(Long 0:Long 0)
+=varf Long.l.abs()
+=varf Long.l.toFloat()
+=varf Long.l.toBinary()
+=varf Long.l.bitSwitch(Float 0:Bool 0)
+endcode

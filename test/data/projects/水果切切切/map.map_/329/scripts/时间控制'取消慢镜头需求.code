@@ -1,0 +1,10 @@
+begincodeV2
+name:时间控制'取消慢镜头需求
+params:String key
+lines:
+Bool exist=varf Dict.时间控制'慢镜头信息.contains(var key)
+if{fun create.bool(var exist)
+  varf Dict.时间控制'慢镜头信息.remove(var key)
+}
+act 1101.this.时间控制'更新时间流速()
+endcode

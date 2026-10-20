@@ -1,0 +1,7 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口封装'队伍buff层数变化
+params:Struct 队伍,Long buff类型,Long 层数变化
+lines:
+varf Device.局外功能设置'使用风格实现.callFun3(String UI_局内风格接口'队伍buff层数变化:var 队伍:var buff类型:var 层数变化)
+endcode

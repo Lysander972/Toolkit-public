@@ -1,0 +1,6 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'开局
+lines:
+fun break()
+endcode

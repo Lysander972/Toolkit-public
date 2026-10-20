@@ -1,0 +1,16 @@
+{
+  "status": "unavailable",
+  "platformContractRelativePath": "docs/ComfyUI_App_Platforms_Index.md",
+  "upstream": [
+    {
+      "repository": "https://github.com/Comfy-Org/workflow_templates",
+      "revision": "cdccb2ee7a7cd0baee4630cf7186283a98ab408f"
+    },
+    {
+      "repository": "https://github.com/Comfy-Org/ComfyUI",
+      "revision": "06c67806bcb36789a1e8e1278c6a764b389ff858"
+    }
+  ],
+  "workflows": [],
+  "reason": "TODO: 将有来源工作流转换为 API graph，核对原生节点、模型库文件名、创建时间和收藏事实后登记验证证据"
+}

@@ -1,0 +1,31 @@
+guid:8c40c94914904bf78c046ee99edd1b59
+meshes:
+[
+ {
+  n:YellowMelon
+ }
+]
+matFolderName:964cf08d4ef74e55bd1cba932deb0ae6
+Albedo.UID:964cf08d4ef74e55bd1cba932deb0ae6
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+OriginType:1
+bounds.center:[0,0,0]
+bounds.size:[0.5216331,0.6060793,0.4961026]

@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:测试'发送聊天消息_通用
+params:String 玩家id,String 头像url,String 玩家昵称,String 聊天内容
+lines:
+String 聊天消息=fun string.Format4(String [{"msg_id"@1 "1","sec_openid"@1 "%1","content"@1 "%2","avatar_url"@1 "%3","nickname"@1 "%4","timestamp"@1 1}]:var 玩家id:var 聊天内容:var 头像url:var 玩家昵称)
+fun simulate_comment(String live_comment:var 聊天消息)
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:UI_局内风格接口'击退队伍
+params:Struct 队伍
+lines:
+fun break()
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+endcode

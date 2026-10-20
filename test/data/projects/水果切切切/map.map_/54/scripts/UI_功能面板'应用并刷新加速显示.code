@@ -1,0 +1,26 @@
+begincodeV2
+name:UI_功能面板'应用并刷新加速显示
+lines:
+if{fun create.bool(var InGame)
+  UIRawImage 勾选图标=varf Canvas.GameUI.readUIRawImage(String root/topForPC/杂项设置区/加速设置区/按钮/icon)
+  UIRawImage 勾选图标1=varf Canvas.GameUI.readUIRawImage(String root/SettingsForMobile/屏蔽器2/子组件排版区/杂项设置区/加速设置区/按钮/icon)
+  UILabel 一倍速=varf Canvas.GameUI.readUILabel(String root/rightpanel/倒计时/显示区/时间流速一倍)
+  Bool 常速=fun bool.not(var 功能开关'玩法加速)
+  varf UILabel.一倍速.active(var 常速)
+  UILabel 二倍速=varf Canvas.GameUI.readUILabel(String root/rightpanel/倒计时/显示区/时间流速二倍)
+  varf UILabel.二倍速.active(var 功能开关'玩法加速)
+  varf UIRawImage.勾选图标.active(var 功能开关'玩法加速)
+  varf UIRawImage.勾选图标1.active(var 功能开关'玩法加速)
+  if{fun create.bool(var 功能开关'玩法加速)
+    if{fun bool.not(var IsGM)
+      act 1101./Scenario.时间控制'设置基础速率(Float 2)
+    }
+    if{fun create.bool(var IsGM)
+      act 1101./Scenario.时间控制'设置基础速率(Float 20)
+    }
+  }
+  if{fun bool.not(var 功能开关'玩法加速)
+    act 1101./Scenario.时间控制'设置基础速率(Float 1)
+  }
+}
+endcode

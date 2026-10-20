@@ -1,0 +1,23 @@
+begincodeV2
+name:内部'播放礼物视频
+params:String 视频文件名
+lines:
+fun ui.2dmode(var 平面UI开关)
+Vector3 全屏UI尺寸=fun screen.uiSize()
+Float UIx=varf Vector3.全屏UI尺寸.x()
+Float 偏移=fun float.multiply(var UIx:Float -0.1)
+Vector3 布局坐标=fun creatVariable.Vector3(Float 0:var 偏移:Float 0)
+Vector3 视频尺寸=fun creatVariable.Vector3(var UIx:var UIx:Float 0)
+Canvas 礼物UI=fun create.canvas(Canvas canvas@1@3EAEAEQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYG6KeG6aKRA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAcAAAAAAAAABmFuY2hvchgHAAAAAAAAAARzaXplBAAAekQAAHpEAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/DHNvZnRNYXNrR3VpZAYgYjg1NjQ5ZDZjZjFhNDBhZTk4OTZkYmI3NmE1ZDlmMDI@3)
+UIRawImage 视频UI=varf Canvas.礼物UI.readUIRawImage(String 视频)
+varf UIRect.图表特效图层_全屏效果.addSon(var 视频UI)
+varf UIRawImage.视频UI.parentAnchor(Enum 7)
+varf UIRawImage.视频UI.alignment(Enum 7)
+varf UIRawImage.视频UI.size(var 视频尺寸)
+varf UIRawImage.视频UI.setCanvasPos(var 布局坐标)
+varf UIRawImage.视频UI.setVideoParam(Float 2)
+=varf UIRawImage.视频UI.setVideo(var 视频文件名)
+Float 当前时间=fun time.scaleTime()
+varf UIRawImage.视频UI.setCustomFloat(String 开始时间:var 当前时间)
+varf List.视频维护表.add(var 视频UI)
+endcode

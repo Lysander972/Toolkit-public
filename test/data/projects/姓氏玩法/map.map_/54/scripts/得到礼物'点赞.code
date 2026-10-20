@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:得到礼物'点赞
+params:Long 数量,Struct 玩家
+lines:
+Long 累积点赞数=act 1101.this.玩家结构'读取_like(var 玩家)
+varf Long.累积点赞数.addEqual(var 数量)
+act 1101.this.玩家结构'设置_like(var 玩家:var 累积点赞数)
+act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 点赞:var 数量)
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_按钮点击_设置收起
+lines:
+varf UIRect.UI_局内'设置面板.active(Bool 0)
+endcode

@@ -1,0 +1,15 @@
+begincodeV2
+name:栅栏'启用动作
+params:Float 目标角度,Float 目标高度,Float 持续时长
+lines:
+Float 栅栏'开始时间=fun time.scaleTime()
+Float 栅栏'结束时间=fun float.add(var 栅栏'开始时间:var 持续时长)
+Float 栅栏'初始角度=fun create.float(var 栅栏'当前角度)
+Float 栅栏'目标角度=fun create.float(var 目标角度)
+Float 栅栏'初始高度=fun create.float(var 栅栏'当前高度)
+Float 栅栏'目标高度=fun create.float(var 目标高度)
+if{fun bool.not(var 栅栏'动画中)
+  act 1101.this.栅栏'播放动画()
+  act 1101.this.loopFun(String 栅栏'播放动画:Float 0)
+}
+endcode

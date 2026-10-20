@@ -1,0 +1,7 @@
+begincodeV2
+name:发射新
+params:Mech 绑定柱子模型,Vector3 局部坐标偏移,Float 大小,Float 爆裂力量,Float 拉伸程度,Float 转速
+lines:
+act 336.this.setPosOffset(Vector3 0,0,0)
+act 336.this.shootDir7(Vector3 0,0,0:String 物体重用新:var 绑定柱子模型:var 局部坐标偏移:var 大小:var 爆裂力量:var 拉伸程度:var 模型名称列表:var 转速)
+endcode

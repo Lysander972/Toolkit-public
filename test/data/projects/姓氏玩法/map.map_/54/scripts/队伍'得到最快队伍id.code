@@ -1,0 +1,6 @@
+begincodeV2
+name:队伍'得到最快队伍id
+return:Long ret
+lines:
+Long ret=fun create.long(var 局内'全局_speed最大id)
+endcode

@@ -1,0 +1,29 @@
+begincodeV2
+name:动画控制'步骤字典_构造_通用
+params:Float 持续时间,Long 插值类型,Long 运动模式,Bool 启用缩放,Float 目标缩放,Bool 启用透明度修改,Float 目标透明度,String 开始时回调,String 结束时回调
+return:Dict 步骤字典
+lines:
+Dict 步骤字典=fun create.dict()
+Bool 是步骤=fun create.bool(Bool 1)
+varf Dict.步骤字典.insert(String 是步骤:var 是步骤)
+//持续时间
+varf Dict.步骤字典.insert(String 持续时间:var 持续时间)
+//0-线性,1-贝塞尔,2-2次幂,3-0.5次幂
+varf Dict.步骤字典.insert(String 插值类型:var 插值类型)
+//运动模式
+varf Dict.步骤字典.insert(String 运动模式:var 运动模式)
+//启用缩放
+varf Dict.步骤字典.insert(String 启用缩放:var 启用缩放)
+//目标缩放
+varf Dict.步骤字典.insert(String 目标缩放:var 目标缩放)
+//目标缩放
+varf Dict.步骤字典.insert(String 运动模式:var 运动模式)
+//启用透明度修改
+varf Dict.步骤字典.insert(String 启用透明度修改:var 启用透明度修改)
+//目标透明度
+varf Dict.步骤字典.insert(String 目标透明度:var 目标透明度)
+//开始时回调
+varf Dict.步骤字典.insert(String 开始时回调:var 开始时回调)
+//结束时回调
+varf Dict.步骤字典.insert(String 结束时回调:var 结束时回调)
+endcode

@@ -1,0 +1,8 @@
+begincodeV2
+private:1
+name:Private_Physic'Force_Cycle
+comment:每帧施加拉力回正
+lines:
+Vector3 force=act 1.this.localToWorldDir(Vector3 0,-1e+03,0)
+act 1.this.addForce(var force:Enum 0)
+endcode

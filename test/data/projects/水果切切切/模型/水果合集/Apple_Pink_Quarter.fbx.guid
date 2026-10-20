@@ -1,0 +1,32 @@
+guid:acde4d6eec7e40ba86256ce8e70c187e
+meshes:
+[
+ {
+  n:Apple_Pink_Quarter
+ }
+]
+matFolderName:eec42005f6e545ba937c8f47a94d90db
+Albedo.UID:eec42005f6e545ba937c8f47a94d90db
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.008490749,0.08111343,0.0001915284]
+bounds.size:[0.2947281,0.1630309,0.2088163]

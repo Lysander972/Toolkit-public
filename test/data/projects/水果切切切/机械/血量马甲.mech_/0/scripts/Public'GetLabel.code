@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetLabel
+return:UILabel label
+lines:
+UILabel label=act 1102./hp.getLabel()
+endcode

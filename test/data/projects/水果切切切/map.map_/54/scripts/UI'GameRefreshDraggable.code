@@ -1,0 +1,45 @@
+begincodeV2
+color:156,0,255
+name:UI'GameRefreshDraggable
+comment:父级靠右,以右侧为参照
+params:UIButton 当前激活面板
+lines:
+if{fun bool.not(var init)
+  Vector3 UI尺寸=fun screen.uiSize()
+  Float UIx=varf Vector3.UI尺寸.x()
+  Float UIy=varf Vector3.UI尺寸.y()
+  Bool init=fun create.bool(Bool 1)
+}
+Float _xMin=fun float.multiply(var UIx:Float -1)
+Vector3 size=varf UIButton.当前激活面板.getSize()
+Float x=varf Vector3.size.x()
+varf Float._xMin.addEqual(var x)
+Float _xMax=fun float.multiply(var UIx:Float 0)
+Float sizeY=varf Vector3.size.y()
+Float half=fun float.multiply(var sizeY:Float 0.5)
+Float _yMin=fun float.multiply(var UIy:Float -0.5)
+varf Float._yMin.addEqual(var half)
+Float _yMax=fun float.multiply(var UIy:Float 0.5)
+varf Float._yMax.minusEqual(var half)
+if{varf UIButton.当前激活面板.isDown()
+  Vector3 按下位置=fun mouse.pos()
+  Vector3 按下UI坐标=varf UIButton.当前激活面板.getCanvasPos()
+}
+if{varf UIButton.当前激活面板.pressing()
+  Vector3 鼠标位置=fun mouse.pos()
+  Vector3 偏移=fun vector3.minus(var 鼠标位置:var 按下位置)
+  Vector3 偏移=fun screen.fromPixel(var 偏移)
+  Float x=varf Vector3.偏移.x()
+  Float y=varf Vector3.偏移.y()
+  Float x=fun float.multiply(var x:var UIx)
+  Float y=fun float.multiply(var y:var UIy)
+  Vector3 偏移=fun creatVariable.Vector3(var x:var y:Float 0)
+  Vector3 p=fun vector3.add(var 按下UI坐标:var 偏移)
+  Float x=varf Vector3.p.x()
+  Float y=varf Vector3.p.y()
+  Float x=fun float.clamp(var x:var _xMin:var _xMax)
+  Float y=fun float.clamp(var y:var _yMin:var _yMax)
+  Vector3 p=fun creatVariable.Vector3(var x:var y:Float 0)
+  varf UIButton.当前激活面板.setCanvasPos(var p)
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+color:255,0,255
+name:Rotating'Application
+lines:
+Float $angle=fun float.lerp(Float -180:Float 0:var RotateRate)
+Vector3 $top=fun vector3.rotateAround(Vector3 0,1,0:Vector3 1,0,-1:var $angle)
+Vector3 $front=fun vector3.rotateAround(Vector3 0,0,1:Vector3 1,0,-1:var $angle)
+act 1.this.setRotKinematic(var $front:var $top)
+endcode

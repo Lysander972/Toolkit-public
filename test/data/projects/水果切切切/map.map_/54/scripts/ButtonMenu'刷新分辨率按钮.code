@@ -1,0 +1,44 @@
+begincodeV2
+name:ButtonMenu'刷新分辨率按钮
+lines:
+UIButton button=varf Canvas.MenuUI.readUIButton(String panel/分辨率选择/排版区/buttons/1)
+Long value=fun create.long(Long 0)
+if{fun long.equal(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 126,126,126,255)
+}
+UIButton button=varf Canvas.MenuUI.readUIButton(String panel/分辨率选择/排版区/buttons/2)
+Long value=fun create.long(Long 1)
+if{fun long.equal(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 126,126,126,255)
+}
+UIButton button=varf Canvas.MenuUI.readUIButton(String panel/分辨率选择/排版区/buttons/3)
+Long value=fun create.long(Long 2)
+if{fun long.equal(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 126,126,126,255)
+}
+UIButton button=varf Canvas.MenuUI.readUIButton(String panel/分辨率选择/排版区/buttons/4)
+Long value=fun create.long(Long 3)
+if{fun long.equal(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 126,126,126,255)
+}
+UIButton button=varf Canvas.MenuUI.readUIButton(String panel/分辨率选择/排版区/buttons/5)
+Long value=fun create.long(Long 4)
+if{fun long.equal(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var 场外功能设置'分辨率选项:var value)
+  varf UIButton.button.setColor(Color 126,126,126,255)
+}
+endcode

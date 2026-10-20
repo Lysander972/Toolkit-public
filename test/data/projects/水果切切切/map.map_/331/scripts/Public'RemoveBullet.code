@@ -1,0 +1,7 @@
+begincodeV2
+name:Public'RemoveBullet
+comment:注入各种子弹
+params:String key,Long amount
+lines:
+=act 1.this.Skills'Decrease(var key:var amount)
+endcode

@@ -1,0 +1,72 @@
+begincodeV2
+name:常态动画_每帧
+lines:
+Bool 启用过每帧循环=fun create.bool(Bool 1)
+Device 目标核心=varf Mech.目标队伍柱子.getCoreDevice()
+//底部悬停时间
+Float 本周期内用时=fun create.float(Float 0)
+Float 周期开始时间=fun time.time()
+while{fun float.lt(var 本周期内用时:var 悬空周期)
+  Float 当前时间=fun time.time()
+  Float 本周期内用时=fun float.minus(var 当前时间:var 周期开始时间)
+  //直接使用常态时悬停坐标
+  Vector3 绝对坐标=varf Device.目标核心.localToWorldPos(var 常态局部坐标)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  //应用移动和旋转
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+//抬起时间
+Float 本周期内用时=fun create.float(Float 0)
+Float 周期开始时间=fun time.time()
+while{fun float.lt(var 本周期内用时:var 抬起周期)
+  Float 当前时间=fun time.time()
+  Float 本周期内用时=fun float.minus(var 当前时间:var 周期开始时间)
+  //计算周期内的插值比例
+  Float 周期内比例=fun float.division(var 本周期内用时:var 抬起周期)
+  Float 周期内比例=fun float.clamp(var 周期内比例:Float 0:Float 1)
+  Float 周期内比例=fun float.lerp(Float 0:Float 1:var 周期内比例)
+  //计算高度浮动值和基础坐标
+  Vector3 高度浮动=fun vector3.multilply1(var 常态举起高度:var 周期内比例:var 整体缩放)
+  Vector3 相对坐标=fun vector3.add(var 常态局部坐标:var 高度浮动)
+  Vector3 绝对坐标=varf Device.目标核心.localToWorldPos(var 相对坐标)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  //应用移动和旋转
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+//落下时间
+Float 本周期内用时=fun create.float(Float 0)
+Float 周期开始时间=fun time.time()
+while{fun float.lt(var 本周期内用时:var 落下周期)
+  Float 当前时间=fun time.time()
+  Float 本周期内用时=fun float.minus(var 当前时间:var 周期开始时间)
+  //计算周期内的插值比例
+  Float 周期内比例=fun float.division(var 本周期内用时:var 落下周期)
+  Float 周期内比例=fun float.clamp(var 周期内比例:Float 0:Float 1)
+  Float 周期内比例=fun float.lerp(Float 1:Float 0:var 周期内比例)
+  //计算高度浮动值和基础坐标
+  Vector3 高度浮动=fun vector3.multilply1(var 常态举起高度:var 周期内比例:var 整体缩放)
+  Vector3 相对坐标=fun vector3.add(var 常态局部坐标:var 高度浮动)
+  Vector3 绝对坐标=varf Device.目标核心.localToWorldPos(var 相对坐标)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  //应用移动和旋转
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+fun screen.shake(var 震屏:Float 1000:Float 0.9)
+act 1.this.按剩余比例应用事件(var 应用剩余效果比例)
+act 1.this.按比例应用事件(var 应用全部效果比例)
+Bool 仍有buff=act 1.this.挂载事件列表检测()
+if{fun bool.not(var 仍有buff)
+  varf Mech.this.setCustomBool(String 开始离场:Bool 1)
+}
+Bool 开始离场=varf Mech.this.customBool(String 开始离场)
+if{fun create.bool(var 开始离场)
+  act 1.this.按比例应用事件(Float 1)
+  act 1.this.离场动画()
+}
+endcode

@@ -1,0 +1,176 @@
+begincodeV2
+color:0,255,151
+name:UI'EnterSettlement
+params:Long $winner,Long $blue,Long $red
+lines:
+act 1101.this.UI'QuitMenu()
+act 1101.this.UI'QuitGame()
+if{fun create.bool(var InSettlement)
+  fun break()
+}
+Bool InSettlement=fun create.bool(Bool 1)
+Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQwABHR5cGUGBlVJUmVjdARuYW1lBgpiYWNrZ3JvdW5kA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAAt3aWR0aEV4dGVuZBgBAAAAAAAAAAxoZWlnaHRFeHRlbmQYAQAAAAAAAAAEc2l6ZQQAAIA/AACAPwAAgD8FY29sb3IMAAAAAAAAAAAAAAAAAAAAAAtCb3JkZXJXaWR0aAEAAAAABlJhZGl1cwEAAAAABHNvbnMQAwARCAAEdHlwZQYKVUlSYXdJbWFnZQRuYW1lBgfml6DlkI0wA1BvcwQAAAAAAABIQgAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAIUQAANZCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/CGZpbGVHdWlkBiAwNWYwNTU2OGJlNzE0MjVhYjExN2I4MDJmZWIyOWZiZBEeAAR0eXBlBgdUZXh0UHJvBG5hbWUGBXRpdGxlA1BvcwQAAAAAAACgwgAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAASEQAAJZDAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGDOiTnemYn+iOt+iDnAhGb250U2l6ZQEAAMBCC2xpbmVTcGFjaW5nAQAAgD8KRmFjZURpbGF0ZQHNzMw9CWJVTkRFUkxBWQUBDVVuZGVybGF5Q29sb3IMAAAAAAAAAAAAAAAAAACAPw5VbmRlcmxheU9mZnNldAQAAIA/AACAvwAAAAAQVW5kZXJsYXlTb2Z0bmVzcwEAAIA/DG91dGxpbmVXaWR0aAHNzMw9D291dGxpbmVEaXN0YW5jZQTNzMw9zczMPc3MzD0Mb3V0bGluZUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8GYkJFVkVMBQENU3BlY3VsYXJDb2xvcgwAAIA/AACAPwAAgD8AAIA/CkxpZ2h0QW5nbGUB2w9JPw1TcGVjdWxhclBvd2VyAQAAgD8MUmVmbGVjdGl2aXR5AQAAcEEHRGlmZnVzZQGamZk+B0FtYmllbnQBmpmZPgVCZXZlbAEAAAA/C0JldmVsT2Zmc2V0AQAAAAAKQmV2ZWxXaWR0aAEAAAAADkJldmVsUm91bmRuZXNzAQAAgD8KQmV2ZWxDbGFtcAEAAAAAER4ABHR5cGUGB1RleHRQcm8EbmFtZQYFc2NvcmUDUG9zBAAAAAAAAEjDAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAADIQwAAyEIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8EdGV4dAYLMTYwMCA6IDE2MDAIRm9udFNpemUBAABgQgtsaW5lU3BhY2luZwEAAIA/CkZhY2VEaWxhdGUBzczMPQliVU5ERVJMQVkFAQ1VbmRlcmxheUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8OVW5kZXJsYXlPZmZzZXQEAACAPwAAgL8AAAAAEFVuZGVybGF5U29mdG5lc3MBAACAPwxvdXRsaW5lV2lkdGgBzczMPQ9vdXRsaW5lRGlzdGFuY2UEzczMPc3MzD3NzMw9DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/BmJCRVZFTAUBDVNwZWN1bGFyQ29sb3IMAACAPwAAgD8AAIA/AACAPwpMaWdodEFuZ2xlAdsPST8NU3BlY3VsYXJQb3dlcgEAAIA/DFJlZmxlY3Rpdml0eQEAAHBBB0RpZmZ1c2UBmpmZPgdBbWJpZW50AZqZmT4FQmV2ZWwBAAAAPwtCZXZlbE9mZnNldAEAAAAACkJldmVsV2lkdGgBAAAAAA5CZXZlbFJvdW5kbmVzcwEAAIA/CkJldmVsQ2xhbXABAAAAAA@3@3)
+UIRect $background=varf Canvas.UI.readUIRect(String background)
+UILabel label=varf Canvas.UI.readUILabel(String background/title)
+if{fun long.equal(var $winner:Long 1)
+  varf UILabel.label.text(String 蓝队获胜)
+}
+if{fun long.equal(var $winner:Long 2)
+  varf UILabel.label.text(String 红队获胜)
+}
+UILabel label=varf Canvas.UI.readUILabel(String background/score)
+String $text1=fun string.AddColor(var $blue:Color 0,151,205,255,UI-蓝色)
+String $text2=fun string.AddColor(var $red:Color 255,26,0,255,UI-红色)
+String $text=fun string.add1(var $text1:String  @1 :var $text2)
+varf UILabel.label.text(var $text)
+delay fun create.float(Float 2)
+varf UIRect.$background.del(Float 0)
+Bool $exist=varf Canvas.SettlementUI.exist()
+if{fun bool.not(var $exist)
+  fun ui.2dmode(Bool 1)
+  Canvas SettlementUI=fun create.canvas(Canvas guid@10e5ae075677c40ae878933b7dde99df4)
+}
+Long 比赛模式=fun create.long(Long 0)
+Long $totalScore=fun long.add(var LastScorePool:var ScorePool)
+UIRect $panel=varf Canvas.SettlementUI.readUIRect(String 结算界面/scroll/panel)
+List $idList=varf Dict.PlayerMap.names()
+//判断败方分数
+if{fun long.equal(var $winner:Long 0)
+  Float 败方连胜池=fun create.float(Float 0)
+  Float 败方礼物积分=fun create.float(Float 0)
+}
+if{fun long.equal(var $winner:Long 1)
+  Float 败方连胜池=varf Long.红方连胜池.toFloat()
+  Float 败方礼物积分=varf Long.红队礼物积分.toFloat()
+}
+if{fun long.equal(var $winner:Long 2)
+  Float 败方连胜池=varf Long.蓝方连胜池.toFloat()
+  Float 败方礼物积分=varf Long.蓝队礼物积分.toFloat()
+}
+//点击这里写注释
+Long 蓝队总积分=fun create.long(Long 0)
+Long 红队总积分=fun create.long(Long 0)
+Float N=varf List.$idList.count()
+List playerList=fun create.list()
+Float i=fun create.float(Float 0)
+while{fun float.lt(var i:var N)
+  String ID=varf List.$idList.readString(var i)
+  Struct $player=varf Dict.PlayerMap.readStruct(var ID:Bool 1)
+  if{varf Struct.$player.contains(String 排行榜名次)
+    Long $team=varf Struct.$player.getLong(String team:Bool 1)
+    Long $score=varf Struct.$player.getLong(String score:Bool 1)
+    if{fun long.equal(var $team:Long 1)
+      varf Long.蓝队总积分.addEqual(var $score)
+    }
+    if{fun long.equal(var $team:Long 2)
+      varf Long.红队总积分.addEqual(var $score)
+    }
+    varf List.playerList.add(var $player)
+  }
+  varf Float.i.addEqual(Float 1)
+}
+Float N=varf List.playerList.count()
+//失败扣除40%的连胜给胜利方瓜分
+Float 败方连胜池=fun float.multiply(var 败方连胜池:Float 0.4)
+Float 败方连胜池=varf Float.败方连胜池.ceiling()
+if{fun long.equal(var $winner:Long 0)
+  UILabel label=varf Canvas.SettlementUI.readUILabel(String 结算界面/winer/label)
+  varf UILabel.label.text(String 平局)
+  varf UILabel.label.setColor(Color 192,192,192,255,格子-中立)
+}
+if{fun long.equal(var $winner:Long 1)
+  UILabel label=varf Canvas.SettlementUI.readUILabel(String 结算界面/winer/label)
+  varf UILabel.label.text(String 蓝队胜利)
+  varf UILabel.label.setColor(Color 0,151,205,255,UI-蓝色)
+}
+if{fun long.equal(var $winner:Long 2)
+  UILabel label=varf Canvas.SettlementUI.readUILabel(String 结算界面/winer/label)
+  varf UILabel.label.text(String 红队胜利)
+  varf UILabel.label.setColor(Color 255,26,0,255,UI-红色)
+}
+List 排行榜输入=fun create.list()
+Float i=fun create.float(Float 0)
+//根据连胜计算积分加成
+while{fun float.lt(var i:var N)
+  Struct $player=varf List.playerList.readStruct(var i)
+  Long $team=varf Struct.$player.getLong(String team:Bool 0)
+  Long $streak=varf Struct.$player.getLong(String streak:Bool 0)
+  Long $score=varf Struct.$player.getLong(String score:Bool 0)
+  Float 占比=fun create.float(Float 0)
+  if{fun long.equal(var $team:Long 1)
+    if{fun long.gt(var 蓝队总积分:Long 0)
+      Float 占比=fun long.division(var $score:var 蓝队总积分)
+    }
+  }
+  if{fun long.equal(var $team:Long 2)
+    if{fun long.gt(var 红队总积分:Long 0)
+      Float 占比=fun long.division(var $score:var 红队总积分)
+    }
+  }
+  if{fun long.equal(var $team:var $winner)
+    varf Long.$streak.addEqual(Long 1)
+    Float tmp=fun float.multiply(var 败方礼物积分:var 占比)
+    if{fun long.equal(var 比赛模式:Long 0)
+      Float tmp=fun float.multiply(var 败方连胜池:var 占比)
+      Long 抢夺连胜=varf Float.tmp.toLong()
+      varf Long.$streak.addEqual(var 抢夺连胜)
+      varf Struct.$player.set(String 抢夺连胜:var 抢夺连胜)
+    }
+  }
+  if{fun long.notEqual(var $team:var $winner)
+    if{fun long.equal(var 比赛模式:Long 0)
+      Float tmp=varf Long.$streak.toFloat()
+      //失败扣除40%的连胜
+      Float tmp=fun float.multiply(var tmp:Float 0.6)
+      Long $streak=varf Float.tmp.toLong()
+    }
+  }
+  if{fun long.gt(var $streak:Long 0)
+    Float addRate=act 1101.this.连胜积分加成(var $streak)
+    Float _积分=varf Long.$score.toFloat()
+    Float tmp=fun float.multiply(var _积分:var addRate)
+    Float tmp=varf Float.tmp.ceiling()
+    Long 连胜加成=varf Float.tmp.toLong()
+    varf Long.$score.addEqual(var 连胜加成)
+    varf Struct.$player.set(String 连胜加成:var 连胜加成)
+  }
+  if{fun long.equal(var $team:var $winner)
+    Float tmp=varf Long.$totalScore.toFloat()
+    Float tmp=fun float.multiply(var tmp:var 占比)
+    Long 抢夺积分池=varf Float.tmp.toLong()
+    varf Long.$score.addEqual(var 抢夺积分池)
+    varf Struct.$player.set(String 抢夺积分池:var 抢夺积分池)
+  }
+  Dict D=fun create.dict()
+  String uid=varf Struct.$player.getString(String id:Bool 1)
+  varf Dict.D.insert(String uid:var uid)
+  varf Dict.D.insert(String score:var $score)
+  varf Dict.D.insert(String wins:var $streak)
+  Float $teamF=varf Long.$team.toFloat()
+  varf Dict.D.insert(String team:var $teamF)
+  String name=varf Struct.$player.getString(String name:Bool 1)
+  varf Dict.D.insert(String name:var name)
+  Bool bLose=fun long.notEqual(var $team:var $winner)
+  varf Dict.D.insert(String bLose:var bLose)
+  varf List.排行榜输入.add(var D)
+  varf Float.i.addEqual(Float 1)
+}
+varf List.playerList.sort2(Bool 0:String score)
+varf List.排行榜输入.sort2(Bool 0:String score)
+Dict req=fun create.dict()
+varf Dict.req.insert(String list:var 排行榜输入)
+Float $winnerF=varf Long.$winner.toFloat()
+varf Dict.req.insert(String winTeam:var $winnerF)
+if{fun create.bool(var IsGM)
+  fun string.popNotify(String GM模式不会上传排行榜，以避免污染数据:Float 3)
+}
+if{fun bool.not(var IsGM)
+  async Dict ack=fun dynamicCallRet(String DanmuAddRank:var req)
+  List 排行榜结果=varf Dict.ack.readList(String List:Bool 1)
+  act 1101.this.UI'SettlementItem(var $panel:var playerList:var 排行榜结果:var $winner)
+}
+Vector3 size=varf UIRect.$panel.getSize()
+Float 宽度=varf Vector3.size.x()
+UIRect $scroll=varf Canvas.SettlementUI.readUIRect(String 结算界面/scroll)
+act 1101.this.界面显示'滑动区域适配(var N:var 宽度:var $panel:var $scroll:Float 112:Float 3)
+endcode

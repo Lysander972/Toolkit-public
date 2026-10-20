@@ -1,0 +1,26 @@
+begincodeV2
+color:104,0,255
+name:Bullet'RegisterBulletType
+comment:注册子弹实体
+params:String bulletType,String modelKey,String group,Long teamLimit,Long globalLimit
+lines:
+Long zero=fun create.long(Long 0)
+Struct bulletInfo=fun create.struct()
+varf Struct.bulletInfo.set(String modelKey:var modelKey)
+Bool useDefault=fun string.equal(var group:String )
+if{fun create.bool(var useDefault)
+  String group=fun create.string(var bulletType)
+}
+varf Struct.bulletInfo.set(String group:var group)
+varf Struct.Bullet'RegInfo.set(var bulletType:var bulletInfo)
+Bool exist=varf Struct.Bullet'GroupInf.contains(var group)
+if{fun bool.not(var exist)
+  Struct groupInfo=fun create.struct()
+  varf Struct.groupInfo.set(String teamLimit:var teamLimit)
+  varf Struct.groupInfo.set(String team1Current:var zero)
+  varf Struct.groupInfo.set(String team2Current:var zero)
+  varf Struct.groupInfo.set(String globalLimit:var globalLimit)
+  varf Struct.groupInfo.set(String globalCurrent:var zero)
+  varf Struct.Bullet'GroupInf.set(var group:var groupInfo)
+}
+endcode

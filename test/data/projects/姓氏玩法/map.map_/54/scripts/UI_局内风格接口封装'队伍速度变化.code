@@ -1,0 +1,7 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口封装'队伍速度变化
+params:Struct 玩家,Struct 队伍,Long 速度变化值,Bool 主动触发
+lines:
+varf Device.局外功能设置'使用风格实现.callFun4(String UI_局内风格接口'队伍速度变化:var 玩家:var 队伍:var 速度变化值:var 主动触发)
+endcode

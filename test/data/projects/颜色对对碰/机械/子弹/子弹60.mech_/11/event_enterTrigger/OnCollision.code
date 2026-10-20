@@ -1,0 +1,6 @@
+begincodeV2
+name:OnCollision
+lines:
+Mech $belongsTo=varf Device.$trigger.mech()
+act 1.0.造成伤害(var $belongsTo)
+endcode

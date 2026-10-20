@@ -1,0 +1,5 @@
+begincodeV2
+name:Skills'2300_OnBirth
+lines:
+act 1.this.Public'设置延迟死亡(Bool 1:Float 0)
+endcode

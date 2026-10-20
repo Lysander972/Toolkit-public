@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局外结算页面'是否本界面
+return:Bool ret
+lines:
+Bool ret=fun long.equal(var UI'状态枚举:Long 2)
+endcode

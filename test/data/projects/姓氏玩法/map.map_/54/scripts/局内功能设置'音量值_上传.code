@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'音量值_上传
+lines:
+Dict data=fun map.load()
+varf Dict.data.insert(String 音量存档标志位:var 局内功能设置'音量值)
+act 1101./主界面.工具'上传存档(Bool 1)
+endcode

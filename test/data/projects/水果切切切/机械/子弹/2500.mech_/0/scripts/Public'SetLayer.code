@@ -1,0 +1,9 @@
+begincodeV2
+name:Public'SetLayer
+params:Float layer1,Float layer2
+lines:
+act 22.7.setLayer(Float 12)
+act 1100.6.setLayer(var layer2)
+fun break()
+=fun create.float(var layer1)
+endcode

@@ -1,0 +1,24 @@
+begincodeV2
+name:内部'视频动图刷新
+lines:
+Float 当前时间=fun time.scaleTime()
+Float 序号=varf List.视频维护表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  UIRawImage 视频图片=varf List.视频维护表.readUIRawImage(var 序号)
+  Float 开始时间=varf UIRawImage.视频图片.customFloat(String 开始时间)
+  Float 已播放时间=fun float.minus(var 当前时间:var 开始时间)
+  Color 显示颜色=fun create.color(Color 255,255,255,255)
+  if{fun float.gte(var 已播放时间:Float 0.8)
+    Float 透明度比例=fun float.minus(Float 1.2:var 已播放时间)
+    Float 透明度比例=fun float.division(var 透明度比例:Float 0.4)
+    Float 透明度比例=fun float.clamp(var 透明度比例:Float 0:Float 1)
+    varf Color.显示颜色.setA(var 透明度比例)
+  }
+  varf UIRawImage.视频图片.setColor(var 显示颜色)
+  if{fun float.gte(var 已播放时间:Float 1.2)
+    varf UIRawImage.视频图片.del(Float 0)
+    varf List.视频维护表.remove(var 序号)
+  }
+}
+endcode

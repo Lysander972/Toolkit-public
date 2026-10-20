@@ -1,0 +1,30 @@
+guid:ac027bc31e7849e58919bcc923e989ea
+meshes:
+[
+ {
+  n:Lemon_Half
+ }
+]
+matFolderName:876fae443e3c4b07b59f0d6492257bdd
+Albedo.UID:876fae443e3c4b07b59f0d6492257bdd
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[3.054738E-07,0.07369861,5.587935E-08]
+bounds.size:[0.2363068,0.1473972,0.2363063]

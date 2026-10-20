@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:f3cb6c5bdf6b4544b9e34f60d88f6743
+color:255,255,255
+name:玩家结构'设置_globalRankMonthly
+comment:设置玩家世界榜月榜排名,只在本地修改
+params:Struct 结构,Long globalRankMonthly
+lines:
+varf Struct.结构.set(String globalRankMonthly:var globalRankMonthly)
+endcode

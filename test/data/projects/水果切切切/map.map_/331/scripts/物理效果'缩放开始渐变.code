@@ -1,0 +1,15 @@
+begincodeV2
+name:物理效果'缩放开始渐变
+params:Float 目标缩放
+lines:
+Float 物理效果'缩放初始值=fun create.float(var 物理效果'缩放当前值)
+Float 物理效果'缩放目标值=fun create.float(var 目标缩放)
+Float 物理效果'缩放开始时间=fun time.scaleTime()
+if{fun bool.not(var 物理效果'缩放动画)
+  if{fun create.bool(var 物理效果'启用物理)
+    varf Mech.Self.enablePhysics(Bool 0)
+  }
+  act 1.this.物理效果'缩放渐变动画()
+  act 1.this.loopFun(String 物理效果'缩放渐变动画:Float 0)
+}
+endcode

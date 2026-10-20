@@ -1,0 +1,119 @@
+begincodeV2
+color:255,244,0
+name:UI_局外结算页面'项目显示
+params:UIRect panel,List playerList,List 周榜结果,List 月榜结果,Long 获胜者
+lines:
+varf List.playerList.sort2(Bool 0:String score)
+Float i=fun create.float(Float 0)
+Float N=varf List.playerList.count()
+while{fun float.lt(var i:var N)
+  fun ui.2dmode(Bool 1)
+  Canvas itemUI=fun create.canvas(Canvas canvas@1@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@3)
+  UIRect item=varf Canvas.itemUI.readUIRect(String item)
+  Struct 玩家=varf List.playerList.readStruct(var i)
+  String uid=act 1101.this.玩家结构'读取_id(var 玩家)
+  //队伍主题色
+  Long team=act 1101.this.玩家结构'读取_team(var 玩家)
+  String 字符串id=fun create.string(var team)
+  Struct 玩家队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+  Color 主题色=act 1101.this.队伍结构'读取_color1(var 玩家队伍)
+  Color 主题色=varf Color.主题色.lerp(Color 0,0,0,255:Float 0.2)
+  varf UIRect.item.setColor(var 主题色)
+  //连胜数显示
+  Long streak=act 1101.this.玩家结构'读取_streak(var 玩家)
+  if{fun long.lte(var streak:Long 0)
+    UIRect rect=varf Canvas.itemUI.readUIRect(String item/连胜)
+    varf UIRect.rect.active(Bool 0)
+  }
+  if{fun long.gt(var streak:Long 0)
+    Long 连胜加成=act 1101.this.玩家结构'读取_连胜加成(var 玩家)
+    String text=act 1101.this.工具'数值简化_中文(var 连胜加成)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/连胜加成)
+    varf UILabel.label.text(var text)
+    String s=fun string.Format1(String %1连胜:var streak)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/连胜/label)
+    varf UILabel.label.text(var s)
+  }
+  //获胜者边框
+  UIRect rect=varf Canvas.itemUI.readUIRect(String item/获胜者边框)
+  Bool 获胜=fun long.equal(var team:var 获胜者)
+  varf UIRect.rect.active(var 获胜)
+  //抢夺积分池显示
+  Long 抢夺积分池=act 1101.this.玩家结构'读取_抢夺积分池(var 玩家)
+  String text=act 1101.this.工具'数值简化_中文(var 抢夺积分池)
+  UILabel label=varf Canvas.itemUI.readUILabel(String item/抢积分池)
+  varf UILabel.label.text(var text)
+  //抢夺连胜
+  Long 抢夺连胜=act 1101.this.玩家结构'读取_抢夺连胜(var 玩家)
+  if{fun long.gt(var 抢夺连胜:Long 0)
+    UILabel label=varf Canvas.itemUI.readUILabel(String item/抢连胜)
+    String 抢连胜显示=fun string.Format1(String 抢%1连:var 抢夺连胜)
+    varf UILabel.label.text(var 抢连胜显示)
+  }
+  //名次显示
+  UILabel 名次=varf Canvas.itemUI.readUILabel(String item/名次)
+  Float rank=fun float.add(var i:Float 1)
+  varf UILabel.名次.text(var rank)
+  UIRawImage rankIcon=varf Canvas.itemUI.readUIRawImage(String item/rankIcon)
+  Bool 是前三=fun float.gt(Float 4:var rank)
+  varf UIRawImage.rankIcon.active(var 是前三)
+  if{fun create.bool(var 是前三)
+    varf UILabel.名次.text(String )
+    if{fun float.Approximately(var rank:Float 1)
+      String s=fun create.string(String icon_color_medal_gold.webp)
+    }
+    if{fun float.Approximately(var rank:Float 2)
+      String s=fun create.string(String icon_color_medal_silver.webp)
+    }
+    if{fun float.Approximately(var rank:Float 3)
+      String s=fun create.string(String icon_color_medal_bronze.webp)
+    }
+    varf UIRawImage.rankIcon.loadPic(var s)
+  }
+  //name显示
+  String name=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+  UILabel 昵称=varf Canvas.itemUI.readUILabel(String item/昵称)
+  varf UILabel.昵称.text(var name)
+  //头像显示
+  String 头像url=act 1101.this.玩家结构'读取_avatarUrl(var 玩家)
+  UIRawImage avatarIcon=varf Canvas.itemUI.readUIRawImage(String item/avatar/mask/Avatar)
+  varf UIRawImage.avatarIcon.SetURLPic(var 头像url)
+  //总分显示
+  UILabel 积分label=varf Canvas.itemUI.readUILabel(String item/积分)
+  Long score=act 1101.this.玩家结构'读取_score(var 玩家)
+  String text=act 1101.this.工具'数值简化_中文(var score)
+  varf UILabel.积分label.text(var text)
+  //周榜
+  Float 周榜序号=varf List.周榜结果.find2(String uid:var uid)
+  if{fun float.gte(var 周榜序号:Float 0)
+    Dict D=varf List.周榜结果.readDict(var 周榜序号)
+    Long fromRank=varf Dict.D.readLong(String fromRank:Bool 0)
+    Long toRank=varf Dict.D.readLong(String toRank:Bool 0)
+    Bool 排名上升=fun long.gt(var fromRank:var toRank)
+    UIRawImage upIcon=varf Canvas.itemUI.readUIRawImage(String item/up)
+    varf UIRawImage.upIcon.active(var 排名上升)
+    UILabel 世界排名label=varf Canvas.itemUI.readUILabel(String item/世界排名)
+    if{fun long.lt(var toRank:Long 0)
+      varf UILabel.世界排名label.text(String 9999+)
+    }
+    if{fun long.gte(var toRank:Long 0)
+      Long 显示排名=fun long.add(var toRank:Long 1)
+      varf UILabel.世界排名label.text(var 显示排名)
+    }
+  }
+  if{fun float.lt(var 周榜序号:Float 0)
+    UILabel 世界排名label=varf Canvas.itemUI.readUILabel(String item/世界排名)
+    varf UILabel.世界排名label.text(String 9999+)
+    Long toRank=fun create.long(Long -1)
+  }
+  //月榜,实际上没有用到
+  Float 月榜序号=varf List.月榜结果.find2(String uid:var uid)
+  =fun create.float(var 月榜序号)
+  //点击这里写注释
+  Long 组编号=act 1101.this.动图'计算组编号(var toRank)
+  UIRawImage worldRankIcon=varf Canvas.itemUI.readUIRawImage(String item/worldRankIcon)
+  act 1101.this.动图'应用动图(var worldRankIcon:var 组编号:Long 0:Bool 0)
+  varf UIRect.panel.addSon(var item)
+  varf Float.i.addEqual(Float 1)
+}
+endcode

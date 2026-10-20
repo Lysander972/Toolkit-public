@@ -1,0 +1,16 @@
+begincodeV2
+guid:80124453188b49c0b58acfb4891c9327
+color:255,255,255
+name:玩家结构'读取_completeness
+comment:读取玩家的全部数据是否已经完备,即已下场并下载全部数据
+params:Struct 结构
+return:Bool ret
+lines:
+Bool 包含=varf Struct.结构.contains(String completeness)
+if{fun create.bool(var 包含)
+  Bool ret=varf Struct.结构.getBool(String completeness:Bool 1)
+}
+if{fun bool.not(var 包含)
+  Bool ret=fun create.bool(Bool 0)
+}
+endcode

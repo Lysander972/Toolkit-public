@@ -1,0 +1,43 @@
+begincodeV2
+color:255,0,0
+name:得到礼物'3
+params:Long $count,Struct $player
+lines:
+if{fun bool.not(var $init)
+  Long $multiplier=act 1101.this.读取整数规则(String 礼物3积分)
+  Float $extraTime=varf Long.$multiplier.toFloat()
+  Float $extraTime=fun float.division(var $extraTime:Float 20000)
+  Bool $init=fun create.bool(Bool 1)
+}
+act 1101.this.礼物音效(Float 0.5)
+Float $countF=varf Long.$count.toFloat()
+Float $timeAdd=fun float.multiply(var $countF:var $extraTime)
+varf Float.GameDuration.addEqual(var $timeAdd)
+Long $Add=fun long.multiply(var $multiplier:var $count)
+Long $score=varf Struct.$player.getLong(String score:Bool 0)
+varf Long.$score.addEqual(var $Add)
+varf Long.ScorePool.addEqual(var $Add)
+Long $likes=varf Struct.$player.getLong(String likes:Bool 0)
+varf Long.$likes.addEqual(Long 1)
+String $name=varf Struct.$player.getString(String name:Bool 0)
+Long $team=varf Struct.$player.getLong(String team:Bool 0)
+if{fun long.equal(var $team:Long 1)
+  varf Long.蓝队礼物积分.addEqual(var $Add)
+}
+if{fun long.equal(var $team:Long 2)
+  varf Long.红队礼物积分.addEqual(var $Add)
+}
+String $str=fun string.Format1(String 爆裂魔方×%1:var $count)
+if{fun long.equal(var $team:Long 1)
+  act 1101./Scenario.GiftModel'SetGiftModel(String 礼物3蓝:var $str:var $player:Bool 0:Long 0)
+}
+if{fun long.equal(var $team:Long 2)
+  act 1101./Scenario.GiftModel'SetGiftModel(String 礼物3红:var $str:var $player:Bool 0:Long 0)
+}
+//从这里开始写自己的礼物处理逻辑
+Long 强化子弹数=fun long.multiply(var $count:Long 1)
+act 1101./Scenario.Base'AddBullet(var $team:String 30:var 强化子弹数:var $player)
+Long 普通子弹数=fun long.multiply(var $count:Long 600)
+act 1101./Scenario.Base'AddBullet(var $team:String 0:var 普通子弹数:var $player)
+//点击这里写注释
+endcode

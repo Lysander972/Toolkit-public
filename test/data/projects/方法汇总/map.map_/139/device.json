@@ -1,0 +1,11 @@
+type:264
+pos:[-1.40514,0,5.064844]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ boolHideUI:1
+ boolLight:true
+ smoke:1
+ colorValue:[0,0,0,1]
+ smokeTimeLen:1
+}

@@ -1,0 +1,5 @@
+begincodeV2
+name:方法1
+lines:
+act 123.this.setTexture(String )
+endcode

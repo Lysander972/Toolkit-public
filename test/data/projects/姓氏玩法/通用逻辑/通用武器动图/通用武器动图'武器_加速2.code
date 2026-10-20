@@ -1,0 +1,8 @@
+begincodeV2
+guid:2384af86252a452e84b7f8d3de8bbe1b
+name:通用武器动图'武器_加速2
+params:UIRect 关联节点,UIRect 父节点,Bool 常态
+lines:
+Canvas 布局=fun create.canvas(Canvas guid@152485e2fe7a44461bae4294e4bd275b7)
+act 1101.this.通用武器动图'节点初始化(var 布局:var 常态:Long 19:Long 56:var 关联节点:var 父节点)
+endcode

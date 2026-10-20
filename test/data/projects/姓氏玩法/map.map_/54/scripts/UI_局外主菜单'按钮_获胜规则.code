@@ -1,0 +1,12 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'按钮_获胜规则
+params:UIButton 按钮
+lines:
+Bool 是否启用=varf UIButton.按钮.customBool(String 是否启用)
+if{fun create.bool(var 是否启用)
+  Long 参数=varf UIButton.按钮.customLong(String 参数)
+  Long UI_局外主菜单'获胜规则=fun create.long(var 参数)
+  act 1101.this.UI_局外主菜单'主菜单_刷新全部按钮()
+}
+endcode

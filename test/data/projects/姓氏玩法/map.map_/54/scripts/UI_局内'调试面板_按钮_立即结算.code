@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'调试面板_按钮_立即结算
+lines:
+if{act 1101./主界面.工具'是GM()
+  Bool 局内_游戏规则'强制结束=fun create.bool(Bool 1)
+}
+endcode

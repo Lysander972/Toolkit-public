@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:攻方碰撞箱
+ mechFileGUID:b33596f6c4af4f5abda0da3c3c8c46ed
+}

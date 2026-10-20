@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../res/schemas/package.json",
+  "name": "@toolkit/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./ToolkitMcp.ts",
+    "./http": "./HttpMcp.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "2.1.3",
+    "@modelcontextprotocol/sdk": "1.31.0",
+    "@toolkit/host": "workspace:*",
+    "effect": "4.0.0",
+    "zod": "4.6.4"
+  }
+}

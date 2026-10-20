@@ -1,0 +1,24 @@
+type:362
+pos:[0,0.501,0]
+quat:[0,-1,0,-4.371139E-08]
+scale:1.44
+ext:
+{
+ logicName:头像框
+ modelGuid:50997b2ab2a84971b339fe0c3ea5d0bc
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Device Transparent"
+ shader:
+ [
+  {
+   n:_PaintColor
+   type:Color
+   v:[1,1,1,1]
+  }
+  {
+   n:_Tiling
+   type:Vector
+   v:[1,1,0]
+  }
+ ]
+}

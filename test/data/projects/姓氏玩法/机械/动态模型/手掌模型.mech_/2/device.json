@@ -1,0 +1,39 @@
+type:362
+pos:[0,-1,0]
+quat:[0.04295671,-0.9650065,-0.2585727,-0.007574428]
+scale:100
+ext:
+{
+ logicName:手掌2
+ modelGuid:64f4f2afc3a9443189451e82f975af59
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/ForceField"
+ shader:
+ [
+  {
+   n:_Power
+   type:Float
+   v:1
+  }
+  {
+   n:_BaseColor
+   type:Color
+   v:[1,0.8469988,0,1]
+  }
+  {
+   n:_Rate
+   type:Float
+   v:1
+  }
+  {
+   n:_TimeFactor
+   type:Float
+   v:0
+  }
+  {
+   n:_CellDensity
+   type:Float
+   v:0
+  }
+ ]
+}

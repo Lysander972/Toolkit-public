@@ -1,0 +1,80 @@
+begincodeV2
+color:255,243,0
+name:Player'SelectFaction
+params:String input,Struct player
+return:Bool ret
+lines:
+Bool ret=fun create.bool(Bool 0)
+if{fun create.bool(var 模式'固定阵营)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  String uidproxy=varf Struct.player.getString(String idproxy:Bool 1)
+  Bool select2=fun string.equal(var uid:var uidproxy)
+  Bool bool1=fun string.equal(var input:String 1)
+  Bool bool2=fun string.equal(var input:String 上)
+  Bool bool3=fun string.equal(var input:String 2)
+  Bool bool4=fun string.equal(var input:String 下)
+  if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+    if{fun bool.not(var select2)
+      Long team=fun create.long(Long 1)
+      varf Struct.player.set(String team:var team)
+      Bool ret=fun create.bool(Bool 1)
+    }
+    if{fun create.bool(var select2)
+      Long team=fun create.long(Long 2)
+      varf Struct.player.set(String team:var team)
+      Bool ret=fun create.bool(Bool 1)
+    }
+  }
+}
+if{fun bool.not(var 模式'固定阵营)
+  if{fun string.equal(var input:String 1)
+    Long team=fun create.long(Long 1)
+    varf Struct.player.set(String team:var team)
+    Bool ret=fun create.bool(Bool 1)
+  }
+  if{fun string.equal(var input:String 上)
+    Long team=fun create.long(Long 1)
+    varf Struct.player.set(String team:var team)
+    Bool ret=fun create.bool(Bool 1)
+  }
+  if{fun string.equal(var input:String 2)
+    Long team=fun create.long(Long 2)
+    varf Struct.player.set(String team:var team)
+    Bool ret=fun create.bool(Bool 1)
+  }
+  if{fun string.equal(var input:String 下)
+    Long team=fun create.long(Long 2)
+    varf Struct.player.set(String team:var team)
+    Bool ret=fun create.bool(Bool 1)
+  }
+}
+if{fun create.bool(var ret)
+/*  Mech 任务=fun createAIMech(String 玩家信息下载任务:Float 0:Vector3 0,0,1e+05:Vector3 0,0,1:Enum 0:Bool 0)
+/*  varf Mech.任务.callFun1(String 下载玩家信息:var player)
+  //这里将需要处理的新玩家放入列表，等待每帧循环中慢慢下载玩家的排名信息。不能在这里处理是因为在弹幕消息中等待会导致同时收到多个弹幕消息时后面的消息处理会被跳过
+  varf List.PBroadcastQueue.add(var player)
+  //适配新版,上传数据
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  String uidproxy=varf Struct.player.getString(String idproxy:Bool 1)
+  Bool save=fun string.equal(var uid:var uidproxy)
+  if{fun create.bool(var save)
+    Dict 选队信息=fun create.dict()
+    varf Dict.选队信息.insert(String id:var uid)
+    Float teamF=varf Long.team.toFloat()
+    varf Dict.选队信息.insert(String team:var teamF)
+    fun dynamicCall(String Douyin_UploadUserGroupInfo:var 选队信息)
+  }
+  //只有点赞效果但没有积分
+  Long team=varf Struct.player.getLong(String team:Bool 1)
+  if{fun long.equal(var team:Long 1)
+    act 1101./Scenario.炮塔'攻方放置或升级(var player:Long 0)
+    //免费仙女棒
+    =act 1101.this.施加礼物效果'蓝1(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var team:Long 2)
+    act 1101./Scenario.炮塔'守方放置或升级(var player:Long 0)
+    //免费仙女棒
+    =act 1101.this.施加礼物效果'红1(Long 1:var player:Bool 0)
+  }
+}
+endcode

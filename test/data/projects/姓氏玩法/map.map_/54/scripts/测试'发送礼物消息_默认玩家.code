@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:测试'发送礼物消息_默认玩家
+params:Long 礼物序号,Long 礼物数量
+lines:
+String id=act 1101.this.测试'默认玩家_得到id()
+String avatarUrl=act 1101.this.测试'默认玩家_得到avatarUrl()
+String name=act 1101.this.测试'默认玩家_得到name()
+act 1101.this.测试'发送礼物消息_通用(var id:var 礼物序号:var 礼物数量:var avatarUrl:var name)
+endcode

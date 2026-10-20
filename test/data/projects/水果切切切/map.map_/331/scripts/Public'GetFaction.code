@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'GetFaction
+comment:得到此子弹的攻击力
+return:Long faction
+lines:
+Long faction=fun create.long(var Attr'Faction)
+endcode

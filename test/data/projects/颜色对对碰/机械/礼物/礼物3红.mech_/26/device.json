@@ -1,0 +1,34 @@
+type:337
+pos:[0.21,-0.21,0.21]
+quat:[-0.1464467,-0.353553,0.3535531,-0.8535537]
+ext:
+{
+ logicName:25
+ startLifetimeMultiplier:1
+ startSpeed:[1,1]
+ startSize:[0.1,0.1]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:1
+ boolBurst:true
+ modelFileGuids:291c453f18344739a8af650c8426097b;
+ rateOverTime:1
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.2500038:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,1"
+ ]
+ rotSpeed:5.235988
+ renderMode:4
+ renderAlign:1
+ lengthScale:2
+ simulationSpace:1
+ picFileGuid:f5a692f77d7748c790d480155da05715
+}

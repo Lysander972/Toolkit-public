@@ -1,0 +1,24 @@
+begincodeV2
+color:255,244,0
+name:UI'GameRefreshScore
+params:Long $buleOccupied,Long $redOccupied
+lines:
+if{fun bool.not(var $init)
+  UIRect $bule=varf Canvas.GameUI.readUIRect(String root/top/比分/蓝方)
+  UIRect $red=varf Canvas.GameUI.readUIRect(String root/top/比分/红方)
+  UILabel $buleLabel=varf Canvas.GameUI.readUILabel(String root/top/比分/蓝方分数)
+  UILabel $redLabel=varf Canvas.GameUI.readUILabel(String root/top/比分/红方分数)
+  Bool $init=fun create.bool(Bool 1)
+}
+if{fun bool.not(var GameStart)
+  fun break()
+}
+Long $total=fun long.add(var $buleOccupied:var $redOccupied)
+Float $buleRatio=fun long.division(var $buleOccupied:var $total)
+Float $redRatio=fun long.division(var $redOccupied:var $total)
+varf UIRect.$bule.fillMode(Enum 0:var $buleRatio)
+varf UIRect.$red.fillMode(Enum 0:var $redRatio)
+varf UILabel.$buleLabel.text(var $buleOccupied)
+varf UILabel.$redLabel.text(var $redOccupied)
+act 1101.this.UI'刷新倒计时标记位置()
+endcode

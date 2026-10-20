@@ -1,0 +1,14 @@
+begincodeV2
+name:工具'当前角度变换对撞击角度影响
+params:Float 当前角度,Float 目标角度
+return:Float 影响系数
+lines:
+Float 角度差=act 1101.this.工具'变换计算(var 当前角度:var 目标角度)
+Float 角度差绝对值=fun float.abs(var 角度差)
+/*Float 影响系数=fun create.float(Float -1)
+Float 影响系数=fun create.float(Float 1)
+if{fun float.gt(var 角度差绝对值:Float 90)
+/*  Float 影响系数=fun create.float(Float 1)
+  Float 影响系数=fun create.float(Float -1)
+}
+endcode

@@ -1,0 +1,10 @@
+begincodeV2
+color:255,200,0
+name:计算'角度转方向
+params:Float x,Float y
+return:Vector3 世界方向
+lines:
+Vector3 azimuth=fun creatVariable.Vector3(var x:var y:Float 0)
+Vector3 局部方向=act 1.this.Utils'AzimuthToVector(var azimuth)
+Vector3 世界方向=act 1.this.localToWorldDir(var 局部方向)
+endcode

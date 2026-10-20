@@ -1,0 +1,16 @@
+begincodeV2
+name:炮塔'攻方放置
+comment:放出一个不可见的炮塔,每个玩家的攻击cd是共用的,使用互斥量锁住出兵点
+params:Struct player
+return:Mech 玩家炮塔
+lines:
+Float z=fun float.multiply(var 地图宽度:Float 0.5)
+Float z=fun float.add(var z:var 攻方区域长度)
+varf Float.z.minusEqual(Float 40)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 20:var z)
+Vector3 global=fun vector3.add(var relative:var ScenarioOffset)
+Mech 玩家炮塔=act 1101.this.Base'SetBase(Long 1:var global:Vector3 0,0,-1:String 攻方头像:Long 11:var player)
+Float 攻方玩家数=fun map.getCustomFloat(String 攻方玩家数)
+varf Float.攻方玩家数.addEqual(Float 1)
+fun map.setCustomFloat(String 攻方玩家数:var 攻方玩家数)
+endcode

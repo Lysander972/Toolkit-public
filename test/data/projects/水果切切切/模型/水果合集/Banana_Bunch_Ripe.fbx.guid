@@ -1,0 +1,33 @@
+guid:daa0f62b88ce40538e0212add8b9c066
+meshes:
+[
+ {
+  n:Banana_Bunch
+ }
+]
+matFolderName:e74ce4b771d74c7ea1014a38e9a941c9
+Albedo.UID:e74ce4b771d74c7ea1014a38e9a941c9
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+bounds.center:[0,0.2412942,0.00524956]
+bounds.size:[0.5748177,0.4824372,0.8228235]

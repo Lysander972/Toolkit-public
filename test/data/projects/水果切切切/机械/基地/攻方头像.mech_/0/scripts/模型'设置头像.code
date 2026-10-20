@@ -1,0 +1,6 @@
+begincodeV2
+name:模型'设置头像
+params:String url
+lines:
+String AvatarUrl=fun create.string(var url)
+endcode

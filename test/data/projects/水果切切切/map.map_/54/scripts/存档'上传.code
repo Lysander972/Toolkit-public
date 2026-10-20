@@ -1,0 +1,20 @@
+begincodeV2
+name:存档'上传
+params:Bool 强制
+lines:
+Float 当前时间=fun time.time()
+Float 时间间隔=fun float.minus(var 当前时间:var 存档'上次上传)
+Bool 可上传=fun float.gte(var 时间间隔:Float 100)
+Bool 满足强制间隔=fun float.gte(var 时间间隔:Float 1)
+if{fun bool.or(var 可上传:var 强制)
+  if{fun create.bool(var 满足强制间隔)
+    Float 存档'上次上传=fun time.time()
+    fun map.save()
+  }
+  if{fun bool.not(var 满足强制间隔)
+    delay fun create.float(Float 2)
+    Float 存档'上次上传=fun time.time()
+    fun map.save()
+  }
+}
+endcode

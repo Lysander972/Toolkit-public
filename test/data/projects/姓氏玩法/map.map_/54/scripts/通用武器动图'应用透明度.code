@@ -1,0 +1,26 @@
+begincodeV2
+name:通用武器动图'应用透明度
+params:Canvas 布局,Float 最终透明度
+lines:
+UIRawImage 拖尾=varf Canvas.布局.readUIRawImage(String 根节点/拖尾)
+UIRawImage 武器=varf Canvas.布局.readUIRawImage(String 根节点/拖尾/武器)
+Color 透明颜色=fun create.color(Color 255,255,255,0)
+Color 拖尾显示颜色=varf Color.透明颜色.lerp(Color 255,255,255,191:var 最终透明度)
+Color 武器显示颜色=varf Color.透明颜色.lerp(Color 255,255,255,255:var 最终透明度)
+varf UIRawImage.拖尾.setColor(var 拖尾显示颜色)
+varf UIRawImage.武器.setColor(var 武器显示颜色)
+UIRect 层数显示根节点=varf Canvas.布局.readUIRect(String 根节点/拖尾/武器/层数UI)
+if{varf UIRect.层数显示根节点.isActive()
+  UIRect 层数显示边框=varf Canvas.布局.readUIRect(String 根节点/拖尾/武器/层数UI/边框)
+  UILabel 层数显示数值=varf Canvas.布局.readUILabel(String 根节点/拖尾/武器/层数UI/数值)
+  Color 层数底颜色=fun create.color(Color 0,0,0,0)
+  Color 层数底颜色=varf Color.层数底颜色.lerp(Color 0,0,0,255:var 最终透明度)
+  varf UIRect.层数显示根节点.setColor(var 层数底颜色)
+  Color 层数边框颜色=fun create.color(Color 255,255,255,0)
+  Color 层数边框颜色=varf Color.层数边框颜色.lerp(Color 255,255,255,255:var 最终透明度)
+  varf UIRect.层数显示边框.setColor(var 层数边框颜色)
+  Color 层数文字颜色=fun create.color(Color 255,255,255,0)
+  Color 层数文字颜色=varf Color.层数文字颜色.lerp(Color 255,255,255,255:var 最终透明度)
+  varf UILabel.层数显示数值.setColor(var 层数文字颜色)
+}
+endcode

@@ -1,0 +1,37 @@
+begincodeV2
+color:221,0,255
+name:技能'1300
+lines:
+String key=fun create.string(String 1300)
+Long position=fun long.rand(Long 3:Long 11)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Long 尝试次数=fun create.long(Long 0)
+  while{fun long.lt(var 尝试次数:Long 5)
+    Bool 可释放=act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+    if{fun bool.not(var 可释放)
+      fun break()
+    }
+    Long rand=fun long.rand(Long 0:Long 2)
+    if{fun long.equal(var rand:Long 0)
+      Bool success=act 1.this.Launcher'攻方出生点放置(var position:Long 1300:var 属性'玩家:Float 1:Float 0:Float 1)
+    }
+/*    if{fun long.equal(var rand:Long 1)
+/*      Bool success=act 1.this.Launcher'攻方出生点放置(var position:Long 1310:var 属性'玩家:Float 1:Float 0:Float 1)
+    }
+    if{fun long.equal(var rand:Long 1)
+      Bool success=act 1.this.Launcher'攻方出生点放置(var position:Long 1320:var 属性'玩家:Float 1:Float 0:Float 1)
+    }
+    if{fun long.equal(var rand:Long 2)
+      Bool success=act 1.this.Launcher'攻方出生点放置(var position:Long 1330:var 属性'玩家:Float 1:Float 0:Float 1)
+    }
+    if{fun create.bool(var success)
+      =act 1.this.Skills'Decrease(var key:Long 1)
+    }
+    if{fun bool.not(var success)
+      fun break()
+    }
+    varf Long.尝试次数.addEqual(Long 1)
+  }
+}
+delay fun create.float(Float 0)
+endcode

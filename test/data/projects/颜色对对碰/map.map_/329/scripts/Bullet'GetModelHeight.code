@@ -1,0 +1,31 @@
+begincodeV2
+name:Bullet'GetModelHeight
+comment:得到模型高度
+params:String $key
+return:Float $height
+lines:
+if{fun string.equal(var $key:String 0)
+  Float $height=fun create.float(Float 1)
+}
+if{fun string.equal(var $key:String 1)
+  Float $height=fun create.float(Float 1)
+}
+if{fun string.equal(var $key:String 10)
+  Float $height=fun create.float(Float 2.05)
+}
+if{fun string.equal(var $key:String 20)
+  Float $height=fun create.float(Float 3.1)
+}
+if{fun string.equal(var $key:String 30)
+  Float $height=fun create.float(Float 1)
+}
+if{fun string.equal(var $key:String 40)
+  Float $height=fun create.float(Float 1)
+}
+if{fun string.equal(var $key:String 50)
+  Float $height=fun create.float(Float 1)
+}
+if{fun string.equal(var $key:String 60)
+  Float $height=fun create.float(Float 0)
+}
+endcode

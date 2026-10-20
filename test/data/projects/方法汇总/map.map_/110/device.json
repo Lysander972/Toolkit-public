@@ -1,0 +1,10 @@
+type:128
+pos:[7.568323,4.768372E-07,-9.688761]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ Color:[0,15.73136,41.73181,1]
+ vfx_WarpAmount:1
+ _FresnelAmount:0.001
+ _FresnelTwirl:50
+}

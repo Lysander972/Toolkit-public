@@ -1,0 +1,6 @@
+begincodeV2
+name:播放礼物动画
+params:String $modelKey,String $text,Struct $player,Bool $skipUI
+lines:
+act 1101./Scenario.GiftModel'SetGiftModel(var $modelKey:var $text:var $player:var $skipUI:Long 0)
+endcode

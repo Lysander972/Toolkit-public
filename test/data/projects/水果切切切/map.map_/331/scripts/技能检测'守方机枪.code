@@ -1,0 +1,7 @@
+begincodeV2
+name:技能检测'守方机枪
+lines:
+act 1.this.技能'解冻检测()
+act 1.this.技能'2910()
+act 1.this.技能'2910_炮塔模型()
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+name:瞄准'移除候选
+params:Mech obj
+lines:
+Float index=varf List.瞄准'候选列表.find(var obj)
+if{fun float.notEqual(var index:Float -1)
+  varf List.瞄准'候选列表.remove(var index)
+}
+endcode

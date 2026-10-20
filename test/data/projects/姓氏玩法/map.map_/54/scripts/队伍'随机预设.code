@@ -1,0 +1,42 @@
+begincodeV2
+color:255,255,255
+name:队伍'随机预设
+comment:随机化生成特定数量的队伍
+params:Long 预设数量
+lines:
+if{fun bool.not(var init)
+  List 未使用姓氏列表=fun create.list()
+  List 姓氏ID表=fun map.excelGetIDList2(String 姓氏表)
+  Float 数量=varf List.姓氏ID表.count()
+  Float 序号=fun create.float(Float 0)
+  while{fun float.lt(var 序号:var 数量)
+    Long ID=varf List.姓氏ID表.readLong(var 序号)
+    String 姓=fun readExcel2_String(var ID:String 姓:String 姓氏表)
+    varf List.未使用姓氏列表.add(var 姓)
+    varf Float.序号.addEqual(Float 1)
+  }
+  Float 数量=varf List.未使用姓氏列表.count()
+  Bool init=fun create.bool(Bool 1)
+}
+Long 创建次数=fun create.long(Long 0)
+while{fun long.lt(var 创建次数:var 预设数量)
+  //随机数,但是前面的大姓概率更高
+  Float 随机=fun math.rand(Float 0:Float 1)
+  Float 概率修正=fun float.pow(var 随机:Float 3)
+  //选择
+  Float 可选姓氏范围=varf List.未使用姓氏列表.count()
+  varf Float.可选姓氏范围.minusEqual(Float 1)
+  Float 可选姓氏范围=fun float.min(var 可选姓氏范围:Float 9)
+  Float 选择序号=fun float.multiply(var 概率修正:var 可选姓氏范围)
+  Float 选择序号=varf Float.选择序号.floor()
+  String 姓=varf List.未使用姓氏列表.readString(var 选择序号)
+  varf List.未使用姓氏列表.remove(var 选择序号)
+  Bool 是否存在=varf Dict.局内'队伍_索引_主题.contains(var 姓)
+  if{fun bool.not(var 是否存在)
+    //预设队伍会被自动激活
+    Struct 队伍=act 1101.this.队伍'新建(var 姓:Bool 1)
+    act 1101.this.队伍结构'设置_activated(var 队伍:Bool 1)
+    varf Long.创建次数.addEqual(Long 1)
+  }
+}
+endcode

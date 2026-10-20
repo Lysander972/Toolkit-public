@@ -1,0 +1,6 @@
+begincodeV2
+name:瞄准'得到目标
+return:Mech target
+lines:
+Mech target=fun creatVariable.mech(var 瞄准'选中目标)
+endcode

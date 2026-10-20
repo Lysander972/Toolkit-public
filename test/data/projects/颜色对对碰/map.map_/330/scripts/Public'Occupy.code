@@ -1,0 +1,28 @@
+begincodeV2
+color:8,0,255
+name:Public'Occupy
+comment:占领
+params:Long $faction
+lines:
+act 1.this.Private'UpdateFaction(var $faction)
+if{fun bool.not(var Occupied)
+  if{fun long.equal(var Faction:Long 1)
+    Float ActualMaxHP=fun float.multiply(var maxHP:var BlueMultiple0)
+    act 1.this.Private'UpdateHP(var ActualMaxHP)
+  }
+  if{fun long.equal(var Faction:Long 2)
+    Float ActualMaxHP=fun float.multiply(var maxHP:var RedMultiple0)
+    act 1.this.Private'UpdateHP(var ActualMaxHP)
+  }
+}
+if{fun create.bool(var Occupied)
+  if{fun long.equal(var Faction:Long 1)
+    Float ActualMaxHP=fun float.multiply(var maxHP:var BlueMultiple1)
+    act 1.this.Private'UpdateHP(var ActualMaxHP)
+  }
+  if{fun long.equal(var Faction:Long 2)
+    Float ActualMaxHP=fun float.multiply(var maxHP:var RedMultiple1)
+    act 1.this.Private'UpdateHP(var ActualMaxHP)
+  }
+}
+endcode

@@ -1,0 +1,7 @@
+version:1
+setting:
+{
+ layerTextureTilling:5
+ gravity:1
+ groundType:4
+}

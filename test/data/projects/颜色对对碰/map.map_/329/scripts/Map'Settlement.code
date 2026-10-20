@@ -1,0 +1,16 @@
+begincodeV2
+name:Map'Settlement
+lines:
+Bool GameStarted=fun create.bool(Bool 0)
+if{fun long.gt(var BuleOccupied:var RedOccupied)
+  act 1101./弹幕.Game'Settlement(Long 1:var BuleOccupied:var RedOccupied)
+}
+if{fun long.lt(var BuleOccupied:var RedOccupied)
+  act 1101./弹幕.Game'Settlement(Long 2:var BuleOccupied:var RedOccupied)
+}
+if{fun long.equal(var BuleOccupied:var RedOccupied)
+  act 1101./弹幕.Game'Settlement(Long 0:var BuleOccupied:var RedOccupied)
+}
+delay fun create.float(Float 2)
+act 1101.this.Map'Reset()
+endcode

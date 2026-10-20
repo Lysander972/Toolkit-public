@@ -1,0 +1,14 @@
+begincodeV2
+name:清空玩家数据请求体
+params:String uid
+return:Dict D
+lines:
+Dict D=fun create.dict()
+varf Dict.D.insert(String uid:var uid)
+Long delta=fun create.long(Long -99999999999999)
+varf Dict.D.insert(String score:var delta)
+Long delta=fun create.long(Long -99999999999999)
+varf Dict.D.insert(String wins:var delta)
+String name=fun create.string(String 无效数据)
+varf Dict.D.insert(String name:var name)
+endcode

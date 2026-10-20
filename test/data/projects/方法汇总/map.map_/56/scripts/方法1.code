@@ -1,0 +1,12 @@
+begincodeV2
+name:方法1
+lines:
+act 336.this.generate0(String )
+act 336.this.shootDir0(Vector3 0,0,0:String )
+act 336.this.shootDir8(Vector3 0,0,0:String :Any :Any :Any :Any :Any :Any :Any :Any )
+act 336.this.setVelocity(Float 0)
+act 336.this.setAntiImpulse(Float 0)
+act 336.this.setPosOffset(Vector3 0,0,0)
+act 336.this.setGenerator(String )
+act 336.this.enableRelativeVelocity(Bool 0)
+endcode

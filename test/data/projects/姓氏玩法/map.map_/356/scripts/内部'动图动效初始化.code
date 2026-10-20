@@ -1,0 +1,24 @@
+begincodeV2
+name:内部'动图动效初始化
+params:UIRawImage 动图,Bool 正向
+lines:
+//初始化相位
+Vector3 布局坐标=varf UIRawImage.动图.getCanvasPos()
+Float 初始x相位=fun math.rand(Float -5:Float 5)
+Float 初始y相位=fun math.rand(Float -5:Float 5)
+Float 动图x周期=fun math.rand(Float 0.7:Float 1)
+Float 动图y周期=fun math.rand(Float 0.7:Float 1)
+Float 动图x冲刺周期=fun math.rand(Float 0.6:Float 0.8)
+Float 动画x幅度=fun math.rand(Float 4:Float 6)
+Float 动画y幅度=fun math.rand(Float 3:Float 5)
+varf UIRawImage.动图.setCustomBool(String 正向:var 正向)
+varf UIRawImage.动图.setCustomBool(String 在冲刺:Bool 0)
+varf UIRawImage.动图.setCustomVector3(String 初始坐标:var 布局坐标)
+varf UIRawImage.动图.setCustomFloat(String 动图x周期:var 动图x周期)
+varf UIRawImage.动图.setCustomFloat(String 动图y周期:var 动图y周期)
+varf UIRawImage.动图.setCustomFloat(String 动图x冲刺周期:var 动图x冲刺周期)
+varf UIRawImage.动图.setCustomFloat(String 初始x相位:var 初始x相位)
+varf UIRawImage.动图.setCustomFloat(String 初始y相位:var 初始y相位)
+varf UIRawImage.动图.setCustomFloat(String 动画x幅度:var 动画x幅度)
+varf UIRawImage.动图.setCustomFloat(String 动画y幅度:var 动画y幅度)
+endcode

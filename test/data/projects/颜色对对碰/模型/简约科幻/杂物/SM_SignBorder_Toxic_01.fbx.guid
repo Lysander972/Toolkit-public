@@ -1,0 +1,31 @@
+guid:484fd32c02594eeabe10c75e086f2438
+meshes:
+[
+ {
+  n:SM_SignBorder_Toxic_01
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0,-1.117587E-08]
+bounds.size:[1.167529,1.167529,0.1441912]

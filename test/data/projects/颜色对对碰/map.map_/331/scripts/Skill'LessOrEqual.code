@@ -1,0 +1,9 @@
+begincodeV2
+color:169,0,255
+name:Skill'LessOrEqual
+params:String $key,Long $value
+return:Bool $ret
+lines:
+Long $current=varf Struct.SkillCount.getLong(var $key:Bool 0)
+Bool $ret=fun long.lte(var $current:var $value)
+endcode

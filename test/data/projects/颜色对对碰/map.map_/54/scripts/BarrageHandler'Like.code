@@ -1,0 +1,12 @@
+begincodeV2
+name:BarrageHandler'Like
+params:Dict $msgObj
+lines:
+String $uid=varf Dict.$msgObj.readString(String uid:Bool 0)
+=varf Dict.$msgObj.detail()
+Struct $player=varf Dict.PlayerMap.readStruct(var $uid:Bool 0)
+//如果观众没选择阵营就点赞，帮他选择阵营
+Struct $player=act 1101.this.Player'InfoAutoFill(var $player:var $msgObj)
+Long $likeCount=varf Dict.$msgObj.readLong(String likes:Bool 0)
+act 1101.this.得到礼物'点赞(var $likeCount:var $player)
+endcode

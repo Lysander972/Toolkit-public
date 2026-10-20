@@ -1,0 +1,14 @@
+begincodeV2
+skip:1
+name:额
+comment:全部移动到原点并调整朝向
+lines:
+fun mech.addStep()
+delay fun create.float(Float 10)
+Float max=fun mech.deviceNum()
+Float i=fun create.float(Float 1)
+while{fun float.lt(var i:var max)
+  Device dev=fun mech.getDevice(var i)
+  varf Float.i.addEqual(Float 1)
+}
+endcode

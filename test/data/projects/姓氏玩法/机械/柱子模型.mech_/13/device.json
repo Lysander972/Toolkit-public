@@ -1,0 +1,41 @@
+type:337
+pos:[4.371145E-09,-3,3.821376E-16]
+quat:[0.5000003,-0.4999996,0.5000002,0.4999999]
+ext:
+{
+ logicName:炸弹加速
+ startLifetimeMultiplier:2
+ startSpeed:[200,250]
+ startSize:[0.3,0.4]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[0.270969,0,0,1]
+ startColor.max:[1,0,0,1]
+ customData1.x:3
+ gravityModifierMultiplier:5
+ emission:true
+ rateOverTime:30
+ radius:1.2
+ shapeScale:[3,3,3]
+ colorOverLifetime:
+ [
+  "0:1,1,1,0"
+  "0.07188525:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:0.5"
+  "0.1922258:1"
+  "0.4999938:1"
+  "0.7499909:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ renderMode:1
+ velocityScale:0.05
+ matType:1
+}

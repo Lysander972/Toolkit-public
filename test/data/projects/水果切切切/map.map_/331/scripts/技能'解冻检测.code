@@ -1,0 +1,12 @@
+begincodeV2
+color:221,0,255
+name:技能'解冻检测
+lines:
+if{fun create.bool(var 冰冻'冰冻)
+  Float 当前=fun time.scaleTime()
+  if{fun float.gte(var 当前:var 冰冻'结束时间)
+    act 1.this.冰冻'开关冰冻(Bool 0)
+  }
+}
+delay fun create.float(Float 0.1)
+endcode

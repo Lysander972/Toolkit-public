@@ -1,0 +1,12 @@
+type:1
+pos:[0,0,0]
+enableManualWeld:true
+attach:
+[
+ 2
+ 3
+]
+ext:
+{
+ boolHideCore:true
+}

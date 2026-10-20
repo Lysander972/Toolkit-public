@@ -1,0 +1,7 @@
+begincodeV2
+name:工具'得到位置数量
+return:Float 位置数量
+lines:
+Float 位置数量=varf Dict.队伍UI映射.count()
+Float 位置数量=fun float.max(var 位置数量:var 场景'最小位置数量)
+endcode

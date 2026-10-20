@@ -1,0 +1,6 @@
+begincodeV2
+name:粒子'炮口火焰特效
+params:Vector3 坐标,Vector3 向前,Vector3 向上,Float 大小
+lines:
+act 336./爆炸效果发射器.发射(var 坐标:var 向前:var 向上:Float 20:var 大小)
+endcode

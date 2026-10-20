@@ -1,0 +1,9 @@
+begincodeV2
+color:0,138,255
+name:Bullet'OnDestroy
+comment:摧毁事件
+params:Mech $obj,Long $type,Long $faction
+lines:
+act 1101.this.Bullet'ReleaseLimit(var $type:var $faction)
+act 1101.this.Bullet'DestructionEffect(var $obj:var $type:var $faction)
+endcode

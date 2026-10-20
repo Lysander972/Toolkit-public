@@ -1,0 +1,5 @@
+begincodeV2
+name:播放仙女棒效果
+lines:
+act 337./仙女棒粒子.emit(Float 1)
+endcode

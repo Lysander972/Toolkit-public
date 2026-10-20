@@ -1,0 +1,12 @@
+begincodeV2
+guid:ada0753197cd44afa032e2da161ecf53
+color:255,255,255
+name:队伍结构'读取_name
+params:Struct 结构
+return:String ret
+lines:
+String ret=fun create.string(String )
+if{varf Struct.结构.contains(String name)
+  String ret=varf Struct.结构.getString(String name:Bool 1)
+}
+endcode

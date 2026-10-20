@@ -1,0 +1,41 @@
+begincodeV2
+name:UI_Loop'LikeAnimationUpdate
+lines:
+Float $index1=varf List.LikeAnimations.count()
+while{fun float.gt(var $index1:Float 0)
+  varf Float.$index1.minusEqual(Float 1)
+  UIRect $parent=varf List.LikeAnimations.readUIRect(var $index1)
+  List $likes=varf UIRect.$parent.customList(String likes)
+  Float $index2=varf List.$likes.count()
+  while{fun float.gt(var $index2:Float 0)
+    varf Float.$index2.minusEqual(Float 1)
+    UIRawImage $icon=varf List.$likes.readUIRawImage(var $index2)
+    Float $start=varf UIRawImage.$icon.customFloat(String start)
+    Float $now=fun time.time()
+    Float $delta=fun float.minus(var $now:var $start)
+    Float $rate=fun float.division(var $delta:Float 1)
+    if{fun float.lt(var $rate:Float 1)
+      Vector3 $pos=fun vector3.lerp(Vector3 0.5,0,0:Vector3 0.5,1,0:var $rate)
+      Color $color=varf UIRawImage.$icon.customColor(String color)
+      Color $color1=varf Color.$color.copy()
+      varf Color.$color1.setA(Float 0)
+      Color $color=varf Color.$color.lerp(var $color1:var $rate)
+      varf UIRawImage.$icon.pos(var $pos)
+      varf UIRawImage.$icon.setColor(var $color)
+    }
+    if{fun float.gte(var $rate:Float 1)
+      varf UIRawImage.$icon.del(Float 0)
+      varf List.$likes.remove(var $index2)
+    }
+  }
+  Float $total=varf List.$likes.count()
+  if{fun float.Approximately(var $total:Float 0)
+    varf List.LikeAnimations.remove(var $index1)
+  }
+}
+Float $total=varf List.LikeAnimations.count()
+if{fun float.Approximately(var $total:Float 0)
+  act 1101.this.DisableFun(String UI_Loop'LikeAnimationUpdate)
+  Bool LikeAnimationLp=fun create.bool(Bool 0)
+}
+endcode

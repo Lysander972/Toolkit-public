@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:测试'发送聊天消息_默认玩家
+params:String 聊天内容
+lines:
+String id=act 1101.this.测试'默认玩家_得到id()
+String avatarUrl=act 1101.this.测试'默认玩家_得到avatarUrl()
+String name=act 1101.this.测试'默认玩家_得到name()
+act 1101.this.测试'发送聊天消息_通用(var id:var avatarUrl:var name:var 聊天内容)
+endcode

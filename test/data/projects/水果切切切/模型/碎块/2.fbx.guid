@@ -1,0 +1,18 @@
+guid:21a2f3bcd7e74a2fa689f56184a761b0
+meshes:
+[
+ {
+  n:Icosphere_cell.003
+ }
+]
+matFolderName:e9b9b5a560a04c579953302f8c072731
+Albedo.UID:e9b9b5a560a04c579953302f8c072731
+Metal.UID:b00689c68d3a450996697aa042d8df29
+shaderName:"Shader Graphs/ParticleMesh"
+shader:
+[
+]
+scale:1.7
+OriginType:1
+bounds.center:[0,0,0]
+bounds.size:[2.310064,2.585658,2.274323]

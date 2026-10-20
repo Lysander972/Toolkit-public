@@ -1,0 +1,41 @@
+guid:3d89ad7522a842638880bd2323e12e22
+meshList:
+[
+ {
+  n:Turret
+ }
+]
+meshes:
+[
+ {
+  n:Base
+ }
+]
+materials:
+[
+ {
+  matFolderName:e692e6ca88ef414299a86b3c24463198
+  Albedo.UID:e692e6ca88ef414299a86b3c24463198
+  shaderName:"Shader Graphs/Diffuse"
+  shader:
+  [
+   {
+    n:_Metallic
+    type:Float
+    v:0
+   }
+   {
+    n:_Smoothness
+    type:Float
+    v:0
+   }
+   {
+    n:_EmmitColor
+    type:Color
+    v:[11.98431,11.98431,11.98431,0]
+   }
+  ]
+ }
+]
+bounds.center:[8.554477E-05,0.008119806,0.0009517288]
+bounds.size:[0.02594315,0.01624709,0.01980827]

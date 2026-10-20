@@ -1,0 +1,11 @@
+begincodeV2
+color:123,255,0
+name:局内逻辑'延迟效果_标记生效比例
+params:Dict 延迟效果注册信息,Float 新生效部分
+lines:
+Float 新生效部分=fun float.clamp(var 新生效部分:Float 0:Float 1)
+Float 已生效比例=varf Dict.延迟效果注册信息.readFloat(String 已生效比例:Bool 0)
+varf Float.已生效比例.addEqual(var 新生效部分)
+Float 已生效比例=fun float.clamp(var 已生效比例:Float 0:Float 1)
+varf Dict.延迟效果注册信息.insert(String 已生效比例:var 已生效比例)
+endcode

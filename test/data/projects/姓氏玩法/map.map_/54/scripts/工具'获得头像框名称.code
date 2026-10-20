@@ -1,0 +1,52 @@
+begincodeV2
+color:255,255,255
+name:工具'获得头像框名称
+params:Struct 玩家
+return:String name
+lines:
+String name=fun create.string(String )
+if{act 1101.this.玩家结构'是否已下场(var 玩家)
+  Long rank=act 1101.this.玩家结构'读取_globalRank(var 玩家)
+  if{fun long.equal(var rank:Long 0)
+    String name=fun create.string(String 百强1.webp)
+  }
+  //2
+  if{fun long.equal(var rank:Long 1)
+    String name=fun create.string(String 百强2.webp)
+  }
+  //3
+  if{fun long.equal(var rank:Long 2)
+    String name=fun create.string(String 百强3.webp)
+  }
+  //4~10
+  Bool b1=fun long.gt(var rank:Long 2)
+  Bool b2=fun long.lte(var rank:Long 9)
+  if{fun bool.and(var b1:var b2)
+    String name=fun create.string(String 百强4-20.webp)
+  }
+  //11~20
+  Bool b1=fun long.gt(var rank:Long 9)
+  Bool b2=fun long.lte(var rank:Long 19)
+  if{fun bool.and(var b1:var b2)
+    String name=fun create.string(String 百强4-20.webp)
+  }
+  //21~40
+  Bool b1=fun long.gt(var rank:Long 19)
+  Bool b2=fun long.lte(var rank:Long 39)
+  if{fun bool.and(var b1:var b2)
+    String name=fun create.string(String 百强21-40.webp)
+  }
+  //41~70
+  Bool b1=fun long.gt(var rank:Long 39)
+  Bool b2=fun long.lte(var rank:Long 69)
+  if{fun bool.and(var b1:var b2)
+    String name=fun create.string(String 百强41-70.webp)
+  }
+  //71~100
+  Bool b1=fun long.gt(var rank:Long 69)
+  Bool b2=fun long.lte(var rank:Long 99)
+  if{fun bool.and(var b1:var b2)
+    String name=fun create.string(String 百强71-100.webp)
+  }
+}
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:特效
+params:Float index,Float scale
+lines:
+act 1.this.setRotKinematic(Vector3 0,0,-1:Vector3 0,1,0)
+act 145.1.play(var index:var scale)
+endcode

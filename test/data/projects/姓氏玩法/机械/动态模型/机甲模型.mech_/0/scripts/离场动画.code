@@ -1,0 +1,42 @@
+begincodeV2
+name:离场动画
+lines:
+if{fun create.bool(var 启用过每帧循环)
+  act 1.this.DisableFun(String 常态动画_每帧)
+}
+act 1.this.刷新参数()
+//离场部分
+Float 开始时间=fun time.scaleTime()
+Float 已播放时间=fun create.float(Float 0)
+while{fun float.lt(var 已播放时间:var 离场持续时间)
+  Float 当前时间=fun time.scaleTime()
+  Float 已播放时间=fun float.minus(var 当前时间:var 开始时间)
+  Float 播放比例=fun float.division(var 已播放时间:var 离场持续时间)
+  Float 播放比例=fun float.clamp(var 播放比例:Float 0:Float 1)
+  //计算基础相对坐标
+  Vector3 当前局部坐标=fun vector3.lerp(var 常态局部坐标:var 离场结束局部坐标:var 播放比例)
+  //计算上下跳动
+  Float 总已用时间=fun float.minus(var 当前时间:var 出生时间)
+/*  Float 角度=fun float.mod(var 总已用时间:var 旋转周期)
+/*  Float 角度=fun float.division(var 角度:var 旋转周期)
+/*  Float 角度=fun float.multiply(var 角度:Float 360)
+/*  Vector3 旋转局部向前方向=fun vector3.rotateAround(Vector3 1,0,0:Vector3 0,1,0:var 角度)
+  Vector3 旋转局部向前方向=fun creatVariable.Vector3(Float 0:Float 0:Float 1)
+  Float 角度=fun float.mod(var 总已用时间:var 浮动周期)
+  Float 角度=fun float.division(var 角度:var 浮动周期)
+  Float 角度=fun float.multiply(var 角度:Float 360)
+  Float 高度插值=fun float.triangle.sin(var 角度)
+  Vector3 高度浮动=fun vector3.multilply1(Vector3 0,0.1,0:var 高度插值:var 整体缩放)
+  //得到绑定目标,再计算绝对坐标
+  Device 目标核心=varf Mech.目标队伍柱子.getCoreDevice()
+  Vector3 当前局部坐标=fun vector3.add(var 当前局部坐标:var 高度浮动)
+  Vector3 绝对坐标=varf Device.目标核心.localToWorldPos(var 当前局部坐标)
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(var 旋转局部向前方向)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+//离场结束阶段,回收模型
+String modelkey=varf Mech.this.customString(String modelkey)
+act 1.this.callMapFunc2(String Scenario.Model'OnReclaim:var this:var modelkey)
+endcode

@@ -1,0 +1,29 @@
+begincodeV2
+color:8,0,255
+name:Public'Damage
+comment:计算伤害并按需要回收
+params:Float $damage,Long $faction
+return:Float $counter
+lines:
+if{fun long.equal(var $faction:var Faction)
+  fun break()
+}
+Float $HP=fun create.float(var HP)
+//预先计算反击伤害
+Float $counter=fun create.float(Float 0)
+if{fun float.gte(var $HP:var $damage)
+  Float $counter=fun create.float(var $damage)
+}
+if{fun float.lt(var $HP:var $damage)
+  Float $counter=fun create.float(var $HP)
+}
+Float $HP=fun float.minus(var $HP:var $damage)
+//计算格子的受情况
+if{fun float.lte(var $HP:Float 0)
+  Vector3 $position=act 1.this.getPosition()
+  varf Device.map_handler.callFun2(String Base'OnDestroy:var $position:var Faction)
+}
+if{fun float.gt(var $HP:Float 0)
+  act 1.this.Private'UpdateHP(var $HP)
+}
+endcode

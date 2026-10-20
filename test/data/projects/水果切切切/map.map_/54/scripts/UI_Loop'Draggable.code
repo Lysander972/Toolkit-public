@@ -1,0 +1,12 @@
+begincodeV2
+color:156,0,255
+name:UI_Loop'Draggable
+lines:
+if{fun bool.not(var init)
+  UIButton testingArea=varf Canvas.GameUI.readUIButton(String root/testingArea)
+  Bool init=fun create.bool(Bool 1)
+}
+if{fun create.bool(var IsGM)
+  act 1101.this.UI'GameRefreshDraggable(var testingArea)
+}
+endcode

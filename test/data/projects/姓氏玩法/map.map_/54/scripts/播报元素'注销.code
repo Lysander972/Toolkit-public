@@ -1,0 +1,12 @@
+begincodeV2
+name:播报元素'注销
+params:Canvas canvas
+lines:
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+String key=varf UIRect.background.customString(String 主题)
+if{fun string.notEqual(var key:String )
+  if{varf Dict.UI_局内'播报条目索引.contains(var key)
+    varf Dict.UI_局内'播报条目索引.remove(var key)
+  }
+}
+endcode

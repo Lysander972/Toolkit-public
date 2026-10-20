@@ -1,0 +1,72 @@
+begincodeV2
+color:221,0,255
+name:技能'2600
+comment:火力覆盖
+lines:
+String key=fun create.string(String 2600)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Struct player=act 1.this.Skills'Dequeue(var key)
+  Float 当前时间=fun time.scaleTime()
+  Bool 显示模型=fun float.lt(var 当前时间:var 炮塔模型'结束时间_2)
+  if{fun bool.not(var 显示模型)
+    Float 炮塔模型'开始时间_2=fun create.float(var 当前时间)
+    Float 炮塔模型'结束时间_2=fun float.add(var 当前时间:Float 4)
+    delay fun create.float(Float 2)
+  }
+  //轮次记录
+  Float cd=fun create.float(Float 0)
+  List 炮击冷却记录=fun create.list()
+  varf List.炮击冷却记录.insertMulti(var cd:Float 10)
+  Float 发射位置=fun create.float(Float 0)
+  while{fun float.lt(var 发射位置:Float 10)
+    Float 当前时间=fun time.scaleTime()
+    Float cd=fun math.rand(Float 0.1:Float 0.5)
+    Float cd=fun float.add(var 当前时间:var cd)
+    varf List.炮击冷却记录.replace(var 发射位置:var cd)
+    varf Float.发射位置.addEqual(Float 1)
+  }
+  act 1.this.Public'AddBullet(String 2601:Long 1:var player)
+  //一阶段@1火炮炮击
+  Float 总计次数=fun create.float(Float 0)
+  Float 上限=fun create.float(Float 300)
+  while{fun float.lt(var 总计次数:var 上限)
+    Float 当前时间=fun time.scaleTime()
+    Vector3 当前=fun creatVariable.Vector3(Float -27:Float 8:Float -29)
+    Vector3 增量=fun creatVariable.Vector3(Float 6:Float 0:Float 0)
+    Float 发射位置=fun create.float(Float 0)
+    while{fun float.lt(var 发射位置:Float 10)
+      Float cd=varf List.炮击冷却记录.readFloat(var 发射位置)
+      if{fun float.lt(var cd:var 当前时间)
+/*        act 1.this.炮塔模型'后坐力重置(var 发射位置)
+        Float 发射角度=fun create.float(Float 30)
+        Float 距离标志位=fun map.getCustomFloat(String 最近位置标志位)
+        Float 最小射程=fun float.add(var 距离标志位:Float 30)
+        Float 射程=fun math.rand(var 最小射程:Float 180)
+        Float 初速度=act 1.this.抛物线模拟'计算初速度(Float 0:Float 100:var 射程:var 发射角度)
+        Vector3 朝向=fun vector3.rotateAround(Vector3 0,0,1:Vector3 -1,0,0:var 发射角度)
+        =act 1.this.Launcher'指定坐标放置(var 当前:var 朝向:Long 2601:var player:Float 1:Float 0:Float 1:Bool 1:var 初速度)
+        Vector3 向前=fun creatVariable.Vector3(Float 0:Float 1:Float 0)
+        Vector3 向上=fun creatVariable.Vector3(Float 0:Float 0:Float 1)
+        Float 烟雾大小=fun create.float(Float 10)
+        varf Device.map_handler.callFun4(String 粒子'炮口火焰特效:var 当前:var 向前:var 向上:var 烟雾大小)
+        fun screen.shake(Float 0.05:Float 2000:Float 0.95)
+        act 1.this.播放音效(String 火炮开火.ogg:Float 1)
+        //更新冷却时间
+        Float cd=fun math.rand(Float 0.3:Float 0.5)
+        Float cd=fun float.add(var 当前时间:var cd)
+        varf List.炮击冷却记录.replace(var 发射位置:var cd)
+        varf Float.总计次数.addEqual(Float 1)
+        if{fun float.gte(var 总计次数:var 上限)
+          fun break()
+        }
+      }
+      varf Float.发射位置.addEqual(Float 1)
+      Vector3 当前=fun vector3.add(var 当前:var 增量)
+    }
+    delay fun create.float(Float 0)
+    Float 当前时间=fun time.scaleTime()
+    Float 炮塔模型'结束时间_2=fun float.add(var 当前时间:Float 2)
+  }
+}
+delay fun create.float(Float 0.3)
+endcode

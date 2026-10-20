@@ -1,0 +1,30 @@
+guid:8bac305184b548ac9fa62557bcf45e6a
+meshes:
+[
+ {
+  n:PassionFruit_Purple
+ }
+]
+matFolderName:4871184a6cc34c10bd26a08585996a8f
+Albedo.UID:4871184a6cc34c10bd26a08585996a8f
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[7.450581E-09,0.2021668,0]
+bounds.size:[0.310279,0.4043337,0.310279]

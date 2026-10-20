@@ -1,0 +1,15 @@
+begincodeV2
+color:112,0,255
+name:施加礼物效果'蓝2
+comment:10/10
+params:Long count,Struct player,Bool purchased
+return:String str
+lines:
+Long 技能数=fun long.multiply(var count:Long 3)
+act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1200:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:Long 50)
+act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1000:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:Long 3)
+String str=fun string.Format1(String 苹果×%1:var 技能数)
+=fun create.bool(var purchased)
+endcode

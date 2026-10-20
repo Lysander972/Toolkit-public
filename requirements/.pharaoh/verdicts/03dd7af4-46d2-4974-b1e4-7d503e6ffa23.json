@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "BES与工作区转换入口已读并绑定，CodeFile真实来源保留测试可核对；底层语法与三层全量往返专项尚未全部绑定。",
+      "score": 1,
+      "suggestion": "扩展lexer/CST、AST恢复/规范输出和TS双向转换的源码及完整往返测试关系；d.ts发布和Views调度按TODO实施后验证。"
+    },
+    "parent_fit": {
+      "reason": "完整原文含CodeFile/LocalAst、上下文转换与TS文本层；解读保持输入闭包、来源保留、官方AST、UTF16位置与namespace/class视图边界。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "从纯数据转换与工作区生命周期推导缓存归属，明确仅迁移入口全文是本批选择，2775真实文件验收仍属原文目标。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "03dd7af4-46d2-4974-b1e4-7d503e6ffa23",
+  "reviewed_fingerprint": "801d36792d229302fbaefa74108ae1f23e6f42ce98daa18995d637f86ca708b8",
+  "schema": 2,
+  "summary": "三层格式权威与工作区缓存分界保留，完整往返和业务TODO没有被迁移声明替代。"
+}

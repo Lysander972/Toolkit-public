@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "Windows 并发准备、冷依赖生产 hooks、严格构建已通过；GitHub run39237089874 的 steps 为空且 annotation 明确账户额度阻断启动。",
+      "score": 1,
+      "suggestion": "托管运行可用后补齐 Linux 下载摘要、冷启动、并发准备与相同严格构建结果。"
+    },
+    "parent_fit": {
+      "reason": "冻结安装通过 prepare 和正式 hooks 建立同一 requirements 环境，CI 使用相同根入口，符合基础 PR 先取得新版能力的范围；没有新增审批步骤。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "pnpm/uv 分别使用原生依赖锁，ubCode 固定发行版与摘要，构建和缓存仅进入 _build，独占分组支持并发。通用检视状态交由 ubCode，不另造环境或图缓存。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "ab563261-5497-473c-a849-a51894e83794",
+  "reviewed_fingerprint": "baddc0753560a428920be09313461e1e89df45289b983ac8da83537af8c00f2d",
+  "schema": 2,
+  "summary": "重新核对聚合基础 PR 的可复现环境设计和真实平台证据。"
+}

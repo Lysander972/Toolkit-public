@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'是否时停
+return:Bool 时间停止
+lines:
+Bool 时间停止=fun create.bool(Bool 0)
+endcode

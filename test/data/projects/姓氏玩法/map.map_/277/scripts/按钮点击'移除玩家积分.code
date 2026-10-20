@@ -1,0 +1,24 @@
+begincodeV2
+name:按钮点击'移除玩家积分
+params:Dict 玩家信息
+lines:
+String name=varf Dict.玩家信息.readString(String name:Bool 0)
+String id=varf Dict.玩家信息.readString(String uid:Bool 0)
+Long 连胜=varf Dict.玩家信息.readLong(String wins:Bool 0)
+Long 已有积分=varf Dict.玩家信息.readLong(String score:Bool 0)
+Long 已有积分=fun long.multiply(var 已有积分:Long -1)
+Dict D=fun create.dict()
+varf Dict.D.insert(String uid:var id)
+varf Dict.D.insert(String score:var 已有积分)
+varf Dict.D.insert(String wins:var 连胜)
+Bool bLose=fun create.bool(Bool 1)
+varf Dict.D.insert(String bLose:var bLose)
+varf Dict.D.insert(String name:var name)
+List List=fun create.list()
+varf List.List.add(var D)
+Dict req=fun create.dict()
+varf Dict.req.insert(String list:var List)
+=varf Dict.req.detail()
+async =fun dynamicCallRet(String DanmuAddRank:var req)
+fun string.popNotify(String 已清除:Float 3)
+endcode

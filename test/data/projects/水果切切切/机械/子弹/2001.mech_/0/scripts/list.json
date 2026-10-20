@@ -1,0 +1,13 @@
+[
+ Public'SetLayer
+ Public'GetMainDevice
+ Public'SetDensity
+ Public'FrozenEffect
+ Public'GetCenter
+ Public'SetSize
+ Public'SetWeight
+ Public'PreReclaim
+ Public'Open
+ Public'Close
+ Public'SetColor
+]

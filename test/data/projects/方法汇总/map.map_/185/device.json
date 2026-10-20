@@ -1,0 +1,13 @@
+type:28
+pos:[11.22673,0,4.330978]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[270,0,0]
+ forceRate:1
+ maxRate:0.5
+ minRate:0
+ damper:0.05
+ boolAutoReset:false
+ knobAngle:0
+}

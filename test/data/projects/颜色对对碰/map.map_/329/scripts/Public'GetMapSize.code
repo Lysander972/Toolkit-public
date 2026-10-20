@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetMapSize
+return:Long $size
+lines:
+Long $size=fun long.min(var Width:var Height)
+endcode

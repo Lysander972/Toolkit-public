@@ -1,0 +1,44 @@
+begincodeV2
+name:UI'更新排名
+lines:
+List idList=varf Dict.PlayerMap.names()
+Float playerCount=varf List.idList.count()
+List playerL=fun create.list()
+List noScorePlayerL=fun create.list()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var playerCount)
+  String key=varf List.idList.readString(var index)
+  Struct player=varf Dict.PlayerMap.readStruct(var key:Bool 1)
+  Long score=varf Struct.player.getLong(String score:Bool 0)
+  if{fun long.gt(var score:Long 0)
+    varf List.playerL.add(var player)
+  }
+  if{fun long.lte(var score:Long 0)
+    varf List.noScorePlayerL.add(var player)
+  }
+  varf Float.index.addEqual(Float 1)
+}
+varf List.playerL.sort2(Bool 0:String score)
+Float 插入位置=varf List.playerL.count()
+Float 数量=varf List.noScorePlayerL.count()
+if{fun float.gte(var 数量:Float 0)
+  varf List.playerL.insertList(var 插入位置:var noScorePlayerL)
+}
+List UI_上方队伍玩家表=fun create.list()
+List UI_下方队伍玩家表=fun create.list()
+Float index=fun create.float(Float 0)
+Float playerCount=varf List.playerL.count()
+while{fun float.lt(var index:var playerCount)
+  Struct player=varf List.playerL.readStruct(var index)
+  Long team=varf Struct.player.getLong(String team:Bool 1)
+  if{fun long.equal(var team:Long 1)
+    varf List.UI_上方队伍玩家表.add(var player)
+  }
+  if{fun long.equal(var team:Long 2)
+    varf List.UI_下方队伍玩家表.add(var player)
+  }
+  varf Float.index.addEqual(Float 1)
+}
+//刷新上方基地的玩家头像顺序
+act 1101./Scenario.攻方队伍头像'刷新()
+endcode

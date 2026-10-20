@@ -1,0 +1,14 @@
+begincodeV2
+name:Record'AutoCheck
+comment:检查是否存在录制,如果没有录制结果那么开启强制保存.然后开启录制@4但结果不一定保存@5
+lines:
+Dict data=fun map.load()
+Bool exist=varf Dict.data.contains(String recList)
+if{fun bool.not(var exist)
+  Bool Record'ForceSav=fun create.bool(Bool 1)
+  act 1101.this.Record'StartRecord()
+}
+if{fun create.bool(var exist)
+  act 1101.this.Record'StartRecord()
+}
+endcode

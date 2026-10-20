@@ -1,0 +1,7 @@
+begincodeV2
+name:动画控制'UI_获取锚点
+params:UIRect 当前节点
+return:Vector3 锚点
+lines:
+Vector3 锚点=varf UIRect.当前节点.customVector3(String 锚点)
+endcode

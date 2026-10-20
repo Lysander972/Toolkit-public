@@ -1,0 +1,15 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'增加积分
+comment:设置玩家分数
+params:Struct 结构,Long 积分增加,Struct 玩家队伍
+lines:
+Long 原积分=act 1101.this.玩家结构'读取_score(var 结构)
+Long 新积分=fun long.add(var 原积分:var 积分增加)
+act 1101.this.玩家结构'设置_score(var 结构:var 新积分)
+act 1101.this.队伍'属性修改_积分变化(var 玩家队伍:var 积分增加)
+varf Long.局内'积分池_本局.addEqual(var 积分增加)
+Bool UI_局内风格面板'刷新积分池=fun create.bool(Bool 1)
+Bool 局内'重排积分标志位=fun create.bool(Bool 1)
+endcode

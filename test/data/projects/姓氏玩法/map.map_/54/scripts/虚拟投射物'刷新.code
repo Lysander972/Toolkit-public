@@ -1,0 +1,137 @@
+begincodeV2
+name:虚拟投射物'刷新
+params:UIRect 虚拟投射物
+return:Bool 结束制导
+lines:
+Bool 结束制导=fun create.bool(Bool 0)
+Bool 存在=varf UIRect.虚拟投射物.exist()
+if{fun bool.not(var 存在)
+  Bool 结束制导=fun create.bool(Bool 1)
+  fun break()
+}
+Float 当前时间=fun time.scaleTime()
+Float 启动时间=varf UIRect.虚拟投射物.customFloat(String 启动时间)
+Float 已启动时间=fun float.minus(var 当前时间:var 启动时间)
+Bool 启动=fun float.gte(var 当前时间:var 启动时间)
+varf UIRect.虚拟投射物.active(var 启动)
+if{fun bool.not(var 启动)
+  Bool 结束制导=fun create.bool(Bool 0)
+  fun break()
+}
+//得到坐标并判定当前阶段,10像素之内@1命中;10~200像素@1调整角度;200像素以外@1直线追击
+Vector3 位移前坐标_世界=varf UIRect.虚拟投射物.getCanvasPos()
+UIRect 目标=act 1101.this.虚拟投射物'读取_目标组件(var 虚拟投射物)
+Vector3 目标坐标_世界=varf UIRect.目标.getCanvasPos()
+Vector3 坐标差_世界=fun vector3.minus(var 目标坐标_世界:var 位移前坐标_世界)
+Float 距离大小=varf Vector3.坐标差_世界.length()
+Bool 命中阈值=fun float.lt(var 距离大小:Float 80)
+if{fun create.bool(var 命中阈值)
+  Bool 结束制导=fun create.bool(Bool 1)
+  fun break()
+}
+Float 帧间隔=fun time.deltaTime()
+//计算虚拟空间的抛物线,UI是按照角度逆时针旋转的
+Float 当前角度_世界=act 1101.this.虚拟投射物'读取_当前角度(var 虚拟投射物)
+Vector3 目标方向_世界=varf Vector3.坐标差_世界.copy()
+Float 目标角度_世界=fun vector3.signedAngle(Vector3 1,0,0:var 目标方向_世界:Vector3 0,0,1)
+Float 目标角度_世界=act 1101.this.工具'角度规范(var 目标角度_世界)
+//旋转速度
+Float 最大旋转速度=act 1101.this.虚拟投射物'读取_最大旋转速度(var 虚拟投射物)
+Float 速度比例=fun float.division(var 已启动时间:Float 2)
+Float 速度比例=fun float.clamp(var 速度比例:Float 0:Float 1)
+Float 可用最大旋转速度=fun float.multiply(var 最大旋转速度:var 速度比例)
+Float 可用最大旋转速度=fun float.max(var 可用最大旋转速度:Float 1)
+//模式
+Float 角度差=act 1101.this.工具'变换计算(var 当前角度_世界:var 目标角度_世界)
+Float 角度差绝对值=fun float.abs(var 角度差)
+Float 直线瞄准权重=fun float.division(var 角度差绝对值:Float 90)
+Float 直线瞄准权重=fun float.add(var 直线瞄准权重:Float 0.3)
+Float 直线瞄准权重=fun float.clamp(var 直线瞄准权重:Float 0:Float 1)
+/*Bool 直线瞄准=fun float.gte(var 角度差绝对值:Float 30)
+//直线瞄准
+Float 需要的旋转=act 1101.this.工具'变换计算(var 当前角度_世界:var 目标角度_世界)
+Float 角度差_绝对=fun float.abs(var 需要的旋转)
+if{fun float.gt(var 角度差_绝对:Float 30)
+  Float 修正强度=fun create.float(Float 1)
+}
+if{fun float.lte(var 角度差_绝对:Float 30)
+  Float 修正强度=fun float.division(var 角度差_绝对:Float 60)
+  Float 修正强度=fun float.add(var 修正强度:Float 0.5)
+}
+//正负角度差
+if{fun float.gte(var 需要的旋转:Float 0)
+  Float 最多可以旋转=fun float.multiply2(var 帧间隔:var 可用最大旋转速度:Float 1:var 修正强度)
+  Float 实际旋转=fun float.min(var 最多可以旋转:var 需要的旋转)
+}
+if{fun float.lt(var 需要的旋转:Float 0)
+  Float 最多可以旋转=fun float.multiply2(var 帧间隔:var 可用最大旋转速度:Float -1:var 修正强度)
+  Float 实际旋转=fun float.max(var 最多可以旋转:var 需要的旋转)
+}
+//纠正后的角度
+Float 新角度_世界_1=fun float.add(var 当前角度_世界:var 实际旋转)
+//曲射瞄准,对准特定角度
+Float 预估撞击角度_世界=act 1101.this.工具'撞击角度模拟(var 当前角度_世界:var 目标角度_世界)
+Float 要求撞击角度_世界=act 1101.this.虚拟投射物'读取_要求击中时朝向(var 虚拟投射物)
+Float 变换影响=act 1101.this.工具'当前角度变换对撞击角度影响(var 当前时间:var 目标角度_世界)
+Float 撞击角度需要的变换=fun float.minus(var 要求撞击角度_世界:var 预估撞击角度_世界)
+Float 需要的旋转=fun float.division(var 撞击角度需要的变换:var 变换影响)
+//计算角度差,得到修正强度
+Float 角度差_绝对=fun float.abs(var 需要的旋转)
+if{fun float.gt(var 角度差_绝对:Float 30)
+  Float 修正强度=fun create.float(Float 1)
+}
+if{fun float.lte(var 角度差_绝对:Float 30)
+  Float 修正强度=fun float.division(var 角度差_绝对:Float 60)
+  Float 修正强度=fun float.add(var 修正强度:Float 0.5)
+}
+//正负角度差
+if{fun float.gte(var 需要的旋转:Float 0)
+  Float 最多可以旋转=fun float.multiply2(var 帧间隔:var 可用最大旋转速度:Float 1:var 修正强度)
+  Float 实际旋转=fun float.min(var 最多可以旋转:var 需要的旋转)
+}
+if{fun float.lt(var 需要的旋转:Float 0)
+  Float 最多可以旋转=fun float.multiply2(var 帧间隔:var 可用最大旋转速度:Float -1:var 修正强度)
+  Float 实际旋转=fun float.max(var 最多可以旋转:var 需要的旋转)
+}
+//纠正后的角度
+Float 新角度_世界_2=fun float.add(var 当前角度_世界:var 实际旋转)
+//综合考虑
+/*Float 角度插值比率=fun float.division(var 距离大小:Float 300)
+/*Float 角度插值比率=fun float.clamp(var 角度插值比率:Float 0:Float 1)
+/*Float 角度插值比率=fun float.add(var 角度插值比率:Float 1)
+/*Float 角度插值比率=fun float.division(var 角度插值比率:Float 3)
+Float 新角度_世界=fun float.lerp(var 新角度_世界_2:var 新角度_世界_1:var 直线瞄准权重)
+/*Float 新角度_世界=fun float.lerp(var 新角度_世界_2:var 新角度_世界_1:Float 0)
+/*if{fun create.bool(var 直线瞄准)
+/*  Float 新角度_世界=fun create.float(var 新角度_世界_1)
+}
+/*if{fun bool.not(var 直线瞄准)
+/*  Float 新角度_世界=fun create.float(var 新角度_世界_2)
+}
+Float 新角度_世界=fun create.float(var 新角度_世界_1)
+Float 角度实际变化=fun float.minus(var 新角度_世界:var 当前角度_世界)
+Float 角度实际变化=fun float.abs(var 角度实际变化)
+Float 最大每帧转动=fun float.multiply(var 可用最大旋转速度:var 帧间隔)
+Float 减速强度=fun float.division(var 角度实际变化:var 最大每帧转动)
+Float 减速强度=fun float.clamp(var 减速强度:Float 0:Float 1)
+//实际速度
+Float 最大速度=act 1101.this.虚拟投射物'读取_最大速度(var 虚拟投射物)
+Float 速度比率=fun float.minus(Float 1.5:var 减速强度)
+Float 速度比率=fun float.division(var 速度比率:Float 1.5)
+Float 实际每帧速度大小=fun float.multiply1(var 速度比率:var 最大速度:var 帧间隔)
+//世界方向
+Vector3 新速度方向_世界=fun vector3.rotateAround(Vector3 1,0,0:Vector3 0,0,1:var 新角度_世界)
+Vector3 本帧位移=fun vector3.multilply(var 新速度方向_世界:var 实际每帧速度大小)
+Vector3 新坐标_世界=fun vector3.add(var 位移前坐标_世界:var 本帧位移)
+varf UIRect.虚拟投射物.setCanvasPos(var 新坐标_世界)
+varf UIRect.虚拟投射物.rot(var 新角度_世界)
+//因为底层无直接获取角度功能,另行记录
+act 1101.this.虚拟投射物'设置_当前角度(var 虚拟投射物:var 新角度_世界)
+//计算移动完成后是否触发
+Vector3 移动后坐标差=fun vector3.minus(var 目标坐标_世界:var 新坐标_世界)
+Float 距离大小=varf Vector3.移动后坐标差.length()
+Bool 命中阈值=fun float.lt(var 距离大小:Float 80)
+if{fun create.bool(var 命中阈值)
+  Bool 结束制导=fun create.bool(Bool 1)
+}
+endcode

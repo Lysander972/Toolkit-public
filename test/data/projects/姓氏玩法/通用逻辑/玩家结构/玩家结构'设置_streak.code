@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:13c090e1171d487db930790287769006
+color:255,255,255
+name:玩家结构'设置_streak
+comment:设置玩家连胜,只在本地修改,需要另行上传
+params:Struct 结构,Long streak
+lines:
+varf Struct.结构.set(String streak:var streak)
+endcode

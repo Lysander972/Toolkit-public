@@ -1,0 +1,19 @@
+begincodeV2
+name:Skills'2500_ManualUpdateUI
+comment:手动刷新血量
+lines:
+Float ret=varf Device.map_handler.callReturnFloat0(String 栅栏'得到HP)
+Float UI'血量变化值=fun float.minus(var ret:var 上次血量)
+Long hpL=varf Float.ret.toLong()
+varf UILabel.UI'血量文本框.text(var hpL)
+//创建一个动效
+Float 当前时间=fun time.scaleTime()
+if{fun bool.not(var UI'血量动效)
+  act 1.this.UI'血量动效()
+  act 1.this.loopFun(String UI'血量动效:Float 0)
+  Bool UI'血量动效=fun create.bool(Bool 1)
+}
+//重置动态效果
+Float UI'血量上次更新=fun create.float(var 当前时间)
+Float 上次血量=fun create.float(var ret)
+endcode

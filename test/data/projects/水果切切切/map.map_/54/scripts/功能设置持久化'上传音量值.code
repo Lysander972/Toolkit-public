@@ -1,0 +1,7 @@
+begincodeV2
+name:功能设置持久化'上传音量值
+lines:
+Dict data=fun map.load()
+varf Dict.data.insert(String 音量存档标志位:var 功能设置'音量值)
+act 1101.this.存档'上传(Bool 1)
+endcode

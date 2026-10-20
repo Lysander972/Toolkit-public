@@ -1,0 +1,7 @@
+#!/bin/sh
+pnpm install --frozen-lockfile || exit $?
+if [ -n "$2" ]; then
+  pnpm requirements rewrite-start "$2"
+else
+  pnpm requirements rewrite-start
+fi

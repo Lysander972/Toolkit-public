@@ -1,0 +1,9 @@
+begincodeV2
+name:数据初始化
+lines:
+Float 当前瞄准角度=fun create.float(Float 0)
+Float 瞄准角度转速=fun create.float(Float 30)
+Float 瞄准角度上限=fun create.float(Float 44)
+Float 瞄准角度下限=fun create.float(Float -44)
+Bool 反向旋转=fun create.bool(Bool 0)
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:方法1
+lines:
+act 128.this.setWarpParam(Float 0.5:Float 0.01:Float 50)
+act 128.this.setWarpColor(Color 0,0,0,255)
+endcode

@@ -1,0 +1,35 @@
+begincodeV2
+name:技能'60
+comment:持续轰炸最后重击
+lines:
+Long $type=fun create.long(Long 60)
+String $skillkey=fun create.string(var $type)
+if{act 1.this.Skill'Greater(var $skillkey:Long 0)
+  String $mutexkey=fun create.string(String skill_6)
+  Struct $player=act 1.this.Skill'Dequeue(var $skillkey)
+  Float mapSF=varf Long.MapSize.toFloat()
+  Float mapSF=fun float.multiply(var mapSF:Float 0.4)
+  Long 释放数=fun create.long(Long 0)
+  while{fun long.lt(var 释放数:Long 99)
+    if{varf Device.map_handler.callReturnBool1(String Mutex'GetMutex:var $mutexkey)
+      =act 1.this.Launcher'PlaceByPolar(Long 61:var mapSF:var $player)
+      varf Long.释放数.addEqual(Long 1)
+      delay fun create.float(Float 0.1)
+      varf Device.map_handler.callFun1(String Mutex'ReleaseMutex:var $mutexkey)
+    }
+    delay fun create.float(Float 0)
+  }
+  delay fun create.float(Float 2)
+  Long 释放数=fun create.long(Long 0)
+  while{fun long.lt(var 释放数:Long 1)
+    if{varf Device.map_handler.callReturnBool1(String Mutex'GetMutex:var $mutexkey)
+      =act 1.this.Launcher'PlaceBullet(Long 60:Vector3 0,1,0:var $player)
+      varf Long.释放数.addEqual(Long 1)
+      delay fun create.float(Float 0.15)
+      varf Device.map_handler.callFun1(String Mutex'ReleaseMutex:var $mutexkey)
+    }
+    delay fun create.float(Float 0)
+  }
+  delay fun create.float(Float 2)
+}
+endcode

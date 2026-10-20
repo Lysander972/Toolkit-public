@@ -1,0 +1,26 @@
+begincodeV2
+name:UI_Tip'refresh
+lines:
+Long forteam=fun create.long(Long 0)
+Bool show=fun float.notEqual(var Tip'showing:Float -1)
+varf UIRect.Tip'MainPanel.active(var show)
+Float index=varf List.Tip'SubPanels.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  UIRect subPanel=varf List.Tip'SubPanels.readUIRect(var index)
+  Bool show=fun float.Approximately(var Tip'showing:var index)
+  varf UIRect.subPanel.active(var show)
+  if{fun create.bool(var show)
+    Long forteam=varf UIRect.subPanel.customLong(String forteam)
+  }
+}
+if{fun long.equal(var forteam:Long 0)
+  Long forteam=fun long.rand(Long 1:Long 2)
+}
+if{fun long.equal(var forteam:Long 1)
+  varf UIRect.Tip'MainPanel.setCanvasPos(Vector3 0,500,0)
+}
+if{fun long.equal(var forteam:Long 2)
+  varf UIRect.Tip'MainPanel.setCanvasPos(Vector3 0,-500,0)
+}
+endcode

@@ -1,0 +1,8 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍结构'设置_rank
+params:Struct 结构,Float rank
+lines:
+varf Struct.结构.set(String rank:var rank)
+endcode

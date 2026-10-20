@@ -1,0 +1,13 @@
+begincodeV2
+name:UI_功能面板'开关加速点击
+lines:
+if{fun bool.not(var 功能开关'玩法加速)
+  Bool 卡顿检测=fun map.getCustomBool(String 卡顿检测标志位)
+  if{fun create.bool(var 卡顿检测)
+    fun string.popNotify(String 玩法出现卡顿,无法开启加速,如需加速请关闭卡顿保护:Float 3)
+    fun break()
+  }
+}
+Bool 功能开关'玩法加速=fun bool.not(var 功能开关'玩法加速)
+act 1101.this.UI_功能面板'应用并刷新加速显示()
+endcode

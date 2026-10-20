@@ -1,0 +1,30 @@
+guid:9dcbb265834d4e52bfc20d178c8c07ba
+meshes:
+[
+ {
+  n:Honeydew_Cut
+ }
+]
+matFolderName:62bfbfd16dad42fa83ac3672b0e61ef5
+Albedo.UID:62bfbfd16dad42fa83ac3672b0e61ef5
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.0004265755,0.2356088,-0.0043661]
+bounds.size:[0.4592882,0.4712176,0.4270345]

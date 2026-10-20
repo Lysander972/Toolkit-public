@@ -1,0 +1,16 @@
+begincodeV2
+guid:268756192ed9471c924f22132facd481
+color:255,255,255
+name:玩家结构'读取_name
+comment:读取用户名
+params:Struct 结构,Bool 简化
+return:String ret
+lines:
+String name=varf Struct.结构.getString(String name:Bool 0)
+if{fun create.bool(var 简化)
+  String ret=act 1.this.工具'昵称简化(var name)
+}
+if{fun bool.not(var 简化)
+  String ret=fun create.string(var name)
+}
+endcode

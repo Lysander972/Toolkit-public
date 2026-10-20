@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:手掌模型
+ boolShowFollowIcon:true
+ mechFileGUID:2197d71b785e49dcb649ea9a2572af5c
+}

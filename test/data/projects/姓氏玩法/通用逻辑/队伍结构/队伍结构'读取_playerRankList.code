@@ -1,0 +1,9 @@
+begincodeV2
+guid:36982a712f684a7b93a692e76385c5d9
+color:255,255,255
+name:队伍结构'读取_playerRankList
+params:Struct 结构
+return:List ret
+lines:
+List ret=varf Struct.结构.getList(String playerRankList:Bool 0)
+endcode

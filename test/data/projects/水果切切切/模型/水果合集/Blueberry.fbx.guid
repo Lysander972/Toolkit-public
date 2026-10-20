@@ -1,0 +1,34 @@
+guid:5d2fb604a2c241bcaf5ba1f345864116
+meshes:
+[
+ {
+  n:Blueberry
+ }
+]
+matFolderName:cfb004b5c8734c3685b4724440bd1d71
+Albedo.UID:cfb004b5c8734c3685b4724440bd1d71
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:2
+OriginType:1
+bounds.center:[0,0,0]
+bounds.size:[0.1084113,0.08896643,0.1084113]

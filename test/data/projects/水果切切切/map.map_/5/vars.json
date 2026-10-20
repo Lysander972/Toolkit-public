@@ -1,0 +1,10 @@
+[
+ {
+  name:音效记录
+  type:Dict
+ }
+ {
+  name:是GM
+  type:Bool
+ }
+]

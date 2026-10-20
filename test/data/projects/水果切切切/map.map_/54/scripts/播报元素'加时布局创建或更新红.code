@@ -1,0 +1,83 @@
+begincodeV2
+name:播报元素'加时布局创建或更新红
+params:Struct player,Float 新增米数,Bool 达到上限
+lines:
+String uid=varf Struct.player.getString(String id:Bool 1)
+Bool 已存在=fun create.bool(Bool 0)
+Float 已有数值=fun create.float(Float 0)
+//在展示队列里查找
+Float index=varf List.播报'展示队列距离.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas canvas=varf List.播报'展示队列距离.readCanvas(var index)
+  if{varf Canvas.canvas.exist()
+    UIRect 读取背景=varf Canvas.canvas.readUIRect(String background)
+    if{varf UIRect.读取背景.exist()
+      String 持有者=varf UIRect.读取背景.customString(String 持有者标志位)
+      if{fun string.equal(var uid:var 持有者)
+        Bool 已存在=fun create.bool(Bool 1)
+        UIRect background=varf Canvas.canvas.readUIRect(String background)
+        fun break()
+      }
+    }
+  }
+}
+if{fun create.bool(var 已存在)
+  act 1101.this.播报元素'重置展示时间(var canvas)
+  act 1101.this.播报元素'重置缩放动效计时(var canvas)
+}
+//在等待队列里查找
+if{fun bool.not(var 已存在)
+  Float index=varf List.播报'等待队列距离.count()
+  while{fun float.gt(var index:Float 0)
+    varf Float.index.minusEqual(Float 1)
+    Canvas canvas=varf List.播报'等待队列距离.readCanvas(var index)
+    if{varf Canvas.canvas.exist()
+      UIRect 读取背景=varf Canvas.canvas.readUIRect(String background)
+      if{varf UIRect.读取背景.exist()
+        String 持有者=varf UIRect.读取背景.customString(String 持有者标志位)
+        if{fun string.equal(var uid:var 持有者)
+          Bool 已存在=fun create.bool(Bool 1)
+          UIRect background=varf Canvas.canvas.readUIRect(String background)
+          fun break()
+        }
+      }
+    }
+  }
+}
+if{fun create.bool(var 已存在)
+  Float 已有数值=varf UIRect.读取背景.customFloat(String 米数标志位)
+}
+if{fun bool.not(var 已存在)
+  fun ui.2dmode(Bool 1)
+  Canvas canvas=fun create.canvas(Canvas canvas@1@3EAEAEQgABHR5cGUGBlVJUmVjdARuYW1lBgpiYWNrZ3JvdW5kA1BvcwQAAAAAAAAAAAAAAAAEc2l6ZQQAAJZDAADIQgAAgD8FY29sb3IMAAAAAAAAAAAAAAAAAAAAAAtCb3JkZXJXaWR0aAEAAAAABlJhZGl1cwEAAAAABHNvbnMQAQARDQAEdHlwZQYGVUlSZWN0BG5hbWUGBXBhbmVsA1BvcwQAAHrEAAAAAAAAAAAEc2l6ZQQAAJZDAADIQgAAgD8FY29sb3IGCVVJLee6ouiJsgtCb3JkZXJXaWR0aAEAAIC/BlJhZGl1cwEAAAAADXNsaWNlZFBpY0d1aWQGIDEyMzZjNmJkYzZiZTQyZDE4YmQ5M2ExYzViNjBhYTgyDnNsaWNlZEJvcmRlckxCBAAAFkMAAEhCAAAAAA5zbGljZWRCb3JkZXJSVAQAABZDAABIQgAAAAAMc2xpY2VkUmVjdExCBAAAAAAAAAAAAAAAAAxzbGljZWRSZWN0UlQEAACWQwAAyEIAAAAABHNvbnMQAQARFgAEdHlwZQYHVGV4dFBybwRuYW1lBgVsYWJlbANQb3MEAACgQAAAAAAAAAAADHBhcmVudEFuY2hvchgDAAAAAAAAAAZhbmNob3IYAwAAAAAAAAALd2lkdGhFeHRlbmQYAgAAAAAAAAAMaGVpZ2h0RXh0ZW5kGAIAAAAAAAAABHNpemUEAACgQAAAAAAAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8EdGV4dAYACEZvbnRTaXplAQAAAEIJQWxpZ25tZW50GAMAAAAAAAAAC2xpbmVTcGFjaW5nAQAAgD8KRmFjZURpbGF0ZQHNzEw+DG91dGxpbmVXaWR0aAHNzEw+D291dGxpbmVEaXN0YW5jZQTNzEw+zcxMPs3MTD4Mb3V0bGluZUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8UZW5hYmxlVmVydGV4R3JhZGllbnQFAQd0b3BMZWZ0BglVSS3nuqLoibIIdG9wUmlnaHQGCVVJLee6ouiJsgpib3R0b21MZWZ0DAAAgD/q1Fg/AAAAAAAAgD8LYm90dG9tUmlnaHQMAACAP+rUWD8AAAAAAACAPw@3@3)
+  act 1101.this.播报元素'注册(var canvas:Float 1:Float 5)
+  UIRect background=varf Canvas.canvas.readUIRect(String background)
+  varf UIRect.background.active(Bool 0)
+  varf UIRect.background.setCustomString(String 持有者标志位:var uid)
+  act 1101.this.播报元素'设置缩放突出效果(var canvas:Bool 1)
+  varf List.播报'等待队列距离.add(var canvas)
+}
+varf Float.已有数值.addEqual(var 新增米数)
+varf UIRect.background.setCustomFloat(String 米数标志位:var 已有数值)
+varf UIRect.background.setCustomFloat(String 优先级标志位:var 已有数值)
+UILabel label=varf Canvas.canvas.readUILabel(String background/panel/label)
+Float 简化显示=fun float.round(var 已有数值:Float 2)
+String rawName=varf Struct.player.getString(String name:Bool 1)
+String simpName=act 1101.this.限制昵称长度(var rawName)
+/*UILabel 上限提示下=varf Canvas.GameUI.readUILabel(String root/leftpanel/进度条/进度/背景/显示区/上限提示)
+/*varf UILabel.上限提示下.active(Bool 1)
+if{fun bool.not(var 达到上限)
+  String 显示=fun string.Format2(String %1\n+%2米:var simpName:var 简化显示)
+  varf UILabel.label.text(var 显示)
+/*  Float 简化显示=fun float.round(var 剩余可加:Float 1)
+/*  String 显示=fun string.Format1(String 还可增加%1米:var 简化显示)
+/*  varf UILabel.上限提示下.text(var 显示)
+}
+if{fun create.bool(var 达到上限)
+  String 显示=fun string.Format1(String %1\n距离已经到达上限:var simpName)
+  varf UILabel.label.text(var 显示)
+/*  String 显示=fun create.string(String 已到达上限)
+/*  varf UILabel.上限提示下.text(var 显示)
+}
+endcode

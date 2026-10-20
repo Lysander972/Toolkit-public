@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:04796bd3b3e4465d997659a135b0d408
+color:255,255,255
+name:玩家结构'设置_id
+comment:设置id
+params:Struct 结构,String id
+lines:
+varf Struct.结构.set(String id:var id)
+endcode

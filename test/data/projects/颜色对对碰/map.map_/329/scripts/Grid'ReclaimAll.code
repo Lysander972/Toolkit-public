@@ -1,0 +1,19 @@
+begincodeV2
+color:8,0,255
+name:Grid'ReclaimAll
+lines:
+List $list=varf Dict.GridMap.names()
+Float $length=varf List.$list.count()
+Float $index=fun create.float(Float 0)
+while{fun float.lt(var $index:var $length)
+  String $key=varf List.$list.readString(var $index)
+  Mech $obj=varf Dict.GridMap.readMech(var $key:Bool 1)
+  Mech $objCol=varf Dict.GridColMap.readMech(var $key:Bool 1)
+  varf Mech.$obj.callFun0(String Public'OnReclaim)
+  varf Dict.GridMap.remove(var $key)
+  varf Dict.GridColMap.remove(var $key)
+  varf List.UnusedGrid.add(var $obj)
+  varf List.UnusedGridCol.add(var $objCol)
+  varf Float.$index.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,8 @@
+begincodeV2
+color:123,255,0
+name:定时任务事件结构'读取_队伍
+params:Dict 定时任务事件
+return:Struct ret
+lines:
+Struct ret=varf Dict.定时任务事件.readStruct(String 队伍:Bool 0)
+endcode

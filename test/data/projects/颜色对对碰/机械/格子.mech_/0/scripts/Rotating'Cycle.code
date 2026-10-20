@@ -1,0 +1,20 @@
+begincodeV2
+color:255,0,255
+name:Rotating'Cycle
+lines:
+Float $timeD=fun time.deltaTime()
+Float $rateD=fun float.multiply(var $timeD:Float 1)
+varf Float.RotateProgress.addEqual(var $rateD)
+Float RotateProgress=fun float.clamp(var RotateProgress:Float 0:Float 1)
+if{fun create.bool(var IsBlueToRed)
+  Float RotateRate=fun float.SmoothStep(var RotateInitial:Float 0:var RotateProgress)
+}
+if{fun bool.not(var IsBlueToRed)
+  Float RotateRate=fun float.SmoothStep(var RotateInitial:Float 1:var RotateProgress)
+}
+Float RotateRate=fun float.clamp(var RotateRate:Float 0:Float 1)
+act 1.this.Rotating'Application()
+if{fun float.gte(var RotateProgress:Float 1)
+  act 1.this.Rotating'EndCycle()
+}
+endcode

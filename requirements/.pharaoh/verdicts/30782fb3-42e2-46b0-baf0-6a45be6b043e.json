@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "既有完整工具99项及来源绑定8项通过；本批四个来源 blob 一致，严格 Sphinx 构建与最终 index 的 check:commit exit0。Linux Actions 未启动，仍无 Linux 行为结果。",
+      "score": 1,
+      "suggestion": "托管 CI 恢复后跑相同 tools 测试；PR3 最终提交门禁和 HEAD 原生校验另行核对。"
+    },
+    "parent_fit": {
+      "reason": "完整 verification 源码覆盖真实 ubCode 正文/关系/标准失效、双解读/断链拒绝、Git blob 与工作树区分、index/HEAD 拒绝替代、生产 hooks 和 C4 聚合/冻结；补入治理、冻结、架构项目测试全文与 PR3 保留合同对应。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "使用真实 Git 和原生工具结果验证可观察行为，源码文件全文相等用于输入保真，未用字符串存在证明实现正确；Windows 与 Linux 结果明确分开。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "30782fb3-42e2-46b0-baf0-6a45be6b043e",
+  "reviewed_fingerprint": "a717e7d3548f75b61457469da7cf95d3228250a3b94f072bd3f1b0c2a6327933",
+  "schema": 2,
+  "summary": "验证正文、输入隔离和保留治理测试的专项检视。"
+}

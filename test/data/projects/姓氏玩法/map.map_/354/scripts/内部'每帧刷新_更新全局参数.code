@@ -1,0 +1,11 @@
+begincodeV2
+name:内部'每帧刷新_更新全局参数
+lines:
+Vector3 全屏UI尺寸=fun screen.uiSize()
+Float 屏幕高度=varf Vector3.全屏UI尺寸.y()
+Float 进度条最大宽度=fun float.minus(var 屏幕高度:Float 1080)
+//最大值至少按照50显示
+Long 最大值=act 1101./弹幕.队伍'读取全场最大值()
+Long 进度条最大数值基准=fun long.max(var 最大值:Long 102400)
+Long 最快队伍id=act 1101./弹幕.队伍'得到最快队伍id()
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+name:设置队伍数值
+params:String 队伍数值,String 队伍排名
+lines:
+UILabel 文本框=act 1102./队伍数值.getLabel()
+varf UILabel.文本框.text(var 队伍数值)
+UILabel 文本框=act 1102./排名.getLabel()
+varf UILabel.文本框.text(var 队伍排名)
+endcode

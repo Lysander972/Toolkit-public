@@ -1,0 +1,47 @@
+begincodeV2
+private:1
+name:Skills'1520_OnDeath
+comment:煤气罐亡语-物理效果炸飞水果
+lines:
+Device this=act 1.this.getDevice()
+List list=varf Device.this.callReturnFun0(String Public'GetAffectedList)
+//瞬间施加一个力
+Vector3 自身重心=act 1.this.Public'GetCenter()
+Float total=varf List.list.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Mech target=varf List.list.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  Device dev=varf Device.core.callReturnDevice0(String Public'GetMainDevice)
+  Float mass=varf Device.dev.getMass()
+  Long targetFaction=varf Device.core.callReturnLong0(String Public'GetFaction)
+  if{fun long.equal(var targetFaction:Long 1)
+    //计算力的方向,标准化再强制增加向上分量
+    Vector3 目标重心=varf Device.core.callReturnVector30(String Public'GetCenter)
+    Vector3 坐标差=fun vector3.minus(var 目标重心:var 自身重心)
+    Float 总距离=varf Vector3.坐标差.length()
+    if{fun float.lt(var 总距离:Float 60)
+      varf Vector3.坐标差.setY(Float 0)
+      Vector3 坐标差=varf Vector3.坐标差.setLength(Float 1)
+      varf Vector3.坐标差.setY(Float 1)
+      Float z=varf Vector3.坐标差.z()
+      Float z=fun float.clamp(var z:Float -0.4:Float 0.2)
+      varf Vector3.坐标差.setZ(var z)
+      //设置速度变化
+      Float 速度变化=fun float.division(Float 100000:var mass)
+      Float 速度变化=fun float.min(var 速度变化:Float 100)
+      Vector3 速度变化向量=varf Vector3.坐标差.setLength(var 速度变化)
+      varf Device.dev.AddForceAtPos(var 速度变化向量:var 目标重心:Enum 2)
+    }
+  }
+  varf Float.index.addEqual(Float 1)
+}
+/*String 慢镜头key=act 1.this.时间控制'设置慢镜头需求(Float 0.1)
+/*delay fun create.float(Float 0.2)
+/*act 1.this.时间控制'取消慢镜头需求(var 慢镜头key)
+/*Float hp变化=fun float.multiply(var Attr'maxHP:Float -0.2)
+/*Vector3 pos=act 1.this.getPosition()
+/*varf Vector3.pos.setY(Float 30)
+/*varf Vector3.pos.setZ(Float 0)
+/*varf Device.map_handler.callFun3(String 栅栏'HP变化:var hp变化:var Creator:var pos)
+endcode

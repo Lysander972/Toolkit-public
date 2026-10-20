@@ -1,0 +1,33 @@
+begincodeV2
+skip:1
+private:1
+name:黏连
+lines:
+Device 零件=fun mech.focusDevice()
+Bool Q按下=fun keyboard.keyDown2(Enum 61)
+Bool W按下=fun keyboard.keyDown2(Enum 67)
+Bool B按下=fun keyboard.keyDown2(Enum 46)
+Bool C按下=fun keyboard.keyDown2(Enum 47)
+Bool d按下=fun keyboard.keyDown2(Enum 48)
+if{fun create.bool(var Q按下)
+  List 零件列表=fun create.list1(var 零件)
+  fun debug.print(var 零件列表:Color 255,100,100,255:Bool 0)
+}
+if{fun create.bool(var W按下)
+  varf List.零件列表.add(var 零件)
+  fun debug.print(var 零件列表:Color 255,100,100,255:Bool 0)
+}
+if{fun create.bool(var B按下)
+  fun debug.print(var 零件:Color 255,165,100,255:Bool 0)
+  dvf 零件.Device.setManualWeld(Bool 1:var 零件列表)
+}
+if{fun create.bool(var C按下)
+  fun debug.print(String 按下C:Color 250,255,99,255:Bool 0)
+  dvf 零件.Device.setManualWeld(Bool 0:List )
+}
+if{fun create.bool(var d按下)
+  fun debug.print(String 按下D:Color 250,255,99,255:Bool 0)
+  List 零件列表=fun create.list()
+  dvf 零件.Device.setManualWeld(Bool 1:var 零件列表)
+}
+endcode

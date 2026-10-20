@@ -1,0 +1,9 @@
+begincodeV2
+color:255,0,255
+name:Rotating'EndCycle
+lines:
+if{fun create.bool(var IsRotating)
+  act 1.this.DisableFun(String Rotating'Cycle)
+  Bool IsRotating=fun create.bool(Bool 0)
+}
+endcode

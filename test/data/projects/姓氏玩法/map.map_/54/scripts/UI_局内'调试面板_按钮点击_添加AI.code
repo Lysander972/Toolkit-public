@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'调试面板_按钮点击_添加AI
+lines:
+if{act 1101./主界面.工具'是GM()
+  act 1101.this.玩家'新建AI()
+}
+endcode

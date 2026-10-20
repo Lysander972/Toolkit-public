@@ -1,0 +1,14 @@
+begincodeV2
+name:读取整数规则
+params:String n
+return:Long ret
+lines:
+Long ID=fun findExcel2_String(String name:var n:String 规则)
+if{fun long.lt(var ID:Long 0)
+  String 文字=fun create.string(String 表格中找不到)
+  String 文字=fun string.translate(var 文字)
+  String s=fun string.Format2(String %1 %2:var 文字:var n)
+  fun debug.print(var s:Color 255,50,50,205:Bool 0)
+}
+Long ret=fun readExcel2_Long(var ID:String 整数值:String 规则)
+endcode

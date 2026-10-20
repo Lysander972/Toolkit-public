@@ -1,0 +1,67 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'游戏主界面_进入
+lines:
+//通用结构@1首先检测是否已经在此界面,是则跳过.随后退出其他界面
+if{act 1101.this.UI_局内'是否本界面()
+  fun break()
+}
+act 1101.this.UI_局外主菜单'主菜单_退出()
+act 1101.this.UI_局外结算页面'结算界面_退出()
+//更新页面枚举
+Long UI'状态枚举=fun create.long(Long 1)
+//生成并重置UI
+Bool 已存在=varf Canvas.UI_局内'主布局_2D.exist()
+if{fun bool.not(var 已存在)
+  fun ui.2dmode(Bool 0)
+  Canvas UI_局内'主布局_3D=fun create.canvas(Canvas guid@1395af50c9c234189b63ed9c75bacf69a)
+  UIRect 对局图层_3D=varf Canvas.UI_局内'主布局_3D.readUIRect(String 根节点_3D/对局图层_3D)
+  fun ui.2dmode(Bool 1)
+  Canvas UI_局内'主布局_2D=fun create.canvas(Canvas guid@164feba17f23d412fa439268561c4d2f1)
+  UIRect 对局图层_2D=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/对局图层_2D)
+  UIRect 风格面板图层=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/风格面板主图层)
+  act 1101.this.UI_局内风格面板'加载(var 风格面板图层:String 冲上云霄)
+  act 1101.this.UI_局内风格接口封装'初始化(var 对局图层_2D:var 对局图层_3D)
+  UIRect UI_局内'礼物全屏特效图层=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/礼物全屏特效图层)
+  UIRect UI_局内'游戏结束图层=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/游戏结束图层)
+  UIRect UI_局内'调试交互组件图层=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/调试交互组件图层)
+  UIInput UI_局内'调试输入框=varf Canvas.UI_局内'主布局_2D.readUIInput(String 根节点_2D/调试交互组件图层/InputField)
+  UIButton UI_局内'调试面板=varf Canvas.UI_局内'主布局_2D.readUIButton(String 根节点_2D/调试交互组件图层/testingArea)
+  act 1101.this.UI_局内'拖动面板_初始化(var UI_局内'调试面板:String testPanel)
+  UIRect UI_局内'播报区域=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/飘屏特效图层/播报区域)
+  UIRect UI_局内'设置面板=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/风格面板副图层/设置面板)
+  //帧率按钮绑定
+  UIButton 帧率按钮=varf Canvas.UI_局内'主布局_2D.readUIButton(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/帧率面板/排版区域/帧率30)
+  Long 模式=fun create.long(Long 0)
+  varf UIButton.帧率按钮.clickCB1(String UI_局内'功能面板_按钮点击_帧率模式:var 模式)
+  UIButton 帧率按钮=varf Canvas.UI_局内'主布局_2D.readUIButton(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/帧率面板/排版区域/帧率60)
+  Long 模式=fun create.long(Long 1)
+  varf UIButton.帧率按钮.clickCB1(String UI_局内'功能面板_按钮点击_帧率模式:var 模式)
+}
+Bool 是GM=act 1101./主界面.工具'是GM()
+//显示根节点
+UIRect root=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D)
+varf UIRect.root.active(Bool 1)
+//根据是否为GM显示调试输入框
+varf UIInput.UI_局内'调试输入框.active(var 是GM)
+//显示调试面板
+varf UIButton.UI_局内'调试面板.active(var 是GM)
+if{fun create.bool(var 是GM)
+  act 1101./参数调节模块.初始化快捷调试面板(var UI_局内'调试交互组件图层)
+}
+//上局积分池
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 局内'积分池_上局)
+  Long 局内'积分池_上局=varf Dict.data.readLong(String 局内'积分池_上局:Bool 0)
+}
+//各项设置的初始化
+act 1101.this.局内功能设置'帧率模式_初始化()
+act 1101.this.局内功能设置'玩法加速_初始化()
+act 1101.this.局内功能设置'自动下场_初始化()
+act 1101.this.局内功能设置'音量值_初始化()
+act 1101.this.UI_局内'功能面板_按钮点击_设置收起()
+//选取特定的实现,初始化并进入页面
+act 1101.this.UI_局内风格接口封装'进入页面(var 局外功能设置'个人模式:var 局内_游戏规则'获胜规则)
+//游戏进入准备状态
+act 1101.this.游戏'准备()
+endcode

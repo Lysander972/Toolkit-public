@@ -1,0 +1,19 @@
+begincodeV2
+name:跟随UI初始化
+lines:
+Bool $exist=varf Canvas.UI布局引用.exist()
+if{fun bool.not(var $exist)
+  Canvas UI布局引用=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgpiYWNrZ3JvdW5kA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAyEIAAMhCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAAAAC0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxABABEOAAR0eXBlBgdUZXh0UHJvBG5hbWUGEuaZrumAmuaUu+WHu+WFheiDvQNQb3MEAAAAAAAADEIAAAAADHBhcmVudEFuY2hvchgEAAAAAAAAAAZhbmNob3IYBAAAAAAAAAAEc2l6ZQQAAHpDAADIQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwR0ZXh0BgE/CEZvbnRTaXplAQAA4EELbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAZqZmT4Mb3V0bGluZVdpZHRoAZqZmT4Pb3V0bGluZURpc3RhbmNlBJqZmT6amZk+mpmZPgxvdXRsaW5lQ29sb3IMAAAAAAAAAAAAAAAAAACAPw@3@3)
+  UIRect UI根组件=varf Canvas.UI布局引用.readUIRect(String background)
+  Device dev=act 1.this.getDevice()
+  varf UIRect.UI根组件.followDevice(var dev:Vector3 0,0,0)
+}
+UILabel 普通攻击充能=varf Canvas.UI布局引用.readUILabel(String background/普通攻击充能)
+if{fun long.equal(var Faction:Long 1)
+  varf UILabel.普通攻击充能.setCanvasPos(Vector3 0,-35,0)
+}
+if{fun long.equal(var Faction:Long 2)
+  varf UILabel.普通攻击充能.setCanvasPos(Vector3 0,35,0)
+}
+act 1.this.刷新'普攻显示()
+endcode

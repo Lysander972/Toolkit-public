@@ -1,0 +1,45 @@
+begincodeV2
+name:处理弹幕
+lines:
+if{fun bool.not(var GameStart)
+  fun break()
+}
+Float count=varf List.$list.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var count)
+  Dict msgObj=varf List.$list.readDict(var index)
+  Struct player=act 1101.this.Player'CheckAndConstruct(var msgObj)
+  if{varf Enum.$type.equal(Enum 0)
+    act 1101.this.BarrageHandler'Comment(var msgObj:var player)
+  }
+  if{varf Enum.$type.equal(Enum 1)
+    act 1101.this.BarrageHandler'Gift(var msgObj:var player)
+  }
+  if{varf Enum.$type.equal(Enum 2)
+    act 1101.this.BarrageHandler'Like(var msgObj:var player)
+  }
+  if{fun create.bool(var Record'Activate)
+    Dict msgRecord=varf Dict.msgObj.clone()
+    if{varf Enum.$type.equal(Enum 0)
+      String typename=fun create.string(String comment)
+    }
+    if{varf Enum.$type.equal(Enum 1)
+      String typename=fun create.string(String gift)
+    }
+    if{varf Enum.$type.equal(Enum 2)
+      String typename=fun create.string(String like)
+    }
+    Bool isrec=fun create.bool(Bool 1)
+    varf Dict.msgRecord.insert(String isrec:var isrec)
+    String recname=varf Dict.msgRecord.readString(String name:Bool 0)
+    String recname=fun string.add(var recname:String @4AI@5)
+    varf Dict.msgRecord.insert(String name:var recname)
+    varf Dict.msgRecord.insert(String typename:var typename)
+    Float now=fun time.scaleTime()
+    Float eventTime=fun float.minus(var now:var GameStartTime)
+    varf Dict.msgRecord.insert(String eventTime:var eventTime)
+    varf List.Record'Events.add(var msgRecord)
+  }
+  varf Float.index.addEqual(Float 1)
+}
+endcode

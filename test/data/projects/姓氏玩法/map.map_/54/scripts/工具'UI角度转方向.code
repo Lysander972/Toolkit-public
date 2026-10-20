@@ -1,0 +1,7 @@
+begincodeV2
+name:工具'UI角度转方向
+params:Float 角度
+return:Vector3 方向
+lines:
+Vector3 方向=fun vector3.rotateAround(Vector3 1,0,0:Vector3 0,0,1:var 角度)
+endcode

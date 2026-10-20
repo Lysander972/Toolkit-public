@@ -1,0 +1,14 @@
+begincodeV2
+guid:a88eb473e91e4ea195cc300b7df7f262
+name:计算'角度转方向
+params:Float 角度
+return:Vector3 世界方向
+lines:
+Float pi=fun float.pi()
+Float 弧度=fun float.division(var 角度:Float 180)
+Float 弧度=fun float.multiply(var 弧度:var pi)
+Float 角度=act 1.this.计算'弧度转角度(var 弧度)
+Vector3 局部方向=fun vector3.rotateAround(Vector3 0,0,-1:Vector3 0,1,0:var 角度)
+Vector3 世界方向=act 1.this.localToWorldDir(var 局部方向)
+varf Vector3.世界方向.setY(Float 0)
+endcode

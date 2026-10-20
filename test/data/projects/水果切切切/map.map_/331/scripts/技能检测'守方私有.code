@@ -1,0 +1,20 @@
+begincodeV2
+name:技能检测'守方私有
+lines:
+act 1.this.瞄准方向更新'守方()
+act 1.this.技能'20001()
+act 1.this.技能'20000()
+act 1.this.技能'LevelUp()
+act 1.this.技能'解冻检测()
+act 1.this.技能'2100()
+act 1.this.技能'2000()
+act 1.this.技能'2001_自动暖场()
+act 1.this.技能'2200()
+act 1.this.技能'2301()
+act 1.this.技能'2400()
+act 1.this.技能'2500()
+act 1.this.技能'2600_炮塔模型()
+act 1.this.技能'2600()
+act 1.this.技能'2601()
+act 1.this.技能'2900()
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:ButtonMenu'HelpRefresh
+lines:
+UIRect rect=varf Canvas.MenuUI.readUIRect(String panel/help)
+Bool show=fun bool.or(var HelpPress:var HelpIn)
+varf UIRect.rect.active(var show)
+endcode

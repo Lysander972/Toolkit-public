@@ -1,0 +1,11 @@
+begincodeV2
+color:0,138,255
+name:Bullet'OnReclaim
+comment:回收模型
+params:Mech $obj,Long $modelType
+lines:
+String $key=fun create.string(var $modelType)
+List $unused=varf Struct.BulletUnused.getList(var $key:Bool 0)
+varf List.$unused.add(var $obj)
+varf Mech.$obj.setActive(Bool 0)
+endcode

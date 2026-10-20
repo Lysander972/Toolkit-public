@@ -1,0 +1,10 @@
+[
+ {
+  name:模型名称列表
+  type:List
+ }
+ {
+  name:模型名称列表alt
+  type:List
+ }
+]

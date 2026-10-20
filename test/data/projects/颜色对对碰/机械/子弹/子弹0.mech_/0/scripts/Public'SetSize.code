@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'SetSize
+params:Float $size
+lines:
+act 362./1.setScale(var $size)
+endcode

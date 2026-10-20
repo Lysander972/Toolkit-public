@@ -1,0 +1,21 @@
+begincodeV2
+private:1
+guid:be037c6b984143cb9bc6619a9ec73534
+color:255,255,255
+name:玩家结构'设置_team
+comment:更新队伍同时更新数据完整性
+params:Struct 结构,Long team
+lines:
+Long 原team=act 1101.this.玩家结构'读取_team(var 结构)
+if{fun long.equal(var 原team:Long -1)
+  varf Struct.结构.set(String team:var team)
+  if{fun long.notEqual(var team:Long -1)
+    varf List.局内'玩家_已下场列表.add(var 结构)
+    String 字符串id=fun create.string(var team)
+    Struct 队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+    List 玩家列表=act 1101.this.队伍结构'读取_playerRankList(var 队伍)
+    varf List.玩家列表.add(var 结构)
+  }
+}
+act 1101.this.玩家结构'更新_completeness(var 结构)
+endcode

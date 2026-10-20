@@ -1,0 +1,6 @@
+begincodeV2
+name:Map'Reset
+comment:重置地图
+lines:
+act 1101.this.Bullet'ForceReclaimAll()
+endcode

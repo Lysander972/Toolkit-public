@@ -1,0 +1,29 @@
+begincodeV2
+private:1
+name:Private'OnDeath
+comment:子弹死亡调用
+params:Bool $force
+lines:
+if{fun bool.not(var Alive)
+  fun break()
+}
+Bool Alive=fun create.bool(Bool 0)
+if{fun bool.not(var $force)
+  act 1.this.Private_Skill'OnDeath()
+  act 1.this.Private_Skill'EndCycle()
+}
+act 1.this.Private_UI'Close()
+act 1.this.Private_Turret'OnDeath()
+act 1.this.Private_Physic'OnDeath()
+//播放死亡效果
+act 1.this.Public'Close()
+varf Device.map_handler.callFun3(String Bullet'OnDestroy:var Self:var Type:var Faction)
+//等待彩带等效果结束
+delay fun create.float(Float 2)
+act 1.this.Public'PreReclaim()
+//关闭彩带
+act 1.this.setPosKinematic(Vector3 1e+03,0,0)
+varf Mech.Self.setActive(Bool 0)
+//按照模型序号自适应回收
+act 1.this.Public'ReclaimModel()
+endcode

@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:航天飞机模型
+ boolShowFollowIcon:true
+ mechFileGUID:53d0b3425ad94e1e8df3344ace240396
+}

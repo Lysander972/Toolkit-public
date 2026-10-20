@@ -1,0 +1,20 @@
+begincodeV2
+color:255,0,255
+name:Lifting'Application
+lines:
+Vector3 $localPosition=fun vector3.lerp(Vector3 0,0,0:Vector3 0,0.4,0:var LiftingRate)
+Vector3 $position=fun vector3.add(var $localPosition:var GlobalOffset)
+act 1.this.setPosKinematic(var $position)
+if{fun float.lt(var LiftingRate:Float 0.5)
+  Float 插值=fun float.division(var LiftingRate:Float 0.5)
+  Color $paint=fun create.color(Color 231,231,231,255)
+  Color $paint=varf Color.$paint.lerp(Color 275,255,306,255:var 插值)
+}
+if{fun float.gte(var LiftingRate:Float 0.5)
+  Float 插值=fun float.minus(var LiftingRate:Float 0.5)
+  Float 插值=fun float.division(var 插值:Float 0.5)
+  Color $paint=fun create.color(Color 275,255,306,255)
+  Color $paint=varf Color.$paint.lerp(Color 1020,360,510,255:var 插值)
+}
+act 362.4.setPaintColor(var $paint:Bool 0)
+endcode

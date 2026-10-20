@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Generic'BulletInitialize
+comment:通用子弹初始化接口再封装
+params:Mech $obj,Vector3 $pos,Vector3 $direction,Long $type,Long $faction,Float $height,Struct $player
+lines:
+varf Mech.$obj.callFun7(String Public'Initialize:var $pos:var $direction:var $type:var $faction:var $height:var $player:var ScenarioOffset)
+endcode

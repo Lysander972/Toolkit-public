@@ -1,0 +1,33 @@
+guid:6ac617152f0846f68022cfe030bd20e8
+meshes:
+[
+ {
+  n:Cube_cell.002_cell.001
+ }
+]
+shaderName:"Shader Graphs/ColorPBR"
+shader:
+[
+ {
+  n:_Color
+  type:Color
+  v:[1,0.09019607,0,1]
+ }
+ {
+  n:_Metallic
+  type:Float
+  v:0.1
+ }
+ {
+  n:_Glossiness
+  type:Float
+  v:0.1
+ }
+ {
+  n:_Emmit
+  type:Float
+  v:0
+ }
+]
+bounds.center:[-0.005760754,0.008654157,0.002777303]
+bounds.size:[0.008478492,0.002691685,0.006002997]

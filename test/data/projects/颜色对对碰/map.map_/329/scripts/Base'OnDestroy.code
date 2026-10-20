@@ -1,0 +1,12 @@
+begincodeV2
+name:Base'OnDestroy
+params:Vector3 $pos,Long $faction
+lines:
+act 336./特效发射器.发射(var $pos:Float 18:Float 0.1)
+if{fun long.equal(var $faction:Long 1)
+  act 1101./弹幕.Game'Settlement(Long 2:Long 0:Long 0)
+}
+if{fun long.equal(var $faction:Long 2)
+  act 1101./弹幕.Game'Settlement(Long 1:Long 0:Long 0)
+}
+endcode

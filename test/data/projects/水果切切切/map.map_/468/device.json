@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ logicName:玩家信息下载任务
+ mechFileGUID:4c7dcec363d2496390f471c723ed4e56
+}

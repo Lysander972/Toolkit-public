@@ -1,0 +1,19 @@
+begincodeV2
+color:255,243,0
+name:UI_Loop'RefreshRanking
+lines:
+if{fun bool.not(var init)
+  UILabel label=varf Canvas.GameUI.readUILabel(String root/rightpanel/积分池/label)
+  Bool init=fun create.bool(Bool 1)
+}
+act 1101.this.UI'更新排名()
+//刷新屏幕两侧的玩家分数显示
+act 1101.this.UI'GameRefreshRankingDisplay(var UI_上方队伍玩家表:String root/leftpanel/leftRank/)
+act 1101.this.UI'GameRefreshRankingDisplay(var UI_下方队伍玩家表:String root/rightpanel/rightRank/)
+//更新积分池
+Long totalPool=fun long.add(var LastScorePool:var ScorePool)
+String s1=act 1101.this.积分简化(var totalPool)
+String s2=act 1101.this.积分简化(var LastScorePool)
+String text=fun string.Format2(String %1\n@4上局继承%2@5:var s1:var s2)
+varf UILabel.label.text(var text)
+endcode

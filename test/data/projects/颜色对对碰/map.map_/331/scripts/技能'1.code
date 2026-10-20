@@ -1,0 +1,23 @@
+begincodeV2
+name:技能'1
+comment:点赞攻击
+lines:
+Long $type=fun create.long(Long 1)
+String $skillKey=fun create.string(var $type)
+if{act 1.this.Skill'GreaterOrEqual(var $skillKey:Long 5)
+/*  Float $cd=act 1.this.Generic'GetProperty(String 点赞攻击cd:Float 0.5:Float 0.1:Float 0.5:Color 0,0,0,255)
+  Float $cd=fun create.float(Float 0.5)
+  Float 限制范围=fun float.multiply(var 当前瞄准角度:Float 30)
+  Float 限制范围=fun float.division(var 限制范围:Float 45)
+  =act 1.this.Launcher'LaunchUniformlyAuto(var $type:var 限制范围:Long 25:Float 1:Float 0:Bool 0:var $skillKey:Long 0)
+  delay fun create.float(var $cd)
+  Long $newValue=act 1.this.Skill'GetValue(var $skillKey)
+  Float $newValueF=varf Long.$newValue.toFloat()
+  Float $autoDecrease=fun float.multiply(var $newValueF:Float 0.025)
+  Long $autoDecreaseL=varf Float.$autoDecrease.toLong()
+  if{fun long.gt(var $autoDecreaseL:Long 0)
+    =act 1.this.Skill'Decrease(var $skillKey:var $autoDecreaseL)
+  }
+  fun break()
+}
+endcode

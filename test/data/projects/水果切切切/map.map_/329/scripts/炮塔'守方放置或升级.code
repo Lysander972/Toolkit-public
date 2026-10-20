@@ -1,0 +1,18 @@
+begincodeV2
+name:炮塔'守方放置或升级
+comment:没有炮塔时自动创建炮塔,创建后添加升级技能
+params:Struct player,Long level
+lines:
+String uid=varf Struct.player.getString(String id:Bool 1)
+Bool exist=varf Dict.守方炮塔记录.contains(var uid)
+if{fun bool.not(var exist)
+  Mech target=act 1101.this.炮塔'守方放置(var player)
+  varf Dict.守方炮塔记录.insert(var uid:var target)
+}
+if{fun create.bool(var exist)
+  Mech target=varf Dict.守方炮塔记录.readMech(var uid:Bool 0)
+}
+if{fun long.gt(var level:Long 0)
+  act 1101.this.技能'通用添加方法(var target:String levelup:var level:var player)
+}
+endcode

@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+name:Private_SkillType'41_Cycle
+comment:中炮塔循环
+lines:
+/*fun break()
+if{fun create.bool(var Alive)
+  =act 1.this.Launcher'LaunchFixedly(Long 43:var 当前瞄准角度:Float 0:Bool 1:var Creator)
+  delay fun create.float(Float 0.1)
+}
+endcode

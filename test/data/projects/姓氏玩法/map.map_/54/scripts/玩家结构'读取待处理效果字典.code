@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:玩家结构'读取待处理效果字典
+params:Struct 结构
+return:Dict 待处理效果
+lines:
+Dict 待处理效果=varf Struct.结构.getDict(String 待处理效果:Bool 0)
+endcode

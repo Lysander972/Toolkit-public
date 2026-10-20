@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'Close
+lines:
+act 362./边框.show(Bool 0)
+act 362./边框.enableCollide(Bool 0)
+endcode

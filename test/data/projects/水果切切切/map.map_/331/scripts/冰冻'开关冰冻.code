@@ -1,0 +1,21 @@
+begincodeV2
+name:冰冻'开关冰冻
+params:Bool open
+lines:
+act 1.this.模型'开关冰冻效果(var open)
+act 1.this.模型'手动刷新显示()
+if{fun create.bool(var 冰冻'冰冻)
+  if{fun bool.not(var open)
+    Vector3 pos=act 1.this.getPosition()
+    varf Device.map_handler.callFun2(String Base'脱离冰冻特效:var pos:var 物理效果'缩放当前值)
+    Float 数值=fun create.float(Float 80)
+    Long 类型=fun create.long(Long 5)
+    Bool 暴击=fun create.bool(Bool 0)
+    varf Device.map_handler.callFun4(String 数字效果'产生效果:var 数值:var 类型:var 暴击:var pos)
+    act 1.this.播放音效(String 冰块爆炸.ogg:Float 1)
+    Float 当前时间=fun time.scaleTime()
+    Float 冰冻'保护时间=fun float.add(var 当前时间:Float 1)
+  }
+}
+Bool 冰冻'冰冻=fun create.bool(var open)
+endcode

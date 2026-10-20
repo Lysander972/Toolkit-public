@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:测试'发送聊天消息_特定玩家
+params:Struct 玩家,String 聊天内容
+lines:
+String id=act 1101.this.玩家结构'读取_id(var 玩家)
+String avatarUrl=act 1101.this.玩家结构'读取_avatarUrl(var 玩家)
+String name=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+act 1101.this.测试'发送聊天消息_通用(var id:var avatarUrl:var name:var 聊天内容)
+endcode

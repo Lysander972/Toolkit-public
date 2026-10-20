@@ -1,0 +1,25 @@
+begincodeV2
+name:技能'10
+comment:仙女棒
+lines:
+Long $type=fun create.long(Long 10)
+String $skillKey=fun create.string(var $type)
+if{act 1.this.Skill'Greater(var $skillKey:Long 0)
+  Struct $player=act 1.this.Skill'Dequeue(var $skillKey)
+  Float $cd=act 1.this.Generic'GetProperty(String 仙女棒单轮CD:Float 0.3:Float 0.1:Float 0.5:Color 0,0,0,255)
+  Float $offset=fun create.float(Float 1)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var $type:Float 0:Long 30:Float 5:var $offset:Bool 1:var $player)
+  delay fun create.float(var $cd)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var $type:Float 0:Long 30:Float 5:var $offset:Bool 1:var $player)
+  delay fun create.float(var $cd)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var $type:Float 0:Long 30:Float 5:var $offset:Bool 1:var $player)
+  delay fun create.float(var $cd)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var $type:Float 0:Long 30:Float 5:var $offset:Bool 1:var $player)
+  delay fun create.float(var $cd)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var $type:Float 0:Long 30:Float 5:var $offset:Bool 1:var $player)
+  delay fun create.float(var $cd)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var $type:Float 0:Long 30:Float 5:var $offset:Bool 1:var $player)
+  delay fun create.float(var $cd)
+  fun break()
+}
+endcode

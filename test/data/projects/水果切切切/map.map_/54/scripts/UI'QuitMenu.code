@@ -1,0 +1,12 @@
+begincodeV2
+color:255,243,0
+name:UI'QuitMenu
+lines:
+if{fun bool.not(var InMenu)
+  fun break()
+}
+if{varf Canvas.MenuUI.exist()
+  UIRect panel=varf Canvas.MenuUI.readUIRect(String panel)
+  varf UIRect.panel.active(Bool 0)
+}
+endcode

@@ -1,0 +1,8 @@
+begincodeV2
+name:标志位'更新简化特效生效
+lines:
+Bool 简化特效=fun map.getCustomBool(String 手动简化特效标志位)
+Bool 卡顿检测=fun map.getCustomBool(String 卡顿检测标志位)
+Bool 简化特效生效=fun bool.or(var 简化特效:var 卡顿检测)
+fun map.setCustomBool(String 简化特效生效标志位:var 简化特效生效)
+endcode

@@ -1,0 +1,11 @@
+views {
+  view bescript_second_layer of toolkit.script {
+    title '第二层：零件 Context 与官方 TS AST 的转换边界'
+    include toolkit.script.conversion.second
+    include toolkit.script.ast.*
+    include toolkit.script.context.*
+    include pure.canvas.logic
+    include toolkit.project_model.*
+    include specifications.bescript
+  }
+}

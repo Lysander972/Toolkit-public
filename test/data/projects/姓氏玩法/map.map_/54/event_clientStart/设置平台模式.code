@@ -1,0 +1,24 @@
+begincodeV2
+color:255,255,255
+name:设置平台模式
+lines:
+String platform=fun platform()
+if{act 1101./主界面.工具'是GM()
+  if{fun keyboard.keyHeld2(Enum 55)
+    String platform=fun create.string(String 快手)
+  }
+}
+Bool 模式'PC端测试=fun string.equal(var platform:String WindowsPlayer)
+Bool 模式'移动端测试=fun string.equal(var platform:String AndroidPlayer)
+Bool 模式'抖音PC端=fun string.equal(var platform:String 抖音)
+Bool 模式'抖音移动端=fun string.equal(var platform:String 抖音.移动端)
+Bool 模式'快手PC端=fun string.equal(var platform:String 快手)
+Bool 模式'快手移动端=fun string.equal(var platform:String 快手.移动端)
+Bool 模式'Tiktok=fun string.equal(var platform:String TikTok)
+Bool 模式'PC端=fun bool.or2(var 模式'抖音PC端:var 模式'快手PC端:var 模式'Tiktok:var 模式'PC端测试)
+Bool 模式'移动端=fun bool.or1(var 模式'抖音移动端:var 模式'快手移动端:var 模式'移动端测试)
+Bool 模式'抖音=fun bool.or1(var 模式'抖音PC端:var 模式'抖音移动端:var 模式'PC端测试)
+Bool 模式'快手=fun bool.or(var 模式'快手PC端:var 模式'快手移动端)
+Bool 模式'启用盲盒=fun create.bool(var 模式'快手)
+fun map.setCustomLong(String context:Long 1)
+endcode

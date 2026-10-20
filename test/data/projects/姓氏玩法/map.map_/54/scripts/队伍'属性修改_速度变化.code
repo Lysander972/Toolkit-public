@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍'属性修改_速度变化
+params:Struct 结构,Long 速度变化
+lines:
+Long 原speed=act 1101.this.队伍结构'读取_speed(var 结构)
+Long 新speed=fun long.add(var 原speed:var 速度变化)
+act 1101.this.队伍结构'设置_speed(var 结构:var 新speed)
+endcode

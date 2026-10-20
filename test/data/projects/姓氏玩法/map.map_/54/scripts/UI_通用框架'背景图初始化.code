@@ -1,0 +1,12 @@
+begincodeV2
+name:UI_通用框架'背景图初始化
+lines:
+Bool 是否存在=varf Canvas.UI'背景图布局_3D.exist()
+if{fun bool.not(var 是否存在)
+  fun ui.2dmode(Bool 0:Float 0)
+  Canvas UI'背景图布局_3D=fun create.canvas(Canvas guid@1960e81187f634609bf6fdc781eaed214)
+  UIRawImage UI'背景图=varf Canvas.UI'背景图布局_3D.readUIRawImage(String 背景图)
+/*  act 1101.this.UI_通用框架'载入背景图(String 背景图金色.webp)
+  act 1101.this.UI_通用框架'载入背景图(String beijing.png)
+}
+endcode

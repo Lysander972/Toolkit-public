@@ -1,0 +1,30 @@
+guid:01601ce75b344366a8ab1c5cf9afd6e6
+meshes:
+[
+ {
+  n:Kiwi_Yellow_Half
+ }
+]
+matFolderName:d8933eaf6840413cb1aa1aaf362c83f8
+Albedo.UID:d8933eaf6840413cb1aa1aaf362c83f8
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-7.078052E-08,0.1028052,-1.490116E-08]
+bounds.size:[0.2364264,0.1960611,0.2248548]

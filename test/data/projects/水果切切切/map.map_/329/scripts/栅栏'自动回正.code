@@ -1,0 +1,11 @@
+begincodeV2
+name:栅栏'自动回正
+lines:
+Float 栅栏'开始时间=fun time.scaleTime()
+Float 栅栏'结束时间=fun float.add(var 栅栏'开始时间:Float 0.3)
+Float 栅栏'初始角度=fun create.float(var 栅栏'当前角度)
+Float 栅栏'目标角度=fun create.float(Float 0.5)
+Float 栅栏'初始高度=fun create.float(var 栅栏'当前高度)
+Float 栅栏'目标高度=fun create.float(Float 1)
+Bool 栅栏'自动回正=fun create.bool(Bool 0)
+endcode

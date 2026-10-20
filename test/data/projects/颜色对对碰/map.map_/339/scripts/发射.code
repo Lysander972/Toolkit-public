@@ -1,0 +1,8 @@
+begincodeV2
+name:发射
+params:Vector3 p,Color $color,Float $scale,Float $amount
+lines:
+Vector3 p=act 336.this.wordToLocalPos(var p)
+act 336.this.setPosOffset(var p)
+act 336.this.shootDir3(Vector3 0,0,0.01:String 特效:var $color:var $scale:var $amount)
+endcode

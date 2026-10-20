@@ -1,0 +1,5 @@
+begincodeV2
+name:Button_Settlement'RestartGame
+lines:
+fun map.restartGame()
+endcode

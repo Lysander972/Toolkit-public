@@ -1,0 +1,9 @@
+begincodeV2
+name:Public'SetColor
+params:Color $color1,Color $color2
+lines:
+act 1.this.setPaintColor(var $color1:Bool 0)
+act 362./1.setPaintColor(var $color1:Bool 0)
+fun break()
+=varf Color.$color2.equal(Color 0,0,0,255)
+endcode

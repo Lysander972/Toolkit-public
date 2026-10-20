@@ -1,0 +1,19 @@
+begincodeV2
+name:炮塔'冻结一类炮塔
+comment:按照种类进行冻结
+params:Float 每个秒数,String 炮塔名
+lines:
+List list=varf Struct.Base'All.getList(var 炮塔名:Bool 0)
+Float index=varf List.list.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Mech target=varf List.list.readMech(var index)
+  Bool exist=varf Mech.target.alive()
+  if{fun create.bool(var exist)
+    Device core=varf Mech.target.getCoreDevice()
+    if{varf Device.core.callReturnBool0(String Public'IsAlive)
+      varf Device.core.callFun1(String 冰冻'设置冰冻时间:var 每个秒数)
+    }
+  }
+}
+endcode

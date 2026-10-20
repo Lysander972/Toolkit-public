@@ -1,0 +1,14 @@
+begincodeV2
+name:float_
+lines:
+Float f=fun create.float(Float 0)
+varf Float.f.addEqual(Float 1)
+varf Float.f.minusEqual(Float 1)
+=varf Float.f.inside(Float 0:Float 0)
+=varf Float.f.abs()
+varf Float.f.set(Float 0)
+=varf Float.f.floor()
+=varf Float.f.ceiling()
+=varf Float.f.round()
+=varf Float.f.toLong()
+endcode

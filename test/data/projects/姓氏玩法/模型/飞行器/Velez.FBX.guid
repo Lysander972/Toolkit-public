@@ -1,0 +1,28 @@
+guid:39ee7d7ace73447a909963da9c5705cb
+meshes:
+[
+ {
+  n:Velez
+ }
+]
+matFolderName:01926fea5e2642e6a7066ce5035cf136
+Albedo.UID:01926fea5e2642e6a7066ce5035cf136
+Normal.UID:c236cc2941724c56b5d198b435f5677e
+Metal.UID:41511cc4040548c1805f390121be657f
+Emission.UID:1a82f1beda994baf9234475dc2a19595
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[4.017056,0.2183821,0,1]
+ }
+]
+bounds.center:[0,1.093488,0.2736516]
+bounds.size:[19.68314,4.208136,22.01673]

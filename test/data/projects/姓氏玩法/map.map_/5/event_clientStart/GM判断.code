@@ -1,0 +1,26 @@
+begincodeV2
+color:255,255,255
+name:GM判断
+lines:
+Player playerObj=fun getCurrentPlayer()
+Long playerID=varf Player.playerObj.id()
+List GMlist=fun map.excelGetIDList2(String GM名单)
+Float totalF=varf List.GMlist.count()
+Long totalL=varf Float.totalF.toLong()
+Long index=fun create.long(Long 0)
+while{fun long.lt(var index:var totalL)
+  Long userID=fun readExcel2_Long(var index:String 用户编号:String GM名单)
+  if{fun long.equal(var playerID:var userID)
+    Bool 是GM=fun create.bool(Bool 1)
+    fun break()
+  }
+  Long index=fun long.add(var index:Long 1)
+}
+Bool key=fun keyboard.keyHeld2(Enum 51)
+if{fun create.bool(var key)
+  Bool 是GM=fun create.bool(Bool 1)
+}
+/*if{fun create.bool(var 是GM)
+/*  fun debug.print(String 是GM:Color 255,255,255,255:Bool 0)
+}
+endcode

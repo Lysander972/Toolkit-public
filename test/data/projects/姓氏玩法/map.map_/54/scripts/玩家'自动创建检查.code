@@ -1,0 +1,35 @@
+begincodeV2
+color:255,255,255
+name:玩家'自动创建检查
+params:Dict msgObj
+return:Struct player
+lines:
+String uid=varf Dict.msgObj.readString(String uid:Bool 0)
+String name=varf Dict.msgObj.readString(String name:Bool 0)
+String avatarUrl=varf Dict.msgObj.readString(String avatarUrl:Bool 0)
+Struct player=varf Dict.局内'玩家_索引.readStruct(var uid:Bool 0)
+Bool exist=varf Struct.player.exist()
+if{fun create.bool(var exist)
+  if{fun string.notEqual(var uid:String )
+    String OldId=act 1101.this.玩家结构'读取_id(var player)
+    if{fun string.notEqual(var OldId:var uid)
+      act 1101.this.玩家结构'设置_id(var player:var uid)
+    }
+  }
+  if{fun string.notEqual(var name:String )
+    String OldName=act 1101.this.玩家结构'读取_name(var player:Bool 0)
+    if{fun string.notEqual(var OldName:var name)
+      act 1101.this.玩家结构'设置_name(var player:var name)
+    }
+  }
+  if{fun string.notEqual(var avatarUrl:String )
+    String OldUrl=act 1101.this.玩家结构'读取_avatarUrl(var player)
+    if{fun string.notEqual(var OldUrl:var avatarUrl)
+      act 1101.this.玩家结构'设置_avatarUrl(var player:var avatarUrl)
+    }
+  }
+}
+if{fun bool.not(var exist)
+  Struct player=act 1101.this.玩家'新建(var uid:var name:var avatarUrl:Bool 0)
+}
+endcode

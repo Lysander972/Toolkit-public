@@ -1,0 +1,30 @@
+begincodeV2
+color:0,215,255
+name:初始化快捷调试面板
+params:UIRect root
+lines:
+Bool 是否为GM=fun create.bool(Bool 1)
+fun ui.2dmode(Bool 1)
+Canvas 参数调节界面=fun create.canvas(Canvas canvas@1HDT_参数调节界面@3EAIAEQsABHR5cGUGBlVJUmVjdARuYW1lBgznlYzpnaLlupXmnb8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBQAAAAAAAAAGYW5jaG9yGAUAAAAAAAAADGhlaWdodEV4dGVuZBgBAAAAAAAAAARzaXplBAAAyEMAAIA/AACAPwVjb2xvcgwAAAAASYcjPtCOjT77lys/C0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxAFABEMAAR0eXBlBghVSUJ1dHRvbgRuYW1lBgnlsY/olL3lsYIDUG9zBAAAAIAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBQAAAAAAAAAGYW5jaG9yGAUAAAAAAAAAC3dpZHRoRXh0ZW5kGAIAAAAAAAAADGhlaWdodEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAIA/AACAPwVjb2xvcgwAAAAAAACAPwAAAAAAAAAAC0JvcmRlcldpZHRoAQAAoEAGUmFkaXVzAQAAIEEFbGFiZWwGABEKAAR0eXBlBgZVSVJlY3QEbmFtZQYG6L655qGGA1BvcwQAAACAAAAAgAAAAAAMcGFyZW50QW5jaG9yGAIAAAAAAAAABmFuY2hvchgCAAAAAAAAAAxoZWlnaHRFeHRlbmQYAQAAAAAAAAAEc2l6ZQQAAIBAAACAPwAAgD8FY29sb3IMjKKfPo9eWD8uTWU/AACAPwtCb3JkZXJXaWR0aAEAAIBABlJhZGl1cwEAAAAAEQoABHR5cGUGBlVJUmVjdARuYW1lBgvliIblibLnur9fMQNQb3MEAAAAAAAAtEIAAAAADHBhcmVudEFuY2hvchgHAAAAAAAAAAZhbmNob3IYBwAAAAAAAAALd2lkdGhFeHRlbmQYAQAAAAAAAAAEc2l6ZQQAAIA/AAAAQAAAgD8FY29sb3IMjKKfPo9eWD8uTWU/AACAPwtCb3JkZXJXaWR0aAEAAAAABlJhZGl1cwEAAAAAEQoABHR5cGUGCFVJQnV0dG9uBG5hbWUGGeaMiemSrl/lhbPpl63osIPlj4LpnaLmnb8DUG9zBAAAAMAAAKBBAAAAAAxwYXJlbnRBbmNob3IYBwAAAAAAAAAGYW5jaG9yGAcAAAAAAAAABHNpemUEAACCQwAASEIAAIA/BWNvbG9yBg/nlYzpnaLnlKjngbDnmb0LQm9yZGVyV2lkdGgBAAAAQAZSYWRpdXMBAAAAAAVsYWJlbAYM6YCA5Ye66LCD5Y+CEQwABHR5cGUGBlVJUmVjdARuYW1lBhLlj4LmlbDliJfooajlupXmnb8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAQAAAAAAAAAGYW5jaG9yGAEAAAAAAAAADGhlaWdodEV4dGVuZBgCAAAAAAAAAARzaXplBAAAyEMAAMhCAACAPwVjb2xvcgwAAIA/AACAPwAAgD848uo9C0JvcmRlcldpZHRoAQAAQEAGUmFkaXVzAQAAAAAQdmVydGljbGVfc3BhY2luZwEAAFBBB3BhZGRpbmcEAAAAAAAAYEEAAAAAEQoABHR5cGUGCFVJQnV0dG9uBG5hbWUGGeaMiemSrl/lkbzlh7rosIPlj4LpnaLmnb8DUG9zBAAAoEEAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAABwQgAAcEIAAIA/BWNvbG9yDAAAAACMyCU/D+k0PwAAgD8LQm9yZGVyV2lkdGgBAACAQAZSYWRpdXMBAAAAAAVsYWJlbAYBUw@3@3)
+UIRect 界面底板=varf Canvas.参数调节界面.readUIRect(String 界面底板)
+varf UIRect.界面底板.active(Bool 0)
+List 参数调节列表=fun create.list()
+//@3@3@3@3@3调参面板UI设置@3@3@3@3@3
+UIButton 按钮_呼出调参面板=varf Canvas.参数调节界面.readUIButton(String 按钮_呼出调参面板)
+Vector3 尺寸=varf UIButton.按钮_呼出调参面板.getSize()
+act 1101.this.矩形形按钮_带底色_指定格式(var 按钮_呼出调参面板:var 尺寸:String ★:Float 0.6)
+Bool 布尔_真=fun create.bool(Bool 1)
+varf UIButton.按钮_呼出调参面板.clickCB1(String 开关调参面板:var 布尔_真)
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+UIButton 按钮_关闭调参面板=varf Canvas.参数调节界面.readUIButton(String 界面底板/按钮_关闭调参面板)
+Vector3 尺寸=varf UIButton.按钮_关闭调参面板.getSize()
+act 1101.this.矩形形按钮_带底色_指定格式(var 按钮_关闭调参面板:var 尺寸:String 关闭调参面板:Float 0.55)
+Bool 布尔_假=fun create.bool(Bool 0)
+varf UIButton.按钮_关闭调参面板.clickCB1(String 开关调参面板:var 布尔_假)
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+UIRect 参数列表底板=varf Canvas.参数调节界面.readUIRect(String 界面底板/参数列表底板)
+varf UIRect.root.addSon(var 按钮_呼出调参面板)
+varf UIRect.root.addSon(var 界面底板)
+/*varf UIRect.参数列表底板.autoLayout(Vector3 326,36,0:Vector3 0,36,0:Vector3 0,0,0:Enum 1)
+/*Bool 模块初始化=fun create.bool(Bool 1)
+endcode

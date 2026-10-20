@@ -1,0 +1,7 @@
+begincodeV2
+guid:650233ab48864f71811f15f3ea2b0ee7
+name:Public'GetMainDevice
+return:Device ret
+lines:
+Device ret=act 362./1.getDevice()
+endcode

@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:初始化UI
+lines:
+//更新摄像机
+fun camera.setpos2(Vector3 0,0,0:Vector3 0,1,0:Vector3 0,0,1:Float 0)
+act 1101.this.UI_通用框架'背景图初始化()
+Long UI'状态枚举=fun create.long(Long -1)
+//点击这里写注释
+act 1101.this.UI_局外主菜单'主菜单_进入()
+endcode

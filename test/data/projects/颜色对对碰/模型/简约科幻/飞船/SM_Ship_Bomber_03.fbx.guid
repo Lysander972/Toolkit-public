@@ -1,0 +1,26 @@
+guid:dc855ec0a72e47ce843b52420b8fbc50
+meshes:
+[
+ {
+  n:SM_Ship_Bomber_03
+ }
+]
+matFolderName:c2bdfa604c8540139dcac56fa05cb892
+Albedo.UID:c2bdfa604c8540139dcac56fa05cb892
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[2.861023E-06,5.960464E-07,5.722046E-06]
+bounds.size:[30.27901,5.4714,20.65743]

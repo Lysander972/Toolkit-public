@@ -1,0 +1,19 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'调试面板_按钮_模拟礼物2
+comment:能力药丸
+lines:
+if{act 1101./主界面.工具'是GM()
+  Long 礼物序号=fun create.long(Long 1)
+  Long 礼物数量=fun create.long(Long 1)
+  Bool x10=fun keyboard.keyHeld2(Enum 123)
+  Bool x100=fun keyboard.keyHeld2(Enum 121)
+  if{fun create.bool(var x10)
+    Long 礼物数量=fun long.multiply(var 礼物数量:Long 10)
+  }
+  if{fun create.bool(var x100)
+    Long 礼物数量=fun long.multiply(var 礼物数量:Long 100)
+  }
+  act 1101.this.测试'发送礼物消息_默认玩家(var 礼物序号:var 礼物数量)
+}
+endcode

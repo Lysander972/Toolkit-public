@@ -1,0 +1,8 @@
+begincodeV2
+name:通用武器动图'武器_加速3
+params:String 对齐方式,Float 整体旋转角度,Bool 附带层数,Float 层数UI角度
+return:Canvas 布局
+lines:
+Canvas 布局=fun create.canvas(Canvas guid@1203078ae4faa42d58373f9ea79f62b4a)
+act 1101.this.通用武器动图'节点初始化(var 布局:Long 15:Long 40:var 对齐方式:var 整体旋转角度:var 附带层数:var 层数UI角度:String 加速3:Bool 0)
+endcode

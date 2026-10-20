@@ -1,0 +1,8 @@
+begincodeV2
+guid:a59f8344a2f44aa7979e2dcd1c86e5f4
+name:玩家结构'读取_idproxy
+params:Struct 结构
+return:String ret
+lines:
+String ret=varf Struct.结构.getString(String idproxy:Bool 0)
+endcode

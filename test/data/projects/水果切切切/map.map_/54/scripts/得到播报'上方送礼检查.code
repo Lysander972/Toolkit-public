@@ -1,0 +1,11 @@
+begincodeV2
+name:得到播报'上方送礼检查
+params:Struct player
+lines:
+Bool 已送礼=varf Struct.player.getBool(String firstgift:Bool 0)
+if{fun bool.not(var 已送礼)
+  =act 1101.this.施加礼物效果'蓝2(Long 1:var player:Bool 0)
+  act 1101.this.播报'上方抽中奖品(String 本场首次礼物\n赠送苹果×3:var player:Long 199)
+  Bool 已送礼=fun create.bool(Bool 1)
+}
+endcode

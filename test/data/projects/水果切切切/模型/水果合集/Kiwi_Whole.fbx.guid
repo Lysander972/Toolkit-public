@@ -1,0 +1,30 @@
+guid:b41713eb7de044809b6ad88662eb0d18
+meshes:
+[
+ {
+  n:Kiwi_Whole
+ }
+]
+matFolderName:d8933eaf6840413cb1aa1aaf362c83f8
+Albedo.UID:d8933eaf6840413cb1aa1aaf362c83f8
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[3.72529E-09,0.143913,-1.490116E-08]
+bounds.size:[0.2364264,0.2782767,0.2248548]

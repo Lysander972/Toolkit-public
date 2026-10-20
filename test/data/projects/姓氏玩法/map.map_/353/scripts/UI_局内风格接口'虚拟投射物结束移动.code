@@ -1,0 +1,16 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口'虚拟投射物结束移动
+params:UIRect 虚拟投射物
+lines:
+Dict 事件=varf UIRect.虚拟投射物.customDict(String 事件)
+act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+String 类型=varf UIRect.虚拟投射物.customString(String 类型)
+if{fun string.equal(var 类型:String 火球)
+  act 1101.this.内部'特效_火球爆炸(var 虚拟投射物)
+}
+if{fun string.equal(var 类型:String 加速)
+  act 1101.this.内部'特效_加速击中(var 虚拟投射物)
+}
+varf UIRect.虚拟投射物.del(Float 0)
+endcode

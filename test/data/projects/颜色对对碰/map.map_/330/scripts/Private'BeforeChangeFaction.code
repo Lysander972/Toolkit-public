@@ -1,0 +1,35 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'BeforeChangeFaction
+comment:阵营变更时
+params:Long $oldFaction,Long $newFaction
+return:Bool $continue
+lines:
+=fun long.add(var $newFaction:Long 0)
+if{fun long.notEqual(var $oldFaction:Long 0)
+  Bool Occupied=fun create.bool(Bool 1)
+}
+Bool $continue=fun create.bool(Bool 1)
+/*List $list=varf Device.ColliderCore.callReturnFun0(String Public'GetMechInArea)
+/*Bool $hasHostile=fun create.bool(Bool 0)
+/*Float $index=varf List.$list.count()
+/*while{fun float.gt(var $index:Float 0)
+/*  varf Float.$index.minusEqual(Float 1)
+/*  Mech $obj=varf List.$list.readMech(var $index)
+/*  Bool $isMap=varf Mech.$obj.isMap()
+/*  if{fun bool.not(var $isMap)
+/*    Device $core=varf Mech.$obj.getCoreDevice()
+/*    if{varf Device.$core.callReturnBool0(String Public'IsAlive)
+/*      Long $faction=varf Device.$core.callReturnLong0(String Public'GetFaction)
+/*      Bool $temp0=fun long.notEqual(var $faction:Long 0)
+/*      Bool $temp1=fun long.notEqual(var $faction:var $newFaction)
+/*      if{fun bool.and(var $temp0:var $temp1)
+/*        Bool $hasHostile=fun create.bool(Bool 1)
+      }
+/*      fun break()
+    }
+  }
+}
+/*Bool $continue=fun bool.not(var $hasHostile)
+endcode

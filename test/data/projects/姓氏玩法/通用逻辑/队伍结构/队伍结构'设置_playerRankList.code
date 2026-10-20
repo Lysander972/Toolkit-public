@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+guid:a7ebd712d36e49a891f01c7589c19d6e
+color:255,255,255
+name:队伍结构'设置_playerRankList
+params:Struct 结构,List playerRankList
+lines:
+varf Struct.结构.set(String playerRankList:var playerRankList)
+endcode

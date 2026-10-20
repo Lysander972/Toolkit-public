@@ -1,0 +1,5 @@
+begincodeV2
+name:玩法结束
+lines:
+Bool GameStarted=fun create.bool(Bool 0)
+endcode

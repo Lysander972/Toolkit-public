@@ -1,0 +1,8 @@
+begincodeV2
+name:发射
+params:Vector3 p,Vector3 direction,Float scale,Color color,Float duration
+lines:
+Vector3 p=act 336.this.wordToLocalPos(var p)
+act 336.this.setPosOffset(var p)
+act 336.this.shootDir4(Vector3 0,0,0.0001:String 播放:var direction:var scale:var color:var duration)
+endcode

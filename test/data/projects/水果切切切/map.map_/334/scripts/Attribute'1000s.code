@@ -1,0 +1,65 @@
+begincodeV2
+color:1,255,0
+name:Attribute'1000s
+comment:点赞水果
+lines:
+//0.1.50上下文获取
+if{fun bool.not(var init)
+  Long contextId=act 1.this.GetContextId()
+  if{fun long.equal(var contextId:Long 1)
+    Float defaultAtk=fun create.float(Float 3)
+    Float defaultHp=fun create.float(Float 3)
+  }
+  if{fun long.equal(var contextId:Long 2)
+    Float defaultAtk=fun create.float(Float 3)
+    Float defaultHp=fun create.float(Float 3)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+//面板数值,包括Atk/maxHP/炮塔/暴击率/被暴击乘数
+Float Attr'Atk=fun create.float(var defaultAtk)
+Float Attr'maxHP=fun create.float(var defaultHp)
+Bool Attr'Turret=fun create.bool(Bool 0)
+Float Attr'暴击率=fun create.float(Float 0)
+Float Attr'被暴击乘数=fun create.float(Float 1)
+//物理效果@1是否启用物理/初速度/自旋速度/反弹次数限制@4999@3不限次数@5/模型缩放/模型密度/模型质量/模型本体层/模型触发器层/模型启用重力
+Bool Physic'Enabled=fun create.bool(Bool 1)
+Float Physic'SpeedExp=fun create.float(Float 20)
+Vector3 Physic'SpinRate=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Bool Physic'NeedSpin=fun vector3.notEqual(var Physic'SpinRate:Vector3 0,0,0)
+Long Physic'Rebound=fun create.long(Long 999)
+Float Physic'Size=fun create.float(Float 25)
+Float Physic'Density=fun create.float(Float 1)
+Float Physic'Mass=fun create.float(Float 5)
+Float Physic'Layer1=fun create.float(Float 7)
+Float Physic'Layer2=fun create.float(Float 2)
+Bool Physic'Gravity=fun create.bool(Bool 1)
+//模型其他物理效果
+act 1.this.Bullet'UpdateOffset(Float 0.1:Float 0)
+varf Mech.Self.setDrag(Float 0.2)
+varf Mech.Self.setAngularDrag(Float 7)
+act 1.this.setMaxAngularVelocity(Float 0.15)
+/*act 1.this.setInertiaTensor(Vector3 1e+06,1e+06,1e+06)
+//UI相关设置
+Float UI'Size=fun create.float(Float 4)
+Float UI'MaxSize=fun float.multiply(var UI'Size:Float 1.5)
+Float rand=fun math.rand(Float 0:Float 1)
+Bool bool1=fun float.lt(var rand:Float 0.1)
+Bool bool2=fun float.gte(var Attr'HPMul:Float 3)
+Bool UI'show=fun bool.or(var bool1:var bool2)
+Bool UI'showName=fun create.bool(Bool 1)
+Bool UI'showAvatar=fun create.bool(Bool 0)
+Bool UI'showHP=fun float.gte(var Attr'HPMul:Float 3)
+Long UI'mode=fun create.long(Long 0)
+Vector3 UI'LocalPos=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Vector3 UI'LocalF=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Vector3 UI'LocalU=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Float UI'Distance=fun create.float(Float 8)
+//其他设置
+Bool 冰冻'冰冻=fun create.bool(Bool 0)
+Bool 冰冻'免疫=fun create.bool(Bool 0)
+Bool Attr'可分裂=fun create.bool(Bool 0)
+/*Bool Attr'OneHit=fun create.bool(Bool 0)
+Long Attr'DamageC=fun create.long(Long -1)
+Long Attr'CollisionC=fun create.long(Long -1)
+endcode

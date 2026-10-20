@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'IsAlive
+comment:存活子弹
+return:Bool alive
+lines:
+Bool alive=fun create.bool(var Attr'Alive)
+endcode

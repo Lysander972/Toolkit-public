@@ -1,0 +1,12 @@
+[
+ Public'GetAtk
+ Public'IsWall
+ Public'GetMechInArea
+ Private'CheckAndUpdate
+ Public'GetFaction
+ Public'IsAlive
+ Public'Damage
+ Public'OnCollision
+ Public'Binding
+ Public'SetLayer
+]

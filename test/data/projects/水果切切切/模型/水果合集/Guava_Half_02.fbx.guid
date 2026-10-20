@@ -1,0 +1,30 @@
+guid:dfadaaf70cf044a9bffa013b302e1f4d
+meshes:
+[
+ {
+  n:Guava_Half_02
+ }
+]
+matFolderName:509f4fc8b92f4f8aae82dcb15f31a2c5
+Albedo.UID:509f4fc8b92f4f8aae82dcb15f31a2c5
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.07,0]
+bounds.size:[0.2728543,0.14,0.2779685]

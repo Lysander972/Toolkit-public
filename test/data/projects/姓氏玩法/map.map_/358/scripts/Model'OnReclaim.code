@@ -1,0 +1,10 @@
+begincodeV2
+color:104,0,255
+name:Model'OnReclaim
+comment:回收模型
+params:Mech obj,String key
+lines:
+List unused=varf Struct.Model'Unused.getList(var key:Bool 0)
+varf List.unused.add(var obj)
+varf Mech.obj.setActive(Bool 0)
+endcode

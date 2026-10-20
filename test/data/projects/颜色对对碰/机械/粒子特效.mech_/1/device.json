@@ -1,0 +1,51 @@
+type:337
+pos:[5.017E-09,0,4.386001E-16]
+quat:[-0.4999999,-0.5000002,-0.4999997,0.5000003]
+ext:
+{
+ logicName:碎片
+ startLifetimeMultiplier:1
+ startSpeed:[10,16]
+ startSize:[0.2,0.2]
+ startRotationX:[3.141593,0]
+ startRotationY:[3.141593,0]
+ startRotation:[3.141593,0]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:1
+ boolBurst:true
+ modelFileGuids:8059632101da473ca26b59b45b7d6f52;e5f68e6d65e0453197c4307c487e518f;
+ rateOverTime:1
+ angle:45
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.2500038:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,1"
+ ]
+ sizeOverLifetime:
+ [
+  "0:1"
+  "0.2428115:0.9936273"
+  "0.5042599:1"
+  "0.7641107:1"
+  "1:0"
+ ]
+ rotSpeed:10
+ rotationOverLifetime.max:
+ [
+  "0:1"
+  "0.2529286:1"
+  "0.5021299:1"
+  "0.7539936:1"
+  "1:1"
+ ]
+ renderMode:4
+ renderAlign:1
+ velocityScale:0.2
+ simulationSpace:1
+ picFileGuid:e02b0c5c7c114dffb029d554e5f4a940
+}

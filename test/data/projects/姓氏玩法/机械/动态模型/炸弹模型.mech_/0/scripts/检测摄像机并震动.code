@@ -1,0 +1,6 @@
+begincodeV2
+name:检测摄像机并震动
+params:Vector3 坐标
+lines:
+//TODO
+endcode

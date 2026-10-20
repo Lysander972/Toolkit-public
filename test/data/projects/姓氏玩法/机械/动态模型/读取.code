@@ -1,0 +1,9 @@
+begincodeV2
+guid:dfb7375b39c64d58a567f3f097c30589
+name:读取
+params:String 名称,Float 默认值,Float 最小值,Float 最大值
+return:Float 结果
+lines:
+Color 颜色=fun create.color(Color 0,0,0,255)
+Float 结果=act 1.this.callClientMapRetFloatFunc5(String 参数调节模块.读取:var 名称:var 默认值:var 最小值:var 最大值:var 颜色)
+endcode

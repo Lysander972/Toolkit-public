@@ -1,0 +1,11 @@
+begincodeV2
+guid:1413f83e7c0d460f852ed5047ec83ba2
+name:日期判定
+return:Bool 重置排行榜
+lines:
+1:Datetime 日期=fun time.datetime()
+2:Datetime 日期阈值=fun time.datetime()
+3:varf Datetime.日期阈值.set(Float 2024:Float 10:Float 18:Float 0:Float 0:Float 0)
+4:Float 需等待时间=varf Datetime.日期.delta(var 日期阈值)
+5:Bool 重置排行榜=fun float.lte(var 需等待时间:Float 0)
+endcode

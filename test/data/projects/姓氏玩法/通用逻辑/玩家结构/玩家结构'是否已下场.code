@@ -1,0 +1,11 @@
+begincodeV2
+guid:d76216de023843b2a163d7987f555682
+color:255,255,255
+name:玩家结构'是否已下场
+comment:读取玩家是否已经选择队伍
+params:Struct 结构
+return:Bool ret
+lines:
+Long team=act 1101.this.玩家结构'读取_team(var 结构)
+Bool ret=fun long.notEqual(var team:Long -1)
+endcode

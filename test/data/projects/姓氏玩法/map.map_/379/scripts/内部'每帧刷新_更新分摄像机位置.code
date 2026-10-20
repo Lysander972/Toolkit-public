@@ -1,0 +1,62 @@
+begincodeV2
+color:123,255,0
+name:内部'每帧刷新_更新分摄像机位置
+comment:此函数控制拖动时摄像机应当看向的目标
+lines:
+//摄像机高度的潜在突变,对应队伍的高度突变
+Bool 摄像机高度突变标志位=fun create.bool(Bool 0)
+//目标位置
+Float 目标位置生效值=fun create.float(Float 0)
+Float 目标位置队伍序号=fun create.float(Float 0)
+Bool 目标位置队伍_存在=fun float.lt(var 目标位置队伍序号:var 场景'真实队伍数量)
+Long 目标位置队伍_id=fun create.long(Long -1)
+Float 目标位置队伍_实际高度=act 1101.this.工具'队伍高度映射(Long 0)
+//读取速度值和高度值
+if{fun create.bool(var 目标位置队伍_存在)
+  Struct 目标位置队伍=varf List.激活队伍列表.readStruct(var 目标位置队伍序号)
+  Long 目标位置队伍_id=act 1101./弹幕.队伍结构'读取_id(var 目标位置队伍)
+  String 目标位置队伍_idS=fun create.string(var 目标位置队伍_id)
+  Struct 目标位置队伍映射=varf Dict.队伍UI映射.readStruct(var 目标位置队伍_idS:Bool 0)
+  Mech 目标位置队伍模型=varf Struct.目标位置队伍映射.getMech(String 队伍模型:Bool 0)
+  Long 目标队伍_高度显示用值=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 目标位置队伍)
+  Float 目标位置队伍_实际高度=act 1101.this.工具'队伍高度映射(var 目标队伍_高度显示用值)
+  Float 目标位置队伍_实际高度=fun float.max(var 目标位置队伍_实际高度:Float 0)
+  //读取更新标记
+  //如果目标队伍的模型上标记了需要刷新高度
+  Bool 刷新摄像机高度=varf Mech.目标位置队伍模型.customBool(String 刷新摄像机高度)
+  Bool 摄像机高度突变标志位=fun bool.or(var 摄像机高度突变标志位:var 刷新摄像机高度)
+}
+Float 目标看向局部高度=fun create.float(Float -3)
+//如果有潜在产生高度突变的情况,进行处理@1首先是根据上一帧的世界高度更新局部高度
+if{fun create.bool(var 摄像机高度突变标志位)
+  Float 分摄像机'当前看向局部高度=fun float.minus(var 分摄像机'当前看向世界高度:var 目标位置队伍_实际高度)
+  Float 分摄像机'当前摄像机局部高度=fun float.minus(var 分摄像机'当前摄像机世界高度:var 目标位置队伍_实际高度)
+}
+//两种视角的目标摄像机高度
+Float 目标摄像机局部高度=fun float.add(var 目标看向局部高度:Float 15)
+//摄像机坐标相对于0度角的夹角
+Float 目标摄像机弧度=fun float.multiply(var 场景'位置间夹角:var 目标位置生效值)
+//计算得到摄像机的生效弧度,摄像机'当前摄像机弧度用于计算最低视角的弧度和最高视角的弧度
+Float 分摄像机'当前摄像机弧度=act 1101.this.工具'有方向角度插值(var 分摄像机'当前摄像机弧度:var 目标摄像机弧度:Float 0.05)
+//计算当前摄像机和看向的局部高度
+Float 分摄像机'当前摄像机局部高度=act 1101.this.工具'自身插值与匀速综合(var 分摄像机'当前摄像机局部高度:var 目标摄像机局部高度:Float 0.035:Float 3)
+Float 分摄像机'当前看向局部高度=act 1101.this.工具'自身插值与匀速综合(var 分摄像机'当前看向局部高度:var 目标看向局部高度:Float 0.07:Float 5)
+//使用局部高度和柱子的实际高度得到世界高度
+Float 分摄像机'当前摄像机世界高度=fun float.add(var 目标位置队伍_实际高度:var 分摄像机'当前摄像机局部高度)
+Float 分摄像机'当前摄像机世界高度=fun float.max(var 分摄像机'当前摄像机世界高度:Float 25)
+Float 分摄像机'当前看向世界高度=fun float.add(var 目标位置队伍_实际高度:var 分摄像机'当前看向局部高度)
+//计算两种情况下的目标看向坐标
+Float 半径=fun float.multiply(var 场景'位置数量:Float 0.5)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 当前看向坐标=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 分摄像机'当前摄像机弧度)
+varf Vector3.当前看向坐标.setY(var 分摄像机'当前看向世界高度)
+//计算两种情况下的目标摄像机坐标
+Float 半径=fun float.multiply(var 场景'位置数量:Float 0.7)
+Float 半径=fun float.add(var 半径:Float 20)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 当前摄像机坐标=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 分摄像机'当前摄像机弧度)
+varf Vector3.当前摄像机坐标.setY(var 分摄像机'当前摄像机世界高度)
+Vector3 当前摄像机朝向=fun vector3.minus(var 当前看向坐标:var 当前摄像机坐标)
+//应用当前的摄像机坐标和朝向
+fun camera.setpos2(var 当前摄像机坐标:var 当前摄像机朝向:Vector3 0,1,0:Float 1)
+endcode

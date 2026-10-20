@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'Open
+lines:
+act 1102./hp.show(Bool 1)
+act 1102./username.show(Bool 1)
+endcode

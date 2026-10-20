@@ -1,0 +1,11 @@
+begincodeV2
+color:8,0,255
+name:Public'GetAtk
+comment:得到此子弹的攻击力
+return:Float atk
+lines:
+Float atk=fun create.float(var Attr'Atk)
+if{fun long.equal(var Attr'Faction:Long 1)
+  Float atk=fun float.min(var atk:var Attr'HP)
+}
+endcode

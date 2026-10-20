@@ -1,0 +1,8 @@
+begincodeV2
+name:方法1
+lines:
+act 129.this.setSpawnRate(Float 0)
+act 129.this.setColor1(Color 0,0,0,255)
+act 129.this.setColor2(Color 0,0,0,255)
+act 129.this.setColor3(Color 0,0,0,255)
+endcode

@@ -1,0 +1,127 @@
+begincodeV2
+name:数字效果'产生效果
+params:Float 值,Long 类型,Bool 是否暴击,Vector3 坐标
+lines:
+if{fun bool.not(var GameStarted)
+  fun break()
+}
+if{fun float.lt(var 值:Float 2)
+  fun break()
+}
+Long 整数数值=varf Float.值.toLong()
+//一般伤害
+Bool bool1=fun long.equal(var 类型:Long 0)
+/*Bool bool1=fun bool.and(var bool1:var 是否暴击)
+//强调的伤害
+Bool bool2=fun long.equal(var 类型:Long 2)
+//回血
+Bool bool3=fun long.equal(var 类型:Long 1)
+//切开
+Bool bool4=fun long.equal(var 类型:Long 3)
+//冻结
+Bool bool5=fun long.equal(var 类型:Long 4)
+//解冻
+Bool bool6=fun long.equal(var 类型:Long 5)
+//碾压
+Bool bool7=fun long.equal(var 类型:Long 6)
+if{fun map.getCustomBool(String 简化特效生效标志位)
+  if{fun bool.or2(var bool1:var bool5:var bool6:var bool7)
+    fun break()
+  }
+}
+/*Bool show=fun bool.or1(var bool1:var bool2:var bool3)
+/*if{fun bool.not(var show)
+/*  fun break()
+}
+fun ui.2dmode(Bool 1)
+if{fun bool.or(var bool1:var bool2)
+  if{fun bool.not(var 是否暴击)
+    Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGC+aatOWHuy05OTk5CEZvbnRTaXplAQAAQEILbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAc3MTD4QY2hhcmFjdGVyU3BhY2luZwEAAEBACWZvbnRTdHlsZRgCAAAAAAAAAAxvdXRsaW5lV2lkdGgBzcxMPg9vdXRsaW5lRGlzdGFuY2UEzcxMPs3MTD7NzEw+DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/FGVuYWJsZVZlcnRleEdyYWRpZW50BQEHdG9wTGVmdAwAAIA/CF4zPwAAAAAAAIA/CHRvcFJpZ2h0DAAAgD8IXjM/AAAAAAAAgD8KYm90dG9tTGVmdAwAAIA/CF4zPwAAAAAAAIA/C2JvdHRvbVJpZ2h0DAAAgD8IXjM/AAAAAAAAgD8@3)
+    Float 缩放=fun float.multiply(var 缩放:Float 0.8)
+    String 文字=fun string.add(String -:var 整数数值)
+    Bool 突出显示=fun create.bool(Bool 0)
+  }
+  if{fun create.bool(var 是否暴击)
+    Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGC+aatOWHuy05OTk5CEZvbnRTaXplAQAAQEILbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAc3MTD4QY2hhcmFjdGVyU3BhY2luZwEAAEBACWZvbnRTdHlsZRgCAAAAAAAAAAxvdXRsaW5lV2lkdGgBzcxMPg9vdXRsaW5lRGlzdGFuY2UEzcxMPs3MTD7NzEw+DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/FGVuYWJsZVZlcnRleEdyYWRpZW50BQEHdG9wTGVmdAwAAIA/hIKCPgAAAAAAAIA/CHRvcFJpZ2h0DAAAgD+EgoI+AAAAAAAAgD8KYm90dG9tTGVmdAwAAIA/CF4zPwAAAAAAAIA/C2JvdHRvbVJpZ2h0DAAAgD8IXjM/AAAAAAAAgD8@3)
+    Float 缩放=fun float.multiply(var 缩放:Float 1.2)
+    String 文字=fun string.add(String 暴击-:var 整数数值)
+    Bool 突出显示=fun create.bool(Bool 1)
+  }
+}
+if{fun create.bool(var bool3)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGC+WKoOWbuis5OTk5CEZvbnRTaXplAQAAQEILbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAc3MTD4QY2hhcmFjdGVyU3BhY2luZwEAAEBACWZvbnRTdHlsZRgCAAAAAAAAAAxvdXRsaW5lV2lkdGgBzcxMPg9vdXRsaW5lRGlzdGFuY2UEzcxMPs3MTD7NzEw+DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/FGVuYWJsZVZlcnRleEdyYWRpZW50BQEHdG9wTGVmdAzQgEY+AACAPwAAAAAAAIA/CHRvcFJpZ2h0DNCARj4AAIA/AAAAAAAAgD8KYm90dG9tTGVmdAzM8zw/AACAPwAAAAAAAIA/C2JvdHRvbVJpZ2h0DMzzPD8AAIA/AAAAAAAAgD8@3)
+  String 文字=fun string.add(String 加固+:var 整数数值)
+  Bool 突出显示=fun create.bool(Bool 1)
+}
+if{fun create.bool(var bool4)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAIAEQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYG5Zu+5qCHA1BvcwQAAAAAAACgQAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAANEMAACBDAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/CGZpbGVHdWlkBiBhOTZjOTU2OTU5MzA0YWJjYTJjY2YxZjgwYTAxYjVkNxEWAAR0eXBlBgdUZXh0UHJvBG5hbWUGBuaVsOWAvANQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgFAAAAAAAAAAZhbmNob3IYBQAAAAAAAAALd2lkdGhFeHRlbmQYAgAAAAAAAAAEc2l6ZQQAAAAAAACgQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwR0ZXh0BgZTcGxpdCEIRm9udFNpemUBAABAQgtsaW5lU3BhY2luZwEAAIA/CkZhY2VEaWxhdGUBzcxMPhBjaGFyYWN0ZXJTcGFjaW5nAQAAQEAJZm9udFN0eWxlGAIAAAAAAAAADG91dGxpbmVXaWR0aAHNzEw+D291dGxpbmVEaXN0YW5jZQTNzEw+zcxMPs3MTD4Mb3V0bGluZUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8UZW5hYmxlVmVydGV4R3JhZGllbnQFAQd0b3BMZWZ0DAAAgD8IXjM/AAAAAAAAgD8IdG9wUmlnaHQMAACAPwheMz8AAAAAAACAPwpib3R0b21MZWZ0DAAAgD8IXjM/AAAAAAAAgD8LYm90dG9tUmlnaHQMAACAPwheMz8AAAAAAACAPw@3@3)
+/*  String 文字=fun create.string(String Split!)
+  String 文字=fun create.string(String 切开)
+  Bool 突出显示=fun create.bool(Bool 1)
+}
+if{fun create.bool(var bool5)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGB0Zyb3plbiEIRm9udFNpemUBAABAQgtsaW5lU3BhY2luZwEAAIA/CkZhY2VEaWxhdGUBzcxMPhBjaGFyYWN0ZXJTcGFjaW5nAQAAQEAJZm9udFN0eWxlGAIAAAAAAAAADG91dGxpbmVXaWR0aAHNzEw+D291dGxpbmVEaXN0YW5jZQTNzEw+zcxMPs3MTD4Mb3V0bGluZUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8UZW5hYmxlVmVydGV4R3JhZGllbnQFAQd0b3BMZWZ0DAAAAAAYJHg/AACAPwAAgD8IdG9wUmlnaHQMAAAAABgkeD8AAIA/AACAPwpib3R0b21MZWZ0DAAAAAD4/xM/AACAPwAAgD8LYm90dG9tUmlnaHQMAAAAAPj/Ez8AAIA/AACAPw@3@3)
+/*  String 文字=fun create.string(String Frozen!)
+  String 文字=fun create.string(String 冻结)
+  Bool 突出显示=fun create.bool(Bool 1)
+}
+if{fun create.bool(var bool6)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGB1RoYXdlZCEIRm9udFNpemUBAABAQgtsaW5lU3BhY2luZwEAAIA/CkZhY2VEaWxhdGUBzcxMPhBjaGFyYWN0ZXJTcGFjaW5nAQAAQEAJZm9udFN0eWxlGAIAAAAAAAAADG91dGxpbmVXaWR0aAHNzEw+D291dGxpbmVEaXN0YW5jZQTNzEw+zcxMPs3MTD4Mb3V0bGluZUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8UZW5hYmxlVmVydGV4R3JhZGllbnQFAQd0b3BMZWZ0DNCARj4AAIA/AAAAAAAAgD8IdG9wUmlnaHQM0IBGPgAAgD8AAAAAAACAPwpib3R0b21MZWZ0DMzzPD8AAIA/AAAAAAAAgD8LYm90dG9tUmlnaHQMzPM8PwAAgD8AAAAAAACAPw@3@3)
+/*  String 文字=fun create.string(String Thawed!)
+  String 文字=fun create.string(String 解冻)
+  Bool 突出显示=fun create.bool(Bool 1)
+}
+if{fun create.bool(var bool7)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGCENydXNoZWQhCEZvbnRTaXplAQAAQEILbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAc3MTD4QY2hhcmFjdGVyU3BhY2luZwEAAEBACWZvbnRTdHlsZRgCAAAAAAAAAAxvdXRsaW5lV2lkdGgBzcxMPg9vdXRsaW5lRGlzdGFuY2UEzcxMPs3MTD7NzEw+DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/FGVuYWJsZVZlcnRleEdyYWRpZW50BQEHdG9wTGVmdAwAAIA/hIKCPgAAAAAAAIA/CHRvcFJpZ2h0DAAAgD+EgoI+AAAAAAAAgD8KYm90dG9tTGVmdAwAAIA/tLMzPwAAAAAAAIA/C2JvdHRvbVJpZ2h0DAAAgD8IXjM/AAAAAAAAgD8@3)
+/*  String 文字=fun create.string(String Crushed!)
+  String 文字=fun create.string(String 碾压)
+  Bool 突出显示=fun create.bool(Bool 1)
+}
+Float 持续=fun create.float(Float 1)
+Float 缩放=fun create.float(Float 0.4)
+Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 20:Float 0)
+if{fun long.gte(var 整数数值:Long 20)
+  Float 持续=fun create.float(Float 2)
+  Float 缩放=fun create.float(Float 0.6)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 30:Float 0)
+}
+if{fun long.gte(var 整数数值:Long 50)
+  Float 持续=fun create.float(Float 3)
+  Float 缩放=fun create.float(Float 0.8)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 40:Float 0)
+}
+if{fun long.gte(var 整数数值:Long 100)
+  Float 持续=fun create.float(Float 3)
+  Float 缩放=fun create.float(Float 1)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 50:Float 0)
+}
+if{fun long.gte(var 整数数值:Long 200)
+  Float 持续=fun create.float(Float 3)
+  Float 缩放=fun create.float(Float 1.2)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 60:Float 0)
+}
+if{fun long.gte(var 整数数值:Long 1000)
+  Float 持续=fun create.float(Float 3)
+  Float 缩放=fun create.float(Float 1.6)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 60:Float 0)
+}
+UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+varf UIRect.背景.followDevice(Device :var 坐标)
+varf UIRect.背景.scale(Float 0.01)
+UILabel 文本框=varf Canvas.UI.readUILabel(String 背景/数值)
+varf UILabel.文本框.text(var 文字)
+varf UILabel.文本框.setColor(Color 255,255,255,255)
+Vector3 目标位置=fun vector3.add(var 坐标:var 偏移量)
+Float 初始时间=fun time.scaleTime()
+varf UIRect.背景.setCustomVector3(String 初始位置:var 坐标)
+varf UIRect.背景.setCustomVector3(String 目标位置:var 目标位置)
+varf UIRect.背景.setCustomFloat(String 初始时间:var 初始时间)
+varf UIRect.背景.setCustomFloat(String 持续:var 持续)
+varf UIRect.背景.setCustomFloat(String 缩放:var 缩放)
+varf UIRect.背景.setCustomBool(String 突出显示:var 突出显示)
+varf UIRect.背景.setCustomLong(String 类型:var 类型)
+varf List.数字效果'维护队列.add(var UI)
+Canvas 主UI=fun findCanvas(String 主UI)
+UIRect layer1=varf Canvas.主UI.readUIRect(String root/layer0)
+varf UIRect.layer1.addSon(var 背景)
+endcode

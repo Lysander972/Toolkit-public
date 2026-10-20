@@ -1,0 +1,34 @@
+begincodeV2
+guid:80b25ebaed0443a7a4cec505260a30b5
+name:模型坐标映射
+lines:
+Float 当前时间=fun time.scaleTime()
+Float 已播放时间=fun float.minus(var 当前时间:var 创建时间)
+Float 剩余可播放=fun float.minus(Float 2:var 已播放时间)
+Float 渐变消失插值=fun float.division(var 剩余可播放:Float 0.5)
+Float 渐变消失插值=fun float.clamp(var 渐变消失插值:Float 0:Float 1)
+Vector3 生效缩放=fun vector3.multilply(var 模型缩放:var 渐变消失插值)
+Mech this=act 1.this.getMech()
+Device 柱子核心=varf Mech.绑定柱子模型_本地.getCoreDevice()
+Float 数量=varf List.模型名称列表_本地.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 数量)
+  String 模型文件名称=varf List.模型名称列表_本地.readString(var 序号)
+  Float 零件序号=fun float.add(var 序号:Float 1)
+  Device 目标零件=varf Mech.this.getDevice(var 零件序号)
+  varf Device.目标零件.addForce(var 重力:Enum 3)
+  Vector3 零件当前坐标=varf Device.目标零件.pos()
+  Vector3 相对于初始值=fun vector3.minus(var 零件当前坐标:Vector3 0,-100,0)
+  Vector3 相对于初始值_拉伸后=act 1.this.坐标变换(var 相对于初始值:var 朝向调整辅助向量)
+  Vector3 额外修正=fun creatVariable.Vector3(Float 0:var 额外偏移量:Float 0)
+  Vector3 相对坐标_修正后=fun vector3.add1(var 相对于初始值_拉伸后:var 局部坐标偏移_本地:var 额外修正)
+  Vector3 模型世界坐标=varf Device.柱子核心.localToWorldPos(var 相对坐标_修正后)
+  Vector3 向前方向=varf Device.目标零件.localToWorldDir(Vector3 0,0,-1)
+  Vector3 向上方向=varf Device.目标零件.localToWorldDir(Vector3 0,1,0)
+  //方案3
+  Vector3 实际向前_世界=varf Device.柱子核心.localToWorldDir(var 向前方向)
+  Vector3 实际向上_世界=varf Device.柱子核心.localToWorldDir(var 向上方向)
+  fun echoMesh2(var 模型文件名称:var 模型世界坐标:var 实际向前_世界:var 实际向上_世界:var 生效缩放)
+  varf Float.序号.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,11 @@
+type:280
+pos:[0.07590103,0,-7.437249]
+quat:[-0.7071068,0,0,0.7071068]
+enableManualWeld:true
+attach:
+[
+]
+ext:
+{
+ attachLPos:[0,0,0]
+}

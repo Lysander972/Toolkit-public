@@ -1,0 +1,10 @@
+begincodeV2
+guid:90e602ca2c7245539556f392ae24e32e
+color:255,255,255
+name:玩家结构'读取_globalRank
+comment:读取世界排行榜,周榜,未下载时是-1
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String globalRank:Bool 0)
+endcode

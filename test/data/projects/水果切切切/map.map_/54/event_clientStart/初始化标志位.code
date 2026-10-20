@@ -1,0 +1,7 @@
+begincodeV2
+name:初始化标志位
+lines:
+fun map.setCustomBool(String 手动简化特效标志位:Bool 0)
+fun map.setCustomBool(String 卡顿检测标志位:Bool 0)
+fun map.setCustomBool(String 简化特效生效标志位:Bool 0)
+endcode

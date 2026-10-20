@@ -1,0 +1,17 @@
+begincodeV2
+name:受伤坐标计算
+params:Mech 攻击者,Mech 受击者
+return:Vector3 pos
+lines:
+Device 攻击者核心=varf Mech.攻击者.getCoreDevice()
+Device 攻击者主要部件=varf Device.攻击者核心.callReturnDevice0(String Public'GetMainDevice)
+Vector3 攻击者重心=varf Device.攻击者核心.callReturnVector30(String Public'GetCenter)
+Float 攻击者重量=varf Device.攻击者主要部件.getMass()
+Device 受击者核心=varf Mech.受击者.getCoreDevice()
+Device 受击者主要部件=varf Device.受击者核心.callReturnDevice0(String Public'GetMainDevice)
+Vector3 受击者重心=varf Device.受击者核心.callReturnVector30(String Public'GetCenter)
+Float 受击者重量=varf Device.受击者主要部件.getMass()
+Float 总重量=fun float.add(var 攻击者重量:var 受击者重量)
+Float 权重=fun float.division(var 攻击者重量:var 总重量)
+Vector3 pos=fun vector3.lerp(var 攻击者重心:var 受击者重心:var 权重)
+endcode

@@ -1,0 +1,14 @@
+begincodeV2
+name:Skill'ResetAll
+comment:初始化和重置全部技能
+lines:
+act 1.this.Skill'RegisterAndReset(String 0)
+act 1.this.Skill'RegisterAndReset(String 1)
+act 1.this.Skill'RegisterAndReset(String 10)
+act 1.this.Skill'RegisterAndReset(String 20)
+act 1.this.Skill'RegisterAndReset(String 30)
+act 1.this.Skill'RegisterAndReset(String 40)
+act 1.this.Skill'RegisterAndReset(String 50)
+act 1.this.Skill'RegisterAndReset(String 60)
+act 1.this.Skill'RegisterAndReset(String 70)
+endcode

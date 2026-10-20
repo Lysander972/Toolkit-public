@@ -1,0 +1,10 @@
+begincodeV2
+guid:d2e5f0facd1d4858a996ef0fef6f842c
+color:255,255,255
+name:玩家结构'读取_avatarUrl
+comment:读取玩家头像url
+params:Struct 结构
+return:String ret
+lines:
+String ret=varf Struct.结构.getString(String avatarUrl:Bool 0)
+endcode

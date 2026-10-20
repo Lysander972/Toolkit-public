@@ -1,0 +1,12 @@
+begincodeV2
+name:礼物半屏特效'动图托管注册
+params:UIRawImage 图片,Float 总时长,Float 淡入,Float 淡出
+lines:
+Float 创建时间=fun time.scaleTime()
+varf UIRawImage.图片.setCustomFloat(String 创建时间:var 创建时间)
+varf UIRawImage.图片.setCustomFloat(String 总时长:var 总时长)
+varf UIRawImage.图片.setCustomFloat(String 淡入:var 淡入)
+varf UIRawImage.图片.setCustomFloat(String 淡出:var 淡出)
+varf List.UI_局内'半屏特效_托管列表.add(var 图片)
+varf UIRect.UI_局内'礼物全屏特效图层.addSon(var 图片)
+endcode

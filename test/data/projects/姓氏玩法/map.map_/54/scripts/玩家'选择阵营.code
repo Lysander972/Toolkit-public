@@ -1,0 +1,35 @@
+begincodeV2
+color:255,255,255
+name:玩家'选择阵营
+comment:仅在未选队时可以选择,其他状态下会跳过
+params:Struct 玩家,Struct 队伍
+lines:
+Long 队伍id=act 1101.this.队伍结构'读取_id(var 队伍)
+Bool 已下场=act 1101.this.玩家结构'是否已下场(var 玩家)
+if{fun bool.not(var 已下场)
+  Long 玩家当前选队=act 1101.this.玩家结构'读取_team(var 玩家)
+  if{fun long.equal(var 玩家当前选队:Long -1)
+    act 1101.this.玩家结构'设置_team(var 玩家:var 队伍id)
+  }
+}
+//队伍添加首个玩家之后,就会自动激活
+Bool 已激活=act 1101.this.队伍结构'读取_activated(var 队伍)
+if{fun bool.not(var 已激活)
+  act 1101.this.队伍结构'设置_activated(var 队伍:Bool 1)
+}
+act 1101.this.队伍结构'设置_填充(var 队伍:Bool 0)
+act 1101.this.队伍'应用效果(var 玩家:var 队伍:Long 5120:Long 0:Float 0:Long 0:Long 0)
+Bool 局内'队伍_更新排名需求=fun create.bool(Bool 1)
+/*if{fun create.bool(var 局内'启用调试输出)
+/*  Float 局内时间=act 1101.this.工具'得到距开局时间()
+/*  String 玩家名=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+/*  String 阵营名=act 1101.this.队伍结构'读取_name(var 队伍)
+/*  String 输出=fun string.Format3(String [玩家加入]局内时间@1 %1,玩家@1 %2,选择阵营@1 %3:var 局内时间:var 玩家名:var 阵营名)
+/*  fun debug.print(var 输出:Color 255,215,0,255:Bool 0)
+}
+Bool 已使用=act 1101.this.玩家结构'读取_skillused(var 玩家)
+if{fun bool.not(var 已使用)
+  act 1101.this.玩家结构'设置_skillused(var 玩家:Bool 1)
+  act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 赠送仙女棒:Long 10)
+}
+endcode

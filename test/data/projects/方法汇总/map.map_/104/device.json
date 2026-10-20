@@ -1,0 +1,27 @@
+type:337
+pos:[-0.7834711,0,-8.813803]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ startLifetimeMultiplier:2
+ startSpeed:[1,2]
+ startSize:[0.2,0.5]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,0,0.343132,1]
+ startColor.max:[1,0.4933105,0,1]
+ rateOverTime:10
+ angle:21
+ radius:0.4
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.2500038:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,1"
+ ]
+ rotSpeed:5.235988
+ lengthScale:2
+}

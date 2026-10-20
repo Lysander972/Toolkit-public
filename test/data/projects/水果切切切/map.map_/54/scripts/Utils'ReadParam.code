@@ -1,0 +1,8 @@
+begincodeV2
+color:57,255,0
+name:Utils'ReadParam
+params:String n,Float default,Float min,Float max,Color c
+return:Float v
+lines:
+Float v=act 1101.this.callClientMapRetFloatFunc5(String 参数调节模块.读取:var n:var default:var min:var max:var c)
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:settings
+lines:
+act 1.this.enableGravity(Bool 0)
+act 1.this.show(Bool 0)
+act 131.1.show(Bool 0)
+endcode

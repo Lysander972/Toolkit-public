@@ -1,0 +1,7 @@
+begincodeV2
+name:UI_功能面板'开关攻略提示点击
+lines:
+Bool 功能开关'攻略提示=fun bool.not(var 功能开关'攻略提示)
+act 1101.this.UI_功能面板'应用并刷新攻略提示显示()
+act 1101.this.功能设置持久化'上传攻略提示()
+endcode

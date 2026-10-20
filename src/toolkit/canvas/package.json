@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../res/schemas/package.json",
+  "name": "@toolkit/canvas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./CanvasConverter.ts",
+    "./model": "./CanvasValues.ts"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "0.9.12",
+    "effect": "4.0.0",
+    "hjson": "3.2.2",
+    "zod": "4.6.4"
+  }
+}

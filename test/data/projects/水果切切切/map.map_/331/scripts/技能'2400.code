@@ -1,0 +1,32 @@
+begincodeV2
+color:221,0,255
+name:技能'2400
+comment:滚筒
+lines:
+String key=fun create.string(String 2400)
+String mutexKey=fun create.string(String 滚筒)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Long 释放轮数=fun create.long(Long 0)
+  while{fun long.lt(var 释放轮数:Long 10)
+    if{varf Device.map_handler.callReturnBool1(String Mutex'GetMutex:var mutexKey)
+      Long 位置=fun create.long(Long 0)
+      while{fun long.lt(var 位置:Long 15)
+        if{fun long.notEqual(var 位置:Long 7)
+          =act 1.this.Launcher'守方出生点放置(var 位置:Long 2400:var 属性'玩家:Float 1:Float 0:Float 1)
+        }
+        if{fun long.equal(var 位置:Long 7)
+          =act 1.this.Launcher'守方出生点放置(var 位置:Long 2401:var 属性'玩家:Float 1:Float 0:Float 1)
+        }
+        varf Long.位置.addEqual(Long 1)
+      }
+      delay fun create.float(Float 0.1)
+      varf Device.map_handler.callFun1(String Mutex'ReleaseMutex:var mutexKey)
+      delay fun create.float(Float 1)
+      varf Long.释放轮数.addEqual(Long 1)
+    }
+    delay fun create.float(Float 0)
+  }
+  =act 1.this.Skills'Decrease(var key:Long 1)
+}
+delay fun create.float(Float 0.5)
+endcode

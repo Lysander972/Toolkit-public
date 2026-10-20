@@ -1,0 +1,12 @@
+begincodeV2
+color:255,255,255
+name:队伍结构'读取_valuefordisplay
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=fun create.long(Long 0)
+if{fun bool.or(var 局内'游戏中:var 局内'已结算)
+  Long ret=act 1101.this.队伍结构'读取_value(var 结构)
+/*  Long ret=fun long.add(var ret:var 局内'基础value)
+}
+endcode

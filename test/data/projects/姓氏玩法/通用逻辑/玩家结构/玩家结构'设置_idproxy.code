@@ -1,0 +1,7 @@
+begincodeV2
+guid:88dcdb8e581d4cf0a87b2667364ee9b9
+name:玩家结构'设置_idproxy
+params:Struct 结构,String idproxy
+lines:
+varf Struct.结构.set(String idproxy:var idproxy)
+endcode

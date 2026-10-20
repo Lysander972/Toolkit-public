@@ -1,0 +1,35 @@
+begincodeV2
+color:8,0,255
+name:Grid'SetGrid
+params:Long $xLong,Long $yLong,Long $faction,Vector3 $offset,Float $buleM0,Float $buleM1,Float $redM0,Float $redM1,Float $initialMax,Float $occupiedMax
+lines:
+Float $xFloat=varf Long.$xLong.toFloat()
+Float $yFloat=varf Long.$yLong.toFloat()
+Vector3 $pos=fun creatVariable.Vector3(var $xFloat:Float -0.4:var $yFloat)
+Vector3 $pos=fun vector3.add1(var $pos:var $offset:var ScenarioOffset)
+String $key=fun create.string(var $pos)
+Bool $exist=varf Dict.GridMap.contains(var $key)
+if{fun bool.not(var $exist)
+  Float $available=varf List.UnusedGrid.count()
+  Bool $unusedExist=fun float.gt(var $available:Float 0)
+  if{fun create.bool(var $unusedExist)
+    Float $index=fun float.minus(var $available:Float 1)
+    Mech $obj=varf List.UnusedGrid.readMech(var $index)
+    varf Mech.$obj.move(var $pos:Enum 0)
+    varf List.UnusedGrid.remove(var $index)
+    varf Dict.GridMap.insert(var $key:var $obj)
+    Mech $objCol=varf List.UnusedGridCol.readMech(var $index)
+    Vector3 $colPos=varf Vector3.$pos.copy()
+    Vector3 $colPos=fun vector3.add(var $colPos:Vector3 0,-10,0)
+    varf Mech.$objCol.move(var $pos:Enum 0)
+    varf List.UnusedGridCol.remove(var $index)
+    varf Dict.GridColMap.insert(var $key:var $objCol)
+/*    varf Mech.$obj.callFun1(String Public'BidirectionalBinding:var $objCol)
+  }
+  if{fun bool.not(var $unusedExist)
+    Mech $obj=act 1101.this.Grid'New(var $pos)
+  }
+}
+Float $defaultHP=fun create.float(Float 1)
+varf Mech.$obj.callFun9(String Public'OnEnabled:var $faction:var $defaultHP:var $buleM0:var $buleM1:var $redM0:var $redM1:var $pos:var $initialMax:var $occupiedMax)
+endcode

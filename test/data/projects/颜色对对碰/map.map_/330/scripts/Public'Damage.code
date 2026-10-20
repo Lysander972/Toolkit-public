@@ -1,0 +1,26 @@
+begincodeV2
+color:8,0,255
+name:Public'Damage
+comment:计算伤害并按需要回收
+params:Float $damage,Long $faction
+return:Float $counter
+lines:
+if{fun long.equal(var $faction:var Faction)
+  fun break()
+}
+Float $HP=fun create.float(var HP)
+Float $counter=fun create.float(Float 0)
+if{fun float.gte(var $HP:var $damage)
+  Float $counter=fun create.float(var $damage)
+}
+if{fun float.lt(var $HP:var $damage)
+  Float $counter=fun create.float(var $HP)
+}
+Float $HP=fun float.minus(var $HP:var $damage)
+if{fun float.lte(var $HP:Float 0)
+  act 1.this.Public'Occupy(var $faction)
+}
+if{fun float.gt(var $HP:Float 0)
+  act 1.this.Private'UpdateHP(var $HP)
+}
+endcode

@@ -1,0 +1,13 @@
+begincodeV2
+name:送礼特效'上方
+params:Struct player,String texture,Float size
+lines:
+Vector3 from=act 1101./Scenario.礼物特效'得到起始坐标(var player)
+Vector3 to=varf Vector3.from.copy()
+varf Vector3.to.setY(Float 0)
+Mech target=act 1101./Scenario.礼物特效'得到目标物体(var player)
+if{varf Mech.target.alive()
+  Vector3 to=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+}
+act 1101./Scenario.GiftModel'SetGiftModel(String 通用礼物模板:var texture:var from:var to:var target:var size)
+endcode

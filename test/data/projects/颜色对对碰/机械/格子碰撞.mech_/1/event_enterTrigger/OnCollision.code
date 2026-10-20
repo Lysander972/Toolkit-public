@@ -1,0 +1,7 @@
+begincodeV2
+name:OnCollision
+lines:
+Mech self=act 1100.this.getMech()
+Mech from=varf Device.$trigger.mech()
+varf Mech.self.callFun1(String Public'OnCollision:var from)
+endcode

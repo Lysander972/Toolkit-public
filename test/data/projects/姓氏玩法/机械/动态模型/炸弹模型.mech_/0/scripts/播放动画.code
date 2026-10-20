@@ -1,0 +1,76 @@
+begincodeV2
+name:播放动画
+params:Mech 目标队伍柱子_,String 绑定名称_,Float 整体缩放_,Vector3 偏移量,Dict 事件,Float 延迟,Float 生效比例
+lines:
+act 145.2.stop()
+act 362./炸弹.show(Bool 0)
+delay fun create.float(var 延迟)
+Float 出生时间=fun time.scaleTime()
+Mech 目标队伍柱子=fun creatVariable.mech(var 目标队伍柱子_)
+String 绑定名称=fun create.string(var 绑定名称_)
+Float 整体缩放=fun create.float(var 整体缩放_)
+Mech this=act 1.this.getMech()
+varf Mech.this.scale(var 整体缩放_)
+varf Mech.this.setCustomBool(String 开始离场:Bool 0)
+act 1.this.挂载单一事件(var 事件)
+//入场开始
+Float 入场持续时间=fun create.float(Float 1.5)
+Float 随机高度=fun math.rand(Float 30:Float 35)
+Vector3 基础偏移量=fun creatVariable.Vector3(Float 0:var 随机高度:Float 0)
+Vector3 基础偏移量=fun vector3.multilply(var 基础偏移量:var 整体缩放_)
+Vector3 入场开始局部坐标=fun vector3.add(var 基础偏移量:var 偏移量)
+//常态
+Vector3 常态局部坐标=fun vector3.add(Vector3 0,0,0:var 偏移量)
+act 362./炸弹.show(Bool 1)
+//点击这里写注释
+//常量
+Float 开始时间=fun create.float(var 出生时间)
+//入场部分
+Float 已播放时间=fun create.float(Float 0)
+while{fun float.lt(var 已播放时间:var 入场持续时间)
+  Float 当前时间=fun time.scaleTime()
+  Float 已播放时间=fun float.minus(var 当前时间:var 开始时间)
+  Float 播放比例=fun float.division(var 已播放时间:var 入场持续时间)
+  Float 播放比例=fun float.clamp(var 播放比例:Float 0:Float 1)
+  //计算基础相对坐标
+  Vector3 当前局部坐标=fun vector3.lerp(var 入场开始局部坐标:var 常态局部坐标:var 播放比例)
+  //得到绑定目标,再计算绝对坐标
+  Device 目标核心=varf Mech.目标队伍柱子.getCoreDevice()
+  Vector3 柱子坐标=varf Device.目标核心.pos()
+  Vector3 绝对坐标=fun vector3.add(var 柱子坐标:var 当前局部坐标)
+  Float 附加减速类模型偏移量=varf Mech.目标队伍柱子.customFloat(String 附加减速类模型偏移量)
+  Vector3 偏移量补偿=fun creatVariable.Vector3(Float 0:var 附加减速类模型偏移量:Float 0)
+  Vector3 绝对坐标=fun vector3.add(var 绝对坐标:var 偏移量补偿)
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+//入场结束阶段,检查目标队伍柱子是否存在,如果未存在,进入常态循环.如果存在立即进入离场状态
+act 1.this.按比例应用事件(var 生效比例)
+fun screen.shake(Float 0.3:Float 1000:Float 0.6)
+Float index=fun create.float(Float 47)
+Float scale=fun float.multiply(var 整体缩放:Float 2)
+act 145.2.play(var index:var scale)
+act 362./炸弹.show(Bool 0)
+Float 开始时间=fun time.scaleTime()
+Float 已播放时间=fun create.float(Float 0)
+while{fun float.lt(var 已播放时间:Float 3)
+  Float 当前时间=fun time.scaleTime()
+  Float 已播放时间=fun float.minus(var 当前时间:var 开始时间)
+  Device 目标核心=varf Mech.目标队伍柱子.getCoreDevice()
+  Vector3 柱子坐标=varf Device.目标核心.pos()
+  Vector3 绝对坐标=fun vector3.add(var 柱子坐标:var 常态局部坐标)
+  Float 附加减速类模型偏移量=varf Mech.目标队伍柱子.customFloat(String 附加减速类模型偏移量)
+  Vector3 偏移量补偿=fun creatVariable.Vector3(Float 0:var 附加减速类模型偏移量:Float 0)
+  Vector3 绝对坐标=fun vector3.add(var 绝对坐标:var 偏移量补偿)
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+/*act 145.2.stop()
+delay fun create.float(Float 5)
+String modelkey=varf Mech.this.customString(String modelkey)
+act 1.this.callMapFunc2(String Scenario.Model'OnReclaim:var this:var modelkey)
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:通用武器动图'回调_终止维护并移除
+params:UIRect 根节点
+lines:
+//点击这里写注释
+varf UIRect.根节点.del(Float 0)
+endcode

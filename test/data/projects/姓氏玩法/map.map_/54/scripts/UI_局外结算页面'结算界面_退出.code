@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:UI_局外结算页面'结算界面_退出
+lines:
+if{act 1101.this.UI_局外结算页面'是否本界面()
+  if{varf Canvas.UI_局外结算界面'布局.exist()
+    UIRect panel=varf Canvas.UI_局外结算界面'布局.readUIRect(String 结算界面)
+    varf UIRect.panel.active(Bool 0)
+  }
+}
+endcode

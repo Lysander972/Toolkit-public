@@ -1,0 +1,18 @@
+begincodeV2
+name:瞄准方向旋转
+lines:
+Float 已用时间=fun time.deltaTime()
+Float 转动角度=fun float.multiply(var 已用时间:var 瞄准角度转速)
+Bool 下限=fun float.Approximately(var 当前瞄准角度:var 瞄准角度下限)
+Bool 上限=fun float.Approximately(var 当前瞄准角度:var 瞄准角度上限)
+if{fun bool.or(var 下限:var 上限)
+  Bool 反向旋转=fun bool.not(var 反向旋转)
+}
+if{fun bool.not(var 反向旋转)
+  Float 当前瞄准角度=fun float.add(var 当前瞄准角度:var 转动角度)
+}
+if{fun create.bool(var 反向旋转)
+  Float 当前瞄准角度=fun float.minus(var 当前瞄准角度:var 转动角度)
+}
+Float 当前瞄准角度=fun float.clamp(var 当前瞄准角度:var 瞄准角度下限:var 瞄准角度上限)
+endcode

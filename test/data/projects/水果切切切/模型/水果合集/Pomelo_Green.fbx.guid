@@ -1,0 +1,30 @@
+guid:d28517bdbe364fb1ae1a934640c27c3b
+meshes:
+[
+ {
+  n:Pomelo_Green
+ }
+]
+matFolderName:f9bfba472083460f93836d2c6674074d
+Albedo.UID:f9bfba472083460f93836d2c6674074d
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.2166051,2.980232E-08]
+bounds.size:[0.3885223,0.431207,0.3923914]

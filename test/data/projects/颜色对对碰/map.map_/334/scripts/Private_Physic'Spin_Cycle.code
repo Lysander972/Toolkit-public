@@ -1,0 +1,7 @@
+begincodeV2
+private:1
+name:Private_Physic'Spin_Cycle
+comment:每帧施加旋转力产生自旋
+lines:
+act 1.this.addTorque(var Spin:Enum 0)
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+guid:b6e38169506d470e96aa8abf48076e36
+name:GetContextId
+return:Long value
+lines:
+Long value=fun map.getCustomLong(String context)
+endcode

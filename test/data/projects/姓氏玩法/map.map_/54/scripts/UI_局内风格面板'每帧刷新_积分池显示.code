@@ -1,0 +1,12 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新_积分池显示
+lines:
+if{fun bool.and(var UI_局内风格面板'初始化:var UI_局内风格面板'刷新积分池)
+  Long 总积分=fun long.add(var 局内'积分池_本局:var 局内'积分池_上局)
+  String 简化1=act 1101.this.工具'数值简化_中文(var 总积分)
+  String 简化2=act 1101.this.工具'数值简化_中文(var 局内'积分池_上局)
+  String 积分池字符串=fun string.Format2(String %1\n@4含继承%2@5:var 简化1:var 简化2)
+  varf UILabel.UI_局内风格面板'积分池文本.text(var 积分池字符串)
+  Bool UI_局内风格面板'刷新积分池=fun create.bool(Bool 0)
+}
+endcode

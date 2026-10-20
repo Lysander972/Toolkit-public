@@ -1,0 +1,11 @@
+begincodeV2
+name:方法1
+lines:
+act 148.this.SetPic(String )
+act 148.this.SetFrameAnim(String :List :Bool 0)
+act 148.this.PlayFrameAnim(String :Float 0.04166667)
+act 148.this.setFrameAnimCallBack(String :Float 0:String )
+act 148.this.setMirror(Bool 0:Bool 0)
+act 148.this.picRot(Float 0)
+act 148.this.SetPicOffset(Vector3 0,0,0)
+endcode

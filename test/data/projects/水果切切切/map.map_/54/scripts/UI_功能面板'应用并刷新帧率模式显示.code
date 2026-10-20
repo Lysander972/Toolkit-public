@@ -1,0 +1,29 @@
+begincodeV2
+name:UI_功能面板'应用并刷新帧率模式显示
+lines:
+varf List.状态值'每帧间隔历史记录.clear()
+Long 功能设置'帧率模式=fun long.clamp(var 功能设置'帧率模式:Long 0:Long 1)
+Bool 选择30=fun long.equal(var 功能设置'帧率模式:Long 0)
+Bool 选择60=fun long.equal(var 功能设置'帧率模式:Long 1)
+UIButton 按钮1=varf Canvas.GameUI.readUIButton(String root/topForPC/帧率面板/帧率30)
+UIButton 按钮2=varf Canvas.GameUI.readUIButton(String root/SettingsForMobile/屏蔽器2/子组件排版区/帧率面板/帧率30)
+if{fun create.bool(var 选择30)
+  varf UIButton.按钮1.setColor(Color 127,127,127,255,灰)
+  varf UIButton.按钮2.setColor(Color 127,127,127,255,灰)
+}
+if{fun bool.not(var 选择30)
+  varf UIButton.按钮1.setColor(Color 255,255,255,255,白)
+  varf UIButton.按钮2.setColor(Color 255,255,255,255,白)
+}
+UIButton 按钮1=varf Canvas.GameUI.readUIButton(String root/topForPC/帧率面板/帧率60)
+UIButton 按钮2=varf Canvas.GameUI.readUIButton(String root/SettingsForMobile/屏蔽器2/子组件排版区/帧率面板/帧率60)
+if{fun create.bool(var 选择60)
+  varf UIButton.按钮1.setColor(Color 127,127,127,255,灰)
+  varf UIButton.按钮2.setColor(Color 127,127,127,255,灰)
+}
+if{fun bool.not(var 选择60)
+  varf UIButton.按钮1.setColor(Color 255,255,255,255,白)
+  varf UIButton.按钮2.setColor(Color 255,255,255,255,白)
+}
+act 1101.this.刷新帧率()
+endcode

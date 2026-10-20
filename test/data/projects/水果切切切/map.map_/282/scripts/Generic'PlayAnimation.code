@@ -1,0 +1,16 @@
+begincodeV2
+color:255,0,0
+name:Generic'PlayAnimation
+params:String modelKey,String texture,Vector3 from,Vector3 to,Mech target,Float size
+lines:
+String ModelKey=fun create.string(var modelKey)
+act 1.this.setPosKinematic(var from)
+act 362.1.setDynamicShader(String Device Transparent)
+act 362.1.setDynamicMatPic(String _MainTex:var texture)
+act 362.1.setMatCustomColor(String _PaintColor:Color 255,255,255,255)
+varf Mech.Self.scale(var size)
+=act 1.this.持续动画(var from:var to:var target:Float 2)
+act 1.this.setPosKinematic(Vector3 0,2e+04,0)
+delay fun create.float(Float 1)
+act 1.this.Generic'Reclaim()
+endcode

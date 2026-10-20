@@ -1,0 +1,26 @@
+begincodeV2
+color:255,255,255
+name:播报元素'注册
+params:Canvas canvas,String 主题,Float 优先级,Float 预期播放时长,List 等待队列
+lines:
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+//标记主题并存入索引
+varf UIRect.background.setCustomString(String 主题:var 主题)
+if{fun string.notEqual(var 主题:String )
+  varf Dict.UI_局内'播报条目索引.insert(var 主题:var canvas)
+}
+//加入等待列表
+varf List.等待队列.add(var canvas)
+//设置优先级,预期播放时长,相应比等
+varf UIRect.background.setCustomFloat(String 优先级标志位:var 优先级)
+varf UIRect.background.setCustomFloat(String 预期播放时长标志位:var 预期播放时长)
+varf UIRect.background.setCustomFloat(String 响应比标志位:Float 0)
+varf UIRect.background.setCustomFloat(String 相位标志位:Float 0)
+Float 创建时间=fun time.time()
+varf UIRect.background.setCustomFloat(String 创建时间标志位:var 创建时间)
+varf UIRect.background.setCustomFloat(String 展示时间标志位:Float 0)
+varf UIRect.background.setCustomBool(String 播报移入标志位:Bool 0)
+varf UIRect.background.setCustomFloat(String 播报移入开始时间标志位:Float 0)
+varf UIRect.background.setCustomBool(String 播报移出标志位:Bool 0)
+varf UIRect.background.setCustomFloat(String 播报移出开始时间标志位:Float 0)
+endcode

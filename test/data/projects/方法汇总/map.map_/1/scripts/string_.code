@@ -1,0 +1,18 @@
+begincodeV2
+name:string_
+lines:
+String s=fun create.string(String )
+varf String.s.set(String )
+=varf String.s.toFloat()
+=varf String.s.toLong()
+=varf String.s.split(String )
+=varf String.s.length()
+=varf String.s.getChar(Float 0)
+=varf String.s.substring(Float 0:Float 0)
+=varf String.s.find(String :Bool 0)
+=varf String.s.find(String :Bool 0)
+=varf String.s.replace(String :String )
+=varf String.s.toAsc()
+=varf String.s.ToUpper()
+=varf String.s.ToLower()
+endcode

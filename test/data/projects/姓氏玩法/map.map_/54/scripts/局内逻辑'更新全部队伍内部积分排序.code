@@ -1,0 +1,11 @@
+begincodeV2
+name:局内逻辑'更新全部队伍内部积分排序
+lines:
+Float 激活队伍总数=varf List.局内'队伍_激活队伍列表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 激活队伍总数)
+  Struct 队伍=varf List.局内'队伍_激活队伍列表.readStruct(var 序号)
+  act 1101.this.队伍'队内排序更新检查(var 队伍)
+  varf Float.序号.addEqual(Float 1)
+}
+endcode

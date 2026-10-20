@@ -1,0 +1,30 @@
+guid:4d5b0c7aa43f45b7bd94e5090a10d425
+meshes:
+[
+ {
+  n:Lemon_Quarter
+ }
+]
+matFolderName:876fae443e3c4b07b59f0d6492257bdd
+Albedo.UID:876fae443e3c4b07b59f0d6492257bdd
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.004039995,0.07137316,0.0008301847]
+bounds.size:[0.2456738,0.131289,0.1518394]

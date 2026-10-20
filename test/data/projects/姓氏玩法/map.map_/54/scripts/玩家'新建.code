@@ -1,0 +1,44 @@
+begincodeV2
+color:255,255,255
+name:玩家'新建
+params:String id,String name,String avatarUrl,Bool isAI
+return:Struct data
+lines:
+Bool exist=varf Dict.局内'玩家_索引.contains(var id)
+if{fun create.bool(var exist)
+  Struct data=varf Dict.局内'玩家_索引.readStruct(var id:Bool 0)
+  fun break()
+}
+Struct data=fun create.struct()
+//玩家的基本信息
+act 1101.this.玩家结构'设置_id(var data:var id)
+act 1101.this.玩家结构'设置_name(var data:var name)
+act 1101.this.玩家结构'设置_avatarUrl(var data:var avatarUrl)
+act 1101.this.玩家结构'设置_isAI(var data:var isAI)
+//玩家的排行榜数据,首先使用默认值填充
+act 1101.this.玩家结构'设置_globalRank(var data:Long -1)
+act 1101.this.玩家结构'设置_globalRankMonthly(var data:Long -1)
+act 1101.this.玩家结构'设置_streak(var data:Long 0)
+act 1101.this.玩家结构'设置_rank_completeness(var data:Bool 0)
+//玩家的局内数据
+Dict 新建字典=fun create.dict()
+List 目标捣乱=fun create.list()
+varf Dict.新建字典.insert(String 目标捣乱:var 目标捣乱)
+varf Struct.data.set(String 待处理效果:var 新建字典)
+act 1101.this.玩家结构'设置_team(var data:Long -1)
+act 1101.this.玩家结构'设置_rankInTeam(var data:Long -1)
+act 1101.this.玩家结构'设置_like(var data:Long 0)
+act 1101.this.玩家结构'设置_score(var data:Long 0)
+act 1101.this.玩家结构'设置_unhandledConsume(var data:Long 0)
+act 1101.this.玩家结构'设置_firstgift(var data:Bool 0)
+act 1101.this.玩家结构'设置_skillused(var data:Bool 0)
+act 1101.this.玩家结构'设置_是否获胜(var data:Bool 0)
+act 1101.this.玩家结构'设置_连胜加成(var data:Long 0)
+act 1101.this.玩家结构'设置_抢夺连胜(var data:Long 0)
+act 1101.this.玩家结构'设置_抢夺积分池(var data:Long 0)
+act 1101.this.玩家结构'设置_上次点赞时间(var data:Float 0)
+act 1101.this.玩家结构'设置_连续点赞次数(var data:Long 0)
+//存入索引
+varf Dict.局内'玩家_索引.insert(var id:var data)
+varf List.局内'玩家_信息下载队列.add(var data)
+endcode

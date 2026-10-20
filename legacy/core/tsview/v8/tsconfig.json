@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "amd",
+    "outFile": "./tsview-traversal.DO_NOT_READ_OR_EDIT.generated.js",
+    "rootDir": ".",
+    "declaration": false,
+    "sourceMap": false,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "types": ["typescript"]
+  },
+  "files": [
+    "ts-official-global.d.ts",
+    "device-view-contract.DO_NOT_READ_OR_EDIT.generated.ts",
+    "types.ts",
+    "scanClassMembers.ts"
+  ]
+}

@@ -1,0 +1,88 @@
+begincodeV2
+name:守方检测区'持续推进
+comment:上方推进功能
+lines:
+//因下方推动导致的距离增加
+Bool 更新虚拟位置=fun create.bool(Bool 0)
+Float 间隔=fun time.deltaTime()
+if{fun float.lt(var 地图额外长度:var 地图额外长度目标)
+  Float 增加米数=fun float.multiply(var 间隔:Float 5)
+  Float 原额外长度=fun create.float(var 地图额外长度)
+  varf Float.地图额外长度.addEqual(var 增加米数)
+  Float 地图额外长度=fun float.min(var 地图额外长度:var 地图额外长度目标)
+  Float 增长值=fun float.minus(var 地图额外长度:var 原额外长度)
+  varf Float.剩余米数额外.addEqual(var 增长值)
+  Bool 更新虚拟位置=fun create.bool(Bool 1)
+}
+//以下全部是因上方推动导致的距离减少
+Bool 在范围内=fun create.bool(Bool 0)
+if{fun bool.not(var 栅栏'生效中)
+  //坐标合法检测
+  Device core=varf Mech.防守方碰撞.getCoreDevice()
+  List list=varf Device.core.callReturnFun0(String GetList)
+  Float 总数=varf List.list.count()
+  Float i=fun create.float(Float 0)
+  while{fun float.lt(var i:var 总数)
+    Mech mech=varf List.list.readMech(var i)
+    Device mechCore=varf Mech.mech.getCoreDevice()
+    if{varf Device.mechCore.callReturnBool0(String Public'IsAlive)
+      Vector3 pos=varf Device.mechCore.callReturnVector30(String Public'GetCenter)
+      Float x=varf Vector3.pos.x()
+      Float y=varf Vector3.pos.y()
+      Float z=varf Vector3.pos.z()
+      Bool bool0=fun float.gte(var x:Float -30)
+      Bool bool1=fun float.lte(var x:Float 30)
+      Bool bool2=fun float.gte(var y:Float 0)
+      Bool bool3=fun float.lte(var y:Float 100)
+      Bool bool4=fun float.lte(var z:Float 50)
+      Bool 在范围内=fun bool.and3(var bool0:var bool1:var bool2:var bool3:var bool4)
+    }
+    if{fun create.bool(var 在范围内)
+      fun break()
+    }
+    varf Float.i.addEqual(Float 1)
+  }
+}
+//推进
+Bool 守方检测区'推进中=fun create.bool(var 在范围内)
+fun map.setCustomBool(String 推进中:var 守方检测区'推进中)
+if{fun create.bool(var 守方检测区'推进中)
+  //计算推进效果
+  Float 总剩余距离=fun float.add(var 剩余米数基础:var 剩余米数额外)
+  Bool 速度衰减=fun float.lte(var 总剩余距离:Float 100)
+  Bool 速度进一步衰减=fun float.lte(var 总剩余距离:Float 5)
+  Float 推进=fun float.multiply(var 间隔:Float 5)
+  if{fun create.bool(var 速度衰减)
+    Float 推进=fun float.multiply(var 推进:Float 0.2)
+  }
+  if{fun create.bool(var 速度进一步衰减)
+    Float 推进=fun float.multiply(var 推进:Float 0.333334)
+  }
+  //得到推进的距离
+  Bool 更新虚拟位置=fun create.bool(Bool 1)
+  if{fun float.gt(var 剩余米数额外:Float 0)
+    Bool 完全抵消=fun float.gte(var 剩余米数额外:var 推进)
+    if{fun create.bool(var 完全抵消)
+      varf Float.剩余米数额外.minusEqual(var 推进)
+      Float 推进=fun create.float(Float 0)
+    }
+    if{fun bool.not(var 完全抵消)
+      varf Float.推进.minusEqual(var 剩余米数额外)
+      Float 剩余米数额外=fun create.float(Float 0)
+    }
+    Float 剩余米数额外=fun float.max(var 剩余米数额外:Float 0)
+    Float 推进=fun float.max(var 推进:Float 0)
+  }
+  if{fun float.gt(var 推进:Float 0)
+    varf Float.剩余米数基础.minusEqual(var 推进)
+    if{fun float.lte(var 剩余米数基础:Float 0)
+      act 1101./弹幕.Game'Settlement(Long 1)
+    }
+  }
+}
+if{fun create.bool(var 更新虚拟位置)
+  Float 总长度=fun float.add(var 地图长度:var 地图额外长度)
+  Float 守方虚拟位置=fun float.minus1(var 总长度:var 剩余米数基础:var 剩余米数额外)
+  act 1101.this.守方检测区'推送更新()
+}
+endcode

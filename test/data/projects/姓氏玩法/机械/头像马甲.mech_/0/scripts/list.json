@@ -1,0 +1,14 @@
+[
+ Public'Close
+ Public'GetScoreLabel
+ Public'GetUsernameLabel
+ Public'Open
+ Public'PreReclaim
+ Public'SetAvatar
+ Public'SetColor
+ Public'SetFrame
+ Public'SetLabel
+ Public'SetLayer
+ Public'SetSize
+ Public'SetWeight
+]

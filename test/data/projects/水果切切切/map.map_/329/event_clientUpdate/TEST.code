@@ -1,0 +1,8 @@
+begincodeV2
+skip:1
+name:TEST
+lines:
+fun echoMesh(Enum 2:Vector3 50,0,50:Vector3 0,0,1:Vector3 0,1,0:Vector3 5,5,5:Color 255,0,0,255:Float 0.5:Float 0.5:Float 0)
+fun echoMesh(Enum 2:Vector3 50,0,60:Vector3 0,0,1:Vector3 0,1,0:Vector3 5,5,5:Color 0,255,0,255:Float 0.5:Float 0.5:Float 0)
+fun echoMesh(Enum 2:Vector3 50,0,70:Vector3 0,0,1:Vector3 0,1,0:Vector3 5,5,5:Color 0,0,255,255:Float 0.5:Float 0.5:Float 0)
+endcode

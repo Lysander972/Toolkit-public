@@ -1,0 +1,12 @@
+[
+ Lifting'Reset
+ Rotating'SetTarget
+ UpdateGlobalOffset
+ Lifting'EndCycle
+ Lifting'Cycle
+ Lifting'Application
+ Lifting'SetTarget
+ Rotating'Cycle
+ Rotating'EndCycle
+ Rotating'Application
+]

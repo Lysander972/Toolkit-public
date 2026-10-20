@@ -1,0 +1,8 @@
+type:132
+pos:[8.469984,4.768372E-07,-7.504536]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ vfx_FocusDistance:3.16
+ vfx_FocusRange:8.02
+}

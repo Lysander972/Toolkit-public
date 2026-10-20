@@ -1,0 +1,30 @@
+begincodeV2
+name:平台适配器'快手礼物名称映射
+params:String 抖音礼物名
+return:String 快手礼物名
+lines:
+if{fun string.equal(var 抖音礼物名:String 仙女棒)
+  String 快手礼物名=fun create.string(String 助威火炬)
+}
+if{fun string.equal(var 抖音礼物名:String 能力药丸)
+  String 快手礼物名=fun create.string(String 火花)
+}
+if{fun string.equal(var 抖音礼物名:String 魔法镜)
+  String 快手礼物名=fun create.string(String 一叶知秋)
+}
+if{fun string.equal(var 抖音礼物名:String 甜甜圈)
+  String 快手礼物名=fun create.string(String 助威火箭)
+}
+if{fun string.equal(var 抖音礼物名:String 能量电池)
+  String 快手礼物名=fun create.string(String 雪糕刺客)
+}
+if{fun string.equal(var 抖音礼物名:String 恶魔炸弹)
+  String 快手礼物名=fun create.string(String 冲鸭)
+}
+if{fun string.equal(var 抖音礼物名:String 派对话筒)
+  String 快手礼物名=fun create.string(String 浪漫满屏)
+}
+if{fun string.equal(var 抖音礼物名:String 神秘空投)
+  String 快手礼物名=fun create.string(String 魔法相机)
+}
+endcode

@@ -1,0 +1,25 @@
+begincodeV2
+name:Private'应用特性
+lines:
+if{fun long.equal(var Attr'Type:Long 10)
+  act 1.this.应用特性'攻方公共()
+}
+if{fun long.equal(var Attr'Type:Long 11)
+  act 1.this.应用特性'攻方玩家()
+}
+if{fun long.equal(var Attr'Type:Long 20)
+  act 1.this.应用特性'守方公共()
+}
+if{fun long.equal(var Attr'Type:Long 21)
+  act 1.this.应用特性'守方玩家()
+}
+if{fun long.equal(var Attr'Type:Long 22)
+  act 1.this.应用特性'守方召唤物()
+}
+if{fun long.equal(var Attr'Type:Long 23)
+  act 1.this.应用特性'守方召唤物()
+}
+if{fun long.equal(var Attr'Type:Long 24)
+  act 1.this.应用特性'守方召唤物()
+}
+endcode

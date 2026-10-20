@@ -1,0 +1,6 @@
+begincodeV2
+name:方法1
+params:Float &1
+lines:
+//空实现占位，后续按需补充逻辑
+endcode

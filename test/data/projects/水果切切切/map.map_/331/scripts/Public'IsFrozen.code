@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'IsFrozen
+return:Bool ret
+lines:
+Bool ret=fun create.bool(var 冰冻'冰冻)
+endcode

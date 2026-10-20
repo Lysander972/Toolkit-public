@@ -1,0 +1,16 @@
+begincodeV2
+name:内部'投射物_加速
+comment:给自己队伍的加速,级别1@1仙女棒;级别2@1甜甜圈;级别3@1爱的爆炸
+params:Color 颜色,Dict 绑定事件,UIRect 父节点,Vector3 产生位置,Float 速度,UIRect 目标锚定节点,Float 延迟,UIRect 坐标计算基准
+lines:
+//创建布局
+fun ui.2dmode(var 平面UI开关)
+Canvas 投射物布局=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgRyb290A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAMAAAAAAAAABmFuY2hvchgDAAAAAAAAAARzaXplBAAASEIAAEhCAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAAC0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxABABEIAAR0eXBlBgpVSVJhd0ltYWdlBG5hbWUGBuWKqOWbvgNQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgDAAAAAAAAAAZhbmNob3IYAwAAAAAAAAAEc2l6ZQQAAJZDAACWQwAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwhmaWxlR3VpZAYgNmJiZWZiMzYyYTcyNGEwZmE3ZGJkNmVlNmU1MGNjMDA@3)
+//设置动图
+UIRawImage 动图=varf Canvas.投射物布局.readUIRawImage(String root/动图)
+varf UIRawImage.动图.setColor(var 颜色)
+act 1101./弹幕.动图'应用动图(var 动图:Long 10:Long 0:Bool 1)
+//更新标记
+UIRect 投射物根节点=varf Canvas.投射物布局.readUIRect(String root)
+act 1101.this.内部'投射物_通用初始化(var 投射物根节点:var 动图:String 加速:var 绑定事件:var 父节点:var 坐标计算基准:var 产生位置:var 目标锚定节点:var 速度:Float 0:Float 1:Float 180:var 延迟:var 颜色)
+endcode

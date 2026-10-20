@@ -1,0 +1,228 @@
+model {
+  extend toolkit {
+    lint = container '脚本静态检查纯计算' {
+      #common
+      #todo
+      description '消费同次结构化输入；ScriptLint 按方法绑定检查 LocalAst 与完整 Context，CallGraphLint 每次对完整分析执行一次跨方法检查，共用具名诊断合同。规则不读取工程、不重新解析或构建调用图、不持有诊断状态。'
+      metadata {
+        todo '方法级与全图级纯检查及统一诊断合同已声明；两个执行入口均保持 TODO'
+        sourcePath 'src/toolkit/lint'
+        files ['src/toolkit/lint/*.ts']
+      }
+    }
+    lint_tests = container '脚本静态检查合同测试' {
+      #test
+      description '使用真实解析、零件 Context 和调用分析验证纯检查空壳明确失败及输入保真；规则行为待正式实现验收。'
+      metadata { sourcePath 'test/modules/toolkit-lint' files ['test/modules/toolkit-lint/*.test.ts'] }
+    }
+    language = container '语言查询业务' {
+      #common
+      #todo
+      description '输入工程相对文档标识、文本版本、位置与取消信号；读取实体基准、分析和诊断，输出定义、引用、悬停与诊断。实体层拥有工程状态，查询结果不产生第二状态树。'
+      metadata {
+        todo '具名查询和结果、共享 Layer 已声明；查询与坐标映射执行保持 TODO'
+        sourcePath 'src/toolkit/language'
+        files ['src/toolkit/language/*.ts']
+        code ['src/toolkit/language/LanguageQueries.ts#LanguageQueries']
+      }
+    }
+    language_tests = container '语言查询合同测试' {
+      #test
+      description '真实实体与诊断 Layer 装配，验证四类查询空壳失败、请求保真及源工程零写入；正式查询行为待实现。'
+      metadata { sourcePath 'test/modules/toolkit-language' files ['test/modules/toolkit-language/*.ts'] }
+    }
+    invocations = container '调用记录与取消' {
+      #common
+      #todo
+      description 'Host 单侧提交具名开始和结束事件；本服务仅拥有同一工作区 Scope 的调用标识、时间、结果状态与诊断记录，主动交付只读记录。业务执行及取消归 Host 原生 Scope，记录不接收回调或完整请求响应，不建立第二执行器；关闭释放记录。'
+      metadata {
+        todo '已声明事件、记录与共享 Layer；实际登记、读取及关闭释放待实现'
+        sourcePath 'src/toolkit/invocations'
+        files ['src/toolkit/invocations/*.ts']
+      }
+    }
+  }
+  extend toolkit.host.logic {
+    lifecycle = container '唯一工作区生命周期' {
+      description 'Host.open 建立工作区 Scope 和唯一配置输入；Host.close 取消调用并释放实体、监听和转换缓存。'
+      metadata { code ['src/toolkit/host/Host.ts#Host.open', 'src/toolkit/host/Host.ts#Host.close'] }
+    }
+    composition = container '服务组合根' {
+      description '装配唯一 files 与 watcher，等待监听 ready 后创建 entities，再装配 conversion、views 与业务；所有业务入口通过同一 Host。组合根拥有服务生命周期，不执行转换或编辑算法。'
+      metadata { code ['src/toolkit/host/WorkspaceServices.ts#WorkspaceModule'] }
+    }
+    refresh = container '唯一文件变化主动调度' {
+      #todo
+      description '在唯一工作区 Scope 消费监听批次，主动调用实体分类与源重读，再把实际结果交给 Views；按 Views 返回的影响调用具名 Preview 请求刷新已打开展示。源与派生分类归 Entities，影响计算、files 发布及 memory 按需交付归 Views，绘制归 Preview/Renderer。提交后沿用实际重读结果；生命周期节点负责启动与关闭本循环。'
+      metadata { todo '实际监听和源重读已连接；实体分类、Views 影响交付与已打开展示的预览刷新保持 TODO 明确失败' code ['src/toolkit/host/WorkspaceUpdates.ts#WorkspaceUpdates.watch', 'src/toolkit/host/WorkspaceUpdates.ts#WorkspaceUpdates.refresh'] }
+    }
+  }
+  extend toolkit.entities {
+    assembly = container '逻辑来源与单次归属装配' {
+      description 'LogicalEntitySources 按格式声明读取来源；EntityAssembly 私有拥有同次实体、诊断和归属集合，通过实体目录声明登记父级并生成最终快照，查询仅交付只读集合，不跨快照保留状态。'
+      metadata { code ['src/toolkit/entities/LogicalEntitySources.ts#LogicalEntitySources', 'src/toolkit/entities/EntityAssembly.ts#EntityAssembly'] }
+    }
+    refresh = container '显式重读与基准交付' {
+      #todo
+      description '接受 Host 传入的源目录批次，在与提交相同的串行边界内重读文件，更新 state 并返回实际更新删除标识。semanticSnapshot 从同一快照读取语义输入并调用纯装配，交付完整读取基准；分类与派生发布由实体父容器承载，Views 由 Host 主动驱动。'
+      metadata { todo 'refresh 实际重读并交付更新删除集合；semanticSnapshot 的完整语义基准保持 TODO' code ['src/toolkit/entities/ProjectEntities.ts#ProjectEntities.refresh', 'src/toolkit/entities/ProjectEntities.ts#ProjectEntities.semanticSnapshot'] }
+    }
+    state = container '文件派生实体快照' {
+      description '工程文件是唯一权威；MST 持有文件派生快照和不可变逻辑快照，提供快照替换、读取及 GUID 身份查询。重读、语义装配、完整基准读取与派生文件发布由实体服务编排，不进入状态容器。'
+      metadata { code ['src/toolkit/entities/EntityState.ts#EntityState'] }
+    }
+    transaction = container '提交与实际重读' {
+      description '接受 Editing 的唯一 EntityChange 候选；核对读取基准、经 Schematics 提交实际文件，再重读实际结果更新文件派生快照。'
+      metadata { code ['src/toolkit/entities/ProjectEntities.ts#ProjectEntities.commit'] }
+    }
+  }
+  extend toolkit.view_service {
+    refresh = container '唯一派生刷新' {
+      #todo
+      description 'Host 提供完整实体基准、源更新删除及已登记派生产物的实际变化；Views 根据唯一源到视图关联计算影响并调用共享转换。files 模式经实体 publishView 恢复被篡改或删除的派生产物，源内容未变仍可纠偏；自身写入以同内容零写入收敛。memory 模式只失效关联，请求时交付视图。引用图片与 Canvas 变化均返回实际依赖影响供 Host 刷新展示；不创建第二监听、内容缓存或预览调度。当前分类、影响计算和交付保持 TODO。'
+      metadata { todo '派生纠偏路径、Host 提供的实际预览依赖及更新删除影响合同已声明；影响计算、派生交付与纠偏保持 TODO 明确失败' code ['src/toolkit/views/ProjectViews.ts#ProjectViews.refresh', 'src/toolkit/views/ProjectViews.ts#ProjectViews.refreshTs'] }
+    }
+  }
+  toolkit.diagnostics -> toolkit.lint '调用纯检查，诊断状态归 Diagnostics'
+  toolkit.lint -> toolkit.script.ast.local_ast '只读 LocalAst'
+  toolkit.lint -> toolkit.script.context.device_context '完整 Context'
+  toolkit.lint -> toolkit.analysis.logic '分析结果'
+  toolkit.lint -> specifications.runtime
+  toolkit.lint_tests -> toolkit.lint '调用纯检查空壳'
+  toolkit.lint_tests -> toolkit.analysis.logic '构建同次方法绑定及调用图'
+  toolkit.lint_tests -> toolkit.project_model.logic '提供真实逻辑实体输入'
+  toolkit.lint_tests -> toolkit.script.context.device_context '校验完整零件 Context'
+  toolkit.lint_tests -> toolkit.script.ast.local_ast '消费共享 AST 类型'
+  toolkit.lint_tests -> toolkit.script.test_support '复用真实解析的脚本输入'
+  toolkit.language -> toolkit.entities '共享实体服务与完整读取基准'
+  toolkit.language -> toolkit.diagnostics '共享诊断服务和唯一结果类型'
+  toolkit.language -> specifications.runtime
+  toolkit.host.logic -> toolkit.language '共享装配与唯一受控查询入口' #todo {
+    metadata {
+      todo '共享工作区装配与 Host 具名查询分派已连接；查询业务保持 TODO'
+    }
+  }
+  toolkit.language_tests -> toolkit.language '真实装配与四类请求执行'
+  toolkit.language_tests -> toolkit.diagnostics '注入真实诊断 Layer'
+  toolkit.language_tests -> toolkit.entities '建立真实实体 Layer'
+  toolkit.language_tests -> toolkit.files '建立真实文件边界'
+  toolkit.language_tests -> toolkit.host.test_support '独占测试工程生命周期'
+  toolkit.host.logic -> toolkit.invocations '每个入口统一登记结果与取消'
+  toolkit.language_tests -> toolkit.project_model.logic '读取实际文件修订'
+  toolkit.invocations -> specifications.runtime
+  toolkit.host.tests -> toolkit.invocations '真实 Layer 验证生命周期输入与明确失败'
+  toolkit.host.tests -> canvas.renderer_support '复用官方 CanvasKit 测试初始化，验证真实展示请求失败'
+  toolkit.host.logic.lifecycle -> toolkit.host.logic.composition '建立与释放同一工作区服务'
+  toolkit.host.logic.composition -> toolkit.language '共享装配语言查询服务'
+  toolkit.host.logic.lifecycle -> toolkit.host.logic.refresh '启动工作区 Scope 内的单一监听消费'
+  toolkit.host.logic.refresh -> toolkit.entities.refresh '按实际目录批次重读文件'
+  toolkit.entities.refresh -> toolkit.entities.state '比较实际重读前后的逻辑实体事实'
+  toolkit.entities.transaction -> toolkit.entities.state '提交收尾重读实际文件并更新快照或错误结果'
+  toolkit.host.logic.refresh -> toolkit.host.logic.composition '读取同一工作区共享实例'
+  toolkit.host.logic.refresh -> toolkit.view_service.refresh '刷新端口复用实际视图及预览影响结果，执行保持 TODO'
+}
+views {
+  dynamic view frontend_canvas_display {
+    title '02m · 前端 Canvas 与主干共享预览（设计）'
+    frontend.plugin -> toolkit.host.logic '文档定位源身份；同一 Host.openPreview，面板持有 take/close 资源'
+    toolkit.host.logic -> toolkit.view_service '读取具名 HTML/XML 与完整来源基准'
+    toolkit.host.logic -> toolkit.preview '同一 viewport、字体、显式时间与唯一 CPU 后端'
+    toolkit.preview -> toolkit.entities '读取本次实际引用资源及 revision'
+    toolkit.preview -> renderer '共用 CPU 渲染，交付 PNG 与最终基准'
+    toolkit.host.logic -> toolkit.view_service '工程变化的同次影响驱动已有展示；前端只消费产物'
+  }
+  dynamic view initial_read {
+    title '02i · 首次读取与格式交付'
+    toolkit.host.logic -> toolkit.files '建立监听并等待 ready；期间实际变化保持登记'
+    toolkit.host.logic -> toolkit.entities '首次完整装配与确定读取基准；后续批次复用同一实体服务按变化目录重读'
+    toolkit.entities -> toolkit.semantic '按快照装配完整 Context 与转换依据'
+    toolkit.host.logic -> toolkit.view_service '按模式交付具名视图'
+    toolkit.view_service -> toolkit.conversion.ts '零件到 TS 视图'
+    toolkit.view_service -> toolkit.conversion.html 'Canvas 到 HTML/XML 视图'
+  }
+  dynamic view diagnostics_read {
+    title '02j · 主动诊断'
+    toolkit.host.logic -> toolkit.diagnostics 'inspect：明确基准与请求'
+    toolkit.diagnostics -> toolkit.entities '主动读取确定快照'
+    toolkit.diagnostics -> toolkit.analysis.logic '复用同次实体读取已计算的符号与调用关系'
+    toolkit.diagnostics -> toolkit.lint '按绑定执行 ScriptLint，再对同一完整图执行一次 CallGraphLint；交付具名诊断'
+  }
+  dynamic view preview_read {
+    title '02k · 具名视图到进程内 PNG'
+    toolkit.host.logic -> toolkit.view_service '读取具名 HTML/XML 视图'
+    toolkit.host.logic -> toolkit.preview '交付结构化 Canvas 与明确渲染输入'
+    toolkit.preview -> toolkit.entities '按实际基准读取资源'
+    toolkit.preview -> renderer '进程内 CPU 渲染并返回 PNG 与诊断'
+  }
+  dynamic view source_refresh {
+    title '02f · 文件变化的单侧主动驱动'
+    toolkit.host.logic -> toolkit.files 'take：等待实际文件变化的相对目录批次'
+    toolkit.host.logic -> toolkit.entities 'refresh：按变化目录重读实际文件，取得确定基准；不重建工作区 Layer'
+    toolkit.host.logic -> toolkit.view_service 'refresh：files 按实际影响刷新，memory 按请求交付'
+    toolkit.view_service -> toolkit.entities '读取格式实体与实际资源'
+    toolkit.view_service -> toolkit.conversion.ts '更新或删除 TS 派生结果'
+    toolkit.view_service -> toolkit.conversion.html '更新或删除 HTML 派生结果'
+    toolkit.view_service -> toolkit.entities 'files：publishView 仅写出派生文件'
+  }
+  dynamic view commit_refresh {
+    title '02g · 候选提交与实际重读'
+    toolkit.host.logic -> toolkit.editing '提交明确候选与原读取基准'
+    toolkit.editing -> toolkit.entities 'commit：核对基准并提交'
+    toolkit.entities -> toolkit.files '实际 IO；成功或失败均重读磁盘事实'
+    toolkit.host.logic -> toolkit.entities 'refresh：取得实际磁盘结果'
+    toolkit.host.logic -> toolkit.view_service 'refresh：按重读结果处理更新与删除'
+  }
+  dynamic view refactor_prepare {
+    title '02l · 快速重构意图到统一候选（设计）'
+    toolkit.host.logic -> toolkit.editing 'refactor：目标与原读取基准'
+    toolkit.editing -> toolkit.entities '读取目标、关联实体与完整语义基准'
+    toolkit.editing -> pure.change_plan '同次快照、分析与 RefactorChangePlanRequest'
+    toolkit.editing -> toolkit.entities '物化统一 EntityChange；准备零写入，提交复用 commit'
+  }
+  dynamic view workspace_close {
+    title '02h · 工作区关闭与取消'
+    toolkit.host.logic -> toolkit.invocations '结束调用与取消等待'
+    toolkit.host.logic -> toolkit.view_service '释放派生关联与转换资源'
+    toolkit.host.logic -> toolkit.entities '释放文件派生快照'
+    toolkit.host.logic -> toolkit.files '关闭唯一监听与 IO Scope'
+  }
+  view workspace_lifecycle of toolkit {
+    title '02b · 工作区生命周期与所有权'
+    include toolkit.host.logic.*
+    include toolkit.files
+    include toolkit.entities.*
+    include toolkit.view_service.*
+    include toolkit.invocations
+  }
+  view read_flow of toolkit {
+    title '02c · 读取、语义、转换与诊断'
+    include toolkit.files
+    include toolkit.entities
+    include toolkit.semantic
+    include toolkit.analysis.logic
+    include toolkit.conversion.*
+    include toolkit.view_service
+    include toolkit.lint
+    include toolkit.diagnostics
+    include toolkit.language
+  }
+  view write_flow of toolkit {
+    title '02d · 编辑、候选、提交与刷新'
+    include toolkit.editing
+    include toolkit.conversion.ts
+    include toolkit.conversion.html
+    include pure.change_plan
+    include toolkit.analysis.logic
+    include toolkit.entities.*
+    include toolkit.files
+    include toolkit.view_service.*
+  }
+  view preview_flow of toolkit {
+    title '02e · 具名视图与资源到 PNG'
+    include toolkit.host.logic
+    include toolkit.preview
+    include toolkit.entities
+    include renderer
+    include frontend.plugin
+  }
+}

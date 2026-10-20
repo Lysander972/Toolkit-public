@@ -1,0 +1,5 @@
+begincodeV2
+name:icon_
+lines:
+Icon i=fun create.icon(Icon )
+endcode

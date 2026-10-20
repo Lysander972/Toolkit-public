@@ -1,0 +1,30 @@
+guid:f39f02e054b1464c91cb73a137ca132f
+meshes:
+[
+ {
+  n:Plum_Red_Half
+ }
+]
+matFolderName:e194378bd5f846c1a0a4929ac533410d
+Albedo.UID:e194378bd5f846c1a0a4929ac533410d
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.0001007691,0.121111,-0.06021668]
+bounds.size:[0.2789875,0.242222,0.1411017]

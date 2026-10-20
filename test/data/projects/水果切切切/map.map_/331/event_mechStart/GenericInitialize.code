@@ -1,0 +1,16 @@
+begincodeV2
+color:8,0,255
+name:GenericInitialize
+lines:
+Mech Self=act 1.this.getMech()
+Mech map=fun map.getMapMech()
+Device map_handler=varf Mech.map.findDevice(String Scenario)
+varf Mech.Self.setCustomBool(String wall:Bool 0)
+Device Floor=varf Device.map_handler.callReturnDevice0(String Map'GetTurretFloor)
+Device Wall=varf Device.map_handler.callReturnDevice0(String Map'GetDefWall)
+Vector3 ScenarioOffset=varf Device.map_handler.callReturnVector30(String Map'GetOffset)
+Float 后坐力插值=fun create.float(Float 1)
+varf List.炮塔模型'后坐力效果表.insertMulti(var 后坐力插值:Float 11)
+Vector3 BulletOffset=fun creatVariable.Vector3(Float 0:Float 1:Float 0)
+varf Mech.Self.setCustomFloat(String 缩放标志位:var 物理效果'缩放当前值)
+endcode

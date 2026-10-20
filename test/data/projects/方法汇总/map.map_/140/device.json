@@ -1,0 +1,12 @@
+type:317
+pos:[-1.787313,0,5.642685]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ boolHideUI:1
+ boolLight:true
+ size:1
+ length:5
+ enableEnemyTrace:false
+ colorValue:[1,0.6940299,0,1]
+}

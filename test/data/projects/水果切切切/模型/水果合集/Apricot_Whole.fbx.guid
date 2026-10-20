@@ -1,0 +1,34 @@
+guid:e5755848751c41e2a94b369eaa6920ef
+meshes:
+[
+ {
+  n:Apricot_Whole
+ }
+]
+matFolderName:e194378bd5f846c1a0a4929ac533410d
+Albedo.UID:e194378bd5f846c1a0a4929ac533410d
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+OriginType:1
+ColliderSize:[0.8,0.8,0.8]
+bounds.center:[0,0,0]
+bounds.size:[0.2190179,0.2156451,0.223723]

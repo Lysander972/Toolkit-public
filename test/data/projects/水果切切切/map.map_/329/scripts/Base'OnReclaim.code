@@ -1,0 +1,19 @@
+begincodeV2
+color:104,0,255
+name:Base'OnReclaim
+comment:回收模型
+params:Mech obj,String key,Long type
+lines:
+if{fun long.equal(var type:Long 21)
+  varf Long.Base'召唤物容量.addEqual(Long 1)
+}
+/*List unused=varf Struct.Base'Unused.getList(var key:Bool 0)
+/*varf List.unused.add(var obj)
+/*varf Mech.obj.setActive(Bool 0)
+List all=varf Struct.Base'All.getList(var key:Bool 0)
+Float index=varf List.all.find(var obj)
+if{fun float.gte(var index:Float 0)
+  varf List.all.remove(var index)
+}
+varf Mech.obj.Del(Float 0)
+endcode

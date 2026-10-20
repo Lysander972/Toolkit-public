@@ -1,0 +1,72 @@
+begincodeV2
+private:1
+name:Skills'2500_OnDamageCheck
+comment:栅栏扣血检查
+lines:
+Float 栅栏hp=varf Device.map_handler.callReturnFloat0(String 栅栏'得到HP)
+if{fun float.lte(var 栅栏hp:Float 0)
+  fun break()
+}
+List List=act 1100.6.getInsideMechs()
+Float total=varf List.List.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Mech target=varf List.List.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  Long targetFaction=varf Device.core.callReturnLong0(String Public'GetFaction)
+  if{fun long.equal(var targetFaction:Long 1)
+    if{varf Device.core.callReturnBool0(String Public'IsAlive)
+      //首先按照范围判定
+      Vector3 pos=varf Device.core.callReturnVector30(String Public'GetCenter)
+      Float x=varf Vector3.pos.x()
+      Float y=varf Vector3.pos.y()
+      Float z=varf Vector3.pos.z()
+      Bool bool0=fun float.gte(var x:Float -30)
+      Bool bool1=fun float.lte(var x:Float 30)
+      Bool bool2=fun float.gte(var y:Float 0)
+      Bool bool3=fun float.lte(var y:Float 100)
+      Bool bool4=fun float.lte(var z:Float 50)
+      Bool 在范围内=fun bool.and3(var bool0:var bool1:var bool2:var bool3:var bool4)
+      if{fun create.bool(var 在范围内)
+        //在范围内计算伤害
+/*        Long type=varf Device.core.callReturnLong0(String Public'GetType)
+        Float maxhp=varf Device.core.callReturnFloat0(String Public'GetMaxHP)
+        Float hp=varf Device.core.callReturnFloat0(String Public'GetHP)
+        //默认单次伤害为最大hp的1%,栅栏不会反击
+        Float 乘数=fun create.float(Float 0.01)
+        Float max=fun create.float(Float 500)
+/*        Bool bool1=fun long.equal(var type:Long 1500)
+/*        Bool bool2=fun long.equal(var type:Long 1510)
+/*        Bool bool3=fun long.equal(var type:Long 1520)
+        Bool 反击=fun create.bool(Bool 0)
+        //对于煤气罐,一次造成伤害是1000,会被反击
+/*        if{fun bool.or1(var bool1:var bool2:var bool3)
+/*          Float 乘数=fun create.float(Float 0.1)
+/*          Bool 反击=fun create.bool(Bool 1)
+/*          Float max=fun create.float(Float 2000)
+        }
+        Float damage=fun float.multiply(var maxhp:var 乘数)
+        //水果打出的伤害不会超过其自身的hp
+        Float damage=fun float.min2(var damage:var hp:var 栅栏hp:var max)
+        //一次伤害至少为1,最大不会超过100或2000
+        Float damage=fun float.max(var damage:Float 1)
+        //反击伤害
+        if{fun create.bool(var 反击)
+          varf Device.core.callFun1(String Public'强制伤害:var damage)
+        }
+        //击退
+        varf Device.core.addForce(Vector3 0,0,3:Enum 2)
+        //获取到伤害来源
+        Struct creator=varf Device.core.callReturnStruct0(String Public'GetCreator)
+        //生成HP变化事件,播报产生伤害的位置和伤害值
+        Float hp变化=fun float.multiply(var damage:Float -1)
+        Vector3 pos=varf Device.core.pos()
+        varf Vector3.pos.setZ(Float 30)
+        varf Device.map_handler.callFun3(String 栅栏'HP变化:var hp变化:var creator:var pos)
+      }
+    }
+  }
+  varf Float.index.addEqual(Float 1)
+}
+delay fun create.float(Float 1)
+endcode

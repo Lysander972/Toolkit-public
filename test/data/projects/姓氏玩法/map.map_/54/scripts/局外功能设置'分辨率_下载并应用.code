@@ -1,0 +1,12 @@
+begincodeV2
+color:255,255,255
+name:局外功能设置'分辨率_下载并应用
+comment:会记录修改后的分辨率作为实际分辨率
+lines:
+Long 局外功能设置'分辨率选项=fun create.long(Long 0)
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 分辨率选项标志位)
+  Long 局外功能设置'分辨率选项=varf Dict.data.readLong(String 分辨率选项标志位:Bool 0)
+}
+act 1101.this.局外功能设置'分辨率_应用(var 局外功能设置'分辨率选项)
+endcode

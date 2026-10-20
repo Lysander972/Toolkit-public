@@ -1,0 +1,9 @@
+begincodeV2
+name:模拟点赞
+params:String id,Long 数量
+lines:
+String 原始json模板=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "%1","like_num"@1 %2,"avatar_url"@1 "https@1//p6.douyinpic.com/aweme/720x720/aweme-avatar/tos-cn-avt-0015_26d2605c0f145704542ca11ce389b176.jpeg","nickname"@1 "%3","timestamp"@1 1}])
+String 用户名=varf Struct.AI玩家.getString(String name:Bool 1)
+String json=fun string.Format3(var 原始json模板:var id:var 数量:var 用户名)
+fun simulate_comment(String live_like:var json)
+endcode

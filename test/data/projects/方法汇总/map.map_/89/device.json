@@ -1,0 +1,11 @@
+type:248
+pos:[3.407812,0,-7.921693]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ boolHideUI:1
+ boolLight:true
+ colorValue:[1,0,0.09860468,1]
+ distance:1
+ radius:1
+}

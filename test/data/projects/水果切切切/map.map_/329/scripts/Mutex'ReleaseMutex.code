@@ -1,0 +1,7 @@
+begincodeV2
+name:Mutex'ReleaseMutex
+params:String key
+lines:
+Bool mutex=fun create.bool(Bool 0)
+varf Dict.Mutex.insert(var key:var mutex)
+endcode

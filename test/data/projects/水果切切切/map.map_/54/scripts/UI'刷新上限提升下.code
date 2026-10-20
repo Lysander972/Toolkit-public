@@ -1,0 +1,14 @@
+begincodeV2
+name:UI'刷新上限提升下
+params:Float 剩余可加
+lines:
+UILabel 上限提示下=varf Canvas.GameUI.readUILabel(String root/leftpanel/进度条/进度/背景/显示区/上限提示)
+varf UILabel.上限提示下.active(var 场外功能设置'启用加时)
+Float 简化显示=fun float.round(var 剩余可加:Float 1)
+String 显示=fun string.Format1(String 可加%1米:var 简化显示)
+varf UILabel.上限提示下.text(var 显示)
+if{fun float.lte(var 剩余可加:Float 0)
+  String 显示=fun create.string(String 已到达上限)
+  varf UILabel.上限提示下.text(var 显示)
+}
+endcode

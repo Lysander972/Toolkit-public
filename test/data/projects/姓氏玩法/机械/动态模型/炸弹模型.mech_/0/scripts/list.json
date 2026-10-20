@@ -1,0 +1,32 @@
+[
+ {
+  guid:5fdea05349f3406ba240ed7d74ead8ab
+  name:事件转移
+ }
+ {
+  guid:62cdf019b8d34b58beb0dee54107fcd7
+  name:挂载事件列表检测
+ }
+ {
+  guid:98dbf76e3d5f4682a33a02de9b208c96
+  name:挂载全部事件
+ }
+ {
+  guid:d4cd3ce86625491283430d8281b32cd2
+  name:挂载单一事件
+ }
+ {
+  guid:4cc02c3df774423daa33af443edc9a7c
+  name:按剩余比例应用事件
+ }
+ {
+  guid:09a4d38e40ae4adaae92df9b65df6316
+  name:按比例应用事件
+ }
+ 播放动画
+ 检测摄像机并震动
+ {
+  guid:dfb7375b39c64d58a567f3f097c30589
+  name:读取
+ }
+]

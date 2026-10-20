@@ -1,0 +1,25 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'定时任务事件队列_注册定时任务
+params:Struct 玩家,Struct 队伍,Long 速度变化,Float 生效延迟,Long 类型,Long 层数变化
+lines:
+Float 注册时间=act 1101.this.工具'得到距开局时间()
+Float 生效时间=fun float.add(var 注册时间:var 生效延迟)
+//新建定时任务事件结构
+Dict 定时任务事件=fun create.dict()
+varf Dict.定时任务事件.insert(String 玩家:var 玩家)
+varf Dict.定时任务事件.insert(String 队伍:var 队伍)
+varf Dict.定时任务事件.insert(String 速度变化:var 速度变化)
+varf Dict.定时任务事件.insert(String 生效时间:var 生效时间)
+varf Dict.定时任务事件.insert(String 类型:var 类型)
+varf Dict.定时任务事件.insert(String 层数变化:var 层数变化)
+varf Dict.定时任务事件.insert(String 注册时间:var 注册时间)
+varf Dict.定时任务事件.insert(String 生效延迟:var 生效延迟)
+//插入事件队列
+Float 初始序号=varf List.局内'定时任务事件队列.count()
+Long 初始序号L=varf Float.初始序号.toLong()
+//插入队尾
+varf List.局内'定时任务事件队列.add(var 定时任务事件)
+//调整结构
+act 1101.this.局内逻辑'定时任务事件队列_上浮(var 初始序号L)
+endcode

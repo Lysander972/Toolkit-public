@@ -1,0 +1,8 @@
+begincodeV2
+private:1
+name:Private_SkillType'HPLoss_Cycle
+comment:持续生命流失
+lines:
+act 1.this.Public'Damage(Float 40:Long 0)
+Bool HPCycleStarted=fun create.bool(Bool 1)
+endcode

@@ -1,0 +1,17 @@
+begincodeV2
+color:255,255,255
+name:播报_检查或新建'创建简略布局
+params:String 内容
+return:Canvas 播报布局
+lines:
+//创建布局
+fun ui.2dmode(Bool 1)
+Canvas 播报布局=fun create.canvas(Canvas guid@1c70df435c1484414924f64e06e59b153)
+//更新根节点
+UIRect 根节点=varf Canvas.播报布局.readUIRect(String background)
+varf UIRect.根节点.active(Bool 0)
+act 1101.this.播报元素'设置数字动效(var 播报布局:Bool 0)
+//设置显示内容
+UILabel label=varf Canvas.播报布局.readUILabel(String background/panel/label)
+varf UILabel.label.text(var 内容)
+endcode

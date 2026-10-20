@@ -1,0 +1,25 @@
+begincodeV2
+name:时间控制'更新时间流速
+lines:
+fun map.setCustomFloat(String 时间基础流速标志位:var 时间控制'基础流速)
+act 1101./弹幕.刷新帧率()
+Float 最低流速=fun create.float(Float 0)
+List 名称列表=varf Dict.时间控制'慢镜头信息.names()
+Float i=varf List.名称列表.count()
+while{fun float.gt(var i:Float 0)
+  varf Float.i.minusEqual(Float 1)
+  String key=varf List.名称列表.readString(var i)
+  Float 流速=varf Dict.时间控制'慢镜头信息.readFloat(var key:Bool 0)
+  Bool bool1=fun float.Approximately(var 最低流速:Float 0)
+  Bool bool2=fun float.lt(var 流速:var 最低流速)
+  if{fun bool.or(var bool1:var bool2)
+    Float 最低流速=fun create.float(var 流速)
+  }
+}
+if{fun float.Approximately(var 最低流速:Float 0)
+  Float 最低流速=fun create.float(Float 1)
+}
+Float 实际流速=fun float.multiply(var 最低流速:var 时间控制'基础流速)
+Bool 时间控制'刷新需求=fun create.bool(Bool 1)
+Float 时间控制'目标流速=fun create.float(var 实际流速)
+endcode

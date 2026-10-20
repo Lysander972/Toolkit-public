@@ -1,0 +1,42 @@
+begincodeV2
+skip:1
+name:空武器'添加常驻武器循环动画
+params:Canvas 武器UI
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+Float 整体旋转角度=varf UIRect.根节点.customFloat(String 整体旋转角度)
+Dict 动画字典=act 1101./弹幕.动画控制'动画字典_构造(Bool 1:String :String )
+//初始状态@1武器刚好抵达队伍进度条末端
+//步骤1@1 待机
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_基础(Float 1:Long 0:Bool 1:Float 1:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤2@1 向后拉开距离
+Vector3 坐标=fun creatVariable.Vector3(Float 240:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_非物理目标(Float 2.5:Long 1:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤3@1 小幅度反弹
+Vector3 坐标=fun creatVariable.Vector3(Float 200:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_非物理目标(Float 0.5:Long 1:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤4@1 待机
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_基础(Float 2:Long 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤5@1 稍向后退
+Vector3 坐标=fun creatVariable.Vector3(Float 220:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_非物理目标(Float 0.05:Long 1:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤5@1 向前冲刺撞击
+Vector3 坐标=fun creatVariable.Vector3(Float 30:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_非物理目标(Float 0.25:Long 1:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String 弹幕.通用武器动图'回调_应用事件并播放音效:String 弹幕.通用武器动图'回调_触发撞击效果)
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤6@1 冲到末端后稍回弹
+Vector3 坐标=fun creatVariable.Vector3(Float 10:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101./弹幕.动画控制'步骤字典_构造_非物理目标(Float 0.1:Long 1:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+act 1101./弹幕.动画控制'UI_添加动画(var 根节点:var 动画字典)
+endcode

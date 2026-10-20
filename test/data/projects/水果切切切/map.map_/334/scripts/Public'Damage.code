@@ -1,0 +1,20 @@
+begincodeV2
+color:8,0,255
+name:Public'Damage
+comment:计算伤害并按需要回收
+params:Float damage,Long faction,Vector3 pos,Bool 是否暴击,Bool 主动攻击
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+if{fun long.equal(var faction:var Attr'Faction)
+  fun break()
+}
+Float hp=fun float.minus(var Attr'HP:var damage)
+act 1.this.Private'UpdateHP(var hp)
+varf Device.map_handler.callFun2(String Bullet'DamageEffect:var Attr'Type:var pos)
+if{fun create.bool(var 主动攻击)
+  Long 类型=fun create.long(Long 0)
+  varf Device.map_handler.callFun4(String 数字效果'产生效果:var damage:var 类型:var 是否暴击:var pos)
+}
+endcode

@@ -1,0 +1,12 @@
+begincodeV2
+name:平台适配器'更新礼物图
+params:Canvas 布局,String 路径,Long 级别
+lines:
+if{varf Canvas.布局.exist()
+  UIRawImage 图片=varf Canvas.布局.readUIRawImage(var 路径)
+  if{varf UIRawImage.图片.exist()
+    String 礼物图名=act 1101.this.平台适配器'得到礼物图名(var 级别)
+    varf UIRawImage.图片.loadPic(var 礼物图名)
+  }
+}
+endcode

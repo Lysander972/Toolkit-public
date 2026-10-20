@@ -1,0 +1,7 @@
+begincodeV2
+guid:0a576d5ffe29462d882b7b48839d9c7a
+name:玩家结构'设置_completeness
+params:Struct 结构,Bool completeness
+lines:
+varf Struct.结构.set(String completeness:var completeness)
+endcode

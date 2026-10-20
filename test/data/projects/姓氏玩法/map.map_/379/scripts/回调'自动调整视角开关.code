@@ -1,0 +1,6 @@
+begincodeV2
+name:回调'自动调整视角开关
+lines:
+Bool 摄像机'是否自动切换=fun bool.not(var 摄像机'是否自动切换)
+act 1101.this.内部'自动调整视角开关刷新()
+endcode

@@ -1,0 +1,60 @@
+begincodeV2
+private:1
+color:255,0,0
+name:UI_局内'显示排行榜
+comment:将列表显示到路径的UI上
+params:List list,String prefix
+lines:
+Float rank=fun create.float(Float 0)
+while{fun float.lt(var rank:Float 3)
+  Float index=varf List.list.count()
+  varf Float.index.minusEqual(Float 1)
+  Bool show=fun float.lte(var rank:var index)
+  Float actualRank=fun float.add(var rank:Float 1)
+  //生成实际前缀
+  String path=fun string.add(var prefix:var actualRank)
+  UIRect parent=varf Canvas.UI_局内'主布局_2D.readUIRect(var path)
+  varf UIRect.parent.active(var show)
+  //得到存储数据用的根节点
+/*  String path2=fun string.add(var path:String /avatar)
+/*  UIRect rect=varf Canvas.UI_局内'主布局_2D.readUIRect(var path2)
+/*  varf UIRect.rect.active(var show)
+/*  String path2=fun string.add(var path:String /name)
+/*  UILabel nameLabel=varf Canvas.UI_局内'主布局_2D.readUILabel(var path2)
+/*  varf UILabel.nameLabel.active(var show)
+/*  String path3=fun string.add(var path:String /kill)
+/*  UILabel killLabel=varf Canvas.UI_局内'主布局_2D.readUILabel(var path3)
+/*  varf UILabel.killLabel.active(var show)
+  if{fun bool.not(var show)
+    varf UIRect.parent.setCustomString(String uid:String )
+  }
+  if{fun create.bool(var show)
+    Struct player=varf List.list.readStruct(var rank)
+    String oldUid=varf UIRect.parent.customString(String uid)
+    String uid=varf Struct.player.getString(String id:Bool 1)
+    Bool updUserInfo=fun string.notEqual(var oldUid:var uid)
+    //获取新的用户id
+    if{fun create.bool(var updUserInfo)
+      String path2=fun string.add(var path:String /name)
+      UILabel nameLabel=varf Canvas.UI_局内'主布局_2D.readUILabel(var path2)
+      String name=varf Struct.player.getString(String name:Bool 1)
+      String name=act 1101.this.工具'昵称简化(var name)
+      varf UILabel.nameLabel.text(var name)
+      //更新用户名显示
+      String path2=fun string.add(var path:String /avatar/mask/AvatarIcon)
+      UIRawImage avatarICon=varf Canvas.UI_局内'主布局_2D.readUIRawImage(var path2)
+      varf UIRawImage.avatarICon.SetDanmuAvatar(var uid)
+      //更新用户头像
+      varf UIRect.parent.setCustomString(String uid:var uid)
+    }
+    String path3=fun string.add(var path:String /kill)
+    UILabel killLabel=varf Canvas.UI_局内'主布局_2D.readUILabel(var path3)
+    Long score=varf Struct.player.getLong(String score:Bool 1)
+    String text=act 1101.this.工具'数值简化_中文(var score)
+    String text=fun string.add(String 积分:var text)
+    varf UILabel.killLabel.text(var text)
+    //更新积分数
+  }
+  varf Float.rank.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,18 @@
+type:133
+pos:[7.670147,0,-3.11852]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ vfx_Velocity:0.01
+ vfx_RndRot:5
+ vfx_StoneCount:400
+ vfx_StoneScale:[0.01,0.05]
+ vfx_StoneRange:[1,0.9]
+ StoneColor1:[1,1,1,0]
+ StoneColor2:[0.0520648,0.2262933,0.2830189,0]
+ vfx_CloudCount:32
+ vfx_CloudScale:[0.3,0.8]
+ vfx_CloudRange:[0.6,0.25]
+ CloudColor1:[1,0.2688679,0.2688679,0.227451]
+ CloudColor2:[0.2981488,0.9433962,0.9433962,0.282353]
+}

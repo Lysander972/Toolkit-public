@@ -1,0 +1,29 @@
+begincodeV2
+name:Launcher'攻方出生点放置
+params:Long 出生点位置,Long $type,Struct $player,Float $HPMul,Float crit,Float initHp
+return:Bool $ret
+lines:
+Float 地图宽度=act 1.this.Map'得到地图宽度()
+Float 攻方区域长度=act 1.this.Map'得到攻方长度()
+Float temp0=fun float.multiply(var 地图宽度:Float -0.5)
+Float temp1=fun float.division(var 地图宽度:Float 15)
+Float temp2=varf Long.出生点位置.toFloat()
+varf Float.temp2.addEqual(Float 0.5)
+Float temp2=fun float.multiply(var temp2:var temp1)
+Float $x=fun float.add(var temp0:var temp2)
+Float 最大z=fun float.multiply(var 地图宽度:Float 0.5)
+Float 最大z=fun float.add1(var 最大z:var 攻方区域长度:Float -25)
+Float 允许最靠前位置=fun map.getCustomFloat(String 最近位置标志位)
+Float 允许最靠前位置=fun float.add(var 允许最靠前位置:Float 20)
+Float 允许最靠前位置=fun float.max(var 允许最靠前位置:Float 100)
+Float $z=fun math.rand(var 允许最靠前位置:var 最大z)
+Vector3 relative=fun creatVariable.Vector3(var $x:Float 0:var $z)
+varf Vector3.relative.setY(Float 100)
+Vector3 $position=fun vector3.add(var relative:var ScenarioOffset)
+Float 随机x=fun math.rand(Float -2:Float 2)
+Float 随机y=fun math.rand(Float -2:Float 2)
+Float 随机z=fun math.rand(Float -2:Float 2)
+Vector3 随机偏移=fun creatVariable.Vector3(var 随机x:var 随机y:var 随机z)
+Vector3 $position=fun vector3.add(var $position:var 随机偏移)
+Bool $ret=act 1.this.Launcher'AbstractSetBullet(var $position:Vector3 0,0,1:var $type:var Attr'Faction:var $player:var $HPMul:var crit:var initHp:Bool 0:Float 0)
+endcode

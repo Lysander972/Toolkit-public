@@ -1,0 +1,16 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.setMass(Float 0)
+act 1.this.enableCollide(Bool 0)
+act 1.this.setMaxAngularVelocity(Float 0)
+act 22./攻方传送带.setLayer(Float 1)
+act 22./攻方传送带.show(Bool 0)
+act 22./攻方传送带.setMass(Float 1E+09)
+act 22./攻方传送带.switchCollider(Bool 1)
+act 22./攻方传送带.setMaxAngularVelocity(Float 0)
+act 200.3.switchCollider(Bool 0)
+act 200.3.show(Bool 0)
+endcode

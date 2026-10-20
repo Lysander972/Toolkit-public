@@ -1,0 +1,8 @@
+begincodeV2
+name:方法1
+lines:
+act 292.this.setLight(Float 0:Float 0:Float 0)
+act 292.this.setColor(Color 0,0,0,255)
+act 292.this.active()
+act 292.this.disActive()
+endcode

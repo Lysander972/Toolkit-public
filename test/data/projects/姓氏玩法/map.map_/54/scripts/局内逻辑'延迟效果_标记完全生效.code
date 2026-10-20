@@ -1,0 +1,7 @@
+begincodeV2
+color:123,255,0
+name:局内逻辑'延迟效果_标记完全生效
+params:Dict 延迟效果注册信息
+lines:
+act 1101.this.局内逻辑'延迟效果_标记生效比例(var 延迟效果注册信息:Float 1)
+endcode

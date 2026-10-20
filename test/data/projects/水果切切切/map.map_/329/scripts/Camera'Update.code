@@ -1,0 +1,27 @@
+begincodeV2
+name:Camera'Update
+lines:
+Vector3 target=fun vector3.multilply(var BaseCameraOff:var CameraDistance)
+Float x=varf Vector3.CameraAngle.x()
+Vector3 target=varf Vector3.target.rotAxis(Vector3 0,1,0:var x)
+Device core=varf Mech.防守方碰撞.getDevice(Float 0)
+Vector3 baseOffset=varf Device.core.localToWorldPos(var CameraRelative)
+Vector3 target=fun vector3.add(var target:var baseOffset)
+fun camera.setpos(var target:var CameraAngle:var CameraDistance:Float 0)
+//把本零件作为马甲放在摄像机位置上提供坐标系
+Vector3 azimuth=varf Vector3.CameraAngle.copy()
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 0:var CameraDistance)
+Float xF=varf Vector3.azimuth.x()
+Vector3 temp=fun vector3.rotateAround(var relative:Vector3 0,1,0:var xF)
+Float yF=varf Vector3.azimuth.y()
+Vector3 axis=fun vector3.cross(var temp:Vector3 0,1,0)
+Vector3 relative=fun vector3.rotateAround(var temp:var axis:var yF)
+Vector3 global=fun vector3.add(var target:var relative)
+act 1101.this.setPosKinematic(var global)
+Vector3 摄像机向前=fun vector3.multilply(var relative:Float -1)
+Vector3 摄像机向前=varf Vector3.摄像机向前.setLength(Float 1)
+Vector3 摄像机向上=fun vector3.cross(var relative:Vector3 0,-1,0)
+Vector3 摄像机向上=fun vector3.cross(var relative:var 摄像机向上)
+Vector3 摄像机向上=varf Vector3.摄像机向上.setLength(Float 1)
+act 1101.this.setRotKinematic(var 摄像机向前:var 摄像机向上)
+endcode

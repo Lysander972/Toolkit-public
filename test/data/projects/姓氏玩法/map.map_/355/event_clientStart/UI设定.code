@@ -1,0 +1,17 @@
+begincodeV2
+name:UI设定
+lines:
+String 对齐方式=fun create.string(String 居中)
+Bool 平面UI开关=fun create.bool(Bool 1)
+Float 场景'最小位置数量=fun create.float(Float 100)
+Float 摄像机'当前视角大小=fun create.float(Float 60)
+fun cameraClipPlane(Float 0.1:Float 1000:var 摄像机'当前视角大小:Float 0)
+Float 场景'排序方式=fun create.float(Float 0)
+Float 摄像机'当前摄像机世界高度=fun create.float(Float 10)
+Float 摄像机'当前摄像机局部高度=fun create.float(Float 10)
+Float 摄像机'当前看向世界高度=fun create.float(Float 10)
+Float 摄像机'当前看向局部高度=fun create.float(Float 10)
+Float 摄像机'缩放比例=fun create.float(Float 1)
+Bool 摄像机'是否自动切换=fun create.bool(Bool 1)
+Float 场景'柱子半径系数=fun create.float(Float 0.5)
+endcode

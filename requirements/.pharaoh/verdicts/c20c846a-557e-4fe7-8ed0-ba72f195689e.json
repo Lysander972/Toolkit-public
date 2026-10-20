@@ -1,0 +1,22 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "source 保存 #179 完整正文；原生 context 同时返回该原文与解读全文，身份和检视 key 的区别明确。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "逐项核对 #179 全文：原文可纠偏、UUID、正文指纹、离散评分、未满分提醒、两侧全文和唯一解读均已区分；没有重新要求冻结或强制归档。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "明确从错误解读通过形式门禁的问题出发，给出角度、推导和结论，并将 RST、工具和阈值标明为设计选择。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "c20c846a-557e-4fe7-8ed0-ba72f195689e",
+  "reviewed_fingerprint": "da324f58509fdc827c39cbec996c091b4d8ddfee2391021013fb54bbc59955ca",
+  "schema": 2
+}

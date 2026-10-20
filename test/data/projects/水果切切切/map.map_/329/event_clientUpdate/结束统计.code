@@ -1,0 +1,10 @@
+begincodeV2
+skip:1
+name:结束统计
+lines:
+if{fun keyboard.keyUp2(Enum 6)
+  List a=fun debug.finishMethodProfile()
+  String b=varf List.a.detail()
+  fun debug.print(String 结束统计:Color 255,255,255,255:Bool 0)
+}
+endcode

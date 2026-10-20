@@ -1,0 +1,7 @@
+begincodeV2
+color:104,0,255
+name:Base'OnUpgrade
+params:Vector3 pos,Float size
+lines:
+act 336./特效发射器.发射(var pos:Float 1:var size)
+endcode

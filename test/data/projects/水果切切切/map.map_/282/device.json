@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:礼物替身
+ boolShowFollowIcon:true
+ mechFileGUID:963b7eb6adb149d0bf4a2135843aadd0
+}

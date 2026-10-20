@@ -1,0 +1,12 @@
+begincodeV2
+name:特效
+params:Color $color,Float $size,Float $amount
+lines:
+varf Float.$amount.minusEqual(Float 1)
+List $list=act 1.this.callClientMapRetListFunc0(String Scenario.粒子'得到碰撞层列表)
+act 337./碎片.setCollideLayerMask(var $list)
+act 337./碎片.gravityModifierMultiplier(Float 0.5)
+act 337./碎片.color(var $color:var $color)
+act 337./碎片.startSize(var $size:var $size)
+act 337./碎片.emit(var $amount)
+endcode

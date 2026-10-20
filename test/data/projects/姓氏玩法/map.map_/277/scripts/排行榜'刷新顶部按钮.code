@@ -1,0 +1,14 @@
+begincodeV2
+name:排行榜'刷新顶部按钮
+lines:
+//固定地配置信息
+Bool 启用周榜=fun create.bool(Bool 0)
+Bool 启用月榜=fun create.bool(Bool 0)
+Bool 启用清空按钮=act 1101./主界面.工具'是GM()
+Bool 启用清理机器人按钮=act 1101./主界面.工具'是GM()
+//按钮组-周榜
+UIButton 周榜按钮=varf Canvas.排行榜布局.readUIButton(String 根节点/排行榜弹窗/弹窗主体/顶部按钮排版区/周榜按钮)
+Bool 已选中=fun long.equal(var 排行榜种类:Long 0)
+act 1101.this.排行榜按钮'设置是否显示(var 周榜按钮:var 启用周榜)
+act 1101.this.排行榜按钮'设置是否可用(var 周榜按钮:Bool 0)
+endcode

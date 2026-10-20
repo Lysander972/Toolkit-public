@@ -1,0 +1,39 @@
+begincodeV2
+color:255,243,0
+name:Game'Start
+comment:开局
+lines:
+Long Size=fun create.long(Long 40)
+Float $time=fun float.multiply(Float 20:Float 60)
+if{fun long.equal(var GameSettings0:Long 2)
+  Float $time=fun float.multiply(Float 30:Float 60)
+}
+//计算地图数据
+Float $initMul=fun create.float(Float 1)
+if{fun long.equal(var GameSettings1:Long 2)
+  Float $initMul=fun create.float(Float 2)
+}
+if{fun long.equal(var GameSettings1:Long 3)
+  Float $initMul=fun create.float(Float 3)
+}
+Float $highland1=fun create.float(Float 3)
+Float $highland2=fun create.float(Float 9)
+if{fun long.equal(var GameSettings2:Long 2)
+  Float $highland1=fun create.float(Float 4)
+  Float $highland2=fun create.float(Float 12)
+}
+if{fun long.equal(var GameSettings2:Long 3)
+  Float $highland1=fun create.float(Float 5)
+  Float $highland2=fun create.float(Float 15)
+}
+//更新状态
+Float GameInitMul=fun create.float(var $initMul)
+Float GameHighland1=fun create.float(var $highland1)
+Float GameHighland2=fun create.float(var $highland2)
+=act 1101./Scenario.Map'Initialize(var Size:var Size:Vector3 0,1,0:var GameInitMul:var GameHighland1:var GameHighland2)
+act 1101.this.UI'EnterGame()
+Bool GameStart=fun create.bool(Bool 1)
+Float $now=fun time.time()
+Float GameStartTime=fun create.float(var $now)
+Float GameDuration=fun create.float(var $time)
+endcode

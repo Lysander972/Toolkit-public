@@ -1,0 +1,27 @@
+begincodeV2
+color:255,255,255
+name:处理弹幕
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  Float count=varf List.$list.count()
+  Float index=fun create.float(Float 0)
+  while{fun float.lt(var index:var count)
+    Dict 弹幕消息=varf List.$list.readDict(var index)
+    Struct 玩家=act 1101.this.玩家'自动创建检查(var 弹幕消息)
+    if{varf Enum.$type.equal(Enum 0)
+      String 消息内容=varf Dict.弹幕消息.readString(String word:Bool 1)
+      act 1101.this.弹幕处理'评论(var 消息内容:var 玩家)
+    }
+    if{varf Enum.$type.equal(Enum 1)
+      Long 礼物数量=varf Dict.弹幕消息.readLong(String num:Bool 1)
+      String 礼物类型=varf Dict.弹幕消息.readString(String gift:Bool 1)
+      act 1101.this.弹幕处理'礼物(var 礼物数量:var 礼物类型:var 玩家)
+    }
+    if{varf Enum.$type.equal(Enum 2)
+      Long 点赞数量=varf Dict.弹幕消息.readLong(String likes:Bool 1)
+      act 1101.this.弹幕处理'点赞(var 点赞数量:var 玩家)
+    }
+    varf Float.index.addEqual(Float 1)
+  }
+}
+endcode

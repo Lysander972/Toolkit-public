@@ -1,0 +1,16 @@
+registry: https://registry.npmjs.org/
+packages:
+  - src/frontend
+  - src/toolkit
+  - src/toolkit/*
+allowBuilds:
+  '@google/genai': false
+  better-sqlite3: true
+  esbuild: true
+  fsevents: false
+  protobufjs: false
+verifyDepsBeforeRun: install
+frozenLockfile: true
+shellEmulator: true
+overrides:
+  super-regex>make-asynchronous: 2.1.0

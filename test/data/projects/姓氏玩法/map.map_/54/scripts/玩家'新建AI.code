@@ -1,0 +1,23 @@
+begincodeV2
+color:255,0,0
+name:玩家'新建AI
+lines:
+if{fun long.lt(var 局内'队伍_id计数:Long 1)
+  fun string.popNotify(String 需要创建队伍让AI自动加入:Float 3)
+  fun break()
+}
+Device 主零件=act 1101.this.getDevice()
+Float 待创建数量=fun create.float(Float 1)
+Float 已创建数量=fun create.float(Float 0)
+while{fun float.lt(var 已创建数量:var 待创建数量)
+  Float 玩家数量=varf Dict.局内'玩家_索引.count()
+  String 字符串id=fun create.string(var 玩家数量)
+  String 玩家名称=act 1101.this.工具'随机用户名生成()
+  Struct 玩家结构=act 1101.this.玩家'新建(var 字符串id:var 玩家名称:String https@1//p6.douyinpic.com/aweme/720x720/aweme-avatar/tos-cn-avt-0015_26d2605c0f145704542ca11ce389b176.jpeg:Bool 1)
+  act 1101.this.玩家'自动下场(var 玩家结构)
+  Mech AI马甲=fun createAIMech(String AI玩家:Float 0:Vector3 0,0,0:Vector3 0,0,1:Enum 0:Bool 0)
+  Device 核心=varf Mech.AI马甲.getCoreDevice()
+  varf Device.核心.callFun2(String 设置玩家:var 玩家结构:var 主零件)
+  varf Float.已创建数量.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,11 @@
+begincodeV2
+name:通用初始化
+lines:
+Mech $self=act 1.this.getMech()
+varf Mech.$self.enablePhysics(Bool 0)
+act 1.this.show(Bool 0)
+act 1.this.switchCollider(Bool 0)
+act 362.1.switchCollider(Bool 0)
+act 1.this.setPaintColor(Color 204,243,255,255,炮塔-蓝色:Bool 0)
+act 337.2.active(Bool 0:Float 0)
+endcode

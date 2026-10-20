@@ -1,0 +1,20 @@
+begincodeV2
+name:内部'更新分摄像机窗口位置
+lines:
+/*Vector3 屏幕分辨率=fun screen.size()
+/*Float 屏幕x=varf Vector3.屏幕分辨率.x()
+/*Float 屏幕y=varf Vector3.屏幕分辨率.y()
+Vector3 UI尺寸=fun screen.uiSize()
+Float UIx=varf Vector3.UI尺寸.x()
+Float UIy=varf Vector3.UI尺寸.y()
+Float x比例=fun float.division(Float 300:var UIx)
+Float y比例=fun float.division(Float 300:var UIy)
+Vector3 布局坐标=varf UIButton.第一名弹窗.getCanvasPos()
+Float 布局x=varf Vector3.布局坐标.x()
+Float 布局x=fun float.add(var 布局x:Float 5)
+Float 布局y=varf Vector3.布局坐标.y()
+Float 布局y=fun float.add(var 布局y:Float 5)
+Float 偏移比例x=fun float.division(var 布局x:var UIx)
+Float 偏移比例y=fun float.division(var 布局y:var UIy)
+fun camera.setSubCameras(Float 0:var 偏移比例x:var 偏移比例y:var x比例:var y比例)
+endcode

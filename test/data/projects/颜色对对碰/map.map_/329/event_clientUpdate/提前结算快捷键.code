@@ -1,0 +1,7 @@
+begincodeV2
+skip:1
+name:提前结算快捷键
+lines:
+=fun keyboard.keyUp2(Enum 61)
+=fun keyboard.keyUp2(Enum 61)
+endcode

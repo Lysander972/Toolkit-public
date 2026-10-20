@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍'属性修改_数值变化
+params:Struct 结构,Long 数值变化
+lines:
+Long 原value=act 1101.this.队伍结构'读取_value(var 结构)
+Long 新value=fun long.add(var 原value:var 数值变化)
+act 1101.this.队伍结构'设置_value(var 结构:var 新value)
+endcode

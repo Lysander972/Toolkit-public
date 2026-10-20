@@ -1,0 +1,14 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_刷新_音量值
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  UILabel 数值框=varf Canvas.UI_局内'主布局_2D.readUILabel(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/音量/拖动条/数值)
+  UIRect 填充条=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/音量/拖动条/填充)
+  varf UIRect.填充条.fillMode(Enum 0:var 局内功能设置'音量值)
+  Float 显示=fun float.multiply(var 局内功能设置'音量值:Float 100)
+  Float 显示=varf Float.显示.floor()
+  String 显示文字=fun string.add(var 显示:String %)
+  varf UILabel.数值框.text(var 显示文字)
+}
+endcode

@@ -1,0 +1,13 @@
+begincodeV2
+name:canvas_
+lines:
+Canvas u=fun create.canvas(Canvas )
+=varf Canvas.u.readUIRect(String )
+=varf Canvas.u.readUIInput(String )
+=varf Canvas.u.readUILabel(String )
+=varf Canvas.u.readUIButton(String )
+=varf Canvas.u.readUIRawImage(String )
+varf Canvas.u.breakLink()
+=varf Canvas.u.exist()
+=varf Canvas.u.getAllUIPaths()
+endcode

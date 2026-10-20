@@ -1,0 +1,36 @@
+begincodeV2
+private:1
+name:Private_Skill'OnDeath
+comment:亡语检查
+lines:
+if{fun long.equal(var Attr'Type:Long 1300)
+  act 1.this.Skills'1300s_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 1310)
+  act 1.this.Skills'1300s_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 1320)
+  act 1.this.Skills'1300s_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 1330)
+  act 1.this.Skills'1300s_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 1520)
+  act 1.this.Skills'1520_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 1610)
+  act 1.this.Skills'1610_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 2300)
+  act 1.this.Skills'2300_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 2600)
+  act 1.this.Skills'2600_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 2601)
+  act 1.this.Skills'2601_OnDeath()
+}
+if{fun long.equal(var Attr'Type:Long 2602)
+  act 1.this.Skills'2601_OnDeath()
+}
+endcode

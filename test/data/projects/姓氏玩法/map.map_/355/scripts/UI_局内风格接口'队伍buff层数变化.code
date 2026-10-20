@@ -1,0 +1,91 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'队伍buff层数变化
+params:Struct 队伍,Long buff类型,Long 层数变化
+lines:
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  fun break()
+}
+Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 字符串id:Bool 0)
+Mech 队伍模型=varf Struct.队伍映射.getMech(String 队伍模型:Bool 0)
+Dict buff层数字典=varf Struct.队伍映射.getDict(String buff层数:Bool 0)
+String buff类型S=fun create.string(var buff类型)
+Long buff层数=varf Dict.buff层数字典.readLong(var buff类型S:Bool 0)
+Bool 旧状态无层数=fun long.equal(var buff层数:Long 0)
+varf Long.buff层数.addEqual(var 层数变化)
+Bool 新状态无层数=fun long.equal(var buff层数:Long 0)
+Bool 播放入场离场动画=fun bool.xor(var 旧状态无层数:var 新状态无层数)
+varf Dict.buff层数字典.insert(var buff类型S:var buff层数)
+Bool 存在buff=fun long.gt(var buff层数:Long 0)
+//仙女棒
+if{fun long.equal(var buff类型:Long 10)
+  varf Mech.队伍模型.callFun1(String 开关仙女棒加速特效:var 存在buff)
+  Mech 基础模型=varf Mech.队伍模型.customMech(String 基础模型)
+  if{varf Mech.基础模型.alive()
+    Bool 开关加力效果=fun long.gt(var buff层数:Long 0)
+    varf Mech.基础模型.callFun1(String 开关加力:var 开关加力效果)
+  }
+}
+//药丸
+if{fun long.equal(var buff类型:Long 11)
+  varf Mech.队伍模型.callFun1(String 开关药丸减速特效:var 存在buff)
+}
+//甜甜圈
+if{fun long.equal(var buff类型:Long 13)
+  varf Mech.队伍模型.callFun1(String 开关甜甜圈加速特效:var 存在buff)
+  //离场动画
+  if{fun bool.and(var 播放入场离场动画:var 新状态无层数)
+    Mech 绑定模型=varf Mech.队伍模型.customMech(String 甜甜圈buff模型)
+    varf Mech.绑定模型.setCustomBool(String 开始离场:Bool 1)
+    varf Mech.队伍模型.setCustomMech(String 甜甜圈buff模型:Mech )
+  }
+  //入场动画转移到交互事件
+}
+//电池
+if{fun long.equal(var buff类型:Long 14)
+  varf Mech.队伍模型.callFun1(String 开关电池减速特效:var 存在buff)
+/*  //离场动画
+/*  if{fun bool.and(var 播放入场离场动画:var 新状态无层数)
+/*    Mech 绑定模型=varf Mech.队伍模型.customMech(String 电池buff模型)
+/*    varf Mech.绑定模型.setCustomBool(String 开始离场:Bool 1)
+/*    varf Mech.队伍模型.setCustomMech(String 电池buff模型:Mech )
+  }
+/*  //入场动画转移到交互事件
+}
+//炸弹
+if{fun long.equal(var buff类型:Long 15)
+  varf Mech.队伍模型.callFun1(String 开关炸弹加速特效:var 存在buff)
+  //离场动画
+  if{fun bool.and(var 播放入场离场动画:var 新状态无层数)
+    Mech 绑定模型=varf Mech.队伍模型.customMech(String 炸弹buff模型)
+    varf Mech.绑定模型.setCustomBool(String 开始离场:Bool 1)
+    varf Mech.队伍模型.setCustomMech(String 炸弹buff模型:Mech )
+  }
+  //入场动画转移到交互事件
+}
+//话筒
+if{fun long.equal(var buff类型:Long 16)
+  varf Mech.队伍模型.callFun1(String 开关话筒减速特效:var 存在buff)
+/*  //离场动画
+/*  if{fun bool.and(var 播放入场离场动画:var 新状态无层数)
+/*    Mech 绑定模型=varf Mech.队伍模型.customMech(String 话筒buff模型)
+/*    varf Mech.绑定模型.setCustomBool(String 开始离场:Bool 1)
+/*    varf Mech.队伍模型.setCustomMech(String 话筒buff模型:Mech )
+  }
+/*  //入场动画转移到交互事件
+}
+//空投
+if{fun long.equal(var buff类型:Long 17)
+  varf Mech.队伍模型.callFun1(String 开关空投加速特效:var 存在buff)
+  //离场动画
+  if{fun bool.and(var 播放入场离场动画:var 新状态无层数)
+    Mech 绑定模型=varf Mech.队伍模型.customMech(String 空投buff模型)
+    varf Mech.绑定模型.setCustomBool(String 开始离场:Bool 1)
+    varf Mech.队伍模型.setCustomMech(String 空投buff模型:Mech )
+  }
+  //入场动画转移到交互事件
+}
+endcode

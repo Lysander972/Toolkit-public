@@ -1,0 +1,6 @@
+begincodeV2
+name:局内逻辑'获取已用时间
+return:Float ret
+lines:
+Float ret=fun create.float(Float 0)
+endcode

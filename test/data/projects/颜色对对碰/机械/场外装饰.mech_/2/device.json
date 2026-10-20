@@ -1,0 +1,11 @@
+type:22
+pos:[0,0.5,0]
+quat:[0,-1,0,-4.371139E-08]
+ignorePress:true
+ext:
+{
+ logicName:棋盘预留位
+ echoInPlay:false
+ color:[0,0,0,0.8078431]
+ size:[50,1,50]
+}

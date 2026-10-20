@@ -1,0 +1,24 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setMass(Float 1)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.enableCollide(Bool 0)
+act 362./边框.setMass(Float 0)
+act 362./边框.setLayer(Float 0)
+act 362./边框.show(Bool 1)
+act 362./边框.switchCollider(Bool 0)
+act 362./头像.setMass(Float 0)
+act 362./头像.setLayer(Float 0)
+act 362./头像.show(Bool 1)
+act 362./头像.switchCollider(Bool 0)
+act 362./头像框.setMass(Float 0)
+act 362./头像框.setLayer(Float 0)
+act 362./头像框.show(Bool 1)
+act 362./头像框.switchCollider(Bool 0)
+act 362./称号区域.setMass(Float 0)
+act 362./称号区域.setLayer(Float 0)
+act 362./称号区域.show(Bool 0)
+act 362./称号区域.switchCollider(Bool 0)
+endcode

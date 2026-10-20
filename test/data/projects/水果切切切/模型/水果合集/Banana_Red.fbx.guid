@@ -1,0 +1,34 @@
+guid:fb730d7a13544f1d9dc0027a9f714060
+meshes:
+[
+ {
+  n:Banana
+ }
+]
+matFolderName:abfc9ad321b84198a438168318053dbb
+Albedo.UID:abfc9ad321b84198a438168318053dbb
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+OriginType:1
+bounds.center:[0,0,0]
+bounds.size:[0.1879999,0.4439481,0.7962803]

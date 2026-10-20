@@ -1,0 +1,31 @@
+begincodeV2
+name:设置速度
+params:Float 最小,Float 最大
+lines:
+act 337./1.startSpeed(var 最小:var 最大)
+act 337./2.startSpeed(var 最小:var 最大)
+act 337./3.startSpeed(var 最小:var 最大)
+act 337./4.startSpeed(var 最小:var 最大)
+act 337./5.startSpeed(var 最小:var 最大)
+act 337./6.startSpeed(var 最小:var 最大)
+act 337./7.startSpeed(var 最小:var 最大)
+act 337./8.startSpeed(var 最小:var 最大)
+act 337./9.startSpeed(var 最小:var 最大)
+act 337./10.startSpeed(var 最小:var 最大)
+act 337./11.startSpeed(var 最小:var 最大)
+act 337./12.startSpeed(var 最小:var 最大)
+act 337./13.startSpeed(var 最小:var 最大)
+act 337./14.startSpeed(var 最小:var 最大)
+act 337./15.startSpeed(var 最小:var 最大)
+act 337./16.startSpeed(var 最小:var 最大)
+act 337./17.startSpeed(var 最小:var 最大)
+act 337./18.startSpeed(var 最小:var 最大)
+act 337./19.startSpeed(var 最小:var 最大)
+act 337./20.startSpeed(var 最小:var 最大)
+act 337./21.startSpeed(var 最小:var 最大)
+act 337./22.startSpeed(var 最小:var 最大)
+act 337./23.startSpeed(var 最小:var 最大)
+act 337./24.startSpeed(var 最小:var 最大)
+act 337./25.startSpeed(var 最小:var 最大)
+act 337./26.startSpeed(var 最小:var 最大)
+endcode

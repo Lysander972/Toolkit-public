@@ -1,0 +1,20 @@
+begincodeV2
+color:255,255,255
+name:队伍'队内排序更新检查
+comment:检查是否有必要重排玩家顺序
+params:Struct 队伍
+lines:
+List 队伍玩家列表=act 1101.this.队伍结构'读取_playerRankList(var 队伍)
+varf List.队伍玩家列表.sort2(Bool 0:String score)
+Float 总数=varf List.队伍玩家列表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 总数)
+  Struct 玩家=varf List.队伍玩家列表.readStruct(var 序号)
+  Long 队内排名=act 1101.this.玩家结构'读取_rankInTeam(var 玩家)
+  Long 实际队内排名=varf Float.序号.toLong()
+  if{fun long.notEqual(var 队内排名:var 实际队内排名)
+    act 1101.this.玩家结构'设置_rankInTeam(var 玩家:var 实际队内排名)
+  }
+  varf Float.序号.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:UI_默认风格'游戏结束_按钮_确认_点击
+params:UIButton 确认按钮
+lines:
+varf UIButton.确认按钮.setCustomBool(String 点击:Bool 1)
+endcode

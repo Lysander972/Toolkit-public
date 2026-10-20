@@ -1,0 +1,6 @@
+begincodeV2
+name:UI_局内'获取上局积分池
+return:Long ret
+lines:
+Long ret=fun create.long(var 局内'积分池_上局)
+endcode

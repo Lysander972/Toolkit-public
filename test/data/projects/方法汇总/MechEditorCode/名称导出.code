@@ -1,0 +1,57 @@
+begincodeV2
+name:名称导出
+lines:
+if{fun bool.not(var i)
+  UIButton a=fun ui.button(Vector3 0.2,0.2,0:Vector3 100,100,0:Color 255,255,255,255:String 按钮:Float 50:Float 4)
+  Bool i=fun create.bool(Bool 1)
+}
+if{varf UIButton.a.isDown()
+/*  List l=fun create.list()
+  Dict d=fun create.dict()
+  Float x=fun mech.deviceNum()
+  Float j=fun create.float(Float 0)
+  while{fun float.lt(var j:var x)
+    Device k=fun mech.getDevice(var j)
+    String n1=dvf k.Device.getTypeName()
+    Float n2=dvf k.Device.getTypeID()
+    String s=fun create.string(var n2)
+    varf Dict.d.insert(var s:var n1)
+/*    String result=fun string.add1(var n1:String |:var n2)
+/*    varf List.l.add(var result)
+    varf Float.j.addEqual(Float 1)
+  }
+/*  String f=varf List.l.export(Bool 0)
+/*  String f=varf List.l.print()
+  //点击这里写注释
+  List g=varf Dict.d.names()
+  Float j=fun create.float(Float 0)
+  Float x=varf Dict.d.count()
+  while{fun float.lt(var j:var x)
+    String key=varf List.g.readString(var j)
+    Float n2=varf String.key.toFloat()
+    varf List.g.replace(var j:var n2)
+    varf Float.j.addEqual(Float 1)
+  }
+  varf List.g.sort(Bool 1)
+  Float j=fun create.float(Float 0)
+  Float x=varf Dict.d.count()
+  while{fun float.lt(var j:var x)
+    Float n2=varf List.g.readFloat(var j)
+    String va=fun create.string(var n2)
+    varf List.g.replace(var j:var va)
+    varf Float.j.addEqual(Float 1)
+  }
+  //点击这里写注释
+  Dict h=fun create.dict()
+  Float j=fun create.float(Float 0)
+  Float x=varf Dict.d.count()
+  while{fun float.lt(var j:var x)
+    String key=varf List.g.readString(var j)
+    String va=varf Dict.d.readString(var key:Bool 0)
+    varf Dict.h.insert(var key:var va)
+    varf Float.j.addEqual(Float 1)
+  }
+  String f=varf Dict.h.toHJson()
+  fun str2ClipBoard(var f)
+}
+endcode

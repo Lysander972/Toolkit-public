@@ -1,0 +1,110 @@
+begincodeV2
+name:内部'队伍UI_创建
+params:Struct 队伍
+lines:
+Long id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var id)
+Long 显示前缀=fun long.add(var id:Long 1)
+String name=act 1101./弹幕.队伍结构'读取_name(var 队伍)
+Color color1=act 1101./弹幕.队伍结构'读取_color1(var 队伍)
+Color color1=act 1101.this.内部'工具_仙侠风颜色滤镜(var color1)
+fun ui.2dmode(var 平面UI开关)
+Canvas 队伍UI=fun create.canvas(Canvas guid@18869dbc914b14a8e8a85105f13049c9f)
+UILabel 队伍名文本框=varf Canvas.队伍UI.readUILabel(String 根节点/进度条/队伍旗帜根节点/旗帜图片/队伍名称显示)
+String 标题=fun create.string(var name)
+varf UILabel.队伍名文本框.text(var 标题)
+UILabel 队伍号文本框=varf Canvas.队伍UI.readUILabel(String 根节点/进度条/队伍序号显示)
+String 标题=fun create.string(var 显示前缀)
+varf UILabel.队伍号文本框.text(var 标题)
+UIRect 队伍根节点=varf Canvas.队伍UI.readUIRect(String 根节点)
+varf UIRect.队伍根节点.setCustomFloat(String 透明度:Float 1)
+List 玩家头像表=fun create.list()
+varf UIRect.队伍根节点.setCustomList(String 玩家头像表:var 玩家头像表)
+//初始化附加变量
+UIRawImage 图片=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/头像框根节点/头像区域/头像)
+varf UIRawImage.图片.setCustomString(String url:String _)
+UIRawImage 图片=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/头像框根节点/头像框)
+varf UIRawImage.图片.setCustomString(String file:String _)
+//队伍进度条
+UIRect 进度条锚定节点=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/进度条填充锚定节点)
+Long 颜色id=act 1101./弹幕.队伍结构'读取_colorid(var 队伍)
+fun ui.2dmode(var 平面UI开关)
+if{fun long.equal(var 颜色id:Long 0)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiBhNWMyM2VlZDkzZjU0YTk5OGFlNzk5N2VhYTJhZjFhOA5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 1)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiA2ZGMxMmU0NzdmNWI0NjAyOWZhNWQ3ZjFiOTUwMWNkMA5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 2)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiBkOTUzZjQ2MTUyNDY0ODYzYTZkZWU5N2UyZmI5NmVkNg5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 3)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiBkZTBhNTA4NDk1NTE0OTczOTA4M2U5NTM5ZDBiYzZkMA5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 4)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiA2NmEzN2RjOWNlMDg0OTJmOGM4NzNjNTFkZDAwNzFhNQ5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 5)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiA1MjAwYjFmYTE5MTY0ZmFkODI4ZGYwY2VkZmY5YjBkYQ5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 6)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiBiZjFjNmU0OGIyYWY0ZjdkOTQyNWI4NmFlYzYzMjE2ZA5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 7)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiAwNWI3ZGMwYjllYTA0Y2QzODJhODlkNmFkMzU2MTg3ZQ5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 8)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiAxMzQzZDVmMjE0YjY0ZWVmYjM4MjBlYjdmZDNjYTkzZA5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 9)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiBmNDQ5YTk4NmYxZmQ0Nzc3Yjk1MTgyMTI0ZGY2OTBiMw5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 10)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiA1NmVkYmMxODQ2MDE0MWVhOWUzYzQ0ZWU4MjRhZTBkZQ5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+if{fun long.equal(var 颜色id:Long 11)
+  Canvas 进度条填充=fun create.canvas(Canvas canvas@1@3EAEAEQ4ABHR5cGUGBlVJUmVjdARuYW1lBgbloavlhYUDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAABHNpemUEAADIQgAAlkIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAA1zbGljZWRQaWNHdWlkBiBhYTJkNjM1ZjM1MmM0NDA3OTc1MDJjYjdlMDMzMWEwOQ5zbGljZWRCb3JkZXJMQgQAAFBBAAAwQQAAAAAOc2xpY2VkQm9yZGVyUlQEAABQQQAAMEEAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA1EIAAJZCAAAAAA@3@3)
+}
+UIRect 填充框=varf Canvas.进度条填充.readUIRect(String 填充)
+varf UIRect.进度条锚定节点.addSon(var 填充框)
+varf UIRect.填充框.alignment(Enum 3)
+varf UIRect.填充框.setCanvasPos(Vector3 0,0,0)
+UIRect 队伍根节点=varf Canvas.队伍UI.readUIRect(String 根节点)
+varf UIRect.队伍根节点.setCustomUIRect(String 填充:var 填充框)
+varf UIRect.队伍根节点.parentAnchor(Enum 0)
+varf Dict.队伍UI映射.insert(var 字符串id:var 队伍UI)
+//在队伍根节点上应用动画控制机制
+UIRect 队伍内部根节点=varf Canvas.队伍UI.readUIRect(String 根节点/进度条)
+act 1101./弹幕.动画控制'UI_初始化动画控制(var 队伍根节点)
+act 1101./弹幕.动画控制'UI_初始化动画控制(var 队伍内部根节点)
+Dict 关联武器=fun create.dict()
+varf UIRect.队伍根节点.setCustomDict(String 关联武器:var 关联武器)
+//添加节点并设置初始位置
+varf UIRect.图表基础图层.addSon(var 队伍根节点)
+Vector3 计算目标位置=act 1101.this.内部'工具_计算进度条目标位置(var 队伍:var 队伍根节点)
+varf UIRect.队伍根节点.setCanvasPos(var 计算目标位置)
+//公共锚定节点
+UIRect 公共锚定节点=varf Canvas.队伍UI.readUIRect(String 公共锚定节点)
+varf UIRect.队伍根节点.setCustomUIRect(String 公共锚定节点:var 公共锚定节点)
+varf UIRect.图表基础图层.addSon(var 公共锚定节点)
+//内部锚定节点
+UIRect 内部锚定节点=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/内部锚定节点)
+varf UIRect.队伍根节点.setCustomUIRect(String 内部锚定节点:var 内部锚定节点)
+UIRect 子组件遮罩=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/子组件遮罩)
+varf UIRect.队伍根节点.setCustomUIRect(String 进度条遮罩区域:var 子组件遮罩)
+//创建5个头像位
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:Float 5)
+  act 1101.this.内部'队伍UI_添加玩家头像(var 队伍UI)
+  varf Float.循环.addEqual(Float 1)
+}
+//队伍旗帜的物理效果
+UIRect 队伍旗帜根节点=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/队伍旗帜根节点)
+//创建动画
+Dict 旗帜物理效果动画=act 1101./弹幕.动画控制'动画字典_构造(Bool 1:String :String )
+//添加回弹
+Dict 物理回弹步骤=act 1101./弹幕.动画控制'步骤字典_构造_物理目标(Float 1000:Long 0:Vector3 0,0,0:Float 50:Float 4:Bool 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 旗帜物理效果动画:var 物理回弹步骤)
+//应用动画
+act 1101./弹幕.动画控制'UI_添加动画(var 队伍旗帜根节点:var 旗帜物理效果动画)
+endcode

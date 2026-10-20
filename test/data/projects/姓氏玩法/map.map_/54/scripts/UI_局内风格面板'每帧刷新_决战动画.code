@@ -1,0 +1,15 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新_决战动画
+lines:
+Float 当前时间=fun time.scaleTime()
+Float 已开始时间=fun float.minus(var 当前时间:var 局内'决战准备时间)
+Bool 在范围内=fun float.lte(var 已开始时间:Float 7)
+Bool 决战动画中=fun bool.and(var 在范围内:var 局内'决战准备)
+varf UIRect.UI_局内风格面板'决战弹窗.active(var 决战动画中)
+if{fun create.bool(var 决战动画中)
+  act 1101.this.UI_局内风格面板'每帧刷新_决战动画_文本框(var 已开始时间:Float 0:Float 0.25:Float 1.25:Float 1.4:var UI_局内风格面板'决战标题1)
+  act 1101.this.UI_局内风格面板'每帧刷新_决战动画_文本框(var 已开始时间:Float 1.75:Float 2:Float 3:Float 3.15:var UI_局内风格面板'决战标题2)
+  act 1101.this.UI_局内风格面板'每帧刷新_决战动画_文本框(var 已开始时间:Float 3.5:Float 3.75:Float 4.75:Float 4.9:var UI_局内风格面板'决战标题3)
+  act 1101.this.UI_局内风格面板'每帧刷新_决战动画_文本框(var 已开始时间:Float 5.25:Float 5.6:Float 6.8:Float 7:var UI_局内风格面板'决战标题4)
+}
+endcode

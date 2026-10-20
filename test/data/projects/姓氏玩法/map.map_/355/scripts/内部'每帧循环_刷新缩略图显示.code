@@ -1,0 +1,29 @@
+begincodeV2
+name:内部'每帧循环_刷新缩略图显示
+lines:
+Float 数量=varf List.缩略图组件表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 数量)
+  Canvas 缩略图布局=varf List.缩略图组件表.readCanvas(var 序号)
+  UIRect 缩略图根节点=varf Canvas.缩略图布局.readUIRect(String 根节点)
+  Struct 队伍=varf List.激活队伍列表.readStruct(var 序号)
+  Float 排名显示=fun float.add(var 序号:Float 1)
+  UILabel 排名显示框=varf Canvas.缩略图布局.readUILabel(String 根节点/排名显示)
+  varf UILabel.排名显示框.text(var 排名显示)
+  String 队伍名=act 1101./弹幕.队伍结构'读取_name(var 队伍)
+  UILabel 队伍名显示框=varf Canvas.缩略图布局.readUILabel(String 根节点/队伍名)
+  varf UILabel.队伍名显示框.text(var 队伍名)
+  String 距离显示=act 1101./弹幕.队伍结构'读取_数值显示(var 队伍)
+  UILabel 距离显示框=varf Canvas.缩略图布局.readUILabel(String 根节点/距离)
+  varf UILabel.距离显示框.text(var 距离显示)
+  UIRect 缩略图背景=varf Canvas.缩略图布局.readUIRect(String 根节点/底色)
+  Long 队伍数值=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 队伍)
+  Float 相对比例=fun long.division(var 队伍数值:var 场景'进度条最大数值基准)
+  Float 相对比例=fun float.clamp(var 相对比例:Float 0.1:Float 1)
+  varf UIRect.缩略图背景.fillMode(Enum 0:var 相对比例)
+  Color 队伍主题色=act 1101./弹幕.队伍结构'读取_color1(var 队伍)
+  varf Color.队伍主题色.setA(Float 0.5)
+  varf UIRect.缩略图背景.setColor(var 队伍主题色)
+  varf Float.序号.addEqual(Float 1)
+}
+endcode

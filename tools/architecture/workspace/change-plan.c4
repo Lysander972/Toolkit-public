@@ -1,0 +1,29 @@
+model {
+  extend pure {
+    change_plan = container '变更计划纯计算' {
+      #common
+      #todo
+      description '视图编辑、重命名、脚本与 Canvas 导入导出的无状态纯计算计划。单次同步调用消费同次逻辑快照、完整读取基准、分析及具名格式编辑、重构意图或实体操作请求，输出既有强类型操作集合、诊断和实际依赖基准。重构意图保留目标、作用域与原基准，区别于已准备的实体操作；Editing 唯一拥有输入读取、反向转换、分析验证及候选物化；Entities 拥有实际基准复核与持久化。计划不读取工程或持有 Scope、缓存、候选状态；资产生成后置。'
+      metadata {
+        todo 'ChangePlan.plan 已声明格式编辑、实体操作及重构意图封套；重命名为粗略请求，其余重构意图字段与纯计划计算保持 TODO'
+        sourcePath 'src/toolkit/change_plan'
+        files ['src/toolkit/change_plan/*.ts']
+      }
+    }
+  }
+  pure.change_plan -> toolkit.project_model.logic '复用实体快照与统一操作合同'
+  pure.change_plan -> toolkit.analysis.logic '只读符号表与调用图'
+  pure.change_plan -> toolkit.entities '只引用格式实体和读取基准；不调用实体服务或建立 Tree'
+  toolkit.host.tests -> pure.change_plan '实际调用纯计划空壳并验证输入保真'
+}
+views {
+  view change_plan of pure {
+    title '04a · 变更计划纯计算（设计）'
+    include pure.change_plan
+    include toolkit.project_model.logic
+    include toolkit.script.ast.local_ast
+    include toolkit.script.context.device_context
+    include pure.canvas.logic
+    include toolkit.analysis
+  }
+}

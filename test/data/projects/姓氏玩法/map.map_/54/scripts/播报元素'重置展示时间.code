@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:播报元素'重置展示时间
+comment:重置展示时间为当前时间
+params:Canvas canvas
+lines:
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+Float 展示时间=fun time.time()
+varf UIRect.background.setCustomFloat(String 展示时间标志位:var 展示时间)
+endcode

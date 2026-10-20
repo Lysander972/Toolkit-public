@@ -1,0 +1,14 @@
+begincodeV2
+guid:c5a335b2633746958743197765235302
+color:255,0,0
+name:Launcher'LaunchFixedly
+comment:发射1个,可选是否受角度限制
+params:Long $type,Float $aimedAngle,Float $offset,Bool $force,Struct $player
+return:Bool $ret
+lines:
+if{fun bool.not(var $force)
+  Float $aimedAngle=fun float.clamp(var $aimedAngle:var 瞄准角度下限:var 瞄准角度上限)
+}
+Vector3 $bulletDir=act 1.this.计算'角度转方向(var $aimedAngle)
+Bool $ret=act 1.this.Launcher'Launch(var $type:var $bulletDir:var $offset:var $player)
+endcode

@@ -1,0 +1,40 @@
+type:337
+pos:[0,-3,0]
+quat:[3.552714E-15,-0.7071068,0.7071067,3.552714E-15]
+ext:
+{
+ logicName:甜甜圈加速
+ startLifetimeMultiplier:2
+ startSpeed:[150,200]
+ startSize:[0.2,0.3]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[0.2705882,0.227451,0,1]
+ startColor.max:[1,0.8367149,0,1]
+ customData1.x:2.5
+ emission:true
+ rateOverTime:20
+ radius:1.1
+ shapeScale:[3,3,3]
+ colorOverLifetime:
+ [
+  "0:1,1,1,0"
+  "0.07188525:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:0.5"
+  "0.1922258:1"
+  "0.4999938:1"
+  "0.7499909:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ renderMode:1
+ velocityScale:0.05
+ matType:1
+}

@@ -1,0 +1,10 @@
+type:362
+pos:[1.748456E-08,0,-0.2]
+quat:[0,-1,0,3.552714E-15]
+scale:200
+ignorePress:true
+ext:
+{
+ logicName:航天飞机
+ modelGuid:53589d5aa5a14af5bcd6e061cbb43b62
+}

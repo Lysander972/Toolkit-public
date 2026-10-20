@@ -1,0 +1,100 @@
+begincodeV2
+name:内部'数值变化效果生成
+lines:
+Float 目标位置生效值=act 1101.this.内部'每帧循环_得到目标位置_生效值()
+//在锁定序号上存在队伍时,得到锁定的模型
+Float 锁定位置排名=act 1101.this.工具'位置号到排名映射(var 目标位置生效值)
+Bool 存在队伍=fun float.lt(var 锁定位置排名:var 场景'真实队伍数量)
+Mech 锁定队伍模型=fun creatVariable.mech(Mech )
+if{fun create.bool(var 存在队伍)
+  Struct 锁定队伍=varf List.激活队伍列表.readStruct(var 目标位置生效值)
+  Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 锁定队伍)
+  String 队伍idS=fun create.string(var 队伍id)
+  Struct 锁定队伍映射=varf Dict.队伍UI映射.readStruct(var 队伍idS:Bool 0)
+  Mech 锁定队伍模型=varf Struct.锁定队伍映射.getMech(String 队伍模型:Bool 1)
+}
+Float 第一位置排名=fun create.float(Float 0)
+Bool 存在队伍=fun float.lt(var 第一位置排名:var 场景'真实队伍数量)
+Mech 第一队伍模型=fun creatVariable.mech(Mech )
+if{fun create.bool(var 存在队伍)
+  Struct 第一队伍=varf List.激活队伍列表.readStruct(var 第一位置排名)
+  Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 第一队伍)
+  String 队伍idS=fun create.string(var 队伍id)
+  Struct 第一队伍映射=varf Dict.队伍UI映射.readStruct(var 队伍idS:Bool 0)
+  Mech 第一队伍模型=varf Struct.第一队伍映射.getMech(String 队伍模型:Bool 1)
+}
+//然后遍历列表
+Float 序号=varf List.数值变化检测表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  Struct 队伍映射=varf List.数值变化检测表.readStruct(var 序号)
+  Struct 队伍=varf Struct.队伍映射.getStruct(String 队伍:Bool 0)
+  Mech 队伍模型=varf Struct.队伍映射.getMech(String 队伍模型:Bool 0)
+  //重置标志位
+  varf Mech.队伍模型.setCustomBool(String 帧内数值变化:Bool 0)
+  //数值变化效果
+  Device 队伍模型核心=varf Mech.队伍模型.getCoreDevice()
+  Long 帧内累积增加数值=varf Mech.队伍模型.customLong(String 帧内累积增加数值)
+  //重置标记位
+  varf Mech.队伍模型.setCustomLong(String 帧内累积增加数值:Long 0)
+  Long 帧内累积减少数值=varf Mech.队伍模型.customLong(String 帧内累积减少数值)
+  varf Mech.队伍模型.setCustomLong(String 帧内累积减少数值:Long 0)
+  if{fun long.gt(var 帧内累积增加数值:Long 0)
+    Float 随机x=fun math.rand(Float -1:Float 1)
+    Float 随机y=fun math.rand(Float 1:Float 3)
+    Float 随机z=fun math.rand(Float -1:Float 1)
+    Vector3 UI随机相对坐标=fun creatVariable.Vector3(var 随机x:var 随机y:var 随机z)
+    UIRect 背景=act 1101./弹幕.数字效果'产生效果_3D数值变化(var 帧内累积增加数值:var 队伍模型核心:var UI随机相对坐标:var 平面UI开关)
+    varf UIRect.图表特效图层_悬浮.addSon(var 背景)
+  }
+  if{fun long.lt(var 帧内累积减少数值:Long 0)
+    Float 随机x=fun math.rand(Float -1:Float 1)
+    Float 随机y=fun math.rand(Float 1:Float 3)
+    Float 随机z=fun math.rand(Float -1:Float 1)
+    Vector3 UI随机相对坐标=fun creatVariable.Vector3(var 随机x:var 随机y:var 随机z)
+    UIRect 背景=act 1101./弹幕.数字效果'产生效果_3D数值变化(var 帧内累积减少数值:var 队伍模型核心:var UI随机相对坐标:var 平面UI开关)
+    varf UIRect.图表特效图层_悬浮.addSon(var 背景)
+    varf Mech.队伍模型.callFun0(String 减益效果)
+    //如果是高度降低,则强制移动到目标位置
+    Float 修正后高度变化=fun float.min(var 柱子变化高度:Float -2)
+    act 1101.this.内部'多个碎片生成(var 队伍模型:var 修正后高度变化)
+  }
+  //碎片效果合并生成
+  Long 高度展示值=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 队伍)
+  Float 目标高度=act 1101.this.工具'队伍高度映射(var 高度展示值)
+  Device 队伍模型核心=varf Mech.队伍模型.getCoreDevice()
+  Vector3 核心坐标=varf Device.队伍模型核心.pos()
+  Float 实际高度=varf Vector3.核心坐标.y()
+  Float 柱子变化高度=fun float.minus(var 目标高度:var 实际高度)
+  if{fun float.lt(var 柱子变化高度:Float 0)
+    Float 附加减速类模型偏移量=varf Mech.队伍模型.customFloat(String 附加减速类模型偏移量)
+    Float 附加减速类模型偏移量=fun float.minus(var 附加减速类模型偏移量:var 柱子变化高度)
+    varf Mech.队伍模型.setCustomFloat(String 附加减速类模型偏移量:var 附加减速类模型偏移量)
+    //只有高度突然下降才需要立即应用
+    varf Vector3.核心坐标.setY(var 目标高度)
+    varf Mech.队伍模型.move(var 核心坐标:Enum 0)
+    //对柱子上的全部碎片应用突变修正
+    Float 修正值=fun float.multiply(var 柱子变化高度:Float -1)
+    List 附加碎片列表=varf Mech.队伍模型.customList(String 附加碎片列表)
+    Float 碎片数量=varf List.附加碎片列表.count()
+    Float 碎片序号=fun create.float(Float 0)
+    while{fun float.lt(var 碎片序号:var 碎片数量)
+      Mech 碎片=varf List.附加碎片列表.readMech(var 碎片序号)
+      varf Mech.碎片.callFun1(String 额外偏移量修正:var 修正值)
+      varf Float.碎片序号.addEqual(Float 1)
+    }
+    //如果刚好是看向的位置,那么立即重置摄像机
+    if{fun create.bool(var 存在队伍)
+      if{varf Mech.队伍模型.isSame(var 锁定队伍模型)
+        Float 摄像机'当前看向局部高度=fun float.minus(var 摄像机'当前看向世界高度:var 目标高度)
+        Float 摄像机'当前摄像机局部高度=fun float.minus(var 摄像机'当前摄像机世界高度:var 目标高度)
+      }
+      if{varf Mech.队伍模型.isSame(var 第一队伍模型)
+        Float 分摄像机'当前看向局部高度=fun float.minus(var 分摄像机'当前看向世界高度:var 目标高度)
+        Float 分摄像机'当前摄像机局部高度=fun float.minus(var 分摄像机'当前摄像机世界高度:var 目标高度)
+      }
+    }
+  }
+}
+varf List.数值变化检测表.clear()
+endcode

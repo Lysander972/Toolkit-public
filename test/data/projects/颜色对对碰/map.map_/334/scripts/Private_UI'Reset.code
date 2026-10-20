@@ -1,0 +1,36 @@
+begincodeV2
+name:Private_UI'Reset
+lines:
+if{fun bool.not(var Advanced)
+  if{varf UIRect.Background.exist()
+    varf UIRect.Background.active(Bool 0)
+  }
+}
+if{fun create.bool(var Advanced)
+  if{fun bool.not(var $init)
+    fun ui.2dmode(Bool 0)
+    Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgpiYWNrZ3JvdW5kA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAyEIAAEhDAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAAC0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxABABELAAR0eXBlBgZVSVJlY3QEbmFtZQYGYm9yZGVyA1BvcwQAAAAAAABcQgAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAcEIAAHBCAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAIA/C0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAA8EEEbWFzawUBBHNvbnMQAgARBwAEdHlwZQYKVUlSYXdJbWFnZQRuYW1lBgZhdmF0YXIDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAABwQgAAcEIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8RCwAEdHlwZQYGVUlSZWN0BG5hbWUGAmhwA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAgEIAAIBCAACAPwVjb2xvcgYJVUkt6JOd6ImyC0JvcmRlcldpZHRoAQAAAEEGUmFkaXVzAQAASEIKZmlsbEFtb3VudAEAAIA/CmZpbGxNZXRob2QYBAAAAAAAAAA@3)
+    UIRect Background=varf Canvas.UI.readUIRect(String background)
+    Device $this=act 1.this.getDevice()
+    varf UIRect.Background.followDevice(var $this:Vector3 0,1,0)
+    UIRect HpBar=varf Canvas.UI.readUIRect(String background/border/hp)
+    UIRawImage $avatar=varf Canvas.UI.readUIRawImage(String background/border/avatar)
+    Bool $init=fun create.bool(Bool 1)
+  }
+  String uid=varf Struct.Creator.getString(String id:Bool 0)
+  varf UIRawImage.$avatar.SetDanmuAvatar(var uid)
+  varf UIRect.Background.active(Bool 1)
+  varf UIRect.Background.scale(var UISize)
+  if{fun long.equal(var Faction:Long 0)
+    varf UIRect.HpBar.setColor(Color 192,192,192,255,格子-中立)
+  }
+  if{fun long.equal(var Faction:Long 1)
+    varf UIRect.HpBar.setColor(Color 0,151,205,255,UI-蓝色)
+  }
+  if{fun long.equal(var Faction:Long 2)
+    varf UIRect.HpBar.setColor(Color 255,26,0,255,UI-红色)
+  }
+/*  act 1.this.Private_UI'Update()
+/*  act 1.this.loopFun(String Private_UI'Update:Float 0)
+}
+endcode

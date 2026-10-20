@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:工具'滑动区域适配
+params:Float 零件数量,Float 零件宽度,UIRect 显示区域,UIRect 滑动区域,Float 零件高度,Float 高度间隔
+lines:
+Float 单一高度=fun float.add(var 零件高度:var 高度间隔)
+Float 区域高=fun float.multiply(var 单一高度:var 零件数量)
+Vector3 尺寸大小=fun creatVariable.Vector3(var 零件宽度:var 区域高:Float 0)
+varf UIRect.显示区域.size(var 尺寸大小)
+varf UIRect.滑动区域.scrollView(var 显示区域)
+endcode

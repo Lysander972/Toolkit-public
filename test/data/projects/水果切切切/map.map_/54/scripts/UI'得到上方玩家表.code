@@ -1,0 +1,6 @@
+begincodeV2
+name:UI'得到上方玩家表
+return:List ref
+lines:
+List ref=varf List.UI_上方队伍玩家表.ref()
+endcode

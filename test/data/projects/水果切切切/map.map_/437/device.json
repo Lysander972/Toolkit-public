@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:果汁地面粒子
+ mechFileGUID:a174fb0843f3415abde569ef5b6390d9
+}

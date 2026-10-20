@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:队伍结构'读取_数值显示
+params:Struct 结构
+return:String 显示值
+lines:
+String 显示值=fun create.string(String 0.000)
+if{fun bool.or(var 局内'游戏中:var 局内'已结算)
+  String 显示值=act 1101.this.队伍结构'读取_value_shown(var 结构)
+}
+endcode

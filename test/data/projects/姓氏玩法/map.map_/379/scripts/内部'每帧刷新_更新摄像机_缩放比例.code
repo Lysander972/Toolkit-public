@@ -1,0 +1,8 @@
+begincodeV2
+name:内部'每帧刷新_更新摄像机_缩放比例
+lines:
+Float 滚轮=fun mouse.scroll()
+Float 滚轮=fun float.multiply(var 滚轮:Float -1)
+Float 摄像机'缩放比例=fun float.add(var 摄像机'缩放比例:var 滚轮)
+Float 摄像机'缩放比例=fun float.clamp(var 摄像机'缩放比例:Float 0:Float 1)
+endcode

@@ -1,0 +1,22 @@
+begincodeV2
+name:内部'每帧刷新_更新全局参数
+lines:
+Float 当前时间=fun time.scaleTime()
+if{fun float.gt(var 场景'开局时间:Float 0)
+  Float 已开局时间=fun float.minus(var 当前时间:var 场景'开局时间)
+  Float 场景'高度偏移=fun float.division(var 已开局时间:Float 0.5)
+  Float 场景'高度偏移=fun float.min(var 场景'高度偏移:Float 100)
+}
+Float 场景'位置数量=act 1101.this.工具'得到位置数量()
+Float 场景'位置间夹角=fun float.division(Float 360:var 场景'位置数量)
+Float 场景'真实队伍数量=varf List.激活队伍列表.count()
+//最大值至少按照50显示
+Long 最大值=act 1101./弹幕.队伍'读取全场最大值()
+Long 场景'进度条最大数值基准=fun long.max(var 最大值:Long 1024000)
+Long 可见最后一名=fun create.long(Long 0)
+if{fun float.gte(var 场景'真实队伍数量:Float 11)
+  Struct 最后一名队伍=varf List.激活队伍列表.readStruct(Float 10)
+  Long 可见最后一名=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 最后一名队伍)
+}
+Long 场景'进度条最小数值基准=fun long.max(var 可见最后一名:Long 1)
+endcode

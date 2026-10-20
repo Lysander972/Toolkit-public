@@ -1,0 +1,17 @@
+begincodeV2
+private:1
+color:104,0,255
+name:Model'New
+comment:创建一个普通模型
+params:String modelKey,Vector3 pos,Vector3 dir
+return:Mech obj
+lines:
+/*varf Long.统计'其他模型创建数.addEqual(Long 1)
+/*fun debug.print(var 统计'其他模型创建数:Color 88,255,0,255:Bool 0)
+String modelFile=fun string.add(var modelKey:String .mech)
+List modelList=varf Struct.Model'All.getList(var modelKey:Bool 0)
+act 1110./模型创建器.changeMech(var modelFile)
+Mech obj=fun createAIMech(String 模型创建器:Float 0:var pos:var dir:Enum 1:Bool 0)
+act 1101.this.Generic'MechPhysics(var obj:Bool 1:Float 0:Float 0:Float 0)
+varf List.modelList.add(var obj)
+endcode

@@ -1,0 +1,30 @@
+guid:df39822d52d0415fb87ef32aa0a737e7
+meshes:
+[
+ {
+  n:Pomegranate_Half
+ }
+]
+matFolderName:0096fb6fa33b491a9b89544dbe494dc5
+Albedo.UID:0096fb6fa33b491a9b89544dbe494dc5
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-2.235174E-08,0.2011245,-0.06983924]
+bounds.size:[0.3899843,0.4022491,0.2328401]

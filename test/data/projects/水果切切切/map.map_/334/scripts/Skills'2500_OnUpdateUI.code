@@ -1,0 +1,64 @@
+begincodeV2
+private:1
+name:Skills'2500_OnUpdateUI
+comment:栅栏更新-刷新血量和头像
+lines:
+if{fun bool.not(var init)
+  Vector3 pos=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+  Vector3 direction=fun creatVariable.Vector3(Float 0:Float 0:Float 1)
+  String key=fun create.string(String 血量马甲)
+  //创建血量马甲
+  Mech UI'血量马甲=varf Device.map_handler.callReturnMech3(String Model'SetModel:var pos:var direction:var key)
+  varf Mech.UI'血量马甲.scale(Float 8)
+  Device core=varf Mech.UI'血量马甲.getCoreDevice()
+  //设置显示血量
+  Bool 显示血量=fun create.bool(Bool 1)
+  Bool 显示昵称=fun create.bool(Bool 0)
+  String name=fun create.string(String )
+  varf Device.core.callFun3(String Public'SetLabel:var 显示血量:var 显示昵称:var name)
+  UILabel UI'血量文本框=varf Device.core.callReturnUILabel0(String Public'GetLabel)
+  varf UILabel.UI'血量文本框.labelEffect(Float 0.5:Vector3 0,0,0:Enum 0)
+  varf UILabel.UI'血量文本框.outline(Float 0.5:Color 0,0,0,255)
+  //设置不显示头像
+  Bool 显示头像=fun create.bool(Bool 0)
+  String 空串=fun create.string(String )
+  varf Device.core.callFun2(String Public'SetFrame:var 显示头像:var 空串)
+  varf Device.core.callFun2(String Public'SetAvatar:var 显示头像:var 空串)
+  //初始化列表
+  List 栅栏'玩家列表=fun create.list()
+  List 栅栏'马甲列表=fun create.list()
+  Bool init=fun create.bool(Bool 1)
+}
+//更新血量马甲
+Vector3 世界坐标=act 1.this.localToWorldPos(Vector3 0,20,8)
+varf Mech.UI'血量马甲.move(var 世界坐标:Enum 0)
+Vector3 世界方向F=act 1.this.localToWorldDir(Vector3 0,1,0)
+Vector3 世界方向U=act 1.this.localToWorldDir(Vector3 0,0,-1)
+varf Mech.UI'血量马甲.rot(var 世界方向F:var 世界方向U)
+//更新头像马甲
+varf List.栅栏'玩家列表.sort2(Bool 0:String score)
+Float 总数=varf List.栅栏'马甲列表.count()
+Float temp=fun float.minus(var 总数:Float 1)
+Float temp=fun float.multiply(Float -3:var temp)
+Vector3 起点=fun creatVariable.Vector3(var temp:Float 18:Float 20)
+Vector3 增量=fun creatVariable.Vector3(Float 6:Float 0:Float 0)
+Float index=fun create.float(var 总数)
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Mech mech=varf List.栅栏'马甲列表.readMech(var index)
+  Vector3 世界坐标=act 1.this.localToWorldPos(var 起点)
+  Vector3 起点=fun vector3.add(var 起点:var 增量)
+  varf Mech.mech.move(var 世界坐标:Enum 0)
+  Vector3 世界方向F=act 1.this.localToWorldDir(Vector3 0,1,0)
+  Vector3 世界方向U=act 1.this.localToWorldDir(Vector3 0,0,-1)
+  varf Mech.mech.rot(var 世界方向F:var 世界方向U)
+  Struct player=varf List.栅栏'玩家列表.readStruct(var index)
+  String url=varf Struct.player.getString(String avatarUrl:Bool 0)
+  Device core=varf Mech.mech.getCoreDevice()
+  Bool 显示头像=fun create.bool(Bool 1)
+  varf Device.core.callFun2(String Public'SetAvatar:var 显示头像:var url)
+  String 文件=act 1.this.UI'获得头像框名称(var player)
+  Bool showframe=fun string.notEqual(var 文件:String )
+  varf Device.core.callFun2(String Public'SetFrame:var showframe:var 文件)
+}
+endcode

@@ -1,0 +1,30 @@
+guid:37ac93e8545243ef8ad9e00874ea39ac
+meshes:
+[
+ {
+  n:Fig_Blue_Half
+ }
+]
+matFolderName:7d48aa323aaa48388512ab71cd531f1c
+Albedo.UID:7d48aa323aaa48388512ab71cd531f1c
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.1625204,0.04447337]
+bounds.size:[0.238289,0.3250409,0.1330919]

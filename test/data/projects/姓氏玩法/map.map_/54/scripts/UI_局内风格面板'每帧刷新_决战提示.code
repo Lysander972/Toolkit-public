@@ -1,0 +1,31 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新_决战提示
+lines:
+varf UIRect.UI_局内风格面板'决战提示.active(var 局内'决战阶段)
+varf UIRect.UI_局内风格面板'决战加速框.active(var 局内'决战阶段)
+if{fun create.bool(var 局内'决战阶段)
+  Float 当前时间=fun time.scaleTime()
+  Float 当前时间=fun float.minus(var 当前时间:var 局内'决战开始时间)
+  //加速边框的颜色
+  Float 边框颜色相位=fun float.multiply(var 当前时间:Float 360)
+  Float 边框颜色相位=fun float.triangle.sin(var 边框颜色相位)
+  Float 边框颜色相位=fun float.add(var 边框颜色相位:Float 1)
+  Float 边框颜色相位=fun float.division(var 边框颜色相位:Float 2)
+  Float 边框颜色相位=fun float.lerp(Float 0:Float 1:var 边框颜色相位)
+  Color 最小颜色=fun create.color(Color 255,191,126,15)
+  Color 最大颜色=fun create.color(Color 255,130,0,40)
+  Color 显示颜色=varf Color.最小颜色.lerp(var 最大颜色:var 边框颜色相位)
+  varf UIRect.UI_局内风格面板'决战加速框.setColor(var 显示颜色)
+  //决战提示的描边
+  Float 描边相位=fun float.mod(var 当前时间:Float 0.8)
+  Float 插值=fun float.division(var 描边相位:Float 0.6)
+  Float 插值=fun float.clamp(var 插值:Float 0:Float 1)
+  Vector3 初始尺寸=varf UIRect.UI_局内风格面板'决战提示.getSize()
+  Vector3 目标尺寸=fun vector3.add(var 初始尺寸:Vector3 80,80,0)
+  Vector3 生效尺寸=fun vector3.lerp(var 初始尺寸:var 目标尺寸:var 插值)
+  varf UIRect.UI_局内风格面板'决战描边.size(var 生效尺寸)
+  Color 最小颜色=fun create.color(Color 255,247,204,255)
+  Color 显示颜色=varf Color.最小颜色.lerp(Color 255,215,0,0:var 插值)
+  varf UIRect.UI_局内风格面板'决战描边.setColor(var 显示颜色)
+}
+endcode

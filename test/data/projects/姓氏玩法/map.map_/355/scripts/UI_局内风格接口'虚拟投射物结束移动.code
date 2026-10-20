@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口'虚拟投射物结束移动
+params:UIRect 虚拟投射物
+lines:
+varf UIRect.虚拟投射物.del(Float 0)
+endcode

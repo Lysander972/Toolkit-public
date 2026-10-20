@@ -1,0 +1,10 @@
+begincodeV2
+name:功能设置持久化'下载特效简化并应用
+lines:
+Bool 功能开关'特效简化=fun create.bool(Bool 0)
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 特效简化存档标志位)
+  Bool 功能开关'特效简化=varf Dict.data.readBool(String 特效简化存档标志位:Bool 0)
+}
+act 1101.this.UI_功能面板'应用并刷新特效简化显示()
+endcode

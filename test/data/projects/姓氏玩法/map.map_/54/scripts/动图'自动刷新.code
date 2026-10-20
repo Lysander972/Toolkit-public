@@ -1,0 +1,63 @@
+begincodeV2
+color:255,255,255
+name:动图'自动刷新
+lines:
+Float 当前时间=fun time.scaleTime()
+Float index=varf List.UI'动图_维护列表.count()
+/*fun debug.print(var index:Color 255,255,255,255:Bool 0)
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  UIRawImage icon=varf List.UI'动图_维护列表.readUIRawImage(var index)
+  Bool exist=varf UIRawImage.icon.exist()
+  if{fun bool.not(var exist)
+    varf List.UI'动图_维护列表.remove(var index)
+  }
+  if{fun create.bool(var exist)
+    if{varf UIRawImage.icon.activeInHierarchy()
+      Bool 自动删除=varf UIRawImage.icon.customBool(String autodelete)
+      Float 上帧时间=varf UIRawImage.icon.customFloat(String time)
+      Float groupindex=varf UIRawImage.icon.customFloat(String groupindex)
+      Float frameindex=varf UIRawImage.icon.customFloat(String frameindex)
+      Long 已播放次数=varf UIRawImage.icon.customLong(String 已播放次数)
+      Long 总播放次数=varf UIRawImage.icon.customLong(String 总播放次数)
+      Long 帧率=varf List.UI'动图_帧率表.readLong(var groupindex)
+      Float 每帧间隔=fun long.division(Long 1:var 帧率)
+      Bool 刷新=fun create.bool(Bool 0)
+      Bool 重置=fun create.bool(Bool 0)
+      Float 下帧时间=fun float.add(var 上帧时间:var 每帧间隔)
+      if{fun float.gte(var 当前时间:var 下帧时间)
+        Bool 刷新=fun create.bool(Bool 1)
+        List namelist=varf List.UI'动图_注册表.readList(var groupindex)
+        Float max=varf List.namelist.count()
+        varf Float.frameindex.addEqual(Float 1)
+        if{fun float.gte(var frameindex:var max)
+          Bool 重置=fun create.bool(Bool 1)
+        }
+        Float frameindex=fun float.mod(var frameindex:var max)
+        Float 修正后序号=varf Float.frameindex.floor()
+      }
+      if{fun create.bool(var 刷新)
+        if{fun create.bool(var 重置)
+          varf Long.已播放次数.addEqual(Long 1)
+          varf UIRawImage.icon.setCustomLong(String 已播放次数:var 已播放次数)
+        }
+        Bool 限制次数=fun long.gt(var 总播放次数:Long 0)
+        Bool 超过限制=fun long.gte(var 已播放次数:var 总播放次数)
+        Bool 终止播放=fun bool.and(var 限制次数:var 超过限制)
+        if{fun create.bool(var 终止播放)
+          if{fun create.bool(var 自动删除)
+            varf UIRawImage.icon.del(Float 0.1)
+          }
+          varf List.UI'动图_维护列表.remove(var index)
+        }
+        if{fun bool.not(var 终止播放)
+          String fileName=varf List.namelist.readString(var 修正后序号)
+          varf UIRawImage.icon.loadPic(var fileName)
+          varf UIRawImage.icon.setCustomFloat(String frameindex:var frameindex)
+          varf UIRawImage.icon.setCustomFloat(String time:var 下帧时间)
+        }
+      }
+    }
+  }
+}
+endcode

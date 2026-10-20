@@ -1,0 +1,30 @@
+guid:87df43fef6eb40fe8b213cc60c09a41c
+meshes:
+[
+ {
+  n:YellowMelon_Slice
+ }
+]
+matFolderName:964cf08d4ef74e55bd1cba932deb0ae6
+Albedo.UID:964cf08d4ef74e55bd1cba932deb0ae6
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.1311831,1.490116E-08]
+bounds.size:[0.2671116,0.2623663,0.5792575]

@@ -1,0 +1,20 @@
+begincodeV2
+color:221,0,255
+name:技能'2301
+comment:召唤临时火炮玩家
+lines:
+String key=fun create.string(String 2300)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Struct player=act 1.this.Skills'GetFirstElement(var key)
+  Long 召唤物类型=fun create.long(Long 22)
+  Mech 产生对象=varf Device.map_handler.callReturnMech2(String 炮塔'守方召唤物放置:var player:var 召唤物类型)
+  if{varf Mech.产生对象.alive()
+    Device core=varf Mech.产生对象.getCoreDevice()
+    String skillkey1=fun create.string(String 2310)
+    Long amount=fun create.long(Long 60)
+    varf Device.core.callFun3(String Public'AddBullet:var skillkey1:var amount:var player)
+    =act 1.this.Skills'Decrease(var key:Long 1)
+  }
+}
+delay fun create.float(Float 0.3)
+endcode

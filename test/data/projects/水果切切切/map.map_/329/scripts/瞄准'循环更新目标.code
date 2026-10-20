@@ -1,0 +1,59 @@
+begincodeV2
+name:瞄准'循环更新目标
+lines:
+Float 最优权重=fun create.float(Float 170)
+//如果上次的目标还在
+Mech selected=fun creatVariable.mech(var 瞄准'选中目标)
+Bool exist=fun create.bool(Bool 0)
+Bool 存在=varf Mech.selected.alive()
+if{fun create.bool(var 存在)
+  Device core=varf Mech.selected.getCoreDevice()
+  Bool 存活单位=varf Device.core.callReturnBool0(String Public'IsInitialized)
+  if{fun bool.not(var 存活单位)
+    Mech selected=fun creatVariable.mech(Mech )
+  }
+  if{fun create.bool(var 存活单位)
+    Float 权重=act 1101.this.瞄准'物体坐标检查和权重计算(var selected)
+    varf Float.权重.minusEqual(Float 3)
+    Float 最优权重=fun create.float(var 权重)
+    Bool exist=fun create.bool(Bool 1)
+  }
+}
+//遍历
+Float index=fun create.float(Float 0)
+Float max=varf List.瞄准'候选列表.count()
+while{fun float.lt(var index:var max)
+  Mech target=varf List.瞄准'候选列表.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  if{varf Device.core.callReturnBool0(String Public'IsInitialized)
+    Float 权重=act 1101.this.瞄准'物体坐标检查和权重计算(var target)
+    if{fun create.bool(var exist)
+      if{fun float.lt(var 权重:var 最优权重)
+        Mech selected=fun creatVariable.mech(var target)
+        Float 最优权重=fun create.float(var 权重)
+      }
+    }
+    if{fun bool.not(var exist)
+      Float 最优权重=fun create.float(var 权重)
+      Mech selected=fun creatVariable.mech(var target)
+      Bool exist=fun create.bool(Bool 1)
+    }
+  }
+  varf Float.index.addEqual(Float 1)
+}
+Mech 瞄准'选中目标=fun creatVariable.mech(var selected)
+fun map.setCustomFloat(String 最近位置标志位:var 最优权重)
+delay fun create.float(Float 0)
+if{varf Mech.瞄准'选中目标.alive()
+  Device core=varf Mech.瞄准'选中目标.getCoreDevice()
+  Bool 存活单位=varf Device.core.callReturnBool0(String Public'IsInitialized)
+  if{fun bool.not(var 存活单位)
+    Mech 瞄准'选中目标=fun creatVariable.mech(Mech )
+    Float 最优权重=fun create.float(Float 170)
+  }
+  if{fun create.bool(var 存活单位)
+    Float 最优权重=act 1101.this.瞄准'物体坐标检查和权重计算(var 瞄准'选中目标)
+  }
+}
+fun map.setCustomFloat(String 最近位置标志位:var 最优权重)
+endcode

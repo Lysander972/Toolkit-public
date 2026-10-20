@@ -1,0 +1,56 @@
+begincodeV2
+name:更新卡顿状态
+lines:
+if{fun bool.not(var GameStart)
+  Float 状态值'上一帧真实时间=fun time.time()
+  fun break()
+}
+if{fun float.Approximately(var 状态值'检测开始时间:Float 0)
+  Float 状态值'上一帧真实时间=fun time.time()
+  fun break()
+}
+Float 当前真实时间=fun time.time()
+if{fun float.lt(var 当前真实时间:var 状态值'检测开始时间)
+  Float 状态值'上一帧真实时间=fun time.time()
+  fun break()
+}
+Float 预期帧间隔=fun create.float(Float 0.03333333)
+if{fun long.equal(var 功能设置'帧率模式:Long 1)
+  Float 预期帧间隔=fun create.float(Float 0.01666666)
+}
+Float 实际帧间隔=fun float.minus(var 当前真实时间:var 状态值'上一帧真实时间)
+Float 总时间=fun create.float(Float 0)
+Float 总数量=varf List.状态值'每帧间隔历史记录.count()
+while{fun float.gt(var 总数量:Float 0)
+  varf Float.总数量.minusEqual(Float 1)
+  Float 间隔=varf List.状态值'每帧间隔历史记录.readFloat(var 总数量)
+  varf Float.总时间.addEqual(var 间隔)
+}
+Float 平均间隔=fun float.division(var 总时间:Float 120)
+Float 卡顿程度=fun float.division(var 平均间隔:var 预期帧间隔)
+if{fun float.gte(var 卡顿程度:Float 3)
+  Bool 状态值'发生卡顿=fun create.bool(Bool 1)
+  Long 状态值'连续不卡顿帧数=fun create.long(Long 0)
+  act 1101.this.标志位'更新卡顿检测()
+  Float 状态值'允许退出卡顿时间=fun time.time()
+  varf Float.状态值'允许退出卡顿时间.addEqual(Float 10)
+}
+if{fun float.lt(var 卡顿程度:Float 1.05)
+  varf Long.状态值'连续不卡顿帧数.addEqual(Long 1)
+  if{fun create.bool(var 状态值'发生卡顿)
+    Float 当前时间=fun time.time()
+    Bool 条件1=fun float.gte(var 当前时间:var 状态值'允许退出卡顿时间)
+    Bool 条件2=fun long.gte(var 状态值'连续不卡顿帧数:Long 300)
+    if{fun bool.and(var 条件1:var 条件2)
+      Bool 状态值'发生卡顿=fun create.bool(Bool 0)
+      act 1101.this.标志位'更新卡顿检测()
+    }
+  }
+}
+varf List.状态值'每帧间隔历史记录.add(var 实际帧间隔)
+Float 总数量=varf List.状态值'每帧间隔历史记录.count()
+if{fun float.gt(var 总数量:Float 121)
+  varf List.状态值'每帧间隔历史记录.remove(Float 0)
+}
+Float 状态值'上一帧真实时间=fun create.float(var 当前真实时间)
+endcode

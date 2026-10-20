@@ -1,0 +1,12 @@
+begincodeV2
+name:工具'计算柱子目标角度
+comment:相对于原点
+params:Struct 队伍
+return:Float 角度
+lines:
+Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+Float 位置数量=act 1101.this.工具'得到位置数量()
+Float 队伍间夹角=fun float.division(Float 360:var 位置数量)
+Float 位置=act 1101.this.工具'排名到位置号映射(var 队伍排名)
+Float 角度=fun float.multiply(var 队伍间夹角:var 位置)
+endcode

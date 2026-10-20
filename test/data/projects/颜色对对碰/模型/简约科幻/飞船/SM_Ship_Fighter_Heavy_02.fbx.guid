@@ -1,0 +1,26 @@
+guid:ba7962069eeb4833838d380df7172bf2
+meshes:
+[
+ {
+  n:SM_Ship_Fighter_Heavy_02
+ }
+]
+matFolderName:c2bdfa604c8540139dcac56fa05cb892
+Albedo.UID:c2bdfa604c8540139dcac56fa05cb892
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-9.536743E-07,0,0]
+bounds.size:[16.63799,5.578979,13.35122]

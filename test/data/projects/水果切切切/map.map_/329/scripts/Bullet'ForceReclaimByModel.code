@@ -1,0 +1,16 @@
+begincodeV2
+color:104,0,255
+name:Bullet'ForceReclaimByModel
+comment:按照使用的模型强制回收子弹
+params:String key
+lines:
+List bullet=varf Struct.Bullet'All.getList(var key:Bool 0)
+Float index=varf List.bullet.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Mech obj=varf List.bullet.readMech(var index)
+  Float value=fun create.float(Float 99999)
+  Device core=varf Mech.obj.getCoreDevice()
+  varf Device.core.callFun1(String Public'强制伤害:var value)
+}
+endcode

@@ -1,0 +1,14 @@
+begincodeV2
+name:Skills'2500_ClearPlayer
+comment:栅栏清空玩家
+lines:
+varf List.栅栏'玩家列表.clear()
+Float index=varf List.栅栏'马甲列表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Mech mech=varf List.栅栏'马甲列表.readMech(var index)
+  String key=fun create.string(String 血量马甲)
+  varf Device.map_handler.callFun2(String Model'OnReclaim:var mech:var key)
+}
+varf List.栅栏'马甲列表.clear()
+endcode

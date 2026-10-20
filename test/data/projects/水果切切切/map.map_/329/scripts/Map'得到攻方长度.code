@@ -1,0 +1,6 @@
+begincodeV2
+name:Map'得到攻方长度
+return:Float ret
+lines:
+Float ret=fun create.float(var 攻方区域长度)
+endcode

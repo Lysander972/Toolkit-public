@@ -1,0 +1,47 @@
+begincodeV2
+guid:ebf46043da1340fa95f8611fc1dd7e6c
+color:255,0,0
+name:Launcher'LaunchUniformlyWithP
+comment:均匀发射多个手动设置玩家
+params:Long $type,Float $aimedAngle,Long $amount,Float $maxIncAngle,Float $offset,Bool $limited,Struct $player
+return:Long $count
+lines:
+if{fun long.lte(var $amount:Long 0)
+  fun break()
+}
+Long $count=fun create.long(Long 0)
+if{fun long.equal(var $amount:Long 1)
+  Vector3 $bulletDir=act 1.this.计算'角度转方向(var $aimedAngle)
+  if{act 1.this.Launcher'Launch(var $type:var $bulletDir:var $offset:var $player)
+    Long $count=fun create.long(Long 1)
+  }
+  fun break()
+}
+//得到最大扇形角度
+Float $temp3=varf Long.$amount.toFloat()
+varf Float.$temp3.minusEqual(Float 1)
+Float $temp0=fun float.multiply(var $temp3:var $maxIncAngle)
+Float $temp1=fun float.minus(var 瞄准角度上限:var 瞄准角度下限)
+Float $temp0=fun float.clamp(var $temp0:Float 0:var $temp1)
+Float $actualIncAngle=fun float.division(var $temp0:var $temp3)
+//得到实际扇形
+Float $temp2=fun float.multiply(var $temp0:Float 0.5)
+if{fun create.bool(var $limited)
+  Float $actualMax=fun float.minus(var 瞄准角度上限:var $temp2)
+  Float $actualMin=fun float.add(var 瞄准角度下限:var $temp2)
+  Float $aimedAngle=fun float.clamp(var $aimedAngle:var $actualMin:var $actualMax)
+}
+//修正中心角度
+Float $angle=fun float.minus(var $aimedAngle:var $temp2)
+while{fun long.lt(var $count:var $amount)
+  Vector3 $bulletDir=act 1.this.计算'角度转方向(var $angle)
+  Bool $success=act 1.this.Launcher'Launch(var $type:var $bulletDir:var $offset:var $player)
+  if{fun create.bool(var $success)
+    varf Float.$angle.addEqual(var $actualIncAngle)
+    varf Long.$count.addEqual(Long 1)
+  }
+  if{fun bool.not(var $success)
+    fun break()
+  }
+}
+endcode

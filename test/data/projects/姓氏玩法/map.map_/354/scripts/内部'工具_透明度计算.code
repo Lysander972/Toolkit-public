@@ -1,0 +1,18 @@
+begincodeV2
+name:内部'工具_透明度计算
+params:Vector3 实际坐标
+return:Float 透明度
+lines:
+Float 实际x=varf Vector3.实际坐标.x()
+Vector3 全屏UI尺寸=fun screen.uiSize()
+Float 全屏UI高度=varf Vector3.全屏UI尺寸.x()
+Float xMax=fun float.minus(var 全屏UI高度:Float 100)
+Float xMin=fun create.float(Float 100)
+Float 限制范围x=fun float.clamp(var 实际x:var xMin:var xMax)
+Float 偏离=fun float.minus(var 实际x:var 限制范围x)
+Float 偏离=fun float.abs(var 偏离)
+Float 偏离=fun float.division(var 偏离:Float 100)
+Float 透明度=fun float.minus(Float 1:var 偏离)
+Float 透明度=fun float.clamp(var 透明度:Float 0:Float 1)
+Float 透明度=fun create.float(Float 1)
+endcode

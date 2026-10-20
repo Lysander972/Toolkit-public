@@ -1,0 +1,9 @@
+begincodeV2
+name:按钮点击'排行榜上一页
+lines:
+varf Long.分页.minusEqual(Long 1)
+Long 分页=fun long.max(var 分页:Long 0)
+if{fun long.equal(var 排行榜种类:Long 1)
+  act 1101.this.积分榜刷新()
+}
+endcode

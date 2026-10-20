@@ -1,0 +1,36 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'进入页面
+params:Bool 个人模式,Long 获胜规则
+lines:
+varf UIRect.主布局根节点.active(Bool 1)
+//简化
+/*String 下场提示内容=fun create.string(String 发送"加入"+汉字\n加入或创建队伍)
+/*UILabel 下场提示框=varf Canvas.风格主布局.readUILabel(String root/顶部/左侧/规则描述)
+/*varf UILabel.下场提示框.text(var 下场提示内容)
+fun break()
+//原版
+if{fun long.equal(var 获胜规则:Long 0)
+  String 获胜规则描述=fun create.string(String 倒计时结束前获取最高的分数)
+}
+if{fun long.equal(var 获胜规则:Long 1)
+  Long 目标分数=act 1101./弹幕.UI_局内'获取目标线()
+  String 获胜规则描述=fun string.Format1(String 倒计时结束前获取最高的分数\n率先达到%1者可以提前获胜:var 目标分数)
+}
+if{fun long.equal(var 获胜规则:Long 2)
+  String 获胜规则描述=fun create.string(String 倒计时结束前获取最高的分数\n压制全部其他队伍@4分数超过其他队伍之和@5可提前获胜)
+}
+if{fun bool.not(var 个人模式)
+  String 下场规则描述=fun create.string(String 发送"加入+汉字"加入玩法)
+  String 下场提示内容=fun create.string(String 发送"加入"+汉字,加入玩法)
+}
+if{fun create.bool(var 个人模式)
+  String 下场规则描述=fun create.string(String 发送"加入"加入玩法)
+  String 下场提示内容=fun create.string(String 发送"加入"加入玩法)
+}
+String 规则描述内容=fun string.add1(var 获胜规则描述:String \n:var 下场规则描述)
+UILabel 规则描述=varf Canvas.风格主布局.readUILabel(String root/顶部/左侧/规则描述)
+varf UILabel.规则描述.text(var 规则描述内容)
+UILabel 下场提示框=varf Canvas.风格主布局.readUILabel(String root/提示/提示内容)
+varf UILabel.下场提示框.text(var 下场提示内容)
+endcode

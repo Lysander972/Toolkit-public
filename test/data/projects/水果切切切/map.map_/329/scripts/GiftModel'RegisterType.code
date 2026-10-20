@@ -1,0 +1,14 @@
+begincodeV2
+color:104,0,255
+name:GiftModel'RegisterType
+comment:注册类型
+params:String modelKey
+lines:
+List bullet=fun create.list()
+List bulletUnused=fun create.list()
+Bool exist=varf Struct.Model'All.contains(var modelKey)
+if{fun bool.not(var exist)
+  varf Struct.Model'All.set(var modelKey:var bullet)
+  varf Struct.Model'Unused.set(var modelKey:var bulletUnused)
+}
+endcode

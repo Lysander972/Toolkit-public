@@ -1,0 +1,13 @@
+begincodeV2
+name:冰冻'取消冻结物理
+lines:
+if{fun create.bool(var 冰冻'已触地冻结)
+  if{fun create.bool(var Physic'Enabled)
+    varf Mech.Self.enablePhysics(Bool 1)
+    if{fun long.equal(var Attr'Faction:Long 1)
+      act 1.this.Public'SetLayer(Float 7:Float 0)
+    }
+  }
+  Bool 冰冻'已触地冻结=fun create.bool(Bool 0)
+}
+endcode

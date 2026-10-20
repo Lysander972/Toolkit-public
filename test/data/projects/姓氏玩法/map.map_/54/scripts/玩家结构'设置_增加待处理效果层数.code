@@ -1,0 +1,18 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_增加待处理效果层数
+comment:设置玩家的待处理效果层数
+params:Struct 结构,String key,Long 倍数
+lines:
+Dict 待处理效果=act 1101.this.玩家结构'读取待处理效果字典(var 结构)
+Bool 是否包含=varf Dict.待处理效果.contains(var key)
+if{fun bool.not(var 是否包含)
+  varf Dict.待处理效果.insert(var key:var 倍数)
+}
+if{fun create.bool(var 是否包含)
+  Long 原倍数=varf Dict.待处理效果.readLong(var key:Bool 1)
+  Long 新倍数=fun long.add(var 原倍数:var 倍数)
+  varf Dict.待处理效果.insert(var key:var 新倍数)
+}
+endcode

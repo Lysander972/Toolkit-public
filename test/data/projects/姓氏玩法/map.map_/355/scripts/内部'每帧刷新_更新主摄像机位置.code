@@ -1,0 +1,114 @@
+begincodeV2
+color:123,255,0
+name:内部'每帧刷新_更新主摄像机位置
+comment:此函数控制拖动时摄像机应当看向的目标
+lines:
+//更新缩放比例
+act 1101.this.内部'每帧刷新_更新摄像机_缩放比例()
+//更新锁定目标并记录是否进行了手动操作
+act 1101.this.内部'每帧刷新_更新摄像机_目标切换()
+//刷新自动跟随的启用和关闭状态
+/*act 1101.this.内部'每帧刷新_更新摄像机_刷新跟随()
+act 1101.this.内部'每帧刷新_更新摄像机_刷新跟随Alt()
+//摄像机高度的潜在突变,对应队伍的高度突变
+Bool 摄像机高度突变标志位=fun create.bool(Bool 0)
+Bool 摄像机速度突变标志位=fun create.bool(Bool 0)
+//目标位置
+Float 目标位置生效值=act 1101.this.内部'每帧循环_得到目标位置_生效值()
+Float 目标位置队伍序号=act 1101.this.工具'位置号到排名映射(var 目标位置生效值)
+Bool 目标位置队伍_存在=fun float.lt(var 目标位置队伍序号:var 场景'真实队伍数量)
+Long 目标位置队伍_id=fun create.long(Long -1)
+Long 目标位置队伍_速度数值=fun create.long(Long 0)
+Float 目标位置队伍_实际高度=act 1101.this.工具'队伍高度映射(Long 0)
+//读取速度值和高度值
+if{fun create.bool(var 目标位置队伍_存在)
+  Struct 目标位置队伍=varf List.激活队伍列表.readStruct(var 目标位置队伍序号)
+  Long 目标位置队伍_id=act 1101./弹幕.队伍结构'读取_id(var 目标位置队伍)
+  Long 目标位置队伍_速度数值=act 1101./弹幕.队伍结构'读取_speed(var 目标位置队伍)
+  String 目标位置队伍_idS=fun create.string(var 目标位置队伍_id)
+  Struct 目标位置队伍映射=varf Dict.队伍UI映射.readStruct(var 目标位置队伍_idS:Bool 0)
+  Mech 目标位置队伍模型=varf Struct.目标位置队伍映射.getMech(String 队伍模型:Bool 0)
+/*  Vector3 目标位置队伍模型坐标=varf Mech.目标位置队伍模型.corePos()
+/*  Float 目标位置队伍_实际高度=varf Vector3.目标位置队伍模型坐标.y()
+  Long 目标队伍_高度显示用值=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 目标位置队伍)
+  Float 目标位置队伍_实际高度=act 1101.this.工具'队伍高度映射(var 目标队伍_高度显示用值)
+  Float 目标位置队伍_实际高度=fun float.max(var 目标位置队伍_实际高度:Float 0)
+  //读取更新标记
+  //如果目标队伍的模型上标记了需要刷新高度
+  Bool 刷新摄像机高度=varf Mech.目标位置队伍模型.customBool(String 刷新摄像机高度)
+  Bool 摄像机高度突变标志位=fun bool.or(var 摄像机高度突变标志位:var 刷新摄像机高度)
+  if{fun create.bool(var 刷新摄像机高度)
+    varf Mech.目标位置队伍模型.setCustomBool(String 刷新摄像机高度:Bool 0)
+  }
+  //如果目标队伍的模型上标记了需要刷新裁切
+  Bool 刷新摄像机裁切=varf Mech.目标位置队伍模型.customBool(String 刷新摄像机裁切)
+  Bool 摄像机速度突变标志位=fun bool.or(var 摄像机速度突变标志位:var 刷新摄像机裁切)
+  if{fun create.bool(var 刷新摄像机裁切)
+    varf Mech.目标位置队伍模型.setCustomBool(String 刷新摄像机裁切:Bool 0)
+  }
+}
+//如果队伍id发生变化那么必然需要刷新
+if{fun long.notEqual(var 目标位置队伍_id:var 摄像机'上帧目标位置队伍id)
+  Bool 摄像机高度突变标志位=fun create.bool(Bool 1)
+  Bool 摄像机速度突变标志位=fun create.bool(Bool 1)
+}
+Long 摄像机'上帧目标位置队伍id=fun create.long(var 目标位置队伍_id)
+//两种视角的目标看向高度
+Float 最低视角目标看向局部高度=fun create.float(Float -5)
+Float 最高视角目标看向局部高度=fun create.float(Float -5)
+//如果有潜在产生高度突变的情况,进行处理@1首先是根据上一帧的世界高度更新局部高度
+if{fun create.bool(var 摄像机高度突变标志位)
+  Float 摄像机'当前看向局部高度=fun float.minus(var 摄像机'当前看向世界高度:var 目标位置队伍_实际高度)
+  Float 摄像机'当前摄像机局部高度=fun float.minus(var 摄像机'当前摄像机世界高度:var 目标位置队伍_实际高度)
+}
+if{fun create.bool(var 摄像机速度突变标志位)
+  Float 摄像机'目标视角大小=act 1101.this.工具'速度到视角的映射(var 目标位置队伍_速度数值)
+}
+//两种视角的目标摄像机高度
+Float 最低视角目标摄像机局部高度=fun float.add(var 最低视角目标看向局部高度:Float 10)
+Float 最高视角目标摄像机局部高度=fun float.add(var 最高视角目标看向局部高度:Float 20)
+//摄像机坐标相对于0度角的夹角
+Float 目标摄像机弧度=fun float.multiply(var 场景'位置间夹角:var 目标位置生效值)
+//计算得到摄像机的生效弧度,摄像机'当前摄像机弧度用于计算最低视角的弧度和最高视角的弧度
+Float 摄像机'当前摄像机弧度=act 1101.this.工具'有方向角度插值(var 摄像机'当前摄像机弧度:var 目标摄像机弧度:Float 0.05)
+//需要根据缩放比例先计算目标摄像机高度
+Float 目标摄像机局部高度=fun float.lerp(var 最低视角目标摄像机局部高度:var 最高视角目标摄像机局部高度:var 摄像机'缩放比例)
+Float 目标看向局部高度=fun float.lerp(var 最低视角目标看向局部高度:var 最高视角目标看向局部高度:var 摄像机'缩放比例)
+//计算当前摄像机和看向的局部高度
+Float 摄像机'当前摄像机局部高度=act 1101.this.工具'自身插值与匀速综合(var 摄像机'当前摄像机局部高度:var 目标摄像机局部高度:Float 0.035:Float 3)
+Float 摄像机'当前看向局部高度=act 1101.this.工具'自身插值与匀速综合(var 摄像机'当前看向局部高度:var 目标看向局部高度:Float 0.07:Float 5)
+//使用局部高度和柱子的实际高度得到世界高度
+Float 摄像机'当前摄像机世界高度=fun float.add(var 目标位置队伍_实际高度:var 摄像机'当前摄像机局部高度)
+Float 摄像机'当前摄像机世界高度=fun float.max(var 摄像机'当前摄像机世界高度:Float 25)
+Float 摄像机'当前看向世界高度=fun float.add(var 目标位置队伍_实际高度:var 摄像机'当前看向局部高度)
+//计算两种情况下的目标看向坐标
+Float 半径=fun float.multiply(var 场景'位置数量:var 场景'柱子半径系数)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 最低视角目标看向坐标=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 摄像机'当前摄像机弧度)
+Float 半径=fun float.multiply(var 场景'位置数量:var 场景'柱子半径系数)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 最高视角目标看向坐标=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 摄像机'当前摄像机弧度)
+//计算两种情况下的目标摄像机坐标
+Float 半径=fun float.multiply(var 场景'位置数量:var 场景'柱子半径系数)
+Float 半径=fun float.add(var 半径:Float 20)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 最低视角目标摄像机坐标=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 摄像机'当前摄像机弧度)
+Float 半径=fun float.multiply(var 场景'位置数量:var 场景'柱子半径系数)
+Float 半径=fun float.add(var 半径:Float 50)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 最高视角目标摄像机坐标=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 摄像机'当前摄像机弧度)
+//计算当前的看向坐标和摄像机坐标
+Vector3 当前看向坐标=fun vector3.lerp(var 最低视角目标看向坐标:var 最高视角目标看向坐标:var 摄像机'缩放比例)
+varf Vector3.当前看向坐标.setY(var 摄像机'当前看向世界高度)
+Vector3 当前摄像机坐标=fun vector3.lerp(var 最低视角目标摄像机坐标:var 最高视角目标摄像机坐标:var 摄像机'缩放比例)
+varf Vector3.当前摄像机坐标.setY(var 摄像机'当前摄像机世界高度)
+Vector3 当前摄像机朝向=fun vector3.minus(var 当前看向坐标:var 当前摄像机坐标)
+//应用当前的摄像机坐标和朝向
+fun camera.setpos2(var 当前摄像机坐标:var 当前摄像机朝向:Vector3 0,1,0:Float 0)
+//当需要根据速度更新裁切时,重新计算裁切
+Float 新视角=act 1101.this.工具'自身插值与匀速综合(var 摄像机'当前视角大小:var 摄像机'目标视角大小:Float 0.05:Float 1)
+if{fun float.notEqual(var 新视角:var 摄像机'当前视角大小)
+  fun cameraClipPlane(Float 1:Float 100000:var 新视角:Float 0)
+  Float 摄像机'当前视角大小=fun create.float(var 新视角)
+}
+endcode

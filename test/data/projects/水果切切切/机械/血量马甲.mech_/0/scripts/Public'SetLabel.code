@@ -1,0 +1,19 @@
+begincodeV2
+name:Public'SetLabel
+params:Bool open1,Bool open2,String username
+lines:
+UILabel label=act 1102./hp.getLabel()
+varf UILabel.label.active(var open1)
+if{fun string.equal(var username:String )
+  Bool open2=fun create.bool(Bool 0)
+}
+if{fun string.equal(var username:String default)
+  Bool open2=fun create.bool(Bool 0)
+}
+UILabel label=act 1102./username.getLabel()
+varf UILabel.label.active(var open2)
+varf UILabel.label.text(var username)
+varf UILabel.label.labelEffect(Float 0.2:Vector3 0,0,0:Enum 0)
+varf UILabel.label.outline(Float 0.2:Color 0,0,0,255)
+varf UILabel.label.setFontSize(Float 5)
+endcode

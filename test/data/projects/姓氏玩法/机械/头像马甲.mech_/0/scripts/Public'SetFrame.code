@@ -1,0 +1,14 @@
+begincodeV2
+name:Public'SetFrame
+params:Bool open,String file
+lines:
+act 362./frame.show(var open)
+if{fun string.notEqual(var FrameMainFile:var file)
+  act 362./frame.setDynamicMatPic(String _MainTex:var file)
+  String FrameMainFile=fun create.string(var file)
+}
+if{fun string.notEqual(var FrameEmmitFile:var file)
+  act 362./frame.setDynamicMatPic(String _MainTex:var file)
+  String FrameEmmitFile=fun create.string(var file)
+}
+endcode

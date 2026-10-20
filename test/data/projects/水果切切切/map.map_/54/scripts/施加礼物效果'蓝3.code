@@ -1,0 +1,25 @@
+begincodeV2
+color:112,0,255
+name:施加礼物效果'蓝3
+comment:19/30
+params:Long count,Struct player,Bool purchased
+return:String str
+lines:
+if{fun bool.not(var init)
+  Long context=act 1101.this.GetContextId()
+  if{fun long.equal(var context:Long 1)
+    Long multiplier_1000=fun create.long(Long 100)
+  }
+  if{fun long.equal(var context:Long 2)
+    Long multiplier_1000=fun create.long(Long 200)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+Long 技能数=fun long.multiply(var count:Long 1)
+act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1300:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:var multiplier_1000)
+act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1000:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:Long 1)
+String str=fun string.Format1(String 香蕉×%1:var 技能数)
+=fun create.bool(var purchased)
+endcode

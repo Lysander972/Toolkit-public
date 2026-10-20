@@ -1,0 +1,7 @@
+{
+  "$schema": "../node_modules/likec4/config/schema.json",
+  "name": "toolkit",
+  "landingPage": {
+    "redirect": true
+  }
+}

@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:播报元素'重置数字动效计时
+comment:重置数字动效开始时间为当前时间
+params:Canvas canvas
+lines:
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+Float 当前时间=fun time.time()
+varf UIRect.background.setCustomFloat(String 数字动效计时标志位:var 当前时间)
+endcode

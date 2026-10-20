@@ -1,0 +1,14 @@
+type:135
+pos:[4.371145E-09,0,3.821376E-16]
+quat:[0.5000004,-0.4999997,-0.5000005,-0.4999994]
+ext:
+{
+ logicName:12
+ lightType:0
+ spotAngle:80
+ areaSize:[1,1]
+ color:[0,0,1,1]
+ fresnelPow:5
+ fade:0
+ range:1.25
+}

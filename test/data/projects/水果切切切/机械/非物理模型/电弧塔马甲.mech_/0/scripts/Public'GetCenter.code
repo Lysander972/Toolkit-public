@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetCenter
+return:Vector3 pos
+lines:
+Vector3 pos=act 362./本体.massCenter()
+endcode

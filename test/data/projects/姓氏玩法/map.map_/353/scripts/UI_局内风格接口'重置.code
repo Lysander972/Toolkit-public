@@ -1,0 +1,17 @@
+begincodeV2
+name:UI_局内风格接口'重置
+lines:
+List 名称列表=varf Dict.队伍UI映射.names()
+Float 数量=varf List.名称列表.count()
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 数量)
+  String 字符串id=varf List.名称列表.readString(var 循环)
+  Canvas 队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 0)
+  UIRect 根节点=varf Canvas.队伍UI布局.readUIRect(String 根节点)
+  varf UIRect.根节点.del(Float 0)
+  varf Float.循环.addEqual(Float 1)
+}
+varf Dict.队伍UI映射.clear()
+Vector3 图表初始布局坐标=varf UIRect.图表节点.getCanvasPos()
+Vector3 鼠标累计位移量=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+endcode

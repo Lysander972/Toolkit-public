@@ -1,0 +1,9 @@
+begincodeV2
+name:通用初始化
+lines:
+Mech $self=act 1.this.getMech()
+varf Mech.$self.enablePhysics(Bool 0)
+act 1.this.show(Bool 0)
+act 1.this.switchCollider(Bool 0)
+act 362.1.switchCollider(Bool 0)
+endcode

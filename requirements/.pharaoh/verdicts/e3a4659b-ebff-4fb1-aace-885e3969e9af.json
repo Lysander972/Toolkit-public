@@ -1,0 +1,25 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "pnpm test 精确执行七文件33测试全部通过，严格Sphinx构建及架构检查通过；GitHub托管作业此前未启动，当前Windows结果不作为Linux证据。",
+      "score": 1,
+      "suggestion": "完成最终index及HEAD验证；托管作业可运行后检查Linux同一入口结果，业务TODO仍需成功行为测试。"
+    },
+    "parent_fit": {
+      "reason": "七个完整测试文件覆盖Host启动监听/查询/取消/关闭、文件真实IO、GUID候选与配置读取，以及刷新TODO零派生写入；详细逻辑操作、语义和其他运行时端口不在这组测试内。",
+      "score": 1,
+      "suggestion": "将logical_entities/logical_operations与相关实现一同纳入专项图；后续转换与插件批次加入其真实成功和失败行为。"
+    },
+    "reasoning": {
+      "reason": "测试使用独占工程与真实文件状态，验证版本变化、缓存失效、候选冲突、隔离和释放；mock仅控制时序或故障，不把调用记录当作整体功能完成。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "e3a4659b-ebff-4fb1-aace-885e3969e9af",
+  "reviewed_fingerprint": "fa7561d912ee29bc195906f6a832c1db5a13499a4f868257de9cc8beb2df7dca",
+  "schema": 2,
+  "summary": "主入口33项行为证据成立，专项覆盖和Linux结果保留待补。"
+}

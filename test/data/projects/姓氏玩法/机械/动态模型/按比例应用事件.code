@@ -1,0 +1,20 @@
+begincodeV2
+guid:09a4d38e40ae4adaae92df9b65df6316
+name:按比例应用事件
+params:Float 比例
+lines:
+Float 数量=varf List.挂载事件列表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 数量)
+  Dict 事件=varf List.挂载事件列表.readDict(var 序号)
+  act 1.this.callMapFunc2(String 弹幕.局内逻辑'延迟效果_标记生效比例:var 事件:var 比例)
+  Float 已生效比例=varf Dict.事件.readFloat(String 已生效比例:Bool 0)
+  if{fun float.gte(var 已生效比例:Float 1)
+    varf List.挂载事件列表.remove(var 序号)
+    Float 数量=varf List.挂载事件列表.count()
+  }
+  if{fun float.lt(var 已生效比例:Float 1)
+    varf Float.序号.addEqual(Float 1)
+  }
+}
+endcode

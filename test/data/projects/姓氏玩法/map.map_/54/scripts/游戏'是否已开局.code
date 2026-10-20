@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:游戏'是否已开局
+return:Bool ret
+lines:
+Bool ret=fun create.bool(var 局内'游戏中)
+endcode

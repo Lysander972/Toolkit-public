@@ -1,0 +1,7 @@
+begincodeV2
+name:Public'ReclaimModel
+lines:
+Mech $self=act 1.this.getMech()
+Long $modelType=fun create.long(Long 0)
+varf Device.map_handler.callFun2(String Bullet'OnReclaim:var $self:var $modelType)
+endcode

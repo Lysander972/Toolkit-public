@@ -1,0 +1,34 @@
+guid:ca40978a82de44b399fc7fb8002291c9
+meshes:
+[
+ {
+  n:Durian
+ }
+]
+matFolderName:7ceeb33de5704e74bfa8bd9d4b65d5b2
+Albedo.UID:7ceeb33de5704e74bfa8bd9d4b65d5b2
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+OriginType:2
+bounds.center:[0,0.4244675,0]
+bounds.size:[0.6439575,0.848935,0.6414497]

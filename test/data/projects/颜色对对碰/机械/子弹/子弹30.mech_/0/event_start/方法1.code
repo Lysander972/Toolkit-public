@@ -1,0 +1,19 @@
+begincodeV2
+skip:1
+name:方法1
+lines:
+delay fun create.float(Float 2)
+act 1.this.addForce(Vector3 1,0,0:Enum 1)
+act 242.4.active()
+act 242.4.show(Bool 1)
+delay fun create.float(Float 2)
+Mech self=act 1.this.getMech()
+varf Mech.self.setActive(Bool 0)
+delay fun create.float(Float 2)
+varf Mech.self.setActive(Bool 1)
+delay fun create.float(Float 2)
+act 242.4.disActive()
+delay fun create.float(Float 2)
+act 242.4.active()
+act 1.this.Public'Open()
+endcode

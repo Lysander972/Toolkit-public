@@ -1,0 +1,20 @@
+begincodeV2
+color:0,138,255
+name:GiftModel'SetGiftModel
+comment:设置一个普通子弹
+params:String $modelKey,String $text,Struct $player,Bool $skipUI,Long $mode
+lines:
+List $unusedList=varf Struct.BulletUnused.getList(var $modelKey:Bool 0)
+Float $index=varf List.$unusedList.count()
+Bool $exist=fun float.gt(var $index:Float 0)
+if{fun create.bool(var $exist)
+  varf Float.$index.minusEqual(Float 1)
+  Mech $obj=varf List.$unusedList.readMech(var $index)
+  varf Mech.$obj.setActive(Bool 1)
+  varf List.$unusedList.remove(var $index)
+}
+if{fun bool.not(var $exist)
+  Mech $obj=act 1101.this.GiftModel'New(var $modelKey)
+}
+varf Mech.$obj.callFun5(String Generic'PlayAnimation:var $modelKey:var $text:var $player:var $skipUI:var $mode)
+endcode

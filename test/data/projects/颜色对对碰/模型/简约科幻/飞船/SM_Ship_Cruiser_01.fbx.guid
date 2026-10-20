@@ -1,0 +1,26 @@
+guid:ae40143c2ca2484a8b10ef9e57abd48c
+meshes:
+[
+ {
+  n:SM_Ship_Cruiser_01
+ }
+]
+matFolderName:c2bdfa604c8540139dcac56fa05cb892
+Albedo.UID:c2bdfa604c8540139dcac56fa05cb892
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[4.768372E-07,-1.66893E-06,8.583069E-06]
+bounds.size:[29.2182,10.94193,52.22496]

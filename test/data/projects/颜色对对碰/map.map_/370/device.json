@@ -1,0 +1,11 @@
+type:336
+pos:[0,0,0]
+ext:
+{
+ logicName:礼物特效发射器
+ mechIndex:-1
+ generatorAlias:礼物替身
+ poolNum:20
+ maxLifeTime:4
+ antiImpulse:0
+}

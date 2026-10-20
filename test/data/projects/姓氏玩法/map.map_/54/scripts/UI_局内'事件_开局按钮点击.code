@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'事件_开局按钮点击
+lines:
+act 1101.this.游戏'开始()
+act 1101.this.UI_局内风格接口封装'开局()
+endcode

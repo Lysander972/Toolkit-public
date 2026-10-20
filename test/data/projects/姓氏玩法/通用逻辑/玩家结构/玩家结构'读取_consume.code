@@ -1,0 +1,8 @@
+begincodeV2
+guid:13d9984dc9bc4ad697d14a11f7faa605
+name:玩家结构'读取_consume
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String consume:Bool 0)
+endcode

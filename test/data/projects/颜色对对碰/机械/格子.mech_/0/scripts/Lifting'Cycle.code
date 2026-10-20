@@ -1,0 +1,26 @@
+begincodeV2
+color:255,0,255
+name:Lifting'Cycle
+lines:
+Float $timeD=fun time.deltaTime()
+Float $rateD=fun float.multiply(var $timeD:Float 2)
+if{fun create.bool(var IsRotating)
+  if{fun long.equal(var NewFaction:Long 1)
+    Bool $temp1=fun float.gte(var RotateRate:Float 0.5)
+  }
+  if{fun long.equal(var NewFaction:Long 2)
+    Bool $temp1=fun float.lte(var RotateRate:Float 0.5)
+  }
+}
+Bool $temp2=fun bool.not(var IsRotating)
+if{fun bool.or(var $temp1:var $temp2)
+  varf Float.LiftingProgress.addEqual(var $rateD)
+}
+Float LiftingProgress=fun float.clamp(var LiftingProgress:Float 0:Float 1)
+Float LiftingRate=fun float.SmoothStep(var LiftingInitial:var LiftingTarget:var LiftingProgress)
+Float LiftingRate=fun float.clamp(var LiftingRate:Float 0:Float 1)
+act 1.this.Lifting'Application()
+if{fun float.Approximately(var LiftingProgress:Float 1)
+  act 1.this.Lifting'EndCycle()
+}
+endcode

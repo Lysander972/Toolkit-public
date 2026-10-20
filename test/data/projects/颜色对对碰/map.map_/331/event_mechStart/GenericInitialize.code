@@ -1,0 +1,12 @@
+begincodeV2
+color:8,0,255
+name:GenericInitialize
+lines:
+Mech Self=act 1.this.getMech()
+Mech map=fun map.getMapMech()
+Device map_handler=varf Mech.map.findDevice(String Scenario)
+String $uid=fun create.string(String -1)
+String $nickname=fun create.string(String none)
+String $avatar=fun create.string(String )
+Struct DefaultPlayer=act 1.this.callClientMapRetStructFunc3(String 弹幕.Player'New:var $uid:var $nickname:var $avatar)
+endcode

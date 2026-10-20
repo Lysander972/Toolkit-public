@@ -1,0 +1,11 @@
+type:1110
+pos:[0,0,0]
+enableManualWeld:true
+attach:
+[
+]
+ext:
+{
+ logicName:子弹
+ mechFileGUID:3589db8ae95d408ea0b7e85354f6b635
+}

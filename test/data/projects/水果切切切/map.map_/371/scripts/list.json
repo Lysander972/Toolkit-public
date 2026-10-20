@@ -1,0 +1,6 @@
+[
+ Public'Damage
+ Public'IsAlive
+ Public'GetFaction
+ Public'GetAtk
+]

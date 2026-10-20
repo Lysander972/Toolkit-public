@@ -1,0 +1,50 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'拖动面板_刷新特定面板_右下
+comment:父级靠右,以右侧为参照
+params:UIButton 当前激活面板,String 存档内名称
+lines:
+Vector3 屏幕分辨率=fun screen.size()
+Float 屏幕x=varf Vector3.屏幕分辨率.x()
+Float 屏幕y=varf Vector3.屏幕分辨率.y()
+Vector3 UI尺寸=fun screen.uiSize()
+Float UIx=varf Vector3.UI尺寸.x()
+Float UIy=varf Vector3.UI尺寸.y()
+Vector3 size=varf UIButton.当前激活面板.getSize()
+//左侧限制等于宽度,右侧限制0
+Float _xMin=fun float.multiply(var UIx:Float -1)
+Float sizeX=varf Vector3.size.x()
+varf Float._xMin.addEqual(var sizeX)
+Float _xMax=fun float.multiply(var UIx:Float 0)
+//下方限制0,上方限制全屏高度-UI高度
+Float _yMin=fun float.multiply(var UIy:Float 0)
+Float _yMax=fun float.multiply(var UIy:Float 1)
+Float sizeY=varf Vector3.size.y()
+varf Float._yMax.minusEqual(var sizeY)
+Vector3 原布局坐标=varf UIButton.当前激活面板.getCanvasPos()
+Vector3 预期布局坐标=varf Vector3.原布局坐标.copy()
+if{varf UIButton.当前激活面板.pressing()
+  Float x=varf Vector3.UI'鼠标位移.x()
+  Float y=varf Vector3.UI'鼠标位移.y()
+  Float x=fun float.division(var x:var 屏幕x)
+  Float x=fun float.multiply(var x:var UIx)
+  Float y=fun float.division(var y:var 屏幕y)
+  Float y=fun float.multiply(var y:var UIy)
+  Vector3 鼠标位移=fun creatVariable.Vector3(var x:var y:Float 0)
+  Vector3 预期布局坐标=fun vector3.add(var 预期布局坐标:var 鼠标位移)
+}
+Float x=varf Vector3.预期布局坐标.x()
+Float y=varf Vector3.预期布局坐标.y()
+Float x=fun float.clamp(var x:var _xMin:var _xMax)
+Float y=fun float.clamp(var y:var _yMin:var _yMax)
+Vector3 实际布局坐标=fun creatVariable.Vector3(var x:var y:Float 0)
+if{fun vector3.notEqual(var 原布局坐标:var 实际布局坐标)
+  varf UIButton.当前激活面板.setCanvasPos(var 实际布局坐标)
+}
+if{varf UIButton.当前激活面板.isRelease()
+  //持久化逻辑
+  Dict data=fun map.load()
+  varf Dict.data.insert(var 存档内名称:var 实际布局坐标)
+  act 1101./主界面.工具'上传存档(Bool 1)
+}
+endcode

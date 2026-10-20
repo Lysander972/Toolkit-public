@@ -1,0 +1,8 @@
+begincodeV2
+name:方法1
+lines:
+act 1100.this.setTriggerSize(Vector3 0,0,0)
+=act 1100.this.getInsideMechs()
+act 1100.this.setTriggerEnterCB(String )
+act 1100.this.setTriggerLeaveCB(String )
+endcode

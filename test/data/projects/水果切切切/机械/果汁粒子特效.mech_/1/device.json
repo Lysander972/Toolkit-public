@@ -1,0 +1,51 @@
+type:337
+pos:[5.017E-09,0,4.386001E-16]
+quat:[-0.4999999,-0.5000002,-0.4999997,0.5000003]
+ext:
+{
+ logicName:粒子
+ startLifetimeMultiplier:5
+ startSpeed:[10,15]
+ startSize:[5,10]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:1
+ gravityModifierMultiplier:1
+ boolBurst:true
+ rateOverTime:1
+ angle:21
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.2500038:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:0"
+  "0.2438765:0.3825161"
+  "0.5031949:0.7237858"
+  "0.7641107:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ rotationOverLifetime.max:
+ [
+  "0:1"
+  "0.25:0"
+  "0.5:0"
+  "0.75:0"
+  "1:0"
+ ]
+ shapeType:1
+ lengthScale:2
+ matType:4
+ simulationSpace:1
+ picFileGuid:64e218585bd743c89e0aafda3382bae8
+}

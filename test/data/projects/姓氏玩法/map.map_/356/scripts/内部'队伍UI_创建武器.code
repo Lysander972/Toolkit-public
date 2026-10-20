@@ -1,0 +1,77 @@
+begincodeV2
+name:内部'队伍UI_创建武器
+params:Struct 目标队伍,String 武器名,Float 生效比例
+return:Canvas 武器UI
+lines:
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  act 1101./旧条形图.内部'队伍UI_创建(var 目标队伍)
+}
+Canvas 队伍UI=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+UIRect 队伍根节点=varf Canvas.队伍UI.readUIRect(String 根节点)
+if{fun string.equal(var 武器名:String 加速1)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_加速1(var 对齐方式:Float 180:Bool 1:Float 180)
+}
+if{fun string.equal(var 武器名:String 加速2)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_加速2(var 对齐方式:Float 180:Bool 1:Float 180)
+}
+if{fun string.equal(var 武器名:String 加速3)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_加速3(var 对齐方式:Float 180:Bool 1:Float 180)
+}
+if{fun string.equal(var 武器名:String 加速4)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_加速4(var 对齐方式:Float 180:Bool 1:Float 180)
+}
+if{fun string.equal(var 武器名:String 减速1)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_减速1(var 对齐方式:Float 0:Bool 1:Float 0)
+}
+if{fun string.equal(var 武器名:String 减速2)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_减速2(var 对齐方式:Float 0:Bool 1:Float 0)
+}
+if{fun string.equal(var 武器名:String 减速3)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_减速3(var 对齐方式:Float 0:Bool 1:Float 0)
+}
+if{fun string.equal(var 武器名:String 减速4)
+  Canvas 武器UI=act 1101./弹幕.通用武器动图'武器_减速4(var 对齐方式:Float 0:Bool 1:Float 0)
+}
+UIRect 武器根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+if{fun string.equal(var 武器名:String 加速1)
+  varf UIRect.图表特效图层_加速1.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 加速2)
+  varf UIRect.图表特效图层_加速2.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 加速3)
+  varf UIRect.图表特效图层_加速3.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 加速4)
+  varf UIRect.图表特效图层_加速4.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 减速1)
+  varf UIRect.图表特效图层_减速1.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 减速2)
+  varf UIRect.图表特效图层_减速2.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 减速3)
+  varf UIRect.图表特效图层_减速3.addSon(var 武器根节点)
+}
+if{fun string.equal(var 武器名:String 减速4)
+  varf UIRect.图表特效图层_减速4.addSon(var 武器根节点)
+}
+//武器UI绑定到队伍
+varf UIRect.武器根节点.setCustomUIRect(String 队伍根节点:var 队伍根节点)
+varf UIRect.武器根节点.setCustomStruct(String 队伍:var 目标队伍)
+varf UIRect.武器根节点.setCustomFloat(String 生效比例:var 生效比例)
+act 1101./弹幕.动画控制'UI_关联到父级节点(var 武器根节点:var 队伍根节点)
+//如果队伍的同名位置未绑定武器,则绑定此武器UI
+Dict 关联武器=varf UIRect.队伍根节点.customDict(String 关联武器)
+Bool 已绑定武器=varf Dict.关联武器.contains(var 武器名)
+if{fun bool.not(var 已绑定武器)
+  varf Dict.关联武器.insert(var 武器名:var 武器UI)
+}
+//设置入场动画
+act 1101./弹幕.通用武器动图'添加常驻武器入场动画(var 武器UI)
+//点击这里写注释
+endcode

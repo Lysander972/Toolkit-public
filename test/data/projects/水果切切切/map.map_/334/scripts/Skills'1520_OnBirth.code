@@ -1,0 +1,5 @@
+begincodeV2
+name:Skills'1520_OnBirth
+lines:
+Long Skill'1520=fun create.long(Long 1)
+endcode

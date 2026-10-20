@@ -1,0 +1,20 @@
+begincodeV2
+color:255,0,0
+name:得到礼物'点赞
+params:Long $count,Struct $player
+lines:
+//这里从结构中得到score这个数据后，后面直接修改score就会直接改变结构里面的积分的数值，而不需要再设置进去
+Long $score=varf Struct.$player.getLong(String score:Bool 0)
+Long $likes=varf Struct.$player.getLong(String likes:Bool 0)
+if{fun long.gt(var $count:Long 0)
+  varf Long.$score.addEqual(var $count)
+  varf Long.ScorePool.addEqual(var $count)
+  varf Long.$likes.addEqual(Long 1)
+}
+//下面开始做点赞的具体处理
+Long $team=varf Struct.$player.getLong(String team:Bool 0)
+Long 强化子弹数=fun long.multiply(var $count:Long 5)
+act 1101./Scenario.Base'AddBullet(var $team:String 1:var 强化子弹数:var $player)
+Long 普通子弹数=fun long.multiply(var $count:Long 5)
+act 1101./Scenario.Base'AddBullet(var $team:String 0:var 普通子弹数:var $player)
+endcode

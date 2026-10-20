@@ -1,0 +1,13 @@
+begincodeV2
+guid:39fbeda0f7b84b9298e6da1e80dc9a88
+name:Utils'AzimuthToVector
+comment:方位角到局部
+params:Vector3 azimuth
+return:Vector3 ret
+lines:
+Float xF=varf Vector3.azimuth.x()
+Vector3 temp=fun vector3.rotateAround(Vector3 0,0,1:Vector3 0,1,0:var xF)
+Float yF=varf Vector3.azimuth.y()
+Vector3 axis=fun vector3.cross(var temp:Vector3 0,1,0)
+Vector3 ret=fun vector3.rotateAround(var temp:var axis:var yF)
+endcode

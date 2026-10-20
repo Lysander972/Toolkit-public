@@ -1,0 +1,9 @@
+begincodeV2
+guid:b8318155176c4c639b486e564b5445b6
+name:Generic'AnimationInterface
+params:Vector3 $start,Vector3 $end,Vector3 $front,Vector3 $up,Float $duration,Float $angleOnStart,Float $angleOnEnd
+return:Bool $ret
+lines:
+Device $this=act 1.this.getDevice()
+Bool $ret=varf Device.$this.callReturnBool7(String Generic'PlayAnimationAsModel:var $start:var $end:var $front:var $up:var $duration:var $angleOnStart:var $angleOnEnd)
+endcode

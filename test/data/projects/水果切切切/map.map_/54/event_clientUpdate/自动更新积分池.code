@@ -1,0 +1,13 @@
+begincodeV2
+name:自动更新积分池
+lines:
+if{fun create.bool(var 状态值'自动保存积分需求)
+  Bool 状态值'自动保存积分需求=fun create.bool(Bool 0)
+  if{fun create.bool(var GameStart)
+    Dict data=fun map.load()
+    Long 积分保护=fun long.add(var LastScorePool:var ScorePool)
+    varf Dict.data.insert(String LastScorePool:var 积分保护)
+    act 1101.this.存档'上传(Bool 0)
+  }
+}
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+skip:1
+name:撞击转发
+lines:
+Mech from=varf Device.$attacker.mech()
+varf Mech.格子.callFun2(String Public'OnCollision:var from:var $pos)
+endcode

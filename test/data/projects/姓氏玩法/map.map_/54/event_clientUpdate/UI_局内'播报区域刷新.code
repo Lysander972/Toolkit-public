@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'播报区域刷新
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  act 1101.this.播报刷新'刷新组内(Bool 1:var UI_局内'播报区域:var UI_局内'播报展示列表:var UI_局内'播报等待列表:Float 800)
+}
+endcode

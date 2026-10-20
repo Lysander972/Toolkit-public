@@ -1,0 +1,30 @@
+begincodeV2
+color:255,0,228
+name:播报'下方抽中奖品
+params:String text,Struct player,Long value
+lines:
+if{fun bool.not(var 模式'启用充能)
+  fun break()
+}
+Float valueF=varf Long.value.toFloat()
+Float 优先级=fun float.multiply(Float 0.05:var valueF)
+Float 优先级=fun float.max(var 优先级:Float 5)
+Float 播放时长=fun create.float(Float 2)
+Float 强度=fun create.float(Float 0)
+if{fun float.gte(var valueF:Float 10)
+  Float 强度=fun create.float(Float 0.3)
+}
+if{fun float.gte(var valueF:Float 19)
+  Float 强度=fun create.float(Float 0.5)
+}
+if{fun float.gte(var valueF:Float 52)
+  Float 播放时长=fun create.float(Float 3)
+  Float 强度=fun create.float(Float 0.7)
+}
+if{fun float.gte(var valueF:Float 99)
+  Float 强度=fun create.float(Float 1)
+}
+Canvas canvas=act 1101.this.播报元素'标准布局填充(var player:var text:Long 0:Bool 0:var 强度)
+varf List.播报'等待队列右.add(var canvas)
+act 1101.this.播报元素'注册(var canvas:var 优先级:var 播放时长)
+endcode

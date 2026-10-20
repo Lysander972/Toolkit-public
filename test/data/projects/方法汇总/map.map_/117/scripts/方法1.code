@@ -1,0 +1,11 @@
+begincodeV2
+name:方法1
+lines:
+act 134.this.setRange(Float 0)
+act 134.this.setThickness(Float 0)
+act 134.this.setShake(Float 0)
+act 134.this.setColor(Color 0,0,0,255)
+act 134.this.setMesh(String )
+act 134.this.setDynamicShader(String )
+act 134.this.setPaintColor(Color 0,0,0,255:Bool 0)
+endcode

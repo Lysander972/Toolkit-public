@@ -1,0 +1,60 @@
+begincodeV2
+name:测试'模拟礼物
+params:String word,Dict D
+return:Bool ok
+lines:
+Float 字数=varf String.word.length()
+if{fun float.lt(var 字数:Float 3)
+  fun break()
+}
+Long 礼物数=fun create.long(Long 1)
+List splits=varf String.word.split(String  )
+Float N=varf List.splits.count()
+if{fun float.Approximately(var N:Float 2)
+  String c=varf List.splits.readString(Float 1)
+  Long 礼物数=varf String.c.toLong()
+  String word=varf List.splits.readString(Float 0)
+  if{fun float.lt(var 字数:Float 3)
+    fun break()
+  }
+}
+Long 礼物数=fun long.max(var 礼物数:Long 1)
+varf Dict.D.insert(String num:var 礼物数)
+Bool ok=fun create.bool(Bool 0)
+if{fun string.equal(var word:String 礼物1)
+  Bool ok=fun create.bool(Bool 1)
+  String gift=fun create.string(String 仙女棒)
+  varf Dict.D.insert(String gift:var gift)
+  act 1101.this.BarrageHandler'Gift(var D)
+}
+if{fun string.equal(var word:String 礼物2)
+  Bool ok=fun create.bool(Bool 1)
+  String gift=fun create.string(String 能力药丸)
+  varf Dict.D.insert(String gift:var gift)
+  act 1101.this.BarrageHandler'Gift(var D)
+}
+if{fun string.equal(var word:String 礼物3)
+  Bool ok=fun create.bool(Bool 1)
+  String gift=fun create.string(String 魔法镜)
+  varf Dict.D.insert(String gift:var gift)
+  act 1101.this.BarrageHandler'Gift(var D)
+}
+if{fun string.equal(var word:String 礼物4)
+  Bool ok=fun create.bool(Bool 1)
+  String gift=fun create.string(String 甜甜圈)
+  varf Dict.D.insert(String gift:var gift)
+  act 1101.this.BarrageHandler'Gift(var D)
+}
+if{fun string.equal(var word:String 礼物5)
+  Bool ok=fun create.bool(Bool 1)
+  String gift=fun create.string(String 能量电池)
+  varf Dict.D.insert(String gift:var gift)
+  act 1101.this.BarrageHandler'Gift(var D)
+}
+if{fun string.equal(var word:String 礼物6)
+  Bool ok=fun create.bool(Bool 1)
+  String gift=fun create.string(String 恶魔炸弹)
+  varf Dict.D.insert(String gift:var gift)
+  act 1101.this.BarrageHandler'Gift(var D)
+}
+endcode

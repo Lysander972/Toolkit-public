@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../res/schemas/package.json",
+  "name": "@toolkit/script",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./ts_text": "./ts_text/TsViewText.ts",
+    "./conversion": "./conversion/BescriptConverter.ts",
+    "./ts_conversion": "./ts_conversion/DeviceTsConverter.ts",
+    "./inline_canvas": "./ts_conversion/ConstantMapping.ts",
+    "./vocabulary": "./vocabulary/Vocabulary.ts",
+    "./code_file": "./code_file/CodeFile.ts",
+    "./local_ast": "./local_ast/LocalAst.ts",
+    "./device_context": "./device_context/DeviceContext.ts",
+    "./device_metadata": "./device_context/DeviceMetadata.ts",
+    "./global_variables": "./device_context/GlobalVariables.ts",
+    "./script_list": "./device_context/ScriptList.ts"
+  },
+  "dependencies": {
+    "@toolkit/project-model": "workspace:*",
+    "@toolkit/canvas": "workspace:*",
+    "chevrotain": "13.2.0",
+    "effect": "4.0.0",
+    "hjson": "3.2.2",
+    "typescript": "5.9.3",
+    "zod": "4.6.4"
+  }
+}

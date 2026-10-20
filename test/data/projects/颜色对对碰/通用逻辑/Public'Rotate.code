@@ -1,0 +1,8 @@
+begincodeV2
+guid:c1e4e13e45fd481b9b54b9251215742a
+name:Public'Rotate
+params:Float $angle
+lines:
+/*fun debug.print(var $angle:Color 255,255,255,255:Bool 0)
+/*Float $angle=fun float.minus(Float 180:var $angle)
+endcode

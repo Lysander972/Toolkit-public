@@ -1,0 +1,27 @@
+guid:5b6d3d5dae4342d3b958546d4e95aff5
+meshes:
+[
+ {
+  n:平面
+ }
+]
+matFolderName:eeecc5c31a0b48c0a7c7405fc3c624b0
+Emission.UID:eeecc5c31a0b48c0a7c7405fc3c624b0
+shaderName:"Shader Graphs/Emmit"
+shader:
+[
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+ {
+  n:_Repeat
+  type:Float
+  v:5
+ }
+]
+rotation:[270,0,0]
+scale:10
+bounds.center:[0,0,0]
+bounds.size:[2,2.384186E-07,2]

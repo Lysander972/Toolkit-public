@@ -1,0 +1,31 @@
+begincodeV2
+name:物理效果'缩放渐变动画
+lines:
+Float 当前时间=fun time.scaleTime()
+Float delta=fun float.minus(var 当前时间:var 物理效果'缩放开始时间)
+Float 动画比例=fun float.division(var delta:Float 0.5)
+Float 动画比例=fun float.clamp(var 动画比例:Float 0:Float 1)
+Float 新缩放=fun float.SmoothStep(var 物理效果'缩放初始值:var 物理效果'缩放目标值:var 动画比例)
+Float 新缩放=fun float.max(var 新缩放:Float 0.01)
+Float 物理效果'缩放当前值=fun create.float(var 新缩放)
+Device this=act 1.this.getDevice()
+varf Device.this.SetScale(var 物理效果'缩放当前值)
+varf Mech.Self.setCustomFloat(String 缩放标志位:var 物理效果'缩放当前值)
+/*varf Mech.Self.scale(var 物理效果'缩放当前值)
+if{fun long.equal(var Attr'Type:Long 21)
+  Vector3 世界坐标=act 1.this.getPosition()
+  Float y=varf Vector3.世界坐标.y()
+  if{fun float.lt(var y:Float 0)
+    varf Vector3.世界坐标.setY(Float 0)
+    act 1.this.setPosKinematic(var 世界坐标)
+  }
+}
+Float 质量乘数=fun float.pow(var 物理效果'缩放当前值:Float 4)
+Float mass=fun float.multiply(Float 50:var 质量乘数)
+act 1.this.Public'SetWeight(var mass)
+/*Float 阻力=fun float.multiply(var mass:Float 0.05)
+/*varf Mech.Self.setDrag(var 阻力)
+if{fun float.gte(var 动画比例:Float 1)
+  act 1.this.物理效果'缩放结束渐变()
+}
+endcode

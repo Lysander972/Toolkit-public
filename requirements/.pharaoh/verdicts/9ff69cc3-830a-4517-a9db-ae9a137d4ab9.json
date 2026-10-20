@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "来源四个 Git blob 完全一致，严格 Sphinx 构建已经通过；当前批次完整提交门禁待最终暂存后验收。",
+      "score": 1,
+      "suggestion": "以最终 index 的 check:commit 和 HEAD 验证作为本批终态证据。"
+    },
+    "parent_fit": {
+      "reason": "以四份完整来源和唯一解读实现 PR3 边界，保持既有架构权威，源码与测试通过既有绑定节点继承而非新造没有正文的实现节点。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "来源原文只搬迁，差异由解读明确表达；C4 登记路径同时迁移，旧文件删除后只有新路径作为现行来源。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
+  "reviewed_fingerprint": "630e88bf816189ee89a6b3bd0ac475f03df1a2fa88fae10c0f5516408339a04a",
+  "schema": 2,
+  "summary": "PR3 的来源、架构和全文绑定设计核对。"
+}

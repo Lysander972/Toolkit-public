@@ -1,0 +1,12 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍结构'设置_填充
+params:Struct 结构,Bool 填充
+lines:
+varf Struct.结构.set(String 填充:var 填充)
+if{fun bool.not(var 填充)
+  Bool UI_局内'有玩家下场=fun create.bool(Bool 1)
+}
+act 1101.this.队伍结构'更新_internal_value(var 结构)
+endcode

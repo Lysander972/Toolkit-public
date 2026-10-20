@@ -1,0 +1,20 @@
+begincodeV2
+name:按钮颜色刷新
+lines:
+UIButton b=varf Canvas.世界榜UI.readUIButton(String panel/base/周榜按钮)
+Long 预期种类id=fun create.long(Long 0)
+if{fun long.equal(var 排行榜种类:var 预期种类id)
+  varf UIButton.b.setColor(Color 536,517,0,255)
+}
+if{fun long.notEqual(var 排行榜种类:var 预期种类id)
+  varf UIButton.b.setColor(Color 277,277,277,255)
+}
+UIButton b=varf Canvas.世界榜UI.readUIButton(String panel/base/月榜按钮)
+Long 预期种类id=fun create.long(Long 1)
+if{fun long.equal(var 排行榜种类:var 预期种类id)
+  varf UIButton.b.setColor(Color 536,517,0,255)
+}
+if{fun long.notEqual(var 排行榜种类:var 预期种类id)
+  varf UIButton.b.setColor(Color 277,277,277,255)
+}
+endcode

@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:边界
+ mechFileGUID:713f3d1170c347dd96e81f23d1e91d17
+}

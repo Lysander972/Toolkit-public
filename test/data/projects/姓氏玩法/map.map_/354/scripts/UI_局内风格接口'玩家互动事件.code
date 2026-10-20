@@ -1,0 +1,62 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'玩家互动事件
+params:Struct 玩家,Struct 发起者队伍,Struct 目标队伍,Long 事件类型,Dict 事件,Long 层数
+lines:
+if{fun long.equal(var 事件类型:Long 0)
+  =act 1101./弹幕.玩家结构'读取_name(var 玩家:Bool 0)
+  fun break()
+}
+if{fun long.equal(var 事件类型:Long 1)
+  fun break()
+}
+//点赞加速
+if{fun long.equal(var 事件类型:Long 2)
+  act 1101.this.内部'特效_点赞(var 发起者队伍)
+  fun break()
+}
+//其他的都需要武器形式展示
+if{fun long.equal(var 事件类型:Long 3)
+  String 武器名=fun create.string(String 减速1)
+  Float 生效比例=fun create.float(Float 1)
+}
+if{fun long.equal(var 事件类型:Long 10)
+  String 武器名=fun create.string(String 加速1)
+  Float 生效比例=fun create.float(Float 1)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 1)
+}
+if{fun long.equal(var 事件类型:Long 11)
+  String 武器名=fun create.string(String 减速2)
+  Float 生效比例=fun create.float(Float 0.25)
+}
+if{fun long.equal(var 事件类型:Long 13)
+  String 武器名=fun create.string(String 加速2)
+  Float 生效比例=fun create.float(Float 1)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 2)
+}
+if{fun long.equal(var 事件类型:Long 14)
+  String 武器名=fun create.string(String 减速3)
+  Float 生效比例=fun create.float(Float 0.125)
+}
+if{fun long.equal(var 事件类型:Long 15)
+  String 武器名=fun create.string(String 加速3)
+  Float 生效比例=fun create.float(Float 1)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 3)
+}
+if{fun long.equal(var 事件类型:Long 16)
+  String 武器名=fun create.string(String 减速4)
+  Float 生效比例=fun create.float(Float 0.125)
+}
+if{fun long.equal(var 事件类型:Long 17)
+  String 武器名=fun create.string(String 加速4)
+  Float 生效比例=fun create.float(Float 1)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 4)
+}
+//无论是否存在武器,都创建武器
+Canvas 武器UI=act 1101.this.内部'队伍UI_创建武器(var 目标队伍:var 武器名:var 生效比例)
+//把事件挂载到武器上
+act 1101./弹幕.通用武器动图'挂载延迟事件(var 武器UI:var 事件)
+//把层数作为武器当前层数
+act 1101./弹幕.通用武器动图'附加层数修改(var 武器UI:var 层数)
+//武器上的层数和事件会在入场结束后转交给已挂载的另一个武器,如果有另外的已存在武器
+endcode

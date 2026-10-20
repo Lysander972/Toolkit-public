@@ -1,0 +1,45 @@
+begincodeV2
+skip:1
+name:变形板厚度调节
+lines:
+if{fun bool.not(var 初始化)
+  Canvas 布局=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgJiZwNQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgCAAAAAAAAAAZhbmNob3IYAgAAAAAAAAAEc2l6ZQQAABZEAAAvRAAAgD8FY29sb3IMAAAAAAAAAAAAAAAAIWzTPQtCb3JkZXJXaWR0aAEAAIC/BlJhZGl1cwEAAAAABHNvbnMQAwARCgAEdHlwZQYHVUlJbnB1dARuYW1lBgzpooTmnJ/ljprluqYDUG9zBAAAAAAAAMhCAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAABIQwAASEIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8EdGV4dAYBPwhGb250U2l6ZQEAAABCCmxhYmVsQ29sb3IMAAAAAAAAAAAAAAAAAACAPxEJAAR0eXBlBgdVSUxhYmVsBG5hbWUGBWxhYmVsA1BvcwQAAAAAAABIQwAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAASEMAAEhCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGAT8IRm9udFNpemUBAAAAQhEKAAR0eXBlBghVSUJ1dHRvbgRuYW1lBgborr7nva4DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAABIQwAAjEIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAPwZSYWRpdXMBAAAAAAVsYWJlbAYG6K6+572u)
+  UILabel 显示=varf Canvas.布局.readUILabel(String bg/label)
+  UIInput 预期厚度输入=varf Canvas.布局.readUIInput(String bg/预期厚度)
+  UIButton 设置=varf Canvas.布局.readUIButton(String bg/设置)
+  Bool 初始化=fun create.bool(Bool 1)
+}
+Device d=fun mech.focusDevice()
+Bool work=fun create.bool(Bool 0)
+String 提示=fun create.string(String 未选中)
+if{fun mech.deviceNotNull(var d)
+  String 提示=fun create.string(String 选中非变色板)
+  if{fun mech.deviceIs(var d:Float 112)
+    String 提示=fun create.string(String 选中变色板)
+    Bool work=fun create.bool(Bool 1)
+  }
+}
+varf UILabel.显示.text(var 提示)
+if{varf UIButton.设置.isDown()
+  if{fun create.bool(var work)
+    fun debug.enable(Bool 1)
+/*    Vector3 中心坐标=dvf d.Device.getCenterPos()
+    Vector3 起点=dvf d.Device.localToWorldPos(Vector3 0,1,0.1)
+    Vector3 方向=dvf d.Device.localToWorldDir(Vector3 0,-1,0)
+    Struct 探测结果=fun raycast2(var 起点:var 方向)
+    String 信息=varf Struct.探测结果.detail()
+    fun debug.print(var 信息:Color 255,255,255,255:Bool 0)
+    Vector3 交点=varf Struct.探测结果.getVector3(String pos:Bool 0)
+    Vector3 零件局部=dvf d.Device.worldToLocalPos(var 交点)
+    Float 实际厚度=varf Vector3.零件局部.y()
+    Float 原厚度参数=dvf d.RepeatDevice.getY()
+    Float 比值=fun float.division(var 实际厚度:var 原厚度参数)
+    String 预期厚度文字=varf UIInput.预期厚度输入.getText()
+    Float 预期厚度=varf String.预期厚度文字.toFloat()
+    Float 系数=fun float.division(var 预期厚度:var 比值)
+    Float 系数=fun float.multiply(var 系数:Float 0.5)
+    dvf d.RepeatDevice.setY(var 系数)
+    fun debug.enable(Bool 0)
+  }
+}
+endcode

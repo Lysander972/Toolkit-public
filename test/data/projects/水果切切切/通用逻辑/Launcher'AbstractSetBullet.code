@@ -1,0 +1,14 @@
+begincodeV2
+guid:bcd55d0251534fe1a88f90d4bf771183
+color:255,0,0
+name:Launcher'AbstractSetBullet
+comment:放置子弹的抽象接口
+params:Vector3 position,Vector3 direction,Long type,Long faction,Struct player,Float HPMul,Float crit,Float initHp,Bool useManualSpeed,Float manualSpeed
+return:Bool ret
+lines:
+Vector3 position=fun vector3.add(var position:var BulletOffset)
+if{fun bool.not(var useManualSpeed)
+  Float manualSpeed=fun create.float(Float -1)
+}
+Bool ret=varf Device.map_handler.callReturnBool9(String Bullet'SetBullet:var position:var direction:var type:var faction:var player:var HPMul:var crit:var initHp:var manualSpeed)
+endcode

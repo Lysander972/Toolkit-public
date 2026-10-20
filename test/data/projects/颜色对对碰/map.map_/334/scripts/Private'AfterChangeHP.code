@@ -1,0 +1,13 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'AfterChangeHP
+comment:HP变更后
+params:Float $oldHP,Float $newHP
+lines:
+if{fun create.bool(var Advanced)
+  act 1.this.Private_UI'Refresh(var $newHP)
+}
+fun break()
+=fun create.float(var $oldHP)
+endcode

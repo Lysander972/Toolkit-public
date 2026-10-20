@@ -1,0 +1,29 @@
+begincodeV2
+name:工具'字符串_是汉字
+comment:输入必须单一字符
+params:String 字符串
+return:Bool 是汉字
+lines:
+Bool 是汉字=fun create.bool(Bool 0)
+Float 长度=varf String.字符串.length()
+if{fun float.notEqual(var 长度:Float 1)
+  fun break()
+}
+//Unicode基本汉字 4E00-9FA5
+Bool 是汉字=act 1101.this.工具'字符串_在范围内(var 字符串:String 一:String 龥)
+if{fun create.bool(var 是汉字)
+  fun break()
+}
+//Unicode基本汉字补充 9FA6-9FFF
+Bool 是汉字=act 1101.this.工具'字符串_在范围内(var 字符串:String 龦:String 鿿)
+if{fun create.bool(var 是汉字)
+  fun break()
+}
+//Unicode扩展A 3400-4DBF
+Bool 是汉字=act 1101.this.工具'字符串_在范围内(var 字符串:String 㐀:String 䶿)
+if{fun create.bool(var 是汉字)
+  fun break()
+}
+//〇
+Bool 是汉字=fun string.equal(var 字符串:String 〇)
+endcode

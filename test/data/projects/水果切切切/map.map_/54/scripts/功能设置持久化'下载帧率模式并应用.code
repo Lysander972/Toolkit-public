@@ -1,0 +1,10 @@
+begincodeV2
+name:功能设置持久化'下载帧率模式并应用
+lines:
+Long 功能设置'帧率模式=fun create.long(Long 0)
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 帧率模式存档标志位)
+  Long 功能设置'帧率模式=varf Dict.data.readLong(String 帧率模式存档标志位:Bool 0)
+}
+act 1101.this.UI_功能面板'应用并刷新帧率模式显示()
+endcode

@@ -1,0 +1,15 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'AfterChangeHP
+comment:HP变更后
+params:Float oldHP,Float newHP
+lines:
+fun break()
+=fun create.float(var oldHP)
+=fun create.float(var newHP)
+/*Float 血量比例=fun float.division(var newHP:var maxHP)
+/*if{varf UIRect.填充条组件.exist()
+/*  varf UIRect.填充条组件.fillMode(Enum 0:var 血量比例)
+}
+endcode

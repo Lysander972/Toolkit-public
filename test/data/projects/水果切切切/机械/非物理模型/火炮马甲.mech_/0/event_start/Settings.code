@@ -1,0 +1,12 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setMass(Float 1)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.enableCollide(Bool 0)
+act 362./本体.setMass(Float 0)
+act 362./本体.setLayer(Float 0)
+act 362./本体.show(Bool 1)
+act 362./本体.switchCollider(Bool 0)
+endcode

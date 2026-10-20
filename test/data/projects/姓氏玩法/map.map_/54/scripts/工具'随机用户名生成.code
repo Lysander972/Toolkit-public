@@ -1,0 +1,16 @@
+begincodeV2
+color:255,255,255
+name:工具'随机用户名生成
+return:String ret
+lines:
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3生成AI角色名@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+List 角色名列表=fun map.excelGetIDList2(String 随机名称_中文)
+Float 角色名数=varf List.角色名列表.count()
+Long 转为整数=varf Float.角色名数.toLong()
+Long 角色名数量=fun long.minus(var 转为整数:Long 1)
+Long 序号1=fun long.rand(Long 0:var 角色名数量)
+String AI名称1=fun readExcel2_String(var 序号1:String name1:String 随机名称_中文)
+Long 序号2=fun long.rand(Long 0:var 角色名数量)
+String AI名称2=fun readExcel2_String(var 序号2:String name2:String 随机名称_中文)
+String ret=fun string.add(var AI名称1:var AI名称2)
+endcode

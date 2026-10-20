@@ -1,0 +1,22 @@
+begincodeV2
+name:两侧排列'位置号到排名
+params:Float 位置
+return:Float 顺序位置
+lines:
+Float 位置数量=act 1101.this.工具'得到位置数量()
+Float 位置=act 1101.this.工具'取模操作(var 位置:var 位置数量)
+Float temp=fun float.minus(var 位置数量:Float 2)
+Float temp=fun float.division(var temp:Float 2)
+Float 计算阈值=varf Float.temp.floor()
+Bool 阈值内=fun float.lte(var 位置:var 计算阈值)
+/*Bool 阈值内=fun bool.not(var 阈值内)
+if{fun create.bool(var 阈值内)
+  Float 顺序位置=fun float.multiply(var 位置:Float 2)
+}
+if{fun bool.not(var 阈值内)
+  Float temp=fun float.minus1(var 位置数量:Float 1:var 位置)
+  Float 顺序位置=fun float.multiply(var temp:Float 2)
+  Float 顺序位置=fun float.add(var 顺序位置:Float 1)
+}
+Float 顺序位置=act 1101.this.工具'取模操作(var 顺序位置:var 位置数量)
+endcode

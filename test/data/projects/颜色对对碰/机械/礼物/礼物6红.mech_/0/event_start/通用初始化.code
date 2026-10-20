@@ -1,0 +1,14 @@
+begincodeV2
+name:通用初始化
+lines:
+Mech $self=act 1.this.getMech()
+varf Mech.$self.enablePhysics(Bool 0)
+act 1.this.show(Bool 0)
+act 1.this.switchCollider(Bool 0)
+act 362.1.switchCollider(Bool 0)
+act 362.1.setDynamicMatPic(String _MainTex:String PolygonSciFiSpace_Texture_02_A.png)
+act 242./左1.switchCollider(Bool 0)
+act 242./右1.switchCollider(Bool 0)
+act 242./左2.switchCollider(Bool 0)
+act 242./右2.switchCollider(Bool 0)
+endcode

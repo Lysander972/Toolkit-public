@@ -1,0 +1,103 @@
+begincodeV2
+name:内部'每帧刷新_更新摄像机_目标切换
+lines:
+Bool 摄像机'存在手动操作=fun create.bool(Bool 0)
+//鼠标拖动导致的锁定位置更新
+Vector3 屏幕分辨率=fun screen.size()
+Float 屏幕x=varf Vector3.屏幕分辨率.x()
+Float 屏幕y=varf Vector3.屏幕分辨率.y()
+Vector3 UI尺寸=fun screen.uiSize()
+Float UIx=varf Vector3.UI尺寸.x()
+Float UIy=varf Vector3.UI尺寸.y()
+Vector3 鼠标位移=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+if{varf UIButton.拖动监听区.pressing()
+  Vector3 鼠标位移=act 1101./弹幕.工具'得到鼠标位移()
+  Float x=varf Vector3.鼠标位移.x()
+  Float y=varf Vector3.鼠标位移.y()
+  Float x=fun float.division(var x:var 屏幕x)
+  Float x=fun float.multiply(var x:var UIx)
+  Float y=fun float.division(var y:var 屏幕y)
+  Float y=fun float.multiply(var y:var UIy)
+  Vector3 鼠标位移=fun creatVariable.Vector3(var x:var y:Float 0)
+}
+Float 基准值=fun create.float(var 摄像机'看向位置序号)
+if{fun create.bool(var 摄像机'自动跟随中)
+  Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 摄像机'自动跟随队伍id:Bool 1)
+  Struct 队伍=varf Struct.队伍映射.getStruct(String 队伍:Bool 0)
+  Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(var 队伍排名)
+}
+if{fun vector3.notEqual(var 鼠标位移:Vector3 0,0,0)
+  //记录虚拟的瞄准位置,此位置是连续的
+  Float 摄像机旋转相位=varf Vector3.鼠标位移.x()
+  Float 摄像机旋转相位=fun float.division(var 摄像机旋转相位:Float 300)
+  varf Float.基准值.addEqual(var 摄像机旋转相位)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 96)
+  Float 基准值=fun float.add(var 基准值:Float 1)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 95)
+  Float 基准值=fun float.minus(var 基准值:Float 1)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 45)
+  Float 基准值=fun float.add(var 基准值:Float 1)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 48)
+  Float 基准值=fun float.minus(var 基准值:Float 1)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 22)
+  Float 最后一名序号=fun float.minus(var 场景'真实队伍数量:Float 1)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(var 最后一名序号)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 23)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 0)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 24)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 1)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 25)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 2)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 26)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 3)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 27)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 4)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 28)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 5)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 29)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 6)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 30)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 7)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 31)
+  Float 基准值=act 1101.this.工具'排名到位置号映射(Float 8)
+  Bool 摄像机'存在手动操作=fun create.bool(Bool 1)
+}
+if{fun create.bool(var 摄像机'存在手动操作)
+  //只要有手动操作,那么就会强制取消跟随队伍,且以当前视角@4如果是跟随队伍则以队伍位置为准@5为基准进行调整
+  Bool 摄像机'自动跟随中=fun create.bool(Bool 0)
+  //然后把此虚拟位置转换为符合范围限制的
+  Float 摄像机'看向位置序号=act 1101.this.工具'取模操作(var 基准值:var 场景'位置数量)
+  //下一步检查看向位置,确定锁定位置是否需要更新
+  Float 下取整=varf Float.摄像机'看向位置序号.floor()
+  Float 摄像机'锁定位置=act 1101.this.工具'取模操作(var 下取整:var 场景'位置数量)
+}
+endcode

@@ -1,0 +1,10 @@
+begincodeV2
+guid:91a85168d4d0404fbdef0a7e0d28e293
+color:255,255,255
+name:玩家结构'读取_score
+comment:读取玩家分数
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String score:Bool 0)
+endcode

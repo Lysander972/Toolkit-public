@@ -1,0 +1,7 @@
+begincodeV2
+name:造成伤害
+lines:
+Mech mech=varf Device.$trigger.mech()
+Device core=varf Mech.mech.getCoreDevice()
+varf Device.core.callFun0(String Public'ForceKill)
+endcode

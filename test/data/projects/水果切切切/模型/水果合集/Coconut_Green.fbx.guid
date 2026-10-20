@@ -1,0 +1,35 @@
+guid:f9c8f43360a44a6dbbc9ade32c5924a6
+meshes:
+[
+ {
+  n:Coconut_Green
+ }
+]
+matFolderName:ef911e8ce63b4bdd82cf91b98a74e36b
+Albedo.UID:ef911e8ce63b4bdd82cf91b98a74e36b
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:4
+OriginType:1
+ColliderRadius:0.8
+bounds.center:[0,0,0]
+bounds.size:[0.4802814,0.5715225,0.4567748]

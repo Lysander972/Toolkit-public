@@ -1,0 +1,14 @@
+begincodeV2
+guid:5f42e00dd329449cbbadaab723ab530d
+color:255,0,0
+name:Launcher'PlaceByPolar
+comment:按极坐标放置子弹
+params:Long $type,Float $maxD,Struct $player
+return:Bool $ret
+lines:
+Float $d=fun math.rand(Float 0:var $maxD)
+Float $a=fun math.rand(Float 0:Float 360)
+Vector3 $v=fun creatVariable.Vector3(var $d:Float 0:Float 0)
+Vector3 $position=fun vector3.rotateAround(var $v:Vector3 0,1,0:var $a)
+Bool $ret=act 1.this.Launcher'PlaceBullet(var $type:var $position:var $player)
+endcode

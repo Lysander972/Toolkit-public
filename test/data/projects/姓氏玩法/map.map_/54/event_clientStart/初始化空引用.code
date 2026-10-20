@@ -1,0 +1,11 @@
+begincodeV2
+name:初始化空引用
+lines:
+Struct 局内'空队伍占位符=fun create.struct()
+Bool 是队伍=fun create.bool(Bool 0)
+varf Struct.局内'空队伍占位符.set(String 是队伍:var 是队伍)
+Bool 局内'启用调试输出=fun create.bool(Bool 0)
+if{act 1101./主界面.工具'是GM()
+  Bool 局内'启用调试输出=fun create.bool(Bool 1)
+}
+endcode

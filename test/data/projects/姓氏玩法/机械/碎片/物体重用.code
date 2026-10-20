@@ -1,0 +1,53 @@
+begincodeV2
+guid:b0d11b448ca142f0800a5b1124662f7e
+name:物体重用
+params:Vector3 坐标,Vector3 向前方向,Vector3 向上方向,Float 大小,Float 爆裂力量,Vector3 初速度
+lines:
+Mech this=act 1.this.getMech()
+varf Mech.this.scale(var 大小)
+varf Mech.this.enablePhysics(Bool 1)
+delay fun create.float(Float 0)
+Float N=varf Mech.this.deviceNum()
+Float i=fun create.float(Float 1)
+while{fun float.lt(var i:var N)
+  Device D=varf Mech.this.getDevice(var i)
+  Float type=varf Device.D.typeID()
+  if{fun float.Approximately(var type:Float 362)
+    varf Device.D.setVelocity(var 初速度)
+    varf Device.D.setAngularVelocity(Vector3 0,0,0)
+    varf Device.D.setPosKinematic(var 坐标)
+    varf Device.D.setRotKinematic(var 向前方向:var 向上方向)
+    varf Device.D.setDrag(Float 5)
+/*    Float x=fun math.rand(Float -1:Float 1)
+/*    Float y=fun math.rand(Float -1:Float 1)
+/*    Float z=fun math.rand(Float -1:Float 1)
+/*    Vector3 off=fun creatVariable.Vector3(var x:var y:var z)
+/*    Vector3 off=varf Vector3.off.setLength(var 爆裂力量)
+/*    varf Device.D.addForce(var off:Enum 2)
+  }
+  varf Float.i.addEqual(Float 1)
+}
+Float 延迟时间=act 1.this.读取(String 碎片延迟时间:Float 0.1:Float 0:Float 5:Color 0,0,0,255)
+delay fun create.float(var 延迟时间)
+Float N=varf Mech.this.deviceNum()
+Float i=fun create.float(Float 1)
+while{fun float.lt(var i:var N)
+  Device D=varf Mech.this.getDevice(var i)
+  Float type=varf Device.D.typeID()
+  if{fun float.Approximately(var type:Float 362)
+    Float x=fun math.rand(Float -1:Float 1)
+    Float y=fun math.rand(Float -1:Float 1)
+    Float z=fun math.rand(Float -1:Float 1)
+    Vector3 off=fun creatVariable.Vector3(var x:var y:var z)
+    Vector3 off=varf Vector3.off.setLength(var 爆裂力量)
+    varf Device.D.addForce(var off:Enum 2)
+    varf Device.D.setDrag(Float 0)
+  }
+  varf Float.i.addEqual(Float 1)
+}
+Float 剩余等待=fun float.minus(Float 5:var 延迟时间)
+delay fun create.float(var 剩余等待)
+act 1.this.die()
+/*String modelkey=fun create.string(String 碎片)
+/*act 1.this.callMapFunc2(String Scenario.GiftModel'OnReclaim:var this:var modelkey)
+endcode

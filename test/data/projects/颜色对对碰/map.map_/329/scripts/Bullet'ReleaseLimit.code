@@ -1,0 +1,18 @@
+begincodeV2
+name:Bullet'ReleaseLimit
+comment:释放子弹上限
+params:Long $type,Long $faction
+lines:
+String $bulletKey=fun create.string(var $type)
+Struct $info=varf Struct.BulletRegInfo.getStruct(var $bulletKey:Bool 0)
+if{fun long.equal(var $faction:Long 1)
+  Long $team1Current=varf Struct.$info.getLong(String team1Current:Bool 0)
+  varf Long.$team1Current.minusEqual(Long 1)
+}
+if{fun long.equal(var $faction:Long 2)
+  Long $team2Current=varf Struct.$info.getLong(String team2Current:Bool 0)
+  varf Long.$team2Current.minusEqual(Long 1)
+}
+Long $globalCurrent=varf Struct.$info.getLong(String globalCurrent:Bool 0)
+varf Long.$globalCurrent.minusEqual(Long 1)
+endcode

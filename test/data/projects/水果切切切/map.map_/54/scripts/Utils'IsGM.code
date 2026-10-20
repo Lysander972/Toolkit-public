@@ -1,0 +1,7 @@
+begincodeV2
+color:255,243,0
+name:Utils'IsGM
+return:Bool ret
+lines:
+Bool ret=fun create.bool(var IsGM)
+endcode

@@ -1,0 +1,15 @@
+type:1
+pos:[0,0,0]
+enableManualWeld:true
+attach:
+[
+ 1
+ 2
+ 3
+ 4
+ 5
+]
+ext:
+{
+ paintColor:[1,0.2031595,0,1]
+}

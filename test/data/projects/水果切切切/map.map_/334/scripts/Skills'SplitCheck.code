@@ -1,0 +1,52 @@
+begincodeV2
+name:Skills'SplitCheck
+params:Float 直接伤害,Float 未分裂额外伤害
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+Float HP比例=fun float.division(var Attr'HP:var Attr'maxHP)
+Bool 条件1=fun float.lte(var HP比例:Float 0.5)
+Bool 条件2=fun float.gt(var Attr'HP:var 直接伤害)
+Bool 分裂效果条件=fun bool.and1(var 条件1:var 条件2:var Attr'可分裂)
+if{fun create.bool(var 分裂效果条件)
+  //先扣血,再计算比例和均分
+  Float 伤害=fun create.float(var 直接伤害)
+  if{fun float.gt(var 伤害:Float 0)
+    Vector3 pos=act 1.this.getPosition()
+    act 1.this.Public'Damage(var 伤害:Long 2:var pos:Bool 0:Bool 1)
+  }
+  //苹果
+  Bool 条件1=fun long.equal(var Attr'Type:Long 1200)
+  Bool 条件2=fun long.equal(var Attr'Type:Long 1210)
+  Bool 条件3=fun long.equal(var Attr'Type:Long 1220)
+  Bool 条件4=fun long.equal(var Attr'Type:Long 1230)
+  if{fun bool.or2(var 条件1:var 条件2:var 条件3:var 条件4)
+    act 1.this.Skills'1200_Split()
+  }
+  //大西瓜
+  Bool 条件1=fun long.equal(var Attr'Type:Long 1610)
+  if{fun create.bool(var 条件1)
+    act 1.this.Skills'1610_Split()
+  }
+  //小西瓜
+  Bool 条件1=fun long.equal(var Attr'Type:Long 1620)
+  if{fun create.bool(var 条件1)
+    act 1.this.Skills'1620_Split()
+  }
+  //椰子
+  Bool 条件1=fun long.equal(var Attr'Type:Long 1900)
+  Bool 条件2=fun long.equal(var Attr'Type:Long 1910)
+  if{fun bool.or(var 条件1:var 条件2)
+    act 1.this.Skills'1900_Split()
+  }
+}
+if{fun bool.not(var 分裂效果条件)
+  //得到额外伤害
+  Float 伤害=fun float.add(var 直接伤害:var 未分裂额外伤害)
+  if{fun float.gt(var 伤害:Float 0)
+    Vector3 pos=act 1.this.getPosition()
+    act 1.this.Public'Damage(var 伤害:Long 2:var pos:Bool 0:Bool 1)
+  }
+}
+endcode

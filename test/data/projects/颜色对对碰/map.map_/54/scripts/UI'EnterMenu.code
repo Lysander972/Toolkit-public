@@ -1,0 +1,34 @@
+begincodeV2
+color:255,243,0
+name:UI'EnterMenu
+lines:
+act 1101.this.UI'QuitGame()
+act 1101.this.UI'QuitSettlement()
+if{fun create.bool(var InMenu)
+  fun break()
+}
+Bool InMenu=fun create.bool(Bool 1)
+fun camera.setpos2(Vector3 0,0,0:Vector3 0,1,0:Vector3 0,0,1:Float 0)
+Bool GameStart=fun create.bool(Bool 0)
+Long ScorePool=fun create.long(Long 0)
+Dict $data=fun map.load()
+Long LastScorePool=varf Dict.$data.readLong(String LastScorePool:Bool 0)
+Bool $exist=varf Canvas.MenuUI.exist()
+if{fun bool.not(var $exist)
+  fun ui.2dmode(Bool 1)
+  Canvas MenuUI=fun create.canvas(Canvas guid@1e64cf01497f94fd08b47cff115aace08)
+  UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/helpButton)
+  varf UIButton.$button.PointDownCB0(String ButtonMenu'HelpPress)
+  varf UIButton.$button.PointUpCB0(String ButtonMenu'HelpRelease)
+  varf UIButton.$button.PointerEnterCB0(String ButtonMenu'HelpMoveIn)
+  varf UIButton.$button.PointerExitCB0(String ButtonMenu'HelpMoveOut)
+  act 1101.this.ButtonMenu'HelpRefresh()
+}
+UIRect $panel=varf Canvas.MenuUI.readUIRect(String panel)
+varf UIRect.$panel.active(Bool 1)
+Long MenuMode=fun create.long(Long 0)
+Long GameSettings0=fun create.long(Long 1)
+Long GameSettings1=fun create.long(Long 1)
+Long GameSettings2=fun create.long(Long 1)
+act 1101.this.ButtonMenu'Refresh()
+endcode

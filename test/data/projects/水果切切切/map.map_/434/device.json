@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:爆炸力场效果
+ mechFileGUID:89e68b0b7cc64b33a23ac926fbbd8097
+}

@@ -1,0 +1,20 @@
+begincodeV2
+guid:3b6e236875f44ea486250cb5128ab40f
+color:255,0,0
+name:Launcher'Launch
+comment:发射一个子弹
+params:Long type,Vector3 direction,Float offset,Struct player,Float HPMul,Float crit,Float initHp,Bool useManualSpeed,Float manualSpeed
+return:Bool ret
+lines:
+Vector3 position=act 1.this.localToWorldPos(Vector3 0,0.1,0)
+if{fun float.gte(var offset:Float 0)
+  Vector3 offsetV=varf Vector3.direction.copy()
+}
+if{fun float.lt(var offset:Float 0)
+  Vector3 offsetV=fun vector3.multilply(var direction:Float -1)
+}
+Float offset=varf Float.offset.abs()
+Vector3 offsetV=varf Vector3.offsetV.setLength(var offset)
+Vector3 position=fun vector3.add(var position:var offsetV)
+Bool ret=act 1.this.Launcher'AbstractSetBullet(var position:var direction:var type:var Attr'Faction:var player:var HPMul:var crit:var initHp:var useManualSpeed:var manualSpeed)
+endcode

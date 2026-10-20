@@ -1,0 +1,5 @@
+begincodeV2
+name:Public'ForceReclaim
+lines:
+act 1.this.Private'OnDeath(Bool 0:Bool 0:Long 0)
+endcode

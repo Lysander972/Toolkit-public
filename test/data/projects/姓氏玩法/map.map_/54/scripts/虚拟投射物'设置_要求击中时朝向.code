@@ -1,0 +1,6 @@
+begincodeV2
+name:虚拟投射物'设置_要求击中时朝向
+params:UIRect 虚拟投射物,Float 要求击中时朝向
+lines:
+varf UIRect.虚拟投射物.setCustomFloat(String 要求击中时朝向:var 要求击中时朝向)
+endcode

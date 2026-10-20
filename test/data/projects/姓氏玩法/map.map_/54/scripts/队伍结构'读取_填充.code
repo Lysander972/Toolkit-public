@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:队伍结构'读取_填充
+params:Struct 结构
+return:Bool ret
+lines:
+Bool ret=varf Struct.结构.getBool(String 填充:Bool 1)
+endcode

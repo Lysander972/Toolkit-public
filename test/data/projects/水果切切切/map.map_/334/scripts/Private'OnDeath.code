@@ -1,0 +1,54 @@
+begincodeV2
+private:1
+name:Private'OnDeath
+comment:子弹死亡调用
+params:Bool $playAnimation,Bool $skillEnabled,Long $method
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+Bool Attr'Alive=fun create.bool(Bool 0)
+Bool Initialized=fun create.bool(Bool 0)
+if{fun create.bool(var $skillEnabled)
+  act 1.this.Private_Skill'OnDeath()
+}
+act 1.this.Private_Skill'EndCycle()
+act 1.this.Private_Turret'OnDeath()
+act 1.this.Private_Physic'OnDeath()
+act 1.this.UI'回收UI()
+if{fun create.bool(var Attr'启用延迟死亡)
+  delay fun create.float(var Attr'延迟死亡时间)
+}
+//播放死亡效果
+=fun create.long(Long 0)
+varf Device.map_handler.callFun6(String Bullet'OnDestroy:var Self:var Attr'Type:var Attr'Faction:var $playAnimation:var Physic'Size:var $method)
+//对于水果,立即移动并确保触发离开事件后关闭碰撞
+act 1.this.Public'PreReclaim()
+delay fun create.float(Float 0)
+=act 1.this.Public'Close()
+delay fun create.float(Float 0)
+if{fun long.equal(var Attr'Faction:Long 1)
+  Float 随机x=fun math.rand(Float -100000:Float 100000)
+  Float 随机y=fun math.rand(Float -100000:Float 100000)
+  Float 随机z=fun math.rand(Float 1E+07:Float 2E+07)
+  Vector3 坐标=fun creatVariable.Vector3(var 随机x:var 随机y:var 随机z)
+  act 1.this.setPosKinematic(var 坐标)
+}
+if{fun long.equal(var Attr'Faction:Long 2)
+  Float 随机x=fun math.rand(Float -100000:Float 100000)
+  Float 随机y=fun math.rand(Float -100000:Float 100000)
+  Float 随机z=fun math.rand(Float -200000:Float -100000)
+  Vector3 坐标=fun creatVariable.Vector3(var 随机x:var 随机y:var 随机z)
+  act 1.this.setPosKinematic(var 坐标)
+}
+delay fun create.float(Float 0)
+if{fun create.bool(var Physic'Enabled)
+  act 1.this.setRigidVelocity(Vector3 0,0,0)
+  act 1.this.setRigidAngularVelocity(Vector3 0,0,0)
+}
+delay fun create.float(Float 0)
+delay fun create.float(Float 1)
+//按照模型序号自适应回收
+String $key=varf Mech.Self.name()
+varf Device.map_handler.callFun2(String Bullet'OnReclaim:var Self:var $key)
+endcode

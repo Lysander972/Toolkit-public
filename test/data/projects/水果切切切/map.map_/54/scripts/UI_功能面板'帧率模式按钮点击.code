@@ -1,0 +1,17 @@
+begincodeV2
+name:UI_功能面板'帧率模式按钮点击
+params:Long 选项
+lines:
+if{fun long.equal(var 选项:var 功能设置'帧率模式)
+  fun break()
+}
+if{fun long.gte(var 选项:Long 1)
+  if{fun map.getCustomBool(String 卡顿检测标志位)
+    fun string.popNotify(String 玩法出现卡顿,暂时无法提高帧率,如需继续提高帧率请关闭卡顿保护:Float 3)
+    fun break()
+  }
+}
+Long 功能设置'帧率模式=fun create.long(var 选项)
+act 1101.this.UI_功能面板'应用并刷新帧率模式显示()
+act 1101.this.功能设置持久化'上传帧率模式()
+endcode

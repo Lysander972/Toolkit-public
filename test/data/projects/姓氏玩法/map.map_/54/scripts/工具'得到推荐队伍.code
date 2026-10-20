@@ -1,0 +1,21 @@
+begincodeV2
+color:255,255,255
+name:工具'得到推荐队伍
+comment:得到推荐阵营
+return:Long 推荐
+lines:
+Long 推荐=fun create.long(Long -1)
+//只选择激活阵营的设定
+/*Float 队伍数量=varf List.局内'队伍_激活队伍列表.count()
+/*if{fun float.gte(var 队伍数量:Float 5)
+/*  Long 队伍数量L=varf Float.队伍数量.toLong()
+/*  Long 抽取范围=fun long.minus(var 队伍数量L:Long 1)
+/*  Long 目标序号=fun long.rand(Long 0:var 抽取范围)
+/*  Float 目标序号F=varf Long.目标序号.toFloat()
+/*  Struct 抽到队伍=varf List.局内'队伍_激活队伍列表.readStruct(var 目标序号F)
+/*  Long 推荐=act 1101.this.队伍结构'读取_id(var 抽到队伍)
+}
+//任意抽取的设定
+Long 抽取范围=fun long.minus(var 局内'队伍_id计数:Long 1)
+Long 推荐=fun long.rand(Long 0:var 抽取范围)
+endcode

@@ -1,0 +1,14 @@
+begincodeV2
+name:虚拟投射物'注册
+params:UIRect 当前组件,UIRect 目标组件,Float 最大速度,Float 初始角度,Float 最大旋转速度,Float 要求击中时朝向,Float 延迟
+lines:
+act 1101.this.虚拟投射物'设置_目标组件(var 当前组件:var 目标组件)
+act 1101.this.虚拟投射物'设置_最大速度(var 当前组件:var 最大速度)
+act 1101.this.虚拟投射物'设置_当前角度(var 当前组件:var 初始角度)
+act 1101.this.虚拟投射物'设置_最大旋转速度(var 当前组件:var 最大旋转速度)
+act 1101.this.虚拟投射物'设置_要求击中时朝向(var 当前组件:var 要求击中时朝向)
+Float 启动时间=fun time.scaleTime()
+Float 启动时间=fun float.add(var 启动时间:var 延迟)
+varf UIRect.当前组件.setCustomFloat(String 启动时间:var 启动时间)
+varf List.局内'虚拟投射物注册表.add(var 当前组件)
+endcode

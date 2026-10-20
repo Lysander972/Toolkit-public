@@ -1,0 +1,38 @@
+begincodeV2
+name:通用武器动图'添加常驻武器入场动画
+params:Canvas 武器UI
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+Float 整体旋转角度=varf UIRect.根节点.customFloat(String 整体旋转角度)
+/*Float 反向角度=fun float.add(var 整体旋转角度:Float 180)
+Dict 动画字典=act 1101.this.动画控制'动画字典_构造(Bool 0:String :String 弹幕.通用武器动图'回调_常驻动画入场结束检查)
+Bool 是入场动画=fun create.bool(Bool 1)
+varf Dict.动画字典.insert(String 是入场动画:var 是入场动画)
+//步骤1@1 初始化坐标,瞬移到场外
+Vector3 坐标=fun creatVariable.Vector3(Float 2000:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_瞬间移动(var 坐标:String :String )
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤2@1 初始化,设置初始缩放
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_基础(Float 0:Long 0:Bool 1:Float 2:Bool 0:Float 0:String :String )
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤3@1 瞬间旋转
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_瞬间修改角度(Float 0:String :String )
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤4@1 加速冲刺第一段,冲到中间位置
+Vector3 坐标=fun creatVariable.Vector3(Float 1000:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_非物理目标(Float 0.7:Long 2:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤5@1 减速冲刺第二段,冲到末端
+Vector3 坐标=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_非物理目标(Float 0.2:Long 3:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String 弹幕.通用武器动图'回调_应用事件并播放音效:String 弹幕.通用武器动图'回调_触发撞击效果)
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+//步骤6@1 冲到末端后略微回弹
+Vector3 坐标=fun creatVariable.Vector3(Float -20:Float 0:Float 0)
+Vector3 坐标=fun vector3.rotateAround(var 坐标:Vector3 0,0,1:var 整体旋转角度)
+Dict 步骤=act 1101.this.动画控制'步骤字典_构造_非物理目标(Float 0.1:Long 1:var 坐标:Bool 0:Bool 1:Float 0:Bool 0:Float 0:Bool 0:Float 0:String :String )
+act 1101.this.动画控制'动画字典_增加步骤(var 动画字典:var 步骤)
+act 1101.this.动画控制'UI_添加动画(var 根节点:var 动画字典)
+endcode

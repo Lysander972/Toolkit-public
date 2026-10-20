@@ -1,0 +1,6 @@
+begincodeV2
+name:时间控制'取消慢镜头需求
+params:String key
+lines:
+varf Device.map_handler.callFun1(String 时间控制'取消慢镜头需求:var key)
+endcode

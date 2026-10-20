@@ -1,0 +1,31 @@
+begincodeV2
+name:Map'Initialize
+comment:TODO|创建地图
+params:Vector3 scenarioOffset
+return:Bool ok
+lines:
+Bool ok=fun create.bool(Bool 1)
+Vector3 ScenarioOffset=varf Vector3.scenarioOffset.copy()
+Vector3 BaseCameraOff=fun creatVariable.Vector3(Float 0:Float 0:Float 0.2)
+Vector3 CameraRelative=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Float distance=fun create.float(Float 154)
+Vector3 CameraAngle=fun creatVariable.Vector3(Float 180:Float 54:Float 0)
+Float CameraDistance=fun create.float(var distance)
+//保存数据
+fun ui.2dmode(Bool 1)
+Canvas 加载界面=fun create.canvas(Canvas guid@1a4c9bee1121147b4a02dc88e31846999)
+UIRect rect=varf Canvas.加载界面.readUIRect(String 加载弹窗)
+delay fun create.float(Float 0.5)
+//回收子弹
+if{fun bool.not(var FirstInitialize)
+  delay fun create.float(Float 0)
+  //删除加载UI
+  varf UIRect.rect.del(Float 0)
+  fun break()
+}
+delay fun create.float(Float 0)
+//删除加载UI
+varf UIRect.rect.del(Float 0)
+Bool FirstInitialize=fun create.bool(Bool 0)
+act 1101.this.Camera'Update()
+endcode

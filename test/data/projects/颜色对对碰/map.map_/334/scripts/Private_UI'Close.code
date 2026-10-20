@@ -1,0 +1,10 @@
+begincodeV2
+name:Private_UI'Close
+lines:
+if{fun create.bool(var Advanced)
+  varf UIRect.Background.active(Bool 0)
+}
+if{fun create.bool(var UICycleStarted)
+  act 1.this.DisableFun(String Private_UI'Update)
+}
+endcode

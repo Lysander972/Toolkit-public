@@ -1,0 +1,26 @@
+begincodeV2
+color:255,255,255
+name:初始化基础设定
+lines:
+fun ui.2dmode(Bool 1)
+fun map.showHideUI(Bool 0)
+fun time.SetFixedFrame(Long 30)
+fun time.SetTargetFrameRate(Long 30)
+fun debug.maxRunTime(Float 50000)
+fun map.setMechNumLimit(Float 50000)
+fun light(Float 0.8)
+fun skyReflect(Enum 1)
+fun setRefectionIntensity(Float 1)
+fun setDirLight(Vector3 2,-2,-4:Color 255,255,255,255:Float 1.2)
+fun debug.errorStop(Bool 0)
+fun fog(Bool 0:Float 0:Float 0:Color 0,0,0,255)
+fun setShadow(Float 320)
+/*fun colorAdjustments(Bool 0:Float -0.1:Float 25:Float 0)
+fun colorAdjustments(Bool 1:Float 0:Float 25:Float 10)
+fun HDRBloom(Bool 1:Float 1:Float 0.4)
+fun time.setMaxDeltaTime(Float 0.05)
+String rule=fun readExcel2_String(Long 20:String 文字:String 规则)
+=act 1101.this.解析'解析字符串(var rule)
+/*fun gravity(Vector3 0,-100,0)
+/*fun debug.methodProfile()
+endcode

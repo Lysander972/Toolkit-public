@@ -1,0 +1,19 @@
+begincodeV2
+name:Settings
+lines:
+Mech $self=act 1.this.getMech()
+varf Mech.$self.enableSelfCollide(Bool 0)
+/*fun break()
+act 1.this.setMass(Float 0)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.switchCollider(Bool 0)
+act 362.5.setMass(Float 0)
+act 362.5.setLayer(Float 0)
+act 362.5.show(Bool 1)
+act 362.5.switchCollider(Bool 0)
+act 22.6.setMass(Float 0)
+act 22.6.setLayer(Float 0)
+act 22.6.show(Bool 0)
+act 22.6.switchCollider(Bool 1)
+endcode

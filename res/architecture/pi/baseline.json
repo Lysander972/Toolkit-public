@@ -1,0 +1,50 @@
+{
+  "repository": "https://github.com/earendil-works/pi",
+  "version": "1.0.0",
+  "commit": "a13d35a742c6ef8462812a28fbe1d8c8b7431c32",
+  "checkedAt": "2026-10-13",
+  "upstreamHead": "3daa20280f6a7c7cbe0935680c9a38fdc3863005",
+  "scope": "保持 PiExtension 消费的固定 1.0.0 与同提交 ExtensionAPI 合同；上游 HEAD 变化不自动改变产品依赖。",
+  "files": [
+    {
+      "file": "configuration.md",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/docs/configuration.md",
+      "sha256": "fc48d1ce7d885c5253222415fb7a4b46d75f80e6431eb924174657ff775099eb"
+    },
+    {
+      "file": "settings.md",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/docs/settings.md",
+      "sha256": "dae0b70c2f852ff57b4a34947d5059f7bac18038ca7e1fae4c4ba97bcbd574c3"
+    },
+    {
+      "file": "mcp.md",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/docs/mcp.md",
+      "sha256": "edccab4dc4876938605b3049bfa96533963227ba5aa931850f59bc19465eeb79"
+    },
+    {
+      "file": "skills.md",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/docs/skills.md",
+      "sha256": "5b9805525b194474ef1fe5455a0917ef15ed7f710aa9bec2eee11879556469e5"
+    },
+    {
+      "file": "packages.md",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/docs/packages.md",
+      "sha256": "5fe4a3009d7260fe1e2f54b64086fc3c8b4d678232bfa2dbc7e91fe588fc9ea5"
+    },
+    {
+      "file": "extensions.md",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/docs/extensions.md",
+      "sha256": "26c7542e365fed7d6bd3f1d39b1ac38ef67c30ff1b714477ea49f97a3f7fde9c"
+    },
+    {
+      "file": "extension-types.ts",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/src/core/extensions/types.ts",
+      "sha256": "c22e4ddd89f021e8b9eac716cfebdf456c5951f8345b4de98d1d30e5ce619f66"
+    },
+    {
+      "file": "package.json",
+      "source": "https://raw.githubusercontent.com/earendil-works/pi/a13d35a742c6ef8462812a28fbe1d8c8b7431c32/packages/coding-agent/package.json",
+      "sha256": "81ac04bbcbc8d80bdb28bcb88cabe8345ffabc6b4c9389fd74c85fab76a0aac6"
+    }
+  ]
+}

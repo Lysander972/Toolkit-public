@@ -1,0 +1,30 @@
+guid:76f2519fd8c44294b37d40567484eacf
+meshes:
+[
+ {
+  n:M_AGM_65_Maverick_D
+ }
+]
+matFolderName:fd4f85f480ca4a8286678030084dd219
+Albedo.UID:fd4f85f480ca4a8286678030084dd219
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0.6
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0.7
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,-0.001737669,-0.1017846]
+bounds.size:[0.1933813,0.1926672,0.9496728]

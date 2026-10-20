@@ -1,0 +1,31 @@
+guid:7bfd8bfcffaa46e09db8af1daf351eff
+meshes:
+[
+ {
+  n:Watermelon_Half
+ }
+]
+matFolderName:d4d3411af101482eb60059e6b5caae56
+Albedo.UID:d4d3411af101482eb60059e6b5caae56
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+bounds.center:[2.980232E-08,0.1499925,-2.980232E-08]
+bounds.size:[0.5221839,0.299985,0.522184]

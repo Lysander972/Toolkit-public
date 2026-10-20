@@ -1,0 +1,12 @@
+begincodeV2
+name:UI_功能面板'应用并刷新特效简化显示
+lines:
+fun map.setCustomBool(String 手动简化特效标志位:var 功能开关'特效简化)
+act 1101.this.标志位'更新简化特效生效()
+if{fun create.bool(var InGame)
+  UIRawImage 按钮图标=varf Canvas.GameUI.readUIRawImage(String root/topForPC/杂项设置区/简化特效设置区/按钮/icon)
+  UIRawImage 勾选图标1=varf Canvas.GameUI.readUIRawImage(String root/SettingsForMobile/屏蔽器2/子组件排版区/杂项设置区/简化特效设置区/按钮/icon)
+  varf UIRawImage.按钮图标.active(var 功能开关'特效简化)
+  varf UIRawImage.勾选图标1.active(var 功能开关'特效简化)
+}
+endcode

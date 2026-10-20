@@ -1,0 +1,14 @@
+begincodeV2
+name:UI_通用框架'背景图刷新
+lines:
+/*Float 假设基础距离=act 1101./参数调节模块.读取(String 假设基础距离:Float 1:Float 0:Float 100000:Color 0,0,0,255)
+/*Float 基础距离=fun create.float(Float 1)
+Float 图像z=fun create.float(Float 0)
+/*Float 图像z=fun float.add(var 假设基础距离:var 基础距离)
+Vector3 坐标=fun creatVariable.Vector3(Float 0.5:Float 0.5:var 图像z)
+varf UIRawImage.UI'背景图.pos(var 坐标)
+/*varf UIRawImage.UI'背景图.scale(var 基础距离)
+varf UIRawImage.UI'背景图.scale(Float 1)
+Vector3 图片尺寸=act 1101.this.工具'图片自适应(var UI'背景图宽度:var UI'背景图高度)
+varf UIRawImage.UI'背景图.setSize(var 图片尺寸)
+endcode

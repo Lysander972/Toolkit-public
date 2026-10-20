@@ -1,0 +1,12 @@
+type:242
+pos:[0.29,-0.02,0.25]
+ext:
+{
+ boolHideUI:1
+ logicName:左2
+ boolLight:true
+ size:1
+ colorValue:[0,0.7450981,1,1]
+ timeLen:0.4
+ boolAlphaBlend:false
+}

@@ -1,0 +1,35 @@
+guid:c9c709547f3e41a98c7846d52a8e7e8b
+meshes:
+[
+ {
+  n:柱体
+ }
+]
+shaderName:"Shader Graphs/ColorPBR"
+shader:
+[
+ {
+  n:_Color
+  type:Color
+  v:[1,0.09019607,0,1]
+ }
+ {
+  n:_Metallic
+  type:Float
+  v:0.1
+ }
+ {
+  n:_Glossiness
+  type:Float
+  v:0.1
+ }
+ {
+  n:_Emmit
+  type:Float
+  v:0
+ }
+]
+rotation:[270,0,0]
+scale:100
+bounds.center:[0,0,-50]
+bounds.size:[0.02,0.02,100]

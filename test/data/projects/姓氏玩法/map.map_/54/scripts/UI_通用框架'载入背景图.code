@@ -1,0 +1,24 @@
+begincodeV2
+name:UI_通用框架'载入背景图
+params:String 图片名
+lines:
+if{fun string.equal(var 图片名:String 背景图金色.webp)
+  Float UI'背景图宽度=fun create.float(Float 800)
+  Float UI'背景图高度=fun create.float(Float 800)
+  varf UIRawImage.UI'背景图.loadPic(var 图片名)
+  varf UIRawImage.UI'背景图.setColor(Color 103,103,103,255)
+}
+if{fun string.equal(var 图片名:String beijing.png)
+  Float UI'背景图宽度=fun create.float(Float 1080)
+  Float UI'背景图高度=fun create.float(Float 1920)
+  varf UIRawImage.UI'背景图.loadPic(var 图片名)
+  varf UIRawImage.UI'背景图.setColor(Color 217,217,217,255)
+/*  varf UIRawImage.UI'背景图.setColor(Color 255,255,255,255)
+}
+if{fun string.equal(var 图片名:String )
+  Float UI'背景图宽度=fun create.float(Float 1080)
+  Float UI'背景图高度=fun create.float(Float 1920)
+  varf UIRawImage.UI'背景图.loadPic(String beijing.png)
+  varf UIRawImage.UI'背景图.setColor(Color 0,0,0,0)
+}
+endcode

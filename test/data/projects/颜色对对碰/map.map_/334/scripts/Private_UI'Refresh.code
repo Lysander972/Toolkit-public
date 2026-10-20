@@ -1,0 +1,12 @@
+begincodeV2
+name:Private_UI'Refresh
+params:Float $newHP
+lines:
+if{fun create.bool(var Advanced)
+  Float $temp=fun float.division(var $newHP:var maxHP)
+  Float $temp=fun float.clamp(var $temp:Float 0:Float 1)
+  if{varf UIRect.HpBar.exist()
+    varf UIRect.HpBar.fillMode(Enum 2:var $temp)
+  }
+}
+endcode

@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "迁移前后 Git blob 均为 8ff2e0681f4cba7db1be1e9d5ec27d59405947f4；ConfigSource、VsCodeConfigSource 和 PiConfigSource 全文支持所述边界，未运行旧测试。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "逐项对照参考配置的 Purpose、唯一 TOML 来源、AES-256-GCM 字节序和固定夹具三项正文，解读保留参考身份，没有把旧加密配置引入 VS Code。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "以原文明示的现役与参考范围为出发点，推出只迁移来源、现役只读配置归运行时合同，Pi TODO 明确保留。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "adbb836e-9731-4516-9e05-de7ba71ef61c",
+  "reviewed_fingerprint": "4f230c389b0a80cf570e72f944f1379efe1ac554f5926d3637caab83d279d821",
+  "schema": 2,
+  "summary": "旧配置完整保全为参考来源，现役配置边界没有扩张。"
+}

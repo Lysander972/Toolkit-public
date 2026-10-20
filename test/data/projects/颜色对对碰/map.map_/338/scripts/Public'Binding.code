@@ -1,0 +1,8 @@
+begincodeV2
+name:Public'Binding
+params:Mech $target
+lines:
+Mech Grid=fun creatVariable.mech(var $target)
+Device Core=varf Mech.Grid.getDevice(Float 0)
+Device SelfCore=act 1.this.getDevice()
+endcode

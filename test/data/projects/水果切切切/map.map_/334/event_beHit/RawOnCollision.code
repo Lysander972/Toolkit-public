@@ -1,0 +1,28 @@
+begincodeV2
+color:8,0,255
+name:RawOnCollision
+comment:子弹间碰撞
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+if{fun long.equal(var Attr'Type:Long 2500)
+  fun script.skip()
+  fun break()
+}
+if{fun long.equal(var Attr'Faction:Long 1)
+  fun script.skip()
+  fun break()
+}
+if{varf Enum.$type.equal(Enum 1)
+  //计算伤害
+  Mech target=varf Device.$attacker.mech()
+  Bool isWall=varf Mech.target.customBool(String wall)
+  if{fun create.bool(var isWall)
+    act 1.this.Private_Physic'Rebound()
+  }
+  if{fun bool.not(var isWall)
+    act 1.this.Public'OnCollision(var $attacker)
+  }
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+skip:1
+name:探测
+lines:
+Struct s=fun raycast2(Vector3 0,-10,0:Vector3 0,1,0)
+Vector3 pos=varf Struct.s.getVector3(String pos:Bool 0)
+fun debug.print(var pos:Color 255,255,255,255:Bool 0)
+fun script.skip()
+endcode

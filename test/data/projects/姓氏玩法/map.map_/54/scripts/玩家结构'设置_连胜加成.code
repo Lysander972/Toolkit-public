@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_连胜加成
+comment:设置玩家分数
+params:Struct 结构,Long 连胜加成
+lines:
+varf Struct.结构.set(String 连胜加成:var 连胜加成)
+endcode

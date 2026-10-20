@@ -1,0 +1,19 @@
+begincodeV2
+name:局内逻辑'决战阶段检查
+lines:
+if{fun bool.not(var 局内'决战准备)
+  Float 剩余时间=act 1101.this.局内逻辑'获取剩余时间()
+  if{fun float.lte(var 剩余时间:Float 187)
+    Bool 局内'决战准备=fun create.bool(Bool 1)
+    Float 局内'决战准备时间=fun time.scaleTime()
+  }
+}
+if{fun bool.not(var 局内'决战阶段)
+  Float 剩余时间=act 1101.this.局内逻辑'获取剩余时间()
+  if{fun float.lte(var 剩余时间:Float 180)
+    Bool 局内'决战阶段=fun create.bool(Bool 1)
+    Float 局内'决战开始时间=fun time.scaleTime()
+    act 1101.this.UI_局内风格接口封装'进入决战()
+  }
+}
+endcode

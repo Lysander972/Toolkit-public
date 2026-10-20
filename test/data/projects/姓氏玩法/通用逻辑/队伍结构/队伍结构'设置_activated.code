@@ -1,0 +1,21 @@
+begincodeV2
+private:1
+guid:f47c73a93fbb4b8eaaecfb6ee5a6dc2d
+color:255,255,255
+name:队伍结构'设置_activated
+params:Struct 结构,Bool activated
+lines:
+Bool 已设置=varf Struct.结构.contains(String activated)
+if{fun create.bool(var 已设置)
+  Bool 原状态=act 1101.this.队伍结构'读取_activated(var 结构)
+}
+if{fun bool.not(var 已设置)
+  Bool 原状态=fun create.bool(Bool 0)
+}
+if{fun bool.not(var 原状态)
+  varf Struct.结构.set(String activated:var activated)
+  if{fun create.bool(var activated)
+    varf List.局内'队伍_激活队伍列表.add(var 结构)
+  }
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+skip:1
+private:1
+name:Private_Turret'OnDeath
+lines:
+if{fun create.bool(var Attr'Turret)
+  act 1.this.DisableFun(String Private_Turret'UpdateAim)
+}
+endcode

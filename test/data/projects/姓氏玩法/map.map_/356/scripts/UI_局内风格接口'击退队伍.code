@@ -1,0 +1,13 @@
+begincodeV2
+name:UI_局内风格接口'击退队伍
+params:Struct 队伍
+lines:
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  fun break()
+}
+Canvas 队伍UI=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+act 1101.this.内部'队伍UI_击退队伍旗帜(var 队伍UI)
+endcode

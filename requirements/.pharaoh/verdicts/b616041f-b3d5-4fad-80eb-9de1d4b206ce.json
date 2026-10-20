@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "原生 schema、全文 context、内容和标准失效、Git HEAD/index 拒绝工作树替代已在真实工具测试中核对；当前只取得 Windows 本地结果，Linux 与后续能力域迁移仍需各批验收。",
+      "score": 1,
+      "suggestion": "继续以实际 Linux CI 和每个能力批次的源码/测试绑定更新专项检视，不将本批通过外推为全部旧规范已迁移。"
+    },
+    "parent_fit": {
+      "reason": "决策保留 Git 原文纠偏、UUID、唯一有效解读、离散评分和全链路全文检视，移除重复的 OpenSpec 强制工件，符合唯一有效解读的目标和范围。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "先盘点旧 SQLite 已有全文与输入绑定能力，再比较继续自研和成熟需求图；明确 alpha 工作流的替代实测条件，Git diff 和原生 impact 各承担已有功能，未制造新差异引擎。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "b616041f-b3d5-4fad-80eb-9de1d4b206ce",
+  "reviewed_fingerprint": "2ee8d82c8f2a591a5171709b5dab1bb66f9b737243474659707b23652d42cfcf",
+  "schema": 2
+}

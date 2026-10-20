@@ -1,0 +1,12 @@
+begincodeV2
+name:工具'角度在原点周边范围内
+params:Float 范围,Float 角度
+return:Bool 在区间内
+lines:
+Float 角度上限=fun float.multiply(var 范围:Float 1)
+Float 角度下限=fun float.multiply(var 范围:Float -1)
+Float 角度=fun float.add(var 角度:Float 180)
+Float 角度=fun float.mod(var 角度:Float 360)
+Float 角度=fun float.minus(var 角度:Float 180)
+Bool 在区间内=varf Float.角度.inside(var 角度下限:var 角度上限)
+endcode

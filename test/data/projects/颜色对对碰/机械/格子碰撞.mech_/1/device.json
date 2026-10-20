@@ -1,0 +1,8 @@
+type:1100
+pos:[4.371145E-09,0,3.821376E-16]
+quat:[-0.4999999,-0.5000002,-0.4999997,0.5000003]
+ext:
+{
+ localScale:[1,1,50]
+ boolOneMechOnlyOnce:true
+}

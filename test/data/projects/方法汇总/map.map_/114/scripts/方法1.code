@@ -1,0 +1,8 @@
+begincodeV2
+name:方法1
+lines:
+act 131.this.setFresnelPower(Float 0)
+act 131.this.setColor(Color 0,0,0,255)
+act 131.this.setTwirl(Float 0:Float 0)
+act 131.this.setForceFieldScale(Float 0)
+endcode

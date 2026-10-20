@@ -1,0 +1,31 @@
+guid:ac2fb2d3f7a2494fb5f27f93c6411e09
+meshes:
+[
+ {
+  n:SM_Prop_Detail_Struts_01
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-8.34465E-07,1.88448,-2.980232E-08]
+bounds.size:[4.612508,3.76896,1.224886]

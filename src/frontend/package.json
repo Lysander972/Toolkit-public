@@ -1,0 +1,285 @@
+{
+  "$schema": "../../res/schemas/package.json",
+  "name": "toolkit-bescript-suite",
+  "displayName": "Toolkit BEScript 工具箱",
+  "description": "CreatAI 只读语言服务、Canvas 预览、状态与一键配置",
+  "publisher": "mechtoolkit",
+  "type": "module",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "main": "../../_build/frontend/extension.mjs",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "toolkit-sidebar",
+          "title": "Toolkit",
+          "icon": "$(tools)"
+        }
+      ]
+    },
+    "views": {
+      "toolkit-sidebar": [
+        {
+          "type": "webview",
+          "id": "toolkit.mcpLog",
+          "name": "MechToolkit",
+          "icon": "../../res/frontend/assets/mcpLog.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "toolkit.showLogs",
+        "title": "Toolkit: 查看运行日志"
+      },
+      {
+        "command": "toolkit.openSettings",
+        "title": "Toolkit: 打开配置"
+      },
+      {
+        "command": "toolkit.openDocumentation",
+        "title": "Toolkit: 开发指南"
+      }
+    ],
+    "configuration": {
+      "title": "MechToolkit",
+      "properties": {
+        "toolkit.mcp.port": {
+          "type": "integer",
+          "default": 5050,
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "本机 HTTP MCP 端口"
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "bescript",
+        "aliases": [
+          "BEScript",
+          "bescript"
+        ],
+        "extensions": [
+          ".code"
+        ],
+        "configuration": "../../res/frontend/languages/language-configuration.json"
+      },
+      {
+        "id": "mech-hjson",
+        "aliases": [
+          "Mech HJSON",
+          "mech-hjson"
+        ],
+        "filenames": [
+          "device.json",
+          "list.json",
+          "mech.json",
+          "map.json",
+          "setting.json"
+        ],
+        "configuration": "../../res/frontend/languages/language-configuration-hjson.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bescript",
+        "scopeName": "source.bescript",
+        "path": "../../res/frontend/syntaxes/bescript.tmLanguage.json"
+      },
+      {
+        "language": "mech-hjson",
+        "scopeName": "source.mech-hjson",
+        "path": "../../res/frontend/syntaxes/mech-hjson.tmLanguage.json"
+      }
+    ],
+    "semanticTokenTypes": [
+      {
+        "id": "function",
+        "description": "函数/方法名"
+      },
+      {
+        "id": "variable",
+        "description": "变量"
+      },
+      {
+        "id": "parameter",
+        "description": "参数"
+      },
+      {
+        "id": "string",
+        "description": "字符串值"
+      },
+      {
+        "id": "keyword",
+        "description": "关键字"
+      },
+      {
+        "id": "number",
+        "description": "数字"
+      },
+      {
+        "id": "class",
+        "description": "类名/零件选择段"
+      },
+      {
+        "id": "type",
+        "description": "类型名"
+      },
+      {
+        "id": "comment",
+        "description": "注释"
+      },
+      {
+        "id": "disabled",
+        "description": "禁用行"
+      }
+    ],
+    "semanticTokenModifiers": [
+      {
+        "id": "declaration",
+        "description": "声明"
+      },
+      {
+        "id": "defaultLibrary",
+        "description": "内置"
+      },
+      {
+        "id": "readonly",
+        "description": "全局变量"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "bescript",
+        "scopes": {
+          "function": [
+            "entity.name.function"
+          ],
+          "function.defaultLibrary": [
+            "support.function"
+          ],
+          "variable.readonly": [
+            "variable.other.constant"
+          ],
+          "variable": [
+            "variable.other"
+          ],
+          "parameter": [
+            "variable.parameter"
+          ],
+          "string": [
+            "string"
+          ],
+          "keyword": [
+            "keyword.control"
+          ],
+          "number": [
+            "constant.numeric"
+          ],
+          "class": [
+            "support.class",
+            "entity.name.type"
+          ],
+          "type": [
+            "support.type"
+          ],
+          "comment": [
+            "comment"
+          ],
+          "disabled": [
+            "comment.block.skipped.bescript"
+          ]
+        }
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "toolkit.canvasPreview",
+        "displayName": "Canvas 布局预览",
+        "selector": [
+          {
+            "filenamePattern": "*.canvas"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "configurationDefaults": {
+      "[bescript]": {
+        "editor.semanticHighlighting.enabled": true,
+        "editor.minimap.showRegionSectionHeaders": false,
+        "editor.minimap.showMarkSectionHeaders": false,
+        "editor.tokenColorCustomizations": {
+          "textMateRules": [
+            {
+              "scope": "comment.block.skipped.bescript",
+              "settings": {
+                "foreground": "#808080",
+                "fontStyle": "strikethrough"
+              }
+            },
+            {
+              "scope": "meta.skipped-line.content.bescript",
+              "settings": {
+                "fontStyle": "strikethrough"
+              }
+            }
+          ]
+        }
+      },
+      "[mech-hjson]": {
+        "editor.quickSuggestions": {
+          "comments": false,
+          "strings": false,
+          "other": false
+        },
+        "editor.formatOnSave": false
+      },
+      "files.associations": {
+        "**/机械/**/*.json": "mech-hjson",
+        "**/*.mech_/**/*.json": "mech-hjson",
+        "**/*.map_/**/*.json": "mech-hjson"
+      }
+    }
+  },
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "vscode-languageclient": "9.0.1",
+    "@toolkit/host": "workspace:*",
+    "@toolkit/mcp": "workspace:*",
+    "@toolkit/config": "workspace:*",
+    "effect": "4.0.0",
+    "zod": "4.6.4",
+    "pino": "10.4.0",
+    "jsonc-parser": "3.3.1",
+    "yaml": "2.9.1",
+    "smol-toml": "1.6.1",
+    "@xmldom/xmldom": "0.9.12",
+    "write-file-atomic": "7.0.0",
+    "execa": "9.6.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "semver": "7.8.5"
+  },
+  "devDependencies": {
+    "@types/vscode": "1.100.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@types/write-file-atomic": "4.0.3",
+    "@types/semver": "7.8.0"
+  },
+  "exports": {
+    "./host": "./plugin/VsCodeHost.ts",
+    "./container": "./plugin/FrontendProcess.ts"
+  }
+}

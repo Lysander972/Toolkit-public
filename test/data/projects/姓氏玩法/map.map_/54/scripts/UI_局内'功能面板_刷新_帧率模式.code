@@ -1,0 +1,19 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_刷新_帧率模式
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  Bool 选择30=fun long.equal(var 局内功能设置'帧率模式:Long 0)
+  Bool 选择60=fun long.equal(var 局内功能设置'帧率模式:Long 1)
+  UIButton 按钮1=varf Canvas.UI_局内'主布局_2D.readUIButton(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/帧率面板/排版区域/帧率30)
+  UIButton 按钮2=varf Canvas.UI_局内'主布局_2D.readUIButton(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/帧率面板/排版区域/帧率60)
+  if{fun create.bool(var 选择30)
+    varf UIButton.按钮1.setColor(Color 127,127,127,255,灰)
+    varf UIButton.按钮2.setColor(Color 255,255,255,255,白)
+  }
+  if{fun create.bool(var 选择60)
+    varf UIButton.按钮1.setColor(Color 255,255,255,255,白)
+    varf UIButton.按钮2.setColor(Color 127,127,127,255,灰)
+  }
+}
+endcode

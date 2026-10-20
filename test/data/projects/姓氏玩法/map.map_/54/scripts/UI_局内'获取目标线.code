@@ -1,0 +1,16 @@
+begincodeV2
+name:UI_局内'获取目标线
+return:Float ret
+lines:
+if{fun long.equal(var 局内_游戏规则'获胜规则:Long 0)
+  Long 目标=fun create.long(Long 0)
+}
+if{fun long.equal(var 局内_游戏规则'获胜规则:Long 1)
+  Float 目标分数=fun float.multiply1(var 局内_游戏规则'本局时长:Float 100:Float 1024)
+  Long 目标=varf Float.目标分数.toLong()
+}
+if{fun long.equal(var 局内_游戏规则'获胜规则:Long 2)
+  Long 目标=fun create.long(var 局内'全局_SUM_value)
+}
+Float ret=fun long.division(var 目标:Long 1000)
+endcode

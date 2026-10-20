@@ -1,0 +1,6 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'自动下场_应用并刷新
+lines:
+act 1101.this.UI_局内'功能面板_刷新_自动下场()
+endcode

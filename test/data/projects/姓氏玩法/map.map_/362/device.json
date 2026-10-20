@@ -1,0 +1,13 @@
+type:336
+pos:[0,0,0]
+quat:[-0.7071068,0,0,0.7071068]
+scale:12.0088
+ext:
+{
+ logicName:特效发射器
+ boolShowFollowIcon:true
+ generatorAlias:特效
+ poolNum:200
+ maxLifeTime:10
+ antiImpulse:0
+}

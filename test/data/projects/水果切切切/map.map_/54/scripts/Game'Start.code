@@ -1,0 +1,43 @@
+begincodeV2
+color:255,243,0
+name:Game'Start
+comment:开局
+lines:
+Long Width=fun create.long(Long 60)
+Long AttackerLength=fun create.long(Long 140)
+Bool 场外功能设置'启用加时=fun long.equal(var GameSettings0:Long 2)
+Float time=fun float.multiply(Float 20:Float 60)
+if{fun long.equal(var GameSettings1:Long 2)
+  Float time=fun float.multiply(Float 30:Float 60)
+}
+if{fun long.equal(var GameSettings1:Long 3)
+  Float time=fun float.multiply(Float 45:Float 60)
+}
+//计算地图数据
+Long Length=fun create.long(Long 1000)
+if{fun long.equal(var GameSettings2:Long 2)
+  Long Length=fun create.long(Long 2000)
+}
+if{fun long.equal(var GameSettings2:Long 3)
+  Long Length=fun create.long(Long 3000)
+}
+//更新状态
+=act 1101./Scenario.Map'Initialize(var Width:var Length:var AttackerLength:Vector3 0,0.12,0)
+act 1101.this.UI'EnterGame()
+Bool GameStart=fun create.bool(Bool 1)
+Float now=fun time.scaleTime()
+Float GameStartTime=fun create.float(var now)
+Float GameDuration=fun create.float(var time)
+//刷新比分
+act 1101./Scenario.守方检测区'推送更新()
+if{fun create.bool(var 场外功能设置'启用加时)
+  Float 可加时间=fun float.multiply(var time:Float 0.5)
+  act 1101.this.UI'刷新上限提升上(var 可加时间)
+  Float 可加距离=varf Long.Length.toFloat()
+  Float 可加距离=fun float.multiply(var 可加距离:Float 0.5)
+  act 1101.this.UI'刷新上限提升下(var 可加距离)
+}
+delay fun create.float(Float 0)
+Float 真实时间=fun time.time()
+Float 状态值'检测开始时间=fun float.add(var 真实时间:Float 1)
+endcode

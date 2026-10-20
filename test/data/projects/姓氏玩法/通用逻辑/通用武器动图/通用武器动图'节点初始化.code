@@ -1,0 +1,14 @@
+begincodeV2
+guid:afd84d75fe274907b9bc69b573795d84
+name:通用武器动图'节点初始化
+params:Canvas 布局,Bool 常态,Long 拖尾动图id,Long 武器动图id,UIRect 关联节点,UIRect 父节点
+lines:
+UIRect 根节点=varf Canvas.布局.readUIRect(String 根节点)
+UIRawImage 拖尾=varf Canvas.布局.readUIRawImage(String 拖尾)
+UIRawImage 武器=varf Canvas.布局.readUIRawImage(String 武器)
+act 1101.this.动图'应用动图(var 拖尾:var 拖尾动图id:Long 0:Bool 0)
+act 1101.this.动图'应用动图(var 武器:var 武器动图id:Long 0:Bool 0)
+if{fun create.bool(var 常态)
+  act 1101.this.通用武器动图'常态初始化(var 根节点)
+}
+endcode

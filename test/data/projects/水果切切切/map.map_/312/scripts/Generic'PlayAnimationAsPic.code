@@ -1,0 +1,33 @@
+begincodeV2
+name:Generic'PlayAnimationAsPic
+params:String prefix,Long start,Long end,Float duration,UIRawImage UI
+return:Bool ret
+lines:
+Bool ret=fun create.bool(Bool 0)
+String name=fun string.add(var prefix:String .ogg)
+act 1.this.播放音效(var name:Float 1)
+Color 当前颜色=fun create.color(Color 255,255,255,255)
+Float timeStart=fun time.time()
+Bool continue=fun create.bool(Bool 1)
+while{fun create.bool(var continue)
+  Float time=fun time.time()
+  Float timeUsed=fun float.minus(var time:var timeStart)
+  Float rate=fun float.division(var timeUsed:var duration)
+  Long index=fun long.lerp(var start:var end:var rate)
+  String name=fun create.string(var index)
+  String name=fun string.add1(var prefix:var name:String .png)
+  varf UIRawImage.UI.loadPic(var name)
+  Bool 按住按键=fun keyboard.keyHeld2(Enum 6)
+  if{fun create.bool(var 按住按键)
+    Color 当前颜色=varf Color.当前颜色.lerp(Color 255,255,255,0:Float 0.1)
+  }
+  if{fun bool.not(var 按住按键)
+    Color 当前颜色=varf Color.当前颜色.lerp(Color 255,255,255,255:Float 0.1)
+  }
+  varf UIRawImage.UI.setColor(var 当前颜色)
+  Bool continue=fun float.lt(var timeUsed:var duration)
+  delay fun create.float(Float 0)
+}
+delay fun create.float(Float 0)
+varf UIRawImage.UI.del(Float 0)
+endcode

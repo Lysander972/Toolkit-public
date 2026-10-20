@@ -1,0 +1,7 @@
+begincodeV2
+name:动画控制'UI_获取父级组件
+params:UIRect 当前组件
+return:UIRect 父级
+lines:
+UIRect 父级=varf UIRect.当前组件.customUIRect(String 父级)
+endcode

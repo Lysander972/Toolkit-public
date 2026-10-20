@@ -1,0 +1,21 @@
+begincodeV2
+color:221,0,255
+name:技能'20000
+comment:下方自动点赞
+lines:
+delay fun create.float(Float 1)
+Bool 点赞升级=fun create.bool(Bool 0)
+String key=fun create.string(String 20000)
+while{act 1.this.Skills'GreaterOrEqual(var key:Long 66)
+  =act 1.this.Skills'Decrease(var key:Long 66)
+  varf Long.属性'自动点赞速度.addEqual(Long 1)
+  Bool 点赞升级=fun create.bool(Bool 1)
+}
+if{fun create.bool(var 点赞升级)
+  String 提示=fun string.Format1(String 自动点赞速度提升\n当前速度%1×:var 属性'自动点赞速度)
+  act 1.this.callMapFunc2(String 弹幕.播报'下方自动点赞升级:var 提示:var 属性'玩家)
+}
+if{fun long.gt(var 属性'自动点赞速度:Long 0)
+  act 1.this.callMapFunc2(String 弹幕.得到礼物'点赞:var 属性'自动点赞速度:var 属性'玩家)
+}
+endcode

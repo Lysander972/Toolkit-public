@@ -1,0 +1,6 @@
+begincodeV2
+name:排行榜按钮'设置是否显示
+params:UIButton 按钮,Bool 是否显示
+lines:
+varf UIButton.按钮.active(var 是否显示)
+endcode

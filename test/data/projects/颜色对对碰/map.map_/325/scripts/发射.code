@@ -1,0 +1,17 @@
+begincodeV2
+name:发射
+params:Vector3 p,Float index,Float scale
+lines:
+Vector3 camPos=fun camera.pos()
+Float camDis=fun vector3.distance(var camPos:var p)
+varf Float.camDis.minusEqual(Float 20)
+/*Float camDis=fun float.division(var camDis:Float 80)
+Float camDis=fun float.clamp(var camDis:Float 0:Float 90)
+/*Float rate=act 336.this.读取(String rate:Float 1:Float 0:Float 10:Color 0,0,0,255)
+Float camDis=fun float.multiply(var camDis:Float 0.01)
+varf Float.camDis.addEqual(Float 1)
+Float scale=fun float.multiply(var scale:var camDis)
+Vector3 p=act 336.this.wordToLocalPos(var p)
+act 336.this.setPosOffset(var p)
+act 336.this.shootDir2(Vector3 0,0,0.01:String 特效:var index:var scale)
+endcode

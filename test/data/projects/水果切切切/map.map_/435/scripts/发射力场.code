@@ -1,0 +1,8 @@
+begincodeV2
+name:发射力场
+params:Vector3 p,Float scale,Color color,Float duration
+lines:
+Vector3 p=act 336.this.wordToLocalPos(var p)
+act 336.this.setPosOffset(var p)
+act 336.this.shootDir3(Vector3 0,0,0.0001:String 播放效果:var scale:var duration:var color)
+endcode

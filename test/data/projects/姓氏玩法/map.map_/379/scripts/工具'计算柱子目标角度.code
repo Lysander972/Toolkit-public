@@ -1,0 +1,23 @@
+begincodeV2
+name:工具'计算柱子目标角度
+comment:相对于原点
+params:Struct 队伍,Struct 队伍映射
+return:Float 角度
+lines:
+Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+Float 队伍上次排名=varf Struct.队伍映射.getFloat(String 队伍上次排名:Bool 0)
+if{fun float.notEqual(var 队伍排名:var 队伍上次排名)
+  Float 当前时间=fun time.scaleTime()
+  Float 队伍上次排名更新=varf Struct.队伍映射.getFloat(String 队伍上次排名更新:Bool 0)
+  Float 已用时间=fun float.minus(var 当前时间:var 队伍上次排名更新)
+  if{fun float.gte(var 已用时间:Float 0.5)
+    Float 队伍上次排名=fun create.float(var 队伍排名)
+    Float 队伍上次排名更新=fun create.float(var 当前时间)
+  }
+}
+Float 生效排名值=fun create.float(var 队伍上次排名)
+Float 位置数量=act 1101.this.工具'得到位置数量()
+Float 队伍间夹角=fun float.division(Float 360:var 位置数量)
+Float 位置=act 1101.this.工具'排名到位置号映射(var 生效排名值)
+Float 角度=fun float.multiply(var 队伍间夹角:var 位置)
+endcode

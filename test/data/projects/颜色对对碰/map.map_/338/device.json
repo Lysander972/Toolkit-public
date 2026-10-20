@@ -1,0 +1,7 @@
+type:1110
+pos:[0,0,0]
+ext:
+{
+ logicName:格子碰撞
+ mechFileGUID:a16d2f3b3ffe46a1b389f6eb61efc601
+}

@@ -1,0 +1,13 @@
+type:260
+pos:[12.42196,0,3.540533]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[270,0,0]
+ boolTurn:true
+ motorForceRate:3
+ motorVelocityRate:1
+ speedUpTime:1
+ speedDownTime:0.5
+ controlType:2
+}

@@ -1,0 +1,22 @@
+begincodeV2
+name:工具'图片自适应
+params:Float 图片宽度,Float 图片高度
+return:Vector3 图片尺寸
+lines:
+//刷新背景图
+Float 图片比率=fun float.division(var 图片宽度:var 图片高度)
+//1140*733
+Vector3 全屏UI=fun screen.uiSize()
+Float 全屏宽度=varf Vector3.全屏UI.x()
+Float 全屏高度=varf Vector3.全屏UI.y()
+Float 全屏比率=fun float.division(var 全屏宽度:var 全屏高度)
+if{fun float.lt(var 全屏比率:var 图片比率)
+  Float 图片高度=fun create.float(var 全屏高度)
+  Float 图片宽度=fun float.multiply(var 图片比率:var 全屏高度)
+}
+if{fun float.gte(var 全屏比率:var 图片比率)
+  Float 图片宽度=fun create.float(var 全屏宽度)
+  Float 图片高度=fun float.division(var 图片宽度:var 图片比率)
+}
+Vector3 图片尺寸=fun creatVariable.Vector3(var 图片宽度:var 图片高度:Float 0)
+endcode

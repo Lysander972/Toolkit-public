@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_按钮点击_自动下场
+lines:
+Bool 局内功能设置'自动下场=fun bool.not(var 局内功能设置'自动下场)
+act 1101.this.局内功能设置'自动下场_应用并刷新()
+act 1101.this.局内功能设置'自动下场_上传()
+endcode

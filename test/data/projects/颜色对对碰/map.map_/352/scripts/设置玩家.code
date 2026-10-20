@@ -1,0 +1,7 @@
+begincodeV2
+name:设置玩家
+params:Struct 玩家,Device $handler
+lines:
+Struct AI玩家=varf Struct.玩家.ref()
+Device handler=fun creatVariable.device(var $handler)
+endcode

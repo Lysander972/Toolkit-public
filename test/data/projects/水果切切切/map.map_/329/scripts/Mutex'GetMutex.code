@@ -1,0 +1,11 @@
+begincodeV2
+name:Mutex'GetMutex
+params:String key
+return:Bool mutex
+lines:
+Bool raw=varf Dict.Mutex.readBool(var key:Bool 0)
+Bool mutex=fun bool.not(var raw)
+if{fun create.bool(var mutex)
+  varf Dict.Mutex.insert(var key:var mutex)
+}
+endcode

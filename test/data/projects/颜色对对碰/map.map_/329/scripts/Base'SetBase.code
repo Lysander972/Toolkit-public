@@ -1,0 +1,25 @@
+begincodeV2
+name:Base'SetBase
+params:Long $faction,Vector3 $postition,Vector3 $direction,Float $defaultHP,Long $size
+lines:
+if{fun long.equal(var $faction:Long 1)
+  Bool $exist=varf Mech.BuleBase.alive()
+  if{fun bool.not(var $exist)
+    Mech BuleBase=act 1101.this.Base'New(var $postition:var $direction)
+    Device BuleBaseCore=varf Mech.BuleBase.getCoreDevice()
+  }
+  Mech $base=fun creatVariable.mech(var BuleBase)
+}
+if{fun long.equal(var $faction:Long 2)
+  Bool $exist=varf Mech.RedBase.alive()
+  if{fun bool.not(var $exist)
+    Mech RedBase=act 1101.this.Base'New(var $postition:var $direction)
+    Device RedBaseCore=varf Mech.RedBase.getCoreDevice()
+  }
+  Mech $base=fun creatVariable.mech(var RedBase)
+}
+varf Mech.$base.setActive(Bool 1)
+varf Mech.$base.move(var $postition:Enum 0)
+varf Mech.$base.rot(var $direction:Vector3 0,1,0)
+varf Mech.$base.callFun4(String Public'OnEnabled:var $faction:var $defaultHP:var $size:var ScenarioOffset)
+endcode

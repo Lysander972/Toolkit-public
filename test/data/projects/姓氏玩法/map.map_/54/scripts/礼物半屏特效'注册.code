@@ -1,0 +1,13 @@
+begincodeV2
+name:礼物半屏特效'注册
+params:Long 礼物类型,Struct 玩家,Float 有效时间
+lines:
+fun break()
+Float 当前时间=fun time.scaleTime()
+Float 失效时间=fun float.add(var 当前时间:var 有效时间)
+Dict 注册信息=fun create.dict()
+varf Dict.注册信息.insert(String 礼物类型:var 礼物类型)
+varf Dict.注册信息.insert(String 玩家:var 玩家)
+varf Dict.注册信息.insert(String 失效时间:var 失效时间)
+varf List.UI_局内'半屏特效_注册信息.add(var 注册信息)
+endcode

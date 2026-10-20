@@ -1,0 +1,22 @@
+[
+ {
+  name:UI字典
+  type:Dict
+ }
+ {
+  name:参数列表底板
+  type:UIRect
+ }
+ {
+  name:参数调节列表
+  type:List
+ }
+ {
+  name:开关面板
+  type:Bool
+ }
+ {
+  name:是否为GM
+  type:Bool
+ }
+]

@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_记录特定目标捣乱层数
+comment:设置玩家的待处理效果层数
+params:Struct 结构,Struct 队伍
+lines:
+Dict 待处理效果=act 1101.this.玩家结构'读取待处理效果字典(var 结构)
+List 捣乱记录列表=varf Dict.待处理效果.readList(String 目标捣乱:Bool 1)
+varf List.捣乱记录列表.add(var 队伍)
+endcode

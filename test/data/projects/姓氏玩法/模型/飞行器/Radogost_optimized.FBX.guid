@@ -1,0 +1,27 @@
+guid:fabd9a1f37af4accbb221f54742cbbc4
+meshes:
+[
+ {
+  n:radogost
+ }
+]
+matFolderName:49cd5ccd2b98407da7761b4d4885bee9
+Albedo.UID:49cd5ccd2b98407da7761b4d4885bee9
+Metal.UID:ac2441f19f5043738dac8118176ec260
+Emission.UID:54fb6411d8b648a495adcfa8135712a5
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[4.017056,0.2183821,0,1]
+ }
+]
+bounds.center:[0,3.276993,-1.358622]
+bounds.size:[22.8526,18.47967,30.40295]

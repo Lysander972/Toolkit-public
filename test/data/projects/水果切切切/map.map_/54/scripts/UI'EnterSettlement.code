@@ -1,0 +1,263 @@
+begincodeV2
+color:0,255,151
+name:UI'EnterSettlement
+params:Long winner
+lines:
+/*if{fun create.bool(var settled)
+/*  fun break()
+}
+/*if{fun bool.not(var settled)
+/*  Bool settled=fun create.bool(Bool 1)
+}
+//框架新版录制持久化功能
+if{fun create.bool(var Record'Activate)
+  //需要判定是否保存
+  Bool needsave=fun create.bool(Bool 0)
+  if{fun create.bool(var Record'ForceSav)
+    Bool needsave=fun create.bool(Bool 1)
+  }
+  if{fun create.bool(var needsave)
+    Dict data=fun map.load()
+    varf Dict.data.insert(String recList:var Record'RecList)
+    act 1101.this.存档'上传(Bool 1)
+  }
+}
+act 1101.this.UI'QuitMenu()
+act 1101.this.UI'QuitGame()
+if{fun create.bool(var InSettlement)
+  fun break()
+}
+fun audio.setVolume(Float 0)
+Bool InSettlement=fun create.bool(Bool 1)
+//结算前的提示
+fun ui.2dmode(Bool 1)
+Canvas UI=fun create.canvas(Canvas guid@18dde002203524116bc05af0f076ee439)
+UIRect background=varf Canvas.UI.readUIRect(String background)
+UILabel label=varf Canvas.UI.readUILabel(String background/title)
+if{fun long.equal(var winner:Long 1)
+  varf UILabel.label.text(String 上方获胜)
+}
+if{fun long.equal(var winner:Long 2)
+  varf UILabel.label.text(String 下方获胜)
+}
+act 1101.this.分辨率记录更新和持久化()
+delay fun create.float(Float 3)
+varf UIRect.background.del(Float 0)
+act 1101.this.Logger'记录日志(var winner)
+//创建结算页
+Bool exist=varf Canvas.SettlementUI.exist()
+if{fun bool.not(var exist)
+  fun ui.2dmode(Bool 1)
+  Canvas SettlementUI=fun create.canvas(Canvas guid@10e5ae075677c40ae878933b7dde99df4)
+}
+Long totalScore=fun long.add(var LastScorePool:var ScorePool)
+UIRect panel=varf Canvas.SettlementUI.readUIRect(String 结算界面/scroll/panel)
+List id列表=varf Dict.PlayerMap.names()
+//判断败方分数
+if{fun long.equal(var winner:Long 0)
+  Float 败方连胜池=fun create.float(Float 0)
+}
+if{fun long.equal(var winner:Long 1)
+  Float 败方连胜池=varf Long.红方连胜池.toFloat()
+}
+if{fun long.equal(var winner:Long 2)
+  Float 败方连胜池=varf Long.蓝方连胜池.toFloat()
+}
+//遍历全部玩家,分到红蓝队,只保存数据完整的@4含有排行榜名次标志位的@5
+Long 蓝队总积分=fun create.long(Long 0)
+Long 红队总积分=fun create.long(Long 0)
+Float index=varf List.id列表.count()
+List 全部玩家=fun create.list()
+List 蓝队玩家=fun create.list()
+List 红队玩家=fun create.list()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  String ID=varf List.id列表.readString(var index)
+  Struct player=varf Dict.PlayerMap.readStruct(var ID:Bool 1)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  String uidproxy=varf Struct.player.getString(String idproxy:Bool 1)
+  Bool save=fun string.equal(var uid:var uidproxy)
+  if{fun create.bool(var save)
+    Long team=varf Struct.player.getLong(String team:Bool 1)
+    Long score=varf Struct.player.getLong(String score:Bool 1)
+    if{varf Struct.player.contains(String 排行榜名次)
+      if{fun long.equal(var team:Long 1)
+        varf Long.蓝队总积分.addEqual(var score)
+        varf List.蓝队玩家.add(var player)
+      }
+      if{fun long.equal(var team:Long 2)
+        varf Long.红队总积分.addEqual(var score)
+        varf List.红队玩家.add(var player)
+      }
+      varf List.全部玩家.add(var player)
+    }
+  }
+}
+//得到两方第一名
+Long 蓝方第一积分=fun create.long(Long 0)
+String 蓝方第一UID=fun create.string(String )
+Long 红方第一积分=fun create.long(Long 0)
+String 红方第一UID=fun create.string(String )
+varf List.蓝队玩家.sort2(Bool 0:String score)
+varf List.红队玩家.sort2(Bool 0:String score)
+Float 数量=varf List.蓝队玩家.count()
+if{fun float.gt(var 数量:Float 0)
+  Struct 蓝方第一玩家=varf List.蓝队玩家.readStruct(Float 0)
+  Long 蓝方第一积分=varf Struct.蓝方第一玩家.getLong(String score:Bool 1)
+  String 蓝方第一UID=varf Struct.蓝方第一玩家.getString(String id:Bool 1)
+}
+Float 数量=varf List.红队玩家.count()
+if{fun float.gt(var 数量:Float 0)
+  Struct 红方第一玩家=varf List.红队玩家.readStruct(Float 0)
+  Long 红方第一积分=varf Struct.红方第一玩家.getLong(String score:Bool 1)
+  String 红方第一UID=varf Struct.红方第一玩家.getString(String id:Bool 1)
+}
+//计算被瓜分的连胜池.失败扣除40%的连胜给胜利方瓜分,刷新显示
+Float 被瓜分败方连胜池=fun float.multiply(var 败方连胜池:Float 0.4)
+Float 被瓜分败方连胜池=varf Float.被瓜分败方连胜池.ceiling()
+if{fun long.equal(var winner:Long 0)
+  UILabel label=varf Canvas.SettlementUI.readUILabel(String 结算界面/winer/label)
+  varf UILabel.label.text(String 平局)
+  varf UILabel.label.setColor(Color 192,192,192,255,格子-中立)
+}
+if{fun long.equal(var winner:Long 1)
+  UILabel label=varf Canvas.SettlementUI.readUILabel(String 结算界面/winer/label)
+  varf UILabel.label.text(String 上方胜利)
+  varf UILabel.label.setColor(Color 0,151,205,255,UI-蓝色)
+}
+if{fun long.equal(var winner:Long 2)
+  UILabel label=varf Canvas.SettlementUI.readUILabel(String 结算界面/winer/label)
+  varf UILabel.label.text(String 下方胜利)
+  varf UILabel.label.setColor(Color 255,26,0,255,UI-红色)
+}
+//根据连胜计算积分加成
+List 排行榜输入=fun create.list()
+Float index=varf List.全部玩家.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Struct player=varf List.全部玩家.readStruct(var index)
+  Long team=varf Struct.player.getLong(String team:Bool 1)
+  Long streak=varf Struct.player.getLong(String streak:Bool 1)
+  Long score=varf Struct.player.getLong(String score:Bool 1)
+  Float 瓜分积分占比=fun create.float(Float 0)
+  Float 瓜分连胜占比=fun create.float(Float 0)
+  if{fun long.equal(var team:Long 1)
+    Long 含对方第一积分=fun long.add(var 蓝队总积分:var 红方第一积分)
+    if{fun long.gt(var 含对方第一积分:Long 0)
+      Float 瓜分积分占比=fun long.division(var score:var 含对方第一积分)
+    }
+    if{fun long.gt(var 蓝队总积分:Long 0)
+      Float 瓜分连胜占比=fun long.division(var score:var 蓝队总积分)
+    }
+  }
+  if{fun long.equal(var team:Long 2)
+    Long 含对方第一积分=fun long.add(var 红队总积分:var 蓝方第一积分)
+    if{fun long.gt(var 含对方第一积分:Long 0)
+      Float 瓜分积分占比=fun long.division(var score:var 含对方第一积分)
+    }
+    if{fun long.gt(var 红队总积分:Long 0)
+      Float 瓜分连胜占比=fun long.division(var score:var 红队总积分)
+    }
+  }
+  //计算胜方得到的连胜
+  if{fun long.equal(var team:var winner)
+    varf Long.streak.addEqual(Long 1)
+    Float tmp=fun float.multiply(var 被瓜分败方连胜池:var 瓜分连胜占比)
+    Long 抢夺连胜=varf Float.tmp.toLong()
+    varf Long.streak.addEqual(var 抢夺连胜)
+    varf Struct.player.set(String 抢夺连胜:var 抢夺连胜)
+  }
+  if{fun long.notEqual(var team:var winner)
+    //失败扣除40%的连胜
+    Float tmp=varf Long.streak.toFloat()
+    Float tmp=fun float.multiply(var tmp:Float 0.6)
+    Long streak=varf Float.tmp.toLong()
+  }
+  //扣除完连胜后计算连胜加成
+  Long 连胜加成=fun create.long(Long 0)
+  if{fun long.gt(var streak:Long 0)
+    Float addRate=act 1101.this.连胜积分加成(var streak)
+    Float _积分=varf Long.score.toFloat()
+    Float tmp=fun float.multiply(var _积分:var addRate)
+    Float tmp=varf Float.tmp.ceiling()
+    Long 连胜加成=varf Float.tmp.toLong()
+    varf Long.score.addEqual(var 连胜加成)
+  }
+  varf Struct.player.set(String 连胜加成:var 连胜加成)
+  //单独为败方第一添加积分
+  if{fun long.notEqual(var team:var winner)
+    String uid=varf Struct.player.getString(String id:Bool 1)
+    if{fun long.equal(var winner:Long 1)
+      if{fun string.equal(var uid:var 红方第一UID)
+        Float tmp=varf Long.totalScore.toFloat()
+        Float tmp=fun float.multiply(var tmp:var 瓜分积分占比)
+        Long 抢夺积分池=varf Float.tmp.toLong()
+        varf Long.score.addEqual(var 抢夺积分池)
+        varf Struct.player.set(String 抢夺积分池:var 抢夺积分池)
+      }
+    }
+    if{fun long.equal(var winner:Long 2)
+      if{fun string.equal(var uid:var 蓝方第一UID)
+        Float tmp=varf Long.totalScore.toFloat()
+        Float tmp=fun float.multiply(var tmp:var 瓜分积分占比)
+        Long 抢夺积分池=varf Float.tmp.toLong()
+        varf Long.score.addEqual(var 抢夺积分池)
+        varf Struct.player.set(String 抢夺积分池:var 抢夺积分池)
+      }
+    }
+  }
+  //为胜方添加积分
+  if{fun long.equal(var team:var winner)
+    Float tmp=varf Long.totalScore.toFloat()
+    Float tmp=fun float.multiply(var tmp:var 瓜分积分占比)
+    Long 抢夺积分池=varf Float.tmp.toLong()
+    varf Long.score.addEqual(var 抢夺积分池)
+    varf Struct.player.set(String 抢夺积分池:var 抢夺积分池)
+  }
+  varf Struct.player.set(String score:var score)
+  varf Struct.player.set(String streak:var streak)
+  Dict D=fun create.dict()
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  varf Dict.D.insert(String uid:var uid)
+  varf Dict.D.insert(String score:var score)
+  varf Dict.D.insert(String wins:var streak)
+  Float teamF=varf Long.team.toFloat()
+  varf Dict.D.insert(String team:var teamF)
+  String name=varf Struct.player.getString(String name:Bool 1)
+  varf Dict.D.insert(String name:var name)
+  Bool bLose=fun long.notEqual(var team:var winner)
+  varf Dict.D.insert(String bLose:var bLose)
+  varf List.排行榜输入.add(var D)
+}
+//原本的全部玩家列表是乱序的,排序后用于显示
+varf List.全部玩家.sort2(Bool 0:String score)
+//按积分排序排行榜上传数据
+varf List.排行榜输入.sort2(Bool 0:String score)
+/*if{fun create.bool(var IsGM)
+/*  fun string.popNotify(String GM模式不会上传排行榜，以避免污染数据:Float 3)
+}
+/*if{fun bool.not(var IsGM)
+  Dict req_week=fun create.dict()
+  varf Dict.req_week.insert(String list:var 排行榜输入)
+  Float winnerF=varf Long.winner.toFloat()
+  varf Dict.req_week.insert(String winTeam:var winnerF)
+  async Dict ack_1=fun dynamicCallRet(String DanmuAddRank:var req_week)
+  List 周排行榜结果=varf Dict.ack_1.readList(String List:Bool 1)
+  Dict req_month=fun create.dict()
+  String 后缀=fun create.string(String .M)
+  varf Dict.req_month.insert(String type:var 后缀)
+  varf Dict.req_month.insert(String list:var 排行榜输入)
+  Float winnerF=varf Long.winner.toFloat()
+  varf Dict.req_month.insert(String winTeam:var winnerF)
+  async Dict ack_2=fun dynamicCallRet(String DanmuAddRank:var req_month)
+  List 月排行榜结果=varf Dict.ack_2.readList(String List:Bool 1)
+/*  List 月排行榜结果=fun create.list()
+  act 1101.this.UI'SettlementItem(var panel:var 全部玩家:var 周排行榜结果:var 月排行榜结果:var winner)
+}
+Vector3 size=varf UIRect.panel.getSize()
+Float 宽度=varf Vector3.size.x()
+UIRect scroll=varf Canvas.SettlementUI.readUIRect(String 结算界面/scroll)
+Float index=varf List.全部玩家.count()
+act 1101.this.界面显示'滑动区域适配(var index:var 宽度:var panel:var scroll:Float 120:Float 3)
+fun script.skip()
+endcode

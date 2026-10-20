@@ -1,0 +1,20 @@
+begincodeV2
+name:通用武器动图'附加层数修改
+params:Canvas 武器UI,Long 层数变化
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+Long 已有层数=varf UIRect.根节点.customLong(String 层数)
+Long 已有层数=fun long.add(var 已有层数:var 层数变化)
+varf UIRect.根节点.setCustomLong(String 层数:var 已有层数)
+UILabel 数值文本框=varf Canvas.武器UI.readUILabel(String 根节点/拖尾/武器/层数UI/数值)
+String 数值显示=fun string.Format1(String ×%1:var 已有层数)
+varf UILabel.数值文本框.text(var 数值显示)
+Float 字数=varf String.数值显示.length()
+Float 宽度=fun float.multiply(Float 13:var 字数)
+Float 宽度=fun float.add(var 宽度:Float 20)
+Vector3 尺寸=fun creatVariable.Vector3(var 宽度:Float 30:Float 0)
+/*Vector3 尺寸=varf UILabel.数值文本框.getTextSize()
+/*Vector3 尺寸=fun vector3.add(var 尺寸:Vector3 16,12,0)
+UIRect 层数UI=varf Canvas.武器UI.readUIRect(String 根节点/拖尾/武器/层数UI)
+varf UIRect.层数UI.size(var 尺寸)
+endcode

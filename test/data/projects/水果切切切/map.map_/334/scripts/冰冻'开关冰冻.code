@@ -1,0 +1,15 @@
+begincodeV2
+name:冰冻'开关冰冻
+params:Bool open
+lines:
+if{fun create.bool(var Attr'Alive)
+  act 1.this.Public'FrozenEffect(var open:Color 0,221,255,255:Color 176,244,255,255:Float 1:Float 0.5)
+  if{fun create.bool(var open)
+    Bool 冰冻'冰冻=fun create.bool(Bool 1)
+  }
+  if{fun bool.not(var open)
+    Bool 冰冻'冰冻=fun create.bool(Bool 0)
+    act 1.this.冰冻'取消冻结物理()
+  }
+}
+endcode

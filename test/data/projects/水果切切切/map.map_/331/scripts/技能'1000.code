@@ -1,0 +1,165 @@
+begincodeV2
+color:221,0,255
+name:技能'1000
+lines:
+String key=fun create.string(String 1000)
+Long 剩余弹药数=act 1.this.Skills'GetValue(var key)
+Long 弹药基数=fun create.long(Long 0)
+Float hp基数=fun create.float(Float 1)
+//5000
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 500)
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 1)
+  Float hp基数=fun create.float(Float 1.5)
+}
+//10000
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 1000)
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 2)
+  Float hp基数=fun create.float(Float 2)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 1500)
+//15000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 3)
+  Float hp基数=fun create.float(Float 2.5)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 2000)
+//20000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 4)
+  Float hp基数=fun create.float(Float 3)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 3000)
+//30000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 5)
+  Float hp基数=fun create.float(Float 3.5)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 4000)
+//40000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 6)
+  Float hp基数=fun create.float(Float 4)
+}
+Float hp系数=fun float.multiply(var 属性'攻方HP倍数:var hp基数)
+Float cd=fun create.float(var 属性'攻方冷却)
+if{fun long.gte(var 剩余弹药数:Long 1)
+  Float 水果大类随机=fun math.rand(Float 0:Float 1)
+  if{fun float.lt(var 水果大类随机:Float 0.2)
+    Long 小型水果随机=fun long.rand(Long 0:Long 119)
+    Bool bool1=fun long.lt(var 小型水果随机:Long 44)
+    Bool bool2=fun long.gte(var 小型水果随机:Long 0)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1000:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    Bool bool1=fun long.lt(var 小型水果随机:Long 46)
+    Bool bool2=fun long.gte(var 小型水果随机:Long 44)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1001:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    Bool bool1=fun long.lt(var 小型水果随机:Long 90)
+    Bool bool2=fun long.gte(var 小型水果随机:Long 46)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1002:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    Bool bool1=fun long.lt(var 小型水果随机:Long 105)
+    Bool bool2=fun long.gte(var 小型水果随机:Long 90)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1003:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    Bool bool1=fun long.lt(var 小型水果随机:Long 120)
+    Bool bool2=fun long.gte(var 小型水果随机:Long 105)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1004:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+  }
+  if{fun float.gte(var 水果大类随机:Float 0.8)
+    Float 大型水果随机=fun math.rand(Float 0:Float 1)
+    //大型水果,占据刷新的主体
+    //蓝色无花果
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.05)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1010:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //绿色无花果
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.05)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.1)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1011:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //紫色无花果
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.1)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.15)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1012:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //黄色无花果
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.15)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.2)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1013:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //哈密瓜
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.2)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.3)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1014:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //橙子
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.3)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.4)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1015:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //火龙果
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.4)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.5)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1016:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //菠萝
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.5)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.6)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1017:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //柠檬
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.6)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.7)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1018:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //红色柿子
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.7)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.75)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1019:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //橙色柿子
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.75)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.8)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1020:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //桃子
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.8)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 0.9)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1021:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+    //杏
+    Bool bool1=fun float.gte(var 大型水果随机:Float 0.9)
+    Bool bool2=fun float.lt(var 大型水果随机:Float 1.01)
+    if{fun bool.and(var bool1:var bool2)
+      Long success=act 1.this.Launcher'LaunchUniformlyAuto(Long 1022:var 当前瞄准'X:var 当前瞄准'Y:Long 1:Float 0:Float 0:Bool 0:var key:var 弹药基数:var hp系数:Float 0:Float 1:Bool 1:var 当前瞄准'初速度)
+    }
+  }
+  if{fun long.gte(var success:Long 0)
+    =act 1.this.Skills'Decrease(var key:Long 1)
+    act 1.this.UI'攻方刷新弹药数()
+  }
+}
+delay fun create.float(var cd)
+endcode

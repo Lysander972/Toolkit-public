@@ -1,0 +1,46 @@
+begincodeV2
+color:255,255,255
+name:局外功能设置'分辨率_应用
+comment:会记录修改后的分辨率作为实际分辨率
+params:Long 新分辨率选项
+lines:
+Float 更新延迟=fun create.float(Float 0.1)
+if{fun long.equal(var 新分辨率选项:Long 0)
+  fun screen.setResolution(Float 750:Float 1334)
+/*  fun screen.setResolution(Float 1080:Float 1920)
+  Bool 局外功能设置'分辨率更新锁定=fun create.bool(Bool 1)
+  Long 局外功能设置'分辨率选项=fun create.long(var 新分辨率选项)
+  delay fun create.float(var 更新延迟)
+  Vector3 局外功能设置'实际分辨率=fun screen.size()
+  Bool 局外功能设置'分辨率更新锁定=fun create.bool(Bool 0)
+}
+if{fun long.equal(var 新分辨率选项:Long 1)
+  fun screen.setResolution(Float 1080:Float 1920)
+/*  fun screen.setResolution(Float 1080:Float 2160)
+  Bool 局外功能设置'分辨率更新锁定=fun create.bool(Bool 1)
+  Long 局外功能设置'分辨率选项=fun create.long(var 新分辨率选项)
+  delay fun create.float(var 更新延迟)
+  Vector3 局外功能设置'实际分辨率=fun screen.size()
+  Bool 局外功能设置'分辨率更新锁定=fun create.bool(Bool 0)
+}
+if{fun long.equal(var 新分辨率选项:Long 2)
+  //仅从其他模式切换过来的时候使用记录中的分辨率
+  //如果原本就是模式4,那么再次应用不会产生任何效果
+  if{fun long.notEqual(var 局外功能设置'分辨率选项:Long 2)
+    Bool 局外功能设置'分辨率更新锁定=fun create.bool(Bool 1)
+    Long 局外功能设置'分辨率选项=fun create.long(var 新分辨率选项)
+    Dict data=fun map.load()
+    Bool 已设置=varf Dict.data.contains(String 手动分辨率)
+    Vector3 手动分辨率=fun screen.size()
+    if{fun create.bool(var 已设置)
+      Vector3 手动分辨率=varf Dict.data.readVector3(String 手动分辨率:Bool 0)
+      Float x=varf Vector3.手动分辨率.x()
+      Float y=varf Vector3.手动分辨率.y()
+      fun screen.setResolution(var x:var y)
+    }
+    delay fun create.float(var 更新延迟)
+    Vector3 局外功能设置'实际分辨率=fun screen.size()
+    Bool 局外功能设置'分辨率更新锁定=fun create.bool(Bool 0)
+  }
+}
+endcode

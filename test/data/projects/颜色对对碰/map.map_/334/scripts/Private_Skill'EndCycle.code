@@ -1,0 +1,24 @@
+begincodeV2
+private:1
+name:Private_Skill'EndCycle
+comment:停止技能的循环检查和自动释放
+lines:
+if{fun long.equal(var Type:Long 40)
+  act 1.this.DisableFun(String Private_SkillType'40_Cycle)
+  if{fun create.bool(var HPCycleStarted)
+    act 1.this.DisableFun(String Private_SkillType'HPLoss_Cycle)
+  }
+}
+if{fun long.equal(var Type:Long 41)
+  act 1.this.DisableFun(String Private_SkillType'41_Cycle)
+  if{fun create.bool(var HPCycleStarted)
+    act 1.this.DisableFun(String Private_SkillType'HPLoss_Cycle)
+  }
+}
+if{fun long.equal(var Type:Long 50)
+  act 1.this.DisableFun(String Private_SkillType'50_Cycle)
+  if{fun create.bool(var HPCycleStarted)
+    act 1.this.DisableFun(String Private_SkillType'HPLoss_Cycle)
+  }
+}
+endcode

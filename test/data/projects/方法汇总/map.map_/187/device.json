@@ -1,0 +1,13 @@
+type:30
+pos:[10.49584,-9.536743E-07,3.34144]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[270,0,0]
+ limitRate:1
+ limitRate2:1
+ motorForceRate:1
+ autoMotorVelocity:0
+ motorVelocityRate:1
+ knobAngle:0
+}

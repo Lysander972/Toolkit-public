@@ -1,0 +1,16 @@
+begincodeV2
+name:Launcher'攻方贴脸放置
+params:Long type,Struct player,Vector3 direction,Float HPMul,Float crit,Float initHp
+return:Bool ret
+lines:
+Float 地图宽度=act 1.this.Map'得到地图宽度()
+Float rand=fun math.rand(Float -30:Float 30)
+Vector3 random=fun creatVariable.Vector3(var rand:Float 0:Float 0)
+Float z=fun float.multiply(var 地图宽度:Float 0.5)
+varf Float.z.addEqual(Float 30)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 0:var z)
+Vector3 relative=fun vector3.add(var relative:var random)
+varf Vector3.relative.setY(Float 70)
+Vector3 position=fun vector3.add(var relative:var ScenarioOffset)
+Bool ret=act 1.this.Launcher'AbstractSetBullet(var position:var direction:var type:var Attr'Faction:var player:var HPMul:var crit:var initHp:Bool 0:Float 0)
+endcode

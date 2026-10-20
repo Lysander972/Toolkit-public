@@ -1,0 +1,91 @@
+begincodeV2
+color:208,0,255
+name:内部'队伍映射_创建
+params:Struct 队伍
+return:Struct 队伍映射
+lines:
+Struct 队伍映射=fun create.struct()
+Dict buff层数=fun create.dict()
+varf Struct.队伍映射.set(String buff层数:var buff层数)
+varf Struct.队伍映射.set(String 队伍:var 队伍)
+Mech 队伍模型=act 1101./Scenario.Model'SetModel(Vector3 0,-1,0:Vector3 0,0,1:String 柱子模型)
+varf Mech.队伍模型.setLayer(Float 1)
+varf Mech.队伍模型.setCustomMech(String 甜甜圈buff模型:Mech )
+varf Mech.队伍模型.setCustomMech(String 电池buff模型:Mech )
+varf Mech.队伍模型.setCustomMech(String 炸弹buff模型:Mech )
+varf Mech.队伍模型.setCustomMech(String 话筒buff模型:Mech )
+varf Mech.队伍模型.setCustomMech(String 空投buff模型:Mech )
+varf Mech.队伍模型.setCustomBool(String 刷新摄像机高度:Bool 1)
+varf Mech.队伍模型.setCustomBool(String 刷新摄像机裁切:Bool 1)
+varf Mech.队伍模型.setCustomBool(String 刷新模型高度:Bool 1)
+varf Mech.队伍模型.setCustomLong(String 帧内累积增加数值:Long 0)
+varf Mech.队伍模型.setCustomLong(String 帧内累积减少数值:Long 0)
+varf Mech.队伍模型.setCustomBool(String 帧内数值变化:Bool 0)
+varf Mech.队伍模型.setCustomFloat(String 附加减速类模型偏移量:Float 0)
+List 附加碎片列表=fun create.list()
+varf Mech.队伍模型.setCustomList(String 附加碎片列表:var 附加碎片列表)
+varf Mech.队伍模型.callFun0(String 手动开启碰撞)
+varf Struct.队伍映射.set(String 队伍模型:var 队伍模型)
+//绑定基础模型
+varf Mech.队伍模型.setCustomMech(String 基础模型:Mech )
+Mech 绑定模型=act 1101./Scenario.Model'SetModel(Vector3 0,-1e+04,0:Vector3 1,0,0:String 飞机模型)
+varf Mech.绑定模型.setCustomString(String modelkey:String 飞机模型)
+//入场动画
+String 字段名=fun create.string(String 基础模型)
+Float 整体缩放=fun create.float(Float 1)
+Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Dict 空事件=fun create.dict()
+Float 入场离场偏移=fun create.float(Float 0)
+varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 空事件:var 入场离场偏移)
+/*Canvas 队伍UI布局=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgnmoLnoioLngrkDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAADIQgAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAAAAAAZSYWRpdXMBAAAAAARzb25zEAEAEQsABHR5cGUGB1VJTGFiZWwEbmFtZQYM6Zif5LyN5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAyEMAAMhCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/D291dGxpbmVEaXN0YW5jZQQAAIA/AACAvwAAAAAEdGV4dAYACEZvbnRTaXplAQAAwEE@3)
+/*UIRect 队伍根节点=varf Canvas.队伍UI布局.readUIRect(String 根节点)
+/*UILabel 队伍数值框_2D=varf Canvas.队伍UI布局.readUILabel(String 根节点/队伍数值)
+/*Device 跟随零件=varf Mech.队伍模型.getCoreDevice()
+/*varf UIRect.队伍根节点.followDevice(var 跟随零件:Vector3 0,5,0)
+/*varf UIRect.图表特效图层_悬浮.addSon(var 队伍根节点)
+/*varf Struct.队伍映射.set(String 队伍布局:var 队伍UI布局)
+/*varf Struct.队伍映射.set(String 队伍数值框底:var 队伍根节点)
+/*varf Struct.队伍映射.set(String 队伍数值框:var 队伍数值框_2D)
+//更新队伍映射整体的坐标
+Float 队伍映射世界角度=fun create.float(Float 0)
+Float 队伍映射局部高度=fun create.float(Float 0)
+varf Struct.队伍映射.set(String 队伍映射世界角度:var 队伍映射世界角度)
+varf Struct.队伍映射.set(String 队伍映射局部高度:var 队伍映射局部高度)
+//读取队伍的id,根据队伍id生成颜色
+Long id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var id)
+Long 显示前缀=fun long.add(var id:Long 1)
+String name=act 1101./弹幕.队伍结构'读取_name(var 队伍)
+//队伍的UI根节点,绑定到柱子上
+/*String 标题=fun create.string(var 显示前缀)
+/*String 标题=fun string.add(String 序号 :var 显示前缀)
+String 标题=fun string.add(var 显示前缀:String .)
+varf Mech.队伍模型.callFun2(String 设置队伍名和队伍号:var name:var 标题)
+String 标题=fun create.string(String )
+varf Mech.队伍模型.callFun2(String 设置队伍数值:var 标题:var 标题)
+//队伍头像马甲
+List 队伍头像马甲=fun create.list()
+varf Struct.队伍映射.set(String 队伍头像马甲:var 队伍头像马甲)
+//建立引用关系
+varf Dict.队伍UI映射.insert(var 字符串id:var 队伍映射)
+//初始化1个大头像和5个小头像
+Long 小头像=fun create.long(Long 0)
+while{fun long.lt(var 小头像:Long 5)
+  act 1101.this.内部'队伍映射_添加玩家头像(var 队伍映射:Float 1.2)
+  varf Long.小头像.addEqual(Long 1)
+}
+act 1101.this.内部'队伍映射_添加玩家头像(var 队伍映射:Float 1.6)
+//缩略图列表添加一个新的项
+Canvas 缩略图布局=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgnmoLnoioLngrkDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAAB6QwAAAEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAAAAAAZSYWRpdXMBAAAAAARzb25zEAQAEQsABHR5cGUGBlVJUmVjdARuYW1lBgblupXoibIDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAAC3dpZHRoRXh0ZW5kGAIAAAAAAAAADGhlaWdodEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAEBAAACAPwVjb2xvcgwAAIA/EiNJPwAAAAAVtv8+C0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAARDAAEdHlwZQYHVUlMYWJlbARuYW1lBgzmjpLlkI3mmL7npLoDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAwAAAAAAAAAGYW5jaG9yGAMAAAAAAAAADGhlaWdodEV4dGVuZBgCAAAAAAAAAARzaXplBAAASEIAAAAAAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/D291dGxpbmVEaXN0YW5jZQQAAIA/AACAvwAAAAAEdGV4dAYBMQhGb250U2l6ZQEAAKBBEQwABHR5cGUGB1VJTGFiZWwEbmFtZQYJ6Zif5LyN5ZCNA1BvcwQAAEhCAAAAAAAAAAAMcGFyZW50QW5jaG9yGAMAAAAAAAAABmFuY2hvchgDAAAAAAAAAAxoZWlnaHRFeHRlbmQYAgAAAAAAAAAEc2l6ZQQAAKBCAAAAAAAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwxvdXRsaW5lQ29sb3IMAAAAAAAAAAAAAAAAAACAPw9vdXRsaW5lRGlzdGFuY2UEAACAPwAAgL8AAAAABHRleHQGA+eOiwhGb250U2l6ZQEAAKBBEQ4ABHR5cGUGB1VJTGFiZWwEbmFtZQYG6Led56a7A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAAxoZWlnaHRFeHRlbmQYAgAAAAAAAAAEc2l6ZQQAAAJDAAAAAAAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwxvdXRsaW5lQ29sb3IMAAAAAAAAAAAAAAAAAACAPw9vdXRsaW5lRGlzdGFuY2UEAACAPwAAgL8AAAAABHRleHQGDDEyMzQ1Njc4OTAxMghGb250U2l6ZQEAAJBBCUFsaWdubWVudBgDAAAAAAAAAA@3@3)
+UIRect 缩略图根节点=varf Canvas.缩略图布局.readUIRect(String 根节点)
+varf UIRect.队伍排行榜面板.addSon(var 缩略图根节点)
+Float 子组件数量=varf UIRect.队伍排行榜面板.customFloat(String 子组件数量)
+varf Float.子组件数量.addEqual(Float 1)
+varf UIRect.队伍排行榜面板.setCustomFloat(String 子组件数量:var 子组件数量)
+Float 总高度=fun float.multiply(var 子组件数量:Float 40)
+Float 总高度=fun float.max(var 总高度:Float 400)
+Vector3 面板尺寸=fun creatVariable.Vector3(Float 300:var 总高度:Float 0)
+varf UIRect.队伍排行榜面板.size(var 面板尺寸)
+varf List.缩略图组件表.add(var 缩略图布局)
+/*Vector3 原尺寸=varf UIRect.队伍排行榜面板.getSize()
+endcode

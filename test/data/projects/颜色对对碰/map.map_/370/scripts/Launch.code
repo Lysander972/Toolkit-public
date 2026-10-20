@@ -1,0 +1,8 @@
+begincodeV2
+name:Launch
+params:String $text,String $name,Struct $player,Long $type,Long $faction
+lines:
+Vector3 p=act 336.this.wordToLocalPos(Vector3 1e+03,0,0)
+act 336.this.setPosOffset(var p)
+act 336.this.shootDir5(Vector3 0,0,0.01:String 礼物特效:var $text:var $name:var $player:var $type:var $faction)
+endcode

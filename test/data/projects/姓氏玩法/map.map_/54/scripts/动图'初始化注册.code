@@ -1,0 +1,25 @@
+begincodeV2
+color:255,255,255
+name:动图'初始化注册
+lines:
+List 动图注册表id表=fun map.excelGetIDList2(String 动图注册表)
+Float 数量=varf List.动图注册表id表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 数量)
+  Long ID=varf List.动图注册表id表.readLong(var 序号)
+  String prefix=fun readExcel2_String(var ID:String prefix:String 动图注册表)
+  Long first=fun readExcel2_Long(var ID:String first:String 动图注册表)
+  Long last=fun readExcel2_Long(var ID:String last:String 动图注册表)
+  Long FPS=fun readExcel2_Long(var ID:String FPS:String 动图注册表)
+  List reg=fun create.list()
+  Long picId=fun create.long(var first)
+  while{fun long.lte(var picId:var last)
+    String fileName=fun string.add1(var prefix:var picId:String .webp)
+    varf List.reg.add(var fileName)
+    varf Long.picId.addEqual(Long 1)
+  }
+  varf List.UI'动图_注册表.add(var reg)
+  varf List.UI'动图_帧率表.add(var FPS)
+  varf Float.序号.addEqual(Float 1)
+}
+endcode

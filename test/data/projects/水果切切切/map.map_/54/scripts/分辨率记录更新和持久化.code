@@ -1,0 +1,19 @@
+begincodeV2
+name:分辨率记录更新和持久化
+lines:
+Vector3 实际分辨率=fun screen.size()
+Bool 默认分辨率1=fun vector3.equal(var 实际分辨率:Vector3 760,1.33e+03,0)
+Bool 默认分辨率2=fun vector3.equal(var 实际分辨率:Vector3 1.08e+03,1.92e+03,0)
+Bool 默认分辨率3=fun vector3.equal(var 实际分辨率:Vector3 1.44e+03,2.66e+03,0)
+Bool 默认分辨率4=fun vector3.equal(var 实际分辨率:Vector3 2.16e+03,3.98e+03,0)
+Bool 使用默认值=fun bool.or2(var 默认分辨率1:var 默认分辨率2:var 默认分辨率3:var 默认分辨率4)
+Dict data=fun map.load()
+if{fun bool.not(var 使用默认值)
+  Long 场外功能设置'分辨率选项=fun create.long(Long 4)
+  varf Dict.data.insert(String 手动分辨率:var 实际分辨率)
+}
+varf Dict.data.insert(String 分辨率选项标志位:var 场外功能设置'分辨率选项)
+Bool 已更新=fun create.bool(Bool 1)
+varf Dict.data.insert(String 分辨率:var 已更新)
+act 1101.this.存档'上传(Bool 1)
+endcode

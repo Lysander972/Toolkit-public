@@ -1,0 +1,18 @@
+begincodeV2
+color:0,134,255
+name:Public'OnCollision
+comment:碰撞事件
+params:Mech $obj
+lines:
+Device $dev=varf Mech.$obj.getDevice(Float 0)
+//跳过来自同一阵营的子弹
+Long $bulletFaction=varf Device.$dev.callReturnLong0(String Public'GetFaction)
+if{fun long.equal(var Faction:var $bulletFaction)
+  fun break()
+}
+//得到对方的伤害
+Float $damage=varf Device.$dev.callReturnFloat0(String Public'GetAtk)
+Float $counter=act 1.this.Public'Damage(var $damage:var $bulletFaction)
+//计算子弹的受损情况
+varf Device.$dev.callFun2(String Public'Damage:var $counter:var Faction)
+endcode

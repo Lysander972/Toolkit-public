@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:队伍结构'读取_value_shown
+params:Struct 结构
+return:String ret
+lines:
+String ret=varf Struct.结构.getString(String value_shown:Bool 0)
+endcode

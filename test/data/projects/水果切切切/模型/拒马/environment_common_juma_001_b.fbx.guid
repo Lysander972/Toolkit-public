@@ -1,0 +1,30 @@
+guid:d437dd0a8c6746118fe06eaabbe28cc6
+meshes:
+[
+ {
+  n:environment_common_juma_001_b
+ }
+]
+matFolderName:d5c850da1f92412482731e0d741da6bf
+Albedo.UID:d5c850da1f92412482731e0d741da6bf
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.009794414,0.7917876,-0.1841265]
+bounds.size:[2.325212,3.448668,3.860745]

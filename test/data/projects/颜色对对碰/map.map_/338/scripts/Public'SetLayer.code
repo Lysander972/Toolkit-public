@@ -1,0 +1,18 @@
+begincodeV2
+name:Public'SetLayer
+params:Float $layer
+lines:
+if{fun float.Approximately(var TargetLayer:var $layer)
+  fun break()
+}
+Float TargetLayer=fun create.float(var $layer)
+if{fun float.notEqual(var CurrentLayer:Float 11)
+  act 1100.1.setLayer(Float 11)
+  act 1.this.setLayer(Float 11)
+  Float CurrentLayer=fun create.float(Float 11)
+}
+if{fun bool.not(var PrepareRefresh)
+  varf Device.SelfCore.laterCallFun0(String Private'CheckAndUpdate:Float 3)
+  Bool PrepareRefresh=fun create.bool(Bool 1)
+}
+endcode

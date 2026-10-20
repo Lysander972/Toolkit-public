@@ -1,0 +1,19 @@
+begincodeV2
+name:循环'传送带更新
+lines:
+//得到起点终点
+Device core=varf Mech.防守方碰撞.getCoreDevice()
+Vector3 from=varf Device.core.localToWorldPos(var BeltRelativeF)
+Vector3 to=varf Device.core.localToWorldPos(var BeltRelativeT)
+//计算每个的位置
+Vector3 pos=varf Mech.攻方传送带.corePos()
+/*fun debug.print(var pos:Color 255,255,255,255:Bool 0)
+Float z=varf Vector3.pos.z()
+Float z0=varf Vector3.to.z()
+if{fun float.lt(var z:var z0)
+  Device belt=varf Mech.攻方传送带.getCoreDevice()
+  varf Device.belt.setPosKinematic(var from)
+}
+Device core=varf Mech.攻方传送带.getDevice(Float 1)
+varf Device.core.setVelocity(Vector3 0,0,-8)
+endcode

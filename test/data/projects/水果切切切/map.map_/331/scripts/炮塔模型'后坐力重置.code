@@ -1,0 +1,7 @@
+begincodeV2
+name:炮塔模型'后坐力重置
+params:Float 序号
+lines:
+Float 后坐力=fun create.float(Float 0)
+varf List.炮塔模型'后坐力效果表.replace(var 序号:var 后坐力)
+endcode

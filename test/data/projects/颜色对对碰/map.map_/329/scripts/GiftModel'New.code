@@ -1,0 +1,15 @@
+begincodeV2
+private:1
+color:0,138,255
+name:GiftModel'New
+comment:创建一个普通子弹
+params:String $modelKey
+return:Mech $obj
+lines:
+String $modelName=fun string.add(var $modelKey:String .mech)
+List $bulletList=varf Struct.Bullet.getList(var $modelKey:Bool 0)
+act 1110./礼物替身.changeMech(var $modelName)
+Mech $obj=fun createAIMech(String 礼物替身:Float 0:Vector3 1e+03,0,0:Vector3 1,0,0:Enum 1:Bool 0)
+act 1101.this.Generic'MechPhysics(var $obj:Bool 1:Float 0)
+varf List.$bulletList.add(var $obj)
+endcode

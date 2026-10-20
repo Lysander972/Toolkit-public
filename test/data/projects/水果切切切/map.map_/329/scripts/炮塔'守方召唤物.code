@@ -1,0 +1,28 @@
+begincodeV2
+name:炮塔'守方召唤物
+comment:创建召唤物
+params:Struct player
+return:Mech 玩家炮塔
+lines:
+if{fun long.lte(var Base'召唤物容量:Long 0)
+  Mech 玩家炮塔=fun creatVariable.mech(Mech )
+  fun break()
+}
+Float xMin=fun float.multiply(var 地图宽度:Float -0.5)
+varf Float.xMin.addEqual(Float 5)
+Float xMax=fun float.multiply(var 地图宽度:Float 0.5)
+varf Float.xMax.minusEqual(Float 5)
+Float offset=fun float.multiply(Float 10:Float -1)
+Float temp=fun float.multiply(var 地图宽度:Float 0.5)
+Float zMax=fun float.add(var offset:var temp)
+varf Float.zMax.minusEqual(Float 5)
+Float zMin=fun float.multiply(var 地图宽度:Float -0.5)
+varf Float.zMin.addEqual(Float 5)
+Float x=fun math.rand(var xMin:var xMax)
+Float z=fun math.rand(var zMin:var zMax)
+Vector3 relative=fun creatVariable.Vector3(var x:Float 25:var z)
+Vector3 global=fun vector3.add(var relative:var ScenarioOffset)
+/*Vector3 global=fun creatVariable.Vector3(Float 0:Float 25:Float 0)
+Mech 玩家炮塔=act 1101.this.Base'SetBase(Long 2:var global:Vector3 0,0,-1:String 守方召唤炮塔:Long 22:var player)
+varf Long.Base'召唤物容量.minusEqual(Long 1)
+endcode

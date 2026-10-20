@@ -1,0 +1,36 @@
+begincodeV2
+name:Record'PlayPlayerRecord
+params:Long playerID
+lines:
+List playerIDList=fun create.list1(var playerID)
+async List dataList=fun map.loadOtherArchiveAsync(var playerIDList)
+Float results=varf List.dataList.count()
+if{fun float.gt(var results:Float 0)
+  Dict data=varf List.dataList.readDict(Float 0)
+  List Record'RecList=varf Dict.data.readList(String recList:Bool 0)
+  //下载玩家存档
+  Float index=fun create.float(Float 0)
+  Float count=varf List.Record'RecList.count()
+  while{fun float.lt(var index:var count)
+    Dict msgRecord=varf List.Record'RecList.readDict(var index)
+    Float eventTime=varf Dict.msgRecord.readFloat(String eventTime:Bool 0)
+    String type=varf Dict.msgRecord.readString(String typename:Bool 0)
+    Float now=fun time.scaleTime()
+    Float current=fun float.minus(var now:var GameStartTime)
+    while{fun float.lt(var current:var eventTime)
+      delay fun create.float(Float 0)
+      Float now=fun time.scaleTime()
+      Float current=fun float.minus(var now:var GameStartTime)
+    }
+    if{fun string.equal(var type:String comment)
+      act 1101.this.BarrageHandler'Comment(var msgObj:var player)
+    }
+    if{fun string.equal(var type:String gift)
+      act 1101.this.BarrageHandler'Gift(var msgObj:var player)
+    }
+    if{fun string.equal(var type:String like)
+      act 1101.this.BarrageHandler'Like(var msgObj:var player)
+    }
+  }
+}
+endcode

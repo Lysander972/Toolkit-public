@@ -1,0 +1,54 @@
+begincodeV2
+color:8,0,255
+name:Public'OnCollision
+comment:子弹的探测器检测到水果
+params:Device dev
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+Bool exist=varf Device.dev.exist()
+if{fun create.bool(var exist)
+  Mech target=varf Device.dev.mech()
+  //计算伤害
+  Device core=varf Mech.target.getCoreDevice()
+  Vector3 pos=act 1.this.受伤坐标计算(var Self:var target)
+  Bool isAlive=varf Device.core.callReturnBool0(String Public'IsAlive)
+  if{fun create.bool(var isAlive)
+    //首先检查是否能够造成伤害
+    Bool available=fun long.equal(var Attr'DamageC:Long -1)
+    if{fun bool.not(var available)
+      Bool available=fun long.gt(var Attr'DamageC:Long 0)
+      if{fun create.bool(var available)
+        varf Long.Attr'DamageC.minusEqual(Long 1)
+      }
+    }
+    if{fun create.bool(var available)
+      //对于伤害的处理
+      Bool bool1=fun long.equal(var Attr'Type:Long 2200)
+      Bool bool2=fun long.equal(var Attr'Type:Long 2201)
+      Bool special=fun bool.or(var bool1:var bool2)
+      if{fun bool.not(var special)
+        act 1.this.Public'攻击计算(var Self:var target:var pos)
+      }
+      if{fun create.bool(var special)
+        act 1.this.播放音效(String 飞刀命中.ogg:Float 0.5)
+        Float 直接伤害=fun float.multiply(var Attr'Atk:Float 1)
+        Float 额外伤害=fun float.multiply(var Attr'Atk:Float 0)
+        varf Device.core.callFun2(String Skills'SplitCheck:var 直接伤害:var 额外伤害)
+      }
+    }
+  }
+  //检查可以物理碰撞击穿的次数,击穿次数超过限制则消失
+  Bool available=fun long.equal(var Attr'CollisionC:Long -1)
+  if{fun bool.not(var available)
+    Bool available=fun long.gt(var Attr'CollisionC:Long 1)
+    if{fun create.bool(var available)
+      varf Long.Attr'CollisionC.minusEqual(Long 1)
+    }
+  }
+  if{fun bool.not(var available)
+    act 1.this.Private'UpdateHP(Float -1)
+  }
+}
+endcode

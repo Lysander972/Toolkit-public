@@ -1,0 +1,34 @@
+begincodeV2
+guid:5cf99c9a03434f17b7f4524df8ba589e
+name:抛物线模拟'计算俯仰角
+params:Float 初速度,Float 初始高度,Float 重力,Float 预期射程
+return:Float result
+lines:
+Float r2=fun float.pow(var 预期射程:Float 2)
+Float gr2=fun float.multiply(var 重力:var r2)
+Float v2=fun float.pow(var 初速度:Float 2)
+Float temp1=fun float.division(var gr2:var v2)
+Float a=fun float.division(var temp1:Float 2)
+Float _b=fun create.float(var 预期射程)
+Float c=fun float.minus(var a:var 初始高度)
+Float b2=fun float.pow(var _b:Float 2)
+Float temp1=fun float.multiply1(Float 4:var a:var c)
+Float delta2=fun float.minus(var b2:var temp1)
+Float delta=fun float.pow(var delta2:Float 0.5)
+Float temp1=fun float.add(var _b:var delta)
+Float temp2=fun float.multiply(Float 2:var a)
+Float result1=fun float.division(var temp1:var temp2)
+Float temp1=fun float.minus(var _b:var delta)
+Float temp2=fun float.multiply(Float 2:var a)
+Float result2=fun float.division(var temp1:var temp2)
+Float result1=fun float.triangle.atan(var result1)
+Float result2=fun float.triangle.atan(var result2)
+Float temp1=varf Float.result1.abs()
+Float temp2=varf Float.result2.abs()
+if{fun float.lte(var temp1:var temp2)
+  Float result=fun create.float(var result1)
+}
+if{fun float.gt(var temp1:var temp2)
+  Float result=fun create.float(var result2)
+}
+endcode

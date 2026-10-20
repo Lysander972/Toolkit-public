@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'IsWall
+comment:墙
+return:Bool $wall
+lines:
+Bool $wall=fun create.bool(Bool 0)
+endcode

@@ -1,0 +1,30 @@
+guid:d712b2c96cc34deebe7ee857fd79110b
+meshes:
+[
+ {
+  n:Strawberry_Whole
+ }
+]
+matFolderName:cfb004b5c8734c3685b4724440bd1d71
+Albedo.UID:cfb004b5c8734c3685b4724440bd1d71
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[7.450581E-09,0.09258503,7.450581E-09]
+bounds.size:[0.1715691,0.1755816,0.1803984]

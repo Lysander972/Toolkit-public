@@ -1,0 +1,149 @@
+begincodeV2
+name:数字效果'更新
+comment:刷新效果
+lines:
+//2D数字变化效果
+Float index=varf List.UI_局内'数字效果维护队列.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas UI=varf List.UI_局内'数字效果维护队列.readCanvas(var index)
+  UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+  UILabel 文本框=varf Canvas.UI.readUILabel(String 背景/数值)
+  Float 初始时间=varf UIRect.背景.customFloat(String 初始时间)
+  Float 总时间=varf UIRect.背景.customFloat(String 持续)
+  Float 缩放=varf UIRect.背景.customFloat(String 缩放)
+  Bool 突出显示=varf UIRect.背景.customBool(String 突出显示)
+  Float 当前时间=fun time.scaleTime()
+  Vector3 初始位置=varf UIRect.背景.customVector3(String 初始位置)
+  Vector3 目标位置=varf UIRect.背景.customVector3(String 目标位置)
+  Float 持续时间=fun float.minus(var 当前时间:var 初始时间)
+  Float 比例=fun float.division(var 持续时间:var 总时间)
+  Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+  Vector3 当前位置=fun vector3.lerp(var 初始位置:var 目标位置:var 比例)
+  varf UIRect.背景.setCanvasPos(var 当前位置)
+  //缩放比例
+  Float 缩放比例=fun float.division(var 持续时间:Float 0.5)
+  Float 缩放比例=fun float.clamp(var 缩放比例:Float 0:Float 1)
+  if{fun create.bool(var 突出显示)
+    if{fun float.lte(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.division(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 0.5)
+      Float 实际缩放=fun float.multiply1(var 时间段比例:Float 1.5:var 缩放)
+      Float 实际缩放=fun float.max(var 实际缩放:Float 0.01)
+      varf UIRect.背景.scale(var 实际缩放)
+    }
+    if{fun float.gt(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.minus(var 缩放比例:Float 0.33)
+      Float 时间段比例=fun float.division(var 时间段比例:Float 0.67)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 2)
+      Float 实际缩放=fun float.lerp(Float 1.5:Float 1:var 时间段比例)
+      Float 实际缩放=fun float.multiply(var 实际缩放:var 缩放)
+      varf UIRect.背景.scale(var 实际缩放)
+    }
+  }
+  if{fun bool.not(var 突出显示)
+    varf UIRect.背景.scale(var 缩放)
+  }
+  //颜色比例,渐变到消失
+  Float 颜色比例=fun float.minus(var 比例:Float 0.5)
+  Float 颜色比例=fun float.multiply(var 颜色比例:Float 2)
+  Float 颜色比例=fun float.clamp(var 颜色比例:Float 0:Float 1)
+  Color 初始颜色=fun create.color(Color 255,255,255,255)
+  Color 显示颜色=varf Color.初始颜色.lerp(Color 255,255,255,0:var 颜色比例)
+  varf UILabel.文本框.setColor(var 显示颜色)
+  //结束后回收
+  if{fun float.gte(var 比例:Float 1)
+    varf List.UI_局内'数字效果维护队列.remove(var index)
+    varf UIRect.背景.del(Float 0)
+  }
+}
+//3D数字变化维护
+Float index=varf List.UI_局内'3D数字效果维护表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas UI=varf List.UI_局内'3D数字效果维护表.readCanvas(var index)
+  UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+  Bool UI存在=varf UIRect.背景.exist()
+  if{fun create.bool(var UI存在)
+    UILabel 文本框=varf Canvas.UI.readUILabel(String 背景/数值)
+    Float 初始时间=varf UIRect.背景.customFloat(String 初始时间)
+    Float 总时间=varf UIRect.背景.customFloat(String 持续)
+    Float 缩放=varf UIRect.背景.customFloat(String 缩放)
+    Bool 突出显示=varf UIRect.背景.customBool(String 突出显示)
+    Float 当前时间=fun time.scaleTime()
+    Vector3 初始位置=varf UIRect.背景.customVector3(String 初始位置)
+    Vector3 目标位置=varf UIRect.背景.customVector3(String 目标位置)
+    Float 持续时间=fun float.minus(var 当前时间:var 初始时间)
+    Float 比例=fun float.division(var 持续时间:var 总时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Vector3 当前位置=fun vector3.lerp(var 初始位置:var 目标位置:var 比例)
+    Device 跟随零件=varf UIRect.背景.customDevice(String 跟随零件)
+    varf UIRect.背景.followDevice(var 跟随零件:var 当前位置)
+    //缩放比例
+    Float 缩放比例=fun float.division(var 持续时间:Float 0.5)
+    Float 缩放比例=fun float.clamp(var 缩放比例:Float 0:Float 1)
+    if{fun create.bool(var 突出显示)
+      if{fun float.lte(var 缩放比例:Float 0.33)
+        Float 时间段比例=fun float.division(var 缩放比例:Float 0.33)
+        Float 时间段比例=fun float.pow(var 时间段比例:Float 0.5)
+        Float 实际缩放=fun float.multiply1(var 时间段比例:Float 1.5:var 缩放)
+        Float 实际缩放=fun float.max(var 实际缩放:Float 0.01)
+        varf UIRect.背景.scale(var 实际缩放)
+      }
+      if{fun float.gt(var 缩放比例:Float 0.33)
+        Float 时间段比例=fun float.minus(var 缩放比例:Float 0.33)
+        Float 时间段比例=fun float.division(var 时间段比例:Float 0.67)
+        Float 时间段比例=fun float.pow(var 时间段比例:Float 2)
+        Float 实际缩放=fun float.lerp(Float 1.5:Float 1:var 时间段比例)
+        Float 实际缩放=fun float.multiply(var 实际缩放:var 缩放)
+        varf UIRect.背景.scale(var 实际缩放)
+      }
+    }
+    if{fun bool.not(var 突出显示)
+      varf UIRect.背景.scale(var 缩放)
+    }
+    //颜色比例,渐变到消失
+    Float 颜色比例=fun float.minus(var 比例:Float 0.5)
+    Float 颜色比例=fun float.multiply(var 颜色比例:Float 2)
+    Float 颜色比例=fun float.clamp(var 颜色比例:Float 0:Float 1)
+    Color 初始颜色=fun create.color(Color 255,255,255,255)
+    Color 显示颜色=varf Color.初始颜色.lerp(Color 255,255,255,0:var 颜色比例)
+    varf UILabel.文本框.setColor(var 显示颜色)
+    //结束后回收
+    if{fun float.gte(var 比例:Float 1)
+      varf List.UI_局内'3D数字效果维护表.remove(var index)
+      varf UIRect.背景.del(Float 0)
+    }
+  }
+  if{fun bool.not(var UI存在)
+    varf List.UI_局内'3D数字效果维护表.remove(var index)
+  }
+}
+//2D速度变化维护
+Float index=varf List.UI_局内'速度变化维护队列.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas UI=varf List.UI_局内'速度变化维护队列.readCanvas(var index)
+  UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+  UIRawImage 图标=varf Canvas.UI.readUIRawImage(String 背景/图标)
+  Color 初始颜色=varf UIRect.背景.customColor(String 初始颜色)
+  Float 初始时间=varf UIRect.背景.customFloat(String 初始时间)
+  Float 总时间=varf UIRect.背景.customFloat(String 持续)
+  Float 缩放=varf UIRect.背景.customFloat(String 缩放)
+  Float 当前时间=fun time.scaleTime()
+  Float 持续时间=fun float.minus(var 当前时间:var 初始时间)
+  Float 比例=fun float.division(var 持续时间:var 总时间)
+  Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+  varf UIRect.背景.scale(var 缩放)
+  //颜色比例,渐变到消失
+  Float 颜色比例=fun float.minus(var 比例:Float 0.5)
+  Float 颜色比例=fun float.multiply(var 颜色比例:Float 2)
+  Float 颜色比例=fun float.clamp(var 颜色比例:Float 0:Float 1)
+  Color 显示颜色=varf Color.初始颜色.lerp(Color 255,255,255,0:var 颜色比例)
+  varf UIRawImage.图标.setColor(var 显示颜色)
+  if{fun float.gte(var 比例:Float 1)
+    varf List.UI_局内'速度变化维护队列.remove(var index)
+    varf UIRect.背景.del(Float 0)
+  }
+}
+endcode

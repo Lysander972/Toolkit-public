@@ -1,0 +1,48 @@
+begincodeV2
+name:AutoRefresh
+comment:开局时需要强制刷新一次,所以假设开局是提前结算状态
+lines:
+if{act 1101./弹幕.Game'IsStarted()
+  if{fun create.bool(var NeedRefresh)
+    if{fun bool.not(var 未提前结算)
+      Long 总格子=fun long.add(var BuleOccupied:var RedOccupied)
+      Float 占据比例=fun long.division(var BuleOccupied:var 总格子)
+      //@3
+      Float 退出倒计时阈值=act 1101./参数调节模块.读取(String 维持倒计时阈值:Float 0.75:Float 0.5:Float 1:Color 255,0,0,255)
+/*      Float 退出倒计时阈值=fun create.float(Float 0.9)
+      //@3
+      Bool bool1=fun float.lt(var 占据比例:var 退出倒计时阈值)
+      Float 占据比例=fun long.division(var RedOccupied:var 总格子)
+      Bool bool2=fun float.lt(var 占据比例:var 退出倒计时阈值)
+      if{fun bool.and(var bool1:var bool2)
+        act 1101./弹幕.Game'EarlySettlement(Bool 0:Long 0)
+        Bool 未提前结算=fun create.bool(Bool 1)
+      }
+      act 1101./弹幕.UI'GameRefreshScore(var BuleOccupied:var RedOccupied)
+      Bool NeedRefresh=fun create.bool(Bool 0)
+      fun break()
+    }
+    if{fun create.bool(var 未提前结算)
+      Long 总格子=fun long.add(var BuleOccupied:var RedOccupied)
+      Float 占据比例=fun long.division(var BuleOccupied:var 总格子)
+      //@3
+      Float 倒计时阈值=act 1101./参数调节模块.读取(String 开始倒计时阈值:Float 0.9:Float 0.5:Float 1:Color 255,0,0,255)
+/*      Float 倒计时阈值=fun create.float(Float 0.95)
+      //@3
+      Bool bool1=fun float.gte(var 占据比例:var 倒计时阈值)
+      Float 占据比例=fun long.division(var RedOccupied:var 总格子)
+      Bool bool2=fun float.gte(var 占据比例:var 倒计时阈值)
+      if{fun create.bool(var bool1)
+        act 1101./弹幕.Game'EarlySettlement(Bool 1:Long 1)
+        Bool 未提前结算=fun create.bool(Bool 0)
+      }
+      if{fun create.bool(var bool2)
+        act 1101./弹幕.Game'EarlySettlement(Bool 1:Long 2)
+        Bool 未提前结算=fun create.bool(Bool 0)
+      }
+      act 1101./弹幕.UI'GameRefreshScore(var BuleOccupied:var RedOccupied)
+      Bool NeedRefresh=fun create.bool(Bool 0)
+    }
+  }
+}
+endcode

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../res/schemas/package.json",
+  "name": "@toolkit/pi-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./PiExtension.ts",
+  "pi": {
+    "extensions": [
+      "./PiExtension.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "1.0.0"
+  },
+  "dependencies": {
+    "@toolkit/config": "workspace:*",
+    "@toolkit/host": "workspace:*",
+    "@toolkit/mcp": "workspace:*"
+  }
+}

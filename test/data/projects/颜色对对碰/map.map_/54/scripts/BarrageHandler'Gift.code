@@ -1,0 +1,34 @@
+begincodeV2
+name:BarrageHandler'Gift
+params:Dict $msgObj
+lines:
+String $uid=varf Dict.$msgObj.readString(String uid:Bool 0)
+Struct $player=varf Dict.PlayerMap.readStruct(var $uid:Bool 0)
+//可能得到的是空
+Struct $player=act 1101.this.Player'InfoAutoFill(var $player:var $msgObj)
+Long $giftCount=varf Dict.$msgObj.readLong(String num:Bool 0)
+String $giftType=varf Dict.$msgObj.readString(String gift:Bool 0)
+/*String $text=fun string.Format2(String 收到礼物%1 X %2:var $giftType:var $giftCount)
+/*fun string.popNotify(var $text:Float 3)
+if{fun string.equal(var $giftType:String 仙女棒)
+  act 1101.this.得到礼物'1(var $giftCount:var $player)
+}
+if{fun string.equal(var $giftType:String 能力药丸)
+  act 1101.this.得到礼物'2(var $giftCount:var $player)
+}
+if{fun string.equal(var $giftType:String 魔法镜)
+  act 1101.this.得到礼物'3(var $giftCount:var $player)
+}
+if{fun string.equal(var $giftType:String 甜甜圈)
+  act 1101.this.得到礼物'4(var $giftCount:var $player)
+}
+if{fun string.equal(var $giftType:String 能量电池)
+  act 1101.this.得到礼物'5(var $giftCount:var $player)
+}
+if{fun string.equal(var $giftType:String 恶魔炸弹)
+  act 1101.this.得到礼物'6(var $giftCount:var $player)
+}
+if{fun string.equal(var $giftType:String 神秘空投)
+  act 1101.this.得到礼物'7(var $giftCount:var $player)
+}
+endcode

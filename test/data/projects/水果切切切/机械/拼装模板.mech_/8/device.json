@@ -1,0 +1,22 @@
+type:362
+pos:[-0.00273349,0,-2.389693E-10]
+scale:5
+ext:
+{
+ modelGuid:50997b2ab2a84971b339fe0c3ea5d0bc
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Device emmit"
+ shader:
+ [
+  {
+   n:_PaintColor
+   type:Color
+   v:[1,1,1,1]
+  }
+  {
+   n:_EmmitColor
+   type:Color
+   v:[0,0,0,0]
+  }
+ ]
+}

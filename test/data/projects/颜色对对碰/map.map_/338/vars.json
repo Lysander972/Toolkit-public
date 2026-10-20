@@ -1,0 +1,26 @@
+[
+ {
+  name:Grid
+  type:Mech
+ }
+ {
+  name:Core
+  type:Device
+ }
+ {
+  name:TargetLayer
+  type:Float
+ }
+ {
+  name:CurrentLayer
+  type:Float
+ }
+ {
+  name:SelfCore
+  type:Device
+ }
+ {
+  name:PrepareRefresh
+  type:Bool
+ }
+]

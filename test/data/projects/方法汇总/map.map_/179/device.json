@@ -1,0 +1,13 @@
+type:220
+pos:[12.16796,-9.536743E-07,2.729998]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[2.492397E-05,315,180]
+ limitRate:1
+ limitRate2:1
+ motorForceRate:1
+ autoMotorVelocity:0
+ motorVelocityRate:1
+ knobAngle:0
+}

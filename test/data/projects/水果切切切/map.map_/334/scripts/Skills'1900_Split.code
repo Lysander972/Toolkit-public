@@ -1,0 +1,13 @@
+begincodeV2
+name:Skills'1900_Split
+comment:椰子分裂
+lines:
+Float HP比例=fun float.division(var Attr'HP:var Attr'maxHP)
+Long type=fun long.add(var Attr'Type:Long 1)
+Vector3 朝向=act 1.this.localToWorldDir(Vector3 0,-1,0)
+=act 1.this.Launcher'Launch(var type:var 朝向:Float 1:var Creator:var Attr'HPMul:Float 0:var HP比例:Bool 0:Float 0)
+Long type=fun long.add(var Attr'Type:Long 2)
+Vector3 朝向=act 1.this.localToWorldDir(Vector3 0,1,0)
+=act 1.this.Launcher'Launch(var type:var 朝向:Float 1:var Creator:var Attr'HPMul:Float 0:var HP比例:Bool 0:Float 0)
+act 1.this.Private'OnDeath(Bool 1:Bool 0:Long 1)
+endcode

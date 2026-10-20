@@ -1,0 +1,39 @@
+begincodeV2
+color:255,243,0
+name:Game'EarlySettlement
+comment:开始或终止提前结算
+params:Bool $start,Long $status
+lines:
+Bool 即将结算=fun create.bool(var $start)
+if{fun create.bool(var 即将结算)
+  Float 提前结算开始时间=fun time.time()
+}
+UIRect 斩杀线蓝=varf Canvas.GameUI.readUIRect(String root/top/比分/斩杀线蓝)
+UIRect 斩杀线红=varf Canvas.GameUI.readUIRect(String root/top/比分/斩杀线红)
+UIRect 退出斩杀线蓝=varf Canvas.GameUI.readUIRect(String root/top/比分/退出斩杀线蓝)
+UIRect 退出斩杀线红=varf Canvas.GameUI.readUIRect(String root/top/比分/退出斩杀线红)
+UILabel $label=varf Canvas.GameUI.readUILabel(String root/提前结算倒计时/title)
+UIRect $rect=varf Canvas.GameUI.readUIRect(String root/提前结算倒计时)
+if{fun long.equal(var $status:Long 0)
+  varf UIRect.斩杀线蓝.active(Bool 1)
+  varf UIRect.斩杀线红.active(Bool 1)
+  varf UIRect.退出斩杀线蓝.active(Bool 0)
+  varf UIRect.退出斩杀线红.active(Bool 0)
+}
+if{fun long.equal(var $status:Long 1)
+  varf UIRect.斩杀线蓝.active(Bool 0)
+  varf UIRect.斩杀线红.active(Bool 0)
+  varf UIRect.退出斩杀线蓝.active(Bool 0)
+  varf UIRect.退出斩杀线红.active(Bool 1)
+  varf UILabel.$label.text(String 蓝队即将获胜\n保持对75%格子的占领!)
+  varf UIRect.$rect.setColor(Color 0,94,127,179)
+}
+if{fun long.equal(var $status:Long 2)
+  varf UIRect.斩杀线蓝.active(Bool 0)
+  varf UIRect.斩杀线红.active(Bool 0)
+  varf UIRect.退出斩杀线蓝.active(Bool 1)
+  varf UIRect.退出斩杀线红.active(Bool 0)
+  varf UILabel.$label.text(String 红队即将获胜\n保持对75%格子的占领!)
+  varf UIRect.$rect.setColor(Color 128,11,0,180)
+}
+endcode

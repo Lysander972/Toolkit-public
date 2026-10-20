@@ -1,0 +1,14 @@
+begincodeV2
+name:队伍'得到玩家队伍
+params:Struct 玩家
+return:Struct 玩家队伍
+lines:
+Struct 玩家队伍=varf Struct.局内'空队伍占位符.ref()
+if{act 1101.this.玩家结构'是否已下场(var 玩家)
+  Long 玩家队伍id=act 1101.this.玩家结构'读取_team(var 玩家)
+  String 字符串id=fun create.string(var 玩家队伍id)
+  if{varf Dict.局内'队伍_索引_id.contains(var 字符串id)
+    Struct 玩家队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+  }
+}
+endcode

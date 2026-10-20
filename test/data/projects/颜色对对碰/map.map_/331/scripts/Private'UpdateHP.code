@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'UpdateHP
+params:Float $newHP
+lines:
+Float $currentHP=fun create.float(var HP)
+act 1.this.Private'BeforeChangeHP(var $currentHP:var $newHP)
+Float HP=fun create.float(var $newHP)
+act 1.this.Private'AfterChangeHP(var $currentHP:var $newHP)
+endcode

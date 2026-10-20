@@ -1,0 +1,70 @@
+begincodeV2
+color:221,0,255
+name:技能'2000
+lines:
+if{fun bool.not(var 当前瞄准'有目标)
+  fun break()
+}
+String key=fun create.string(String 2000)
+Float 当前=fun time.scaleTime()
+Bool 效果有效=fun float.gte(var 属性'射速加强持续:var 当前)
+Long 剩余弹药数=act 1.this.Skills'GetValue(var key)
+//减半消耗,加倍消耗以及强化攻击
+//默认消耗2发
+Long 弹药基数=fun create.long(Long 1)
+Float hp基数=fun create.float(Float 1)
+Long 判定阈值=fun create.long(Long 1)
+Long 弹药id=fun create.long(Long 2000)
+Long 发射数=fun create.long(var 属性'守方发射数)
+//5000
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 10000)
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 3)
+  Float hp基数=fun create.float(Float 1.5)
+}
+//10000
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 20000)
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 7)
+  Float hp基数=fun create.float(Float 2)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 30000)
+//15000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 11)
+  Float hp基数=fun create.float(Float 2.5)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 40000)
+//20000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 15)
+  Float hp基数=fun create.float(Float 3)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 60000)
+//30000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 19)
+  Float hp基数=fun create.float(Float 3.5)
+}
+Bool 增加消耗=fun long.gte(var 剩余弹药数:Long 80000)
+//40000
+if{fun create.bool(var 增加消耗)
+  Long 弹药基数=fun create.long(Long 24)
+  Float hp基数=fun create.float(Float 4)
+}
+//如果开启增强则额外加倍伤害和血量
+if{fun create.bool(var 效果有效)
+  Long 弹药id=fun create.long(Long 2001)
+  varf Long.发射数.addEqual(Long 2)
+}
+//是否足够一次发射,避免持续卡死
+if{fun long.gte(var 剩余弹药数:var 判定阈值)
+  Float cd=fun create.float(var 属性'守方冷却)
+  =act 1.this.Launcher'LaunchUniformlyAuto(var 弹药id:var 当前瞄准'X修正:var 当前瞄准'Y:var 发射数:Float 2:Float 7:Bool 0:var key:var 弹药基数:var hp基数:var 属性'守方暴击率:Float 1:Bool 0:Float 0)
+  if{fun create.bool(var 冰冻'冰冻)
+    Float cd=fun float.multiply(var cd:Float 2)
+  }
+  act 1.this.UI'守方刷新弹药数()
+}
+delay fun create.float(var cd)
+endcode

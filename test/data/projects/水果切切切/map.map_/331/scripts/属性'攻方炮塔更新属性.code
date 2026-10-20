@@ -1,0 +1,9 @@
+begincodeV2
+name:属性'攻方炮塔更新属性
+lines:
+String 文字=fun string.add(var 属性'等级:String 级)
+act 1.this.模型'设置等级文字(var 文字)
+act 1.this.物理效果'缩放开始渐变(var 属性'攻方炮塔缩放)
+act 1.this.模型'设置边框(var 属性'边框颜色:var 属性'边框自发光颜色)
+act 1.this.模型'手动刷新显示()
+endcode

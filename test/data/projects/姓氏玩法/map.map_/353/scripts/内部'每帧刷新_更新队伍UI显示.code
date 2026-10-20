@@ -1,0 +1,159 @@
+begincodeV2
+name:内部'每帧刷新_更新队伍UI显示
+params:Struct 队伍,Canvas 布局,Float 排名
+lines:
+//读取队伍的各项属性
+//更新根节点位置,根据排名向目标位置靠拢
+UIRect 队伍根节点=varf Canvas.布局.readUIRect(String 根节点)
+Vector3 当前布局坐标=varf UIRect.队伍根节点.getCanvasPos()
+Vector3 预期布局坐标=act 1101.this.内部'工具_计算进度条目标位置(var 队伍:var 队伍根节点)
+Vector3 新布局坐标=act 1101./弹幕.工具'坐标逼近(var 当前布局坐标:var 预期布局坐标)
+varf UIRect.队伍根节点.setCanvasPos(var 新布局坐标)
+//计算透明度
+Vector3 实际偏移=fun vector3.add(var 新布局坐标:var 图表布局坐标)
+Float 实际y=varf Vector3.实际偏移.y()
+Float 透明度=act 1101.this.内部'工具_透明度计算(var 实际y)
+//根据透明度更新颜色
+Float 原透明度=varf UIRect.队伍根节点.customFloat(String 透明度)
+Bool 更新透明度=fun float.notEqual(var 透明度:var 原透明度)
+if{fun create.bool(var 更新透明度)
+  varf UIRect.队伍根节点.setCustomFloat(String 透明度:var 透明度)
+}
+//数值显示
+UILabel 当前值文本框=varf Canvas.布局.readUILabel(String 根节点/进度条/当前值)
+String 数值显示内容=act 1101./弹幕.队伍结构'读取_数值显示(var 队伍)
+varf UILabel.当前值文本框.text(var 数值显示内容)
+if{fun create.bool(var 更新透明度)
+  Color 默认颜色=fun create.color(Color 255,255,255,255)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UILabel.当前值文本框.setColor(var 生效颜色)
+}
+//队伍名和旗帜显示
+//队伍旗帜摇动
+UIRect 队伍旗帜=varf Canvas.布局.readUIRect(String 根节点/进度条/队伍旗帜区)
+varf UIRect.队伍旗帜.rot(var 旗帜角度)
+varf UIRect.队伍旗帜.setCanvasPos(var 旗帜坐标)
+if{fun create.bool(var 更新透明度)
+  UILabel 队伍名文本框=varf Canvas.布局.readUILabel(String 根节点/进度条/队伍旗帜区/队伍名称显示)
+  Color 默认颜色=fun create.color(Color 255,255,255,255)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UILabel.队伍名文本框.setColor(var 生效颜色)
+  Color 默认颜色=varf UIRect.队伍旗帜.customColor(String color)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UIRect.队伍旗帜.setColor(var 生效颜色)
+}
+//@3@3@3@3@3计算尺寸@3@3@3@3@3
+//计算长度
+Long 队伍数值=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 队伍)
+Float 相对比例=fun long.division(var 队伍数值:var 进度条最大数值基准)
+//得到进度条及其原本的尺寸
+UIRect 进度条=varf Canvas.布局.readUIRect(String 根节点/进度条)
+Vector3 原进度条尺寸=varf UIRect.进度条.getSize()
+Float 原进度条长度=varf Vector3.原进度条尺寸.x()
+//计算宽度
+Float 预期进度条长度=fun float.multiply(var 相对比例:var 进度条最大宽度)
+//以两种方式向预期长度逼近
+Float 新进度条长度1=fun float.lerp(var 原进度条长度:var 预期进度条长度:Float 0.05)
+Float 需要调整=fun float.minus(var 预期进度条长度:var 原进度条长度)
+Float 需要调整=fun float.clamp(var 需要调整:Float -5:Float 5)
+Float 新进度条长度2=fun float.add(var 原进度条长度:var 需要调整)
+//选择更接近于预期长度的
+Float 与预期差距1=fun float.minus(var 新进度条长度1:var 预期进度条长度)
+Float 与预期差距1=fun float.abs(var 与预期差距1)
+Float 与预期差距2=fun float.minus(var 新进度条长度2:var 预期进度条长度)
+Float 与预期差距2=fun float.abs(var 与预期差距2)
+if{fun float.gte(var 与预期差距1:var 与预期差距2)
+  Float 修正后进度条长度=fun create.float(var 新进度条长度2)
+}
+if{fun float.lt(var 与预期差距1:var 与预期差距2)
+  Float 修正后进度条长度=fun create.float(var 新进度条长度1)
+}
+//最少100像素
+Float 修正后进度条长度=fun float.clamp(var 修正后进度条长度:Float 100:var 进度条最大宽度)
+Vector3 新进度条尺寸=fun creatVariable.Vector3(var 修正后进度条长度:Float 40:Float 0)
+varf UIRect.进度条.size(var 新进度条尺寸)
+//计算长度后更新两个锚定节点的位置
+//更新锚定节点位置
+UIRect 公共锚定节点=varf UIRect.队伍根节点.customUIRect(String 公共锚定节点)
+Vector3 锚定节点偏移=fun creatVariable.Vector3(var 修正后进度条长度:Float 0:Float 0)
+Vector3 锚定节点新坐标=fun vector3.add(var 新布局坐标:var 锚定节点偏移)
+varf UIRect.公共锚定节点.setCanvasPos(var 锚定节点新坐标)
+//更新内部锚定节点位置
+UIRect 内部锚定节点=varf UIRect.队伍根节点.customUIRect(String 内部锚定节点)
+Vector3 锚定节点新坐标=fun creatVariable.Vector3(var 修正后进度条长度:Float 0:Float 0)
+varf UIRect.内部锚定节点.setCanvasPos(var 锚定节点新坐标)
+//进度条上的各种特效显示
+//第一名金色边框
+UIRect 进度条边框=varf Canvas.布局.readUIRect(String 根节点/进度条/边框)
+Bool 最远边框显示=fun float.Approximately(var 排名:Float 0)
+varf UIRect.进度条边框.active(var 最远边框显示)
+//速度最快队伍特效
+UIRawImage 最快速度标记动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/最快速度动图)
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+Bool 最快动图显示=fun long.equal(var 最快队伍id:var 队伍id)
+Bool 已开局=act 1101./弹幕.游戏'是否已开局()
+Bool 最快动图显示=fun bool.and(var 最快动图显示:var 已开局)
+varf UIRawImage.最快速度标记动图.active(var 最快动图显示)
+if{fun create.bool(var 更新透明度)
+  Color 默认颜色=fun create.color(Color 255,255,255,255)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UIRawImage.最快速度标记动图.setColor(var 生效颜色)
+}
+//更新全部方框和贴图透明度
+if{fun create.bool(var 更新透明度)
+  //进度条的渐变
+  UIRect 进度条=varf Canvas.布局.readUIRect(String 根节点/进度条)
+  Color 默认颜色=varf UIRect.进度条.customColor(String color)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UIRect.进度条.setColor(var 生效颜色)
+  //进度条边框的渐变
+  UIRect 进度条边框=varf Canvas.布局.readUIRect(String 根节点/进度条/边框/无名1)
+  Color 默认颜色=fun create.color(Color 255,215,0,255)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UIRect.进度条边框.setColor(var 生效颜色)
+  //几张特效图的渐变
+  Color 默认颜色=fun create.color(Color 255,255,255,255)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/1级减速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/2级减速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/3级减速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/4级减速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/1级加速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/2级加速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/3级加速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRawImage 特效动图=varf Canvas.布局.readUIRawImage(String 根节点/进度条/4级加速状态动图)
+  varf UIRawImage.特效动图.setColor(var 生效颜色)
+  UIRect 永久加速层数框=varf Canvas.布局.readUIRect(String 根节点/进度条/3级加速状态动图/层数UI/边框)
+  varf UIRect.永久加速层数框.setColor(var 生效颜色)
+  UILabel 永久加速层数文本框=varf Canvas.布局.readUILabel(String 根节点/进度条/3级加速状态动图/层数UI/数值)
+  varf UILabel.永久加速层数文本框.setColor(var 生效颜色)
+  UIRect 永久加速层数底=varf Canvas.布局.readUIRect(String 根节点/进度条/3级加速状态动图/层数UI)
+  Color 默认颜色=fun create.color(Color 0,0,0,255)
+  Color 透明颜色=varf Color.默认颜色.copy()
+  varf Color.透明颜色.setA(Float 0)
+  Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 透明度)
+  varf UIRect.永久加速层数底.setColor(var 生效颜色)
+}
+act 1101.this.内部'每帧刷新_更新队内玩家头像(var 队伍:var 布局:var 更新透明度:var 透明度)
+endcode

@@ -1,0 +1,30 @@
+guid:cbd08d4e42da4380b43bc72d434f5091
+meshes:
+[
+ {
+  n:Jackfruit_Half
+ }
+]
+matFolderName:3aee20f2224a47729536f611911db18e
+Albedo.UID:3aee20f2224a47729536f611911db18e
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.3978813,-0.1288097]
+bounds.size:[0.5794821,0.7957626,0.2827196]

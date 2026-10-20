@@ -1,0 +1,109 @@
+begincodeV2
+private:1
+name:Skills'2601_OnDeath
+comment:火力倾泻-小火球亡语
+lines:
+if{fun bool.not(var init)
+  Long contextId=act 1.this.GetContextId()
+  if{fun long.equal(var contextId:Long 1)
+    Float damage=fun create.float(Float 20)
+  }
+  if{fun long.equal(var contextId:Long 2)
+    Float damage=fun create.float(Float 30)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+Device this=act 1.this.getDevice()
+List list=varf Device.this.callReturnFun0(String Public'GetAffectedList)
+//瞬间施加一个力
+Vector3 自身重心=act 1.this.Public'GetCenter()
+Float total=varf List.list.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Mech target=varf List.list.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  Device dev=varf Device.core.callReturnDevice0(String Public'GetMainDevice)
+  Float mass=varf Device.dev.getMass()
+  Long targetFaction=varf Device.core.callReturnLong0(String Public'GetFaction)
+  if{fun long.equal(var targetFaction:Long 1)
+    //计算力的方向,标准化再强制增加向上分量
+    Vector3 目标重心=varf Device.core.callReturnVector30(String Public'GetCenter)
+    Vector3 坐标差=fun vector3.minus(var 目标重心:var 自身重心)
+    Float 总距离=varf Vector3.坐标差.length()
+    if{fun float.lt(var 总距离:Float 40)
+      varf Vector3.坐标差.setY(Float 0)
+      Vector3 坐标差=varf Vector3.坐标差.setLength(Float 1)
+      varf Vector3.坐标差.setY(Float 0.3)
+      Float z=varf Vector3.坐标差.z()
+      Float z=fun float.max(var z:Float 0.2)
+      varf Vector3.坐标差.setZ(var z)
+      //设置速度变化
+      Float 速度变化=fun float.division(Float 3000:var mass)
+      Float 速度变化=fun float.min(var 速度变化:Float 30)
+      Vector3 速度变化向量=varf Vector3.坐标差.setLength(var 速度变化)
+      varf Device.dev.AddForceAtPos(var 速度变化向量:var 目标重心:Enum 2)
+    }
+  }
+  varf Float.index.addEqual(Float 1)
+}
+//统计血量权重
+Float 总权重=fun create.float(Float 0)
+List 权重表=fun create.list()
+Float total=varf List.list.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Mech target=varf List.list.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  Long targetFaction=varf Device.core.callReturnLong0(String Public'GetFaction)
+  if{fun long.equal(var targetFaction:Long 1)
+    Vector3 目标重心=varf Device.core.callReturnVector30(String Public'GetCenter)
+    Vector3 坐标差=fun vector3.minus(var 目标重心:var 自身重心)
+    Float 坐标差长度=varf Vector3.坐标差.length()
+    Float 坐标差长度=fun float.max(var 坐标差长度:Float 5)
+    Float 坐标差长度=fun float.division(var 坐标差长度:Float 3)
+    Float 最大HP=varf Device.core.callReturnFloat0(String Public'GetMaxHP)
+    Float 最大HP=fun float.max(var 最大HP:Float 0)
+    Float 总距离=varf Vector3.坐标差.length()
+    if{fun float.gt(var 总距离:Float 40)
+      Float 权重=fun create.float(Float 0)
+    }
+    Float 权重=fun float.division(var 最大HP:var 坐标差长度)
+    varf List.权重表.add(var 权重)
+    varf Float.总权重.addEqual(var 权重)
+  }
+  varf Float.index.addEqual(Float 1)
+}
+Float 总权重=fun float.max(var 总权重:Float 1)
+//造成伤害
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Mech target=varf List.list.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  Long targetFaction=varf Device.core.callReturnLong0(String Public'GetFaction)
+  if{fun long.equal(var targetFaction:Long 1)
+    Float 目标权重=varf List.权重表.readFloat(var index)
+    Float 受伤乘数=fun float.division(var 目标权重:var 总权重)
+    Float 受伤乘数=fun float.clamp(var 受伤乘数:Float 0.05:Float 1)
+    Float 伤害值=fun float.multiply(var damage:var 受伤乘数)
+    Float 伤害值=fun float.max(var 伤害值:Float 1)
+    Float 当前HP=varf Device.core.callReturnFloat0(String Public'GetHP)
+    //判断是否会导致死亡,如果是,则设置一个延迟时间
+    if{fun float.gte(var 伤害值:var 当前HP)
+      Device dev=varf Device.core.callReturnDevice0(String Public'GetMainDevice)
+      Float mass=varf Device.dev.getMass()
+      //对于低质量的生效
+      if{fun float.lt(var mass:Float 1000)
+        Bool 是否延迟=fun create.bool(Bool 1)
+        Float 死亡延迟=fun math.rand(Float 0.5:Float 0.8)
+        varf Device.core.callFun2(String Public'设置延迟死亡:var 是否延迟:var 死亡延迟)
+      }
+    }
+    Long 伤害来源=fun create.long(Long 2)
+    Vector3 伤害产生位置=act 1.this.受伤坐标计算(var Self:var target)
+    Bool 是否暴击=fun create.bool(Bool 0)
+    Bool 主动攻击=fun create.bool(Bool 1)
+    varf Device.core.callFun5(String Public'Damage:var 伤害值:var 伤害来源:var 伤害产生位置:var 是否暴击:var 主动攻击)
+  }
+  varf Float.index.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,10 @@
+begincodeV2
+guid:e42cd3d33f134c05a7b77430a84be80e
+color:255,255,255
+name:玩家结构'读取_isAI
+comment:读取是否AI控制
+params:Struct 结构
+return:Bool ret
+lines:
+Bool ret=varf Struct.结构.getBool(String isAI:Bool 0)
+endcode

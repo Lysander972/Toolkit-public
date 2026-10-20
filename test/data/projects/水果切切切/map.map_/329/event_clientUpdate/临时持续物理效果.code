@@ -1,0 +1,6 @@
+begincodeV2
+skip:1
+name:临时持续物理效果
+lines:
+act 1101.this.持续物理效果_临时'拉力和方向纠正()
+endcode

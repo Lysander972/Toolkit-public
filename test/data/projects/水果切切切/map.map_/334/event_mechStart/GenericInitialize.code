@@ -1,0 +1,18 @@
+begincodeV2
+color:8,0,255
+name:GenericInitialize
+lines:
+Mech Self=act 1.this.getMech()
+Mech map=fun map.getMapMech()
+Device map_handler=varf Mech.map.findDevice(String Scenario)
+varf Mech.Self.setCustomBool(String wall:Bool 0)
+Device Floor=varf Device.map_handler.callReturnDevice0(String Map'GetFloor)
+Long Attr'Type=fun create.long(Long -1)
+/*act 1.this.setMaxAngularVelocity(Float 0.2)
+//测试用临时属性
+/*Float Attr'maxHP=fun create.float(Float 1)
+/*Float Physic'Size=fun create.float(Float 1)
+/*Float Physic'SpeedExp=fun create.float(Float 100)
+/*Bool Physic'Enabled=fun create.bool(Bool 1)
+Vector3 BulletOffset=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+endcode

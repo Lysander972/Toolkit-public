@@ -1,0 +1,59 @@
+begincodeV2
+color:255,243,0
+name:UI_Loop'RefreshCountdown
+comment:循环刷新倒计时,并触发结算
+lines:
+if{fun bool.not(var $init)
+  UILabel $label0=varf Canvas.GameUI.readUILabel(String root/top/倒计时/label)
+  UILabel $label1=varf Canvas.GameUI.readUILabel(String root/提前结算倒计时/label)
+  UIRect $rect=varf Canvas.GameUI.readUIRect(String root/提前结算倒计时)
+  Bool 上次状态=fun create.bool(Bool 0)
+  Bool $init=fun create.bool(Bool 1)
+}
+Float Now=fun time.time()
+Float $delta=fun float.minus(var Now:var GameStartTime)
+Float $leftF=fun float.minus(var GameDuration:var $delta)
+Long $leftL=varf Float.$leftF.toLong()
+Long $leftL=fun long.max(var $leftL:Long 0)
+String $text=act 1101.this.倒计时时间显示(var $leftL)
+varf UILabel.$label0.text(var $text)
+if{fun long.lte(var $leftL:Long 0)
+  act 1101./Scenario.Map'Settlement()
+}
+if{fun bool.xor(var 上次状态:var 即将结算)
+  UIRect $rect=varf Canvas.GameUI.readUIRect(String root/提前结算倒计时)
+  varf UIRect.$rect.active(var 即将结算)
+  Bool 上次状态=fun create.bool(var 即将结算)
+}
+if{fun create.bool(var 即将结算)
+  Float $delta=fun float.minus(var Now:var 提前结算开始时间)
+  Float $leftF=fun float.minus(Float 60:var $delta)
+  Long $leftL=varf Float.$leftF.toLong()
+  Long $leftL=fun long.max(var $leftL:Long 0)
+  String $text=fun create.string(var $leftL)
+  if{fun long.lte(var $leftL:Long 10)
+    String $text=fun string.add1(String <color@3#ff0000>:var $text:String </color>)
+  }
+  varf UILabel.$label1.text(var $text)
+  if{fun long.lte(var $leftL:Long 0)
+    act 1101./Scenario.Map'Settlement()
+  }
+  //UI动态效果
+  Float $temp1=fun float.multiply(var $delta:Float 360)
+  Float $temp1=fun float.triangle.sin(var $temp1)
+  Float $temp2=fun float.multiply(var $delta:Float 35)
+  Float $temp2=fun float.triangle.sin(var $temp2)
+  Float $temp2=fun float.pow(var $temp2:Float 5)
+  Float $temp1=fun float.multiply(var $temp1:var $temp2)
+  Float $temp1=fun float.add(var $temp1:Float 1)
+  Float $temp1=fun float.division(var $temp1:Float 2)
+  Float $temp1=fun float.lerp(Float -5:Float 5:var $temp1)
+  varf UIRect.$rect.rot(var $temp1)
+  Float $temp1=fun float.multiply(var $delta:Float 360)
+  Float $temp1=fun float.triangle.sin(var $temp1)
+  Float $temp1=fun float.add(var $temp1:Float 1)
+  Float $temp1=fun float.division(var $temp1:Float 2)
+  Float $temp1=fun float.lerp(Float 1.25:Float 1.33:var $temp1)
+  varf UIRect.$rect.scale(var $temp1)
+}
+endcode

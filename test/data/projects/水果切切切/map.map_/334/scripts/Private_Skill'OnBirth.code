@@ -1,0 +1,18 @@
+begincodeV2
+private:1
+name:Private_Skill'OnBirth
+comment:战吼检查
+lines:
+if{fun long.equal(var Attr'Type:Long 1400)
+  act 1.this.Skills'1400_OnBirth()
+}
+if{fun long.equal(var Attr'Type:Long 1520)
+  act 1.this.Skills'1520_OnBirth()
+}
+if{fun long.equal(var Attr'Type:Long 1610)
+  act 1.this.Skills'1610_OnBirth()
+}
+if{fun long.equal(var Attr'Type:Long 2300)
+  act 1.this.Skills'2300_OnBirth()
+}
+endcode

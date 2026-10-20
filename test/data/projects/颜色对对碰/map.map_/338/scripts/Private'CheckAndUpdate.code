@@ -1,0 +1,10 @@
+begincodeV2
+name:Private'CheckAndUpdate
+lines:
+if{fun float.notEqual(var CurrentLayer:var TargetLayer)
+  act 1100.1.setLayer(var TargetLayer)
+  act 1.this.setLayer(var TargetLayer)
+  Float CurrentLayer=fun create.float(var TargetLayer)
+}
+Bool PrepareRefresh=fun create.bool(Bool 0)
+endcode

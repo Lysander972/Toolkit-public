@@ -1,0 +1,13 @@
+begincodeV2
+color:255,243,0
+name:UI'QuitSettlement
+lines:
+if{fun bool.not(var InSettlement)
+  fun break()
+}
+Bool InSettlement=fun create.bool(Bool 0)
+if{varf Canvas.SettlementUI.exist()
+  UIRect panel=varf Canvas.SettlementUI.readUIRect(String 结算界面)
+  varf UIRect.panel.active(Bool 0)
+}
+endcode

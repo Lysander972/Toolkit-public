@@ -1,0 +1,18 @@
+begincodeV2
+name:刷新帧率
+lines:
+Float 时间基础流速=fun map.getCustomFloat(String 时间基础流速标志位)
+Long 物理帧系数=varf Float.时间基础流速.toLong()
+Bool 选择30=fun long.equal(var 功能设置'帧率模式:Long 0)
+Bool 选择60=fun long.equal(var 功能设置'帧率模式:Long 1)
+if{fun create.bool(var 选择30)
+  Long 图形帧数=fun create.long(Long 30)
+  Long 物理帧数=fun long.multiply(var 图形帧数:var 物理帧系数)
+}
+if{fun create.bool(var 选择60)
+  Long 图形帧数=fun create.long(Long 60)
+  Long 物理帧数=fun long.multiply(var 图形帧数:var 物理帧系数)
+}
+fun time.SetTargetFrameRate(var 图形帧数)
+fun time.SetFixedFrame(var 物理帧数)
+endcode

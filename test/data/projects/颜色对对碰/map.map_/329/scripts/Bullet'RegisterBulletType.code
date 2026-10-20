@@ -1,0 +1,15 @@
+begincodeV2
+name:Bullet'RegisterBulletType
+comment:注册子弹实体
+params:String $bulletType,String $modelKey,Long $teamLimit,Long $globalLimit
+lines:
+Long $zero=fun create.long(Long 0)
+Struct $bulletInfo=fun create.struct()
+varf Struct.$bulletInfo.set(String modelKey:var $modelKey)
+varf Struct.$bulletInfo.set(String teamLimit:var $teamLimit)
+varf Struct.$bulletInfo.set(String team1Current:var $zero)
+varf Struct.$bulletInfo.set(String team2Current:var $zero)
+varf Struct.$bulletInfo.set(String globalLimit:var $globalLimit)
+varf Struct.$bulletInfo.set(String globalCurrent:var $zero)
+varf Struct.BulletRegInfo.set(var $bulletType:var $bulletInfo)
+endcode

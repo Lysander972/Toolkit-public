@@ -1,0 +1,11 @@
+begincodeV2
+name:炮塔模型'后坐力更新
+params:Float 序号
+lines:
+Float 帧间隔=fun time.deltaTime()
+Float 帧间隔=fun float.multiply(var 帧间隔:Float 3)
+Float 后坐力=varf List.炮塔模型'后坐力效果表.readFloat(var 序号)
+varf Float.后坐力.addEqual(var 帧间隔)
+Float 后坐力=fun float.clamp(var 后坐力:Float 0:Float 1)
+varf List.炮塔模型'后坐力效果表.replace(var 序号:var 后坐力)
+endcode

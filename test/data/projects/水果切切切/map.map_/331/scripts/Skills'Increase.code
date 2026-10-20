@@ -1,0 +1,39 @@
+begincodeV2
+color:169,0,255
+name:Skills'Increase
+params:String key,Long value,Struct player
+return:Long current
+lines:
+Long current=varf Struct.SkillCount.getLong(var key:Bool 0)
+varf Long.current.addEqual(var value)
+List playerList=varf Struct.SkillPlayer.getList(var key:Bool 0)
+List playerCList=varf Struct.SkillPlayerC.getList(var key:Bool 0)
+Float index=varf List.playerList.count()
+if{fun float.lt(var index:Float 1)
+  varf List.playerList.add(var player)
+  varf List.playerCList.add(var value)
+  fun break()
+}
+varf Float.index.minusEqual(Float 1)
+Struct lastPlayer=varf List.playerList.readStruct(var index)
+String uidP=varf Struct.player.getString(String id:Bool 1)
+String uidLP=varf Struct.lastPlayer.getString(String id:Bool 1)
+Bool equals=fun string.equal(var uidP:var uidLP)
+if{fun create.bool(var equals)
+  Long lastC=varf List.playerCList.readLong(var index)
+  varf Long.lastC.addEqual(var value)
+  Bool positive=fun long.gt(var lastC:Long 0)
+  if{fun create.bool(var positive)
+    varf List.playerCList.replace(var index:var lastC)
+  }
+  if{fun bool.not(var positive)
+    varf List.playerList.remove(var index)
+    varf List.playerCList.remove(var index)
+  }
+}
+if{fun bool.not(var equals)
+  Long newC=fun create.long(var value)
+  varf List.playerList.add(var player)
+  varf List.playerCList.add(var newC)
+}
+endcode

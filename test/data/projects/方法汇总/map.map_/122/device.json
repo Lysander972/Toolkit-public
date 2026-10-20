@@ -1,0 +1,10 @@
+type:139
+pos:[3.616071,0.2088327,0.03704976]
+ext:
+{
+ length:22
+ radius:1
+ endRadius:1
+ BeamCoreColor:[7.906699,2.111213,0.7451339,10.55606]
+ ElectricBeamColor:[6.2745,12.81,47.93,1]
+}

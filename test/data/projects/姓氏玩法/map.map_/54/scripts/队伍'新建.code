@@ -1,0 +1,67 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍'新建
+comment:主题和id互相独立
+params:String 主题,Bool 是否为填充
+return:Struct 队伍
+lines:
+//团队模式下,每个主题只能有唯一队伍,玩家通过输入加入队伍名或者加入id进入队伍
+if{fun bool.not(var 局外功能设置'个人模式)
+  Bool 是否存在主题列表=varf Dict.局内'队伍_索引_主题.contains(var 主题)
+  if{fun create.bool(var 是否存在主题列表)
+    //团队模式中必然只存在1个
+    List 重名队伍结构表=varf Dict.局内'队伍_索引_主题.readList(var 主题:Bool 1)
+    Struct 队伍=varf List.重名队伍结构表.readStruct(Float 0)
+    fun break()
+  }
+}
+//个人模式下没有这种检查
+//创建新的队伍
+Struct 队伍=fun create.struct()
+Bool 是队伍=fun create.bool(Bool 1)
+varf Struct.队伍.set(String 是队伍:var 是队伍)
+Long 队伍id=fun create.long(var 局内'队伍_id计数)
+act 1101.this.队伍结构'设置_id(var 队伍:var 队伍id)
+varf Long.局内'队伍_id计数.addEqual(Long 1)
+act 1101.this.队伍结构'设置_name(var 队伍:var 主题)
+//是否为自动填充的队伍
+varf Struct.队伍.set(String 填充:var 是否为填充)
+//主要颜色和次要颜色设置
+Long 主题颜色id=act 1101.this.工具'随机颜色id生成()
+act 1101.this.队伍结构'设置_colorid(var 队伍:var 主题颜色id)
+Color 主题颜色=act 1101.this.工具'颜色id到颜色(var 主题颜色id)
+act 1101.this.队伍结构'设置_color1(var 队伍:var 主题颜色)
+Color 次要颜色=act 1101.this.工具'补充颜色计算(var 主题颜色)
+act 1101.this.队伍结构'设置_color2(var 队伍:var 次要颜色)
+//设置是否激活
+act 1101.this.队伍结构'设置_activated(var 队伍:Bool 0)
+//队伍的局内数据属性
+act 1101.this.队伍结构'设置_rank(var 队伍:Float -1)
+//玩家列表
+List 新列表=fun create.list()
+act 1101.this.队伍结构'设置_playerRankList(var 队伍:var 新列表)
+//进度值
+Long 初始值=fun long.minus(var 局内'全局_最小value:Long 10240)
+Long 初始值=fun long.max(var 初始值:Long 0)
+act 1101.this.队伍结构'设置_value(var 队伍:var 初始值)
+//速度值
+act 1101.this.队伍结构'设置_speed(var 队伍:Long 10240)
+//队伍总分
+act 1101.this.队伍结构'设置_score(var 队伍:Long 0)
+//队伍瓜分积分池的权重
+act 1101.this.队伍结构'设置_factor(var 队伍:Float 0)
+//更新基于id的索引
+String 字符串id=fun create.string(var 队伍id)
+varf Dict.局内'队伍_索引_id.insert(var 字符串id:var 队伍)
+//更新基于主题的索引
+Bool 是否存在主题列表=varf Dict.局内'队伍_索引_主题.contains(var 主题)
+if{fun bool.not(var 是否存在主题列表)
+  List 重名队伍结构表=fun create.list()
+  varf Dict.局内'队伍_索引_主题.insert(var 主题:var 重名队伍结构表)
+}
+List 重名队伍结构表=varf Dict.局内'队伍_索引_主题.readList(var 主题:Bool 1)
+varf List.重名队伍结构表.add(var 队伍)
+Bool 局内'队伍_更新排名需求=fun create.bool(Bool 1)
+act 1101.this.UI_局内风格接口封装'创建队伍(var 队伍)
+endcode

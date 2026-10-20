@@ -1,0 +1,7 @@
+begincodeV2
+name:开关药丸减速特效
+params:Bool 启用特效
+lines:
+fun break()
+act 337./能力药丸粒子.active(var 启用特效:Float 0)
+endcode

@@ -1,0 +1,15 @@
+type:143
+pos:[5.279541,0,1.297173]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ vfx_RndRot:164.6
+ vfx_Wind:[0,-0.1,-0.1]
+ vfx_Size:[0.005,0.03]
+ vfx_Range:0.1
+ vfx_Turbulence:0.5
+ vfx_Life:10
+ vfx_Count:16
+ Color:[1.498039,1.498039,1.498039,0.8235294]
+ vfx_GroundDrag:2
+}

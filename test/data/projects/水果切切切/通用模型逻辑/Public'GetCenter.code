@@ -1,0 +1,7 @@
+begincodeV2
+guid:ff974774cb5d4ac49b30e751e9b819b8
+name:Public'GetCenter
+return:Vector3 pos
+lines:
+Vector3 pos=act 362./1.massCenter()
+endcode

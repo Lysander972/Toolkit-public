@@ -1,0 +1,13 @@
+type:135
+pos:[5.548515,9.536743E-07,-1.738751]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ lightType:0
+ spotAngle:30
+ areaSize:[1,1]
+ color:[0.9811321,0.8001958,0.485938,1]
+ fresnelPow:4
+ fade:0.5
+ range:3
+}

@@ -1,0 +1,27 @@
+begincodeV2
+name:工具'自身插值与匀速综合
+params:Float 当前值,Float 目标值,Float 与自身插值比例,Float 匀速变化速度
+return:Float 输出
+lines:
+Float 匀速变化速度=varf Float.匀速变化速度.abs()
+Float 自身插值后值=fun float.lerp(var 当前值:var 目标值:var 与自身插值比例)
+Float 帧时间间隔=fun time.deltaTime()
+Float 值变化绝对值=fun float.multiply(var 匀速变化速度:var 帧时间间隔)
+if{fun float.lte(var 当前值:var 目标值)
+  Float 匀速变化后值=fun float.add(var 当前值:var 值变化绝对值)
+  Float 匀速变化后值=fun float.min(var 匀速变化后值:var 目标值)
+}
+if{fun float.gt(var 当前值:var 目标值)
+  Float 匀速变化后值=fun float.minus(var 当前值:var 值变化绝对值)
+  Float 匀速变化后值=fun float.max(var 匀速变化后值:var 目标值)
+}
+//得到自身插值后值和匀速插值后值
+Float 距离1=fun float.minus(var 目标值:var 自身插值后值)
+Float 距离2=fun float.minus(var 目标值:var 匀速变化后值)
+Float 距离1=fun float.abs(var 距离1)
+Float 距离2=fun float.abs(var 距离2)
+Float 输出=fun create.float(var 自身插值后值)
+if{fun float.lt(var 距离2:var 距离1)
+  Float 输出=fun create.float(var 匀速变化后值)
+}
+endcode

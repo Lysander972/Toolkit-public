@@ -1,0 +1,9 @@
+begincodeV2
+guid:98dbf76e3d5f4682a33a02de9b208c96
+name:挂载全部事件
+params:List 列表
+lines:
+Float 序号=varf List.挂载事件列表.count()
+varf List.挂载事件列表.insertList(var 序号:var 列表)
+varf List.列表.clear()
+endcode

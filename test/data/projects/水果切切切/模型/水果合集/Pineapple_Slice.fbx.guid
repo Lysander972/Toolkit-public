@@ -1,0 +1,30 @@
+guid:a38dc498f66c46fc86510e3898914dfc
+meshes:
+[
+ {
+  n:Pineapple_Slice
+ }
+]
+matFolderName:1fa0e68bf5494a7abd18b9ac5411d2fa
+Albedo.UID:1fa0e68bf5494a7abd18b9ac5411d2fa
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.490116E-07,0.02742425,-0.0001518801]
+bounds.size:[0.4270672,0.05923644,0.4270681]

@@ -1,0 +1,6 @@
+begincodeV2
+color:255,243,0
+name:Button_Game'TestRedWin
+lines:
+act 1101.this.Game'Settlement(Long 2)
+endcode

@@ -1,0 +1,14 @@
+begincodeV2
+name:特效
+params:Float scale,Float count,Color color,Float duration
+lines:
+varf Float.count.minusEqual(Float 1)
+List list=act 1.this.callClientMapRetListFunc0(String Scenario.粒子'得到碰撞层列表)
+act 337./粒子.setCollideLayerMask(var list)
+act 337./粒子.startLifetimeMultiplier(var duration)
+act 337./粒子.gravityModifierMultiplier(Float 1)
+Float minscale=fun float.multiply(var scale:Float 0.5)
+act 337./粒子.startSize(var minscale:var scale)
+act 337./粒子.color(var color:var color)
+act 337./粒子.emit(var count)
+endcode

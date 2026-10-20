@@ -1,0 +1,27 @@
+guid:0056926441444cab85dade3cb3c26567
+meshes:
+[
+ {
+  n:Canteloupe_Half
+ }
+]
+matFolderName:3de572c363d244b48c49aa9660b151bc
+Albedo.UID:3de572c363d244b48c49aa9660b151bc
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[5.215406E-08,0.12,-1.490116E-08]
+bounds.size:[0.4763465,0.24,0.4530326]

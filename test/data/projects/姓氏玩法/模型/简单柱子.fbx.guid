@@ -1,0 +1,28 @@
+guid:d61c833bed1c4e58ad49736ac5bcd664
+meshes:
+[
+ {
+  n:立方体
+ }
+]
+matFolderName:62680a98ac9540b192f02e1308f3caf6
+Albedo.UID:62680a98ac9540b192f02e1308f3caf6
+Metal.UID:0e413dfdf8234e9e9d2b09265f2412ca
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+rotation:[0,90,270]
+scale:100
+bounds.center:[0,-100,0]
+bounds.size:[0.02,200,0.02]

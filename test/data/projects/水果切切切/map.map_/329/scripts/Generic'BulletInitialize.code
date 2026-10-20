@@ -1,0 +1,9 @@
+begincodeV2
+color:8,0,255
+name:Generic'BulletInitialize
+comment:通用子弹初始化接口再封装
+params:Mech obj,Vector3 pos,Vector3 direction,Long type,Long faction,Struct player,Float HPMul,Float 额外暴击率,Float initHp,Float manualSpeed
+lines:
+Device core=varf Mech.obj.getCoreDevice()
+varf Device.core.callFun10(String Public'Initialize:var pos:var direction:var type:var faction:var player:var ScenarioOffset:var HPMul:var 额外暴击率:var initHp:var manualSpeed)
+endcode

@@ -1,0 +1,15 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.enableMechPhysics(Bool 0)
+act 1.this.setMass(Float 0)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.enableCollide(Bool 0)
+act 1102./hp.setMass(Float 0)
+act 1102./hp.setLayer(Float 0)
+act 1102./hp.show(Bool 1)
+act 1102./hp.switchCollider(Bool 0)
+act 362./frame.setDynamicShader(String Device Transparent)
+act 362./avatar.setDynamicShader(String Device Transparent)
+endcode

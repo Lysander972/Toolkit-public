@@ -1,0 +1,10 @@
+begincodeV2
+name:Camera'Update
+lines:
+Float $temp=fun float.multiply(var CameraDistance:Float 0.02)
+Vector3 $target=fun creatVariable.Vector3(Float 0:Float 0:var $temp)
+Float $x=varf Vector3.CameraAngle.x()
+Vector3 $target=varf Vector3.$target.rotAxis(Vector3 0,1,0:var $x)
+Vector3 $target=fun vector3.add(var $target:var ScenarioOffset)
+fun camera.setpos(var $target:var CameraAngle:var CameraDistance:Float 0)
+endcode

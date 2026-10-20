@@ -1,0 +1,6 @@
+model {
+  pure = system '业务纯计算' {
+    metadata { testStrategy 'high' }
+    description '无状态纯函数。完整输入由调用者提供，同样输入产生同样结果，不读取文件、网络、配置、环境变量、当前时间或进程全局状态。'
+  }
+}

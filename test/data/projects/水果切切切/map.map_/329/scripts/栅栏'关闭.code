@@ -1,0 +1,6 @@
+begincodeV2
+name:栅栏'关闭
+lines:
+Device core=varf Mech.栅栏'栅栏.getCoreDevice()
+varf Device.core.callFun0(String Skills'2500_ClearPlayer)
+endcode

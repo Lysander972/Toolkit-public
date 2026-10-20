@@ -1,0 +1,15 @@
+begincodeV2
+name:UI'循环朝向摄像机
+lines:
+if{fun create.bool(var Initialized)
+  Vector3 世界坐标1=act 1.this.Public'GetCenter()
+  Vector3 世界坐标2=fun camera.pos()
+  Vector3 坐标差=fun vector3.minus(var 世界坐标2:var 世界坐标1)
+  Vector3 坐标差=varf Vector3.坐标差.setLength(var UI'Distance)
+  Vector3 世界坐标=fun vector3.add(var 世界坐标1:var 坐标差)
+  varf Mech.UI'血量马甲.move(var 世界坐标:Enum 0)
+  Vector3 世界方向F=varf Device.map_handler.localToWorldDir(Vector3 0,0,-1)
+  Vector3 世界方向U=varf Device.map_handler.localToWorldDir(Vector3 0,1,0)
+  varf Mech.UI'血量马甲.rot(var 世界方向F:var 世界方向U)
+}
+endcode

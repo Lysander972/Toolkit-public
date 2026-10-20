@@ -1,0 +1,24 @@
+begincodeV2
+color:8,0,255
+name:Public'Initialize
+comment:启用对象时
+params:Long faction,Long type,Struct initPlayer
+lines:
+Bool Attr'Alive=fun create.bool(Bool 1)
+Long Attr'Faction=fun create.long(var faction)
+Float Attr'HP=fun create.float(Float 100)
+Long Attr'Type=fun create.long(var type)
+Struct 属性'玩家=varf Struct.initPlayer.ref()
+Long 属性'等级=fun create.long(Long 1)
+Long 属性'升级消耗=act 1.this.属性'更新等级属性()
+Float 物理效果'缩放当前值=fun create.float(Float 0)
+Bool 冰冻'冰冻=fun create.bool(Bool 0)
+Float 当前时间=fun time.scaleTime()
+Float 自动暖场时间=fun float.add(var 当前时间:Float 0.5)
+Bool 首次点赞标记位=fun create.bool(Bool 1)
+act 1.this.Skills'ResetAll()
+act 1.this.Private'UpdateFaction(var faction)
+act 1.this.Public'Open()
+act 1.this.Private'应用特性()
+act 1.this.Public'SetColor(Color 255,255,255,255:Color 255,255,255,255)
+endcode

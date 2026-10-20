@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:爆炸效果
+ boolShowFollowIcon:true
+ mechFileGUID:c18ebeab03cf4fc88631dec528126397
+}

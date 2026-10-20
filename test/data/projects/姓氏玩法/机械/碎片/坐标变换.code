@@ -1,0 +1,17 @@
+begincodeV2
+guid:e40e26746ee840b19ba332b1e3691db1
+name:坐标变换
+params:Vector3 向量1,Vector3 向量2
+return:Vector3 ret
+lines:
+Float x1=varf Vector3.向量1.x()
+Float x2=varf Vector3.向量2.x()
+Float y1=varf Vector3.向量1.y()
+Float y2=varf Vector3.向量2.y()
+Float z1=varf Vector3.向量1.z()
+Float z2=varf Vector3.向量2.z()
+Float x=fun float.multiply(var x1:var x2)
+Float y=fun float.multiply(var y1:var y2)
+Float z=fun float.multiply(var z1:var z2)
+Vector3 ret=fun creatVariable.Vector3(var x:var y:var z)
+endcode

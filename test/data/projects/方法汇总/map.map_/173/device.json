@@ -1,0 +1,14 @@
+type:24
+pos:[12.59376,0,2.065695]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[1.707547E-05,90,270]
+ attachLPos:[0,0,0]
+ forceRate:1
+ maxRate:0.5
+ minRate:0
+ damper:0.05
+ boolAutoReset:false
+ knobAngle:0
+}

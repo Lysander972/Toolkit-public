@@ -1,0 +1,17 @@
+type:112
+pos:[0,-0.05,-0.5]
+enableManualWeld:true
+attach:
+[
+]
+ext:
+{
+ logicName:棋盘底面
+ scaleX:10
+ scaleY:18.02935
+ scaleZ:10
+ colorValue:[0,0,0,1]
+ metalicRate:0
+ glossinessRate:0
+ matAlpha:1
+}

@@ -1,0 +1,31 @@
+begincodeV2
+name:水果摧毁音效
+params:Float 音量
+lines:
+Long $rand=fun long.rand(Long 0:Long 29)
+Bool bool1=fun long.gte(var $rand:Long 0)
+Bool bool2=fun long.lt(var $rand:Long 3)
+if{fun bool.and(var bool1:var bool2)
+  act 1101./主界面.播放音效(String 水果爆炸1.ogg:var 音量)
+}
+Bool bool1=fun long.gte(var $rand:Long 3)
+Bool bool2=fun long.lt(var $rand:Long 6)
+if{fun bool.and(var bool1:var bool2)
+  act 1101./主界面.播放音效(String 水果爆炸2.ogg:var 音量)
+}
+Bool bool1=fun long.gte(var $rand:Long 6)
+Bool bool2=fun long.lt(var $rand:Long 9)
+if{fun bool.and(var bool1:var bool2)
+  act 1101./主界面.播放音效(String 水果爆炸3.ogg:var 音量)
+}
+Bool bool1=fun long.gte(var $rand:Long 9)
+Bool bool2=fun long.lt(var $rand:Long 21)
+if{fun bool.and(var bool1:var bool2)
+  act 1101./主界面.播放音效(String 水果爆炸4.ogg:var 音量)
+}
+Bool bool1=fun long.gte(var $rand:Long 21)
+Bool bool2=fun long.lt(var $rand:Long 30)
+if{fun bool.and(var bool1:var bool2)
+  act 1101./主界面.播放音效(String 水果爆炸5.ogg:var 音量)
+}
+endcode

@@ -1,0 +1,10 @@
+begincodeV2
+name:工具'角度标准化
+comment:限制到@4-180,180]
+params:Float 角度
+return:Float 角度
+lines:
+Float 角度=fun float.add(var 角度:Float 900)
+Float 角度=fun float.mod(var 角度:Float 360)
+Float 角度=fun float.minus(var 角度:Float 180)
+endcode

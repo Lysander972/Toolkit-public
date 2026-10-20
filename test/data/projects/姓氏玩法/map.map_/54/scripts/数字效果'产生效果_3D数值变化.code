@@ -1,0 +1,54 @@
+begincodeV2
+name:数字效果'产生效果_3D数值变化
+params:Long 数值,Device 跟随零件,Vector3 偏移坐标,Bool 是2DUI
+return:UIRect 背景
+lines:
+if{fun long.equal(var 数值:Long 0)
+  fun break()
+}
+Float 显示数值F=act 1101.this.工具'转为显示值_保留1位(var 数值)
+//数值增加
+Bool bool1=fun float.gt(var 显示数值F:Float 0)
+//数值减少
+Bool bool2=fun float.lt(var 显示数值F:Float 0)
+fun ui.2dmode(var 是2DUI)
+Bool 突出显示=fun create.bool(Bool 0)
+if{fun create.bool(var bool1)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGBSs5OTk5CEZvbnRTaXplAQAAQEILbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAc3MTD4QY2hhcmFjdGVyU3BhY2luZwEAAEBACWZvbnRTdHlsZRgCAAAAAAAAAAxvdXRsaW5lV2lkdGgBzcxMPg9vdXRsaW5lRGlzdGFuY2UEzcxMPs3MTD7NzEw+DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/FGVuYWJsZVZlcnRleEdyYWRpZW50BQEHdG9wTGVmdAwAAAAAAACAPwAAAAAAAIA/CHRvcFJpZ2h0DAAAAAAAAIA/AAAAAAAAgD8KYm90dG9tTGVmdAwAAAAAAACAP7CtLT8AAIA/C2JvdHRvbVJpZ2h0DAAAAAAAAIA/sK0tPwAAgD8@3)
+  String 文字=fun string.add(String +:var 显示数值F)
+}
+if{fun create.bool(var bool2)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAERYABHR5cGUGB1RleHRQcm8EbmFtZQYG5pWw5YC8A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAUAAAAAAAAABmFuY2hvchgFAAAAAAAAAAt3aWR0aEV4dGVuZBgCAAAAAAAAAARzaXplBAAAAAAAAKBCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGBS05OTk5CEZvbnRTaXplAQAAQEILbGluZVNwYWNpbmcBAACAPwpGYWNlRGlsYXRlAc3MTD4QY2hhcmFjdGVyU3BhY2luZwEAAEBACWZvbnRTdHlsZRgCAAAAAAAAAAxvdXRsaW5lV2lkdGgBzcxMPg9vdXRsaW5lRGlzdGFuY2UEzcxMPs3MTD7NzEw+DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/FGVuYWJsZVZlcnRleEdyYWRpZW50BQEHdG9wTGVmdAwAAIA/6tRYPwAAAAAAAIA/CHRvcFJpZ2h0DAAAgD/q1Fg/AAAAAAAAgD8KYm90dG9tTGVmdAwAAIA/QJQxPgAAAAAAAIA/C2JvdHRvbVJpZ2h0DAAAgD9AlDE+AAAAAAAAgD8@3)
+  String 文字=fun create.string(var 显示数值F)
+}
+Float 持续=fun create.float(Float 1)
+Float 缩放=fun create.float(Float 0.4)
+Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 3:Float 0)
+Float 效果强度=fun float.abs(var 显示数值F)
+if{fun float.gte(var 效果强度:Float 20)
+  Float 持续=fun create.float(Float 2)
+  Float 缩放=fun create.float(Float 0.6)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 4:Float 0)
+}
+if{fun float.gte(var 效果强度:Float 100)
+  Float 持续=fun create.float(Float 3)
+  Float 缩放=fun create.float(Float 1)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 5:Float 0)
+  Bool 突出显示=fun create.bool(Bool 1)
+}
+UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+UILabel 文本框=varf Canvas.UI.readUILabel(String 背景/数值)
+varf UILabel.文本框.text(var 文字)
+varf UILabel.文本框.setColor(Color 255,255,255,0)
+Vector3 目标位置=fun vector3.add(var 偏移坐标:var 偏移量)
+Float 初始时间=fun time.scaleTime()
+varf UIRect.背景.setCustomVector3(String 初始位置:var 偏移坐标)
+varf UIRect.背景.setCustomVector3(String 目标位置:var 目标位置)
+varf UIRect.背景.setCustomFloat(String 初始时间:var 初始时间)
+varf UIRect.背景.setCustomFloat(String 持续:var 持续)
+varf UIRect.背景.setCustomFloat(String 缩放:var 缩放)
+varf UIRect.背景.setCustomBool(String 突出显示:var 突出显示)
+varf UIRect.背景.followDevice(var 跟随零件:var 偏移坐标)
+varf UIRect.背景.setCustomDevice(String 跟随零件:var 跟随零件)
+varf List.UI_局内'3D数字效果维护表.add(var UI)
+endcode

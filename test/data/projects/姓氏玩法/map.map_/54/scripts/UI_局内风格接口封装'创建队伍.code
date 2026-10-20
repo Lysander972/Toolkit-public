@@ -1,0 +1,6 @@
+begincodeV2
+name:UI_局内风格接口封装'创建队伍
+params:Struct 队伍
+lines:
+varf Device.局外功能设置'使用风格实现.callFun1(String UI_局内风格接口'创建队伍:var 队伍)
+endcode

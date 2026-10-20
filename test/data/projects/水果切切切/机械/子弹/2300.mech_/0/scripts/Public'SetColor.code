@@ -1,0 +1,7 @@
+begincodeV2
+name:Public'SetColor
+params:Color color1,Color color2
+lines:
+act 1.this.setPaintColor(var color1:Bool 0)
+fun break()
+endcode

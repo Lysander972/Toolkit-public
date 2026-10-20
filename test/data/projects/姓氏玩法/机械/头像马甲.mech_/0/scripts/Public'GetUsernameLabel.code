@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetUsernameLabel
+return:UILabel label
+lines:
+UILabel label=act 1102./username.getLabel()
+endcode

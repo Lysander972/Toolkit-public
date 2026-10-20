@@ -1,0 +1,34 @@
+# Toolkit 统一配置文件（schema 权威：docs/Common_ToolkitConfig_Spec.md）
+# 跨组件互操作黄金夹具（非默认值）：三侧读测试共享；密钥密文用同目录 toolkit.key（字节 32..63，避开 CR/LF 以过提交门禁）加密
+mcp.port = 6060
+lint.root = "assets"
+lint.run_on_startup = false
+canvas_preview.default_width = 720
+canvas_preview.default_height = 1280
+canvas_preview.scale = 1.5
+browser.render_worker_count = 4
+browser.executable_path = "C:/edge/msedge.exe"
+code_lens.show_doc_buttons = false
+resource_gen.comfyui.base_url = "http://127.0.0.1:8188"
+resource_gen.comfyui.api_key = "enc:v1:Tb9T64JyZSh9Zb1TzjJsgv87VbNoi5Xkt/K7m3vUO5PQbiytCqrgUvFk8pqRpREo"
+resource_gen.comfyui.tripo_api_key = ""
+resource_gen.comfyui.model.text_to_image = "千问2.0-文生图"
+resource_gen.comfyui.model.image_to_image = "千问2.0-图像编辑"
+resource_gen.comfyui.model.image_to_video = "万相2.7-图生视频"
+resource_gen.comfyui.model.text_to_video = "万相2.5 Preview 文生视频"
+resource_gen.comfyui.model.text_to_music = "suno-single-v5.5"
+resource_gen.comfyui.model.image_to_3d = "hitem3d-v15/image-to-3d"
+llm.roles.planner = "zhipu/glm-4.6"
+llm.roles.coder = "deepseek/deepseek-reasoner"
+llm.roles.resource = "deepseek/deepseek-chat"
+llm.keys.deepseek = "enc:v1:sXt/CMyW1B2u9qVXiZEO+Urzq490LOsw6FDq++xJ2oO9K3OFd2ggZ75X"
+llm.keys.zhipu = ""
+llm.keys.openai = ""
+llm.keys.gemini = ""
+llm.keys.local_llm = "enc:v1:7K1wCMDU5ifTnCxqNgCYi3JnDJsECwCXbLhremfLUMTdYVhqIZv4uQ=="
+[[llm.extra_sources]]
+id = "local/qwen3-vl"
+model = "qwen3-vl"
+modalities = [ "text", "image" ]
+base_url = "http://127.0.0.1:8000/v1"
+key = "local_llm"

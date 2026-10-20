@@ -1,0 +1,32 @@
+begincodeV2
+name:工具'按显示人数计算视角
+params:Long 显示人数
+return:Float 视角
+lines:
+Vector3 分辨率=fun screen.size()
+Float 分辨率x=varf Vector3.分辨率.x()
+Float 分辨率y=varf Vector3.分辨率.y()
+Float 修正系数=fun float.division(var 分辨率y:var 分辨率x)
+Long 夹角倍数=fun long.RightShift(var 显示人数:Long 1)
+Float 夹角倍数F=varf Long.夹角倍数.toFloat()
+varf Float.夹角倍数F.addEqual(Float 0.5)
+Float 夹角a=fun float.multiply(var 夹角倍数F:var 场景'位置间夹角)
+Float tana=fun float.triangle.tan(var 夹角a)
+Float tana=fun float.multiply(var tana:var 修正系数)
+Float 夹角a=fun float.triangle.atan(var tana)
+Float 场景'可见角度范围=fun float.add(var 夹角a:Float 0)
+Float sina=fun float.triangle.sin(var 夹角a)
+Float 半径=fun float.multiply(var 场景'位置数量:var 场景'柱子半径系数)
+Vector3 向量1=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 向量1=fun vector3.rotateAround(var 向量1:Vector3 0,1,0:var 夹角a)
+Float 摄像机距离=fun float.lerp(var 场景'最近摄像机距离:var 场景'最远摄像机距离:var 摄像机'缩放比例)
+Float 摄像机距离=fun float.add(var 半径:var 摄像机距离)
+Vector3 向量2=fun creatVariable.Vector3(Float 0:Float 0:var 摄像机距离)
+Vector3 坐标差=fun vector3.minus(var 向量1:var 向量2)
+Float 边A=varf Vector3.坐标差.length()
+Float Bsina=fun float.multiply(var 半径:var sina)
+//A*sinb@3B*sina
+Float sinb=fun float.division(var Bsina:var 边A)
+Float 角度B=fun float.triangle.asin(var sinb)
+Float 视角=fun float.multiply(var 角度B:Float 2)
+endcode

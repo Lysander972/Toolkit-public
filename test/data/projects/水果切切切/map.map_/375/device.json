@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:地图空气墙
+ mechFileGUID:f59bee850ec4454ab9b47fe509a92dc1
+}

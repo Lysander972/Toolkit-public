@@ -1,0 +1,59 @@
+begincodeV2
+name:测试'模拟礼物
+params:String word,Dict D
+return:Bool ok
+lines:
+Float 字数=varf String.word.length()
+if{fun float.lt(var 字数:Float 3)
+  fun break()
+}
+Long 礼物数=fun create.long(Long 1)
+List splits=varf String.word.split(String  )
+Float N=varf List.splits.count()
+if{fun float.Approximately(var N:Float 2)
+  String c=varf List.splits.readString(Float 1)
+  Long 礼物数=varf String.c.toLong()
+  String word=varf List.splits.readString(Float 0)
+  if{fun float.lt(var 字数:Float 3)
+    fun break()
+  }
+}
+Long 礼物数=fun long.max(var 礼物数:Long 1)
+varf Dict.D.insert(String num:var 礼物数)
+Bool ok=fun create.bool(Bool 0)
+Long 礼物编号=fun create.long(Long -1)
+if{fun string.equal(var word:String 礼物1)
+  Long 礼物编号=fun create.long(Long 0)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun string.equal(var word:String 礼物2)
+  Long 礼物编号=fun create.long(Long 1)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun string.equal(var word:String 礼物3)
+  Long 礼物编号=fun create.long(Long 2)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun string.equal(var word:String 礼物4)
+  Long 礼物编号=fun create.long(Long 3)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun string.equal(var word:String 礼物5)
+  Long 礼物编号=fun create.long(Long 4)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun string.equal(var word:String 礼物6)
+  Long 礼物编号=fun create.long(Long 5)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun string.equal(var word:String 礼物7)
+  Long 礼物编号=fun create.long(Long 6)
+  Bool ok=fun create.bool(Bool 1)
+}
+if{fun create.bool(var ok)
+  String uid=varf Dict.D.readString(String uid:Bool 0)
+  String name=varf Dict.D.readString(String name:Bool 0)
+  String avatarUrl=varf Dict.D.readString(String avatarUrl:Bool 0)
+  act 1101.this.测试'发送礼物消息(var uid:var 礼物编号:var 礼物数:var avatarUrl:var name)
+}
+endcode

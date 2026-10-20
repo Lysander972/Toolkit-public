@@ -1,0 +1,7 @@
+begincodeV2
+skip:1
+name:方法1
+lines:
+fun light(Float 1)
+fun HDRBloom(Bool 1:Float 3:Float 6)
+endcode

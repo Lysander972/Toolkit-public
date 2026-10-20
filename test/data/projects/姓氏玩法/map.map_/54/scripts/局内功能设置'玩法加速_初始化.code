@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'玩法加速_初始化
+lines:
+Bool 局内功能设置'玩法加速=fun create.bool(Bool 0)
+act 1101.this.局内功能设置'玩法加速_应用并刷新()
+endcode

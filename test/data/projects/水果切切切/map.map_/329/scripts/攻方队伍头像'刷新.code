@@ -1,0 +1,15 @@
+begincodeV2
+name:攻方队伍头像'刷新
+lines:
+List playerList=act 1101./弹幕.UI'得到上方玩家表()
+Float playerAmount=varf List.playerList.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var playerAmount)
+  Struct player=varf List.playerList.readStruct(var index)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  Mech obj=varf Dict.攻方炮塔记录.readMech(var uid:Bool 0)
+  Vector3 坐标=act 1101.this.攻方队伍头像'坐标计算(var index)
+  varf Mech.obj.move(var 坐标:Enum 0)
+  varf Float.index.addEqual(Float 1)
+}
+endcode

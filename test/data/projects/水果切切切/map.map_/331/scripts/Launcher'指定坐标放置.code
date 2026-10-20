@@ -1,0 +1,8 @@
+begincodeV2
+name:Launcher'指定坐标放置
+comment:发射飞刀用
+params:Vector3 position,Vector3 direction,Long type,Struct player,Float HPMul,Float crit,Float initHp,Bool useManualSpeed,Float manualSpeed
+return:Bool ret
+lines:
+Bool ret=act 1.this.Launcher'AbstractSetBullet(var position:var direction:var type:var Attr'Faction:var player:var HPMul:var crit:var initHp:var useManualSpeed:var manualSpeed)
+endcode

@@ -1,0 +1,14 @@
+type:336
+pos:[0,0,0]
+quat:[0,1,0,0]
+scale:12.0088
+ext:
+{
+ logicName:爆炸效果发射器
+ boolShowFollowIcon:true
+ mechIndex:-1
+ generatorAlias:爆炸效果
+ poolNum:50
+ maxLifeTime:5
+ antiImpulse:0
+}

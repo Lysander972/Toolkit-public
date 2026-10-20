@@ -1,0 +1,12 @@
+type:1
+pos:[-2.235174E-07,-1.192093E-07,-1.954051E-14]
+enableManualWeld:true
+attach:
+[
+ 6
+ 7
+]
+ext:
+{
+ boolHideCore:true
+}

@@ -1,0 +1,22 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "源码测试已证明完整 TS 方法、C4 元素和扩展、模型外部关系变化使原生意见失效，隔离导入位置不改变指纹；HEAD/index 实测拒绝工作树替代，严格 Sphinx 构建使用同一导入文件。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "文档设计将六类节点放在统一图，以 implements 连接相邻依据；源文纠偏、评分警告及旧系统替换均对应统一需求图决策，LikeC4 继续持有架构权威。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "正文解释了 related_code 未实现及 literalinclude 不包含实际源码造成的缺口，因此只用标准 needimport 适配全文；独占导入、config-inited 顺序及 Git blob 输入都有明确失效原因。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "96840b50-0dbe-41d9-8805-e7613236017f",
+  "reviewed_fingerprint": "4b45b791565f7ac90201826e3f0d7d668678ffe83439a87a87ba403576c21106",
+  "schema": 2
+}

@@ -1,0 +1,15 @@
+begincodeV2
+name:工具'队伍高度映射
+params:Long 原始value
+return:Float 高度值
+lines:
+Long 可显示范围=fun long.minus(var 场景'进度条最大数值基准:var 场景'进度条最小数值基准)
+Long 可显示范围=fun long.max(var 可显示范围:Long 1)
+Long 相对于最小值=fun long.minus(var 原始value:var 场景'进度条最小数值基准)
+Long 相对于最小值=fun long.max(var 相对于最小值:Long 0)
+Float 插值比例=fun long.division(var 相对于最小值:var 可显示范围)
+/*Float 高度值=fun float.multiply(var 插值比例:Float 16)
+Float 高度值=fun float.multiply(var 插值比例:Float 23)
+varf Float.高度值.addEqual(Float 13)
+varf Float.高度值.addEqual(var 场景'高度偏移)
+endcode

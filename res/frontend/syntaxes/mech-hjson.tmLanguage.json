@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schemas/tmlanguage.json",
+  "name": "MechHJSON",
+  "scopeName": "source.mech-hjson",
+  "comment": "原版游戏使用的宽松 JSON 格式（无引号键名/值）",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#object" },
+    { "include": "#array" },
+    { "include": "#value" }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "comment": "单行注释 | 样例: // 注释内容 | //TODO",
+          "name": "comment.line.double-slash.mech-hjson",
+          "match": "//.*$"
+        },
+        {
+          "comment": "块注释 | 样例: /* 多行注释 */",
+          "name": "comment.block.mech-hjson",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "object": {
+      "comment": "对象 | 样例: { key: value } | { \"key\": \"value\" }",
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.dictionary.begin.mech-hjson" }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.dictionary.end.mech-hjson" }
+      },
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#key-value" },
+        { "include": "#object" },
+        { "include": "#array" }
+      ]
+    },
+    "array": {
+      "comment": "数组 | 样例: [1, 2, 3] | [\"a\", \"b\"]",
+      "begin": "\\[",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.array.begin.mech-hjson" }
+      },
+      "end": "\\]",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.array.end.mech-hjson" }
+      },
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#value" },
+        { "include": "#object" },
+        { "include": "#array" },
+        {
+          "comment": "数组分隔符 | 样例: ,",
+          "name": "punctuation.separator.array.mech-hjson",
+          "match": ","
+        }
+      ]
+    },
+    "key-value": {
+      "patterns": [
+        {
+          "comment": "无引号键名 | 样例: name: | type: | 中文键:",
+          "match": "([\\w\\u4e00-\\u9fff]+)\\s*:",
+          "captures": {
+            "1": { "name": "support.type.property-name.mech-hjson" }
+          }
+        },
+        {
+          "comment": "带引号键名 | 样例: \"name\": | \"some-key\":",
+          "match": "\"([^\"]+)\"\\s*:",
+          "captures": {
+            "1": { "name": "support.type.property-name.mech-hjson" }
+          }
+        },
+        { "include": "#value" }
+      ]
+    },
+    "value": {
+      "patterns": [
+        {
+          "comment": "布尔值 true | 样例: true",
+          "name": "constant.language.boolean.true.mech-hjson",
+          "match": "\\btrue\\b"
+        },
+        {
+          "comment": "布尔值 false | 样例: false",
+          "name": "constant.language.boolean.false.mech-hjson",
+          "match": "\\bfalse\\b"
+        },
+        {
+          "comment": "空值 | 样例: null",
+          "name": "constant.language.null.mech-hjson",
+          "match": "\\bnull\\b"
+        },
+        {
+          "comment": "数字 | 样例: 123 | -456 | 3.14 | 1e10 | -2.5E-3",
+          "name": "constant.numeric.mech-hjson",
+          "match": "-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?"
+        },
+        {
+          "comment": "双引号字符串 | 样例: \"hello\" | \"测试\\n换行\"",
+          "name": "string.quoted.double.mech-hjson",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "comment": "转义字符 | 样例: \\\\ | \\n | \\\"",
+              "name": "constant.character.escape.mech-hjson",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "comment": "无引号字符串值（冒号后或数组中）| 样例: value | 中文值 | 1-101",
+          "name": "string.unquoted.mech-hjson",
+          "match": "(?<=:|\\[|,)\\s*([^,\\[\\]{}\"\\n]+?)\\s*(?=[,\\]\\}\\n]|$)"
+        }
+      ]
+    }
+  }
+}

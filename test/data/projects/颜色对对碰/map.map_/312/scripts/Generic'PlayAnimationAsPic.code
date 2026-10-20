@@ -1,0 +1,26 @@
+begincodeV2
+name:Generic'PlayAnimationAsPic
+params:String $prefix,Long $start,Long $end,Float $duration,UIRawImage $UI
+return:Bool $ret
+lines:
+Bool $ret=fun create.bool(Bool 0)
+Float $time=fun create.float(Float 0)
+Bool $continue=fun create.bool(Bool 1)
+Bool $first=fun create.bool(Bool 1)
+while{fun create.bool(var $continue)
+  if{fun bool.not(var $first)
+    Float $timeD=fun time.deltaTime()
+    varf Float.$time.addEqual(var $timeD)
+  }
+  Float $rate=fun float.division(var $time:var $duration)
+  Long $index=fun long.lerp(var $start:var $end:var $rate)
+  String $name=fun create.string(var $index)
+  String $name=fun string.add1(var $prefix:var $name:String .png)
+  varf UIRawImage.$UI.loadPic(var $name)
+  Bool $first=fun create.bool(Bool 0)
+  Bool $continue=fun float.lt(var $time:var $duration)
+  delay fun create.float(Float 0)
+}
+delay fun create.float(Float 0)
+varf UIRawImage.$UI.del(Float 0)
+endcode

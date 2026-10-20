@@ -1,0 +1,7 @@
+begincodeV2
+name:撞击
+lines:
+Mech target=varf Device.$trigger.mech()
+Device core=act 1.0.getDevice()
+varf Device.core.callFun1(String Public'OnCollision:var target)
+endcode

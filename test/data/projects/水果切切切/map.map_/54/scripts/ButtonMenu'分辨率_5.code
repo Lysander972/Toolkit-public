@@ -1,0 +1,8 @@
+begincodeV2
+name:ButtonMenu'分辨率_5
+lines:
+Vector3 实际分辨率=fun screen.size()
+Dict data=fun map.load()
+varf Dict.data.insert(String 手动分辨率:var 实际分辨率)
+act 1101.this.场外功能设置'更新分辨率(Long 4)
+endcode

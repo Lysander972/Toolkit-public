@@ -1,0 +1,41 @@
+begincodeV2
+name:内部'特效_加速
+comment:给自己队伍的加速,级别1@1仙女棒;级别2@1甜甜圈;级别3@1爱的爆炸
+params:Struct 目标队伍,Dict 事件,Long 级别
+lines:
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  act 1101.this.内部'队伍UI_创建(var 目标队伍)
+}
+Canvas 目标队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+//得到锚定节点
+UIRect 目标队伍根节点=varf Canvas.目标队伍UI布局.readUIRect(String 根节点)
+UIRect 目标队伍进度条区域=varf UIRect.目标队伍根节点.customUIRect(String 进度条遮罩区域)
+UIRect 目标队伍锚定节点=varf UIRect.目标队伍根节点.customUIRect(String 内部锚定节点)
+Float 速度=fun create.float(Float 500)
+Vector3 生成坐标=fun creatVariable.Vector3(Float -300:Float 0:Float 0)
+if{fun long.equal(var 级别:Long 1)
+  act 1101.this.内部'投射物_加速(Color 255,215,0,255:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 255,215,0,206:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.4:var 目标队伍根节点)
+}
+if{fun long.equal(var 级别:Long 2)
+  act 1101.this.内部'投射物_加速(Color 0,255,173,255:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 0,255,173,205:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.4:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 0,255,173,102:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.8:var 目标队伍根节点)
+}
+if{fun long.equal(var 级别:Long 3)
+  act 1101.this.内部'投射物_加速(Color 0,125,255,255:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 0,125,255,206:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.3:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 0,125,255,153:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.6:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 0,125,255,77:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.9:var 目标队伍根节点)
+}
+if{fun long.equal(var 级别:Long 4)
+  act 1101.this.内部'投射物_加速(Color 255,0,210,255:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 255,0,211,205:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.3:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 255,0,211,167:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.6:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 255,0,211,128:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 0.9:var 目标队伍根节点)
+  act 1101.this.内部'投射物_加速(Color 255,0,211,78:var 事件:var 目标队伍进度条区域:var 生成坐标:var 速度:var 目标队伍锚定节点:Float 1.2:var 目标队伍根节点)
+}
+endcode

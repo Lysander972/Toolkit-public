@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+name:Private_Physic'CheckLayer
+comment:检查当前层,按需调整层
+params:Float $layer
+lines:
+/*if{fun float.notEqual(var $layer:var Layer)
+  act 1.this.Public'SetLayer(var $layer)
+/*  Float Layer=fun create.float(var $layer)
+}
+endcode

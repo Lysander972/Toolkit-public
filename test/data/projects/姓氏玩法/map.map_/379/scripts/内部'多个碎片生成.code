@@ -1,0 +1,33 @@
+begincodeV2
+name:内部'多个碎片生成
+params:Mech 队伍模型,Float 高度变化值
+lines:
+if{fun float.gte(var 高度变化值:Float -0.1)
+  fun break()
+}
+Float 剩余未分配长度=fun float.abs(var 高度变化值)
+Float 段数=fun float.division(var 剩余未分配长度:Float 2)
+Float 段数=varf Float.段数.ceiling()
+Float 每段长度=fun float.division(var 剩余未分配长度:var 段数)
+Vector3 相对原点=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+Long 生成次数=fun create.long(Long 0)
+Float 爆裂力度=act 1101./参数调节模块.读取(String 爆裂力度:Float 35:Float 0:Float 200:Color 0,0,0,255)
+Float 转速=act 1101./参数调节模块.读取(String 转速:Float 20:Float 0:Float 100:Color 0,0,0,255)
+Bool 可分配=fun create.bool(Bool 1)
+while{fun create.bool(var 可分配)
+/*  Float 本次分配长度=fun math.rand(Float 0.8:Float 1.2)
+/*  Float 本次分配长度=fun float.min(var 本次分配长度:var 剩余未分配长度)
+  Float 本次分配长度=fun create.float(var 每段长度)
+  varf Float.剩余未分配长度.minusEqual(var 本次分配长度)
+  Float 拉伸程度=fun float.multiply(var 本次分配长度:Float 0.5)
+  Vector3 相对坐标=fun creatVariable.Vector3(Float 0:var 拉伸程度:Float 0)
+  Vector3 相对坐标=fun vector3.add(var 相对坐标:var 相对原点)
+  act 336./碎片发射器.发射新alt(var 队伍模型:var 相对坐标:Float 100:var 爆裂力度:var 拉伸程度:var 转速)
+  Vector3 相对原点增长=fun creatVariable.Vector3(Float 0:var 本次分配长度:Float 0)
+  Vector3 相对原点=fun vector3.add(var 相对原点:var 相对原点增长)
+  varf Long.生成次数.addEqual(Long 1)
+  Bool 继续生成条件1=fun long.lt(var 生成次数:Long 5)
+  Bool 继续生成条件2=fun float.gt(var 剩余未分配长度:Float 0)
+  Bool 可分配=fun bool.and(var 继续生成条件1:var 继续生成条件2)
+}
+endcode

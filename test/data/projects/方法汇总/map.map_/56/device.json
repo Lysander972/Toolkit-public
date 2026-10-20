@@ -1,0 +1,10 @@
+type:336
+pos:[1.060551,0,-3.557949]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ generatorAlias:""
+ poolNum:100
+ maxLifeTime:3
+ antiImpulse:0
+}

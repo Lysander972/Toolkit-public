@@ -1,0 +1,8 @@
+begincodeV2
+name:ButtonMenu'Click6_1
+lines:
+Long GameSettings0=fun create.long(Long 2)
+Long GameSettings1=fun create.long(Long 2)
+Long GameSettings2=fun create.long(Long 2)
+act 1101.this.Game'Start()
+endcode

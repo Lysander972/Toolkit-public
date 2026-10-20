@@ -1,0 +1,166 @@
+"$schema" = "https://ubcode.useblocks.com/ubproject.schema.json"
+
+[project]
+name = "Toolkit 需求追踪"
+version = "1"
+root_doc = "index"
+language = "zh_CN"
+
+[source]
+dir = "."
+include = ["*.rst"]
+
+[needs]
+id_required = true
+id_regex = "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+schema_definitions_from_json = "schemas.json"
+
+[needs.import_keys]
+toolkit_sources = "../_build/requirements/sources.json"
+
+[[needs.types]]
+directive = "source"
+title = "Original source"
+prefix = ""
+color = "#9ecae1"
+style = "node"
+
+[[needs.types]]
+directive = "interpretation"
+title = "Interpretation"
+prefix = ""
+color = "#fdae6b"
+style = "node"
+
+[[needs.types]]
+directive = "decision"
+title = "Decision"
+prefix = ""
+color = "#a1d99b"
+style = "node"
+
+[[needs.types]]
+directive = "design"
+title = "Design"
+prefix = ""
+color = "#bcbddc"
+style = "node"
+
+[[needs.types]]
+directive = "implementation"
+title = "实现"
+prefix = ""
+color = "#c7e9c0"
+style = "node"
+
+[[needs.types]]
+directive = "verification"
+title = "验证"
+prefix = ""
+color = "#fdd0a2"
+style = "node"
+
+[needs.links.implements]
+outgoing = "依据"
+incoming = "下游"
+
+[needs.fields.source]
+schema = {type = "string"}
+
+[workflow]
+exempt_status = ["retired"]
+release_disallow_status = ["draft"]
+orphan_exempt_types = ["verification"]
+
+[workflow.lifecycle]
+states = ["draft", "active", "retired"]
+
+[[workflow.stages]]
+id = "sources"
+produces = "source"
+authoring = "逐字保留来源原文，不以摘要代替；允许直接纠偏，由 Git diff 保留变化。使用 UUID v4。"
+[workflow.stages.route]
+scope = "global"
+granularity = "global"
+path = "sources.rst"
+
+[[workflow.stages]]
+id = "interpretations"
+produces = "interpretation"
+depends_on = ["sources"]
+review_skill = "review-traceability"
+authoring = "阅读完整原文；写明出发点、解读角度、推导和结论，区分原文约束与设计选择。每份原文只有一个有效解读。"
+[workflow.stages.route]
+scope = "global"
+granularity = "per-need"
+path = "issue-179.rst"
+[[workflow.stages.trace]]
+up = "source"
+link = "implements"
+direction = "both"
+
+[[workflow.stages]]
+id = "decisions"
+produces = "decision"
+depends_on = ["interpretations"]
+review_skill = "review-traceability"
+authoring = "阅读解读与原文全文；盘点已有能力和成熟候选，记录必要性、取舍及影响。"
+[workflow.stages.route]
+scope = "global"
+granularity = "per-need"
+path = "issue-179.rst"
+[[workflow.stages.trace]]
+up = "interpretation"
+link = "implements"
+direction = "both"
+
+[[workflow.stages]]
+id = "designs"
+produces = "design"
+depends_on = ["decisions"]
+review_skill = "review-traceability"
+[workflow.stages.route]
+scope = "global"
+granularity = "per-need"
+path = "issue-179.rst"
+[[workflow.stages.trace]]
+up = "decision"
+link = "implements"
+direction = "both"
+
+[[workflow.stages]]
+id = "implementations"
+produces = "implementation"
+depends_on = ["designs"]
+review_skill = "review-traceability"
+[workflow.stages.route]
+scope = "global"
+granularity = "per-need"
+path = "issue-179.rst"
+[[workflow.stages.trace]]
+up = "design"
+link = "implements"
+direction = "both"
+
+[[workflow.stages]]
+id = "verifications"
+produces = "verification"
+depends_on = ["implementations"]
+review_skill = "review-traceability"
+[workflow.stages.route]
+scope = "global"
+granularity = "per-need"
+path = "issue-179.rst"
+[[workflow.stages.trace]]
+up = "implementation"
+link = "implements"
+direction = "both"
+
+[quality]
+enabled = true
+criteria_file = "quality.toml"
+
+[quality.required]
+parent_fit = 1
+reasoning = 1
+evidence = 1

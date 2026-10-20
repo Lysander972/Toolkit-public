@@ -1,0 +1,24 @@
+begincodeV2
+name:初始化
+lines:
+UILabel 文本框=act 1102./队伍名.getLabel()
+varf UILabel.文本框.outline(Float 0.05:Color 0,0,0,255)
+UILabel 文本框=act 1102./队伍序号.getLabel()
+varf UILabel.文本框.outline(Float 0.2:Color 0,0,0,255)
+UILabel 文本框=act 1102./队伍数值.getLabel()
+varf UILabel.文本框.labelEffect(Float 0.4:Vector3 0,0,0:Enum 1)
+varf UILabel.文本框.outline(Float 0.4:Color 0,0,0,255)
+UILabel 文本框=act 1102./排名.getLabel()
+varf UILabel.文本框.labelEffect(Float 0.4:Vector3 0,0,0:Enum 1)
+varf UILabel.文本框.outline(Float 0.4:Color 0,0,0,255)
+act 1.this.enableCollide(Bool 0)
+act 362./柱子.enableCollide(Bool 0)
+act 362./方框边框.enableCollide(Bool 0)
+act 362./方框背景.enableCollide(Bool 0)
+act 337./点赞粒子.enableCollide(Bool 0)
+act 337./仙女棒加速.enableCollide(Bool 0)
+act 337./高级加速.enableCollide(Bool 0)
+act 337./甜甜圈加速.enableCollide(Bool 0)
+act 337./炸弹加速.enableCollide(Bool 0)
+act 337./空投加速.enableCollide(Bool 0)
+endcode

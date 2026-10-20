@@ -1,0 +1,30 @@
+guid:6a07d5b91e9d4e66b853619304300b8b
+meshes:
+[
+ {
+  n:Grapefruit_Half
+ }
+]
+matFolderName:ea359cf0dc3f4712af9d092d03c6d1e3
+Albedo.UID:ea359cf0dc3f4712af9d092d03c6d1e3
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.08845475,7.450581E-08]
+bounds.size:[0.3466211,0.1769095,0.3466212]

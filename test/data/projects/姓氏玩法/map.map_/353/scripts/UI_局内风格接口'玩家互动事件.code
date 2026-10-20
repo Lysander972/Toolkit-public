@@ -1,0 +1,74 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'玩家互动事件
+params:Struct 玩家,Struct 发起者队伍,Struct 目标队伍,Long 事件类型,Dict 事件,Long 层数
+lines:
+if{fun long.equal(var 事件类型:Long 0)
+  =act 1101./弹幕.玩家结构'读取_name(var 玩家:Bool 0)
+}
+//加速
+if{fun long.equal(var 事件类型:Long 2)
+  act 1101.this.内部'特效_点赞(var 发起者队伍)
+}
+//捣乱
+if{fun long.equal(var 事件类型:Long 3)
+  Long 有效层数=fun long.min(var 层数:Long 5)
+  Float 强度=fun long.division(var 层数:var 有效层数)
+  Float 缩放=fun float.log(var 强度:Float 8)
+  Float 缩放=fun float.add(var 缩放:Float 0.7)
+  Long 火球数=fun long.multiply(var 有效层数:Long 1)
+  Float 火球数F=varf Long.火球数.toFloat()
+  act 1101.this.内部'投射物_火球(var 发起者队伍:var 目标队伍:var 事件:var 火球数F:var 缩放)
+}
+//1级加速_仙女棒
+if{fun long.equal(var 事件类型:Long 10)
+  act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 1)
+}
+//2级加速_甜甜圈
+if{fun long.equal(var 事件类型:Long 13)
+  act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 2)
+}
+//3级加速_爱的爆炸
+if{fun long.equal(var 事件类型:Long 15)
+  act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 3)
+}
+//4级加速_神秘空投
+if{fun long.equal(var 事件类型:Long 17)
+  act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+  act 1101.this.内部'特效_加速(var 目标队伍:var 事件:Long 4)
+}
+//减速类
+//1级减速-能力药丸
+if{fun long.equal(var 事件类型:Long 11)
+  Long 有效层数=fun long.min(var 层数:Long 3)
+  Float 强度=fun long.division(var 层数:var 有效层数)
+  Float 缩放=fun float.log(var 强度:Float 5)
+  Float 缩放=fun float.add(var 缩放:Float 1)
+  Long 火球数=fun long.multiply(var 有效层数:Long 1)
+  Float 火球数F=varf Long.火球数.toFloat()
+  act 1101.this.内部'投射物_火球(var 发起者队伍:var 目标队伍:var 事件:var 火球数F:var 缩放)
+}
+//2级减速-能量电池
+if{fun long.equal(var 事件类型:Long 14)
+  Long 有效层数=fun long.min(var 层数:Long 3)
+  Float 强度=fun long.division(var 层数:var 有效层数)
+  Float 缩放=fun float.log(var 强度:Float 5)
+  Float 缩放=fun float.add(var 缩放:Float 1)
+  Long 火球数=fun long.multiply(var 有效层数:Long 3)
+  Float 火球数F=varf Long.火球数.toFloat()
+  act 1101.this.内部'投射物_火球(var 发起者队伍:var 目标队伍:var 事件:var 火球数F:var 缩放)
+}
+//3级减速-派对话筒
+if{fun long.equal(var 事件类型:Long 16)
+  Long 有效层数=fun long.min(var 层数:Long 3)
+  Float 强度=fun long.division(var 层数:var 有效层数)
+  Float 缩放=fun float.log(var 强度:Float 5)
+  Float 缩放=fun float.add(var 缩放:Float 1)
+  Long 火球数=fun long.multiply(var 有效层数:Long 3)
+  Float 火球数F=varf Long.火球数.toFloat()
+  act 1101.this.内部'投射物_火球(var 发起者队伍:var 目标队伍:var 事件:var 火球数F:var 缩放)
+}
+endcode

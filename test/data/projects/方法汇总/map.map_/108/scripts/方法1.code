@@ -1,0 +1,7 @@
+begincodeV2
+name:方法1
+lines:
+act 126.this.setElectricArcColor(Color 0,0,0,255)
+act 126.this.setPoints(Vector3 0,0,0:Vector3 0,0,0:Vector3 0,0,0)
+act 126.this.setElecricArc(Float 0.03:Float 1.5:Float 0.15:Float 1.32)
+endcode

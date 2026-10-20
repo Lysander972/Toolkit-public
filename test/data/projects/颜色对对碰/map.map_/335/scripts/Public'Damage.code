@@ -1,0 +1,10 @@
+begincodeV2
+color:8,0,255
+name:Public'Damage
+comment:计算伤害并按需要回收
+params:Float $damage,Long $faction
+lines:
+=fun float.add(var $damage:Float 0)
+=fun long.add(var $faction:Long 0)
+fun break()
+endcode

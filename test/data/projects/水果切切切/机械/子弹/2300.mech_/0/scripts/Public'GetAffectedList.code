@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetAffectedList
+return:List list
+lines:
+List list=act 1100./爆炸判定.getInsideMechs()
+endcode

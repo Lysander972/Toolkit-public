@@ -1,0 +1,20 @@
+begincodeV2
+name:UI_功能面板'应用并刷新音量显示
+params:Float 新音量
+lines:
+Float 功能设置'音量值=fun float.clamp(var 新音量:Float 0:Float 1)
+fun audio.setVolume(var 功能设置'音量值)
+if{fun create.bool(var InGame)
+  UILabel 数值框1=varf Canvas.GameUI.readUILabel(String root/topForPC/音量/border/数值)
+  UILabel 数值框2=varf Canvas.GameUI.readUILabel(String root/SettingsForMobile/屏蔽器2/子组件排版区/音量/border/数值)
+  UIRect 填充条1=varf Canvas.GameUI.readUIRect(String root/topForPC/音量/border/bar)
+  UIRect 填充条2=varf Canvas.GameUI.readUIRect(String root/SettingsForMobile/屏蔽器2/子组件排版区/音量/border/bar)
+  varf UIRect.填充条1.fillMode(Enum 0:var 功能设置'音量值)
+  varf UIRect.填充条2.fillMode(Enum 0:var 功能设置'音量值)
+  Float 显示=fun float.multiply(var 功能设置'音量值:Float 100)
+  Float 显示=varf Float.显示.floor()
+  String 显示文字=fun string.add(var 显示:String %)
+  varf UILabel.数值框1.text(var 显示文字)
+  varf UILabel.数值框2.text(var 显示文字)
+}
+endcode

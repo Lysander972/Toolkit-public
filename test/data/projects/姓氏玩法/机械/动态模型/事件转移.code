@@ -1,0 +1,8 @@
+begincodeV2
+guid:5fdea05349f3406ba240ed7d74ead8ab
+name:事件转移
+params:Mech 转移目标
+lines:
+varf Mech.转移目标.callFun1(String 挂载全部事件:var 挂载事件列表)
+varf List.挂载事件列表.clear()
+endcode

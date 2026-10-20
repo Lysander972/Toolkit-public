@@ -1,0 +1,36 @@
+begincodeV2
+color:255,255,255
+name:工具'得到连胜积分加成
+params:Long 连胜
+return:Float add
+lines:
+if{fun long.lt(var 连胜:Long 3)
+  Float add=fun create.float(Float 0)
+  fun break()
+}
+if{fun long.lt(var 连胜:Long 5)
+  Float add=fun create.float(Float 0.05)
+  fun break()
+}
+if{fun long.lt(var 连胜:Long 10)
+  Float add=fun create.float(Float 0.1)
+  fun break()
+}
+if{fun long.lt(var 连胜:Long 30)
+  Float add=fun create.float(Float 0.2)
+  fun break()
+}
+if{fun long.lt(var 连胜:Long 50)
+  Float add=fun create.float(Float 0.4)
+  fun break()
+}
+if{fun long.lt(var 连胜:Long 80)
+  Float add=fun create.float(Float 0.6)
+  fun break()
+}
+if{fun long.lt(var 连胜:Long 100)
+  Float add=fun create.float(Float 0.8)
+  fun break()
+}
+Float add=fun create.float(Float 1)
+endcode

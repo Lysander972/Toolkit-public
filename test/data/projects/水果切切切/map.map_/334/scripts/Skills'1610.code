@@ -1,0 +1,17 @@
+begincodeV2
+private:1
+name:Skills'1610
+comment:大西瓜被动-持续召唤小西瓜
+lines:
+if{fun create.bool(var Attr'Alive)
+  delay fun create.float(Float 5)
+  if{fun long.gt(var Skill'1610:Long 0)
+    Vector3 pos=act 1.this.getPosition()
+    Vector3 pos=fun vector3.add(var pos:Vector3 0,100,0)
+    Float x=fun math.rand(Float -5:Float 5)
+    varf Vector3.pos.setX(var x)
+    =act 1.this.Launcher'PlaceBullet(Long 1620:var pos:var Creator:Float 1:Float 0:Float 1)
+    varf Long.Skill'1610.minusEqual(Long 1)
+  }
+}
+endcode

@@ -1,0 +1,31 @@
+guid:88e536fb44f9421eb362899505f5e401
+meshes:
+[
+ {
+  n:SM_Hud_Barrier_03
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,-0.04053955,0]
+bounds.size:[0.9429138,0.1569916,0.01832494]

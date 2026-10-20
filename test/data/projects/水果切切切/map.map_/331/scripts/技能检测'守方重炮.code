@@ -1,0 +1,7 @@
+begincodeV2
+name:技能检测'守方重炮
+lines:
+act 1.this.技能'解冻检测()
+act 1.this.技能'2310()
+act 1.this.技能'2310_炮塔模型()
+endcode

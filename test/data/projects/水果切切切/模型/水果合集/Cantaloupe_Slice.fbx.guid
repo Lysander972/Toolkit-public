@@ -1,0 +1,27 @@
+guid:a25ef583a9ac49b8b1765b93614ca4fa
+meshes:
+[
+ {
+  n:Canteloupe_Slice
+ }
+]
+matFolderName:3de572c363d244b48c49aa9660b151bc
+Albedo.UID:3de572c363d244b48c49aa9660b151bc
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[7.450581E-09,0.1256245,0]
+bounds.size:[0.2471779,0.2427868,0.4532674]

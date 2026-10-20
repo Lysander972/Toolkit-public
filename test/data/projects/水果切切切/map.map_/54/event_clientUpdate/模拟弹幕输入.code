@@ -1,0 +1,15 @@
+begincodeV2
+color:255,243,0
+name:模拟弹幕输入
+comment:按下F点赞,按下Enter发信息
+lines:
+if{fun create.bool(var IsGM)
+  if{fun keyboard.keyDown2(Enum 3)
+    act 1101.this.Button_Game'Enter()
+  }
+  if{fun keyboard.keyDown2(Enum 50)
+    String test=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "_0001Qzypt5TBz3HySUpWYnj0aFShivWFyC3","like_num"@1 1,"avatar_url"@1 "https@1//p26.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813_ogD5AAEheDINHKA9JgAhjIAAEA3zABzQLsVAfC.jpeg?from@33067671334","nickname"@1 "test","timestamp"@1 1}])
+    fun simulate_comment(String live_like:var test)
+  }
+}
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:模型'设置头像框
+params:String file
+lines:
+String FrameFile=fun create.string(var file)
+endcode

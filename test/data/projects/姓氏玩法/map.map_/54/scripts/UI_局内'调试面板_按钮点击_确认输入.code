@@ -1,0 +1,13 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'调试面板_按钮点击_确认输入
+lines:
+if{act 1101./主界面.工具'是GM()
+  String text=varf UIInput.UI_局内'调试输入框.getText()
+  Float length=varf String.text.length()
+  if{fun float.gt(var length:Float 0)
+    act 1101.this.测试'发送聊天消息_默认玩家(var text)
+    varf UIInput.UI_局内'调试输入框.setText(String )
+  }
+}
+endcode

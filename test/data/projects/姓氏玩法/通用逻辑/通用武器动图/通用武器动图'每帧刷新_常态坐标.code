@@ -1,0 +1,83 @@
+begincodeV2
+guid:0f66dc95e7684a1d928b4a6fe360e1e1
+name:通用武器动图'每帧刷新_常态坐标
+params:UIRect 根节点
+lines:
+Float 当前时间=fun time.time()
+Vector3 初始坐标=varf UIRect.根节点.customVector3(String 初始坐标)
+Bool 正向=varf UIRect.根节点.customBool(String 正向)
+Float 根节点x周期=varf UIRect.根节点.customFloat(String 根节点x周期)
+Float 根节点y周期=varf UIRect.根节点.customFloat(String 根节点x周期)
+Float 初始x相位=varf UIRect.根节点.customFloat(String 初始x相位)
+Float 初始y相位=varf UIRect.根节点.customFloat(String 初始y相位)
+Float 动画x幅度=varf UIRect.根节点.customFloat(String 动画x幅度)
+Float 动画y幅度=varf UIRect.根节点.customFloat(String 动画y幅度)
+Float x周期内时间=fun float.mod(var 当前时间:var 根节点x周期)
+Float y周期内时间=fun float.mod(var 当前时间:var 根节点y周期)
+Float x动画比例=fun float.division(var x周期内时间:var 根节点x周期)
+Float y动画比例=fun float.division(var y周期内时间:var 根节点y周期)
+Float x角度=fun float.multiply(var x动画比例:Float 360)
+Float y角度=fun float.multiply(var y动画比例:Float 360)
+Float x_sin=fun float.triangle.sin(var x角度)
+Float y_sin=fun float.triangle.sin(var y角度)
+Float x位移=fun float.multiply(var x_sin:var 动画x幅度)
+Float y位移=fun float.multiply(var y_sin:var 动画y幅度)
+Float x位移=fun float.add(var x位移:var 初始x相位)
+Float y位移=fun float.add(var y位移:var 初始y相位)
+//削弱原本的随机横向
+Float x位移=fun float.multiply(var x位移:Float 0.3)
+//改为冲刺的横向
+Float 根节点x冲刺周期=varf UIRect.根节点.customFloat(String 根节点x冲刺周期)
+Bool 在冲刺=varf UIRect.根节点.customBool(String 在冲刺)
+Float x冲刺周期内时间=fun float.mod(var 当前时间:var 根节点x冲刺周期)
+Float 冲刺部分=fun create.float(Float 0.1)
+Float 回弹部分=fun float.minus(var 根节点x冲刺周期:var 冲刺部分)
+if{fun float.lte(var x冲刺周期内时间:var 冲刺部分)
+  Float x冲刺动画比例=fun float.division(var x冲刺周期内时间:var 冲刺部分)
+  Float x冲刺动画比例=fun float.SmoothStep(Float 0:Float 1:var x冲刺动画比例)
+  Bool 新冲刺状态=fun create.bool(Bool 1)
+}
+if{fun float.gt(var x冲刺周期内时间:var 冲刺部分)
+  Float x冲刺周期内时间=fun float.minus(var x冲刺周期内时间:var 冲刺部分)
+  Float x冲刺动画比例=fun float.division(var x冲刺周期内时间:var 回弹部分)
+  Float x冲刺动画比例=fun float.SmoothStep(Float 0:Float 1:var x冲刺动画比例)
+  Float x冲刺动画比例=fun float.minus(Float 1:var x冲刺动画比例)
+  Bool 新冲刺状态=fun create.bool(Bool 0)
+}
+if{fun bool.xor(var 在冲刺:var 新冲刺状态)
+  varf UIRect.根节点.setCustomBool(String 在冲刺:var 新冲刺状态)
+/*  if{fun create.bool(var 在冲刺)
+/*    Bool 是否显示=varf UIRect.根节点.customBool(String 是否显示)
+/*    if{fun create.bool(var 是否显示)
+/*      Color color=varf UIRect.根节点.customColor(String effected_color)
+/*      Float 透明度=varf Color.color.a()
+/*      if{fun float.gte(var 透明度:Float 0.9)
+/*        Long 随机音效=fun long.rand(Long 0:Long 3)
+/*        if{fun long.equal(var 随机音效:Long 0)
+/*          act 1101./主界面.播放音效(String 武器撞击1.ogg:Float 1)
+        }
+/*        if{fun long.equal(var 随机音效:Long 1)
+/*          act 1101./主界面.播放音效(String 武器撞击2.ogg:Float 1)
+        }
+/*        if{fun long.equal(var 随机音效:Long 2)
+/*          act 1101./主界面.播放音效(String 武器撞击3.ogg:Float 1)
+        }
+/*        if{fun long.equal(var 随机音效:Long 3)
+/*          act 1101./主界面.播放音效(String 武器撞击4.ogg:Float 1)
+        }
+      }
+    }
+  }
+}
+if{fun create.bool(var 正向)
+  Float x额外位移=fun float.multiply(var x冲刺动画比例:Float 200)
+  Float x位移=fun float.add1(var x位移:var x额外位移:Float -200)
+}
+if{fun bool.not(var 正向)
+  Float x额外位移=fun float.multiply(var x冲刺动画比例:Float -200)
+  Float x位移=fun float.add1(var x位移:var x额外位移:Float 200)
+}
+Vector3 相对坐标=fun creatVariable.Vector3(var x位移:var y位移:Float 0)
+Vector3 绝对坐标=fun vector3.add(var 相对坐标:var 初始坐标)
+varf UIRect.根节点.setCanvasPos(var 绝对坐标)
+endcode

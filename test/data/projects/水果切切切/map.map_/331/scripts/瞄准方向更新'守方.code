@@ -1,0 +1,23 @@
+begincodeV2
+name:瞄准方向更新'守方
+lines:
+Mech 当前瞄准'目标单位=varf Device.map_handler.callReturnMech0(String 瞄准'得到目标)
+Bool 当前瞄准'有目标=varf Mech.当前瞄准'目标单位.alive()
+if{fun create.bool(var 当前瞄准'有目标)
+  Device core=varf Mech.当前瞄准'目标单位.getCoreDevice()
+  Vector3 pos=varf Device.core.callReturnVector30(String Public'GetCenter)
+  Vector3 pos=fun vector3.add(var pos:Vector3 0,0,-3)
+  Vector3 方位角=act 1.this.Utils'世界坐标转局部方位角(var pos)
+  Float 当前瞄准'X=varf Vector3.方位角.x()
+/*  Float 当前瞄准'X修正=fun float.multiply(var 当前瞄准'X:Float 0.97)
+/*  Float 随机波动=fun math.rand(Float -2:Float 2)
+/*  Float 当前瞄准'X修正=fun float.add(var 当前瞄准'X修正:var 随机波动)
+  Float 当前瞄准'X修正=fun create.float(var 当前瞄准'X)
+  Float 当前瞄准'Y=fun create.float(Float 0)
+/*  Float 当前瞄准'Y=varf Vector3.方位角.y()
+/*  Float 当前瞄准'Y=fun float.clamp(var 当前瞄准'Y:Float 0:Float 3)
+/*  Float 随机波动=fun math.rand(Float -2:Float 2)
+/*  varf Float.当前瞄准'Y.addEqual(var 随机波动)
+}
+delay fun create.float(Float 0.3)
+endcode

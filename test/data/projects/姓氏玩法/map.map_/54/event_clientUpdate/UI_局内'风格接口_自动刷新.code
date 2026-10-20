@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'风格接口_自动刷新
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  act 1101.this.UI_局内风格接口封装'每帧刷新()
+}
+endcode

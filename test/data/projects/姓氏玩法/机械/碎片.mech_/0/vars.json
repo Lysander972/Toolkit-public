@@ -1,0 +1,34 @@
+[
+ {
+  name:创建时间
+  type:Float
+ }
+ {
+  name:局部坐标偏移_本地
+  type:Vector3
+ }
+ {
+  name:朝向调整辅助向量
+  type:Vector3
+ }
+ {
+  name:模型名称列表_本地
+  type:List
+ }
+ {
+  name:模型缩放
+  type:Vector3
+ }
+ {
+  name:绑定柱子模型_本地
+  type:Mech
+ }
+ {
+  name:重力
+  type:Vector3
+ }
+ {
+  name:额外偏移量
+  type:Float
+ }
+]

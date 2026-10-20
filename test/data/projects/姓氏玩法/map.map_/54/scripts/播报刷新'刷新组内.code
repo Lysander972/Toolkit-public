@@ -1,0 +1,314 @@
+begincodeV2
+name:播报刷新'刷新组内
+comment:方向为真则从右向左
+params:Bool 移入移出方向,UIRect parent,List 展示列表,List 等待列表,Float 最大高度
+lines:
+Float 当前时间=fun time.time()
+//首先更新已在展示中元素的状态
+Float index=varf List.展示列表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas canvas=varf List.展示列表.readCanvas(var index)
+  UIRect background=varf Canvas.canvas.readUIRect(String background)
+  Float 优先级=varf UIRect.background.customFloat(String 优先级标志位)
+  Float 预期播放时长=varf UIRect.background.customFloat(String 预期播放时长标志位)
+  Float 展示时间标志位=varf UIRect.background.customFloat(String 展示时间标志位)
+  Float 已展示时间=fun float.minus(var 当前时间:var 展示时间标志位)
+  Float 展示时间比例=fun float.division(var 已展示时间:var 预期播放时长)
+  Float 展示时间比例=fun float.clamp(var 展示时间比例:Float 0:Float 1)
+  //计算响应比
+  Float 响应比修正=fun float.pow(var 展示时间比例:Float 2)
+  Float 响应比修正=fun float.multiply(var 响应比修正:Float 2)
+  varf Float.响应比修正.addEqual(Float 1)
+  Float 响应比=fun float.division(var 优先级:var 响应比修正)
+  varf UIRect.background.setCustomFloat(String 响应比标志位:var 响应比)
+  //检测并开始移出
+  Bool 移入状态=varf UIRect.background.customBool(String 播报移入标志位)
+  Bool 移出状态=varf UIRect.background.customBool(String 播报移出标志位)
+  if{fun bool.not(var 移出状态)
+    if{fun float.gte(var 展示时间比例:Float 1)
+      act 1101.this.播报元素'注销(var canvas)
+      varf UIRect.background.setCustomBool(String 播报移入标志位:Bool 0)
+      varf UIRect.background.setCustomBool(String 播报移出标志位:Bool 1)
+      varf UIRect.background.setCustomFloat(String 播报移出开始时间标志位:var 当前时间)
+    }
+  }
+  if{varf UIRect.background.customBool(String 启用数字效果)
+    Float 初始数量=varf UIRect.background.customFloat(String 初始数量)
+    Float 当前数量=varf UIRect.background.customFloat(String 当前数量)
+    Float 目标数量=varf UIRect.background.customFloat(String 目标数量)
+    Float 数字动效开始时间=varf UIRect.background.customFloat(String 数字动效计时标志位)
+    //计算效果整体的播放进度
+    Float 已播放时间=fun float.minus(var 当前时间:var 数字动效开始时间)
+    Float 数字效果播放进度=fun float.division(var 已播放时间:Float 0.8)
+    Float 数字效果播放进度=fun float.clamp(var 数字效果播放进度:Float 0:Float 1)
+    //计算插值进度,整体播放0.1~0.5范围内完成插值
+    Float 插值进度=fun float.minus(var 数字效果播放进度:Float 0.1)
+    Float 插值进度=fun float.division(var 插值进度:Float 0.4)
+    Float 插值进度=fun float.clamp(var 插值进度:Float 0:Float 1)
+    //使用插值进度计算插值比例
+    Float 插值比例=fun float.pow(var 插值进度:Float 0.3)
+    Float 插值比例=fun float.add(var 插值比例:var 插值进度)
+    Float 插值比例=fun float.multiply(var 插值比例:Float 0.5)
+    Float 插值比例=fun float.clamp(var 插值比例:Float 0:Float 1)
+    Float 插值结果=fun float.lerp(var 初始数量:var 目标数量:var 插值比例)
+    varf UIRect.background.setCustomFloat(String 当前数量:var 插值结果)
+/*    Float 插值结果取整=varf Float.插值结果.ceiling()
+    Float 插值结果取整=varf Float.插值结果.round()
+    Long 插值结果取整L=varf Float.插值结果取整.toLong()
+    UILabel 数字文本框=varf Canvas.canvas.readUILabel(String background/panel/数字)
+    varf UILabel.数字文本框.text(var 插值结果取整L)
+    if{fun float.lte(var 数字效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.division(var 数字效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 0.5)
+      Float 实际缩放=fun float.lerp(Float 0.75:Float 1:var 时间段比例)
+      varf UILabel.数字文本框.scale(var 实际缩放)
+    }
+    if{fun float.gt(var 数字效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.minus(var 数字效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.division(var 时间段比例:Float 0.67)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 2)
+      Float 实际缩放=fun float.lerp(Float 1:Float 0.75:var 时间段比例)
+      varf UILabel.数字文本框.scale(var 实际缩放)
+    }
+  }
+  Bool 启用缩放突出=varf UIRect.background.customBool(String 启用缩放突出标志位)
+  if{fun create.bool(var 启用缩放突出)
+    Float 缩放突出动效开始时间=varf UIRect.background.customFloat(String 缩放突出动效计时标志位)
+    UIRect 本体组件=varf UIRect.background.getSonUIRect(String panel)
+    Float 已播放时间=fun float.minus(var 当前时间:var 缩放突出动效开始时间)
+    Float 缩放效果播放进度=fun float.division(var 已播放时间:Float 0.5)
+    Float 缩放效果播放进度=fun float.clamp(var 缩放效果播放进度:Float 0:Float 1)
+    if{fun float.lte(var 缩放效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.division(var 缩放效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 0.5)
+      Float 实际缩放=fun float.lerp(Float 1:Float 1.25:var 时间段比例)
+      varf UIRect.本体组件.scale(var 实际缩放)
+    }
+    if{fun float.gt(var 缩放效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.minus(var 缩放效果播放进度:Float 0.33)
+      Float 时间段比例=fun float.division(var 时间段比例:Float 0.67)
+      Float 时间段比例=fun float.pow(var 时间段比例:Float 2)
+      Float 实际缩放=fun float.lerp(Float 1.25:Float 1:var 时间段比例)
+      varf UIRect.本体组件.scale(var 实际缩放)
+    }
+  }
+  Bool 移入状态=varf UIRect.background.customBool(String 播报移入标志位)
+  Bool 移出状态=varf UIRect.background.customBool(String 播报移出标志位)
+  //移入状态下的动画
+  if{fun create.bool(var 移入状态)
+    Float 移入动作开始时间=varf UIRect.background.customFloat(String 播报移入开始时间标志位)
+    Float 已移入时间=fun float.minus(var 当前时间:var 移入动作开始时间)
+    Float 移入比例=fun float.division(var 已移入时间:Float 0.2)
+    Float 移入比例=fun float.clamp(var 移入比例:Float 0:Float 1)
+    UIRect 本体组件=varf UIRect.background.getSonUIRect(String panel)
+    Vector3 初始大小=varf UIRect.本体组件.getSize()
+    Vector3 复制尺寸=varf Vector3.初始大小.copy()
+    Float 横向位置=varf Vector3.复制尺寸.x()
+    if{fun bool.not(var 移入移出方向)
+      Float 横向位置=fun float.multiply(var 横向位置:Float -1)
+      Float 横向位置=fun float.SmoothStep(var 横向位置:Float 0:var 移入比例)
+    }
+    if{fun create.bool(var 移入移出方向)
+      Float 横向位置=fun float.SmoothStep(var 横向位置:Float 0:var 移入比例)
+    }
+    Vector3 布局内坐标=fun creatVariable.Vector3(var 横向位置:Float 0:Float 0)
+    varf UIRect.本体组件.setCanvasPos(var 布局内坐标)
+    varf UIRect.background.setCustomFloat(String 相位标志位:var 移入比例)
+    if{fun float.gte(var 移入比例:Float 1)
+      varf UIRect.background.setCustomBool(String 播报移入标志位:Bool 0)
+      varf UIRect.background.setCustomFloat(String 展示时间标志位:var 当前时间)
+    }
+  }
+  //移出状态下的动画
+  if{fun create.bool(var 移出状态)
+    Float 移出动作开始时间=varf UIRect.background.customFloat(String 播报移出开始时间标志位)
+    Float 已移出时间=fun float.minus(var 当前时间:var 移出动作开始时间)
+    Float 移出比例=fun float.division(var 已移出时间:Float 0.2)
+    Float 移出比例=fun float.clamp(var 移出比例:Float 0:Float 1)
+    UIRect 本体组件=varf UIRect.background.getSonUIRect(String panel)
+    Float 初始相位=varf UIRect.background.customFloat(String 相位标志位)
+    Float 相位插值=fun float.SmoothStep(var 初始相位:Float 0:var 移出比例)
+    Vector3 初始大小=varf UIRect.本体组件.getSize()
+    Vector3 复制尺寸=varf Vector3.初始大小.copy()
+    Float 横向位置=varf Vector3.复制尺寸.x()
+    if{fun bool.not(var 移入移出方向)
+      Float 横向位置=fun float.multiply(var 横向位置:Float -1)
+      Float 横向位置=fun float.lerp(var 横向位置:Float 0:var 相位插值)
+    }
+    if{fun create.bool(var 移入移出方向)
+      Float 横向位置=fun float.lerp(var 横向位置:Float 0:var 相位插值)
+    }
+    Vector3 布局内坐标=fun creatVariable.Vector3(var 横向位置:Float 0:Float 0)
+    varf UIRect.本体组件.setCanvasPos(var 布局内坐标)
+    Float 高度=varf Vector3.复制尺寸.y()
+    Float 高度修正系数=fun float.minus(Float 1:var 移出比例)
+    Float 高度=fun float.multiply(var 高度:var 高度修正系数)
+    Float 高度=fun float.max(var 高度:Float 5)
+    varf Vector3.复制尺寸.setY(var 高度)
+    varf UIRect.background.size(var 复制尺寸)
+    //移出完成后删除
+    if{fun float.gte(var 移出比例:Float 1)
+      varf UIRect.background.del(Float 0)
+      varf List.展示列表.remove(var index)
+    }
+  }
+}
+//此后开始检查未展示元素的状态,更新响应比
+Float index=varf List.等待列表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas canvas=varf List.等待列表.readCanvas(var index)
+  UIRect background=varf Canvas.canvas.readUIRect(String background)
+  Float 优先级=varf UIRect.background.customFloat(String 优先级标志位)
+  Float 创建时间=varf UIRect.background.customFloat(String 创建时间标志位)
+  Float 已等待时间=fun float.minus(var 当前时间:var 创建时间)
+  Float 响应比修正=fun float.multiply(var 已等待时间:Float 2)
+  varf Float.响应比修正.addEqual(Float 0.2)
+  Float 响应比=fun float.multiply(var 优先级:var 响应比修正)
+  varf UIRect.background.setCustomFloat(String 响应比标志位:var 响应比)
+}
+//此后统计全部组件的响应比,找出最易被替换者@4前面有删除操作会删除打乱序号,所以单独做一次检测@5
+Float 高度统计=fun create.float(Float 0)
+//按照高度统计的目的是记录下占用的空间,刚好填满
+Bool 存在待替换=fun create.bool(Bool 0)
+Float 待替换index=fun create.float(Float -1)
+Float 最低响应比=fun create.float(Float 0)
+Float index=varf List.展示列表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Canvas canvas=varf List.展示列表.readCanvas(var index)
+  UIRect background=varf Canvas.canvas.readUIRect(String background)
+  Vector3 当前大小=varf UIRect.background.getSize()
+  Float 高度=varf Vector3.当前大小.y()
+  varf Float.高度统计.addEqual(var 高度)
+  Float 响应比=varf UIRect.background.customFloat(String 响应比标志位)
+  //暂时设定移入动画不可被打断,不可被选中作为移出目标
+  Bool 移入状态=varf UIRect.background.customBool(String 播报移入标志位)
+  Bool 移出状态=varf UIRect.background.customBool(String 播报移出标志位)
+  if{fun bool.not(var 移入状态)
+    if{fun bool.not(var 移出状态)
+      if{fun create.bool(var 存在待替换)
+        //因为是倒序的遍历,相等也是前面的优先
+        if{fun float.lte(var 响应比:var 最低响应比)
+          Float 待替换index=fun create.float(var index)
+          Float 最低响应比=fun create.float(var 响应比)
+        }
+      }
+      if{fun bool.not(var 存在待替换)
+        Bool 存在待替换=fun create.bool(Bool 1)
+        Float 待替换index=fun create.float(var index)
+        Float 最低响应比=fun create.float(var 响应比)
+      }
+    }
+  }
+}
+while{fun float.lt(var 高度统计:var 最大高度)
+  Bool 存在替换者=fun create.bool(Bool 0)
+  Float 替换者index=fun create.float(Float -1)
+  Float 最高响应比=fun create.float(Float 0)
+  Float index=varf List.等待列表.count()
+  while{fun float.gt(var index:Float 0)
+    varf Float.index.minusEqual(Float 1)
+    Canvas canvas=varf List.等待列表.readCanvas(var index)
+    UIRect background=varf Canvas.canvas.readUIRect(String background)
+    Float 响应比=varf UIRect.background.customFloat(String 响应比标志位)
+    if{fun create.bool(var 存在替换者)
+      //因为是倒序遍历,所以相等也是前面的优先
+      if{fun float.gte(var 响应比:var 最高响应比)
+        Float 替换者index=fun create.float(var index)
+        Float 最高响应比=fun create.float(var 响应比)
+      }
+    }
+    if{fun bool.not(var 存在替换者)
+      Bool 存在替换者=fun create.bool(Bool 1)
+      Float 替换者index=fun create.float(var index)
+      Float 最高响应比=fun create.float(var 响应比)
+    }
+  }
+  //如果没有可以换上来的东西,就停止
+  if{fun bool.not(var 存在替换者)
+    fun break()
+  }
+  //如果有可替换的,就先把目标标记再插入最后
+  Bool 可执行替换=fun float.gt(var 最高响应比:var 最低响应比)
+  Bool 可执行替换=fun bool.and(var 可执行替换:var 存在待替换)
+  if{fun create.bool(var 可执行替换)
+    //添加新组件的操作
+    Canvas canvas=varf List.等待列表.readCanvas(var 替换者index)
+    varf List.等待列表.remove(var 替换者index)
+    UIRect background=varf Canvas.canvas.readUIRect(String background)
+    Vector3 当前大小=varf UIRect.background.getSize()
+    Float 高度=varf Vector3.当前大小.y()
+    varf Float.高度统计.addEqual(var 高度)
+    varf UIRect.background.active(Bool 1)
+    varf UIRect.background.setCustomBool(String 播报移入标志位:Bool 1)
+    varf UIRect.background.setCustomFloat(String 播报移入开始时间标志位:var 当前时间)
+    varf UIRect.background.setCustomFloat(String 展示时间标志位:var 当前时间)
+    varf UIRect.parent.addSon(var background)
+    varf List.展示列表.add(var canvas)
+    //新增特性@1如果启用缩放动效则重置一次时间
+    Bool 启用缩放突出=varf UIRect.background.customBool(String 启用缩放突出标志位)
+    if{fun create.bool(var 启用缩放突出)
+      act 1101.this.播报元素'重置缩放动效计时(var canvas)
+    }
+    //标记旧组件的操作
+    Canvas canvas=varf List.展示列表.readCanvas(var 待替换index)
+    UIRect background=varf Canvas.canvas.readUIRect(String background)
+    varf UIRect.background.setCustomBool(String 播报移出标志位:Bool 1)
+    varf UIRect.background.setCustomFloat(String 播报移出开始时间标志位:var 当前时间)
+    act 1101.this.播报元素'注销(var canvas)
+    //标记完成之后刷新被替换目标
+    Bool 存在待替换=fun create.bool(Bool 0)
+    Float 待替换index=fun create.float(Float -1)
+    Float 最低响应比=fun create.float(Float 0)
+    Float index=varf List.展示列表.count()
+    while{fun float.gt(var index:Float 0)
+      varf Float.index.minusEqual(Float 1)
+      Canvas canvas=varf List.展示列表.readCanvas(var index)
+      UIRect background=varf Canvas.canvas.readUIRect(String background)
+      Float 响应比=varf UIRect.background.customFloat(String 响应比标志位)
+      //暂时设定移入动画不可被打断,不可被选中作为移出目标
+      Bool 移入状态=varf UIRect.background.customBool(String 播报移入标志位)
+      Bool 移出状态=varf UIRect.background.customBool(String 播报移出标志位)
+      if{fun bool.not(var 移入状态)
+        if{fun bool.not(var 移出状态)
+          if{fun create.bool(var 存在待替换)
+            //因为是倒序的遍历,相等也是前面的优先
+            if{fun float.lte(var 响应比:var 最低响应比)
+              Float 待替换index=fun create.float(var index)
+              Float 最低响应比=fun create.float(var 响应比)
+            }
+          }
+          if{fun bool.not(var 存在待替换)
+            Bool 存在待替换=fun create.bool(Bool 1)
+            Float 待替换index=fun create.float(var index)
+            Float 最低响应比=fun create.float(var 响应比)
+          }
+        }
+      }
+    }
+  }
+  //如果没有可被替换的就尝试直接插入最后
+  if{fun bool.not(var 可执行替换)
+    //添加新组件的操作
+    Canvas canvas=varf List.等待列表.readCanvas(var 替换者index)
+    varf List.等待列表.remove(var 替换者index)
+    UIRect background=varf Canvas.canvas.readUIRect(String background)
+    Vector3 当前大小=varf UIRect.background.getSize()
+    Float 高度=varf Vector3.当前大小.y()
+    varf Float.高度统计.addEqual(var 高度)
+    varf UIRect.background.active(Bool 1)
+    varf UIRect.background.setCustomBool(String 播报移入标志位:Bool 1)
+    varf UIRect.background.setCustomFloat(String 播报移入开始时间标志位:var 当前时间)
+    varf UIRect.background.setCustomFloat(String 展示时间标志位:var 当前时间)
+    varf UIRect.parent.addSon(var background)
+    varf List.展示列表.add(var canvas)
+    //新增特性@1如果启用缩放动效则重置一次时间
+    Bool 启用缩放突出=varf UIRect.background.customBool(String 启用缩放突出标志位)
+    if{fun create.bool(var 启用缩放突出)
+      act 1101.this.播报元素'重置缩放动效计时(var canvas)
+    }
+  }
+}
+endcode

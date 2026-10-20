@@ -1,0 +1,7 @@
+begincodeV2
+name:虚拟投射物'读取_最大速度
+params:UIRect 虚拟投射物
+return:Float 最大速度
+lines:
+Float 最大速度=varf UIRect.虚拟投射物.customFloat(String 最大速度)
+endcode

@@ -1,0 +1,12 @@
+type:336
+pos:[0,0,0]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ logicName:碎片发射器
+ boolShowFollowIcon:true
+ generatorAlias:碎片
+ poolNum:100
+ maxLifeTime:3
+ antiImpulse:0
+}

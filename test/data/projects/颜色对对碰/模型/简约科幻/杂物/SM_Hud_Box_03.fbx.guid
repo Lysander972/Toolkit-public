@@ -1,0 +1,31 @@
+guid:77bc2ea6bb17436f80acd5f9b72d24ea
+meshes:
+[
+ {
+  n:SM_Hud_Box_03
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[1.519918E-06,-5.289912E-07,-2.328306E-09]
+bounds.size:[0.3119904,0.3267413,0.01261423]

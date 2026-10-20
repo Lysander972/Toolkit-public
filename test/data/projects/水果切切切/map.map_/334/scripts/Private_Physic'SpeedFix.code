@@ -1,0 +1,18 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private_Physic'SpeedFix
+comment:修正过快和过慢的速度
+lines:
+delay fun create.float(Float 0)
+if{fun create.bool(var Attr'Alive)
+  Vector3 currentSpeed=act 1.this.getVelocity()
+  varf Vector3.currentSpeed.setY(Float 0)
+  Float currentValue=varf Vector3.currentSpeed.length()
+  if{fun float.notEqual(var currentValue:Float 0)
+    Vector3 fixedSpeed=varf Vector3.currentSpeed.setLength(var Physic'SpeedExp)
+    Vector3 差=fun vector3.minus(var fixedSpeed:var currentSpeed)
+    act 1.this.addForce(var 差:Enum 2)
+  }
+}
+endcode

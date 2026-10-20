@@ -1,0 +1,19 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Grid'New
+params:Vector3 $pos
+return:Mech $obj
+lines:
+String $key=fun create.string(var $pos)
+//产生格子本身
+Mech $obj=fun createAIMech(String 格子:Float 0:var $pos:Vector3 0,0,1:Enum 0:Bool 1)
+act 1101.this.Generic'MechPhysics(var $obj:Bool 1:Float 0)
+varf Dict.GridMap.insert(var $key:var $obj)
+//产生格子的探测器
+Mech $objCol=fun createAIMech(String 格子碰撞:Float 0:var $pos:Vector3 0,0,1:Enum 0:Bool 1)
+act 1101.this.Generic'MechPhysics(var $objCol:Bool 1:Float 0)
+varf Dict.GridColMap.insert(var $key:var $objCol)
+//双向绑定
+varf Mech.$obj.callFun1(String Public'BidirectionalBinding:var $objCol)
+endcode

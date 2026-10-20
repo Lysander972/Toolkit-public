@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'Open
+lines:
+act 362.5.show(Bool 1)
+act 22.6.enableCollide(Bool 1)
+endcode

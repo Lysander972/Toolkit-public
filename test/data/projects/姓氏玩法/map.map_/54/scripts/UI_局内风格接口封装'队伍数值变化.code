@@ -1,0 +1,7 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口封装'队伍数值变化
+params:Struct 玩家,Struct 队伍,Long 数值变化值
+lines:
+varf Device.局外功能设置'使用风格实现.callFun3(String UI_局内风格接口'队伍数值变化:var 玩家:var 队伍:var 数值变化值)
+endcode

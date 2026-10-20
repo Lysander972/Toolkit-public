@@ -1,0 +1,8 @@
+begincodeV2
+name:工具'转为显示值_保留1位
+params:Long 初始值
+return:Float 新显示值
+lines:
+Float 新显示值=fun long.division(var 初始值:Long 10240)
+Float 新显示值=fun float.round(var 新显示值:Float 1)
+endcode

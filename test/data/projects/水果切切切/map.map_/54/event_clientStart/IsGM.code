@@ -1,0 +1,6 @@
+begincodeV2
+color:255,243,0
+name:IsGM
+lines:
+Bool IsGM=act 1101./主界面.工具'是GM()
+endcode

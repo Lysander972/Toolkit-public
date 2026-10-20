@@ -1,0 +1,8 @@
+begincodeV2
+name:通用武器动图'武器_空图标
+params:String 武器名,String 对齐方式,Float 整体旋转角度,Bool 附带层数,Float 层数UI角度
+return:Canvas 布局
+lines:
+Canvas 布局=fun create.canvas(Canvas guid@1d14a535771654eb2a794a0fe74b20ebb)
+act 1101.this.通用武器动图'节点初始化(var 布局:Long -1:Long -1:var 对齐方式:var 整体旋转角度:var 附带层数:var 层数UI角度:var 武器名:Bool 0)
+endcode

@@ -1,0 +1,20 @@
+begincodeV2
+color:255,0,255
+name:Rotating'SetTarget
+params:Long $targetFaction
+lines:
+if{fun long.equal(var $targetFaction:Long 1)
+  Bool IsBlueToRed=fun create.bool(Bool 0)
+}
+if{fun long.equal(var $targetFaction:Long 2)
+  Bool IsBlueToRed=fun create.bool(Bool 1)
+}
+Long NewFaction=fun create.long(var $targetFaction)
+Float RotateProgress=fun create.float(Float 0)
+Float RotateInitial=fun create.float(var RotateRate)
+if{fun bool.not(var IsRotating)
+  act 1.this.loopFun(String Rotating'Cycle:Float 0)
+  act 1.this.Rotating'Cycle()
+  Bool IsRotating=fun create.bool(Bool 1)
+}
+endcode

@@ -1,0 +1,20 @@
+begincodeV2
+name:Skills'1520
+lines:
+if{fun long.equal(var Skill'1520:Long 1)
+  Long Skill'1520=fun create.long(Long 0)
+  delay fun create.float(Float 1)
+  fun break()
+}
+Float 剩余HP=varf Device.map_handler.callReturnFloat0(String 栅栏'得到HP)
+if{fun float.gt(var 剩余HP:Float 0)
+  Float 伤害=fun float.multiply(var Attr'maxHP:Float 0.2)
+  act 1.this.Public'强制伤害(var 伤害)
+  Float hp变化=fun float.multiply(var Attr'maxHP:Float -0.2)
+  Vector3 pos=act 1.this.getPosition()
+  varf Vector3.pos.setY(Float 30)
+  varf Vector3.pos.setZ(Float 0)
+  varf Device.map_handler.callFun3(String 栅栏'HP变化:var hp变化:var Creator:var pos)
+  delay fun create.float(Float 1)
+}
+endcode

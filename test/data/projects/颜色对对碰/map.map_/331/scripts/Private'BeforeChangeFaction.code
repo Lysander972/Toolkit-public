@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'BeforeChangeFaction
+comment:阵营变更时
+params:Long $oldFaction,Long $newFaction
+lines:
+fun break()
+=fun create.long(var $oldFaction)
+=fun create.long(var $newFaction)
+endcode

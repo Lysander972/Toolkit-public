@@ -1,0 +1,5 @@
+begincodeV2
+name:ButtonMenu'Click4_1
+lines:
+act 1101.this.Game'Start()
+endcode

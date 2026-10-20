@@ -1,0 +1,25 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "源码明确refresh/openPreview、格式装配、分类和派生发布仍TODO，33项真实主入口行为测试已通过；当前证据覆盖实际IO、取消、资源释放和失败边界，未覆盖TODO业务完成。",
+      "score": 1,
+      "suggestion": "保持TODO的业务验收独立于失败骨架测试；为新增完成能力补充真实成功行为及源码/测试全文关系。"
+    },
+    "parent_fit": {
+      "reason": "完整绑定Host、WorkspaceServices/Updates、配置、原生文件缓存/监听以及实体读取和候选源码，符合设计的主入口范围；原文详细逻辑操作、语义及其他运行时端口尚未全部绑定。",
+      "score": 1,
+      "suggestion": "扩展EntityOperations/LogicalEntitySources/LogicalEntities的专项绑定，后续PR5/PR6继续转换与前端；不将当前节点外推为完整业务验收。"
+    },
+    "reasoning": {
+      "reason": "Host单一Runtime/Scope和Watcher ready先于实体装配，WorkspaceServices共享依赖；ProjectFiles复用Effect Cache与原生版本，EntityChange复用Schematics候选并在实际IO后由实体重读，没有迁移新增执行旁路。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "4474f0fb-b4df-4a70-8c01-a9ac9673d644",
+  "reviewed_fingerprint": "1bf74e3b2b48c72e3a1da9bf54162707452d259d929b63338db0ae8845f28675",
+  "schema": 2,
+  "summary": "主入口实现与设计一致，详细专项覆盖和业务TODO有明确缺口。"
+}

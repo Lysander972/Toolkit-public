@@ -1,0 +1,30 @@
+begincodeV2
+name:音量调节
+lines:
+if{fun create.bool(var GameStart)
+  if{fun bool.not(var init)
+    UIButton b0=varf Canvas.GameUI.readUIButton(String root/topForPC/音量/border)
+    UIButton b1=varf Canvas.GameUI.readUIButton(String root/SettingsForMobile/屏蔽器2/子组件排版区/音量/border)
+    Bool init=fun create.bool(Bool 1)
+  }
+  Bool 更新=fun create.bool(Bool 0)
+  if{varf UIButton.b0.pressing()
+    Vector3 pos=varf UIButton.b0.touchPos(Bool 1)
+    Float x=varf Vector3.pos.x()
+    Float 目标音量=fun float.clamp(var x:Float 0:Float 1)
+    Bool 更新=fun create.bool(Bool 1)
+  }
+  if{varf UIButton.b1.pressing()
+    Vector3 pos=varf UIButton.b1.touchPos(Bool 1)
+    Float x=varf Vector3.pos.x()
+    Float 目标音量=fun float.clamp(var x:Float 0:Float 1)
+    Bool 更新=fun create.bool(Bool 1)
+  }
+  if{fun create.bool(var 更新)
+    act 1101.this.UI_功能面板'应用并刷新音量显示(var 目标音量)
+  }
+  if{varf UIButton.b0.isRelease()
+    act 1101.this.功能设置持久化'上传音量值()
+  }
+}
+endcode

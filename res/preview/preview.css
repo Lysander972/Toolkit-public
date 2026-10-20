@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  background: var(--tk-bg);
+  color: var(--tk-text);
+  --vscode-font-family: 'ToolkitAlibabaPuHuiTiMedium', sans-serif;
+}
+.preview-context {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 560px;
+}
+.preview-activity {
+  width: 42px;
+  flex-shrink: 0;
+  padding-top: 18px;
+  text-align: center;
+  background: var(--tk-surface-2);
+  color: var(--tk-accent);
+}
+.preview-panel {
+  flex: 1;
+  min-width: 0;
+}
+.preview-label {
+  margin: 0;
+  padding: 12px;
+  background: var(--tk-accent-dim);
+  font: 12px var(--vscode-font-family);
+}
+.preview-canvases {
+  padding: 16px;
+  font: 13px var(--vscode-font-family);
+}
+.preview-canvases a {
+  display: inline-block;
+  margin-right: 16px;
+  color: var(--tk-accent);
+}

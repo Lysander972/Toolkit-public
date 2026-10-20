@@ -1,0 +1,31 @@
+begincodeV2
+name:Player'InfoAutoFill
+comment:自动补充玩家缺失的信息
+params:Struct $player,Dict $msgObj
+return:Struct $player
+lines:
+Bool $exist=varf Struct.$player.exist()
+if{fun bool.not(var $exist)
+  Long $recommend=act 1101.this.Utils'GetRecommendedFaction()
+  String $nickname=varf Dict.$msgObj.readString(String name:Bool 0)
+  String $uid=varf Dict.$msgObj.readString(String uid:Bool 0)
+  String $avatarUrl=varf Dict.$msgObj.readString(String avatarUrl:Bool 0)
+  Struct $player=act 1101.this.Player'New(var $uid:var $nickname:var $avatarUrl)
+  String $text=fun create.string(var $recommend)
+  =act 1101.this.Player'SelectFaction(var $text:var $player)
+}
+if{fun create.bool(var $exist)
+  //检查补充玩家缺失的头像信息
+  String $avatarUrl=varf Struct.$player.getString(String avatarUrl:Bool 1)
+  if{fun string.equal(var $avatarUrl:String )
+    String $avatarUrl=varf Dict.$msgObj.readString(String avatarUrl:Bool 0)
+    varf Struct.$player.set(String avatarUrl:var $avatarUrl)
+  }
+  Long $team=varf Struct.$player.getLong(String team:Bool 1)
+  if{fun long.lt(var $team:Long 1)
+    Long $recommend=act 1101.this.Utils'GetRecommendedFaction()
+    String $text=fun create.string(var $recommend)
+    =act 1101.this.Player'SelectFaction(var $text:var $player)
+  }
+}
+endcode

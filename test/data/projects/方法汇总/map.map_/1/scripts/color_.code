@@ -1,0 +1,20 @@
+begincodeV2
+name:color_
+lines:
+Color c=fun create.color(Color 0,0,0,255)
+=varf Color.c.r()
+=varf Color.c.g()
+=varf Color.c.b()
+=varf Color.c.a()
+=varf Color.c.copy()
+varf Color.c.setR(Float 0)
+varf Color.c.setG(Float 0)
+varf Color.c.setB(Float 0)
+varf Color.c.setA(Float 0)
+=varf Color.c.equal(Color 0,0,0,255)
+=varf Color.c.toVec()
+=varf Color.c.toHex()
+=varf Color.c.lerp(Color 0,0,0,255:Float 0)
+=varf Color.c.toHSV()
+varf Color.c.fromHSV(Vector3 0,0,0)
+endcode

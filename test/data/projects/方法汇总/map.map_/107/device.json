@@ -1,0 +1,14 @@
+type:125
+pos:[2.503084,4.768372E-07,-8.729954]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ _DisortionAmount:0.355
+ _DisortionScale:7.76
+ _RotationAmount:-1.5
+ _TwirlStrength:4.6
+ _FresnelColor:[13.76636,3.89206,8.432796,1]
+ vfx_RotateSpeed:0.006
+ vfx_AttractSpeed:1.5
+ vfx_Radius:1.16
+}

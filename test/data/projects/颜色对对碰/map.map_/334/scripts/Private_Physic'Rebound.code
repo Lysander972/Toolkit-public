@@ -1,0 +1,17 @@
+begincodeV2
+private:1
+color:0,0,255
+name:Private_Physic'Rebound
+comment:反弹
+lines:
+Float $cd=fun time.time()
+if{fun float.gte(var $cd:var RebondCD)
+  if{fun long.lte(var Rebound:Long 0)
+    act 1.this.Private'OnDeath(Bool 0)
+    fun break()
+  }
+  varf Long.Rebound.minusEqual(Long 1)
+  varf Float.$cd.addEqual(Float 0.1)
+  Float RebondCD=fun create.float(var $cd)
+}
+endcode

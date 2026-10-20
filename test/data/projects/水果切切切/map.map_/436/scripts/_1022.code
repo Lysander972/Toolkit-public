@@ -1,0 +1,20 @@
+begincodeV2
+color:65,0,255
+name:_1022
+params:Vector3 坐标,Float 整体缩放,Long 摧毁模式
+lines:
+if{fun long.equal(var 摧毁模式:Long 0)
+  Color 颜色1=fun create.color(Color 255,255,0,255,颜色1022_0)
+  Color 颜色2=fun create.color(Color 255,255,0,255,颜色1022_1)
+/*  Float 特效缩放=fun float.multiply(Float 0.02:var 整体缩放)
+/*  act 336./特效发射器.发射(var 坐标:Float 46:var 特效缩放)
+  Float 粒子1_1010s=fun float.multiply(Float 0.07:var 整体缩放)
+  Float 粒子数1_1010s=fun create.float(Float 6)
+  act 336./碎片粒子发射器.发射碎片(var 坐标:var 粒子1_1010s:var 粒子数1_1010s:var 颜色1:Float 3:var 简化特效生效)
+  Float 粒子数2_1010s=fun create.float(Float 15)
+  act 336./碎片粒子发射器.发射碎片(var 坐标:var 粒子1_1010s:var 粒子数2_1010s:var 颜色2:Float 3:var 简化特效生效)
+  Float 粒子2_1010s=fun float.multiply(Float 1.5:var 整体缩放)
+  act 336./果汁地面粒子发射器.发射果汁贴图(var 坐标:var 粒子2_1010s:var 颜色2:var 简化特效生效)
+  act 1101.this.水果摧毁音效(Float 0.5)
+}
+endcode

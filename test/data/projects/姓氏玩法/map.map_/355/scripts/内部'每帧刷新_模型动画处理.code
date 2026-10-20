@@ -1,0 +1,75 @@
+begincodeV2
+name:内部'每帧刷新_模型动画处理
+lines:
+Float 当前时间=fun time.scaleTime()
+Float 角度=fun float.mod(var 当前时间:Float 10)
+Float 角度=fun float.multiply(var 角度:Float 360)
+Vector3 旋转局部向前方向=fun vector3.rotateAround(Vector3 1,0,0:Vector3 0,1,0:var 角度)
+Float 角度=fun float.mod(var 当前时间:Float 6)
+Float 角度=fun float.multiply(var 角度:Float 360)
+Float 高度插值=fun float.triangle.sin(var 角度)
+Vector3 高度浮动=fun vector3.multilply(Vector3 0,1,0:var 高度插值)
+Float 序号=varf List.特效模型维护表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  Mech 绑定模型=varf List.特效模型维护表.readMech(var 序号)
+  Float 开始时间=varf Mech.绑定模型.customFloat(String 开始时间)
+  Float 已播放时间=fun float.minus(var 当前时间:var 开始时间)
+  Float 开始状态=varf Mech.绑定模型.customFloat(String 开始状态)
+  Float 目标状态=varf Mech.绑定模型.customFloat(String 目标状态)
+  Vector3 偏移量=varf Mech.绑定模型.customVector3(String 偏移量)
+  Float 播放比例=fun float.division(var 已播放时间:Float 1)
+  Float 播放比例=fun float.clamp(var 播放比例:Float 0:Float 1)
+  Float 插值=fun float.SmoothStep(var 开始时间:var 目标状态:var 播放比例)
+  //从下到上
+  if{fun float.Approximately(var 开始状态:Float 0)
+    Vector3 开始坐标=fun vector3.add(Vector3 0,-10,0:var 偏移量)
+  }
+  if{fun float.Approximately(var 开始状态:Float 1)
+    Vector3 开始坐标=fun vector3.add(Vector3 0,10,0:var 偏移量)
+  }
+  //从下到上
+  if{fun float.Approximately(var 开始状态:Float 0)
+    Vector3 目标坐标=fun vector3.add(Vector3 0,10,0:var 偏移量)
+  }
+  if{fun float.Approximately(var 目标状态:Float 2)
+    Vector3 开始坐标=fun vector3.add(Vector3 0,20,0:var 偏移量)
+  }
+  Vector3 相对坐标=fun vector3.lerp(var 开始坐标:var 目标坐标:var 插值)
+  Mech 目标柱子=varf Mech.绑定模型.customMech(String 绑定目标)
+  Device 目标核心=varf Mech.目标柱子.getCoreDevice()
+  Vector3 柱子坐标=varf Mech.目标柱子.corePos()
+  Vector3 绝对坐标=fun vector3.add(var 柱子坐标:var 相对坐标)
+  Bool 高度变化=varf Mech.绑定模型.customBool(String 高度变化)
+  if{fun create.bool(var 高度变化)
+    Vector3 绝对坐标=fun vector3.add(var 绝对坐标:var 高度浮动)
+  }
+  varf Mech.绑定模型.move(var 绝对坐标:Enum 0)
+  if{fun float.gte(var 插值:Float 1)
+    if{fun float.Approximately(var 目标状态:Float 1)
+      String 目标字段=varf Mech.绑定模型.customString(String 目标字段)
+      Mech 已绑定模型=varf Mech.目标柱子.customMech(var 目标字段)
+      Bool 存在=varf Mech.已绑定模型.alive()
+      if{fun bool.not(var 存在)
+        varf Mech.目标柱子.setCustomMech(var 目标字段:var 绑定模型)
+      }
+      if{fun create.bool(var 存在)
+        String modelkey=varf Mech.绑定模型.customString(String modelkey)
+        act 1101./Scenario.Model'OnReclaim(var 绑定模型:var modelkey)
+      }
+    }
+    if{fun float.Approximately(var 目标状态:Float 2)
+      String modelkey=varf Mech.绑定模型.customString(String modelkey)
+      act 1101./Scenario.Model'OnReclaim(var 绑定模型:var modelkey)
+    }
+  }
+  Bool 持续旋转=varf Mech.绑定模型.customBool(String 持续旋转)
+  if{fun create.bool(var 持续旋转)
+    Vector3 世界向前=varf Device.目标核心.localToWorldDir(var 旋转局部向前方向)
+  }
+  if{fun bool.not(var 持续旋转)
+    Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,-1)
+  }
+  varf Mech.绑定模型.rot(var 世界向前:Vector3 0,1,0)
+}
+endcode

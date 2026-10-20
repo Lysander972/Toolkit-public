@@ -1,0 +1,29 @@
+begincodeV2
+color:8,0,255
+name:RawOnCollision
+comment:子弹间碰撞
+lines:
+if{varf Enum.$type.equal(Enum 1)
+  if{fun bool.not(var Alive)
+    fun break()
+  }
+  Mech $target=varf Device.$attacker.mech()
+  Device $dev=varf Mech.$target.getDevice(Float 0)
+  Bool $isWall=varf Device.$dev.callReturnBool0(String Public'IsWall)
+  if{fun bool.not(var $isWall)
+    Long $targetFaction=varf Device.$dev.callReturnLong0(String Public'GetFaction)
+    if{fun long.equal(var $targetFaction:var Faction)
+      fun break()
+    }
+    Bool $isAlive=varf Device.$dev.callReturnBool0(String Public'IsAlive)
+    if{fun create.bool(var $isAlive)
+      Float $damage=varf Device.$dev.callReturnFloat0(String Public'GetAtk)
+      act 1.this.Public'Damage(var $damage:var $targetFaction)
+      varf Device.$dev.callFun2(String Public'Damage:var Atk:var Faction)
+    }
+  }
+  if{fun create.bool(var $isWall)
+    act 1.this.Private_Physic'Rebound()
+  }
+}
+endcode

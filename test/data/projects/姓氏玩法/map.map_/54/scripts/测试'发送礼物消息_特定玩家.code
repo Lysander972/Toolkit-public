@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:测试'发送礼物消息_特定玩家
+params:Struct 玩家,Long 礼物序号,Long 礼物数量
+lines:
+String id=act 1101.this.玩家结构'读取_id(var 玩家)
+String avatarUrl=act 1101.this.玩家结构'读取_avatarUrl(var 玩家)
+String name=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+act 1101.this.测试'发送礼物消息_通用(var id:var 礼物序号:var 礼物数量:var avatarUrl:var name)
+endcode

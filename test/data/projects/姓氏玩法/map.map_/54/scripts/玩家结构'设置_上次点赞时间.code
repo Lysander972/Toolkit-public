@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_上次点赞时间
+comment:设置玩家分数
+params:Struct 结构,Float 时间
+lines:
+varf Struct.结构.set(String last_like:var 时间)
+endcode

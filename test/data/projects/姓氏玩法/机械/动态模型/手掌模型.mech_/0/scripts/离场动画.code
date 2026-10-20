@@ -1,0 +1,56 @@
+begincodeV2
+name:离场动画
+lines:
+if{fun create.bool(var 启用过每帧循环)
+  act 1.this.DisableFun(String 常态动画_每帧)
+}
+varf Mech.目标队伍柱子.setCustomMech(var 绑定名称:Mech )
+//底部悬停时间
+Device 目标核心=varf Mech.目标队伍柱子.getCoreDevice()
+Float 本周期内用时=fun create.float(Float 0)
+Float 周期开始时间=fun time.time()
+while{fun float.lt(var 本周期内用时:var 悬空周期)
+  Float 当前时间=fun time.time()
+  Float 本周期内用时=fun float.minus(var 当前时间:var 周期开始时间)
+  Float 周期内比例=fun float.division(var 本周期内用时:var 悬空周期)
+  Float 周期内比例=fun float.lerp(Float 0:Float 1:var 周期内比例)
+  Float 周期内比例=fun float.multiply(var 周期内比例:Float 360)
+  Float 周期内比例=fun float.triangle.sin(var 周期内比例)
+  Vector3 高度浮动=fun vector3.multilply1(Vector3 0,1,0:var 周期内比例:Float 0)
+  Vector3 高度浮动=fun vector3.multilply(var 高度浮动:var 整体缩放)
+  Vector3 相对坐标=fun vector3.add(var 常态局部坐标:var 高度浮动)
+  Vector3 绝对坐标=varf Device.目标核心.localToWorldPos(var 相对坐标)
+/*  Float 附加减速类模型偏移量=varf Mech.目标队伍柱子.customFloat(String 附加减速类模型偏移量)
+/*  Vector3 偏移量补偿=fun creatVariable.Vector3(Float 0:var 附加减速类模型偏移量:Float 0)
+/*  Vector3 绝对坐标=fun vector3.add(var 绝对坐标:var 偏移量补偿)
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+//离场部分
+Float 开始时间=fun time.scaleTime()
+Float 已播放时间=fun create.float(Float 0)
+while{fun float.lt(var 已播放时间:var 离场持续时间)
+  Float 当前时间=fun time.scaleTime()
+  Float 已播放时间=fun float.minus(var 当前时间:var 开始时间)
+  Float 播放比例=fun float.division(var 已播放时间:var 离场持续时间)
+  Float 播放比例=fun float.clamp(var 播放比例:Float 0:Float 1)
+  //计算基础相对坐标
+  Vector3 当前局部坐标=fun vector3.lerp(var 常态局部坐标:var 离场结束局部坐标:var 播放比例)
+  //得到绑定目标,再计算绝对坐标
+  Device 目标核心=varf Mech.目标队伍柱子.getCoreDevice()
+  Vector3 柱子坐标=varf Device.目标核心.pos()
+  Vector3 绝对坐标=fun vector3.add(var 柱子坐标:var 当前局部坐标)
+/*  Float 附加减速类模型偏移量=varf Mech.目标队伍柱子.customFloat(String 附加减速类模型偏移量)
+/*  Vector3 偏移量补偿=fun creatVariable.Vector3(Float 0:var 附加减速类模型偏移量:Float 0)
+/*  Vector3 绝对坐标=fun vector3.add(var 绝对坐标:var 偏移量补偿)
+  varf Mech.this.move(var 绝对坐标:Enum 0)
+  Vector3 世界向前=varf Device.目标核心.localToWorldDir(Vector3 0,0,1)
+  varf Mech.this.rot(var 世界向前:Vector3 0,1,0)
+  delay fun create.float(Float 0)
+}
+//离场结束阶段,回收模型
+String modelkey=varf Mech.this.customString(String modelkey)
+act 1.this.callMapFunc2(String Scenario.Model'OnReclaim:var this:var modelkey)
+endcode

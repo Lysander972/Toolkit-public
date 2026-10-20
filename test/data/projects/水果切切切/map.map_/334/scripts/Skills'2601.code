@@ -1,0 +1,12 @@
+begincodeV2
+name:Skills'2601
+lines:
+Vector3 pos=act 1.this.getPosition()
+Float y=varf Vector3.pos.y()
+Float z=varf Vector3.pos.z()
+if{fun float.lte(var y:Float 3)
+  if{fun float.gte(var z:Float 30)
+    act 1.this.Private'OnDeath(Bool 1:Bool 1:Long 0)
+  }
+}
+endcode

@@ -1,0 +1,31 @@
+begincodeV2
+private:1
+color:0,0,255
+name:Private_Physic'Rebound
+comment:反弹
+lines:
+Float cd=fun time.scaleTime()
+if{fun float.gte(var cd:var Physic'反弹CD)
+  if{fun long.lte(var Physic'Rebound:Long 0)
+    act 1.this.Private'OnDeath(Bool 1:Bool 1:Long 0)
+    fun break()
+  }
+  Float 原速度x=varf Vector3.Physic'DefaultV.x()
+  Float 原速度x=fun float.multiply(var 原速度x:Float -1)
+  Vector3 新速度=varf Vector3.Physic'DefaultV.copy()
+  varf Vector3.新速度.setX(var 原速度x)
+  varf Vector3.新速度.setY(Float 0)
+  Float currentValue=varf Vector3.新速度.length()
+  if{fun float.notEqual(var currentValue:Float 0)
+    Vector3 Physic'DefaultV=varf Vector3.新速度.setLength(var Physic'SpeedExp)
+    act 1.this.setRigidVelocity(var Physic'DefaultV)
+    Vector3 朝向=fun vector3.multilply(var 新速度:Float -1)
+    act 1.this.setRotKinematic(var 朝向:Vector3 0,1,0)
+  }
+  if{fun long.notEqual(var Physic'Rebound:Long 999)
+    varf Long.Physic'Rebound.minusEqual(Long 1)
+  }
+  varf Float.cd.addEqual(Float 0.1)
+  Float Physic'反弹CD=fun create.float(var cd)
+}
+endcode

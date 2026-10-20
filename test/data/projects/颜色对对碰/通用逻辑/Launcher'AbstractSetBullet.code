@@ -1,0 +1,10 @@
+begincodeV2
+guid:bcd55d0251534fe1a88f90d4bf771183
+color:255,0,0
+name:Launcher'AbstractSetBullet
+comment:放置子弹的抽象接口
+params:Vector3 $position,Vector3 $direction,Long $type,Long $faction,Struct $player
+return:Bool $ret
+lines:
+Bool $ret=varf Device.map_handler.callReturnBool5(String Bullet'SetBullet:var $position:var $direction:var $type:var $faction:var $player)
+endcode

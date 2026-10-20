@@ -1,0 +1,23 @@
+type:362
+pos:[-2.235174E-07,0,-1.954051E-14]
+quat:[2.512148E-15,-0.7071068,0.7071068,2.512148E-15]
+ext:
+{
+ logicName:边框
+ modelGuid:e579a5a324604edf86574eb8c069fcbf
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Device emmit"
+ shader:
+ [
+  {
+   n:_PaintColor
+   type:Color
+   v:[1,1,1,1]
+  }
+  {
+   n:_EmmitColor
+   type:Color
+   v:[11.98431,11.98431,11.98431,0]
+  }
+ ]
+}

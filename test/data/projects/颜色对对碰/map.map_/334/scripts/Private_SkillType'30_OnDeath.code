@@ -1,0 +1,12 @@
+begincodeV2
+private:1
+name:Private_SkillType'30_OnDeath
+comment:子母弹亡语
+lines:
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:Float 6)
+  Float 随机角度=fun math.rand(Float 90:Float 270)
+  =act 1.this.Launcher'LaunchFixedly(Long 31:var 随机角度:Float 0:Bool 1:var Creator)
+  varf Float.循环.addEqual(Float 1)
+}
+endcode

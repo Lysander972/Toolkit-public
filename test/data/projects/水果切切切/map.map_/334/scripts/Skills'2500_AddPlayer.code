@@ -1,0 +1,36 @@
+begincodeV2
+name:Skills'2500_AddPlayer
+comment:栅栏添加玩家
+params:Struct player
+lines:
+String uid=varf Struct.player.getString(String id:Bool 1)
+Float 结果=varf List.栅栏'玩家列表.find2(String id:var uid)
+if{fun float.Approximately(var 结果:Float -1)
+  Float 数量=varf List.栅栏'玩家列表.count()
+  if{fun float.lt(var 数量:Float 10)
+    varf List.栅栏'玩家列表.add(var player)
+    Vector3 pos=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+    Vector3 direction=fun creatVariable.Vector3(Float 0:Float 0:Float 1)
+    String key=fun create.string(String 血量马甲)
+    Mech 头像马甲=varf Device.map_handler.callReturnMech3(String Model'SetModel:var pos:var direction:var key)
+    varf Mech.头像马甲.scale(Float 6)
+    Device core=varf Mech.头像马甲.getCoreDevice()
+    //设置显示血量
+    Bool 显示血量=fun create.bool(Bool 0)
+    Bool 显示昵称=fun create.bool(Bool 0)
+    String name=fun create.string(String )
+    varf Device.core.callFun3(String Public'SetLabel:var 显示血量:var 显示昵称:var name)
+    UILabel label=varf Device.core.callReturnUILabel0(String Public'GetLabel)
+    varf UILabel.label.labelEffect(Float 0.5:Vector3 0,0,0:Enum 0)
+    varf UILabel.label.outline(Float 0.5:Color 0,0,0,255)
+    varf Mech.头像马甲.setCustomUILabel(String label:var label)
+    //设置不显示头像
+    Bool 显示头像=fun create.bool(Bool 1)
+    String 文件=fun create.string(String 跟随头像框.png)
+    String url=varf Struct.player.getString(String avatarUrl:Bool 0)
+    varf Device.core.callFun2(String Public'SetFrame:var 显示头像:var 文件)
+    varf Device.core.callFun2(String Public'SetAvatar:var 显示头像:var url)
+    varf List.栅栏'马甲列表.add(var 头像马甲)
+  }
+}
+endcode

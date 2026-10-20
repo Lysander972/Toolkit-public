@@ -1,0 +1,13 @@
+begincodeV2
+guid:24cbacc5069a49f0877183a5803634fd
+name:通用武器动图'应用透明度
+params:Canvas 布局,Float 透明度
+lines:
+UIRawImage 拖尾=varf Canvas.布局.readUIRawImage(String 拖尾)
+UIRawImage 武器=varf Canvas.布局.readUIRawImage(String 武器)
+Color 透明颜色=fun create.color(Color 255,255,255,0)
+Color 拖尾显示颜色=varf Color.透明颜色.lerp(Color 255,255,255,128:var 透明度)
+Color 武器显示颜色=varf Color.透明颜色.lerp(Color 255,255,255,255:var 透明度)
+varf UIRawImage.拖尾.setColor(var 拖尾显示颜色)
+varf UIRawImage.武器.setColor(var 武器显示颜色)
+endcode

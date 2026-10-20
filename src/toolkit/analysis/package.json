@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../res/schemas/package.json",
+  "name": "@toolkit/analysis",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./symbol-table": "./SymbolTable.ts",
+    "./call-graph": "./CallGraph.ts"
+  },
+  "dependencies": {
+    "@toolkit/project-model": "workspace:*",
+    "@toolkit/script": "workspace:*",
+    "effect": "4.0.0"
+  }
+}

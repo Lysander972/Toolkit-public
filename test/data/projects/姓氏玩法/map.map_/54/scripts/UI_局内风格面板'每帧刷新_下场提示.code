@@ -1,0 +1,31 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新_下场提示
+lines:
+//入场提示
+UIRect 提示框=varf Canvas.UI_局内风格面板'主布局.readUIRect(String 根节点/下场提示)
+Bool 无队伍提示=act 1101.this.UI_局内'是否无队伍()
+varf UIRect.提示框.active(var 无队伍提示)
+if{fun create.bool(var 无队伍提示)
+  //每3秒快速抖动一下
+  Float 当前时间=fun time.scaleTime()
+  Float 整体周期=fun create.float(Float 2)
+  Float 动作周期=fun create.float(Float 1)
+  Float 相位=fun float.mod(var 当前时间:var 整体周期)
+  Bool 有动画=varf Float.相位.inside(Float 0:var 动作周期)
+  if{fun create.bool(var 有动画)
+    Float 动画播放比例=fun float.division(var 相位:var 动作周期)
+    Float 强度比例=fun float.minus(Float 1:var 动画播放比例)
+    Float 角度=fun float.multiply(var 动画播放比例:Float 720)
+    Float 修正=fun float.triangle.sin(var 角度)
+    Float UI角度=fun float.multiply1(Float 2:var 修正:var 强度比例)
+    Float UI缩放增量=fun float.multiply1(Float 0.015:var 修正:var 强度比例)
+    Float UI缩放=fun float.add(Float 1:var UI缩放增量)
+    varf UIRect.提示框.rot(var UI角度)
+    varf UIRect.提示框.scale(var UI缩放)
+  }
+  if{fun bool.not(var 有动画)
+    varf UIRect.提示框.rot(Float 0)
+    varf UIRect.提示框.scale(Float 1)
+  }
+}
+endcode

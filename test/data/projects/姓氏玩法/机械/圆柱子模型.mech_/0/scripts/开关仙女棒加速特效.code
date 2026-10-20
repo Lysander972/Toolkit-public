@@ -1,0 +1,6 @@
+begincodeV2
+name:开关仙女棒加速特效
+params:Bool 启用特效
+lines:
+act 337./仙女棒加速.active(var 启用特效:Float 0)
+endcode

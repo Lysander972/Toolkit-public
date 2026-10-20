@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'强制伤害
+comment:无需其他信息直接造成伤害
+params:Float damage
+lines:
+act 1.this.Public'Damage(var damage:Long 0:Vector3 0,0,0:Bool 0:Bool 0)
+endcode

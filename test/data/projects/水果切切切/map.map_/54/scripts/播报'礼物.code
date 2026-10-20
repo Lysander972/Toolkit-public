@@ -1,0 +1,52 @@
+begincodeV2
+color:255,0,228
+name:播报'礼物
+params:String text,Struct player,Long mode,Long value
+lines:
+Long team=varf Struct.player.getLong(String team:Bool 1)
+Long width=fun create.long(Long 0)
+if{fun long.equal(var mode:Long 2)
+  Long width=fun create.long(Long 1)
+}
+Float valueF=varf Long.value.toFloat()
+Float 优先级=fun float.multiply(Float 0.5:var valueF)
+Float 优先级=fun float.max(var 优先级:Float 5)
+Float 播放时长=fun create.float(Float 2)
+Float 强度=fun create.float(Float 0.6)
+if{fun float.gte(var valueF:Float 10)
+  Float 强度=fun create.float(Float 0.7)
+}
+if{fun float.gte(var valueF:Float 19)
+  Float 播放时长=fun create.float(Float 3)
+  Float 强度=fun create.float(Float 0.8)
+}
+if{fun float.gte(var valueF:Float 52)
+  Float 播放时长=fun create.float(Float 5)
+  Float 强度=fun create.float(Float 0.9)
+}
+if{fun float.gte(var valueF:Float 99)
+  Float 播放时长=fun create.float(Float 5)
+  Float 强度=fun create.float(Float 1)
+}
+if{fun float.gte(var valueF:Float 199)
+  Float 播放时长=fun create.float(Float 10)
+}
+Canvas canvas=act 1101.this.播报元素'标准布局填充(var player:var text:var width:Bool 1:var 强度)
+act 1101.this.播报元素'注册(var canvas:var 优先级:var 播放时长)
+if{fun long.notEqual(var mode:Long 2)
+  if{fun long.equal(var team:Long 1)
+    varf List.播报'等待队列左.add(var canvas)
+  }
+  if{fun long.equal(var team:Long 2)
+    varf List.播报'等待队列右.add(var canvas)
+  }
+}
+if{fun long.equal(var mode:Long 2)
+  if{fun long.equal(var team:Long 1)
+    varf List.播报'等待队列上.add(var canvas)
+  }
+  if{fun long.equal(var team:Long 2)
+    varf List.播报'等待队列下.add(var canvas)
+  }
+}
+endcode

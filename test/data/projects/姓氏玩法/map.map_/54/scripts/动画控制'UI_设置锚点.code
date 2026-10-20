@@ -1,0 +1,6 @@
+begincodeV2
+name:动画控制'UI_设置锚点
+params:UIRect 当前节点,Vector3 锚点
+lines:
+varf UIRect.当前节点.setCustomVector3(String 锚点:var 锚点)
+endcode

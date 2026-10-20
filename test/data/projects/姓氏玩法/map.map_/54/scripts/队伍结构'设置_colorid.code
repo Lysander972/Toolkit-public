@@ -1,0 +1,8 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍结构'设置_colorid
+params:Struct 结构,Long colorid
+lines:
+varf Struct.结构.set(String colorid:var colorid)
+endcode

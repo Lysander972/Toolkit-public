@@ -1,0 +1,30 @@
+guid:61b031a70f9540b49ba7fe8e78871f94
+meshes:
+[
+ {
+  n:Raspberry_Yellow
+ }
+]
+matFolderName:cfb004b5c8734c3685b4724440bd1d71
+Albedo.UID:cfb004b5c8734c3685b4724440bd1d71
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.002550032,0.05809188,-0.003328547]
+bounds.size:[0.1339132,0.1161838,0.1397558]

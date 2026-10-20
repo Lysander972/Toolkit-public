@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetMechInArea
+return:List $list
+lines:
+List $list=act 1100.1.getInsideMechs()
+endcode

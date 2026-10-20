@@ -1,0 +1,68 @@
+begincodeV2
+name:入场动图
+params:Long rank
+return:Bool ok
+lines:
+/*String VER=fun version()
+/*if{fun string.notEqual(var VER:String 1.4512)
+/*  fun break()
+}
+/*if{fun long.gte(var rank:Long 100)
+/*  fun break()
+}
+/*Bool 切换=act 1.this.日期判定()
+fun ui.2dmode(Bool 1)
+Canvas 动图布局=fun create.canvas(Canvas canvas@1@3EAEAEQkABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYG5Yqo5Zu+A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAAt3aWR0aEV4dGVuZBgBAAAAAAAAAAxoZWlnaHRFeHRlbmQYAQAAAAAAAAAEc2l6ZQQAAIA/AACAPwAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPw@3@3)
+Canvas 局内通用组件=fun findCanvas(String 局内通用组件_2D)
+UIRect 父UI节点=varf Canvas.局内通用组件.readUIRect(String 根节点_2D/百强全屏特效图层)
+UIRawImage 动图=varf Canvas.动图布局.readUIRawImage(String 动图)
+varf UIRect.父UI节点.addSon(var 动图)
+//1
+if{fun long.equal(var rank:Long 0)
+  =act 1.this.Generic'PlayVideo(String 02-185-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-161-烛:Long 0:Long 127:Float 12.9:var 动图)
+}
+//2~3
+Bool b1=fun long.gt(var rank:Long 0)
+Bool b2=fun long.lte(var rank:Long 2)
+if{fun bool.and(var b1:var b2)
+  =act 1.this.Generic'PlayVideo(String 02-242-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-167-蓝忘机:Long 0:Long 107:Float 10.8:var 动图)
+}
+//4~10
+Bool b1=fun long.gt(var rank:Long 2)
+Bool b2=fun long.lte(var rank:Long 9)
+if{fun bool.and(var b1:var b2)
+  =act 1.this.Generic'PlayVideo(String 02-193-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-166-大司命:Long 0:Long 101:Float 10.2:var 动图)
+}
+//11~20
+Bool b1=fun long.gt(var rank:Long 9)
+Bool b2=fun long.lte(var rank:Long 19)
+if{fun bool.and(var b1:var b2)
+  =act 1.this.Generic'PlayVideo(String 02-136-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-162-卫庄:Long 0:Long 94:Float 9.5:var 动图)
+}
+//21~40
+Bool b1=fun long.gt(var rank:Long 19)
+Bool b2=fun long.lte(var rank:Long 39)
+if{fun bool.and(var b1:var b2)
+  =act 1.this.Generic'PlayVideo(String 02-179-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-169-韩信:Long 0:Long 90:Float 9.2:var 动图)
+}
+//41~70
+Bool b1=fun long.gt(var rank:Long 39)
+Bool b2=fun long.lte(var rank:Long 69)
+if{fun bool.and(var b1:var b2)
+  =act 1.this.Generic'PlayVideo(String 02-237-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-150-伍六七:Long 0:Long 108:Float 10.9:var 动图)
+}
+//71~100
+Bool b1=fun long.gt(var rank:Long 69)
+Bool b2=fun long.lte(var rank:Long 99)
+if{fun bool.and(var b1:var b2)
+  =act 1.this.Generic'PlayVideo(String 02-243-.mp4:var 动图)
+/*  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 02-139-基尼奇:Long 0:Long 88:Float 8.9:var 动图)
+}
+varf UIRawImage.动图.del(Float 0)
+endcode

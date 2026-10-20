@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:测试'默认玩家_得到id
+return:String ret
+lines:
+String ret=fun create.string(String _0001Qzypt5TBz3HySUpWYnj0aFShivWFyC3)
+endcode

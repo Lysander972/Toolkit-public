@@ -1,0 +1,8 @@
+begincodeV2
+name:播报元素'索引key生成
+params:Struct 玩家,String 礼物名称
+return:String 输出
+lines:
+String 玩家id=act 1101.this.玩家结构'读取_id(var 玩家)
+String 输出=fun string.Format2(String %1->%2:var 玩家id:var 礼物名称)
+endcode

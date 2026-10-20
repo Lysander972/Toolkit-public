@@ -1,0 +1,7 @@
+begincodeV2
+color:255,243,0
+name:OnStart
+lines:
+/*fun screen.setResolution(Float 1080:Float 1920)
+act 1101.this.UI'EnterMenu()
+endcode

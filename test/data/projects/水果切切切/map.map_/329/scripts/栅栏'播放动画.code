@@ -1,0 +1,33 @@
+begincodeV2
+name:栅栏'播放动画
+lines:
+Float 当前时间=fun time.scaleTime()
+Float delta1=fun float.minus(var 当前时间:var 栅栏'开始时间)
+Float delta2=fun float.minus(var 栅栏'结束时间:var 栅栏'开始时间)
+Float 比例=fun float.division(var delta1:var delta2)
+Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+Float 栅栏'当前角度=fun float.SmoothStep(var 栅栏'初始角度:var 栅栏'目标角度:var 比例)
+Float 实际角度=fun float.multiply(Float 180:var 栅栏'当前角度)
+Vector3 向前=fun vector3.rotateAround(Vector3 0,1,0:Vector3 1,0,0:var 实际角度)
+Vector3 向上=fun vector3.rotateAround(Vector3 0,0,-1:Vector3 1,0,0:var 实际角度)
+varf Mech.栅栏'栅栏.rot(var 向前:var 向上)
+Float 栅栏'当前高度=fun float.SmoothStep(var 栅栏'初始高度:var 栅栏'目标高度:var 比例)
+Float tempF=fun float.multiply(var 地图宽度:Float 0.5)
+Vector3 坐标0=fun creatVariable.Vector3(Float 0:Float -5:var tempF)
+Vector3 坐标0=fun vector3.add(var 坐标0:var ScenarioOffset)
+Vector3 坐标1=fun vector3.add(var 坐标0:Vector3 0,5,0)
+Vector3 高度插值=fun vector3.lerp(var 坐标0:var 坐标1:var 栅栏'当前高度)
+varf Mech.栅栏'栅栏.move(var 高度插值:Enum 0)
+if{fun float.gte(var 比例:Float 1)
+  if{fun float.lte(var 栅栏'当前高度:Float 0)
+    act 1101.this.栅栏'关闭()
+  }
+  if{fun bool.not(var 栅栏'自动回正)
+    fun script.skip()
+  }
+  if{fun create.bool(var 栅栏'自动回正)
+    act 1101.this.栅栏'自动回正()
+    Bool 栅栏'自动回正=fun create.bool(Bool 0)
+  }
+}
+endcode

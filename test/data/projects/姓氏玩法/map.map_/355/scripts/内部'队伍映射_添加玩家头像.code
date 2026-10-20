@@ -1,0 +1,20 @@
+begincodeV2
+color:208,0,255
+name:内部'队伍映射_添加玩家头像
+params:Struct 队伍映射,Float 缩放
+lines:
+List 队伍头像马甲列表=varf Struct.队伍映射.getList(String 队伍头像马甲:Bool 0)
+Mech 头像马甲=act 1101./Scenario.Model'SetModel(Vector3 0,-1e+04,0:Vector3 0,0,1:String 头像马甲)
+varf List.队伍头像马甲列表.insert(Float 0:var 头像马甲)
+//申请头像马甲资源
+varf Mech.头像马甲.scale(var 缩放)
+//初始化附加在头像框上的文本框风格
+Device core=varf Mech.头像马甲.getCoreDevice()
+UILabel 用户名文本框=varf Device.core.callReturnUILabel0(String Public'GetUsernameLabel)
+varf UILabel.用户名文本框.outline(Float 0.5:Color 0,0,0,255)
+varf UILabel.用户名文本框.labelEffect(Float 0.5:Vector3 0,0,0:Enum 0)
+//分数文本框
+UILabel 分数文本框=varf Device.core.callReturnUILabel0(String Public'GetScoreLabel)
+varf UILabel.分数文本框.outline(Float 0.5:Color 0,0,0,255)
+varf UILabel.分数文本框.labelEffect(Float 0.5:Vector3 0,0,0:Enum 0)
+endcode

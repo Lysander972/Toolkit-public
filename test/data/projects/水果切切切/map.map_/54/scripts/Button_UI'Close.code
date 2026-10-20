@@ -1,0 +1,7 @@
+begincodeV2
+color:255,243,0
+name:Button_UI'Close
+params:UIRect panel
+lines:
+varf UIRect.panel.active(Bool 0)
+endcode

@@ -1,0 +1,21 @@
+begincodeV2
+name:清理数据
+lines:
+Dict req=fun create.dict()
+List List=fun create.list()
+varf Dict.req.insert(String list:var List)
+String 默认id=act 1101./弹幕.测试'默认玩家_得到id()
+Dict 清理test=act 1101.this.清空玩家数据请求体(var 默认id)
+varf List.List.add(var 清理test)
+Long AIID=fun create.long(Long 0)
+while{fun long.lt(var AIID:Long 256)
+  String virtualUID=fun create.string(var AIID)
+  Dict D=act 1101.this.清空玩家数据请求体(var virtualUID)
+  varf List.List.add(var D)
+  varf Long.AIID.addEqual(Long 1)
+}
+async Dict resp=fun dynamicCallRet(String DanmuAddRank:var req)
+String output=varf Dict.resp.detail()
+fun str2ClipBoard(var output)
+fun string.popNotify(String 响应粘贴到剪贴板:Float 3)
+endcode

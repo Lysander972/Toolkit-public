@@ -1,0 +1,7 @@
+begincodeV2
+name:守方检测区'推送更新
+lines:
+Float 总长度=fun float.add(var 地图长度:var 地图额外长度)
+Float 未实现增长=fun float.minus(var 地图额外长度目标:var 地图额外长度)
+act 1101./弹幕.UI'GameRefreshScore(var 守方虚拟位置:var 总长度:var 未实现增长:var 栅栏'剩余HP)
+endcode

@@ -1,0 +1,12 @@
+begincodeV2
+name:技能'自动暖场
+lines:
+if{act 1.this.Skill'Equal(String 0:Long 0)
+  Float 当前时间=fun time.time()
+  if{fun float.gte(var 当前时间:var 暖场阈值)
+    Float 自动暖场数=act 1.this.Generic'GetProperty(String 暖场子弹数:Float 50:Float 10:Float 100:Color 0,238,255,255)
+    Long 自动暖场数L=varf Float.自动暖场数.toLong()
+    act 1.this.Public'AddBullet(String 0:var 自动暖场数L:var DefaultPlayer)
+  }
+}
+endcode

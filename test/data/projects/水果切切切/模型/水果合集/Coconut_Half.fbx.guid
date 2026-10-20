@@ -1,0 +1,33 @@
+guid:23472027ed0643b398eaf71749ecce14
+meshes:
+[
+ {
+  n:Coconut_Half
+ }
+]
+matFolderName:ef911e8ce63b4bdd82cf91b98a74e36b
+Albedo.UID:ef911e8ce63b4bdd82cf91b98a74e36b
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+bounds.center:[2.980232E-08,0.1160618,0]
+bounds.size:[0.4122875,0.2321236,0.3921088]

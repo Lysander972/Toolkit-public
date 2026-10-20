@@ -1,0 +1,18 @@
+begincodeV2
+name:Grid'OnOccupy
+params:Long $factionBefore,Long $factionAfter
+lines:
+if{fun long.equal(var $factionBefore:Long 1)
+  varf Long.BuleOccupied.minusEqual(Long 1)
+}
+if{fun long.equal(var $factionBefore:Long 2)
+  varf Long.RedOccupied.minusEqual(Long 1)
+}
+if{fun long.equal(var $factionAfter:Long 1)
+  varf Long.BuleOccupied.addEqual(Long 1)
+}
+if{fun long.equal(var $factionAfter:Long 2)
+  varf Long.RedOccupied.addEqual(Long 1)
+}
+Bool NeedRefresh=fun create.bool(Bool 1)
+endcode

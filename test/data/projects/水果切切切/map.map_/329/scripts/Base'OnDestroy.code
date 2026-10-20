@@ -1,0 +1,8 @@
+begincodeV2
+color:104,0,255
+name:Base'OnDestroy
+params:Vector3 pos
+lines:
+fun break()
+act 336./特效发射器.发射(var pos:Float 18:Float 1)
+endcode

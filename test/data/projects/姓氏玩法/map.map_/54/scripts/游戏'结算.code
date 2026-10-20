@@ -1,0 +1,177 @@
+begincodeV2
+color:255,255,255
+name:游戏'结算
+comment:结算
+params:Long 获胜队伍
+lines:
+Bool 局内'游戏中=fun create.bool(Bool 0)
+Bool 局内'已结算=fun create.bool(Bool 1)
+Dict data=fun map.load()
+//更新存档中的积分池记录
+varf Dict.data.insert(String 局内'积分池_上局:var 局内'积分池_本局)
+//上传存档
+act 1101./主界面.工具'上传存档(Bool 1)
+//统计和上传
+//强制重排队内积分
+act 1101.this.局内逻辑'更新全部队伍内部积分排序()
+//首先统计连胜
+Long 全场可瓜分连胜=fun create.long(Long 0)
+Float 玩家总数=varf List.局内'玩家_已下场列表.count()
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 玩家总数)
+  Struct 玩家=varf List.局内'玩家_已下场列表.readStruct(var 循环)
+  Long 连胜=act 1101.this.玩家结构'读取_streak(var 玩家)
+  Long 玩家队伍=act 1101.this.玩家结构'读取_team(var 玩家)
+  if{fun long.notEqual(var 玩家队伍:var 获胜队伍)
+    varf Long.全场可瓜分连胜.addEqual(var 连胜)
+  }
+  varf Float.循环.addEqual(Float 1)
+}
+Float 可瓜分连胜F=varf Long.全场可瓜分连胜.toFloat()
+Float 可瓜分连胜F=fun float.multiply(var 可瓜分连胜F:Float 0.4)
+//随后是数值计算
+Long 积分池总量=fun long.add(var 局内'积分池_上局:var 局内'积分池_本局)
+Float 积分池总量F=varf Long.积分池总量.toFloat()
+//第一次遍历@1设置各队伍权重
+Float 队伍总数=varf List.局内'队伍_激活队伍列表.count()
+Float 总权重=fun create.float(Float 0)
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 队伍总数)
+  Struct 队伍=varf List.局内'队伍_激活队伍列表.readStruct(var 循环)
+  Float 权重=fun create.float(Float 0)
+  Bool 是填充=act 1101.this.队伍结构'读取_填充(var 队伍)
+  if{fun bool.not(var 是填充)
+    if{fun float.Approximately(var 循环:Float 0)
+      Float 权重=fun create.float(Float 5)
+    }
+    if{fun float.Approximately(var 循环:Float 1)
+      Float 权重=fun create.float(Float 3)
+    }
+    if{fun float.Approximately(var 循环:Float 2)
+      Float 权重=fun create.float(Float 2)
+    }
+  }
+  act 1101.this.队伍结构'设置_factor(var 队伍:var 权重)
+  varf Float.总权重.addEqual(var 权重)
+  varf Float.循环.addEqual(Float 1)
+}
+//第二次遍历@1根据权重确定此队瓜分积分.随后队内按照积分贡献进行瓜分
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 队伍总数)
+  Struct 队伍=varf List.局内'队伍_激活队伍列表.readStruct(var 循环)
+  Float 权重=act 1101.this.队伍结构'读取_factor(var 队伍)
+  Float 占比=fun create.float(Float 0)
+  if{fun float.notEqual(var 总权重:Float 0)
+    Float 占比=fun float.division(var 权重:var 总权重)
+  }
+  Float 队伍分得积分=fun float.multiply(var 积分池总量F:var 占比)
+  Long 全队积分=act 1101.this.队伍结构'读取_score(var 队伍)
+  List 队内玩家列表=act 1101.this.队伍结构'读取_playerRankList(var 队伍)
+  Float 队内玩家数量=varf List.队内玩家列表.count()
+  Float 内部循环=fun create.float(Float 0)
+  while{fun float.lt(var 内部循环:var 队内玩家数量)
+    Struct 玩家=varf List.队内玩家列表.readStruct(var 内部循环)
+    if{act 1101.this.玩家结构'读取_completeness(var 玩家)
+      Long 玩家积分=act 1101.this.玩家结构'读取_score(var 玩家)
+      Float 队内占比=fun create.float(Float 0)
+      if{fun long.notEqual(var 全队积分:Long 0)
+        Float 队内占比=fun long.division(var 玩家积分:var 全队积分)
+      }
+      Float 玩家分得积分=fun float.multiply(var 队内占比:var 队伍分得积分)
+      Long 抢积分池=varf Float.玩家分得积分.toLong()
+      act 1101.this.玩家结构'设置_抢夺积分池(var 玩家:var 抢积分池)
+      //对于排名第一的记录连胜
+      Bool 本场获胜=fun float.Approximately(var 循环:Float 0)
+      if{fun create.bool(var 本场获胜)
+        Long wins=act 1101.this.玩家结构'读取_streak(var 玩家)
+        Float 抢连胜F=fun float.multiply(var 可瓜分连胜F:var 队内占比)
+        Long 抢连胜L=varf Float.抢连胜F.toLong()
+        varf Long.wins.addEqual(Long 1)
+        varf Long.wins.addEqual(var 抢连胜L)
+        act 1101.this.玩家结构'设置_streak(var 玩家:var wins)
+        act 1101.this.玩家结构'设置_是否获胜(var 玩家:Bool 1)
+        act 1101.this.玩家结构'设置_抢夺连胜(var 玩家:var 抢连胜L)
+      }
+      if{fun bool.not(var 本场获胜)
+        Long wins=act 1101.this.玩家结构'读取_streak(var 玩家)
+        Float winsF=varf Long.wins.toFloat()
+        Float winsF=fun float.multiply(var winsF:Float 0.6)
+        Long wins=varf Float.winsF.toLong()
+        act 1101.this.玩家结构'设置_streak(var 玩家:var wins)
+        act 1101.this.玩家结构'设置_是否获胜(var 玩家:Bool 0)
+      }
+    }
+    varf Float.内部循环.addEqual(Float 1)
+  }
+  varf Float.循环.addEqual(Float 1)
+}
+//计算玩家分数
+List 排行榜上传=fun create.list()
+Float 玩家总数=varf List.局内'玩家_已下场列表.count()
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 玩家总数)
+  Struct 玩家=varf List.局内'玩家_已下场列表.readStruct(var 循环)
+/*  Bool 是AI=act 1101.this.玩家结构'读取_isAI(var 玩家)
+/*  if{fun bool.not(var 是AI)
+    //需要数据的完整性
+  }
+  if{act 1101.this.玩家结构'读取_completeness(var 玩家)
+    Dict 上传内容=fun create.dict()
+    //uid
+    String uid=act 1101.this.玩家结构'读取_id(var 玩家)
+    varf Dict.上传内容.insert(String uid:var uid)
+    //wins
+    Long wins=act 1101.this.玩家结构'读取_streak(var 玩家)
+    varf Dict.上传内容.insert(String wins:var wins)
+    //score
+    Long 基础分数=act 1101.this.玩家结构'读取_score(var 玩家)
+    Float 加成比例=act 1101.this.工具'得到连胜积分加成(var wins)
+    Float 基础分数F=varf Long.基础分数.toFloat()
+    Float 连胜加成F=fun float.multiply(var 加成比例:var 基础分数F)
+    Long 连胜加成=varf Float.连胜加成F.toLong()
+    act 1101.this.玩家结构'设置_连胜加成(var 玩家:var 连胜加成)
+    Long 抢夺积分池=act 1101.this.玩家结构'读取_抢夺积分池(var 玩家)
+    Long 玩家增加总积分=fun long.add1(var 基础分数:var 连胜加成:var 抢夺积分池)
+    varf Dict.上传内容.insert(String score:var 玩家增加总积分)
+    //这些操作完成后,用总分替换原本的积分
+    act 1101.this.玩家结构'设置_score(var 玩家:var 玩家增加总积分)
+    //team
+    Long team=act 1101.this.玩家结构'读取_team(var 玩家)
+    Float teamF=varf Long.team.toFloat()
+    varf Dict.上传内容.insert(String team:var teamF)
+    //name
+    String name=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+    varf Dict.上传内容.insert(String name:var name)
+    //是否失败
+    Bool 本场获胜=act 1101.this.玩家结构'读取_是否获胜(var 玩家)
+    Bool bLose=fun bool.not(var 本场获胜)
+    varf Dict.上传内容.insert(String bLose:var bLose)
+    varf List.排行榜上传.add(var 上传内容)
+  }
+  varf Float.循环.addEqual(Float 1)
+}
+varf List.排行榜上传.sort2(Bool 0:String score)
+Dict 周榜上传=fun create.dict()
+varf Dict.周榜上传.insert(String list:var 排行榜上传)
+Float 获胜队伍idF=varf Long.获胜队伍.toFloat()
+varf Dict.周榜上传.insert(String winTeam:var 获胜队伍idF)
+Dict 月榜上传=fun create.dict()
+String 后缀=fun create.string(String .M)
+varf Dict.月榜上传.insert(String type:var 后缀)
+varf Dict.月榜上传.insert(String list:var 排行榜上传)
+Float 获胜队伍idF=varf Long.获胜队伍.toFloat()
+varf Dict.月榜上传.insert(String winTeam:var 获胜队伍idF)
+/*act 1101.this.工具'非等待上传周榜(var 周榜上传)
+/*act 1101.this.工具'非等待上传月榜(var 月榜上传)
+act 1101.this.工具'非等待上传两排行榜(var 周榜上传:var 月榜上传)
+//等待游戏结束动画
+=act 1101.this.UI_默认风格'游戏结束()
+//轮询式检查
+Bool 可跳转=fun bool.and(var 局内'已上传周榜:var 局内'已上传月榜)
+while{fun bool.not(var 可跳转)
+  delay fun create.float(Float 0)
+  Bool 可跳转=fun bool.and(var 局内'已上传周榜:var 局内'已上传月榜)
+}
+//跳转到下一个主界面
+act 1101.this.UI_局外结算页面'结算界面_进入(var 获胜队伍:var 局内'周榜上传结果:var 局内'月榜上传结果)
+endcode

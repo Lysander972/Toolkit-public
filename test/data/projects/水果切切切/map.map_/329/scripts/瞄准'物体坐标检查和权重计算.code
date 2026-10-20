@@ -1,0 +1,30 @@
+begincodeV2
+name:瞄准'物体坐标检查和权重计算
+params:Mech target
+return:Float 权重
+lines:
+Vector3 pos=varf Mech.target.corePos()
+Float x=varf Vector3.pos.x()
+Float y=varf Vector3.pos.y()
+Float z=varf Vector3.pos.z()
+Bool bool1=fun float.lt(var x:Float -40)
+Bool bool2=fun float.gt(var x:Float 40)
+Bool bool3=fun float.lt(var y:Float -10)
+Bool bool4=fun float.gt(var y:Float 300)
+Bool bool5=fun float.lt(var z:Float -30)
+Bool bool6=fun float.gt(var z:Float 300)
+Bool 错误坐标=fun bool.or4(var bool1:var bool2:var bool3:var bool4:var bool5:var bool6)
+if{fun create.bool(var 错误坐标)
+/*  fun debug.print(String 坐标纠正:Color 255,255,255,255:Bool 0)
+  Float x=fun float.clamp(var x:Float -35:Float 35)
+  Float y=fun float.clamp(var y:Float 0:Float 300)
+  Float z=fun float.clamp(var z:Float 20:Float 170)
+  Vector3 newPos=fun creatVariable.Vector3(var x:var y:var z)
+  varf Mech.target.move(var newPos:Enum 0)
+}
+Float 权重=fun create.float(var z)
+Float 修正值=varf Mech.target.customFloat(String 索敌修正)
+varf Float.权重.addEqual(var 修正值)
+Float 修正值=fun float.multiply(var y:Float 1)
+varf Float.权重.addEqual(var 修正值)
+endcode

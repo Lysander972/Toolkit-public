@@ -1,0 +1,9 @@
+begincodeV2
+guid:90f75a632fe44a6593c857718a2a9363
+color:255,255,255
+name:队伍结构'读取_activated
+params:Struct 结构
+return:Bool ret
+lines:
+Bool ret=varf Struct.结构.getBool(String activated:Bool 1)
+endcode

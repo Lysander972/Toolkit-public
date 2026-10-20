@@ -1,0 +1,6 @@
+begincodeV2
+skip:1
+name:播放捣乱效果
+lines:
+act 1.this.减益效果()
+endcode

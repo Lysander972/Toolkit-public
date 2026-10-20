@@ -1,0 +1,5 @@
+begincodeV2
+name:栅栏'竖起动作
+lines:
+act 1101.this.栅栏'启用动作(Float 0.5:Float 1:Float 1)
+endcode

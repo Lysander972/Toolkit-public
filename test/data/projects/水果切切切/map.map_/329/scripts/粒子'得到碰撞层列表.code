@@ -1,0 +1,12 @@
+begincodeV2
+name:粒子'得到碰撞层列表
+return:List list
+lines:
+if{fun bool.not(var init)
+  Float layer1=fun create.float(Float 0)
+  List list=fun create.list1(var layer1)
+/*  Float layer2=fun create.float(Float 7)
+/*  List list=fun create.list2(var layer1:var layer2)
+  Bool init=fun create.bool(Bool 1)
+}
+endcode

@@ -1,0 +1,5 @@
+begincodeV2
+name:持续刷新伤害数字
+lines:
+act 1101.this.数字效果'更新()
+endcode

@@ -1,0 +1,41 @@
+type:337
+pos:[0,0,0]
+quat:[2.512148E-15,-0.7071068,0.7071068,2.512148E-15]
+ext:
+{
+ logicName:加速线
+ startLifetimeMultiplier:0.5
+ startSpeed:[100,200]
+ startSize:[0.2,0.25]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[0,0.2666667,0.2705882,1]
+ startColor.max:[0,0.9882353,1,1]
+ customData1.x:3.5
+ gravityModifierMultiplier:5
+ emission:true
+ rateOverTime:20
+ radius:0.5
+ shapeScale:[3,3,3]
+ colorOverLifetime:
+ [
+  "0:1,1,1,0"
+  "0.07188525:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:0.5"
+  "0.1922258:1"
+  "0.4999938:1"
+  "0.7499909:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ renderMode:1
+ velocityScale:0.05
+ matType:5
+}

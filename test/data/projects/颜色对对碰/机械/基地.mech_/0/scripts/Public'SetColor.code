@@ -1,0 +1,19 @@
+begincodeV2
+name:Public'SetColor
+params:Color $color
+lines:
+act 1.this.setPaintColor(var $color:Bool 0)
+act 200./1.setPaintColor(var $color:Bool 0)
+act 333./2.setPaintColor(var $color:Bool 0)
+act 347./3.setPaintColor(var $color:Bool 0)
+act 338./4.setPaintColor(var $color:Bool 0)
+act 338./5.setPaintColor(var $color:Bool 0)
+act 338./6.setPaintColor(var $color:Bool 0)
+act 338./7.setPaintColor(var $color:Bool 0)
+act 1228./8.setPaintColor(var $color:Bool 0)
+act 1228./9.setPaintColor(var $color:Bool 0)
+act 1228./10.setPaintColor(var $color:Bool 0)
+act 1228./11.setPaintColor(var $color:Bool 0)
+act 135./12.setColor(var $color)
+act 130./13.setFrontColor(var $color)
+endcode

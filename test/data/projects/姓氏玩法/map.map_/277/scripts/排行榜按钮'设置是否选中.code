@@ -1,0 +1,7 @@
+begincodeV2
+name:排行榜按钮'设置是否选中
+params:UIButton 按钮,Bool 是否选中
+lines:
+UIButton 不可用子按钮=varf UIButton.按钮.getSonUIButton(String /已选中按钮)
+varf UIButton.不可用子按钮.active(var 是否选中)
+endcode

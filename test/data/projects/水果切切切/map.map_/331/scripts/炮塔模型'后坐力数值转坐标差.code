@@ -1,0 +1,18 @@
+begincodeV2
+name:炮塔模型'后坐力数值转坐标差
+params:Float 序号
+return:Vector3 结果
+lines:
+Float 后坐力=varf List.炮塔模型'后坐力效果表.readFloat(var 序号)
+if{fun float.lte(var 后坐力:Float 0.2)
+  Float 比例=fun float.division(var 后坐力:Float 0.2)
+  Float 平滑比例=fun float.pow(var 比例:Float 0.5)
+  Vector3 结果=fun vector3.lerp(Vector3 0,0,0:Vector3 0,0,-1.5:var 平滑比例)
+}
+if{fun float.gt(var 后坐力:Float 0.2)
+  Float 比例=fun float.minus(var 后坐力:Float 0.2)
+  Float 比例=fun float.division(var 比例:Float 0.8)
+  Float 平滑比例=fun float.pow(var 比例:Float 2)
+  Vector3 结果=fun vector3.lerp(Vector3 0,0,-1.5:Vector3 0,0,0:var 平滑比例)
+}
+endcode

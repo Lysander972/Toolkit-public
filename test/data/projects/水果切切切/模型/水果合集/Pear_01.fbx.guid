@@ -1,0 +1,30 @@
+guid:95cb5405068846bda7e6c9bc6ff0225e
+meshes:
+[
+ {
+  n:Pear_01
+ }
+]
+matFolderName:788e8d2b72af4dd29aa3f0d2e6426b70
+Albedo.UID:788e8d2b72af4dd29aa3f0d2e6426b70
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.341105E-07,0.2179026,0]
+bounds.size:[0.2695735,0.4358052,0.2695739]

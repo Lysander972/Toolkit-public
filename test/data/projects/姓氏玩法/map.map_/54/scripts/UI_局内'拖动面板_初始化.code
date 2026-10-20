@@ -1,0 +1,13 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'拖动面板_初始化
+comment:检测存档中是否有记录
+params:UIButton 当前激活面板,String 存档内名称
+lines:
+//持久化逻辑
+Dict data=fun map.load()
+if{varf Dict.data.contains(var 存档内名称)
+  Vector3 p=varf Dict.data.readVector3(var 存档内名称:Bool 1)
+  varf UIButton.当前激活面板.setCanvasPos(var p)
+}
+endcode

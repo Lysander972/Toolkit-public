@@ -1,0 +1,33 @@
+begincodeV2
+name:内部'特效_点赞
+params:Struct 发起者队伍
+lines:
+//创建布局
+fun ui.2dmode(var 平面UI开关)
+Canvas 投射物布局=fun create.canvas(Canvas canvas@1@3EAEAEQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYG5Zu+5qCHA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAEAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAASEIAAEhCAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAACGZpbGVHdWlkBiBiMjM4ZDAzMDc5YWE0NzNlYWI4NGM5ODkxYWMzYmM0NA@3@3)
+//更新标记
+UIRawImage 点赞图标=varf Canvas.投射物布局.readUIRawImage(String 图标)
+//找到发起者队伍UI
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 发起者队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun create.bool(var 是否创建)
+  Canvas 发起者队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+  UIRect 队伍根节点=varf Canvas.发起者队伍UI布局.readUIRect(String 根节点)
+  UIRect 点赞图层=varf Canvas.发起者队伍UI布局.readUIRect(String 根节点/进度条/点赞特效图层)
+  //确定坐标
+  Float 随机x=fun math.rand(Float -20:Float 20)
+  Float 随机y=fun math.rand(Float -20:Float 20)
+  Vector3 随机坐标=fun creatVariable.Vector3(var 随机x:var 随机y:Float 0)
+  varf UIRawImage.点赞图标.setCustomVector3(String 起点坐标:var 随机坐标)
+  Float 创建时间=fun time.scaleTime()
+  varf UIRawImage.点赞图标.setCustomFloat(String 创建时间:var 创建时间)
+  varf UIRect.点赞图层.addSon(var 点赞图标)
+  varf UIRawImage.点赞图标.setCanvasPos(var 随机坐标)
+  Float 随机速度=fun math.rand(Float 150:Float 200)
+  varf UIRawImage.点赞图标.setCustomFloat(String 速度:var 随机速度)
+  varf UIRawImage.点赞图标.setCustomColor(String color:Color 255,255,255,255)
+  varf UIRawImage.点赞图标.setCustomUIRect(String root:var 队伍根节点)
+  varf List.点赞图标维护表.add(var 点赞图标)
+}
+endcode

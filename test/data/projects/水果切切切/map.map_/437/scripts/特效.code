@@ -1,0 +1,45 @@
+begincodeV2
+name:特效
+params:Float scale,Float count,Color color,Float 持续时间
+lines:
+varf Float.count.minusEqual(Float 1)
+Long rand=fun long.rand(Long 0:Long 5)
+Float minscale=fun float.multiply(var scale:Float 0.8)
+Float maxscale=fun float.multiply(var scale:Float 1.2)
+if{fun long.equal(var rand:Long 0)
+  act 337./1.startLifetimeMultiplier(var 持续时间)
+  act 337./1.startSize(var minscale:var maxscale)
+  act 337./1.color(var color:var color)
+  act 337./1.emit(var count)
+}
+if{fun long.equal(var rand:Long 1)
+  act 337./2.startLifetimeMultiplier(var 持续时间)
+  act 337./2.startSize(var minscale:var maxscale)
+  act 337./2.color(var color:var color)
+  act 337./2.emit(var count)
+}
+if{fun long.equal(var rand:Long 2)
+  act 337./3.startLifetimeMultiplier(var 持续时间)
+  act 337./3.startSize(var minscale:var maxscale)
+  act 337./3.color(var color:var color)
+  act 337./3.emit(var count)
+}
+if{fun long.equal(var rand:Long 3)
+  act 337./4.startLifetimeMultiplier(var 持续时间)
+  act 337./4.startSize(var minscale:var maxscale)
+  act 337./4.color(var color:var color)
+  act 337./4.emit(var count)
+}
+if{fun long.equal(var rand:Long 4)
+  act 337./5.startLifetimeMultiplier(var 持续时间)
+  act 337./5.startSize(var minscale:var maxscale)
+  act 337./5.color(var color:var color)
+  act 337./5.emit(var count)
+}
+if{fun long.equal(var rand:Long 5)
+  act 337./6.startLifetimeMultiplier(var 持续时间)
+  act 337./6.startSize(var minscale:var maxscale)
+  act 337./6.color(var color:var color)
+  act 337./6.emit(var count)
+}
+endcode

@@ -1,0 +1,27 @@
+begincodeV2
+name:刷新'普攻显示
+lines:
+Long $count=act 1.this.Skill'GetValue(String 0)
+String $text=fun string.add(String 能量@1 :var $count)
+if{fun long.gte(var $count:Long 20000)
+  String $text=fun string.add(var $text:String  <color@3#ffd800>★</color>)
+  varf UILabel.普通攻击充能.text(var $text)
+  fun break()
+}
+if{fun long.gte(var $count:Long 15000)
+  String $text=fun string.add(var $text:String  <color@3#ffd800>↑↑↑</color>)
+  varf UILabel.普通攻击充能.text(var $text)
+  fun break()
+}
+if{fun long.gte(var $count:Long 10000)
+  String $text=fun string.add(var $text:String  <color@3#ffd800>↑↑</color>)
+  varf UILabel.普通攻击充能.text(var $text)
+  fun break()
+}
+if{fun long.gte(var $count:Long 5000)
+  String $text=fun string.add(var $text:String  <color@3#ffd800>↑</color>)
+  varf UILabel.普通攻击充能.text(var $text)
+  fun break()
+}
+varf UILabel.普通攻击充能.text(var $text)
+endcode

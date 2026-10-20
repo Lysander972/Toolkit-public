@@ -1,0 +1,166 @@
+begincodeV2
+name:播放效果
+params:Float 整体缩放
+lines:
+Device $this=act 1.this.getDevice()
+Long 伤害来源=varf Device.$this.callReturnLong0(String Public'GetFaction)
+Long 地图尺寸L=varf Device.$this.callReturnLong0(String Public'GetMapSize)
+Float 地图尺寸F=varf Long.地图尺寸L.toFloat()
+//获得场地大小
+Vector3 目标位置=act 1.this.getPosition()
+Vector3 特效位置=varf Vector3.目标位置.copy()
+varf Vector3.特效位置.setY(Float 1)
+if{fun long.equal(var 伤害来源:Long 1)
+  Vector3 初始位置=fun vector3.add(var 目标位置:Vector3 -50,50,-50)
+}
+if{fun long.equal(var 伤害来源:Long 2)
+  Vector3 初始位置=fun vector3.add(var 目标位置:Vector3 50,50,50)
+}
+Color 目标颜色=fun create.color(Color 0,0,0,0)
+Float 力场扭曲1=fun create.float(Float 0.01)
+Float 力场扭曲2=fun create.float(Float 0.5)
+Float 模型缩放_方块=fun float.multiply(Float 1:var 整体缩放)
+Float 彩带宽度=fun float.multiply(Float 20:var 整体缩放)
+act 242.4.parts_SmokeSize(var 彩带宽度)
+//计算常量
+delay fun create.float(Float 0)
+//移动物体到指定位置
+act 200.7.show(Bool 1)
+act 362.9.setScale(var 模型缩放_方块)
+act 362.9.setPosKinematic(var 初始位置)
+act 131.10.show(Bool 0)
+act 131.10.setPosKinematic(var 目标位置)
+act 1100.11.setPosKinematic(var 初始位置)
+act 1100.11.switchCollider(Bool 0)
+delay fun create.float(Float 0)
+//打开拖尾
+act 1.this.彩带过渡(Float 0.2)
+Float 陨落播放时间=fun create.float(Float 0)
+Float 陨落动画时长=fun create.float(Float 3)
+while{fun float.lt(var 陨落播放时间:var 陨落动画时长)
+  delay fun create.float(Float 0)
+  Float 间隔=fun time.deltaTime()
+  Float 陨落播放时间=fun float.add(var 陨落播放时间:var 间隔)
+  Float 一段动画比例=fun float.division(var 陨落播放时间:var 陨落动画时长)
+  Float 位移比例=fun float.pow(var 一段动画比例:Float 2)
+  Float 位移比例=fun float.SmoothStep(Float 0:Float 1:var 位移比例)
+  Float 位移比例=fun float.clamp(var 位移比例:Float 0:Float 1)
+  Vector3 位移位置=fun vector3.lerp(var 初始位置:var 目标位置:var 位移比例)
+  act 362.9.setPosKinematic(var 位移位置)
+}
+delay fun create.float(Float 0)
+//移动到位置后
+act 242.4.disActive()
+act 362.9.setPosKinematic(var 目标位置)
+act 131.10.show(Bool 1)
+act 131.10.setColor(var Color)
+act 131.10.setFresnelPower(Float 0)
+act 131.10.setTwirl(var 力场扭曲1:var 力场扭曲2)
+act 131.10.setScale(Float 0.01)
+act 1100.11.setPosKinematic(var 目标位置)
+act 1100.11.setScale(Float 0.01)
+act 1100.11.switchCollider(Bool 1)
+//立即释放灰尘特效
+Float 特效缩放=fun float.multiply(Float 2.5:var 整体缩放)
+act 147.12.play(Float 9:var 特效缩放)
+if{fun float.gte(var 整体缩放:Float 1)
+  Float 震动=fun float.multiply1(Float 0.25:var 整体缩放:var 整体缩放)
+  fun screen.shake(var 震动:Float 3000:Float 0.2)
+}
+Float 音量=fun float.multiply(Float 0.8:var 整体缩放)
+act 1.this.播放音效(String EMP Explosion_03.ogg:var 音量)
+//略微延迟后释放爆炸特效
+if{fun float.lt(var 整体缩放:Float 1)
+  delay fun create.float(Float 0.1)
+  //爆炸特效
+  Float 特效缩放=fun float.multiply(Float 3:var 整体缩放)
+  act 147.12.play(Float 13:var 特效缩放)
+  if{fun float.gte(var 整体缩放:Float 1)
+    Float 震动=fun float.multiply1(Float 0.25:var 整体缩放:var 整体缩放)
+    fun screen.shake(var 震动:Float 3000:Float 0.2)
+  }
+  Float 音量=fun float.multiply(Float 0.8:var 整体缩放)
+  act 1.this.播放音效(String Explosion Classic_11.ogg:var 音量)
+}
+if{fun float.gte(var 整体缩放:Float 1)
+  //主要爆炸的顿帧额外等待
+  delay fun create.float(Float 0.4)
+}
+//此后开始放出力场
+Bool 已隐藏核心=fun create.bool(Bool 0)
+Float 波动播放时间=fun create.float(Float 0)
+Float 波动动画时长=fun create.float(Float 1)
+if{fun float.gte(var 整体缩放:Float 1)
+  Float 波动动画时长=fun create.float(Float 2)
+}
+Float 力场一段缩放=fun create.float(Float 4.8)
+Float 力场二段缩放=fun float.multiply2(var 地图尺寸F:Float 0.8:var 整体缩放:Float 1.5)
+Float 探测器二段缩放=fun float.multiply1(var 地图尺寸F:Float 0.8:var 整体缩放)
+//0.8倍场地直径
+while{fun float.lt(var 波动播放时间:var 波动动画时长)
+  delay fun create.float(Float 0)
+  Float 间隔=fun time.deltaTime()
+  Float 波动播放时间=fun float.add(var 波动播放时间:var 间隔)
+  Float 一段动画比例=fun float.division(var 波动播放时间:var 波动动画时长)
+  Float 平滑比例=fun float.SmoothStep(Float 0:Float 1:var 一段动画比例)
+  Float 平滑比例=fun float.clamp(var 平滑比例:Float 0:Float 1)
+  //更新模型缩放并移动
+  Float 力场缩放=fun float.lerp(Float 0:var 力场二段缩放:var 平滑比例)
+  act 131.10.setScale(var 力场缩放)
+  Float 探测器缩放=fun float.SmoothStep(Float 0:var 探测器二段缩放:var 一段动画比例)
+  act 1100.11.setScale(var 探测器缩放)
+  Vector3 y轴修正=fun vector3.multilply1(Vector3 0,-0.5,0:var 探测器缩放:Float 1)
+  Vector3 $fixed=fun vector3.add(var 目标位置:var y轴修正)
+  act 1100.11.setPosKinematic(var $fixed)
+  //判断是否需要隐藏方块
+  if{fun bool.not(var 已隐藏核心)
+    if{fun float.gte(var 力场缩放:var 力场一段缩放)
+      act 200.7.show(Bool 0)
+      Bool 已隐藏核心=fun create.bool(Bool 1)
+      Float 波动二段开始=fun create.float(var 波动播放时间)
+      Float 波动剩余时间=fun float.minus(var 波动动画时长:var 波动二段开始)
+      if{fun float.gte(var 整体缩放:Float 1)
+        //爆炸特效
+        Float 特效缩放=fun float.multiply(Float 3:var 整体缩放)
+        act 147.12.play(Float 13:var 特效缩放)
+        if{fun float.gte(var 整体缩放:Float 1)
+          Float 震动=fun float.multiply1(Float 0.25:var 整体缩放:var 整体缩放)
+          fun screen.shake(var 震动:Float 3000:Float 0.2)
+        }
+        Float 音量=fun float.multiply(Float 0.8:var 整体缩放)
+        act 1.this.播放音效(String Explosion Classic_11.ogg:var 音量)
+      }
+    }
+  }
+  if{fun create.bool(var 已隐藏核心)
+    Float 波动二段时间=fun float.minus(var 波动播放时间:var 波动二段开始)
+    Float 波动二段比例=fun float.division(var 波动二段时间:var 波动剩余时间)
+    Float 二段平滑比例=fun float.SmoothStep(Float 0:Float 1:var 波动二段比例)
+    Float 二段平滑比例=fun float.clamp(var 二段平滑比例:Float 0:Float 1)
+    //逐渐减弱力场的扭曲效果
+    //通过菲涅尔效果把颜色集中于边缘
+    Float 菲涅尔=fun float.SmoothStep(Float 0:Float 3:var 二段平滑比例)
+    act 131.10.setFresnelPower(var 菲涅尔)
+    //设置颜色渐变为透明
+    Float 二段平滑比例幂=fun float.pow(var 二段平滑比例:Float 3)
+    Color 护盾颜色=varf Color.Color.lerp(var 目标颜色:var 二段平滑比例幂)
+    act 131.10.setColor(var 护盾颜色)
+    Float 扭曲1调整=fun float.SmoothStep(var 力场扭曲1:Float 0:var 二段平滑比例)
+    Float 扭曲2调整=fun float.SmoothStep(var 力场扭曲2:Float 0:var 二段平滑比例)
+    act 131.10.setTwirl(var 扭曲1调整:var 扭曲2调整)
+  }
+}
+//已完全播放完毕
+act 131.10.show(Bool 0)
+delay fun create.float(Float 0)
+act 1100.11.setPosKinematic(Vector3 1e+04,0,0)
+delay fun create.float(Float 0)
+delay fun create.float(Float 0)
+act 1100.11.switchCollider(Bool 0)
+delay fun create.float(Float 0)
+delay fun create.float(Float 0)
+//造成伤害摧毁自身
+Float 伤害值=fun create.float(Float 9999)
+Long 伤害来源=fun create.long(Long 0)
+varf Device.$this.callFun2(String Public'Damage:var 伤害值:var 伤害来源)
+endcode

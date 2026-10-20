@@ -1,0 +1,15 @@
+begincodeV2
+private:1
+name:Private'OnDeath
+lines:
+if{fun long.equal(var Attr'Type:Long 22)
+  Float 守方重炮数=fun map.getCustomFloat(String 守方重炮数)
+  varf Float.守方重炮数.addEqual(Float -1)
+  fun map.setCustomFloat(String 守方重炮数:var 守方重炮数)
+}
+Bool Attr'Alive=fun create.bool(Bool 0)
+Vector3 position=act 1.this.getPosition()
+varf Device.map_handler.callFun1(String Base'OnDestroy:var position)
+String key=varf Mech.Self.name()
+varf Device.map_handler.callFun3(String Base'OnReclaim:var Self:var key:var Attr'Type)
+endcode

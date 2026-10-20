@@ -1,0 +1,49 @@
+begincodeV2
+color:123,255,0
+name:局内逻辑'延迟效果_触发检查
+lines:
+//延迟效果检查,如果被标记为生效那么应用并移除
+Float 序号=varf List.局内'延迟效果表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  Dict 延迟效果注册信息=varf List.局内'延迟效果表.readDict(var 序号)
+  Bool 是延迟效果注册信息=varf Dict.延迟效果注册信息.readBool(String 是延迟效果注册信息:Bool 1)
+  Float 已生效比例=varf Dict.延迟效果注册信息.readFloat(String 已生效比例:Bool 0)
+  Float 处理的已生效比例=varf Dict.延迟效果注册信息.readFloat(String 处理的已生效比例:Bool 0)
+  Bool 首次处理=varf Dict.延迟效果注册信息.readBool(String 首次处理:Bool 0)
+  Bool 需更新=fun float.notEqual(var 已生效比例:var 处理的已生效比例)
+  //需要设置值为>@30
+  if{fun bool.and(var 是延迟效果注册信息:var 需更新)
+    Struct 玩家结构=varf Dict.延迟效果注册信息.readStruct(String 玩家:Bool 1)
+    Struct 队伍结构=varf Dict.延迟效果注册信息.readStruct(String 队伍:Bool 1)
+    if{fun bool.not(var 首次处理)
+      //首次处理标记,无论生效比例是多少,全部速度修改都生效,全部buff层数也生效
+      Bool 首次处理=fun create.bool(Bool 1)
+      varf Dict.延迟效果注册信息.insert(String 首次处理:var 首次处理)
+      Long 速度变化=varf Dict.延迟效果注册信息.readLong(String 速度变化:Bool 1)
+      Float 持续时间=varf Dict.延迟效果注册信息.readFloat(String 持续时间:Bool 1)
+      Long 类型=varf Dict.延迟效果注册信息.readLong(String 类型:Bool 1)
+      Long 层数=varf Dict.延迟效果注册信息.readLong(String 层数:Bool 1)
+      act 1101.this.队伍'应用效果(var 玩家结构:var 队伍结构:var 速度变化:Long 0:var 持续时间:var 类型:var 层数)
+    }
+    //随后是剩余部分,delta@3新比例*数值-旧比例*数值
+    Long 完全数值变化=varf Dict.延迟效果注册信息.readLong(String 数值变化:Bool 1)
+    Float 完全数值变化F=varf Long.完全数值变化.toFloat()
+    Float 已处理数值变化F=fun float.multiply(var 完全数值变化F:var 处理的已生效比例)
+    Long 已处理数值变化=varf Float.已处理数值变化F.toLong()
+    Float 全部数值变化F=fun float.multiply(var 完全数值变化F:var 已生效比例)
+    Long 全部数值变化=varf Float.全部数值变化F.toLong()
+    Long 需增加数值=fun long.minus(var 全部数值变化:var 已处理数值变化)
+    Float 处理的已生效比例=fun create.float(var 已生效比例)
+    varf Dict.延迟效果注册信息.insert(String 处理的已生效比例:var 处理的已生效比例)
+    act 1101.this.队伍'应用效果(var 玩家结构:var 队伍结构:Long 0:var 需增加数值:Float 0:Long 0:Long 0)
+  }
+  Bool 需删除=fun float.gte(var 处理的已生效比例:Float 1)
+  if{fun create.bool(var 需删除)
+    //停止维护标记位,用于在其他地方移除已完全生效的延迟事件
+    Bool 停止维护=fun create.bool(Bool 1)
+    varf Dict.延迟效果注册信息.insert(String 停止维护:var 停止维护)
+    varf List.局内'延迟效果表.remove(var 序号)
+  }
+}
+endcode

@@ -1,0 +1,20 @@
+begincodeV2
+color:8,0,255
+name:Grid'ReclaimGrid
+params:Long $xLong,Long $yLong
+lines:
+Float $xFloat=varf Long.$xLong.toFloat()
+Float $yFloat=varf Long.$yLong.toFloat()
+Vector3 $pos=fun creatVariable.Vector3(var $xFloat:Float 0:var $yFloat)
+String $key=fun create.string(var $pos)
+Bool $exist=varf Dict.GridMap.contains(var $key)
+if{fun create.bool(var $exist)
+  Mech $obj=varf Dict.GridMap.readMech(var $key:Bool 1)
+  Mech $objCol=varf Dict.GridColMap.readMech(var $key:Bool 1)
+  varf Dict.GridMap.remove(var $key)
+  varf Dict.GridColMap.remove(var $key)
+  varf List.UnusedGrid.add(var $obj)
+  varf List.UnusedGridCol.add(var $objCol)
+  varf Mech.$obj.callFun0(String Public'OnReclaim)
+}
+endcode

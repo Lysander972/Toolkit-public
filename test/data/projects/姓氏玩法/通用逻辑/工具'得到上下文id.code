@@ -1,0 +1,8 @@
+begincodeV2
+guid:b6e38169506d470e96aa8abf48076e36
+color:255,255,255
+name:工具'得到上下文id
+return:Long value
+lines:
+Long value=fun map.getCustomLong(String context)
+endcode

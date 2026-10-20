@@ -1,0 +1,11 @@
+views {
+  view bescript_third_layer of toolkit {
+    title '第三层：官方 TS 解析打印与 TS 转换服务'
+    include toolkit.script.conversion.third
+    include toolkit.host.logic
+    include toolkit.conversion.ts
+    include toolkit.conversion.canvas
+    include toolkit.view_service
+    include specifications.bescript
+  }
+}

@@ -1,0 +1,13 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'BeforeChangeHP
+comment:HP变更前
+params:Float $oldHP,Float $newHP
+lines:
+if{fun float.lte(var $newHP:Float 0.01)
+  act 1.this.Private'OnDeath(Bool 0)
+}
+fun break()
+=fun create.float(var $oldHP)
+endcode

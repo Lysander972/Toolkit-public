@@ -1,0 +1,42 @@
+begincodeV2
+color:123,255,0
+name:队伍'施加效果_层数拆分封装
+comment:10层以内会拆分到相同数量的层,10层以上会简略到只剩10层
+params:String 施加方式,Struct 玩家,Long 效果层数,Float 每层速度变化,Float 每层数值变化,Float 持续时间,Long 互动事件和buff类型,Bool 延迟生效
+return:Long 成功应用层数
+lines:
+Long 成功应用层数=fun create.long(Long 0)
+Long 已分配计数=fun create.long(Long 0)
+Long 最大计数=fun long.minus(var 效果层数:Long 1)
+Float 步长=fun long.division(var 效果层数:Long 10)
+Float 步长=fun float.max(var 步长:Float 1)
+Float 已分配部分=fun create.float(Float 0)
+while{fun long.lt(var 已分配计数:var 最大计数)
+  //得到本次尝试中分配的层数
+  Long 原尝试计数=varf Float.已分配部分.toLong()
+  varf Float.已分配部分.addEqual(var 步长)
+  Long 已分配计数=varf Float.已分配部分.toLong()
+  Long 已分配计数=fun long.min(var 已分配计数:var 最大计数)
+  Long 本次分配层数=fun long.minus(var 已分配计数:var 原尝试计数)
+  //进行设置
+  Bool 设置成功=fun create.bool(Bool 0)
+  if{fun string.equal(var 施加方式:String 自身)
+    Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 效果层数:var 每层速度变化:var 每层数值变化:var 持续时间:var 互动事件和buff类型:var 延迟生效)
+  }
+  if{fun string.equal(var 施加方式:String 随机对手)
+    Bool 设置成功=act 1101.this.队伍'施加效果_随机其他队伍(var 玩家:var 效果层数:var 每层速度变化:var 每层数值变化:var 持续时间:var 互动事件和buff类型:var 延迟生效)
+  }
+  if{fun string.equal(var 施加方式:String 最大对手)
+    Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 效果层数:var 每层速度变化:var 每层数值变化:var 持续时间:var 互动事件和buff类型:var 延迟生效)
+  }
+  if{fun string.equal(var 施加方式:String 最快对手)
+    Bool 设置成功=act 1101.this.队伍'施加效果_速度最快其他队伍(var 玩家:var 效果层数:var 每层速度变化:var 每层数值变化:var 持续时间:var 互动事件和buff类型:var 延迟生效)
+  }
+  if{fun string.equal(var 施加方式:String 全部对手)
+    Bool 设置成功=act 1101.this.队伍'施加效果_全部其他队伍(var 玩家:var 效果层数:var 每层速度变化:var 每层数值变化:var 持续时间:var 互动事件和buff类型:var 延迟生效)
+  }
+  if{fun create.bool(var 设置成功)
+    varf Long.成功应用层数.addEqual(var 本次分配层数)
+  }
+}
+endcode

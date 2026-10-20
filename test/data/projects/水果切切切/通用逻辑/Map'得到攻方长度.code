@@ -1,0 +1,9 @@
+begincodeV2
+guid:3b6636788bab41d3a0f2a53e6814806f
+color:0,43,255
+name:Map'得到攻方长度
+comment:得到地图大小
+return:Float ret
+lines:
+Float ret=varf Device.map_handler.callReturnFloat0(String Map'得到攻方长度)
+endcode

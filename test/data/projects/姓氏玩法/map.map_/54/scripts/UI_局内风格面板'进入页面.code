@@ -1,0 +1,7 @@
+begincodeV2
+name:UI_局内风格面板'进入页面
+lines:
+varf UIRect.UI_局内风格面板'展示区域.active(Bool 0)
+varf UIRawImage.UI_局内风格面板'倒计时快进.active(Bool 0)
+varf UIRawImage.UI_局内风格面板'倒计时冻结.active(Bool 0)
+endcode

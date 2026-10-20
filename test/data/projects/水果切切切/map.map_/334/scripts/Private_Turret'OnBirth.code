@@ -1,0 +1,14 @@
+begincodeV2
+skip:1
+private:1
+name:Private_Turret'OnBirth
+lines:
+if{fun create.bool(var Attr'Turret)
+  Float 当前瞄准角度=fun create.float(Float 180)
+  Float 瞄准角度转速=fun create.float(Float 0)
+  Float 瞄准角度上限=fun create.float(Float 360)
+  Float 瞄准角度下限=fun create.float(Float 0)
+  Bool 反向旋转=fun create.bool(Bool 0)
+  act 1.this.loopFun(String Private_Turret'UpdateAim:Float 0)
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+color:8,0,255
+name:Public'Damage
+comment:代理伤害计算
+params:Float $damage,Long $faction
+return:Float $counter
+lines:
+Float $counter=varf Device.Core.callReturnFloat2(String Public'Damage:var $damage:var $faction)
+endcode

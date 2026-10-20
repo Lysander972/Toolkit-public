@@ -1,0 +1,74 @@
+model {
+  renderer = container 'Canvas CPU 渲染引擎' {
+    #build
+    #todo
+    description '结构化 CanvasDocument、viewport、资源字节与调色板、固定字体、显式时间输入，经 CanvasKit/Skia CPU surface 输出 PNG、尺寸、资源指纹与诊断。渲染会话拥有临时布局与图形资源；调用方提供完整输入。'
+    metadata {
+      testStrategy 'high'
+      todo 'CPU 合同和文件级空壳已声明，文档校验、布局、绘制及资源结算保持 TODO 失败'
+      sourcePath 'src/canvas_render'
+      files ['src/canvas_render/*.ts']
+      entries ['src/canvas_render/CanvasViewSchema.ts']
+    }
+    contracts = container 'CanvasDocument 与渲染合同' {
+      description '持久化 Fields、节点类型、布局与文本结果、完整输入及 PNG 输出合同；PNG 同次携带节点索引链、名称、类型及 viewport 四角供树形视图和选中高亮使用，不承担解析或绘制。'
+      metadata {
+        code ['src/canvas_render/RenderContracts.ts#CanvasRenderInput', 'src/canvas_render/RenderContracts.ts#CanvasRenderResult', 'src/canvas_render/CanvasTypesBase.ts#Vector3', 'src/canvas_render/CanvasTypesBase.ts#CanvasColor']
+      }
+    }
+    schema = container '结构化节点 Schema' { description '声明结构化 Canvas 节点的确定类型字段；HTML/XML 解析归纯转换，本节点不执行解析或绘制。' metadata { code ['src/canvas_render/CanvasViewSchema.ts#CanvasUISchema', 'src/canvas_render/CanvasViewSchema.ts#CanvasUISchemaOf'] } }
+    dom_schema = container '文档输入校验' {
+      #todo
+      description '严格校验结构化文档，将原版字段按唯一映射表提取为节点专属 Option Schema。'
+      metadata { todo '结构化 CanvasDocument 校验与字段提取保持 TODO' code ['src/canvas_render/CanvasDocumentValidator.ts#CanvasDocumentValidator.validate'] }
+    }
+    nodes = container '节点能力调度' { description '按节点类型固定顺序调用能力；不持有 DOM。' metadata { code ['src/canvas_render/CanvasNodeDispatch.ts#CanvasNodeDispatch.draw'] } }
+    fields = container '特性有效值' { description '唯一字段默认值与启用白名单，不修改持久化输入。' metadata { code ['src/canvas_render/CanvasFieldValues.ts#CanvasFieldValues', 'src/canvas_render/CanvasFieldValues.ts#CanvasFieldValues.resolve'] } }
+    images = container '图片合成' { description '资源字节解码、九宫格、渐变与颜色乘法；使用 CPU 图形后端。' metadata { code ['src/canvas_render/CanvasImageComposition.ts#CanvasImageComposition', 'src/canvas_render/CanvasImageComposition.ts#CanvasImageComposition.draw'] } }
+    values = container '富文本解析' { description '只解析原版富文本方言；持久化字段、枚举、颜色与 GUID 使用 Canvas 领域合同，不复制转换层解析器。' metadata { code ['src/canvas_render/CanvasRuntimeUtils.ts#RichTextParser', 'src/canvas_render/CanvasRuntimeUtils.ts#RichTextParser.parse'] } }
+    layout = container '确定性布局计算' { description '按 CanvasDocument 和固定字体度量计算矩形、裁剪与文本行；结果只存在当前渲染会话。' metadata { code ['src/canvas_render/CpuCanvasLayout.ts#CpuCanvasLayout', 'src/canvas_render/CpuCanvasLayout.ts#CanvasLayoutNode', 'src/canvas_render/CpuCanvasLayout.ts#CpuCanvasLayout.layout'] } }
+    features = container '节点绘制特性' { description '按节点类型与固定能力顺序编排矩形、文本、滚动内容和 Spine 网格绘制；图片、九宫格与渐变合成委托 images，共用同次布局和 CPU 会话。' metadata { code ['src/canvas_render/CpuCanvasNodes.ts#CpuCanvasNodes', 'src/canvas_render/CpuCanvasNodes.ts#CpuCanvasNodes.draw'] } }
+    raster = container 'CPU 光栅化与 PNG 编码（设计）' {
+      #todo
+      description 'CanvasKit WASM/Skia 软件 surface 承担字体度量、文字、路径、位图与网格，禁用 GPU。'
+      metadata { todo '软件 surface 创建、PNG 编码与释放保持 TODO 失败' code ['src/canvas_render/CpuRasterSurface.ts#CpuRasterSurface'] }
+    }
+    state = container '渲染会话与资源结算' { description 'CpuRenderSession 登记资源、收束加载和释放、保留失败原因并输出诊断；显式时间保证确定性。' metadata { code ['src/canvas_render/CpuRenderSession.ts#CpuRenderSession'] } }
+    entry = container '唯一渲染入口' { description 'CanvasRenderer 声明完整输入与 PNG 输出。后续实现由该入口主动驱动校验、布局、绘制与资源结算，同一请求独占会话；当前执行明确 TODO 失败。' metadata { code ['src/canvas_render/CanvasRenderer.ts#CanvasRenderer'] } }
+  }
+  renderer.schema -> renderer.contracts '文档节点类型'
+  renderer.nodes -> renderer.features '递归顺序由调度拥有，节点投影由特性拥有' #todo {
+    metadata { todo '节点调度保持空壳；递归与能力投影在正式实现时接通' }
+  }
+  renderer.nodes -> renderer.layout '消费确定布局节点'
+  renderer.nodes -> renderer.state '共享同次绘制会话'
+  renderer.fields -> renderer.contracts '消费节点类型白名单'
+  renderer.fields -> renderer.schema '消费唯一节点 Schema'
+  renderer.images -> renderer.layout '消费同一布局结果'
+  renderer.images -> renderer.state '使用会话拥有的资源'
+  renderer.features -> renderer.images '复用节点投影输入和同次会话合同'
+  renderer.values -> renderer.contracts '产生具名文本段'
+  renderer.layout -> renderer.contracts '交付唯一布局结果'
+  renderer.layout -> renderer.state '读取同次会话的固定字体'
+  renderer.layout -> renderer.fields '持有节点有效值的唯一布局结果'
+  renderer.layout -> renderer.values '持有解析后的同次文本段'
+  renderer.raster -> renderer.contracts '像素与 PNG 结果'
+  renderer.state -> renderer.contracts '会话与资源状态'
+  renderer.state -> renderer.raster '会话拥有独占软件 surface'
+  renderer.entry -> renderer.dom_schema '文档校验'
+  renderer.entry -> renderer.nodes '能力调度'
+  renderer.entry -> renderer.layout '布局阶段'
+  renderer.entry -> renderer.state '独占会话与资源结算'
+  renderer.entry -> renderer.contracts '唯一入口输入输出'
+  renderer -> pure.canvas.logic '复用唯一 Canvas 文档与节点合同'
+  renderer -> specifications.canvas_render
+  canvas.renderer_support -> specifications.canvas_render
+  canvas.renderer_tests -> renderer '验证新增能力明确失败及 CPU 后端选型'
+  canvas.renderer_tests -> canvas.renderer_support '复用官方 CPU 后端初始化边界'
+  canvas.renderer_tests -> renderer.entry '验证唯一入口明确失败'
+  canvas.renderer_tests -> renderer.contracts '核对失败前后的完整请求输入'
+  toolkit.preview -> renderer.entry '调用唯一 CPU PNG 入口'
+  toolkit.preview -> renderer.contracts '复用 viewport、固定字体与完整 PNG 输出合同'
+  canvas.renderer_tests -> pure.canvas.logic '由真实转换构造合法文档，以二进制前后比较验证输入保真'
+}
+views { view canvas_render of renderer { include renderer.* } }

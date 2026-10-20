@@ -1,0 +1,9 @@
+type:362
+pos:[0,0,0]
+quat:[0.7071068,0,0,0.7071068]
+scale:5
+ext:
+{
+ logicName:炸弹
+ modelGuid:9c71aaf5b8254bce9defaeb1d29cbfa6
+}

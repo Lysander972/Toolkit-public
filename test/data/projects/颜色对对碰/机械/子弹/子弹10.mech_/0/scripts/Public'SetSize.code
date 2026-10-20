@@ -1,0 +1,8 @@
+begincodeV2
+name:Public'SetSize
+params:Float $size
+lines:
+act 362.5.setScale(var $size)
+Float 缩放=fun float.multiply(var $size:Float 15)
+act 242.4.parts_SmokeSize(var 缩放)
+endcode

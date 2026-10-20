@@ -1,0 +1,10 @@
+begincodeV2
+name:Public'SetColor
+params:Color $color1,Color $color2
+lines:
+act 1.this.setPaintColor(var $color1:Bool 0)
+act 200.7.setPaintColor(var $color1:Bool 0)
+act 242.4.setColor(var $color2)
+Color Color=varf Color.$color1.lerp(Color 255,255,255,255:Float 0.6)
+/*Color Color=fun create.color(var $color2)
+endcode

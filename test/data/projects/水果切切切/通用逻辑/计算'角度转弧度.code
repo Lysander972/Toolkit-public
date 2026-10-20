@@ -1,0 +1,11 @@
+begincodeV2
+guid:d659faeb9db6415699e490fb17d90402
+color:255,200,0
+name:计算'角度转弧度
+params:Float 角度
+return:Float temp
+lines:
+Float pi=fun float.pi()
+Float temp=fun float.division(var 角度:Float 180)
+Float temp=fun float.multiply(var temp:var pi)
+endcode

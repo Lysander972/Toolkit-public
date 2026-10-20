@@ -1,0 +1,9 @@
+begincodeV2
+name:Bullet'得到组存活数量
+params:String 组id
+return:Long 存活数
+lines:
+Struct groupInfo=varf Struct.Bullet'GroupInf.getStruct(var 组id:Bool 0)
+Long globalCurrent=varf Struct.groupInfo.getLong(String globalCurrent:Bool 0)
+Long 存活数=fun create.long(var globalCurrent)
+endcode

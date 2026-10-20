@@ -1,0 +1,30 @@
+guid:25b1d2c68ff64ab987abdd586a73f4fa
+meshes:
+[
+ {
+  n:Papaya_Half
+ }
+]
+matFolderName:f39a75310a58453eb5d832036d6d8b74
+Albedo.UID:f39a75310a58453eb5d832036d6d8b74
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-6.705523E-07,0.2587641,-0.08216047]
+bounds.size:[0.3539891,0.5175281,0.1820104]

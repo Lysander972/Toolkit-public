@@ -1,0 +1,10 @@
+begincodeV2
+guid:47108d2d1fa0454b9487ba6ea14ca55c
+name:Public'Close
+return:Bool ok
+lines:
+Bool ok=fun create.bool(Bool 0)
+fun break()
+act 362./1.show(Bool 0)
+act 362./1.enableCollide(Bool 0)
+endcode

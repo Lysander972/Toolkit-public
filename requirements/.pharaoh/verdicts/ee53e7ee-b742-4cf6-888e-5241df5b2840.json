@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "完整来源 blob 20dda97a6593cbccae7fbb3fe47f5ae41d7619c5 一致；真实远端检查无任何 steps，GitHub annotation 明确付款/额度阻止启动，解读如实保留该待验收状态。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "四项 Git Requirement 的标准入口、CI 事件/就绪、并发短路和授权边界保留；数据库路径及存储机制明确替换为 needs/verdict，未扩大 push、发布或合并权限。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "将 Git 原生事务与需求意见分开，保持单一 tools 作业、独立 HEAD 审计和标签事件行为，替换点仅是已删除 SQLite 的存储与检查。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "ee53e7ee-b742-4cf6-888e-5241df5b2840",
+  "reviewed_fingerprint": "8dff82d7091c57aee8c01fd8a8a2218020aef568788b3d165a28f91f38c70f5a",
+  "schema": 2,
+  "summary": "Git 生命周期、授权与 CI 事件合同核对。"
+}

@@ -1,0 +1,30 @@
+begincodeV2
+name:局内逻辑'更新队伍数值
+comment:会自动触发排名的更新
+lines:
+if{fun create.bool(var 局内'游戏中)
+  Float 每帧时间间隔=fun time.deltaTime()
+  //更新基础值
+  Float 有效speedF=varf Long.局内'基础speed.toFloat()
+  Float deltaF=fun float.multiply(var 每帧时间间隔:var 有效speedF)
+  Long deltaL=varf Float.deltaF.toLong()
+  varf Long.局内'基础value.addEqual(var deltaL)
+  varf Long.局内'有人队伍最小值.addEqual(var deltaL)
+  //遍历全部已激活队伍
+  Float 激活队伍总数=varf List.局内'队伍_激活队伍列表.count()
+  Float 序号=fun create.float(Float 0)
+  while{fun float.lt(var 序号:var 激活队伍总数)
+    Struct 队伍结构=varf List.局内'队伍_激活队伍列表.readStruct(var 序号)
+    //当前速度,无论怎样减速至少保持1点速度
+    Long 当前speed=act 1101.this.队伍结构'读取_speed(var 队伍结构)
+    Long 有效speed=fun create.long(var 当前speed)
+    Float 有效speedF=varf Long.有效speed.toFloat()
+    //增加的数值,新值至少为0
+    Float deltaF=fun float.multiply(var 每帧时间间隔:var 有效speedF)
+    Long deltaL=varf Float.deltaF.toLong()
+    act 1101.this.队伍'属性修改_数值变化(var 队伍结构:var deltaL)
+    varf Float.序号.addEqual(Float 1)
+  }
+  Bool 局内'队伍_更新排名需求=fun create.bool(Bool 1)
+}
+endcode

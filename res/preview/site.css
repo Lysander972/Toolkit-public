@@ -1,0 +1,735 @@
+/* MechToolkit 产品预览页：模块化滚动叙事与统一动效轨道。 */
+
+@font-face {
+  font-family: 'ToolkitAlibabaPuHuiTiMedium';
+  src: url('../fonts/Alibaba-Puhui_Medium.ttf');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--tk-bg);
+  color: var(--tk-text);
+  font:
+    16px/1.75 'ToolkitAlibabaPuHuiTiMedium',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--tk-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--tk-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.site {
+  max-width: 1180px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+/* ---------- 顶栏与阅读进度 ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  margin: 0 -32px;
+  padding-inline: 32px;
+  background: color-mix(in oklch, var(--tk-bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.brand {
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  color: var(--tk-text);
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: var(--tk-accent);
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+}
+
+nav a {
+  font-size: 14px;
+  color: var(--tk-text-dim);
+}
+
+nav a:hover {
+  color: var(--tk-text);
+  text-decoration: none;
+}
+
+/* ---------- 文案组件 ---------- */
+
+h1 {
+  margin: 0 0 20px;
+  font-size: clamp(30px, 3.6vw, 44px);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  letter-spacing: 0.01em;
+}
+
+.hero-sub {
+  margin: 0 0 20px;
+  font-size: 19px;
+  color: var(--tk-accent);
+}
+
+.hero-copy > p:not(.hero-sub) {
+  max-width: 34em;
+  margin: 0 0 32px;
+  color: var(--tk-text-dim);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.primary {
+  display: inline-block;
+  padding: 11px 22px;
+  background: var(--tk-accent-dim);
+  border: 1px solid var(--tk-accent);
+  border-radius: var(--tk-radius);
+  color: var(--tk-accent);
+}
+
+.primary:hover {
+  background: var(--tk-accent);
+  color: var(--tk-bg);
+  text-decoration: none;
+}
+
+.ghost {
+  display: inline-block;
+  padding: 11px 22px;
+  border: 1px solid var(--tk-border-strong);
+  border-radius: var(--tk-radius);
+  color: var(--tk-text-dim);
+}
+
+.ghost:hover {
+  border-color: var(--tk-accent);
+  color: var(--tk-accent);
+  text-decoration: none;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--tk-border);
+}
+
+.hero-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-meta dt {
+  font-size: 12px;
+  color: var(--tk-text-dim);
+}
+
+.hero-meta dd {
+  margin: 0;
+  font: 13px var(--tk-font-mono);
+  color: var(--tk-text);
+}
+
+.badge {
+  margin-left: auto;
+  padding: 1px 8px;
+  border: 1px solid var(--tk-warn-line);
+  border-radius: 999px;
+  background: var(--tk-warn-dim);
+  color: var(--tk-warn);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.chrome-meta + .badge {
+  margin-left: 0;
+}
+
+/* ---------- 页与舞台（基础：顺序排版；支持 view-timeline 时升级 sticky） ---------- */
+
+.stage-hero,
+.stage-split,
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  align-items: center;
+}
+
+.stage-hero,
+.stage-split {
+  padding: 72px 0;
+}
+
+/* 编排 section 裁剪轨道动画的横向位移，避免整页横向滚动（clip 不产生滚动容器，sticky 不受影响） */
+
+.block {
+  padding: 72px 0;
+}
+
+.page-track,
+.block {
+  border-top: 1px solid var(--tk-border);
+}
+
+.block > p {
+  max-width: 40em;
+  margin: 0 0 36px;
+  color: var(--tk-text-dim);
+}
+
+.motion-section .motion-stage > section > p {
+  max-width: 40em;
+  margin: 0 0 36px;
+  color: var(--tk-text-dim);
+}
+
+/* P1 双预览：主页态在上并覆盖日志态；两个模块保持同尺寸。 */
+
+.hero-previews {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.badge + .badge {
+  margin-left: 0;
+}
+
+/* 占位体（TODO 静态资源，exhibit 框体内的空态区） */
+
+.placeholder-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  color: var(--tk-text-dim);
+  text-align: center;
+}
+
+.placeholder-body p {
+  margin: 0;
+  padding: 0 24px;
+  font-size: 13px;
+}
+
+.placeholder-wide {
+  aspect-ratio: 16 / 9;
+}
+
+/* ---------- 统一模块动效轨道 ---------- */
+
+.motion-track {
+  --motion-distance: 72px;
+  --motion-rise: 14px;
+  --motion-duration: 520ms;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  view-timeline-name: --motion-track;
+  view-timeline-axis: block;
+}
+
+.motion-content {
+  --motion-x: 0px;
+  opacity: 1;
+  transform: none;
+}
+
+.motion-from-left {
+  --motion-x: calc(var(--motion-distance) * -1);
+}
+
+.motion-from-right {
+  --motion-x: var(--motion-distance);
+}
+
+.motion-from-center {
+  --motion-x: 0px;
+}
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    .motion-track {
+      height: 100dvh;
+      padding: 0;
+      border: 0;
+    }
+
+    .motion-stage {
+      position: fixed;
+      inset: 70px 0 0;
+      width: min(1180px, calc(100% - 64px));
+      margin-inline: auto;
+      pointer-events: none;
+      animation: motion-visibility steps(1, end) both;
+      animation-timeline: --motion-track;
+      animation-range: cover 0% cover 100%;
+    }
+
+    .motion-track .motion-stage > section {
+      min-height: 0;
+      height: 100%;
+      padding-block: 24px;
+    }
+
+    .motion-stage .motion-content {
+      pointer-events: auto;
+      animation: motion-crossfade linear both;
+      animation-timeline: --motion-track;
+      animation-range: entry 0% exit 100%;
+    }
+
+    .motion-track .exhibit-tall {
+      width: min(100%, 420px, calc((100dvh - 250px) / 2));
+    }
+  }
+
+  @keyframes motion-visibility {
+    0%,
+    100% {
+      visibility: hidden;
+    }
+
+    1%,
+    99% {
+      visibility: visible;
+    }
+  }
+
+  @keyframes motion-crossfade {
+    0% {
+      opacity: 0;
+      transform: translate(var(--motion-x), var(--motion-rise));
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(0, calc(var(--motion-rise) * -1));
+    }
+  }
+}
+
+.motion-stage > section {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.hero-previews {
+  min-height: 520px;
+}
+
+.hero-card {
+  width: min(340px, 30vw);
+}
+
+.hero-card-main {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card-log {
+  position: absolute;
+  right: -8%;
+  bottom: -8%;
+  z-index: 1;
+}
+
+.hero-placeholder {
+  min-height: 400px;
+}
+
+.carousel {
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+.carousel-stage {
+  display: grid;
+  min-height: 420px;
+  place-items: center;
+  border: 1px solid var(--tk-border);
+  border-radius: 8px;
+  background: var(--tk-surface);
+  box-shadow: var(--tk-shadow);
+}
+
+.carousel-placeholder {
+  display: grid;
+  gap: 8px;
+  max-width: 22em;
+  text-align: center;
+  color: var(--tk-text-dim);
+}
+
+.carousel-placeholder strong {
+  color: var(--tk-text);
+  font-size: 22px;
+}
+
+.carousel-index {
+  color: var(--tk-accent);
+  font: 12px var(--tk-font-mono);
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+}
+
+.carousel-controls button {
+  border: 0;
+  background: transparent;
+  color: var(--tk-text);
+  cursor: pointer;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--tk-border-strong) !important;
+}
+
+.carousel-dot.active {
+  background: var(--tk-accent) !important;
+}
+
+/* ---------- 规格表式行与参考来源 ---------- */
+
+.spec {
+  margin: 0;
+  border-top: 1px solid var(--tk-border);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  padding: 18px 2px;
+  border-bottom: 1px solid var(--tk-border);
+  align-items: baseline;
+}
+
+.spec-row dt {
+  color: var(--tk-text);
+}
+
+.spec-row dd {
+  margin: 0;
+  max-width: 38em;
+  color: var(--tk-text-dim);
+}
+
+.refs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--tk-text-dim);
+}
+
+.refs a {
+  color: var(--tk-text-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.refs a:hover {
+  color: var(--tk-accent);
+}
+
+/* ---------- 展品装裱：窗口 chrome 条与选项卡 ---------- */
+
+.exhibit {
+  margin: 0;
+  background: var(--tk-surface);
+  border: 1px solid var(--tk-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--tk-shadow);
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 9px 14px;
+  background: var(--tk-surface-2);
+  border-bottom: 1px solid var(--tk-border);
+  font-size: 13px;
+}
+
+.chrome-title {
+  color: var(--tk-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chrome-meta {
+  margin-left: auto;
+  font: 12px var(--tk-font-mono);
+  color: var(--tk-text-dim);
+  white-space: nowrap;
+}
+
+.exhibit-foot {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  border-top: 1px solid var(--tk-border);
+  font-size: 13px;
+}
+
+.exhibit-note {
+  margin: 14px 2px 0;
+  font-size: 13px;
+  color: var(--tk-text-dim);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  padding: 4px 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font:
+    13px 'ToolkitAlibabaPuHuiTiMedium',
+    sans-serif;
+  color: var(--tk-text-dim);
+  white-space: nowrap;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.tab:hover {
+  color: var(--tk-text);
+}
+
+.tab-active {
+  color: var(--tk-accent);
+  border-bottom-color: var(--tk-accent);
+}
+
+.fit-frame {
+  overflow: hidden;
+  contain: layout paint;
+}
+
+.fit-canvas {
+  width: min(100%, 420px);
+  height: auto;
+  aspect-ratio: 1080 / 2160;
+  margin-inline: auto;
+}
+
+.exhibit-tall {
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+
+/* ---------- 统计区 ---------- */
+
+.stage-stat {
+  display: grid;
+  align-items: center;
+}
+
+.pane-left > p {
+  max-width: 34em;
+  color: var(--tk-text-dim);
+}
+
+.stat-side p {
+  margin: 0 0 20px;
+  max-width: 34em;
+  color: var(--tk-text-dim);
+}
+
+.stat-total {
+  color: var(--tk-text-dim);
+  font-size: 15px;
+}
+
+.stat-total strong {
+  font: 40px/1 var(--tk-font-mono);
+  color: var(--tk-accent);
+  margin-right: 10px;
+}
+
+.stat-row dt {
+  font: 13px var(--tk-font-mono);
+  color: var(--tk-text);
+}
+
+.stat-row dd {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: none;
+}
+
+.stat-num {
+  font: 12px var(--tk-font-mono);
+  color: var(--tk-text-dim);
+}
+
+.stat-bar {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--tk-accent);
+  transform-origin: left;
+}
+
+.stat-exhibit .spec {
+  border-top: 0;
+  padding-inline: 12px;
+}
+
+/* ---------- 页脚 ---------- */
+
+footer {
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--tk-border);
+  font-size: 13px;
+  color: var(--tk-text-dim);
+}
+
+/* ---------- 响应式与动效偏好 ---------- */
+
+@media (max-width: 900px) {
+  .stage-hero,
+  .stage-split,
+  .stat-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-previews {
+    width: 100%;
+  }
+
+  .hero-previews {
+    min-height: 0;
+  }
+
+  .hero-card {
+    width: min(320px, 100%);
+  }
+
+  .hero-card-log {
+    position: static;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .site {
+    padding: 0 18px;
+  }
+
+  .topbar {
+    margin: 0 -18px;
+    padding-inline: 18px;
+  }
+
+  nav {
+    gap: 16px;
+  }
+
+  .spec-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .hero-meta {
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .topbar,
+  .motion-content,
+  .carousel {
+    animation: none;
+    transition: none;
+  }
+
+  .motion-content {
+    opacity: 1;
+    transform: none;
+  }
+
+  .tab {
+    transition: none;
+  }
+}

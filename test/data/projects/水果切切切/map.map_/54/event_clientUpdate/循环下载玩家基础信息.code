@@ -1,0 +1,49 @@
+begincodeV2
+name:循环下载玩家基础信息
+comment:已被非阻塞方法代替
+lines:
+//这里每次处理一个玩家的数据，这里等待就不会阻塞弹幕消息的处理了
+Float N=varf List.PBroadcastQueue.count()
+if{fun float.gt(var N:Float 0)
+  Struct 玩家=varf List.PBroadcastQueue.readStruct(Float 0)
+  varf List.PBroadcastQueue.remove(Float 0)
+  String uid=varf Struct.玩家.getString(String id:Bool 1)
+  String uidproxy=varf Struct.玩家.getString(String idproxy:Bool 1)
+  Bool save=fun string.equal(var uid:var uidproxy)
+  async Struct 排行榜信息=fun danmu.getByID(var uid)
+/*  if{fun create.bool(var IsGM)
+/*    fun debug.print(var 排行榜信息:Color 255,255,255,255:Bool 0)
+  }
+  Long rank=varf Struct.排行榜信息.getLong(String rank:Bool 1)
+  Long wins=varf Struct.排行榜信息.getLong(String wins:Bool 1)
+  varf Struct.玩家.set(String 排行榜名次:var rank)
+  varf Struct.玩家.set(String streak:var wins)
+  Bool 信息完整性=fun create.bool(Bool 1)
+  varf Struct.玩家.set(String 信息完整性标志位:var 信息完整性)
+  if{fun create.bool(var save)
+    Long $team=varf Struct.玩家.getLong(String team:Bool 1)
+    if{fun long.equal(var $team:Long 1)
+      varf Long.蓝方连胜池.addEqual(var wins)
+      UILabel label=varf Canvas.GameUI.readUILabel(String root/leftpanel/蓝队连胜池/label)
+      Float tmp=varf Long.蓝方连胜池.toFloat()
+      //40%的连胜放入连胜池，可以供对面抢夺
+      Float tmp=fun float.multiply(var tmp:Float 0.4)
+      Float tmp=varf Float.tmp.floor()
+      String s=fun string.add(String 上方连胜池 :var tmp)
+      varf UILabel.label.text(var s)
+    }
+    if{fun long.equal(var $team:Long 2)
+      varf Long.红方连胜池.addEqual(var wins)
+      UILabel label=varf Canvas.GameUI.readUILabel(String root/rightpanel/红队连胜池/label)
+      Float tmp=varf Long.红方连胜池.toFloat()
+      //40%的连胜放入连胜池，可以供对面抢夺
+      Float tmp=fun float.multiply(var tmp:Float 0.4)
+      Float tmp=varf Float.tmp.floor()
+      String s=fun string.add(String 下方连胜池 :var tmp)
+      varf UILabel.label.text(var s)
+    }
+  }
+  =act 1101.this.UI'GamePlayerJoin(var 玩家)
+  act 1101./Scenario.炮塔'刷新头像框(var 玩家)
+}
+endcode

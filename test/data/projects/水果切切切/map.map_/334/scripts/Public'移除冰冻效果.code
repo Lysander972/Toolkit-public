@@ -1,0 +1,22 @@
+begincodeV2
+name:Public'移除冰冻效果
+comment:移除友方单位的冰冻效果
+params:Mech target
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+if{varf Mech.target.alive()
+  Device core=varf Mech.target.getCoreDevice()
+  Bool isAlive=varf Device.core.callReturnBool0(String Public'IsAlive)
+  if{fun create.bool(var isAlive)
+    Long targetFaction=varf Device.core.callReturnLong0(String Public'GetFaction)
+    Bool bool1=fun long.equal(var Attr'Faction:Long 2)
+    Bool bool2=fun long.equal(var targetFaction:Long 2)
+    Bool bool3=varf Device.core.callReturnBool0(String Public'IsFrozen)
+    if{fun bool.and2(var bool1:var bool2:var bool3:var 冰冻'免疫)
+      varf Device.core.callFun0(String 冰冻'解冻)
+    }
+  }
+}
+endcode

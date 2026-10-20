@@ -1,0 +1,11 @@
+begincodeV2
+name:Public'AddBullet
+comment:注入各种子弹
+params:String $key,Long $amount,Struct $player
+lines:
+=act 1.this.Skill'Increase(var $key:var $amount:var $player)
+if{fun string.equal(var $key:String 0)
+  act 1.this.刷新'普攻显示()
+}
+act 1.this.技能'重置暖场()
+endcode

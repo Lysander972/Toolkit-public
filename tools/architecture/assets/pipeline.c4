@@ -1,0 +1,270 @@
+model {
+  runninghub = system 'RunningHub 远端 ComfyUI 执行' {
+    #external
+    description '外部推理与计费边界。仅使用 /proxy 或 /proxy-plus 原生 ComfyUI：upload/image 上传、prompt 提交、history 查询、view 下载；不使用代理 WS。模型库 resource/list 仅用于已允许的只读清单查询，标准模型与 LLM API 生成通道不进入架构。'
+  }
+  asset_storage = system '运行时用户候选暂存区' {
+    #external
+    description '玩家机器的工程外暂存资源，区别于开发仓库和 test/data/projects。每个 Host Scope 独占；暂存绝对路径仅在存储文件系统边界使用，对内部交付产物标识及字节流。成功入库、丢弃、失败和 Scope 关闭释放所属资源。'
+  }
+  asset_settings = system '运行时配置与凭据来源' {
+    #external
+    description 'VS Code 原生 WorkspaceConfiguration 或 Pi 显式 flags、指定配置文件提供参数与可选明文凭据，不额外加密。入口只选择自己的一个来源，公开参数与凭据分开交付，凭据不进入调用记录或日志；不使用环境变量。'
+  }
+  extend resources {
+    asset_workflows = container '有来源的生成工作流与绑定资源' {
+      #build
+      #todo
+      description '唯一生产工作流资源源点。由官方或可靠开源工作流转换成 API graph，保存来源、上游版本和参数绑定；模型文件名与 graph 家族匹配。'
+      metadata {
+        todo '目录已固定官方上游提交，生产目录明确 unavailable；API graph、模型绑定和平台验证证据待登记'
+        files ['res/asset_generation/*.json']
+      }
+    }
+  }
+  extend toolkit {
+    assets = container '资产任务与确认业务' {
+      #common
+      #todo
+      description '同一 Host Scope 拥有跨请求任务标识、pending→running→ready/failed/canceled 状态、有界调度及候选关联；ready 经成功入库或丢弃分别进入 confirmed/discarded。并发执行上限 4；请求取消只结束等待，显式 cancel 结束本地任务与交付并报告远端执行是否已经停止，不把断开 HTTP 当作远端停止。UI 贴图按生成、校验、切片预览、评阅和明确确认编排，宿主只展示同一状态与结果；confirm 经 Editing.importAsset/commit 后返回实际重读的资源身份，候选形成前不写工程。'
+      metadata {
+        todo '八类具名任务与对应结果、工作区依赖装配已声明；任务执行保持 TODO'
+        sourcePath 'src/toolkit/assets'
+        files ['src/toolkit/assets/*.ts']
+      }
+      contracts = container '具名任务输入与结果' {
+        #todo
+        description 'submit/status/result/cancel/discard/renderSlice/review/confirm 各自使用具名输入和结果，以名义类和共同抽象根表达不同命令，以 instanceof 收窄；不使用语义联合或匿名对象联合。submit 携带明确能力与参数，renderSlice 携带 taskId、artifactId、结构化 slice 与尺寸案例，review 携带明确评阅输入，confirm 携带所选产物、目标 RelativePath 和确认信息。结果分别表达状态、产物、预览、意见、远端停止事实或提交后资源身份，可选值统一 Option。'
+        metadata { todo '八类命令与结果逐项对应；执行保持 TODO' code ['src/toolkit/assets/AssetTaskContracts.ts#AssetTaskCommand', 'src/toolkit/assets/AssetTaskContracts.ts#AssetTaskResult'] }
+      }
+      scheduler = container '唯一任务状态与有界调度' {
+        #todo
+        description '拥有唯一任务状态、执行 Fiber 及四并发 Semaphore，任务归 Host Scope。以 taskId 关联不可变输入和候选标识，串行协调候选消费；result 只交付 ready 结果，确认成功或丢弃后终止候选消费。生成、处理与候选 IO 分别委托已有服务；确认和评阅各自消费同一候选服务，状态转换由本节点统一拥有。失败、取消、丢弃和关闭释放所属资源，反馈实际状态及诊断。'
+        metadata { todo '提交、状态、结果、取消与丢弃端口已声明；调度执行保持 TODO' code ['src/toolkit/assets/AssetTasks.ts#AssetTasks.submit', 'src/toolkit/assets/AssetTasks.ts#AssetTasks.status', 'src/toolkit/assets/AssetTasks.ts#AssetTasks.result', 'src/toolkit/assets/AssetTasks.ts#AssetTasks.cancel', 'src/toolkit/assets/AssetTasks.ts#AssetTasks.discard'] }
+      }
+      confirmation = container '明确确认与提交结果' {
+        #todo
+        description '确认固定 taskId 与 artifactId，读取校验后的候选字节，调用 Editing.importAsset 形成统一 EntityChange，然后经 Editing.commit 校验基准与提交。准备阶段零工程写入；提交失败保留明确错误，不宣称已入库，允许继续检视候选。成功后释放候选并返回实体实际重读的资源身份与相对路径。'
+        metadata { todo '选定产物、目标相对路径和明确确认输入已声明，返回资源身份；执行保持 TODO' code ['src/toolkit/assets/AssetTasks.ts#AssetTasks.confirm'] }
+      }
+      review = container '跨请求切片预览与评阅' {
+        #todo
+        description 'renderSlice/review 固定同一 taskId 与 artifactId，从候选读取已校验内容，分别调用确定性切片预览与有来源的远端评阅工作流。预览和意见保持具名结果，不替换原始候选，不自动提交或制造另一个任务状态所有者。'
+        metadata { todo '切片与评阅绑定选定任务产物，结果分别交付；执行保持 TODO' code ['src/toolkit/assets/AssetTasks.ts#AssetTasks.renderSlice', 'src/toolkit/assets/AssetTasks.ts#AssetTasks.review'] }
+      }
+    }
+    asset_generation = container '工作流绑定与远端生成执行' {
+      #common
+      #todo
+      description '消费注入的配置、凭据、有来源工作流、完整请求和取消信号，输出具名产物；不拥有跨请求任务状态、不读写工程、不启动本地推理或旧引擎子进程。唯一生成通道为 RunningHub 原生 ComfyUI；执行和模型错误直接暴露，不回退模型。'
+      metadata {
+        todo '生成、评阅、工作流绑定与原生执行合同已声明；执行保持 TODO'
+        sourcePath 'src/toolkit/asset_generation'
+        files ['src/toolkit/asset_generation/*.ts']
+      }
+      workflows = container '能力白名单与模型绑定' {
+        #todo
+        description '图像生成/编辑、UI 贴图与九宫格、视频/序列帧、音乐、音效及图生 3D 使用明确能力白名单。能力匹配有来源的 workflowId、节点参数与模型文件清单；模型库收藏与创建时间不超过六个月是使用条件。具体 graph、checkpoint 与远端节点未验证则报告缺口，不把旧标准模型 API 名称当作 checkpoint，不承诺可调用。'
+        metadata { todo '能力、请求与 ComfyExecution 输入类型已绑定；生产条目验证与选择保持 TODO' code ['src/toolkit/asset_generation/WorkflowBindings.ts#WorkflowBindings.select'] }
+      }
+      transport = container '原生 ComfyUI 远端传输' {
+        #todo
+        description '原生 HTTP 上传→提交取得 promptId→history 等待完成→下载具名文件；请求与 promptId 绑定，取消停止本地等待并明确交付远端停止事实。没有经核实的任务级取消合同时不调用影响其他任务的全局 interrupt；不伪造服务端取消。'
+        metadata { todo '原生 graph、配置、凭据和信号合同已声明；HTTP 执行保持 TODO' code ['src/toolkit/asset_generation/ComfyExecution.ts#ComfyExecution.execute'] }
+      }
+      entry = container '生成与评阅执行入口' {
+        #todo
+        description 'execute 接收 GenerationRequest 与 signal，返回按 artifactId/MIME/格式及字节流标识的 GenerationOutput；review 接收选定候选和评阅指令，经同一允许工作流执行视觉评阅，输出意见而不自动代替确认。'
+        metadata { todo '具名生成与评阅入口已绑定选择和执行合同；业务保持 TODO' code ['src/toolkit/asset_generation/AssetGeneration.ts#AssetGeneration.execute', 'src/toolkit/asset_generation/AssetGeneration.ts#AssetGeneration.review'] }
+      }
+    }
+    asset_processing = container '产物确定性校验与切片预览' {
+      #common
+      #todo
+      description '输入具名字节及要求，输出解码、格式、尺寸、透明、音视频信息或 3D 文件组校验结果。九宫格显式切片与尺寸案例转成 CanvasDocument，经唯一 CPU renderer 输出预览；不建立另一套九宫格绘制。VLM 意见与确定性校验分开，评阅意见不构成自动确认。'
+      metadata {
+        todo '判别质量要求、校验结果与切片输入输出已声明；处理执行保持 TODO'
+        sourcePath 'src/toolkit/asset_processing'
+        files ['src/toolkit/asset_processing/*.ts']
+      }
+      inspection = container '结构化产物校验' {
+        #todo
+        description '图片、音频、视频和 3D 文件组质量要求使用具名名义类及共同抽象根，以 instanceof 收窄；按各自字段实际解码并校验。PNG 后缀不能证明透明，模型营销不能证明九宫格或可入库格式。失败交付实际诊断并阻止进入 ready 候选。'
+        metadata { todo '质量要求与切片合同已声明；解码和校验保持 TODO' code ['src/toolkit/asset_processing/AssetProcessing.ts#AssetProcessing'] }
+      }
+      slice = container '九宫格预览装配' {
+        #todo
+        description '选定 artifactId、原生 slicedBorderLB/RT 与 slicedRectLB/RT 四组向量和尺寸案例产生结构化 CanvasDocument 及完整图片输入；绘制交给 CPU renderer，输出具名 PNG，不改原候选、不写工程。'
+        metadata { todo '显式切片、尺寸案例和唯一 renderer 输出类型已绑定；预览执行保持 TODO' code ['src/toolkit/asset_processing/AssetProcessing.ts#AssetProcessing.renderSlice'] }
+      }
+    }
+    asset_candidates = container '候选存储与释放' {
+      #common
+      #todo
+      description 'Host Scope 独占候选暂存目录，顺序接收字节流而不复制大 base64 到任务状态。拥有 artifactId→具名格式、校验结果和存储内容映射；read 交付字节流，release 释放指定任务，Scope 关闭释放全部所属资源。IO 仅用于工程外候选，不能调用 ProjectFiles 或实体提交。'
+      metadata {
+        todo '任务产物关联、流式读写和整任务释放端口已声明；IO 执行保持 TODO'
+        sourcePath 'src/toolkit/asset_candidates'
+        files ['src/toolkit/asset_candidates/*.ts']
+      }
+      storage = container 'Scope 内的字节与产物索引' {
+        #todo
+        description 'AssetCandidates 拥有候选文件 IO 和资源寿命；AssetCandidate 只携带 artifactId、格式、校验结果，不暴露内部绝对路径。失败的未完成产物释放；已就绪候选在确认成功、丢弃或 Host 关闭时释放。'
+        metadata { todo 'Host Layer 独占实例与具名存储合同已声明；资源存储和释放保持 TODO' code ['src/toolkit/asset_candidates/AssetCandidates.ts#AssetCandidates.store', 'src/toolkit/asset_candidates/AssetCandidates.ts#AssetCandidates.read', 'src/toolkit/asset_candidates/AssetCandidates.ts#AssetCandidates.release', 'src/toolkit/asset_candidates/CandidateContracts.ts#AssetCandidate'] }
+      }
+    }
+  }
+  extend toolkit.config.logic {
+    assets = container '只读生成参数与凭据端口' {
+      #todo
+      description 'AssetGenerationConfig 明确 endpoint 模板、能力到 workflow/model 绑定，组合根以 Option 表达未启用；AssetCredentials.read 返回 Option，来源错误保持失败，仅 ComfyExecution 开始 HTTP 前读取当次凭据。VS Code 原生 WorkspaceConfiguration 或 Pi toolkit-assets-config 指定文件持有可选明文，公开参数与凭据分别交付；入口和后端不另建存储、加密或跨调用凭据缓存。Host 启动与本地能力不要求凭据，实际远端生成或评阅缺失则失败。'
+      metadata { todo '配置和凭据合同已声明；实际来源注入及凭据读取待接入' code ['src/toolkit/config/AssetGenerationConfig.ts#AssetGenerationConfig', 'src/toolkit/config/AssetCredentials.ts#AssetCredentials.read'] }
+    }
+  }
+  extend toolkit.editing {
+    asset_import = container '资产入库候选准备' {
+      #todo
+      description 'Editing.importAsset 输入选定产物字节、目标工程 RelativePath 和显式确认信息，读取目标目录及引用基准，调用实体原语准备资源、GUID 和必要引用操作的统一 EntityChange。新增资源不用视图 replace 代替；不直接写盘，commit 后由实体实际重读，Host 主动调用 Views 刷新消费者。'
+      metadata { todo '字节流、目标相对路径和确认输入声明，结果复用 EditingCandidate；准备保持 TODO' code ['src/toolkit/editing/Editing.ts#Editing.importAsset'] }
+    }
+  }
+  asset_settings -> toolkit.config.logic '入口选择配置与凭据的唯一来源'
+  toolkit.asset_candidates -> asset_storage '工程外流式暂存与 Scope 释放'
+  toolkit.asset_generation -> runninghub '原生远端执行与只读模型事实查询'
+  toolkit.asset_generation -> resources.asset_workflows '生产 graph 与明确参数绑定'
+  toolkit.asset_generation.workflows -> toolkit.asset_generation.transport '绑定后的原生 ComfyUI graph'
+  toolkit.asset_generation.entry -> toolkit.asset_generation.workflows '选择明确能力和工作流'
+  toolkit.asset_generation.entry -> toolkit.asset_generation.transport '执行具名输入并读取实际结果'
+  toolkit.asset_generation.transport -> toolkit.config.logic.assets '消费注入的公开配置与凭据端口'
+  toolkit.asset_generation.workflows -> toolkit.config.logic.assets '消费固定工作流配置'
+  toolkit.assets.contracts -> toolkit.asset_generation.entry '提交输入绑定原子生成合同'
+  toolkit.assets.contracts -> toolkit.asset_processing.inspection '质量要求绑定唯一产物校验合同'
+  toolkit.assets.contracts -> toolkit.asset_processing.slice '切片结果绑定唯一处理入口'
+  toolkit.assets.contracts -> toolkit.asset_candidates.storage '结果复用候选存储合同'
+  toolkit.assets.contracts -> toolkit.editing.asset_import '确认输入绑定统一入库准备合同'
+  toolkit.assets.scheduler -> toolkit.assets.contracts '具名请求、状态与结果'
+  toolkit.assets.confirmation -> toolkit.assets.contracts '选定产物、相对目标和确认结果'
+  toolkit.assets.review -> toolkit.assets.contracts '选定候选、切片案例及评阅输入与输出'
+  toolkit.asset_generation -> toolkit.config.logic '只读配置与调用边界凭据' #todo {
+    metadata {
+      todo '配置与凭据输入已绑定；读取和远端执行保持 TODO'
+    }
+  }
+  toolkit.assets -> toolkit.asset_generation '任务绑定原子生成与评阅，不转移调度所有权' #todo {
+    metadata {
+      todo '执行依赖与 submit 输入绑定原子生成合同；执行保持 TODO'
+    }
+  }
+  toolkit.assets -> toolkit.asset_processing '产物校验与明确切片预览' #todo {
+    metadata {
+      todo '共享处理服务已装配；质量要求和预览结果绑定成员合同，执行保持 TODO'
+    }
+  }
+  toolkit.assets -> toolkit.asset_candidates '任务关联候选标识、读取确认内容并释放' #todo {
+    metadata {
+      todo '共享候选服务已装配；产物结果复用存储成功类型，执行保持 TODO'
+    }
+  }
+  toolkit.asset_processing -> renderer '切片预览复用唯一 CPU PNG 入口' #todo {
+    metadata { todo '预览直接绑定唯一 renderer 成功类型；执行保持 TODO'   }
+  }
+  toolkit.asset_processing -> renderer.entry '结果类型绑定唯一入口'
+  toolkit.asset_processing -> renderer.contracts '消费预览尺寸与向量合同'
+  toolkit.assets -> toolkit.editing '明确确认准备候选并提交，返回实际资源身份' #todo {
+    metadata {
+      todo '共享 Editing 已装配，确认信息绑定 importAsset 参数；入库执行保持 TODO'
+    }
+  }
+  toolkit.host.logic -> toolkit.assets '同一 Workspace Layer 装配，Host 分发具名资产命令' #todo {
+    metadata {
+      todo '共享 Layer 与八类具名命令分派已连接；任务执行保持 TODO'
+    }
+  }
+  toolkit.asset_processing -> toolkit.asset_generation '只读原子执行交付的具名字节'
+  toolkit.asset_candidates -> toolkit.asset_generation '暂存具名产物字节'
+  toolkit.asset_candidates -> toolkit.asset_processing '保存同一产物的确定性校验结果'
+  toolkit.host.logic -> toolkit.asset_processing '共享工作区处理服务'
+  toolkit.host.logic -> toolkit.asset_candidates '共享工作区候选服务'
+  toolkit.host.tests -> toolkit.asset_processing '真实处理 Layer 验证明确失败与字节保真'
+  toolkit.host.tests -> canvas.renderer_support '复用唯一 CanvasKit Node CPU 后端初始化'
+  toolkit.host.tests -> toolkit.asset_candidates '真实候选 Layer 验证三个入口失败与字节保真'
+  toolkit.host.tests -> toolkit.asset_generation '真实产物字节输入'
+  toolkit.host.tests -> toolkit.config.logic '生成空壳接收明确公开参数和独立凭据端口'
+  toolkit.assets -> specifications.runtime
+  toolkit.host.tests -> toolkit.assets '具名资产任务测试输入'
+  toolkit.asset_generation -> specifications.runtime
+  toolkit.asset_processing -> specifications.runtime
+  toolkit.asset_candidates -> specifications.runtime
+}
+views {
+  dynamic view asset_review_flow {
+    title '07f · 同一候选的切片预览与评阅'
+    toolkit.mcp.logic -> toolkit.host.logic 'renderSlice/review：taskId 与 artifactId'
+    toolkit.host.logic -> toolkit.assets '显式跨请求操作，不自动确认'
+    toolkit.assets -> toolkit.asset_candidates '读取同一候选'
+    toolkit.assets -> toolkit.asset_processing '结构化 slice 与尺寸案例生成 PNG 预览'
+    toolkit.assets -> toolkit.asset_generation '有来源的工作流返回视觉评阅意见'
+    toolkit.host.logic -> toolkit.mcp.logic '交付具名预览或意见，由调用方明确确认'
+  }
+  dynamic view asset_generation_flow {
+    title '07c · 生成、校验、候选与查询'
+    toolkit.mcp.logic -> toolkit.host.logic '提交具名生成请求'
+    toolkit.host.logic -> toolkit.assets 'submit：任务归 Host Scope'
+    toolkit.assets -> toolkit.asset_generation '工作流绑定与原子远端执行'
+    toolkit.asset_generation -> runninghub '上传、prompt、history、view'
+    toolkit.asset_generation -> toolkit.assets '具名产物字节流与执行事实'
+    toolkit.assets -> toolkit.asset_processing '格式与明确质量要求校验'
+    toolkit.assets -> toolkit.asset_candidates '暂存校验后的产物，进入 ready'
+    toolkit.host.logic -> toolkit.assets 'status/result：同 taskId 跨请求查询'
+  }
+  dynamic view asset_confirmation_flow {
+    title '07d · 明确确认、统一候选与实际提交'
+    toolkit.mcp.logic -> toolkit.host.logic 'confirm：taskId、artifactId、目标 RelativePath'
+    toolkit.host.logic -> toolkit.assets '固定选定产物与确认信息'
+    toolkit.assets -> toolkit.asset_candidates '读取校验后的候选字节'
+    toolkit.assets -> toolkit.editing 'importAsset：准备统一 EntityChange，零写盘'
+    toolkit.editing -> toolkit.entities '读取目标与引用基准，构造资源及 GUID 操作'
+    toolkit.assets -> toolkit.editing 'commit：明确提交候选'
+    toolkit.editing -> toolkit.entities '校验基准、提交并实际重读'
+    toolkit.host.logic -> toolkit.entities 'refresh：取得实际提交结果与读取基准'
+    toolkit.host.logic -> toolkit.view_service 'refresh：按实际结果主动刷新派生视图'
+    toolkit.assets -> toolkit.asset_candidates '成功入库后释放候选'
+    toolkit.host.logic -> toolkit.mcp.logic '交付实际资源身份与相对路径'
+  }
+  dynamic view asset_cancel_flow {
+    title '07e · 取消、丢弃与资源释放'
+    toolkit.host.logic -> toolkit.assets '显式 cancel、discard 或关闭 Scope'
+    toolkit.assets -> toolkit.asset_generation '中断本地执行，报告远端停止事实'
+    toolkit.assets -> toolkit.asset_candidates '释放所属未完成或丢弃候选'
+  }
+  view assets_context {
+    title '07 · 资产管线系统上下文'
+    include frontend
+    include pi_agent
+    include toolkit
+    include runninghub
+    include asset_settings
+    include asset_storage
+  }
+  view assets_pipeline of toolkit {
+    title '07a · 资产任务、执行与候选容器'
+    include toolkit.host.logic
+    include toolkit.mcp.logic
+    include toolkit.config.logic
+    include toolkit.assets
+    include toolkit.asset_generation
+    include toolkit.asset_processing
+    include toolkit.asset_candidates
+    include toolkit.editing
+    include toolkit.entities
+    include renderer
+  }
+  view assets_components of toolkit {
+    title '07b · 资产组件与代码端口'
+    include toolkit.assets.*
+    include toolkit.asset_generation.*
+    include toolkit.asset_processing.*
+    include toolkit.asset_candidates.*
+    include toolkit.editing.asset_import
+  }
+}

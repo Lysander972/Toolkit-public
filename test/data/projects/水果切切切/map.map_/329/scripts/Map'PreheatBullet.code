@@ -1,0 +1,19 @@
+begincodeV2
+name:Map'PreheatBullet
+comment:预热单一子弹
+params:String key,Long count,Long faction
+lines:
+act 1101.this.Bullet'RegisterModelType(var key)
+Long 计数=fun create.long(Long 0)
+while{fun long.lt(var 计数:var count)
+  Float x=fun math.rand(Float -100000:Float 100000)
+  Float y=fun math.rand(Float -100000:Float -90000)
+  Float z=fun math.rand(Float -100000:Float 100000)
+  Vector3 pos=fun creatVariable.Vector3(var x:var y:var z)
+  Mech mech=act 1101.this.Bullet'New(var key:var pos:Vector3 1,0,0:var faction)
+  Device core=varf Mech.mech.getCoreDevice()
+  =varf Device.core.callReturnBool0(String Public'Close)
+  act 1101.this.Bullet'OnReclaim(var mech:var key)
+  varf Long.计数.addEqual(Long 1)
+}
+endcode

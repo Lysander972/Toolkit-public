@@ -1,0 +1,30 @@
+guid:f8a7552773c94e8cbdf320993d09fab0
+meshes:
+[
+ {
+  n:PricklyPear_Pink
+ }
+]
+matFolderName:22365157774247f1ab01605f45d21c3c
+Albedo.UID:22365157774247f1ab01605f45d21c3c
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.1571165,0]
+bounds.size:[0.2657425,0.3142329,0.2657425]

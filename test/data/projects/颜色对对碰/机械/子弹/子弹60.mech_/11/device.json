@@ -1,0 +1,12 @@
+type:1100
+pos:[3.71933E-05,0,4.529956E-06]
+quat:[3.090861E-08,-0.7071071,-0.7071065,4.773829E-06]
+enableManualWeld:true
+attach:
+[
+]
+ext:
+{
+ boolOneMechOnlyOnce:true
+ renderMode:1
+}

@@ -1,0 +1,12 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.setMass(Float 0)
+act 1.this.switchCollider(Bool 0)
+act 1100./伤害计算区.setLayer(Float 4)
+act 1100./伤害计算区.show(Bool 0)
+act 1100./伤害计算区.setMass(Float 0)
+act 1100./伤害计算区.switchCollider(Bool 1)
+endcode

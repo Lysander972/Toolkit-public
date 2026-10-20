@@ -1,0 +1,41 @@
+type:337
+pos:[4.371145E-09,0.5,3.821376E-16]
+quat:[0.4999997,0.5000003,-0.4999999,0.5000002]
+scale:0.2
+ext:
+{
+ logicName:高级加速
+ startLifetimeMultiplier:0.2
+ startSpeed:[100,100]
+ startSize:[50,60]
+ startRotationX:[0,0]
+ startRotationY:[-0.08726646,-0.08726646]
+ startRotation:[0,0]
+ startColor.min:[1,0.7960784,0.5333334,1]
+ startColor.max:[1,0.6470588,0.5333334,1]
+ customData1.x:1.5
+ emission:true
+ modelFileGuids:483a5f1e2e734e5797779f81f8b8179c;
+ rateOverTime:100
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.1432364:1,1,1,1"
+  "0.1538872:1,1,1,1"
+  "0.1544213:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:0.2952145"
+  "0.03567623:0.4142619"
+  "0.09904151:0.4698174"
+  "1:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ renderAlign:2
+ lengthScale:2
+ matType:3
+}

@@ -1,0 +1,53 @@
+type:337
+pos:[5.017E-09,0,4.386001E-16]
+quat:[-0.4999999,-0.5000002,-0.4999997,0.5000003]
+ext:
+{
+ logicName:粒子
+ startLifetimeMultiplier:5
+ startSpeed:[32,48]
+ startSize:[0.2,0.2]
+ startRotationX:[0,3.141593]
+ startRotationY:[0,3.141593]
+ startRotation:[0,3.141593]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:1
+ gravityModifierMultiplier:1
+ boolBurst:true
+ modelFileGuids:e21b77e06715432e9419111bf0d6da08;21a2f3bcd7e74a2fa689f56184a761b0;9f740c738bf74332935d048691d66de4;8a7ea275f1af45c8afbbd42760da21f7;2e09dfffd7b64dad89da0aaf26a07cfd;
+ rateOverTime:1
+ angle:30
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.2500038:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,1"
+ ]
+ sizeOverLifetime:
+ [
+  "0:1"
+  "0.2428115:0.9936273"
+  "0.5042599:1"
+  "0.7641107:1"
+  "1:0"
+ ]
+ rotSpeed:10
+ rotationOverLifetime.max:
+ [
+  "0:1"
+  "0.25:0"
+  "0.5:0"
+  "0.75:0"
+  "1:0"
+ ]
+ renderMode:4
+ renderAlign:1
+ lengthScale:2
+ collision:true
+ collisionDampen:0.3
+ collisionBounce:0.8
+}

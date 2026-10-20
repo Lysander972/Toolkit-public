@@ -1,0 +1,22 @@
+begincodeV2
+private:1
+color:140,255,0
+name:Skills'1300s_OnDeath
+comment:香蕉亡语
+lines:
+delay fun create.float(Float 0)
+if{fun float.gte(var Attr'HP:Float -1000)
+  Long type=fun long.add(var Attr'Type:Long 1)
+  =act 1.this.Launcher'LaunchUniformlyWithP(var type:Float -180:Float 0:Long 5:Float 3:Float 0:Bool 0:Bool 1:var Creator:Float 1:Float 0:Float 1:Bool 0:Float 0)
+  //数字
+  Long 类型=fun create.long(Long 3)
+  Bool 是否暴击=fun create.bool(Bool 0)
+  Vector3 pos=act 1.this.Public'GetCenter()
+  varf Device.map_handler.callFun4(String 数字效果'产生效果:var Attr'maxHP:var 类型:var 是否暴击:var pos)
+  Bool 简化特效生效=fun map.getCustomBool(String 简化特效生效标志位)
+  if{fun bool.not(var 简化特效生效)
+    //震动和慢镜头
+    fun screen.shake(Float 0.1:Float 2000:Float 0.8)
+  }
+}
+endcode

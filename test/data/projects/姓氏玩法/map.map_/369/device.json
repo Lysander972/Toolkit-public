@@ -1,0 +1,9 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:碎片1
+ boolShowFollowIcon:true
+ mechFileGUID:b87ddb7e316b4f358d4b33674c7c1a00
+}

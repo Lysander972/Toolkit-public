@@ -1,0 +1,16 @@
+begincodeV2
+name:技能'50
+comment:大炮塔
+lines:
+Long $type=fun create.long(Long 50)
+String $skillKey=fun create.string(var $type)
+if{act 1.this.Skill'Greater(var $skillKey:Long 0)
+  String $mutexkey=fun create.string(var Faction)
+  if{varf Device.map_handler.callReturnBool1(String Mutex'GetMutex:var $mutexkey)
+    =act 1.this.Launcher'LaunchUniformlyAuto(var $type:Float 0:Long 3:Float 16:Float 1:Bool 1:var $skillKey:Long 0)
+    delay fun create.float(Float 1)
+    varf Device.map_handler.callFun1(String Mutex'ReleaseMutex:var $mutexkey)
+    delay fun create.float(Float 1)
+  }
+}
+endcode

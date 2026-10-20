@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:场外装饰
+ mechFileGUID:3b30d75bdc734d9f96a486d8fdfe112a
+}

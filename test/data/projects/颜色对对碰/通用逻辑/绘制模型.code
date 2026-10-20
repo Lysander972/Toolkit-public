@@ -1,0 +1,12 @@
+begincodeV2
+guid:64840238012b44c0aa87ef97de7cc256
+name:绘制模型
+params:String 模型名称,Vector3 局部坐标,Vector3 局部向前方向,Vector3 局部向上方向,Vector3 缩放
+lines:
+Vector3 世界偏移=fun camera.localToWorldDir(var 局部坐标:Float 0)
+Vector3 原点=fun camera.pos()
+Vector3 世界坐标=fun vector3.add(var 世界偏移:var 原点)
+Vector3 世界向前方向=fun camera.localToWorldDir(var 局部向前方向:Float 0)
+Vector3 世界向上方向=fun camera.localToWorldDir(var 局部向上方向:Float 0)
+fun echoMesh2(var 模型名称:var 世界坐标:var 世界向前方向:var 世界向上方向:var 缩放)
+endcode

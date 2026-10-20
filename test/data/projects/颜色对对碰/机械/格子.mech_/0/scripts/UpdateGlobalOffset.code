@@ -1,0 +1,6 @@
+begincodeV2
+name:UpdateGlobalOffset
+params:Vector3 $globalOffset
+lines:
+Vector3 GlobalOffset=varf Vector3.$globalOffset.copy()
+endcode

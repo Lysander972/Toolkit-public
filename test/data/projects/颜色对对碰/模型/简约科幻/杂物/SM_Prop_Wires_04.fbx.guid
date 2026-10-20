@@ -1,0 +1,31 @@
+guid:404b23dd03e64a46a590c2b04d2cff3b
+meshes:
+[
+ {
+  n:SM_Prop_Wires_04
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[1.525506E-06,-5.960464E-08,0]
+bounds.size:[0.05284729,1.91434,0.05285339]

@@ -1,0 +1,20 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'AfterChangeHP
+comment:HP变更后
+params:Float $oldHP,Float $newHP
+lines:
+=fun create.float(var $oldHP)
+=fun create.float(var $newHP)
+if{fun create.bool(var Occupied)
+  Float 升降高度=fun float.division(var $newHP:var OccupiedMax)
+}
+if{fun bool.not(var Occupied)
+  Float 升降高度=fun float.division(var $newHP:var InitialMax)
+}
+Float 升降高度=fun float.multiply(var 升降高度:Float 2)
+Float 升降高度=varf Float.升降高度.round()
+Float 升降高度=fun float.division(var 升降高度:Float 2)
+act 1.this.Lifting'SetTarget(var 升降高度)
+endcode

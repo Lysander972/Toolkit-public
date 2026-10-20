@@ -1,0 +1,5 @@
+begincodeV2
+name:Public'ManualRefreshAvatar
+lines:
+act 1.this.模型'手动刷新显示()
+endcode

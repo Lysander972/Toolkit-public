@@ -1,0 +1,7 @@
+begincodeV2
+guid:d4cd3ce86625491283430d8281b32cd2
+name:挂载单一事件
+params:Dict 事件
+lines:
+varf List.挂载事件列表.add(var 事件)
+endcode

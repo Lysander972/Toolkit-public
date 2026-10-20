@@ -1,0 +1,26 @@
+guid:a9576403864140848dd6c8df3d1f5127
+meshes:
+[
+ {
+  n:SM_Ship_Stealth_04
+ }
+]
+matFolderName:c2bdfa604c8540139dcac56fa05cb892
+Albedo.UID:c2bdfa604c8540139dcac56fa05cb892
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.907349E-06,0,3.099442E-06]
+bounds.size:[9.34853,5.321218,15.65533]

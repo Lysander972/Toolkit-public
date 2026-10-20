@@ -1,0 +1,160 @@
+begincodeV2
+color:221,0,255
+name:技能'1002_全局自动暖场
+lines:
+String $key=fun create.string(String 1002)
+if{act 1.this.Skills'Greater(var $key:Long 0)
+  Long value=act 1.this.Skills'GetValue(var $key)
+  =act 1.this.Skills'Decrease(var $key:var value)
+}
+Float 当前时间=fun time.scaleTime()
+if{fun float.gte(var 当前时间:var 自动暖场时间)
+  Float 攻方玩家数=fun map.getCustomFloat(String 攻方玩家数)
+  Float 守方玩家数=fun map.getCustomFloat(String 守方玩家数)
+  Float 人数差=fun float.minus(var 守方玩家数:var 攻方玩家数)
+  Float 人数差=fun float.max(var 人数差:Float 1)
+  if{fun float.gte(var 人数差:Float 0.1)
+    Bool 达到阈值=fun create.bool(Bool 0)
+    Mech 最前单位=varf Device.map_handler.callReturnMech0(String 瞄准'得到目标)
+    if{varf Mech.最前单位.alive()
+      Vector3 坐标=varf Mech.最前单位.corePos()
+      Float z=varf Vector3.坐标.z()
+      Bool 达到阈值=fun float.lte(var z:Float 80)
+    }
+    Float 血量倍数=fun create.float(Float 0.333334)
+    Long 总权重=varf Device.map_handler.callReturnLong0(String Bullet'得到水果方强度)
+    Float 强度比例=fun long.division(var 总权重:Long 240)
+    Float 预期刷新强度=fun float.minus(Float 1:var 强度比例)
+    Float 预期刷新强度=fun float.clamp(var 预期刷新强度:Float 0:Float 1)
+    Float 预期刷新强度=fun float.pow(var 预期刷新强度:Float 1.15)
+    Float 强度乘数=fun float.multiply(var 人数差:Float 0.05)
+    Float 额外强度修正=fun float.pow(var 守方玩家数:Float 2)
+    Float 额外强度修正=fun float.multiply(var 额外强度修正:Float 0.007)
+    varf Float.强度乘数.addEqual(var 额外强度修正)
+    Float 强度乘数=fun float.clamp(var 强度乘数:Float 0:Float 1)
+    if{fun create.bool(var 达到阈值)
+      Float 强度乘数=fun float.multiply(var 强度乘数:Float 0.5)
+    }
+    Float 刷新数F=fun float.multiply1(var 预期刷新强度:Float 100:var 强度乘数)
+    Long 刷新数=varf Float.刷新数F.toLong()
+    Long 刷新数=fun long.clamp(var 刷新数:Long 0:Long 100)
+    Long 水果数量=fun create.long(Long 0)
+    while{fun long.lt(var 水果数量:var 刷新数)
+      varf Long.水果数量.addEqual(Long 1)
+      Long 随机放置=fun long.rand(Long 0:Long 14)
+      Float 水果大类随机=fun math.rand(Float 0:Float 1)
+      if{fun float.lt(var 水果大类随机:Float 0.2)
+        Long 小型水果随机=fun long.rand(Long 0:Long 119)
+        Bool bool1=fun long.lt(var 小型水果随机:Long 44)
+        Bool bool2=fun long.gte(var 小型水果随机:Long 0)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1000:var 属性'玩家:var 血量倍数:Float 0:Float 1)
+        }
+        Bool bool1=fun long.lt(var 小型水果随机:Long 46)
+        Bool bool2=fun long.gte(var 小型水果随机:Long 44)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1001:var 属性'玩家:var 血量倍数:Float 0:Float 1)
+        }
+        Bool bool1=fun long.lt(var 小型水果随机:Long 90)
+        Bool bool2=fun long.gte(var 小型水果随机:Long 46)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1002:var 属性'玩家:var 血量倍数:Float 0:Float 1)
+        }
+        Bool bool1=fun long.lt(var 小型水果随机:Long 105)
+        Bool bool2=fun long.gte(var 小型水果随机:Long 90)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1003:var 属性'玩家:var 血量倍数:Float 0:Float 1)
+        }
+        Bool bool1=fun long.lt(var 小型水果随机:Long 120)
+        Bool bool2=fun long.gte(var 小型水果随机:Long 105)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1004:var 属性'玩家:var 血量倍数:Float 0:Float 1)
+        }
+      }
+      if{fun float.gte(var 水果大类随机:Float 0.8)
+        Float 大型水果随机=fun math.rand(Float 0:Float 1)
+        //大型水果,占据刷新的主体
+        //蓝色无花果
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.05)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1010:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //绿色无花果
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.05)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.1)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1011:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //紫色无花果
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.1)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.15)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1012:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //黄色无花果
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.15)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.2)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1013:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //哈密瓜
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.2)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.3)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1014:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //橙子
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.3)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.4)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1015:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //火龙果
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.4)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.5)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1016:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //菠萝
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.5)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.6)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1017:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //柠檬
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.6)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.7)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1018:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //红色柿子
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.7)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.75)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1019:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //橙色柿子
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.75)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.8)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1020:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //桃子
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.8)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 0.9)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1021:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+        //杏
+        Bool bool1=fun float.gte(var 大型水果随机:Float 0.9)
+        Bool bool2=fun float.lt(var 大型水果随机:Float 1.01)
+        if{fun bool.and(var bool1:var bool2)
+          =act 1.this.Launcher'攻方出生点放置(var 随机放置:Long 1022:var 属性'玩家:Float 1:Float 0:var 血量倍数)
+        }
+      }
+    }
+  }
+}
+delay fun create.float(Float 0.5)
+endcode

@@ -1,0 +1,27 @@
+begincodeV2
+name:UI_Tip'SelectRandom
+lines:
+Float totalFactor=fun create.float(Float 5)
+Float index=varf List.Tip'SubPanels.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  UIRect subPanel=varf List.Tip'SubPanels.readUIRect(var index)
+  Float factor=varf UIRect.subPanel.customFloat(String factor)
+  varf Float.totalFactor.addEqual(var factor)
+}
+Float randValue=fun math.rand(Float 0:var totalFactor)
+Float result=fun create.float(Float -1)
+Float currentfactor=fun create.float(Float 0)
+Float index=varf List.Tip'SubPanels.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  UIRect subPanel=varf List.Tip'SubPanels.readUIRect(var index)
+  Float factor=varf UIRect.subPanel.customFloat(String factor)
+  varf Float.currentfactor.addEqual(var factor)
+  if{fun float.gte(var currentfactor:var randValue)
+    Float result=fun create.float(var index)
+    fun break()
+  }
+}
+act 1101.this.UI_Tip'SetTip(var result)
+endcode

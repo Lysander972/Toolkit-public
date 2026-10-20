@@ -1,0 +1,10 @@
+begincodeV2
+name:功能设置持久化'下载音量值并应用
+lines:
+Float 功能设置'音量值=fun create.float(Float 0.5)
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 音量存档标志位)
+  Float 功能设置'音量值=varf Dict.data.readFloat(String 音量存档标志位:Bool 0)
+}
+act 1101.this.UI_功能面板'应用并刷新音量显示(var 功能设置'音量值)
+endcode

@@ -1,0 +1,23 @@
+begincodeV2
+skip:1
+name:方法2
+lines:
+Canvas 测试=fun create.canvas(Canvas canvas@1@3EAEAEQsABHR5cGUGClNjcm9sbFJlY3QEbmFtZQYM5ruR5Yqo5Yy65Z+fA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAA+kMAAPpDAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAAC0JvcmRlcldpZHRoAQAAgD8GUmFkaXVzAQAAAAAOc2Nyb2xsVmVydGljYWwFAARzb25zEAEAEQ8ABHR5cGUGBlVJUmVjdARuYW1lBgzmu5HliqjpnaLmnb8DUG9zBAAAAAAAAHy6AAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAAD6QwAA+kMAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAD6Qw1zbGljZWRQaWNHdWlkBiA3MzhkMTUyYWE4NGQ0ZTE5OGNmZTRmZDJkMzcwMDg5OQ5zbGljZWRCb3JkZXJMQgQAAAAAAAAAAAAAAAAOc2xpY2VkQm9yZGVyUlQEAAAAAAAAAAAAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAA8EIAALRDAAAAAARzb25zEAEAEQkABHR5cGUGBlVJUmVjdARuYW1lBgfml6DlkI0xA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAEAAAAAAAAABmFuY2hvchgBAAAAAAAAAARzaXplBAAAyEIAAMhCAACAPwVjb2xvcgwAAIA/AAAAAAAAAAAAAIA/C0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAIEE@3)
+UIRect 面板=varf Canvas.测试.readUIRect(String 滑动区域/滑动面板)
+delay fun create.float(Float 0.1)
+//原UI是500*500,放大到500*2000,应该基于原布局坐标向下移750像素抵消子UI的位置变化
+varf UIRect.面板.size(Vector3 2e+03,500,0)
+Vector3 布局坐标=varf UIRect.面板.getCanvasPos()
+Vector3 布局坐标=fun vector3.add(var 布局坐标:Vector3 -750,0,0)
+varf UIRect.面板.setCanvasPos(var 布局坐标)
+delay fun create.float(Float 0)
+/*varf UIRect.面板.size(Vector3 500,500,0)
+/*Vector3 布局坐标=varf UIRect.面板.getCanvasPos()
+/*Vector3 布局坐标=fun vector3.add(var 布局坐标:Vector3 750,0,0)
+/*varf UIRect.面板.setCanvasPos(var 布局坐标)
+//原UI是500*500,放大到500*2000,应该基于原布局坐标向下移750像素抵消子UI的位置变化
+/*varf UIRect.面板.size(Vector3 500,2e+03,0)
+/*Vector3 布局坐标=varf UIRect.面板.getCanvasPos()
+/*Vector3 布局坐标=fun vector3.add(var 布局坐标:Vector3 0,-7.5e+03,0)
+/*varf UIRect.面板.setCanvasPos(var 布局坐标)
+endcode

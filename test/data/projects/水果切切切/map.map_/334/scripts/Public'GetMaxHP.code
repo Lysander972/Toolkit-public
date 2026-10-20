@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'GetMaxHP
+comment:最大生命值
+return:Float hp
+lines:
+Float hp=fun create.float(var Attr'maxHP)
+endcode

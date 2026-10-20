@@ -1,0 +1,49 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'按钮_进入游戏主界面
+lines:
+//更新各项设置
+Long 局内_游戏规则'获胜规则=fun create.long(var UI_局外主菜单'获胜规则)
+//团队模式会使用预设队伍
+if{fun long.equal(var UI_局外主菜单'玩法模式:Long 0)
+  Bool 局外功能设置'个人模式=fun create.bool(Bool 0)
+  Bool 局外功能设置'预设队伍=fun create.bool(Bool 1)
+}
+if{fun long.equal(var UI_局外主菜单'玩法模式:Long 1)
+  Bool 局外功能设置'个人模式=fun create.bool(Bool 1)
+  Bool 局外功能设置'预设队伍=fun create.bool(Bool 0)
+}
+//15/25/45分钟
+if{fun long.equal(var UI_局外主菜单'玩法时长:Long 0)
+  Float 局内_游戏规则'本局时长=fun create.float(Float 900)
+  Bool 是GM=act 1101./主界面.工具'是GM()
+  if{fun create.bool(var 是GM)
+    Float 局内_游戏规则'本局时长=fun create.float(Float 190)
+  }
+}
+if{fun long.equal(var UI_局外主菜单'玩法时长:Long 1)
+  Float 局内_游戏规则'本局时长=fun create.float(Float 1500)
+}
+if{fun long.equal(var UI_局外主菜单'玩法时长:Long 2)
+  Float 局内_游戏规则'本局时长=fun create.float(Float 2700)
+}
+//风格决定具体使用的实现
+if{fun long.equal(var UI_局外主菜单'风格设置:Long 0)
+  //3D
+/*  Device 局外功能设置'使用风格实现=act 1101./条形图立体.getDevice()
+  Device 局外功能设置'使用风格实现=act 1101./柱子固定视角.getDevice()
+}
+if{fun long.equal(var UI_局外主菜单'风格设置:Long 1)
+  //基础风格-仙侠水平
+  Device 局外功能设置'使用风格实现=act 1101./柱子固定视角.getDevice()
+}
+if{fun long.equal(var UI_局外主菜单'风格设置:Long 2)
+  //扩展风格-仙侠纵向
+  Device 局外功能设置'使用风格实现=act 1101./条形图横向.getDevice()
+}
+if{fun long.equal(var UI_局外主菜单'风格设置:Long 3)
+  //无效
+  Device 局外功能设置'使用风格实现=act 1101./条形图纵向.getDevice()
+}
+act 1101.this.UI_局内'游戏主界面_进入()
+endcode

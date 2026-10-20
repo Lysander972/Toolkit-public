@@ -1,0 +1,7 @@
+begincodeV2
+name:Public'SetWeight
+params:Float $weight
+lines:
+/*act 1.this.setMass(var $weight)
+act 22.6.setMass(var $weight)
+endcode

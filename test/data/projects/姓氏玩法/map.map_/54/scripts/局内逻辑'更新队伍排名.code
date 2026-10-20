@@ -1,0 +1,63 @@
+begincodeV2
+name:局内逻辑'更新队伍排名
+lines:
+if{fun create.bool(var 局内'队伍_更新排名需求)
+  //初始化最值标记
+  Long 临时_最大value_id=fun create.long(Long -1)
+  Long 临时_最小value_id=fun create.long(Long -1)
+  Long 临时_最大value=fun create.long(Long 0)
+  Long 临时_最小value=fun create.long(Long 0)
+  Long 临时_SUM_value=fun create.long(Long 0)
+  Long 临时_最快speedid=fun create.long(Long -1)
+  Long 临时_最大speed=fun create.long(Long 0)
+  //遍历全部已激活队伍
+  Float 激活队伍总数=varf List.局内'队伍_激活队伍列表.count()
+  Float 序号=fun create.float(Float 0)
+  while{fun float.lt(var 序号:var 激活队伍总数)
+    Struct 队伍结构=varf List.局内'队伍_激活队伍列表.readStruct(var 序号)
+    Long 队伍id=act 1101.this.队伍结构'读取_id(var 队伍结构)
+    //当前速度,无论怎样减速至少保持1点速度
+    Long 当前speed=act 1101.this.队伍结构'读取_speed(var 队伍结构)
+    Long 当前value=act 1101.this.队伍结构'读取_value(var 队伍结构)
+    //更新最值
+    Bool 条件1=fun long.equal(var 临时_最大value_id:Long -1)
+    Bool 条件2=fun long.gt(var 当前value:var 临时_最大value)
+    if{fun bool.or(var 条件1:var 条件2)
+      Long 临时_最大value_id=fun create.long(var 队伍id)
+      Long 临时_最大value=fun create.long(var 当前value)
+    }
+    Bool 条件3=fun long.equal(var 临时_最小value_id:Long -1)
+    Bool 条件4=fun long.lt(var 当前value:var 临时_最小value)
+    if{fun bool.or(var 条件3:var 条件4)
+      Long 临时_最小value_id=fun create.long(var 队伍id)
+      Long 临时_最小value=fun create.long(var 当前value)
+    }
+    //记录全场分数
+    varf Long.临时_SUM_value.addEqual(var 当前value)
+    Bool 条件5=fun long.equal(var 临时_最小value_id:Long -1)
+    Bool 条件6=fun long.gt(var 当前speed:var 临时_最大speed)
+    if{fun bool.or(var 条件5:var 条件6)
+      Long 临时_最快speedid=fun create.long(var 队伍id)
+      Long 临时_最大speed=fun create.long(var 当前speed)
+    }
+    varf Float.序号.addEqual(Float 1)
+  }
+  Long 局内'全局_value最大id=fun create.long(var 临时_最大value_id)
+  Long 局内'全局_value最小id=fun create.long(var 临时_最小value_id)
+  Long 局内'全局_最大value=fun create.long(var 临时_最大value)
+  Long 局内'全局_最小value=fun create.long(var 临时_最小value)
+  Long 局内'全局_SUM_value=fun create.long(var 临时_SUM_value)
+  Long 局内'全局_speed最大id=fun create.long(var 临时_最快speedid)
+  //重排顺序
+  varf List.局内'队伍_激活队伍列表.sort2(Bool 0:String internal_value)
+  //应用序号
+  Float 循环=fun create.float(Float 0)
+  Float 激活队伍数量=varf List.局内'队伍_激活队伍列表.count()
+  while{fun float.lt(var 循环:var 激活队伍数量)
+    Struct 队伍结构=varf List.局内'队伍_激活队伍列表.readStruct(var 循环)
+    act 1101.this.队伍结构'设置_rank(var 队伍结构:var 循环)
+    varf Float.循环.addEqual(Float 1)
+  }
+  Bool 局内'队伍_更新排名需求=fun create.bool(Bool 0)
+}
+endcode

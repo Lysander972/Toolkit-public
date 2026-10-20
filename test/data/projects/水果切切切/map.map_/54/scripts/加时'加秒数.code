@@ -1,0 +1,26 @@
+begincodeV2
+name:加时'加秒数
+params:Float 每个增加,Long 增加次数,Struct 玩家
+lines:
+if{fun create.bool(var 场外功能设置'启用加时)
+  Float 增加次数F=varf Long.增加次数.toFloat()
+  Float 增加总量=fun float.multiply(var 增加次数F:var 每个增加)
+  Float 增加后时间=fun float.add(var GameDuration:var 增加总量)
+  //得到标准时间
+  Float time=fun float.multiply(Float 20:Float 60)
+  if{fun long.equal(var GameSettings1:Long 2)
+    Float time=fun float.multiply(Float 30:Float 60)
+  }
+  if{fun long.equal(var GameSettings1:Long 3)
+    Float time=fun float.multiply(Float 45:Float 60)
+  }
+  Float time=fun float.multiply(var time:Float 1.5)
+  Float 剩余可加=fun float.minus(var time:var 增加后时间)
+  Bool 超过上限=fun float.gte(var 增加后时间:var time)
+  Float 增加后时间=fun float.min(var 增加后时间:var time)
+  Float 实际增加值=fun float.minus(var 增加后时间:var GameDuration)
+  Float GameDuration=fun create.float(var 增加后时间)
+  act 1101.this.播报元素'加时布局创建或更新蓝(var 玩家:var 实际增加值:var 超过上限)
+  act 1101.this.UI'刷新上限提升上(var 剩余可加)
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+name:Public'Open
+lines:
+act 141.8.show(Bool 1)
+act 1.this.彩带过渡(Float 0.1)
+fun break()
+/*act 141.8.enableCollide(Bool 1)
+/*act 1.this.enableCollide(Bool 1)
+endcode

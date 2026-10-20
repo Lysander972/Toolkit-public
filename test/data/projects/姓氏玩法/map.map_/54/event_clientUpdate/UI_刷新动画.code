@@ -1,0 +1,16 @@
+begincodeV2
+name:UI_刷新动画
+lines:
+Float 序号=varf List.UI'动画控制_维护节点表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  UIRect 当前节点=varf List.UI'动画控制_维护节点表.readUIRect(var 序号)
+  Bool 存在=varf UIRect.当前节点.exist()
+  if{fun create.bool(var 存在)
+    act 1101.this.动画控制'更新组件(var 当前节点)
+  }
+  if{fun bool.not(var 存在)
+    varf List.UI'动画控制_维护节点表.remove(var 序号)
+  }
+}
+endcode

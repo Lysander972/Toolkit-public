@@ -1,0 +1,15 @@
+begincodeV2
+name:加速线跟随摄像机
+lines:
+Vector3 摄像机坐标=fun camera.pos()
+Vector3 摄像机方向=fun camera.foward()
+Vector3 偏移量=varf Vector3.摄像机方向.copy()
+Vector3 偏移量=varf Vector3.偏移量.setLength(Float 1)
+Vector3 偏移量=fun vector3.multilply(var 偏移量:Float 20)
+Vector3 调整坐标=fun vector3.add(var 摄像机坐标:var 偏移量)
+Float y=varf Vector3.调整坐标.y()
+Float y=fun float.max(var y:Float 100)
+varf Vector3.调整坐标.setY(var y)
+act 337./场景加速线.setPosKinematic(var 调整坐标)
+/*act 337./场景云.setPosKinematic(var 调整坐标)
+endcode

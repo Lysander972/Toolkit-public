@@ -1,0 +1,30 @@
+guid:2267be31ee644753b4dd71f138f1e4ff
+meshes:
+[
+ {
+  n:Mango_Red
+ }
+]
+matFolderName:b71241f561b34f55ae2585f70900fa90
+Albedo.UID:b71241f561b34f55ae2585f70900fa90
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.490116E-08,0.2063099,2.051038E-31]
+bounds.size:[0.35328,0.4126197,0.3359894]

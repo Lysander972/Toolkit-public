@@ -1,0 +1,19 @@
+begincodeV2
+private:1
+name:Skills'1400
+comment:冰块被动-持续冰冻
+lines:
+delay fun create.float(Float 5)
+if{fun create.bool(var Attr'Alive)
+  Vector3 坐标=act 1.this.getPosition()
+  Float 序号=fun create.float(Float 40)
+  Float 尺寸=fun create.float(Float 4)
+  varf Device.map_handler.callFun3(String 发射特效:var 坐标:var 序号:var 尺寸)
+/*  Device this=act 1.this.getDevice()
+  Float 冰冻时长=fun create.float(Float 3)
+  Float 额外冻结=fun create.float(Float 0)
+  varf Device.map_handler.callFun2(String 炮塔'随机范围冰冻:var 冰冻时长:var 额外冻结)
+  Float 冻结特效=fun create.float(Float 2)
+  act 1.this.callMapFunc1(String 弹幕.UI'设置冰冻边框:var 冻结特效)
+}
+endcode

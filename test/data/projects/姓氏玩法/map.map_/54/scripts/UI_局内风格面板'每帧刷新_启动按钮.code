@@ -1,0 +1,7 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新_启动按钮
+lines:
+Bool 已开局=fun bool.or(var 局内'游戏中:var 局内'已结算)
+Bool 显示按钮=fun bool.not(var 已开局)
+varf UIRect.UI_局内风格面板'底部区域.active(var 显示按钮)
+endcode

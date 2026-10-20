@@ -1,0 +1,28 @@
+begincodeV2
+name:动图'应用动图
+comment:非合法范围不会注册且将自动隐藏图片
+params:UIRawImage icon,Long 组id
+lines:
+if{varf UIRawImage.icon.exist()
+  if{fun long.gte(var 组id:Long 8)
+    varf UIRawImage.icon.loadPic(String 透明贴图.png)
+    varf UIRawImage.icon.active(Bool 0)
+    fun break()
+  }
+  if{fun long.lte(var 组id:Long 0)
+    varf UIRawImage.icon.loadPic(String 透明贴图.png)
+    varf UIRawImage.icon.active(Bool 0)
+    fun break()
+  }
+  varf UIRawImage.icon.active(Bool 1)
+  varf Long.组id.minusEqual(Long 1)
+  Float index=varf Long.组id.toFloat()
+  varf UIRawImage.icon.setCustomFloat(String groupindex:var index)
+  varf UIRawImage.icon.setCustomFloat(String frameindex:Float 0)
+  Bool reg=varf UIRawImage.icon.customBool(String reg)
+  if{fun bool.not(var reg)
+    varf UIRawImage.icon.setCustomBool(String reg:Bool 1)
+    varf List.动图'维护列表.add(var icon)
+  }
+}
+endcode

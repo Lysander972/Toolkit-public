@@ -1,0 +1,6 @@
+begincodeV2
+color:255,222,0
+name:声效_按钮效果_点击声效
+lines:
+fun audio.playEffect(Enum 0:Float 1)
+endcode

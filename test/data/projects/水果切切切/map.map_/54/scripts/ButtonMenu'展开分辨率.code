@@ -1,0 +1,6 @@
+begincodeV2
+name:ButtonMenu'展开分辨率
+lines:
+UIRect 分辨率框=varf Canvas.MenuUI.readUIRect(String panel/分辨率选择)
+varf UIRect.分辨率框.active(Bool 1)
+endcode

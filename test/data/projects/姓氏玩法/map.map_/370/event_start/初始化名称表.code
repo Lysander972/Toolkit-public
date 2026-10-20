@@ -1,0 +1,10 @@
+begincodeV2
+name:初始化名称表
+lines:
+Long 后缀=fun create.long(Long 1)
+while{fun long.lte(var 后缀:Long 7)
+  String 名称=fun string.Format1(String 碎片组2_%1.fbx:var 后缀)
+  varf List.模型名称列表.add(var 名称)
+  varf Long.后缀.addEqual(Long 1)
+}
+endcode

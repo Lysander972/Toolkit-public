@@ -1,0 +1,16 @@
+begincodeV2
+name:守方检测区'增加长度
+params:Float sec,Long count,Struct player
+lines:
+Float countF=varf Long.count.toFloat()
+Float 增加长度=fun float.multiply1(var countF:var sec:Float 1)
+Float 目标值=fun float.add(var 地图额外长度目标:var 增加长度)
+Float 允许最大长度=fun float.multiply(var 地图长度:Float 0.5)
+Float 剩余可加=fun float.minus(var 允许最大长度:var 目标值)
+Bool 达到上限=fun float.gte(var 目标值:var 允许最大长度)
+Float 目标值=fun float.min(var 目标值:var 允许最大长度)
+Float 实际增加=fun float.minus(var 目标值:var 地图额外长度目标)
+Float 地图额外长度目标=fun create.float(var 目标值)
+act 1101./弹幕.播报元素'加时布局创建或更新红(var player:var 实际增加:var 达到上限)
+act 1101./弹幕.UI'刷新上限提升下(var 剩余可加)
+endcode

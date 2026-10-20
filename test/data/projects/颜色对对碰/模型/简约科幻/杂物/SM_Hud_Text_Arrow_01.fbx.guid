@@ -1,0 +1,31 @@
+guid:02102a9b07454b59bd7fb8f983993a18
+meshes:
+[
+ {
+  n:SM_Hud_Text_Arrow_01
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.525506E-06,0.005904007,0]
+bounds.size:[0.04866638,0.03330002,0.01677612]

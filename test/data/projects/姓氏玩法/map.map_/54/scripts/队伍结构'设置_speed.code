@@ -1,0 +1,14 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍结构'设置_speed
+params:Struct 结构,Long speed
+lines:
+varf Struct.结构.set(String speed:var speed)
+/*if{fun create.bool(var 局内'启用调试输出)
+/*  Float 局内时间=act 1101.this.工具'得到距开局时间()
+/*  String 队伍名=act 1101.this.队伍结构'读取_name(var 结构)
+/*  String 输出=fun string.Format3(String [速度修改]局内时间@1 %1,队伍@1 %2,设置速度@1 %3:var 局内时间:var 队伍名:var speed)
+/*  fun debug.print(var 输出:Color 255,0,255,255:Bool 0)
+}
+endcode

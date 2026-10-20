@@ -1,0 +1,29 @@
+begincodeV2
+color:112,0,255
+name:施加礼物效果'红4
+comment:52/99
+params:Long count,Struct player,Bool purchased
+return:String str
+lines:
+if{fun bool.not(var init)
+  Long context=act 1101.this.GetContextId()
+  if{fun long.equal(var context:Long 1)
+    Long multiplier_2000=fun create.long(Long 2000)
+    Long multiplier_2500=fun create.long(Long 1000)
+  }
+  if{fun long.equal(var context:Long 2)
+    Long multiplier_2000=fun create.long(Long 4000)
+    Long multiplier_2500=fun create.long(Long 2000)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+Long 技能数=fun long.multiply(var count:Long 1)
+act 1101./Scenario.技能'添加到守方玩家炮塔(String 2400:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:var multiplier_2000)
+act 1101./Scenario.技能'添加到守方玩家炮塔(String 2000:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:var multiplier_2500)
+act 1101./Scenario.技能'添加到守方玩家炮塔(String 2500:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:Long 10)
+String str=fun string.Format1(String 滚轮×%1:var 技能数)
+=fun create.bool(var purchased)
+endcode

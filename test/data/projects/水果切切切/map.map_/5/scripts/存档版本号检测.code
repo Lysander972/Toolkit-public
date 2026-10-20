@@ -1,0 +1,13 @@
+begincodeV2
+name:存档版本号检测
+lines:
+Long 当前版本号=fun create.long(Long 1)
+Dict data=fun map.load()
+=varf Dict.data.detail()
+Long 版本号=varf Dict.data.readLong(String 版本号存档标志位:Bool 0)
+if{fun long.equal(var 版本号:Long 0)
+  varf Dict.data.clear()
+}
+varf Dict.data.insert(String 版本号存档标志位:var 当前版本号)
+act 1101./弹幕.存档'上传(Bool 1)
+endcode

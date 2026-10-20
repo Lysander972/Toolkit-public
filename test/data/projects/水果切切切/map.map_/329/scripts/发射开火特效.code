@@ -1,0 +1,6 @@
+begincodeV2
+name:发射开火特效
+params:Vector3 坐标,Vector3 朝向,Float 缩放,Color 颜色,Float 持续时间
+lines:
+act 336./开火特效发射器.发射(var 坐标:var 朝向:var 缩放:var 颜色:var 持续时间)
+endcode

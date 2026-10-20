@@ -1,0 +1,14 @@
+type:1
+pos:[0,0,0]
+enableManualWeld:true
+attach:
+[
+ 1
+ 2
+]
+ext:
+{
+ paintColor:[0.8,0.9529412,1,1]
+ boolMechKinematic:true
+ boolHideCore:true
+}

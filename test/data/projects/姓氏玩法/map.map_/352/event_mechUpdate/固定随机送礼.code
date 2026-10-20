@@ -1,0 +1,7 @@
+begincodeV2
+skip:1
+name:固定随机送礼
+lines:
+act 1.this.模拟送礼(Long 5:Long 10)
+fun script.skip()
+endcode

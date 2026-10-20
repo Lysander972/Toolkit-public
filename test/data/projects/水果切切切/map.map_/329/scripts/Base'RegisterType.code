@@ -1,0 +1,14 @@
+begincodeV2
+color:104,0,255
+name:Base'RegisterType
+comment:注册模型
+params:String key
+lines:
+List all=fun create.list()
+List unused=fun create.list()
+Bool exist=varf Struct.Base'All.contains(var key)
+if{fun bool.not(var exist)
+  varf Struct.Base'All.set(var key:var all)
+  varf Struct.Base'Unused.set(var key:var unused)
+}
+endcode

@@ -1,0 +1,18 @@
+begincodeV2
+name:Map'Preheat
+comment:TODO|地图预热
+lines:
+//注册礼物模型
+act 1101.this.GiftModel'RegisterType(String 通用礼物模板)
+//注册模型
+act 1101.this.Model'RegisterType(String 头像马甲:Long 200)
+act 1101.this.Model'RegisterType(String 柱子模型:Long 50)
+act 1101.this.Model'RegisterType(String 圆柱子模型:Long 50)
+act 1101.this.Model'RegisterType(String 导弹模型:Long 10)
+act 1101.this.Model'RegisterType(String 手掌模型:Long 10)
+act 1101.this.Model'RegisterType(String 锤子模型:Long 50)
+act 1101.this.Model'RegisterType(String 航天飞机模型:Long 10)
+act 1101.this.Model'RegisterType(String 超人模型:Long 10)
+act 1101.this.Model'RegisterType(String 炸弹模型:Long 50)
+act 1101.this.Model'RegisterType(String 飞机模型:Long 50)
+endcode

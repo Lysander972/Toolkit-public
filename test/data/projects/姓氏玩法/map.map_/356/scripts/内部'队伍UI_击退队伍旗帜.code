@@ -1,0 +1,13 @@
+begincodeV2
+name:内部'队伍UI_击退队伍旗帜
+params:Canvas 队伍UI
+lines:
+UIRect 队伍旗帜根节点=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/队伍旗帜根节点)
+//创建空动画
+Dict 旗帜击退效果动画=act 1101./弹幕.动画控制'动画字典_构造(Bool 0:String :String )
+//添加击退步骤
+Dict 修改速度步骤=act 1101./弹幕.动画控制'步骤字典_构造_瞬间修改速度(Vector3 -5e+03,0,0:String :String )
+act 1101./弹幕.动画控制'动画字典_增加步骤(var 旗帜击退效果动画:var 修改速度步骤)
+//插入到队首
+act 1101./弹幕.动画控制'UI_添加动画_插入队首(var 队伍旗帜根节点:var 旗帜击退效果动画)
+endcode

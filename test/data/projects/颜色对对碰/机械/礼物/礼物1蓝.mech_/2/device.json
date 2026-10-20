@@ -1,0 +1,11 @@
+type:242
+pos:[8.742278E-09,0,7.642742E-16]
+ext:
+{
+ boolHideUI:1
+ boolLight:true
+ size:1
+ colorValue:[0,0.7450981,1,1]
+ timeLen:0.4
+ boolAlphaBlend:false
+}

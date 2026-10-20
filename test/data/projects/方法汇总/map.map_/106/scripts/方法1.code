@@ -1,0 +1,8 @@
+begincodeV2
+name:方法1
+lines:
+act 124.this.flareScale(Vector3 0,0,0)
+act 124.this.flareLengthScale(Float 0)
+act 124.this.flareColor(Color 0,0,0,255)
+act 124.this.setTexture(String )
+endcode

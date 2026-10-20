@@ -1,0 +1,6 @@
+begincodeV2
+color:255,255,255
+name:UI_局外结算页面'按钮点击_重启玩法
+lines:
+fun map.restartGame()
+endcode

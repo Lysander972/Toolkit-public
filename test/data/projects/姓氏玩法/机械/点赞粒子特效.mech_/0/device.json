@@ -1,0 +1,12 @@
+type:1
+pos:[0,0,0]
+enableManualWeld:true
+attach:
+[
+ 1
+]
+ext:
+{
+ boolMechKinematic:true
+ boolHideCore:true
+}

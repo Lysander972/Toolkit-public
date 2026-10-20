@@ -1,0 +1,6 @@
+begincodeV2
+name:栅栏'得到HP
+return:Float ret
+lines:
+Float ret=fun create.float(var 栅栏'剩余HP)
+endcode

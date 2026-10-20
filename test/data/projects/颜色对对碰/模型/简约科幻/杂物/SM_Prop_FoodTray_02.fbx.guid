@@ -1,0 +1,31 @@
+guid:97dbe73bf4d94d1bac3e11860cc7d023
+meshes:
+[
+ {
+  n:SM_Prop_FoodTray_02
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[1.639128E-07,0.01618423,-1.214445E-06]
+bounds.size:[0.5722116,0.03236832,0.3806354]

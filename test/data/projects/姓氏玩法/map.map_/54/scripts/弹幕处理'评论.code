@@ -1,0 +1,125 @@
+begincodeV2
+color:255,255,255
+name:弹幕处理'评论
+params:String 消息内容,Struct 玩家
+lines:
+Bool 是GM=act 1101./主界面.工具'是GM()
+//仅在局内时接受消息
+Bool 是否局内=act 1101.this.UI_局内'是否本界面()
+if{fun bool.not(var 是否局内)
+  fun break()
+}
+//团队模式和个人模式规则不同
+Float 关键字位置=varf String.消息内容.find(String 加入:Bool 0)
+if{fun float.Approximately(var 关键字位置:Float 0)
+  //评论"加入"直接创建玩家专属队伍
+  if{fun create.bool(var 局外功能设置'个人模式)
+    Long 玩家当前队伍id=act 1101.this.玩家结构'读取_team(var 玩家)
+    if{fun long.equal(var 玩家当前队伍id:Long -1)
+      String 玩家名称=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+      Struct 队伍=act 1101.this.队伍'新建(var 玩家名称:Bool 0)
+      act 1101.this.玩家'选择阵营(var 玩家:var 队伍)
+    }
+  }
+  //评论"加入+[姓]"进入特定队伍.
+  if{fun bool.not(var 局外功能设置'个人模式)
+    Long 玩家当前队伍id=act 1101.this.玩家结构'读取_team(var 玩家)
+    if{fun long.equal(var 玩家当前队伍id:Long -1)
+      if{fun create.bool(var 模式'快手)
+        String 姓=act 1101.this.工具'姓氏判定_白名单(var 消息内容)
+      }
+      if{fun bool.not(var 模式'快手)
+        String 姓=act 1101.this.工具'姓氏判定_任意汉字(var 消息内容)
+      }
+      if{fun string.notEqual(var 姓:String )
+        Bool 是否存在=varf Dict.局内'队伍_索引_主题.contains(var 姓)
+        if{fun bool.not(var 是否存在)
+          Struct 队伍=act 1101.this.队伍'新建(var 姓:Bool 0)
+          act 1101.this.玩家'选择阵营(var 玩家:var 队伍)
+        }
+        if{fun create.bool(var 是否存在)
+          List 重名队伍表=varf Dict.局内'队伍_索引_主题.readList(var 姓:Bool 1)
+          Struct 队伍=varf List.重名队伍表.readStruct(Float 0)
+          act 1101.this.玩家'选择阵营(var 玩家:var 队伍)
+        }
+      }
+      if{fun string.equal(var 消息内容:String 加入)
+        act 1101.this.玩家'自动下场(var 玩家)
+      }
+    }
+  }
+}
+if{fun create.bool(var 是GM)
+  Float 关键字位置=varf String.消息内容.find(String 礼物:Bool 0)
+  if{fun float.Approximately(var 关键字位置:Float 0)
+    =act 1101.this.测试'模拟礼物(var 消息内容:var 玩家)
+  }
+}
+//通用规则@1评论"666"相当于10次点赞
+if{fun string.equal(var 消息内容:String 666)
+  //评论6替代点赞，因为点赞有频率限制
+  if{fun create.bool(var 局内功能设置'自动下场)
+    act 1101.this.玩家'自动下场检查(var 玩家)
+  }
+  act 1101.this.得到礼物'点赞(Long 10:var 玩家)
+}
+//通用规则@1评论"捣乱"随机降低对手速度
+Float 关键字位置=varf String.消息内容.find(String 捣乱:Bool 0)
+if{fun float.Approximately(var 关键字位置:Float 0)
+  Bool 已下场=act 1101.this.玩家结构'是否已下场(var 玩家)
+  if{fun bool.not(var 已下场)
+    fun break()
+  }
+  if{fun string.equal(var 消息内容:String 捣乱)
+    //随机捣乱层数
+    act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 捣乱:Long 1)
+  }
+  if{fun string.notEqual(var 消息内容:String 捣乱)
+    //寻找目标队伍
+    Long 玩家队伍id=act 1101.this.玩家结构'读取_team(var 玩家)
+    Struct 选中队伍=varf Struct.局内'空队伍占位符.ref()
+    Float 字数=varf String.消息内容.length()
+    if{fun float.gte(var 字数:Float 3)
+      Float 截取长度=fun float.minus(var 字数:Float 2)
+      String 片段=varf String.消息内容.substring(Float 2:var 截取长度)
+      Bool 根据名称且存在目标=varf Dict.局内'队伍_索引_主题.contains(var 片段)
+      //查找直到找到一个队伍
+      if{fun create.bool(var 根据名称且存在目标)
+        List 同名队伍表=varf Dict.局内'队伍_索引_主题.readList(var 片段:Bool 1)
+        Float 重名队伍数量=varf List.同名队伍表.count()
+        Float 序号=fun create.float(Float 0)
+        while{fun float.lt(var 序号:var 重名队伍数量)
+          Struct 重名队伍=varf List.同名队伍表.readStruct(var 序号)
+          Long 重名队伍id=act 1101.this.队伍结构'读取_id(var 重名队伍)
+          if{fun long.notEqual(var 玩家队伍id:var 重名队伍id)
+            Struct 选中队伍=varf Struct.重名队伍.ref()
+            fun break()
+          }
+          varf Float.序号.addEqual(Float 1)
+        }
+      }
+      if{fun bool.not(var 根据名称且存在目标)
+        Long 将选中队伍id=fun create.long(Long -1)
+        //转整数再转文字相等说明完全是整数
+        Long 尝试转换结果=varf String.片段.toLong()
+        String 转换结果字符串=fun create.string(var 尝试转换结果)
+        if{fun string.equal(var 转换结果字符串:var 片段)
+          Long 将选中队伍id=fun long.minus(var 尝试转换结果:Long 1)
+        }
+        //判定是否合法
+        Bool 条件1=fun long.notEqual(var 将选中队伍id:var 玩家队伍id)
+        Bool 条件2=fun long.gte(var 将选中队伍id:Long 0)
+        if{fun bool.and(var 条件1:var 条件2)
+          String 字符串id=fun create.string(var 将选中队伍id)
+          if{varf Dict.局内'队伍_索引_id.contains(var 字符串id)
+            Struct 选中队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+          }
+        }
+      }
+    }
+    if{act 1101.this.队伍结构'是队伍(var 选中队伍)
+      act 1101.this.玩家结构'设置_记录特定目标捣乱层数(var 玩家:var 选中队伍)
+    }
+  }
+}
+endcode

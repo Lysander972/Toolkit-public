@@ -1,0 +1,16 @@
+begincodeV2
+guid:be037c6b984143cb9bc6619a9ec73533
+color:255,255,255
+name:玩家结构'读取_team
+comment:读取队伍
+params:Struct 结构
+return:Long ret
+lines:
+Bool 包含=varf Struct.结构.contains(String team)
+if{fun create.bool(var 包含)
+  Long ret=varf Struct.结构.getLong(String team:Bool 1)
+}
+if{fun bool.not(var 包含)
+  Long ret=fun create.long(Long -1)
+}
+endcode

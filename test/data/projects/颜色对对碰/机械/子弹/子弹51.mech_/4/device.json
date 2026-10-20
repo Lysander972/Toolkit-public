@@ -1,0 +1,13 @@
+type:242
+pos:[0,1.490112E-08,0]
+quat:[-0.4999999,-0.5000004,-0.5000001,-0.4999996]
+ext:
+{
+ boolHideUI:1
+ boolLight:false
+ size:20
+ colorValue:[1,1,1,1]
+ timeLen:0.6
+ boolAlphaBlend:false
+ picFileGuid:11469f9feb5e4248b47a443a30707e6b
+}

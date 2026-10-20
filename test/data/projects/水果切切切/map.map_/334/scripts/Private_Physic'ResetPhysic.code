@@ -1,0 +1,48 @@
+begincodeV2
+private:1
+name:Private_Physic'ResetPhysic
+comment:重置物理
+params:Vector3 pos,Vector3 direct,Float layer1,Float layer2
+return:Bool ret
+lines:
+Bool ret=fun create.bool(Bool 0)
+act 1.this.Public'SetSize(var Physic'Size)
+act 1.this.Public'SetWeight(var Physic'Mass)
+/*act 1.this.Public'SetDensity(var Physic'Density)
+//重置反弹效果CD
+Float Physic'反弹CD=fun create.float(Float 0)
+Float Physic'炮塔反弹CD=fun create.float(Float 0)
+//检测和设置层
+act 1.this.Public'SetLayer(var layer1:var layer2)
+if{varf Vector3.direct.equal(Vector3 0,0,0)
+  Vector3 direct=fun creatVariable.Vector3(Float 0:Float 0:Float 1)
+}
+//速度为正则方向取反
+Vector3 向前=fun vector3.multilply(var direct:Float -1)
+//继续后续工作
+varf Mech.Self.enablePhysics(var Physic'Enabled)
+if{fun create.bool(var Physic'Enabled)
+  varf Mech.Self.enableGravity(var Physic'Gravity)
+  delay fun create.float(Float 0)
+  Vector3 Physic'DefaultV=fun vector3.multilply(var direct:var Physic'SpeedExp)
+  act 1.this.setRigidVelocity(var Physic'DefaultV)
+  act 1.this.setRigidAngularVelocity(Vector3 0,0,0)
+  delay fun create.float(Float 0)
+  if{fun create.bool(var Physic'NeedSpin)
+    act 1.this.fixedLoopAct(String Private_Physic'Spin_Cycle:Float 0)
+    act 1.this.Private_Physic'Spin_Cycle()
+  }
+  if{fun create.bool(var Attr'Turret)
+    act 1.this.fixedLoopAct(String Private_Physic'Force_Cycle:Float 0)
+    act 1.this.Private_Physic'Force_Cycle()
+  }
+}
+//强制移动
+act 1.this.setRotKinematic(var 向前:Vector3 0,1,0)
+act 1.this.setPosKinematic(var pos)
+if{fun create.bool(var Attr'Alive)
+  act 1.this.Public'Open()
+  //确保技能被释放出来
+  act 1.this.Private_Skill'OnBirth()
+}
+endcode

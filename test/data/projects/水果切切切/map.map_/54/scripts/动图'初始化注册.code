@@ -1,0 +1,51 @@
+begincodeV2
+name:动图'初始化注册
+lines:
+Long 组id=fun create.long(Long 1)
+while{fun long.lte(var 组id:Long 7)
+  if{fun long.equal(var 组id:Long 1)
+    String prefix=fun create.string(String 1王者无双_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 15)
+  }
+  if{fun long.equal(var 组id:Long 2)
+    String prefix=fun create.string(String 2至尊星宿_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 15)
+  }
+  if{fun long.equal(var 组id:Long 3)
+    String prefix=fun create.string(String 3璀璨钻石_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 15)
+  }
+  if{fun long.equal(var 组id:Long 4)
+    String prefix=fun create.string(String 4万世黄金_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 15)
+  }
+  if{fun long.equal(var 组id:Long 5)
+    String prefix=fun create.string(String 5飞翅白银_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 11)
+  }
+  if{fun long.equal(var 组id:Long 6)
+    String prefix=fun create.string(String 6火焰宝剑_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 15)
+  }
+  if{fun long.equal(var 组id:Long 7)
+    String prefix=fun create.string(String 7传奇勋章_)
+    Long first=fun create.long(Long 0)
+    Long last=fun create.long(Long 14)
+  }
+  List reg=fun create.list()
+  Long picId=fun create.long(var first)
+  while{fun long.lte(var picId:var last)
+    String fileName=fun string.add1(var prefix:var picId:String .png)
+    varf List.reg.add(var fileName)
+    varf Long.picId.addEqual(Long 1)
+  }
+  varf List.动图'注册表.add(var reg)
+  varf Long.组id.addEqual(Long 1)
+}
+endcode

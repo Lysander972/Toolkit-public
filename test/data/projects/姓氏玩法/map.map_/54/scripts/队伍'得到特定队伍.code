@@ -1,0 +1,11 @@
+begincodeV2
+name:队伍'得到特定队伍
+params:Long 队伍id
+return:Struct 队伍
+lines:
+Struct 队伍=varf Struct.局内'空队伍占位符.ref()
+String 字符串id=fun create.string(var 队伍id)
+if{varf Dict.局内'队伍_索引_id.contains(var 字符串id)
+  Struct 队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+}
+endcode

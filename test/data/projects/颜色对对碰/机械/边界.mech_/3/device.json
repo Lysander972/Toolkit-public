@@ -1,0 +1,10 @@
+type:22
+pos:[-2.53526E-07,5,3]
+ignorePress:true
+ext:
+{
+ logicName:1
+ echoInPlay:false
+ color:[1,0.599127,0,0.1090176]
+ size:[20,20,6]
+}

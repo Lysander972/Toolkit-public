@@ -1,0 +1,9 @@
+begincodeV2
+name:Public'Open
+lines:
+act 362./1.show(Bool 1)
+fun break()
+/*act 1.this.enableCollide(Bool 1)
+/*act 1100./攻击判定.switchCollider(Bool 1)
+/*act 1100./b.switchCollider(Bool 1)
+endcode

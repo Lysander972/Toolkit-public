@@ -1,0 +1,10 @@
+begincodeV2
+name:播放
+params:Vector3 朝向,Float 缩放,Color 颜色,Float 持续时间
+lines:
+act 1.this.setRotKinematic(var 朝向:Vector3 0,1,0)
+act 1.this.setScale(var 缩放)
+act 208.1.SetParams(var 颜色:var 持续时间)
+delay fun create.float(Float 0)
+act 208.1.play()
+endcode

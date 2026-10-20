@@ -1,0 +1,14 @@
+begincodeV2
+name:炮塔'随机范围冰冻
+params:Float 固定冻结,Float 分摊秒数
+lines:
+Float 总数=fun create.float(Float 0)
+List list=varf Struct.Base'All.getList(String 守方炮塔:Bool 0)
+Float 此类炮塔数=varf List.list.count()
+varf Float.总数.addEqual(var 此类炮塔数)
+Float 总数=fun float.max(var 总数:Float 1)
+Float 每个冻结=fun float.division(var 分摊秒数:var 总数)
+varf Float.每个冻结.addEqual(var 固定冻结)
+act 1101.this.炮塔'冻结一类炮塔(var 每个冻结:String 守方炮塔)
+/*act 1101.this.炮塔'冻结一类炮塔(var 每个冻结:String 守方重炮)
+endcode

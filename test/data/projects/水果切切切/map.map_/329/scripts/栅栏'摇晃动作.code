@@ -1,0 +1,9 @@
+begincodeV2
+name:栅栏'摇晃动作
+params:Float 晃动幅度
+lines:
+Float 角度=fun float.multiply1(Float 1:var 晃动幅度:Float -0.3)
+varf Float.角度.addEqual(Float 0.5)
+Bool 栅栏'自动回正=fun create.bool(Bool 1)
+act 1101.this.栅栏'启用动作(var 角度:Float 1:Float 0.5)
+endcode

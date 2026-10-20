@@ -1,0 +1,54 @@
+begincodeV2
+name:Skills'ResetAll
+comment:初始化和重置全部技能
+lines:
+//升级充值数
+act 1.this.Skills'RegisterAndReset(String levelup)
+//点赞
+act 1.this.Skills'RegisterAndReset(String 1000)
+//暖场重置器@4废弃@5
+act 1.this.Skills'RegisterAndReset(String 1002)
+//葡萄
+act 1.this.Skills'RegisterAndReset(String 1100)
+//苹果
+act 1.this.Skills'RegisterAndReset(String 1200)
+//香蕉
+act 1.this.Skills'RegisterAndReset(String 1300)
+//冰块
+act 1.this.Skills'RegisterAndReset(String 1400)
+//煤气罐
+act 1.this.Skills'RegisterAndReset(String 1500)
+//大西瓜
+act 1.this.Skills'RegisterAndReset(String 1600)
+//椰子
+act 1.this.Skills'RegisterAndReset(String 1900)
+//普通子弹
+act 1.this.Skills'RegisterAndReset(String 2000)
+//过载攻击
+act 1.this.Skills'RegisterAndReset(String 2100)
+//飞刀攻击
+act 1.this.Skills'RegisterAndReset(String 2200)
+//重炮攻击@4弹药数@5
+act 1.this.Skills'RegisterAndReset(String 2300)
+act 1.this.Skills'RegisterAndReset(String 2310)
+//滚筒攻击
+act 1.this.Skills'RegisterAndReset(String 2400)
+//栅栏@4血量数@5
+act 1.this.Skills'RegisterAndReset(String 2500)
+//火球攻击
+act 1.this.Skills'RegisterAndReset(String 2600)
+act 1.this.Skills'RegisterAndReset(String 2601)
+//机枪塔
+act 1.this.Skills'RegisterAndReset(String 2900)
+act 1.this.Skills'RegisterAndReset(String 2910)
+//自动点赞@4上@5
+act 1.this.Skills'RegisterAndReset(String 10000)
+act 1.this.Skills'RegisterAndReset(String 11000)
+act 1.this.Skills'RegisterAndReset(String 11001)
+//自动点赞@4下@5
+act 1.this.Skills'RegisterAndReset(String 20000)
+//积存点赞数@4下@5
+act 1.this.Skills'RegisterAndReset(String 20001)
+act 1.this.Skills'RegisterAndReset(String 21000)
+act 1.this.Skills'RegisterAndReset(String 21001)
+endcode

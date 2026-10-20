@@ -1,0 +1,30 @@
+guid:0a130b0be39f4de5ab010efda22a12e8
+meshes:
+[
+ {
+  n:Mango_Yellow_Slice
+ }
+]
+matFolderName:b71241f561b34f55ae2585f70900fa90
+Albedo.UID:b71241f561b34f55ae2585f70900fa90
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.007923655,0.06491601,-5.505979E-05]
+bounds.size:[0.3866779,0.129832,0.1412027]

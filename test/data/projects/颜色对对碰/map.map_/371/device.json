@@ -1,0 +1,34 @@
+type:362
+pos:[0,-200,0]
+quat:[0,0,0.7071068,-0.7071069]
+scale:200
+enableManualWeld:true
+attach:
+[
+]
+ignorePress:true
+ext:
+{
+ logicName:背景板
+ modelGuid:81883ec57a6c4d05995670bc0b8bf6a1
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Diffuse"
+ shader:
+ [
+  {
+   n:_Metallic
+   type:Float
+   v:0
+  }
+  {
+   n:_Smoothness
+   type:Float
+   v:0.5
+  }
+  {
+   n:_EmmitColor
+   type:Color
+   v:[11.98431,11.98431,11.98431,0]
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'OnReclaim
+comment:回收对象
+lines:
+varf Mech.Self.setActive(Bool 0)
+varf Mech.Collider.setActive(Bool 0)
+endcode

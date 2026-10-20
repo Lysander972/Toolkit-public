@@ -1,0 +1,15 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'帧率模式_应用并刷新
+lines:
+Long 局内功能设置'帧率模式=fun long.clamp(var 局内功能设置'帧率模式:Long 0:Long 1)
+Bool 选择30=fun long.equal(var 局内功能设置'帧率模式:Long 0)
+Bool 选择60=fun long.equal(var 局内功能设置'帧率模式:Long 1)
+if{fun create.bool(var 选择30)
+  fun time.SetTargetFrameRate(Long 30)
+}
+if{fun create.bool(var 选择60)
+  fun time.SetTargetFrameRate(Long 60)
+}
+act 1101.this.UI_局内'功能面板_刷新_帧率模式()
+endcode

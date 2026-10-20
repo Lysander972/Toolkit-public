@@ -1,0 +1,33 @@
+begincodeV2
+color:65,0,255
+name:_1220
+params:Vector3 坐标,Float 整体缩放,Long 摧毁模式
+lines:
+if{fun long.equal(var 摧毁模式:Long 0)
+  Color 颜色1=fun create.color(Color 255,0,0,255,颜色1220_0)
+  Color 颜色2=fun create.color(Color 255,255,222,255,颜色1220_1)
+  if{fun bool.not(var 简化特效生效)
+    Float 特效缩放=fun float.multiply(Float 0.025:var 整体缩放)
+    act 336./特效发射器.发射(var 坐标:Float 46:var 特效缩放)
+  }
+  Float 粒子1_1200s=fun float.multiply(Float 0.06:var 整体缩放)
+  Float 粒子2_1200s=fun float.multiply(Float 0.06:var 整体缩放)
+  Float 粒子数1_1200s=fun create.float(Float 6)
+  Float 粒子数2_1200s=fun create.float(Float 15)
+  act 336./碎片粒子发射器.发射碎片(var 坐标:var 粒子1_1200s:var 粒子数1_1200s:var 颜色1:Float 4:var 简化特效生效)
+  act 336./碎片粒子发射器.发射碎片(var 坐标:var 粒子2_1200s:var 粒子数2_1200s:var 颜色2:Float 4:var 简化特效生效)
+  Float 粒子3_1200s=fun float.multiply(Float 1.6:var 整体缩放)
+  act 336./果汁地面粒子发射器.发射果汁贴图(var 坐标:var 粒子3_1200s:var 颜色2:var 简化特效生效)
+  act 1101.this.水果摧毁音效(Float 1)
+}
+if{fun long.equal(var 摧毁模式:Long 1)
+  Color 颜色2=fun create.color(Color 255,255,222,255,颜色1220_1)
+  if{fun bool.not(var 简化特效生效)
+    Float 特效缩放=fun float.multiply(Float 0.04:var 整体缩放)
+    act 336./特效发射器.发射(var 坐标:Float 67:var 特效缩放)
+  }
+  Float 粒子3_1200s=fun float.multiply(Float 1.6:var 整体缩放)
+  act 336./果汁地面粒子发射器.发射果汁贴图(var 坐标:var 粒子3_1200s:var 颜色2:var 简化特效生效)
+  act 1101.this.水果摧毁音效(Float 1)
+}
+endcode

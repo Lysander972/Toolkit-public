@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'GetFaction
+comment:阵营
+return:Long faction
+lines:
+Long faction=fun create.long(Long 0)
+endcode

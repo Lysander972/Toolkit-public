@@ -1,0 +1,10 @@
+begincodeV2
+guid:e684626c29cd46c68e5929d1cb11b656
+color:255,255,255
+name:玩家结构'读取_skillused
+comment:读取是否使用过技能
+params:Struct 结构
+return:Bool ret
+lines:
+Bool ret=varf Struct.结构.getBool(String skillused:Bool 0)
+endcode

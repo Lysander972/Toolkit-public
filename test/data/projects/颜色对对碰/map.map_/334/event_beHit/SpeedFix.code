@@ -1,0 +1,6 @@
+begincodeV2
+color:0,43,255
+name:SpeedFix
+lines:
+act 1.this.SpeedFix()
+endcode

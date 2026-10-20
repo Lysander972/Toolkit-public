@@ -1,0 +1,36 @@
+begincodeV2
+name:内部'每帧刷新_刷新点赞图标
+lines:
+Float 当前时间=fun time.scaleTime()
+Float 序号=varf List.点赞图标维护表.count()
+while{fun float.gt(var 序号:Float 0)
+  varf Float.序号.minusEqual(Float 1)
+  UIRawImage 点赞图标=varf List.点赞图标维护表.readUIRawImage(var 序号)
+  UIRect 根节点=varf UIRawImage.点赞图标.customUIRect(String root)
+  Float 透明度=varf UIRect.根节点.customFloat(String 透明度)
+  Vector3 起点坐标=varf UIRawImage.点赞图标.customVector3(String 起点坐标)
+  Float 创建时间=varf UIRawImage.点赞图标.customFloat(String 创建时间)
+  Float 速度=varf UIRawImage.点赞图标.customFloat(String 速度)
+  Float 已存在时间=fun float.minus(var 当前时间:var 创建时间)
+  Float 比率=fun float.division(var 已存在时间:Float 1)
+  Float 比率=fun float.clamp(var 比率:Float 0:Float 1)
+  if{fun float.lt(var 比率:Float 1)
+    Float 横向位移=fun float.multiply(var 速度:var 已存在时间)
+    Vector3 位移向量=fun creatVariable.Vector3(Float 0:var 横向位移:Float 0)
+    Vector3 最新坐标=fun vector3.add(var 起点坐标:var 位移向量)
+    varf UIRawImage.点赞图标.setCanvasPos(var 最新坐标)
+    Color 初始颜色=varf UIRawImage.点赞图标.customColor(String color)
+    //基于透明度的处理
+    Color 插值颜色=varf Color.初始颜色.copy()
+    varf Color.插值颜色.setA(Float 0)
+    Color 显示颜色=varf Color.插值颜色.lerp(var 初始颜色:var 透明度)
+    //基于渐变的处理
+    Color 显示颜色=varf Color.显示颜色.lerp(var 插值颜色:var 比率)
+    varf UIRawImage.点赞图标.setColor(var 显示颜色)
+  }
+  if{fun float.gte(var 比率:Float 1)
+    varf UIRawImage.点赞图标.del(Float 0)
+    varf List.点赞图标维护表.remove(var 序号)
+  }
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+name:技能'重置暖场
+lines:
+Float 当前时间=fun time.time()
+/*Float 随机调整值=fun math.rand(Float 0:Float 5)
+/*Float 暖场阈值=fun float.add1(var 当前时间:var 随机调整值:Float 20)
+Float 自动暖场冷却=act 1.this.Generic'GetProperty(String 自动暖场冷却:Float 10:Float 5:Float 30:Color 0,238,255,255)
+Float 暖场阈值=fun float.add(var 当前时间:var 自动暖场冷却)
+endcode

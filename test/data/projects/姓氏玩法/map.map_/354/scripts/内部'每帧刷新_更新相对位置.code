@@ -1,0 +1,51 @@
+begincodeV2
+name:内部'每帧刷新_更新相对位置
+lines:
+//随后限制xy范围
+Vector3 屏幕分辨率=fun screen.size()
+Float 屏幕x=varf Vector3.屏幕分辨率.x()
+Float 屏幕y=varf Vector3.屏幕分辨率.y()
+Vector3 UI尺寸=fun screen.uiSize()
+Float UIx=varf Vector3.UI尺寸.x()
+Float UIy=varf Vector3.UI尺寸.y()
+if{varf UIButton.拖动监听区.isDown()
+  Vector3 图表初始布局坐标=varf UIRect.图表节点.getCanvasPos()
+  Vector3 鼠标累计位移量=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+}
+Vector3 目标坐标=varf UIRect.图表节点.getCanvasPos()
+if{varf UIButton.拖动监听区.pressing()
+  Vector3 鼠标位移=act 1101./弹幕.工具'得到鼠标位移()
+  Float x=varf Vector3.鼠标位移.x()
+  Float y=varf Vector3.鼠标位移.y()
+  Float x=fun float.division(var x:var 屏幕x)
+  Float x=fun float.multiply(var x:var UIx)
+  Float y=fun float.division(var y:var 屏幕y)
+  Float y=fun float.multiply(var y:var UIy)
+  Vector3 鼠标位移=fun creatVariable.Vector3(var x:var y:Float 0)
+  Vector3 鼠标累计位移量=fun vector3.add(var 鼠标累计位移量:var 鼠标位移)
+  Vector3 目标坐标=fun vector3.add(var 图表初始布局坐标:var 鼠标累计位移量)
+}
+//完全禁止横向移动
+Float _xMin=fun create.float(Float 0)
+Float _xMax=fun create.float(Float 0)
+Float _yMax=fun create.float(Float 0)
+Float _yMin=fun create.float(Float 0)
+//可以向左滑动
+Float 队伍数量=varf Dict.队伍UI映射.count()
+Float 高度=fun float.multiply(Float -90:var 队伍数量)
+Float 高度=fun float.add(var 高度:Float -600)
+Float 高度=fun float.add(var 高度:var UIx)
+Float _xMin=fun float.min(var 高度:Float 0)
+/*Float _yMin=fun float.multiply(var 高度:Float -1)
+//目标的x限制在范围内
+Float x=varf Vector3.目标坐标.x()
+Float 限制后x=fun float.clamp(var x:var _xMin:var _xMax)
+Float 实际x=fun float.lerp(var x:var 限制后x:Float 0.1)
+Float y=varf Vector3.目标坐标.y()
+Float 限制后y=fun float.clamp(var y:var _yMin:var _yMax)
+Float 实际y=fun float.lerp(var y:var 限制后y:Float 1)
+Vector3 图表布局坐标=fun creatVariable.Vector3(var 实际x:var 实际y:Float 0)
+if{fun vector3.notEqual(var 目标坐标:var 图表布局坐标)
+  varf UIRect.图表节点.setCanvasPos(var 图表布局坐标)
+}
+endcode

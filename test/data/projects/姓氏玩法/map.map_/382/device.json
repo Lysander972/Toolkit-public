@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:圆柱模型
+ mechFileGUID:e55b85af7aef446cba5eb95c5ee22dac
+}

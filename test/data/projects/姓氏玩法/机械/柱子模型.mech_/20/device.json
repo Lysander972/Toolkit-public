@@ -1,0 +1,52 @@
+type:337
+pos:[0,0,0]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ logicName:仙女棒粒子
+ offset:-40
+ startLifetimeMultiplier:3
+ startSpeed:[30,30]
+ startSize:[8,8]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:1
+ gravityModifierMultiplier:-4
+ boolBurst:true
+ emission:true
+ rateOverTime:1
+ radius:3
+ shapeScale:[0,0,0]
+ colorOverLifetime:
+ [
+  "0:1,1,1,0"
+  "0.2500038:1,1,1,0.4996122"
+  "0.5000076:1,1,1,0.4996122"
+  "0.7499962:1,1,1,0.4980392"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:1"
+  "0.2454739:1"
+  "0.501065:1"
+  "0.7641107:1"
+  "1:1"
+ ]
+ velocityOverLifetime:
+ [
+  "0:1"
+  "0.243344:1"
+  "0.5000027:1"
+  "0.7571885:1"
+  "1:1"
+ ]
+ rotSpeed:5.235988
+ shapeType:5
+ lengthScale:2
+ matType:4
+ picFileGuid:27ac903cc8f743759dfc863bf9a4a01e
+}

@@ -1,0 +1,42 @@
+type:337
+pos:[0,-300,0]
+quat:[0.7071068,0,0.7071068,0]
+ext:
+{
+ logicName:场景云
+ offset:-100
+ startLifetimeMultiplier:15
+ startSpeed:[5,13]
+ startSize:[50,150]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,1,1,0]
+ startColor.max:[1,1,1,0.1032336]
+ customData1.x:0
+ emission:true
+ rateOverTime:0.2
+ radius:1
+ shapeScale:[200,50,200]
+ colorOverLifetime:
+ [
+  "0:1,1,1,0"
+  "0.1847715:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:1"
+  "0.1922258:1"
+  "0.4999938:1"
+  "0.7499909:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ renderAlign:1
+ lengthScale:0.5
+ matType:5
+ picFileGuid:2fd27a52818a4302a2e2f371ceee5271
+}

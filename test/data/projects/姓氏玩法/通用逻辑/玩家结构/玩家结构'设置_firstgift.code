@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:a09b63a16fdb44568b602d9da25075b6
+color:255,255,255
+name:玩家结构'设置_firstgift
+comment:设置玩家是否已经送出首个礼物
+params:Struct 结构,Bool firstgift
+lines:
+varf Struct.结构.set(String firstgift:var firstgift)
+endcode

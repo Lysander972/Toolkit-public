@@ -1,0 +1,9 @@
+begincodeV2
+guid:c836b8613c5c47c5afa71b25096d81b0
+color:255,255,255
+name:队伍结构'读取_color1
+params:Struct 结构
+return:Color ret
+lines:
+Color ret=varf Struct.结构.getColor(String color1:Bool 1)
+endcode

@@ -1,0 +1,25 @@
+begincodeV2
+private:1
+color:140,255,0
+name:Skills'1200_Split
+comment:苹果分裂成2半
+lines:
+Float HP比例=fun float.division(var Attr'HP:var Attr'maxHP)
+Long type=fun long.add(var Attr'Type:Long 1)
+Vector3 朝向=act 1.this.localToWorldDir(Vector3 1,0,0)
+=act 1.this.Launcher'Launch(var type:var 朝向:Float 1:var Creator:var Attr'HPMul:Float 0:var HP比例:Bool 0:Float 0)
+Long type=fun long.add(var Attr'Type:Long 2)
+Vector3 朝向=act 1.this.localToWorldDir(Vector3 -1,0,0)
+=act 1.this.Launcher'Launch(var type:var 朝向:Float 1:var Creator:var Attr'HPMul:Float 0:var HP比例:Bool 0:Float 0)
+//数字
+Long 类型=fun create.long(Long 3)
+Bool 是否暴击=fun create.bool(Bool 0)
+Vector3 pos=act 1.this.Public'GetCenter()
+varf Device.map_handler.callFun4(String 数字效果'产生效果:var Attr'maxHP:var 类型:var 是否暴击:var pos)
+//触发死亡
+act 1.this.Private'OnDeath(Bool 1:Bool 0:Long 1)
+Bool 简化特效生效=fun map.getCustomBool(String 简化特效生效标志位)
+if{fun bool.not(var 简化特效生效)
+  fun screen.shake(Float 0.1:Float 2000:Float 0.8)
+}
+endcode

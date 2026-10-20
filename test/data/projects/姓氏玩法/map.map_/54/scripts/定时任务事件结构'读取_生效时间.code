@@ -1,0 +1,8 @@
+begincodeV2
+color:123,255,0
+name:定时任务事件结构'读取_生效时间
+params:Dict 定时任务事件
+return:Float ret
+lines:
+Float ret=varf Dict.定时任务事件.readFloat(String 生效时间:Bool 0)
+endcode

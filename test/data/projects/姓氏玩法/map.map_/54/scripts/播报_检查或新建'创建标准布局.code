@@ -1,0 +1,57 @@
+begincodeV2
+color:255,255,255
+name:播报_检查或新建'创建标准布局
+params:Struct 玩家,String 礼物类型,Long 数量
+return:Canvas 播报布局
+lines:
+//创建布局
+fun ui.2dmode(Bool 1)
+Canvas 播报布局=fun create.canvas(Canvas guid@1968eff5332ed4674b150292eaada3785)
+//更新根节点
+UIRect 根节点=varf Canvas.播报布局.readUIRect(String background)
+varf UIRect.根节点.active(Bool 0)
+//更新内容文本框
+UILabel 内容文本框=varf Canvas.播报布局.readUILabel(String background/panel/label)
+varf UILabel.内容文本框.text(var 礼物类型)
+//更新目标数量和当前数量
+act 1101.this.播报元素'设置数字动效(var 播报布局:Bool 1)
+varf UIRect.根节点.setCustomFloat(String 当前数量:Float 1)
+varf UIRect.根节点.setCustomFloat(String 初始数量:Float 1)
+Float 数量F=varf Long.数量.toFloat()
+varf UIRect.根节点.setCustomFloat(String 目标数量:var 数量F)
+//用户名文本框
+UILabel 用户名文本框=varf Canvas.播报布局.readUILabel(String background/panel/name)
+String 用户名=act 1101.this.玩家结构'读取_name(var 玩家:Bool 1)
+varf UILabel.用户名文本框.text(var 用户名)
+//头像
+UIRawImage 头像=varf Canvas.播报布局.readUIRawImage(String background/panel/mask/AvatarIcon)
+String 头像url=act 1101.this.玩家结构'读取_avatarUrl(var 玩家)
+varf UIRawImage.头像.SetURLPic(var 头像url)
+//动图应用
+UIRawImage 动图=varf Canvas.播报布局.readUIRawImage(String background/panel/rankicon)
+Long 排行榜名次=act 1101.this.玩家结构'读取_globalRank(var 玩家)
+Long 组编号=act 1101.this.动图'计算组编号(var 排行榜名次)
+act 1101.this.动图'应用动图(var 动图:var 组编号:Long 0:Bool 0)
+//缩放突出显示
+act 1101.this.播报元素'设置缩放突出效果(var 播报布局:Bool 0)
+act 1101.this.播报元素'重置展示时间(var 播报布局)
+act 1101.this.播报元素'重置缩放动效计时(var 播报布局)
+//背景板颜色@1队伍颜色
+//得到玩家的队伍
+Struct 队伍=act 1101.this.队伍'得到玩家队伍(var 玩家)
+Bool 有队伍信息=act 1101.this.队伍结构'是队伍(var 队伍)
+if{fun create.bool(var 有队伍信息)
+  String 队伍名=act 1101.this.队伍结构'读取_name(var 队伍)
+  Color 主颜色=act 1101.this.队伍结构'读取_color1(var 队伍)
+  UIRect 主面板=varf Canvas.播报布局.readUIRect(String background/panel)
+  varf UIRect.主面板.setColor(var 主颜色)
+  UILabel 队名文本框=varf Canvas.播报布局.readUILabel(String background/panel/队名)
+  varf UILabel.队名文本框.text(var 队伍名)
+}
+if{fun bool.not(var 有队伍信息)
+  UIRect 主面板=varf Canvas.播报布局.readUIRect(String background/panel)
+  varf UIRect.主面板.setColor(Color 255,255,255,255)
+  UILabel 队名文本框=varf Canvas.播报布局.readUILabel(String background/panel/队名)
+  varf UILabel.队名文本框.text(String <size@332>未选队</size>)
+}
+endcode

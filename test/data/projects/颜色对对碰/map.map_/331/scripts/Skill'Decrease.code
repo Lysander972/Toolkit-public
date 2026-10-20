@@ -1,0 +1,27 @@
+begincodeV2
+color:169,0,255
+name:Skill'Decrease
+params:String $key,Long $value
+return:Long $current
+lines:
+Long $current=varf Struct.SkillCount.getLong(var $key:Bool 0)
+varf Long.$current.minusEqual(var $value)
+List $playerList=varf Struct.SkillPlayer.getList(var $key:Bool 0)
+List $playerCList=varf Struct.SkillPlayerC.getList(var $key:Bool 0)
+Float $max=varf List.$playerList.count()
+while{fun float.gt(var $max:Float 0)
+  Long $lastC=varf List.$playerCList.readLong(Float 0)
+  if{fun long.gt(var $lastC:var $value)
+    varf Long.$lastC.minusEqual(var $value)
+    varf List.$playerCList.replace(Float 0:var $lastC)
+    fun break()
+  }
+  if{fun long.lte(var $lastC:var $value)
+    varf Long.$value.minusEqual(var $lastC)
+    varf List.$playerList.remove(Float 0)
+    varf List.$playerCList.remove(Float 0)
+    varf Float.$max.minusEqual(Float 1)
+  }
+}
+Long $current=fun long.max(var $current:Long 0)
+endcode

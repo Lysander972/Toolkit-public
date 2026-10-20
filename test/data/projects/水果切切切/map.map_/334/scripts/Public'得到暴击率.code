@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'得到暴击率
+return:Float ret
+lines:
+Float ret=fun create.float(var Attr'暴击率)
+endcode

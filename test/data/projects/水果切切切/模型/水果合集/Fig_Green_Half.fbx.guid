@@ -1,0 +1,30 @@
+guid:035afe409f384eaeb0e7e4c4be19d73e
+meshes:
+[
+ {
+  n:Fig_Green_Half
+ }
+]
+matFolderName:5512dba075114fb9bf99ff36e59fba6f
+Albedo.UID:5512dba075114fb9bf99ff36e59fba6f
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.1625204,0.04447337]
+bounds.size:[0.238289,0.3250409,0.1330919]

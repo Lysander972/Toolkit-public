@@ -1,0 +1,17 @@
+begincodeV2
+name:动画控制'UI_获取生效透明度
+params:UIRect 当前节点
+return:Float 透明度
+lines:
+Float 透明度=act 1101.this.动画控制'UI_获取透明度(var 当前节点)
+Bool 非零透明度=fun float.notEqual(var 透明度:Float 0)
+UIRect 父级=act 1101.this.动画控制'UI_获取父级组件(var 当前节点)
+Bool 存在=varf UIRect.父级.exist()
+while{fun bool.and(var 非零透明度:var 存在)
+  Float 父级透明度=act 1101.this.动画控制'UI_获取透明度(var 父级)
+  Float 透明度=fun float.multiply(var 透明度:var 父级透明度)
+  Bool 非零透明度=fun float.notEqual(var 透明度:Float 0)
+  UIRect 父级=act 1101.this.动画控制'UI_获取父级组件(var 父级)
+  Bool 存在=varf UIRect.父级.exist()
+}
+endcode

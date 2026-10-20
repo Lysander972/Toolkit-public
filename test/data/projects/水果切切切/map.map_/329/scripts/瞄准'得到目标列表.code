@@ -1,0 +1,17 @@
+begincodeV2
+name:瞄准'得到目标列表
+return:List 目标列表
+lines:
+List 目标列表=fun create.list()
+Float index=varf List.瞄准'候选列表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Mech target=varf List.瞄准'候选列表.readMech(var index)
+  Device core=varf Mech.target.getCoreDevice()
+  if{varf Device.core.callReturnBool0(String Public'IsInitialized)
+    if{varf Device.core.callReturnBool0(String Public'IsAlive)
+      varf List.目标列表.add(var target)
+    }
+  }
+}
+endcode

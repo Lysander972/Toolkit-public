@@ -1,0 +1,84 @@
+begincodeV2
+name:Generic'PlayAnimationAdapter
+params:Long $mode
+lines:
+if{fun long.equal(var $mode:Long 0)
+  //@3
+/*  Float x=act 1.this.Generic'GetProperty(String 礼物5起点1x蓝:Float -1:Float -10:Float 10:Color 255,0,0,255)
+/*  Float y=act 1.this.Generic'GetProperty(String 礼物5起点1y蓝:Float -0.2:Float -10:Float 10:Color 255,0,0,255)
+/*  Float z=act 1.this.Generic'GetProperty(String 礼物5起点1z蓝:Float 1:Float -10:Float 10:Color 255,0,0,255)
+/*  Vector3 起点=fun creatVariable.Vector3(var x:var y:var z)
+  Vector3 起点=fun creatVariable.Vector3(Float -1:Float -0.2:Float 1)
+  //@3
+/*  Float x=act 1.this.Generic'GetProperty(String 礼物5终点1x蓝:Float -0.2:Float -10:Float 10:Color 255,0,0,255)
+/*  Float y=act 1.this.Generic'GetProperty(String 礼物5终点1y蓝:Float -0.2:Float -10:Float 10:Color 255,0,0,255)
+/*  Float z=act 1.this.Generic'GetProperty(String 礼物5终点1z蓝:Float 1:Float -10:Float 10:Color 255,0,0,255)
+/*  Vector3 终点=fun creatVariable.Vector3(var x:var y:var z)
+  Vector3 终点=fun creatVariable.Vector3(Float -0.2:Float -0.2:Float 1)
+  //@3
+/*  Float x=act 1.this.Generic'GetProperty(String 礼物5倾角1x蓝:Float 200:Float -180:Float 360:Color 255,0,0,255)
+  Float x=fun create.float(Float 200)
+  //@3
+  Vector3 倾斜=fun creatVariable.Vector3(var x:Float 0:Float 0)
+  Vector3 向前=act 1.this.Utils'AzimuthToVector(var 倾斜)
+  //@3
+/*  Float y=act 1.this.Generic'GetProperty(String 礼物5倾角1y蓝:Float 60:Float -90:Float 90:Color 255,0,0,255)
+  Float y=fun create.float(Float 60)
+  //@3
+  Vector3 倾斜=fun creatVariable.Vector3(Float 90:var y:Float 0)
+  Vector3 向上=act 1.this.Utils'AzimuthToVector(var 倾斜)
+  //@3
+/*  Float $duration=act 1.this.Generic'GetProperty(String 礼物5周期1:Float 0.5:Float 0:Float 3:Color 0,0,0,255)
+  Float $duration=fun create.float(Float 0.5)
+  //@3
+  =act 1.this.Generic'AnimationInterface(var 起点:var 终点:var 向前:var 向上:var $duration:Float 0:Float 0)
+  //@3
+/*  delay act 1.this.Generic'GetProperty(String 礼物5周期2:Float 0.2:Float 0:Float 3:Color 0,0,0,255)
+  delay fun create.float(Float 0.2)
+  //@3
+  act 208./左1.play()
+  delay fun create.float(Float 0.1)
+  act 208./右1.play()
+  delay fun create.float(Float 0.1)
+  act 208./左2.play()
+  delay fun create.float(Float 0.1)
+  act 208./右2.play()
+  delay fun create.float(Float 0.1)
+  act 208./左3.play()
+  delay fun create.float(Float 0.1)
+  act 208./右3.play()
+  //@3
+  delay act 1.this.Generic'GetProperty(String 礼物5周期3:Float 0.5:Float 0:Float 3:Color 0,0,0,255)
+  delay fun create.float(Float 0.5)
+  //@3
+/*  Float x=act 1.this.Generic'GetProperty(String 礼物5起点2x蓝:Float -0.2:Float -10:Float 10:Color 255,0,0,255)
+/*  Float y=act 1.this.Generic'GetProperty(String 礼物5起点2y蓝:Float -0.2:Float -10:Float 10:Color 255,0,0,255)
+/*  Float z=act 1.this.Generic'GetProperty(String 礼物5起点2z蓝:Float 1:Float -10:Float 10:Color 255,0,0,255)
+/*  Vector3 起点=fun creatVariable.Vector3(var x:var y:var z)
+  Vector3 起点=fun creatVariable.Vector3(Float -0.2:Float -0.2:Float 1)
+  //@3
+/*  Float x=act 1.this.Generic'GetProperty(String 礼物5终点2x蓝:Float -3:Float -10:Float 10:Color 255,0,0,255)
+/*  Float y=act 1.this.Generic'GetProperty(String 礼物5终点2y蓝:Float -0.2:Float -10:Float 10:Color 255,0,0,255)
+/*  Float z=act 1.this.Generic'GetProperty(String 礼物5终点2z蓝:Float 1:Float -10:Float 10:Color 255,0,0,255)
+/*  Vector3 终点=fun creatVariable.Vector3(var x:var y:var z)
+  Vector3 终点=fun creatVariable.Vector3(Float -3:Float -0.2:Float 1)
+  //@3
+/*  Float x=act 1.this.Generic'GetProperty(String 礼物5倾角2x蓝:Float 200:Float -180:Float 360:Color 255,0,0,255)
+  Float x=fun create.float(Float 200)
+  //@3
+  Vector3 倾斜=fun creatVariable.Vector3(var x:Float 0:Float 0)
+  Vector3 向前=act 1.this.Utils'AzimuthToVector(var 倾斜)
+  //@3
+/*  Float y=act 1.this.Generic'GetProperty(String 礼物5倾角2y蓝:Float 60:Float -90:Float 90:Color 255,0,0,255)
+  Float y=fun create.float(Float 60)
+  //@3
+  Vector3 倾斜=fun creatVariable.Vector3(Float 90:var y:Float 0)
+  Vector3 向上=act 1.this.Utils'AzimuthToVector(var 倾斜)
+  //@3
+/*  Float $duration=act 1.this.Generic'GetProperty(String 礼物5周期4:Float 1:Float 1:Float 2.5:Color 255,0,0,255)
+  Float $duration=fun create.float(Float 1)
+  //@3
+  =act 1.this.Generic'AnimationInterface(var 起点:var 终点:var 向前:var 向上:var $duration:Float 0:Float 0)
+}
+act 1.this.setPosKinematic(Vector3 1e+03,0,0)
+endcode

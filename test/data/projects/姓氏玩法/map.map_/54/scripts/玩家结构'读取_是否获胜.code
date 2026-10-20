@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:玩家结构'读取_是否获胜
+comment:读取玩家分数
+params:Struct 结构
+return:Bool ret
+lines:
+Bool ret=varf Struct.结构.getBool(String 是否获胜:Bool 0)
+endcode

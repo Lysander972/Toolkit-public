@@ -1,0 +1,15 @@
+begincodeV2
+color:104,0,255
+name:Bullet'RegisterModelType
+comment:注册模型
+params:String key
+lines:
+List bullet=fun create.list()
+List bulletUnused=fun create.list()
+Bool exist=varf Struct.Bullet'All.contains(var key)
+if{fun bool.not(var exist)
+  varf Struct.Bullet'All.set(var key:var bullet)
+  varf Struct.Bullet'Unused.set(var key:var bulletUnused)
+  varf List.Bullet'Types.add(var key)
+}
+endcode

@@ -1,0 +1,469 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'互动操作_处理特定玩家
+params:Struct 玩家
+lines:
+//声明@1只有增益效果可以在开局前使用
+/*Float 距开局时间=act 1101.this.工具'得到距开局时间()
+Bool 允许使用_增益=fun create.bool(Bool 1)
+Bool 允许使用_减益=fun create.bool(Bool 1)
+/*Bool 允许使用_减益=fun float.gte(var 距开局时间:Float 10)
+//得到玩家的队伍,并确保队伍存在
+Struct 队伍=act 1101.this.队伍'得到玩家队伍(var 玩家)
+Bool 队伍存在=act 1101.this.队伍结构'是队伍(var 队伍)
+if{fun bool.not(var 队伍存在)
+  fun break()
+}
+//检查每一种效果
+Dict 待处理效果=act 1101.this.玩家结构'读取待处理效果字典(var 玩家)
+//点赞 免费 积分0 强度5≈1*4+1 自身 速度+1 持续4 数值+1 类型2 立即生效
+String 效果名称=fun create.string(String 点赞)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_增益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 1:Float 1:Float 4:Long 2:Bool 0)
+  if{fun create.bool(var 设置成功)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //更新点赞连击效果
+    Float 上次点赞=act 1101.this.玩家结构'读取_上次点赞时间(var 玩家)
+    Float 当前时间=fun time.scaleTime()
+    Float 距上次点赞=fun float.minus(var 当前时间:var 上次点赞)
+    Bool 点赞连击=fun float.lt(var 距上次点赞:Float 5)
+    if{fun create.bool(var 点赞连击)
+      //点赞连击状态下,首先检查是否已有相应的bannerkey
+      String key=act 1101.this.播报元素'索引key生成(var 玩家:String 手速爆表)
+      Bool 存在key=varf Dict.UI_局内'播报条目索引.contains(var key)
+      if{fun create.bool(var 存在key)
+        //已存在相应banner时
+        act 1101.this.播报_检查或新建'礼物(String 手速爆表:var 剩余层数:var 玩家:Long 1:Bool 1)
+      }
+      if{fun bool.not(var 存在key)
+        //不存在相应banner时
+        Long 连续点赞次数=act 1101.this.玩家结构'读取_连续点赞次数(var 玩家)
+        varf Long.连续点赞次数.addEqual(var 剩余层数)
+        Bool 达到播报阈值=fun long.gte(var 连续点赞次数:Long 30)
+        if{fun create.bool(var 达到播报阈值)
+          //达到播报阈值,清空连续点赞次数并播报
+          act 1101.this.播报_检查或新建'礼物(String 手速爆表:var 连续点赞次数:var 玩家:Long 1:Bool 1)
+          act 1101.this.玩家结构'设置_连续点赞次数(var 玩家:Long 0)
+        }
+        if{fun bool.not(var 达到播报阈值)
+          act 1101.this.玩家结构'设置_连续点赞次数(var 玩家:var 连续点赞次数)
+        }
+      }
+    }
+    if{fun bool.not(var 点赞连击)
+      //非点赞连击状态下,原连续点赞次数作废
+      Long 连续点赞次数=fun create.long(var 剩余层数)
+      Bool 达到播报阈值=fun long.gte(var 连续点赞次数:Long 30)
+      if{fun create.bool(var 达到播报阈值)
+        //达到播报阈值,清空连续点赞次数并播报
+        act 1101.this.播报_检查或新建'礼物(String 手速爆表:var 连续点赞次数:var 玩家:Long 1:Bool 1)
+        act 1101.this.玩家结构'设置_连续点赞次数(var 玩家:Long 0)
+      }
+      if{fun bool.not(var 达到播报阈值)
+        act 1101.this.玩家结构'设置_连续点赞次数(var 玩家:var 连续点赞次数)
+      }
+    }
+    //全部完成后,更新上次点赞时间
+    act 1101.this.玩家结构'设置_上次点赞时间(var 玩家:var 当前时间)
+  }
+  Long 未处理积分点赞数=act 1101.this.玩家结构'读取_like(var 玩家)
+  if{fun long.gte(var 未处理积分点赞数:Long 10)
+    Float 点赞转换积分F=fun long.division(var 未处理积分点赞数:Long 10)
+    Long 增加积分=varf Float.点赞转换积分F.toLong()
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    Long 未处理积分点赞数=fun long.mod(var 未处理积分点赞数:Long 10)
+    act 1101.this.玩家结构'设置_like(var 玩家:var 未处理积分点赞数)
+  }
+}
+//捣乱 免费 积分0 强度100≈10*5+50 随机对手 速度-10 持续5 数值-50 类型3 延迟生效
+//随机化捣乱
+String 效果名称=fun create.string(String 捣乱)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+if{fun create.bool(var 允许使用_减益)
+  Bool 已生效=fun create.bool(Bool 0)
+  while{fun long.gt(var 剩余层数:Long 0)
+    Float 虚拟层数=fun create.float(Float 1)
+    //计算强度
+    Float 捣乱速度变化强度=fun create.float(Float -10)
+    Float 捣乱数值变化强度=fun create.float(Float -50)
+    Float 捣乱持续时间=fun create.float(Float 5)
+    Long 未使用消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+    Float 未使用消费F=varf Long.未使用消费.toFloat()
+    Float 即将使用消费F=fun float.multiply(var 未使用消费F:Float 0.33)
+    Float 即将使用消费F=varf Float.即将使用消费F.ceiling()
+    Float 新未使用消费F=fun float.minus(var 未使用消费F:var 即将使用消费F)
+    Long 新未使用消费=varf Float.新未使用消费F.toLong()
+    //消费强度分配@1
+    if{fun float.gt(var 即将使用消费F:Float 0)
+      Float 插值比例=fun float.division(var 即将使用消费F:Float 50)
+      Float 虚拟层数=fun float.log(var 即将使用消费F:Float 1.1)
+      Float 虚拟层数=fun float.max(var 虚拟层数:Float 1)
+      Float 虚拟层数=varf Float.虚拟层数.floor()
+      Float 插值比例=fun float.clamp(var 插值比例:Float 0:Float 1)
+      Float 捣乱持续时间=fun float.lerp(Float 5:Float 30:var 插值比例)
+      Float 持续效果权重=fun float.lerp(Float 0.5:Float 0.66:var 插值比例)
+      Float 总强度=fun float.multiply(Float -10:var 即将使用消费F)
+      Float temp=fun float.multiply(var 总强度:var 持续效果权重)
+      Float 额外减速=fun float.division(var temp:var 捣乱持续时间)
+      Float 捣乱速度变化强度=fun float.add(var 捣乱速度变化强度:var 额外减速)
+      Float 捣乱速度变化强度=fun float.division(var 捣乱速度变化强度:var 虚拟层数)
+      Float temp=fun float.minus(Float 1:var 持续效果权重)
+      Float 立即扣数值=fun float.multiply(var 总强度:var temp)
+      Float 捣乱数值变化强度=fun float.add(var 捣乱数值变化强度:var 立即扣数值)
+      Float 捣乱数值变化强度=fun float.division(var 捣乱数值变化强度:var 虚拟层数)
+    }
+    //应用
+    Long 虚拟层数L=varf Float.虚拟层数.toLong()
+    Bool 设置成功=act 1101.this.队伍'施加效果_随机其他队伍(var 玩家:var 虚拟层数L:var 捣乱速度变化强度:var 捣乱数值变化强度:var 捣乱持续时间:Long 3:Bool 1)
+    if{fun create.bool(var 设置成功)
+      varf Long.剩余层数.minusEqual(Long 1)
+      Bool 已生效=fun create.bool(Bool 1)
+      act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 新未使用消费)
+      act 1101.this.播报_检查或新建'礼物(String 捣乱:Long 1:var 玩家:Long 1:Bool 0)
+    }
+  }
+  if{fun create.bool(var 已生效)
+    varf Dict.待处理效果.insert(String 捣乱:var 剩余层数)
+  }
+}
+//有目标的捣乱
+String 效果名称=fun create.string(String 目标捣乱)
+List 目标捣乱=varf Dict.待处理效果.readList(String 目标捣乱:Bool 0)
+if{fun create.bool(var 允许使用_减益)
+  Float 序号=varf List.目标捣乱.count()
+  while{fun float.gt(var 序号:Float 0)
+    varf Float.序号.minusEqual(Float 1)
+    Float 虚拟层数=fun create.float(Float 1)
+    //计算强度
+    Float 捣乱速度变化强度=fun create.float(Float -10)
+    Float 捣乱数值变化强度=fun create.float(Float -50)
+    Float 捣乱持续时间=fun create.float(Float 5)
+    Long 未使用消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+    Float 未使用消费F=varf Long.未使用消费.toFloat()
+    Float 即将使用消费F=fun float.multiply(var 未使用消费F:Float 0.33)
+    Float 即将使用消费F=varf Float.即将使用消费F.ceiling()
+    Float 新未使用消费F=fun float.minus(var 未使用消费F:var 即将使用消费F)
+    Long 新未使用消费=varf Float.新未使用消费F.toLong()
+    //消费强度分配@1
+    if{fun float.gt(var 即将使用消费F:Float 0)
+      Float 插值比例=fun float.division(var 即将使用消费F:Float 50)
+      Float 虚拟层数=fun float.log(var 即将使用消费F:Float 1.1)
+      Float 虚拟层数=fun float.max(var 虚拟层数:Float 1)
+      Float 虚拟层数=varf Float.虚拟层数.floor()
+      Float 插值比例=fun float.clamp(var 插值比例:Float 0:Float 1)
+      Float 捣乱持续时间=fun float.lerp(Float 5:Float 30:var 插值比例)
+      Float 持续效果权重=fun float.lerp(Float 0.5:Float 0.66:var 插值比例)
+      Float 总强度=fun float.multiply(Float -10:var 即将使用消费F)
+      Float temp=fun float.multiply(var 总强度:var 持续效果权重)
+      Float 额外减速=fun float.division(var temp:var 捣乱持续时间)
+      Float 捣乱速度变化强度=fun float.add(var 捣乱速度变化强度:var 额外减速)
+      Float 捣乱速度变化强度=fun float.division(var 捣乱速度变化强度:var 虚拟层数)
+      Float temp=fun float.minus(Float 1:var 持续效果权重)
+      Float 立即扣数值=fun float.multiply(var 总强度:var temp)
+      Float 捣乱数值变化强度=fun float.add(var 捣乱数值变化强度:var 立即扣数值)
+      Float 捣乱数值变化强度=fun float.division(var 捣乱数值变化强度:var 虚拟层数)
+    }
+    //应用
+    Struct 选中队伍=varf List.目标捣乱.readStruct(var 序号)
+    Long 虚拟层数L=varf Float.虚拟层数.toLong()
+    Bool 设置成功=act 1101.this.队伍'施加效果_特定队伍(var 玩家:var 选中队伍:var 虚拟层数L:var 捣乱速度变化强度:var 捣乱数值变化强度:var 捣乱持续时间:Long 3:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 新未使用消费)
+      varf List.目标捣乱.remove(var 序号)
+      String 选中队伍名=act 1101.this.队伍结构'读取_name(var 选中队伍)
+      String 礼物名=fun string.Format1(String 捣乱 %1 队:var 选中队伍名)
+      act 1101.this.播报_检查或新建'礼物(var 礼物名:Long 1:var 玩家:Long 1:Bool 0)
+    }
+  }
+}
+//赠送仙女棒 价格1 积分+100 强度900≈20*30+300 自身 速度+20 持续30 数值+300 类型10 延迟生效
+String 效果名称=fun create.string(String 赠送仙女棒)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_增益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 30:Float 0:Float 30:Long 10:Bool 1)
+  if{fun create.bool(var 设置成功)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是2
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 入场送初级加速:var 剩余层数:var 玩家:Long 2:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 入场送初级加速 @4强化@5:var 剩余层数:var 玩家:Long 2:Bool 1)
+    }
+  }
+}
+//仙女棒 价格1 积分+100 强度900≈20*30+300 自身 速度+20 持续30 数值+300 类型10 延迟生效
+String 效果名称=fun create.string(String 仙女棒)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_增益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 30:Float 0:Float 30:Long 10:Bool 1)
+  if{fun create.bool(var 设置成功)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 100)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是2
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 初级加速:var 剩余层数:var 玩家:Long 5:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 初级加速 @4强化@5:var 剩余层数:var 玩家:Long 5:Bool 1)
+    }
+  }
+}
+//能力药丸 价格10 积分+1000 强度10000≈300*30+1000 最快对手 速度-300 持续30 数值-1000 类型11 延迟生效
+if{fun bool.not(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 能力药丸)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_减益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 剩余层数:Float 0:Float -10000:Float 26:Long 11:Bool 1)
+    if{fun create.bool(var 设置成功)
+      Long 增加积分=fun long.multiply(var 剩余层数:Long 1000)
+      act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+      //礼物播报优先级是3
+      if{fun bool.not(var 局内'决战阶段)
+        act 1101.this.播报_检查或新建'礼物(String 初级干扰:var 剩余层数:var 玩家:Long 10:Bool 1)
+      }
+      if{fun create.bool(var 局内'决战阶段)
+        act 1101.this.播报_检查或新建'礼物(String 初级干扰 @4强化@5:var 剩余层数:var 玩家:Long 10:Bool 1)
+      }
+    }
+  }
+}
+if{fun create.bool(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 能力药丸)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun create.bool(var 数量足够)
+    //进行多轮抽奖
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 初级干扰\n+神秘惊喜:var 剩余层数:var 玩家:Long 10:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 初级干扰 @4强化@5\n+神秘惊喜:var 剩余层数:var 玩家:Long 10:Bool 1)
+    }
+    Long 已处理礼物数=fun create.long(Long 0)
+    while{fun long.lt(var 已处理礼物数:var 剩余层数)
+      //进行一次抽奖
+      Long 随机抽奖=fun long.rand(Long 0:Long 22502)
+      if{varf Long.随机抽奖.inside(Long 0:Long 10000)
+        act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 抽奖能力药丸:Long 1)
+      }
+      if{varf Long.随机抽奖.inside(Long 10001:Long 15710)
+        act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 抽奖甜甜圈:Long 1)
+        if{fun bool.not(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到高级加速:Long 1:var 玩家:Long 1:Bool 0)
+        }
+        if{fun create.bool(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到高级加速 @4强化@5:Long 1:var 玩家:Long 1:Bool 0)
+        }
+      }
+      if{varf Long.随机抽奖.inside(Long 15711:Long 18970)
+        act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 抽奖能量电池:Long 1)
+        if{fun bool.not(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到高级干扰:Long 1:var 玩家:Long 1:Bool 0)
+        }
+        if{fun create.bool(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到高级干扰 @4强化@5:Long 1:var 玩家:Long 1:Bool 0)
+        }
+      }
+      if{varf Long.随机抽奖.inside(Long 18971:Long 20832)
+        act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 抽奖爱的爆炸:Long 1)
+        if{fun bool.not(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到永久加速:Long 1:var 玩家:Long 1:Bool 0)
+        }
+        if{fun create.bool(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到永久加速 @4强化@5:Long 1:var 玩家:Long 1:Bool 0)
+        }
+      }
+      if{varf Long.随机抽奖.inside(Long 20833:Long 21895)
+        act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 抽奖派对话筒:Long 1)
+        if{fun bool.not(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到终极干扰:Long 1:var 玩家:Long 1:Bool 0)
+        }
+        if{fun create.bool(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到终极干扰 @4强化@5:Long 1:var 玩家:Long 1:Bool 0)
+        }
+      }
+      if{varf Long.随机抽奖.inside(Long 21896:Long 22502)
+        act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 抽奖神秘空投:Long 1)
+        if{fun bool.not(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到终极加速:Long 1:var 玩家:Long 1:Bool 0)
+        }
+        if{fun create.bool(var 局内'决战阶段)
+          act 1101.this.播报_检查或新建'礼物(String 得到终极加速 @4强化@5:Long 1:var 玩家:Long 1:Bool 0)
+        }
+      }
+      varf Long.已处理礼物数.addEqual(Long 1)
+    }
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 1000)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+  }
+  //抽奖得到的能力药丸
+  String 效果名称=fun create.string(String 抽奖能力药丸)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_减益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 剩余层数:Float 0:Float -10000:Float 26:Long 11:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    }
+  }
+}
+//甜甜圈 价格52 积分+5200 强度53000≈800*60+5000 自身 速度+800 持续60 数值+5000 类型13 延迟生效
+String 效果名称=fun create.string(String 甜甜圈)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_增益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 1000:Float 0:Float 60:Long 13:Bool 1)
+  if{fun create.bool(var 设置成功)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 5200)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是4
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 高级加速:var 剩余层数:var 玩家:Long 20:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 高级加速 @4强化@5:var 剩余层数:var 玩家:Long 20:Bool 1)
+    }
+  }
+}
+if{fun create.bool(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 甜甜圈)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_增益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 1000:Float 0:Float 60:Long 13:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    }
+  }
+}
+//能量电池 价格99 积分+9900 强度105000≈1000*75+30000 最大对手 速度-1000 持续75 数值-30000 类型14 延迟生效
+String 效果名称=fun create.string(String 能量电池)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_减益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 剩余层数:Float 0:Float -120000:Float 46:Long 14:Bool 1)
+  if{fun create.bool(var 设置成功)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 9900)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是5
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 高级干扰:var 剩余层数:var 玩家:Long 40:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 高级干扰 @4强化@5:var 剩余层数:var 玩家:Long 40:Bool 1)
+    }
+  }
+}
+if{fun create.bool(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 抽奖能量电池)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_减益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 剩余层数:Float 0:Float -120000:Float 46:Long 14:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    }
+  }
+}
+//爱的爆炸 价格199 积分+19900 强度180000≈1500*120+0 自身 速度+1500 持续0,但按120秒计算强度 数值+0 类型15 延迟生效
+String 效果名称=fun create.string(String 爱的爆炸)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_增益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 1000:Float 0:Float 0:Long 15:Bool 1)
+  if{fun create.bool(var 设置成功)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 19900)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是6
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 永久加速:var 剩余层数:var 玩家:Long 60:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 永久加速 @4强化@5:var 剩余层数:var 玩家:Long 60:Bool 1)
+    }
+  }
+}
+if{fun create.bool(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 爱的爆炸)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_增益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 1000:Float 0:Float 0:Long 15:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    }
+  }
+}
+//派对话筒 价格297 积分+29700 强度315000≈[500*75+15000]*6.6 所有对手,按6人计算 速度-500 持续75 数值-15000 类型16 延迟生效
+String 效果名称=fun create.string(String 派对话筒)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_减益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 剩余层数:Float 0:Float -300000:Float 46:Long 16:Bool 1)
+  if{fun create.bool(var 设置成功)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 29700)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是8
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 终极干扰:var 剩余层数:var 玩家:Long 80:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 终极干扰 @4强化@5:var 剩余层数:var 玩家:Long 80:Bool 1)
+    }
+  }
+}
+if{fun create.bool(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 抽奖派对话筒)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_减益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_数值最大其他队伍(var 玩家:var 剩余层数:Float 0:Float -300000:Float 46:Long 16:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    }
+  }
+}
+//神秘空投 价格520 积分+52000 强度450000≈3000*120+90000 自身 速度+3000 持续120 数值+90000 类型17 延迟生效
+String 效果名称=fun create.string(String 神秘空投)
+Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+if{fun bool.and(var 数量足够:var 允许使用_增益)
+  Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 3000:Float 300000:Float 60:Long 17:Bool 1)
+  if{fun create.bool(var 设置成功)
+    Long 增加积分=fun long.multiply(var 剩余层数:Long 52000)
+    act 1101.this.玩家结构'增加积分(var 玩家:var 增加积分:var 队伍)
+    act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    //礼物播报优先级是10
+    if{fun bool.not(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 终极加速:var 剩余层数:var 玩家:Long 100:Bool 1)
+    }
+    if{fun create.bool(var 局内'决战阶段)
+      act 1101.this.播报_检查或新建'礼物(String 终极加速 @4强化@5:var 剩余层数:var 玩家:Long 100:Bool 1)
+    }
+  }
+}
+if{fun create.bool(var 模式'启用盲盒)
+  String 效果名称=fun create.string(String 抽奖神秘空投)
+  Long 剩余层数=varf Dict.待处理效果.readLong(var 效果名称:Bool 0)
+  Bool 数量足够=fun long.gt(var 剩余层数:Long 0)
+  if{fun bool.and(var 数量足够:var 允许使用_增益)
+    Bool 设置成功=act 1101.this.队伍'施加效果_自身队伍(var 玩家:var 剩余层数:Float 3000:Float 300000:Float 60:Long 17:Bool 1)
+    if{fun create.bool(var 设置成功)
+      act 1101.this.玩家结构'设置_重置待处理效果层数(var 玩家:var 效果名称)
+    }
+  }
+}
+endcode

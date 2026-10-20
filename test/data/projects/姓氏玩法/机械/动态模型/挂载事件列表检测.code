@@ -1,0 +1,18 @@
+begincodeV2
+guid:62cdf019b8d34b58beb0dee54107fcd7
+name:挂载事件列表检测
+return:Bool 存在事件
+lines:
+Bool 存在事件=fun create.bool(Bool 0)
+Float 数量=varf List.挂载事件列表.count()
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 数量)
+  Dict 事件=varf List.挂载事件列表.readDict(var 序号)
+  varf Float.序号.addEqual(Float 1)
+  Float 已生效比例=varf Dict.事件.readFloat(String 已生效比例:Bool 0)
+  if{fun float.lt(var 已生效比例:Float 1)
+    Bool 存在事件=fun create.bool(Bool 1)
+    fun break()
+  }
+}
+endcode

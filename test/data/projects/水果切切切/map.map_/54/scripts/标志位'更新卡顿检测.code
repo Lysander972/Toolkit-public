@@ -1,0 +1,10 @@
+begincodeV2
+name:标志位'更新卡顿检测
+lines:
+Bool 出现卡顿=fun create.bool(var 状态值'发生卡顿)
+if{fun bool.not(var 功能开关'卡顿保护)
+  Bool 出现卡顿=fun create.bool(Bool 0)
+}
+fun map.setCustomBool(String 卡顿检测标志位:var 出现卡顿)
+act 1101.this.标志位'更新简化特效生效()
+endcode

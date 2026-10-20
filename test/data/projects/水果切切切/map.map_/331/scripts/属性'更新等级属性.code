@@ -1,0 +1,30 @@
+begincodeV2
+name:属性'更新等级属性
+return:Long $ret
+lines:
+Long 下一级=fun long.add(var 属性'等级:Long 1)
+Long $ret=fun readExcel2_Long(var 下一级:String 升级总需求:String 升级需求)
+//攻方属性列表
+Float 属性'攻方HP倍数=fun readExcel2_Float(var 属性'等级:String 攻方HP倍数:String 升级需求)
+Float 属性'攻方冷却=fun readExcel2_Float(var 属性'等级:String 攻方冷却:String 升级需求)
+Long 属性'攻方发射数=fun readExcel2_Long(var 属性'等级:String 攻方有效发射数:String 升级需求)
+Float 属性'攻方暴击率=fun readExcel2_Float(var 属性'等级:String 攻方暴击率:String 升级需求)
+Float 属性'攻方暴击倍数=fun readExcel2_Float(var 属性'等级:String 攻方暴击倍数:String 升级需求)
+//守方属性列表
+Long 属性'守方点赞乘数=fun readExcel2_Long(var 属性'等级:String 守方点赞乘数:String 升级需求)
+Float 属性'守方冷却=fun readExcel2_Float(var 属性'等级:String 守方冷却:String 升级需求)
+Long 属性'守方发射数=fun readExcel2_Long(var 属性'等级:String 守方有效发射数:String 升级需求)
+Float 属性'守方暴击率=fun readExcel2_Float(var 属性'等级:String 守方暴击率:String 升级需求)
+Float 属性'守方暴击倍数=fun readExcel2_Float(var 属性'等级:String 守方暴击倍数:String 升级需求)
+//模型相关
+Float 属性'攻方炮塔缩放=fun readExcel2_Float(var 属性'等级:String 攻方炮塔缩放:String 升级需求)
+Float 属性'守方炮塔缩放=fun readExcel2_Float(var 属性'等级:String 守方炮塔缩放:String 升级需求)
+Color 属性'边框颜色=fun readExcel2_Color(var 属性'等级:String 边框颜色:String 升级需求)
+Color 属性'边框自发光颜色=fun readExcel2_Color(var 属性'等级:String 边框自发光:String 升级需求)
+if{fun long.equal(var Attr'Type:Long 11)
+  act 1.this.属性'攻方炮塔更新属性()
+}
+if{fun long.equal(var Attr'Type:Long 21)
+  act 1.this.属性'守方炮塔更新属性()
+}
+endcode

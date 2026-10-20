@@ -1,0 +1,72 @@
+begincodeV2
+color:255,243,0
+name:UI_Loop'RefreshRanking
+lines:
+if{fun bool.not(var init)
+  UILabel $label=varf Canvas.GameUI.readUILabel(String root/top/积分池/label)
+  Bool init=fun create.bool(Bool 1)
+}
+List $idList=varf Dict.PlayerMap.names()
+Float $playerCount=varf List.$idList.count()
+List $playerL=fun create.list()
+List $noScorePlayerL=fun create.list()
+Float $index=fun create.float(Float 0)
+while{fun float.lt(var $index:var $playerCount)
+  String $key=varf List.$idList.readString(var $index)
+  Struct $player=varf Dict.PlayerMap.readStruct(var $key:Bool 1)
+  Long $score=varf Struct.$player.getLong(String score:Bool 0)
+  if{fun long.gt(var $score:Long 0)
+    varf List.$playerL.add(var $player)
+  }
+  if{fun long.lte(var $score:Long 0)
+    varf List.$noScorePlayerL.add(var $player)
+  }
+  varf Float.$index.addEqual(Float 1)
+}
+varf List.$playerL.sort2(Bool 0:String score)
+Float $playerCount=varf List.$playerL.count()
+if{fun float.gt(var $playerCount:Float 0)
+  varf List.$playerL.insertList(var $playerCount:var $noScorePlayerL)
+}
+List $blueList=fun create.list()
+List $redList=fun create.list()
+Float $index=fun create.float(Float 0)
+Float $playerCount=varf List.$playerL.count()
+while{fun float.lt(var $index:var $playerCount)
+  Struct $player=varf List.$playerL.readStruct(var $index)
+/*  if{varf Struct.$player.contains(String 角色)
+/*    Mech M=varf Struct.$player.getMech(String 角色:Bool 0)
+/*    varf Mech.M.callFun1(String 设置序号:var $index)
+  }
+  Long $score=varf Struct.$player.getLong(String score:Bool 0)
+  Long $team=varf Struct.$player.getLong(String team:Bool 1)
+  if{fun long.equal(var $team:Long 1)
+    varf List.$blueList.add(var $player)
+  }
+  if{fun long.equal(var $team:Long 2)
+    varf List.$redList.add(var $player)
+  }
+  varf Float.$index.addEqual(Float 1)
+}
+act 1101.this.UI'GameRefreshRankingDisplay(var $blueList:String root/leftRank/:String root/leftPlayer/)
+act 1101.this.UI'GameRefreshRankingDisplay(var $redList:String root/rightRank/:String root/rightPlayer/)
+Long $totalPool=fun long.add(var LastScorePool:var ScorePool)
+if{fun long.gt(var $totalPool:Long 10000)
+  Float $tmp=fun long.division(var $totalPool:Long 10000)
+  Float $tmp=fun float.round(var $tmp:Float 2)
+  String $s1=fun string.add(var $tmp:String  万)
+}
+if{fun long.lte(var $totalPool:Long 10000)
+  String $s1=fun create.string(var $totalPool)
+}
+if{fun long.gt(var LastScorePool:Long 10000)
+  Float $tmp=fun long.division(var LastScorePool:Long 10000)
+  Float $tmp=fun float.round(var $tmp:Float 2)
+  String $s2=fun string.add(var $tmp:String  万)
+}
+if{fun long.lte(var LastScorePool:Long 10000)
+  String $s2=fun create.string(var LastScorePool)
+}
+String $s1=fun string.Format2(String %1\n@4上局继承%2@5:var $s1:var $s2)
+varf UILabel.$label.text(var $s1)
+endcode

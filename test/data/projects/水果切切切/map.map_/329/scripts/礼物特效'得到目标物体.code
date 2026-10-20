@@ -1,0 +1,15 @@
+begincodeV2
+name:礼物特效'得到目标物体
+params:Struct player
+return:Mech ret
+lines:
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.equal(var team:Long 1)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  Mech ret=varf Dict.攻方炮塔记录.readMech(var uid:Bool 0)
+}
+if{fun long.equal(var team:Long 2)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  Mech ret=varf Dict.守方炮塔记录.readMech(var uid:Bool 0)
+}
+endcode

@@ -1,0 +1,31 @@
+begincodeV2
+name:炮塔'守方召唤物放置
+comment:给一名玩家创建重炮
+params:Struct player,Long 召唤物类型
+return:Mech 玩家炮塔
+lines:
+Mech 玩家炮塔=fun creatVariable.mech(Mech )
+Float 守方重炮数=fun map.getCustomFloat(String 守方重炮数)
+if{fun float.lt(var 守方重炮数:Float 100)
+  varf Float.守方重炮数.addEqual(Float 1)
+  fun map.setCustomFloat(String 守方重炮数:var 守方重炮数)
+  Float xMin=fun float.multiply(var 地图宽度:Float -0.5)
+  varf Float.xMin.addEqual(Float 5)
+  Float xMax=fun float.multiply(var 地图宽度:Float 0.5)
+  varf Float.xMax.minusEqual(Float 5)
+  Float offset1=act 1101./参数调节模块.读取(String 留白区域1:Float 5:Float 3:Float 20:Color 0,0,0,255)
+  Float offset2=act 1101./参数调节模块.读取(String 留白区域2:Float 10:Float 5:Float 20:Color 0,0,0,255)
+  Float temp2=fun float.add(var offset1:var offset2)
+  Float temp2=fun float.multiply(var temp2:Float -1)
+  Float temp1=fun float.multiply(var 地图宽度:Float 0.5)
+  Float zMax=fun float.add(var temp2:var temp1)
+  varf Float.zMax.minusEqual(Float 5)
+  Float zMin=fun float.multiply(var 地图宽度:Float -0.5)
+  varf Float.zMin.addEqual(Float 5)
+  Float x=fun math.rand(var xMin:var xMax)
+  Float z=fun math.rand(var zMin:var zMax)
+  Vector3 relative=fun creatVariable.Vector3(var x:Float 50:var z)
+  Vector3 global=fun vector3.add(var relative:var ScenarioOffset)
+  Mech 玩家炮塔=act 1101.this.Base'SetBase(Long 2:var global:Vector3 0,0,-1:String 守方炮塔:var 召唤物类型:var player)
+}
+endcode

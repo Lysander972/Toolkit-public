@@ -1,0 +1,18 @@
+begincodeV2
+name:应用特性'攻方公共
+lines:
+Long 抽奖'总价值=fun create.long(Long 150)
+Long 抽奖'总次数=fun create.long(Long 10)
+Bool 属性'显示=fun create.bool(Bool 0)
+Bool 物理效果'启用物理=fun create.bool(Bool 0)
+act 1.this.技能检测'攻方公共()
+act 1.this.loopFun(String 技能检测'攻方公共:Float 0)
+act 1.this.Public'SetLayer(Float 0)
+varf Mech.Self.enablePhysics(Bool 0)
+//手动刷新一次技能显示
+Bool 成功=fun create.bool(Bool 0)
+while{fun bool.not(var 成功)
+  delay fun create.float(Float 0)
+  Bool 成功=act 1.this.UI'刷新团队技能蓝()
+}
+endcode

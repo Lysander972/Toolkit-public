@@ -1,0 +1,9 @@
+begincodeV2
+name:平台适配器'抖音礼物名称映射
+params:String 抖音礼物名
+return:String 抖音礼物名
+lines:
+if{fun string.equal(var 抖音礼物名:String 恶魔炸弹)
+  String 抖音礼物名=fun create.string(String 爱的爆炸)
+}
+endcode

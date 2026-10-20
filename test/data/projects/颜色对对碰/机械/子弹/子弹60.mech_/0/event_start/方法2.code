@@ -1,0 +1,8 @@
+begincodeV2
+skip:1
+name:方法2
+lines:
+act 1.this.Public'SetColor(Color 42,130,219,255,格子-蓝色:Color 0,0,0,255)
+act 1.this.Public'Open()
+act 1.this.播放效果()
+endcode

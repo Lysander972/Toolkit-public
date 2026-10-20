@@ -1,0 +1,28 @@
+type:362
+pos:[0,0,0]
+quat:[0,0,0.7071068,0.7071068]
+ext:
+{
+ logicName:1
+ modelGuid:0a8762545e25447fa6b9951b0d47c703
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Diffuse"
+ shader:
+ [
+  {
+   n:_Metallic
+   type:Float
+   v:0
+  }
+  {
+   n:_Smoothness
+   type:Float
+   v:0
+  }
+  {
+   n:_EmmitColor
+   type:Color
+   v:[11.98431,11.98431,11.98431,0]
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+begincodeV2
+name:Generic'PlayAnimationAsModel
+params:Vector3 start,Vector3 end,Vector3 front,Vector3 up,Float duration,Float angleOnStart,Float angleOnEnd
+return:Bool ret
+lines:
+Bool ret=fun create.bool(Bool 0)
+Vector3 actualFront=fun vector3.rotateAround(var front:var up:var angleOnStart)
+act 1.this.Utils'MoveByCameraLocal(var start:var actualFront:var up:Float 1)
+if{fun float.Approximately(var duration:Float 0)
+  fun break()
+}
+Float time=fun create.float(Float 0)
+Bool continue=fun create.bool(Bool 1)
+Bool first=fun create.bool(Bool 1)
+while{fun create.bool(var continue)
+  if{fun bool.not(var first)
+    Float timeD=fun time.deltaTime()
+    varf Float.time.addEqual(var timeD)
+  }
+  Float rate=fun float.division(var time:var duration)
+  Float rate=fun float.clamp(var rate:Float 0:Float 1)
+  Vector3 actualPos=fun vector3.lerp(var start:var end:var rate)
+  Float actualAng=fun float.lerp(var angleOnStart:var angleOnEnd:var rate)
+  Vector3 actualFront=fun vector3.rotateAround(var front:var up:var actualAng)
+  act 1.this.Utils'MoveByCameraLocal(var actualPos:var actualFront:var up:Float 1)
+  Bool first=fun create.bool(Bool 0)
+  Bool continue=fun float.lt(var time:var duration)
+  delay fun create.float(Float 0)
+}
+Vector3 actualFront=fun vector3.rotateAround(var front:var up:var angleOnEnd)
+act 1.this.Utils'MoveByCameraLocal(var end:var actualFront:var up:Float 1)
+endcode

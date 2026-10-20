@@ -1,0 +1,19 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'AfterChangeFaction
+comment:阵营变更时
+params:Long oldFaction,Long newFaction
+lines:
+if{fun long.equal(var newFaction:Long 1)
+  act 1.this.Public'SetLayer(Float 0)
+  act 1.this.Public'SetColor(Color 42,130,219,255,格子-蓝色:Color 0,0,0,255)
+}
+if{fun long.equal(var newFaction:Long 2)
+  act 1.this.Public'SetLayer(Float 0)
+  act 1.this.Public'SetColor(Color 218,42,42,255,格子-红色:Color 0,0,0,255)
+}
+fun break()
+=fun create.long(var oldFaction)
+=fun create.long(var newFaction)
+endcode

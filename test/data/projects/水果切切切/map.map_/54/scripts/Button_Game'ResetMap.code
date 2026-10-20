@@ -1,0 +1,8 @@
+begincodeV2
+color:255,243,0
+name:Button_Game'ResetMap
+lines:
+if{fun create.bool(var IsGM)
+  act 1101./Scenario.Bullet'ForceReclaimAll()
+}
+endcode

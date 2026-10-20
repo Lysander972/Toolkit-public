@@ -1,0 +1,47 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'定时任务事件队列_下沉
+params:Long 索引
+lines:
+Bool 循环=fun create.bool(Bool 1)
+while{fun create.bool(var 循环)
+  Float 队列长度=varf List.局内'定时任务事件队列.count()
+  Long 最小节点=fun create.long(var 索引)
+  //当前事件
+  Float 索引F=varf Long.索引.toFloat()
+  Dict 当前事件=varf List.局内'定时任务事件队列.readDict(var 索引F)
+  Float 最小事件生效=act 1101.this.定时任务事件结构'读取_生效时间(var 当前事件)
+  //左子节点事件
+  Long 左子节点=fun long.multiply(var 索引:Long 2)
+  Long 左子节点=fun long.add(var 左子节点:Long 1)
+  Float 左子节点F=varf Long.左子节点.toFloat()
+  if{fun float.lt(var 左子节点F:var 队列长度)
+    Dict 左子节点事件=varf List.局内'定时任务事件队列.readDict(var 左子节点F)
+    Float 左子节点事件生效=act 1101.this.定时任务事件结构'读取_生效时间(var 左子节点事件)
+    if{fun float.lt(var 左子节点事件生效:var 最小事件生效)
+      Long 最小节点=fun create.long(var 左子节点)
+      Float 最小事件生效=fun create.float(var 左子节点事件生效)
+    }
+  }
+  //右子节点事件
+  Long 右子节点=fun long.multiply(var 索引:Long 2)
+  Long 右子节点=fun long.add(var 右子节点:Long 2)
+  Float 右子节点F=varf Long.右子节点.toFloat()
+  if{fun float.lt(var 右子节点F:var 队列长度)
+    Dict 右子节点事件=varf List.局内'定时任务事件队列.readDict(var 右子节点F)
+    Float 右子节点事件生效=act 1101.this.定时任务事件结构'读取_生效时间(var 右子节点事件)
+    if{fun float.lt(var 右子节点事件生效:var 最小事件生效)
+      Long 最小节点=fun create.long(var 右子节点)
+      Float 最小事件生效=fun create.float(var 右子节点事件生效)
+    }
+  }
+  if{fun long.equal(var 最小节点:var 索引)
+    fun break()
+  }
+  Float 最小节点F=varf Long.最小节点.toFloat()
+  Dict 最小节点事件=varf List.局内'定时任务事件队列.readDict(var 最小节点F)
+  varf List.局内'定时任务事件队列.replace(var 最小节点F:var 当前事件)
+  varf List.局内'定时任务事件队列.replace(var 索引F:var 最小节点事件)
+  Long 索引=fun create.long(var 最小节点)
+}
+endcode

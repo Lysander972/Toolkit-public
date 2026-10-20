@@ -1,0 +1,26 @@
+begincodeV2
+color:221,0,255
+name:技能'2100
+comment:过载炮塔
+lines:
+String key=fun create.string(String 2100)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Long skill=act 1.this.Skills'GetValue(var key)
+  Float temp=varf Long.skill.toFloat()
+  Float 增强时间=fun float.multiply(var temp:Float 10)
+  Float 当前=fun time.scaleTime()
+  Bool 重新启动=fun float.lt(var 属性'射速加强持续:var 当前)
+  if{fun create.bool(var 重新启动)
+    Float 属性'射速加强持续=fun float.add(var 当前:var 增强时间)
+  }
+  if{fun bool.not(var 重新启动)
+    Float 属性'射速加强持续=fun float.add(var 属性'射速加强持续:var 增强时间)
+  }
+  Vector3 坐标=act 1.this.localToWorldPos(Vector3 0,0.1,0)
+  Float 序号=fun create.float(Float 45)
+  Float 尺寸=fun float.multiply(var 属性'守方炮塔缩放:Float 0.5)
+  varf Device.map_handler.callFun3(String 发射特效:var 坐标:var 序号:var 尺寸)
+  =act 1.this.Skills'Decrease(var key:var skill)
+}
+delay fun create.float(Float 0.5)
+endcode

@@ -1,0 +1,34 @@
+begincodeV2
+name:播放动画
+params:Mech 目标队伍柱子_,String 绑定名称_,Float 整体缩放_,Vector3 偏移量,Dict 事件,Float 入场离场偏移
+lines:
+delay fun create.float(Float 1)
+Float 出生时间=fun time.scaleTime()
+Mech 目标队伍柱子=fun creatVariable.mech(var 目标队伍柱子_)
+String 绑定名称=fun create.string(var 绑定名称_)
+Float 整体缩放=fun create.float(var 整体缩放_)
+Mech this=act 1.this.getMech()
+varf Mech.this.scale(var 整体缩放_)
+varf Mech.this.setCustomBool(String 开始离场:Bool 0)
+act 1.this.挂载单一事件(var 事件)
+//入场开始
+Float 入场持续时间=fun create.float(Float 1)
+Vector3 基础偏移量=fun creatVariable.Vector3(Float 0:Float 100:Float 0)
+Vector3 基础偏移量=fun vector3.multilply1(var 基础偏移量:var 整体缩放_:var 入场离场偏移)
+Vector3 入场开始局部坐标=fun vector3.add(var 基础偏移量:var 偏移量)
+//常态
+Vector3 常态局部坐标=fun vector3.add(Vector3 0,0,0:var 偏移量)
+//离场结束
+Float 离场持续时间=fun create.float(Float 1)
+Vector3 基础偏移量=fun creatVariable.Vector3(Float 0:Float 50:Float 0)
+Vector3 基础偏移量=fun vector3.multilply1(var 基础偏移量:var 整体缩放_:var 入场离场偏移)
+Vector3 离场结束局部坐标=fun vector3.add(var 基础偏移量:var 偏移量)
+Float 震屏=fun create.float(Float 0.3)
+Vector3 常态举起高度=fun creatVariable.Vector3(Float 0:Float 20:Float 0)
+Float 抬起周期=fun create.float(Float 0.55)
+Float 落下周期=fun create.float(Float 0.05)
+Float 悬空周期=fun float.minus1(Float 0.7:var 抬起周期:var 落下周期)
+Float 应用剩余效果比例=fun create.float(Float 0)
+Float 应用全部效果比例=fun create.float(Float 0.05)
+act 1.this.入场动画()
+endcode

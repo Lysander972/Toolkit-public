@@ -1,0 +1,6 @@
+begincodeV2
+name:按钮点击'关闭UI
+params:UIRect panel
+lines:
+varf UIRect.panel.del(Float 0)
+endcode

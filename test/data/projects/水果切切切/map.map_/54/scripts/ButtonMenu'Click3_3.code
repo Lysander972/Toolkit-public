@@ -1,0 +1,6 @@
+begincodeV2
+name:ButtonMenu'Click3_3
+lines:
+Long GameSettings2=fun create.long(Long 3)
+act 1101.this.ButtonMenu'Refresh()
+endcode

@@ -1,0 +1,7 @@
+type:1
+pos:[0,0,0]
+ext:
+{
+ boolMechKinematic:true
+ boolHideCore:true
+}

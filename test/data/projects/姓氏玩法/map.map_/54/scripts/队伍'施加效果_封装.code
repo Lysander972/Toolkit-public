@@ -1,0 +1,33 @@
+begincodeV2
+private:1
+color:123,255,0
+name:队伍'施加效果_封装
+comment:在此处完成类型转换
+params:Struct 玩家,Struct 玩家队伍,Struct 选中队伍,Long 效果层数,Float 每层速度变化,Float 每层数值变化,Float 持续时间,Long 互动事件和buff类型,Bool 延迟生效
+lines:
+Float 效果层数F=varf Long.效果层数.toFloat()
+Float 累计速度变化=fun float.multiply1(var 每层速度变化:var 效果层数F:Float 1024)
+Float 累计数值变化=fun float.multiply1(var 每层数值变化:var 效果层数F:Float 1024)
+if{fun create.bool(var 局内'决战阶段)
+  Float 累计速度变化=fun float.multiply(var 累计速度变化:Float 3)
+  Float 累计数值变化=fun float.multiply(var 累计数值变化:Float 3)
+}
+Long 累计速度变化L=varf Float.累计速度变化.toLong()
+Long 累计数值变化L=varf Float.累计数值变化.toLong()
+if{fun create.bool(var 延迟生效)
+  Dict 事件=act 1101.this.局内逻辑'延迟效果_注册(var 玩家:var 选中队伍:var 累计速度变化L:var 累计数值变化L:var 持续时间:var 互动事件和buff类型:var 效果层数)
+  act 1101.this.UI_局内风格接口封装'玩家互动事件(var 玩家:var 玩家队伍:var 选中队伍:var 互动事件和buff类型:var 事件:var 效果层数)
+}
+if{fun bool.not(var 延迟生效)
+  act 1101.this.队伍'应用效果(var 玩家:var 选中队伍:var 累计速度变化L:var 累计数值变化L:var 持续时间:var 互动事件和buff类型:var 效果层数)
+  act 1101.this.UI_局内风格接口封装'玩家互动事件(var 玩家:var 玩家队伍:var 选中队伍:var 互动事件和buff类型:Dict :var 效果层数)
+}
+/*if{fun create.bool(var 局内'启用调试输出)
+/*  Float 局内时间=act 1101.this.工具'得到距开局时间()
+/*  String 玩家名=act 1101.this.玩家结构'读取_name(var 玩家:Bool 0)
+/*  String 队伍名1=act 1101.this.队伍结构'读取_name(var 玩家队伍)
+/*  String 队伍名2=act 1101.this.队伍结构'读取_name(var 选中队伍)
+/*  String 输出=fun string.Format5(String [施加效果]局内时间@1 %1,玩家@1 %2,发起者队伍@1 %3,目标队伍@1 %4,类型@1 %5:var 局内时间:var 玩家名:var 队伍名1:var 队伍名2:var 互动事件和buff类型)
+/*  fun debug.print(var 输出:Color 255,0,255,255:Bool 0)
+}
+endcode

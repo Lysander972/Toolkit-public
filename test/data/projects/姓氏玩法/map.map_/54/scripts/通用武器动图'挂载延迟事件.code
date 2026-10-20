@@ -1,0 +1,8 @@
+begincodeV2
+name:通用武器动图'挂载延迟事件
+params:Canvas 武器UI,Dict 延迟事件
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+List 挂载延迟事件列表=act 1101.this.通用武器动图'得到挂载延迟事件列表(var 武器UI)
+varf List.挂载延迟事件列表.add(var 延迟事件)
+endcode

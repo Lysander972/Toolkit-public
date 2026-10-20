@@ -1,0 +1,9 @@
+begincodeV2
+name:方法1
+lines:
+act 130.this.setFrontColor(Color 0,0,0,255)
+act 130.this.setFresnelColor(Color 0,0,0,255)
+act 130.this.setFresnelPower(Float 0)
+act 130.this.setHitPos(Vector3 0,0,0:Float 1:Float 100:Float 100:Float 1)
+act 130.this.setMesh(String )
+endcode

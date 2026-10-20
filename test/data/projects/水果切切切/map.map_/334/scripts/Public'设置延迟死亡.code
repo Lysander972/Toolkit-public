@@ -1,0 +1,7 @@
+begincodeV2
+name:Public'设置延迟死亡
+params:Bool open,Float delay
+lines:
+Bool Attr'启用延迟死亡=fun create.bool(var open)
+Float Attr'延迟死亡时间=fun create.float(var delay)
+endcode

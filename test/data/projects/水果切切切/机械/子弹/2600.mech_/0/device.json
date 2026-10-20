@@ -1,0 +1,14 @@
+type:1
+pos:[-2.235174E-07,-1.192093E-07,-1.954051E-14]
+enableManualWeld:true
+attach:
+[
+ 6
+ 7
+ 8
+]
+ext:
+{
+ paintColor:[0,0.5808391,1,1]
+ boolHideCore:true
+}

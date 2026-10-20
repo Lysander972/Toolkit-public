@@ -1,0 +1,9 @@
+type:1101
+pos:[0,0,0]
+quat:[0,1,0,0]
+ignorePress:true
+ext:
+{
+ logicName:主界面
+ boolShowFollowIcon:true
+}

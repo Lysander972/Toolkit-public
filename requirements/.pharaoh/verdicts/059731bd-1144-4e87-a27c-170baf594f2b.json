@@ -1,0 +1,25 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "正式pnpm test精确四文件31测试exit0，严格Sphinx构建exit0，四份原文blob一致；Linux托管验证未运行。",
+      "score": 1,
+      "suggestion": "最终核对index/HEAD门禁，托管作业恢复后补Linux结果。"
+    },
+    "parent_fit": {
+      "reason": "测试真实验证code来源、资源GUID、依赖修订/失败/Scope和符号/调用图；BES完整双向转换与纯Canvas全量往返不在这四文件。",
+      "score": 1,
+      "suggestion": "将完整转换、语法、浮点及语料往返专项与对应底层实现同步纳入图。"
+    },
+    "reasoning": {
+      "reason": "断言检查实际返回数据、原始IO、身份候选、诊断及资源释放，缓存spy只补充复用次数，没有以源码字符代替行为。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "059731bd-1144-4e87-a27c-170baf594f2b",
+  "reviewed_fingerprint": "f5c6e82b575098bc220f96a32848de45b2d7f51fc4a71d9fcb340c36e652e709",
+  "schema": 2,
+  "summary": "四文件31项通过，证明已声明专项行为，完整格式覆盖保留缺口。"
+}

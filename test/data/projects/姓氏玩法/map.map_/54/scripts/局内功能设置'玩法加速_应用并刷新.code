@@ -1,0 +1,15 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'玩法加速_应用并刷新
+lines:
+if{fun create.bool(var 局内功能设置'玩法加速)
+  fun setTimeScale(Float 2)
+  if{act 1101./主界面.工具'是GM()
+    fun setTimeScale(Float 20)
+  }
+}
+if{fun bool.not(var 局内功能设置'玩法加速)
+  fun setTimeScale(Float 1)
+}
+act 1101.this.UI_局内'功能面板_刷新_玩法加速()
+endcode

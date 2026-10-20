@@ -1,0 +1,23 @@
+begincodeV2
+name:冰冻'设置冰冻时间
+params:Float 持续
+lines:
+Float 当前=fun time.scaleTime()
+if{fun float.lt(var 当前:var 冰冻'保护时间)
+  fun break()
+}
+Bool enabled=fun float.gte(var 冰冻'结束时间:var 当前)
+if{fun create.bool(var enabled)
+  varf Float.冰冻'结束时间.addEqual(var 持续)
+}
+if{fun bool.not(var enabled)
+  Float 冰冻'结束时间=fun float.add(var 当前:var 持续)
+  act 1.this.冰冻'开关冰冻(Bool 1)
+  Vector3 pos=act 1.this.getPosition()
+  Float value=fun create.float(Float 100)
+  Long type=fun create.long(Long 4)
+  Bool 暴击=fun create.bool(Bool 0)
+  varf Device.map_handler.callFun4(String 数字效果'产生效果:var value:var type:var 暴击:var pos)
+}
+act 1.this.播放音效(String 冻结.ogg:Float 1)
+endcode

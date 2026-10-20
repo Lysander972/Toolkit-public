@@ -1,0 +1,27 @@
+guid:865b79692b574dd0b4e09b466a66676b
+meshes:
+[
+ {
+  n:Dragonfruit_Half
+ }
+]
+matFolderName:cab167e7cdc841038beb3220e97e45f3
+Albedo.UID:cab167e7cdc841038beb3220e97e45f3
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.01102608,0.1324484,0.004810028]
+bounds.size:[0.3851275,0.2648968,0.362139]

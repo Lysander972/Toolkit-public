@@ -1,0 +1,29 @@
+guid:cdf1473d00614dd4bbd5c828fb4ec006
+meshes:
+[
+ {
+  n:Dragonfruit
+ }
+]
+matFolderName:cab167e7cdc841038beb3220e97e45f3
+Albedo.UID:cab167e7cdc841038beb3220e97e45f3
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+OriginType:1
+bounds.center:[0,0,0]
+bounds.size:[0.3901319,0.5929595,0.3663939]

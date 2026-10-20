@@ -1,0 +1,25 @@
+begincodeV2
+color:255,243,0
+name:Player'New
+params:String $uid,String $nickname,String $avatarUrl
+return:Struct $data
+lines:
+Bool $exist=varf Dict.PlayerMap.contains(var $uid)
+if{fun create.bool(var $exist)
+  Struct $data=varf Dict.PlayerMap.readStruct(var $uid:Bool 0)
+  fun break()
+}
+Struct $data=fun create.struct()
+varf Struct.$data.set(String id:var $uid)
+varf Struct.$data.set(String name:var $nickname)
+varf Struct.$data.set(String avatarUrl:var $avatarUrl)
+Long $score=fun create.long(Long 0)
+varf Struct.$data.set(String score:var $score)
+Long $likes=fun create.long(Long 0)
+varf Struct.$data.set(String likes:var $likes)
+Long $streak=fun create.long(Long 0)
+varf Struct.$data.set(String streak:var $streak)
+Long $team=fun create.long(Long 0)
+varf Struct.$data.set(String team:var $team)
+varf Dict.PlayerMap.insert(var $uid:var $data)
+endcode

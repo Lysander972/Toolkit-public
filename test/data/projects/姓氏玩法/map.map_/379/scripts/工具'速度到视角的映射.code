@@ -1,0 +1,14 @@
+begincodeV2
+name:工具'速度到视角的映射
+params:Long 速度
+return:Float 视角
+lines:
+Float 指数=fun long.division(var 速度:Long 102400)
+Float 指数=fun float.log(var 指数:Float 1.01)
+Float 指数=fun float.max(var 指数:Float 1)
+//这一步之后得到一个大于等于0的数,0表示视角无扭曲,正无穷时视角到30
+Float 底数=fun create.float(Float 0.999)
+Float 插值=fun float.pow(var 底数:var 指数)
+//插值的范围在0~1
+Float 视角=fun float.lerp(Float 70:Float 60:var 插值)
+endcode

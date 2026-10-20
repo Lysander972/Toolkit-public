@@ -1,0 +1,9 @@
+begincodeV2
+color:255,0,255
+name:Lifting'EndCycle
+lines:
+if{fun create.bool(var IsLifting)
+  act 1.this.DisableFun(String Lifting'Cycle)
+  Bool IsLifting=fun create.bool(Bool 0)
+}
+endcode

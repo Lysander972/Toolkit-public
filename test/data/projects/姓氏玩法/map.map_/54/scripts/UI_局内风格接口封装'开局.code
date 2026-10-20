@@ -1,0 +1,6 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口封装'开局
+lines:
+varf Device.局外功能设置'使用风格实现.callFun0(String UI_局内风格接口'开局)
+endcode

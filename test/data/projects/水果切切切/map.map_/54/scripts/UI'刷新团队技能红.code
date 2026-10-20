@@ -1,0 +1,29 @@
+begincodeV2
+name:UI'刷新团队技能红
+params:Long 存储进度
+return:Bool 成功
+lines:
+if{fun bool.not(var init)
+  Long context=act 1101.this.GetContextId()
+  if{fun long.equal(var context:Long 1)
+    String 模板=fun create.string(String 下方充能%1/10)
+    Long 除数=fun create.long(Long 10)
+  }
+  if{fun long.equal(var context:Long 2)
+    String 模板=fun create.string(String 下方充能%1/20)
+    Long 除数=fun create.long(Long 20)
+  }
+  Bool init=fun create.bool(Bool 1)
+}
+Bool 成功=fun create.bool(Bool 0)
+if{varf Canvas.GameUI.exist()
+  UIRect 进度条=varf Canvas.GameUI.readUIRect(String root/rightpanel/团队技能进度条/红队进度条/填充条)
+  Float 填充比例=fun long.division(var 存储进度:var 除数)
+  Float 填充比例=fun float.clamp(var 填充比例:Float 0:Float 1)
+  varf UIRect.进度条.fillMode(Enum 0:var 填充比例)
+  UILabel 文字提示=varf Canvas.GameUI.readUILabel(String root/rightpanel/团队技能进度条/红队进度条/边框/label)
+  String 显示=fun string.Format1(var 模板:var 存储进度)
+  varf UILabel.文字提示.text(var 显示)
+  Bool 成功=fun create.bool(Bool 1)
+}
+endcode

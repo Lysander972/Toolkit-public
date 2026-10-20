@@ -1,0 +1,6 @@
+begincodeV2
+name:发射特效
+params:Vector3 坐标,Float 序号,Float 尺寸
+lines:
+act 336./特效发射器.发射(var 坐标:var 序号:var 尺寸)
+endcode

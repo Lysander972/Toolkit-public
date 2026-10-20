@@ -1,0 +1,20 @@
+begincodeV2
+skip:1
+name:速度调节
+comment:测试用
+lines:
+if{fun bool.not(var init)
+  Float 速率=fun create.float(Float 1)
+  Bool init=fun create.bool(Bool 1)
+}
+if{fun keyboard.keyDown2(Enum 93)
+  varf Float.速率.addEqual(Float 1)
+  fun debug.print(var 速率:Color 255,255,255,255:Bool 0)
+  act 1101.this.时间控制'设置基础速率(var 速率)
+}
+if{fun keyboard.keyDown2(Enum 94)
+  varf Float.速率.minusEqual(Float 1)
+  fun debug.print(var 速率:Color 255,255,255,255:Bool 0)
+  act 1101.this.时间控制'设置基础速率(var 速率)
+}
+endcode

@@ -1,0 +1,9 @@
+begincodeV2
+color:169,0,255
+name:Skills'GetLimited
+params:String key,Long min,Long max
+return:Long ret
+lines:
+Long value=varf Struct.SkillCount.getLong(var key:Bool 0)
+Long ret=fun long.clamp(var value:var min:var max)
+endcode

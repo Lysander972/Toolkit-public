@@ -1,0 +1,16 @@
+begincodeV2
+color:255,255,255
+name:玩家'自动下场
+comment:直接下场选队
+params:Struct 玩家
+lines:
+Bool 已下场=act 1101.this.玩家结构'是否已下场(var 玩家)
+if{fun bool.not(var 已下场)
+  Long 推荐阵营=act 1101.this.工具'得到推荐队伍()
+  if{fun long.notEqual(var 推荐阵营:Long -1)
+    String 字符串id=fun create.string(var 推荐阵营)
+    Struct 目标队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+    act 1101.this.玩家'选择阵营(var 玩家:var 目标队伍)
+  }
+}
+endcode

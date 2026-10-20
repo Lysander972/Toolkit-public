@@ -1,0 +1,49 @@
+type:337
+pos:[0,0,0]
+ext:
+{
+ logicName:1
+ startLifetimeMultiplier:5
+ startSpeed:[0.001,0.001]
+ startSize:[0.2,0.5]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[-3.141593,3.141593]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:1
+ boolBurst:true
+ emission:true
+ rateOverTime:1
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,0.4996122"
+  "0.2500038:1,1,1,0.4996122"
+  "0.5000076:1,1,1,0.4996122"
+  "0.7499962:1,1,1,0.4996122"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:1"
+  "0.2454739:1"
+  "0.501065:1"
+  "0.7641107:1"
+  "1:1"
+ ]
+ rotSpeed:5.235988
+ rotationOverLifetime.max:
+ [
+  "0:0.003126979"
+  "0.25:0"
+  "0.5:0"
+  "0.75:0"
+  "1:0"
+ ]
+ renderMode:2
+ lengthScale:2
+ matType:4
+ simulationSpace:1
+ picFileGuid:83c460e50fa94c24b577483fa9f95ad2
+}

@@ -1,0 +1,124 @@
+begincodeV2
+color:208,0,255
+name:内部'每帧刷新_更新队伍映射
+comment:修改柱子的位置和柱子上的头像的位置
+params:Struct 队伍映射
+lines:
+//读取
+Struct 队伍=varf Struct.队伍映射.getStruct(String 队伍:Bool 0)
+Dict buff层数字典=varf Struct.队伍映射.getDict(String buff层数:Bool 0)
+Long 永久加速层数=varf Dict.buff层数字典.readLong(String 15:Bool 0)
+Mech 队伍模型=varf Struct.队伍映射.getMech(String 队伍模型:Bool 0)
+Bool 刷新模型高度=varf Mech.队伍模型.customBool(String 刷新模型高度)
+Float 队伍映射世界角度=varf Struct.队伍映射.getFloat(String 队伍映射世界角度:Bool 0)
+Float 队伍映射局部高度=varf Struct.队伍映射.getFloat(String 队伍映射局部高度:Bool 0)
+//计算目标位置,更新高度
+Float 目标角度=act 1101.this.工具'计算柱子目标角度(var 队伍:var 队伍映射)
+Long 队伍数值=act 1101./弹幕.队伍结构'读取_valuefordisplay(var 队伍)
+Float 目标高度=act 1101.this.工具'队伍高度映射(var 队伍数值)
+//队伍映射高度按需进行重新计算
+if{fun create.bool(var 刷新模型高度)
+  Vector3 柱子位置=varf Mech.队伍模型.corePos()
+  //这里是上一帧的世界高度,可根据上一帧的世界高度反推出实际上当前的局部高度
+  Float 队伍世界高度=varf Vector3.柱子位置.y()
+  Float 队伍映射局部高度=fun float.minus(var 队伍世界高度:var 目标高度)
+  varf Mech.队伍模型.setCustomBool(String 刷新模型高度:Bool 0)
+}
+//队伍映射高度现在是一个局部坐标系的高度,反映模型高度与实际高度之差
+Float 队伍映射局部高度=act 1101.this.工具'自身插值与匀速综合(var 队伍映射局部高度:Float 0:Float 0.2:Float 10)
+//读取队伍的各项属性
+Bool 在范围内1=act 1101.this.工具'角度在原点周边范围内(var 场景'可见角度范围:var 队伍映射世界角度)
+Bool 在范围内2=act 1101.this.工具'角度在原点周边范围内(var 场景'可见角度范围:var 目标角度)
+Bool 播放完整动画=fun bool.or(var 在范围内1:var 在范围内2)
+if{fun create.bool(var 播放完整动画)
+  Float 队伍映射世界角度=act 1101.this.工具'有方向角度插值(var 队伍映射世界角度:var 目标角度:Float 0.2)
+}
+if{fun bool.not(var 播放完整动画)
+  Float 队伍映射世界角度=fun create.float(var 目标角度)
+}
+Float 队伍世界高度=fun float.add(var 目标高度:var 队伍映射局部高度)
+//应用角度和高度
+Float 位置数量=act 1101.this.工具'得到位置数量()
+Float 半径=fun float.multiply(var 位置数量:var 场景'柱子半径系数)
+Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 半径)
+Vector3 柱子位置=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 队伍映射世界角度)
+Vector3 摄像机坐标=fun camera.pos()
+Vector3 柱子方向=fun vector3.minus(var 摄像机坐标:var 柱子位置)
+varf Vector3.柱子方向.setY(Float 0)
+varf Vector3.柱子位置.setY(var 队伍世界高度)
+//更新根节点位置,根据排名向目标位置靠拢
+Device 队伍模型core=varf Mech.队伍模型.getCoreDevice()
+varf Device.队伍模型core.setPosKinematic(var 柱子位置)
+varf Device.队伍模型core.setRotKinematic(var 柱子方向:Vector3 0,1,0)
+//更新附加减速类模型偏移量
+Float 附加减速类模型偏移量=varf Mech.队伍模型.customFloat(String 附加减速类模型偏移量)
+Float 附加减速类模型偏移量=act 1101.this.工具'自身插值与匀速综合(var 附加减速类模型偏移量:Float 0:Float 0.1:Float 10)
+varf Mech.队伍模型.setCustomFloat(String 附加减速类模型偏移量:var 附加减速类模型偏移量)
+//队伍数值显示和永久加速层数显示
+String 数值显示内容=act 1101./弹幕.队伍结构'读取_数值显示(var 队伍)
+if{fun long.gte(var 永久加速层数:Long 1)
+  String 数值显示内容=fun string.Format2(String %1\n永久加速×%2:var 数值显示内容:var 永久加速层数)
+}
+//排名显示
+Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+Float 排名显示=fun float.add(var 队伍排名:Float 1)
+if{fun float.Approximately(var 排名显示:Float 1)
+  String 排名显示内容=fun create.string(String 冠军)
+}
+if{fun float.Approximately(var 排名显示:Float 2)
+  String 排名显示内容=fun create.string(String 亚军)
+}
+if{fun float.Approximately(var 排名显示:Float 3)
+  String 排名显示内容=fun create.string(String 季军)
+}
+if{fun float.gte(var 排名显示:Float 4)
+  String 排名显示内容=fun string.add(String #:var 排名显示)
+}
+//3D文本框
+varf Mech.队伍模型.callFun2(String 设置队伍数值:var 数值显示内容:var 排名显示内容)
+//刷新队伍内部的玩家列表
+List 队伍头像马甲列表=varf Struct.队伍映射.getList(String 队伍头像马甲:Bool 0)
+//更新玩家头像
+List 队内玩家表=act 1101./弹幕.队伍结构'读取_playerRankList(var 队伍)
+//根据马甲数量,查找是否存在相应的玩家
+/*Vector3 头像坐标偏移量=fun creatVariable.Vector3(Float 0:Float -4:Float 1.4)
+Vector3 头像坐标偏移量=fun creatVariable.Vector3(Float 0:Float -4:Float 2.5)
+Float 马甲数量=varf List.队伍头像马甲列表.count()
+Float 玩家数量=varf List.队内玩家表.count()
+Float 已处理马甲数=fun create.float(Float 0)
+while{fun float.lt(var 已处理马甲数:var 马甲数量)
+  Mech 头像马甲=varf List.队伍头像马甲列表.readMech(var 已处理马甲数)
+  Device 头像马甲core=varf Mech.头像马甲.getCoreDevice()
+  Vector3 头像实际世界坐标=varf Device.队伍模型core.localToWorldPos(var 头像坐标偏移量)
+  varf Device.头像马甲core.setPosKinematic(var 头像实际世界坐标)
+  Vector3 头像朝向=fun vector3.multilply(var 柱子方向:Float -1)
+  varf Device.头像马甲core.setRotKinematic(var 头像朝向:Vector3 0,1,0)
+  Vector3 头像坐标偏移量=fun vector3.add(var 头像坐标偏移量:Vector3 0,-1.5,0)
+  String 玩家头像框文件=fun create.string(String )
+  String avatarUrl=fun create.string(String )
+  String name=fun create.string(String )
+  String scoreS=fun create.string(String )
+  Bool 存在玩家=fun float.lt(var 已处理马甲数:var 玩家数量)
+  if{fun create.bool(var 存在玩家)
+    //存在玩家,则更新玩家的头像框,显示玩家的昵称和分数
+    Struct 玩家=varf List.队内玩家表.readStruct(var 已处理马甲数)
+    String name=act 1101./弹幕.玩家结构'读取_name(var 玩家:Bool 1)
+    Long scoreL=act 1101./弹幕.玩家结构'读取_score(var 玩家)
+    String scoreS=fun create.string(var scoreL)
+    //初始化头像框和头像
+    String 玩家头像框文件=act 1101./弹幕.工具'获得头像框名称(var 玩家)
+    String avatarUrl=act 1101./弹幕.玩家结构'读取_avatarUrl(var 玩家)
+  }
+  Bool showframe=fun string.notEqual(var 玩家头像框文件:String )
+  Bool showAvatar=fun string.notEqual(var avatarUrl:String )
+  varf Device.头像马甲core.callFun2(String Public'SetFrame:var showframe:var 玩家头像框文件)
+  varf Device.头像马甲core.callFun2(String Public'SetAvatar:var showAvatar:var avatarUrl)
+  UILabel 用户名文本框=varf Device.头像马甲core.callReturnUILabel0(String Public'GetUsernameLabel)
+  UILabel 分数文本框=varf Device.头像马甲core.callReturnUILabel0(String Public'GetScoreLabel)
+  String name=fun create.string(String )
+  String scoreS=fun create.string(String )
+  varf UILabel.用户名文本框.text(var name)
+  varf UILabel.分数文本框.text(var scoreS)
+  varf Float.已处理马甲数.addEqual(Float 1)
+}
+endcode

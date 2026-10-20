@@ -1,0 +1,13 @@
+type:336
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:果汁地面粒子发射器
+ boolShowFollowIcon:true
+ mechIndex:-1
+ generatorAlias:果汁地面粒子
+ poolNum:100
+ maxLifeTime:5
+ antiImpulse:0
+}

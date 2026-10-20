@@ -1,0 +1,11 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'主菜单_退出
+lines:
+if{act 1101.this.UI_局外主菜单'是否本界面()
+  UIRect 菜单框=varf Canvas.UI_局外主菜单'布局.readUIRect(String 菜单框)
+  varf UIRect.菜单框.active(Bool 0)
+  //退出后重置为无界面状态
+  Long UI'状态枚举=fun create.long(Long -1)
+}
+endcode

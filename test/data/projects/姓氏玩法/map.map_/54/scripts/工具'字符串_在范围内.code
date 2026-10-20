@@ -1,0 +1,9 @@
+begincodeV2
+name:工具'字符串_在范围内
+params:String 字符串,String 最小值字符串,String 最大值字符串
+return:Bool ret
+lines:
+Bool 条件1=act 1101.this.工具'字符串_大于等于(var 字符串:var 最小值字符串)
+Bool 条件2=act 1101.this.工具'字符串_小于等于(var 字符串:var 最大值字符串)
+Bool ret=fun bool.and(var 条件1:var 条件2)
+endcode

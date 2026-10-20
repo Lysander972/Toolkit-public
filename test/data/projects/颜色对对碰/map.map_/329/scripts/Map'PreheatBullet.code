@@ -1,0 +1,12 @@
+begincodeV2
+name:Map'PreheatBullet
+params:Long $modelType,Long $count
+lines:
+String $key=fun create.string(var $modelType)
+act 1101.this.Bullet'RegisterModelType(var $key)
+Long 计数=fun create.long(Long 0)
+while{fun long.lt(var 计数:var $count)
+  =act 1101.this.Bullet'New(var $key:Vector3 1e+03,0,0:Vector3 1,0,0)
+  varf Long.计数.addEqual(Long 1)
+}
+endcode

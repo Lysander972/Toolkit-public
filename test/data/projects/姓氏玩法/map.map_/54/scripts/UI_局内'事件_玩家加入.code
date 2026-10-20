@@ -1,0 +1,31 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'事件_玩家加入
+comment:此处玩家结构已经确保是已下场
+params:Struct 玩家,Struct 队伍
+return:Bool ok
+lines:
+Bool ok=fun create.bool(Bool 1)
+act 1101.this.UI_局内风格接口封装'玩家互动事件(var 玩家:var 队伍:var 队伍:Long 1:Dict :Long 0)
+//读取排行
+Long 世界榜周榜=act 1101.this.玩家结构'读取_globalRank(var 玩家)
+//控制面板快速调整虚拟排行功能
+if{act 1101./主界面.工具'是GM()
+  Float 动态模拟排行=act 1101./参数调节模块.读取(String 模拟排行:Float 9999:Float -1:Float 9999:Color 255,255,255,255)
+  Float 动态模拟排行开关=act 1101./参数调节模块.读取(String 模拟排行开关:Float 0:Float 0:Float 1:Color 255,255,255,255)
+  if{fun float.notEqual(var 动态模拟排行开关:Float 0)
+    Long 世界榜周榜=varf Float.动态模拟排行.toLong()
+  }
+}
+//仅百强需要播放入场动画
+Bool 未上榜=fun long.lt(var 世界榜周榜:Long 0)
+Bool 百名以外=fun long.gte(var 世界榜周榜:Long 100)
+if{fun bool.or(var 未上榜:var 百名以外)
+  act 1101.this.播报_检查或新建'非百强玩家加入(var 玩家)
+  fun break()
+}
+//百强动画通过一个马甲完成,不占用主循环
+Mech M=fun createAIMech(String 玩家入场:Float 99:Vector3 0,-100,0:Vector3 0,0,1:Enum 0:Bool 0)
+Device core=varf Mech.M.getCoreDevice()
+varf Device.core.callFun3(String 设置排名:var 世界榜周榜:var 玩家:var 队伍)
+endcode

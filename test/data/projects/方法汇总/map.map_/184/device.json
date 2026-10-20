@@ -1,0 +1,11 @@
+type:274
+pos:[11.32154,0,4.580709]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[-6.830189E-06,270,90]
+ limitRate:1
+ limitRate2:1
+ motorForceRate:1
+ knobAngle:0
+}

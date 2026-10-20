@@ -1,0 +1,9 @@
+begincodeV2
+name:物理效果'缩放结束渐变
+lines:
+Bool 物理效果'缩放动画=fun create.bool(Bool 0)
+if{fun create.bool(var 物理效果'启用物理)
+  varf Mech.Self.enablePhysics(Bool 1)
+}
+act 1.this.DisableFun(String 物理效果'缩放渐变动画)
+endcode

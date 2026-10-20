@@ -1,0 +1,27 @@
+begincodeV2
+name:UI'StartLikeAnimation
+params:UIRect $parent
+lines:
+List $likes=varf UIRect.$parent.customList(String likes)
+Canvas $likeUI=fun create.canvas(Canvas canvas@1@3EAEAEQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYEaWNvbgNQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgEAAAAAAAAAAZhbmNob3IYBAAAAAAAAAAEc2l6ZQQAABBCAAAQQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwhmaWxlR3VpZAYgNjU1ZDFhNDBiYzQ5NDNiZTkyZDVmNjdhMTNmNjhmZDk@3)
+UIRawImage $icon=varf Canvas.$likeUI.readUIRawImage(String icon)
+varf List.$likes.add(var $icon)
+varf UIRect.$parent.addSon(var $icon)
+varf UIRawImage.$icon.pos(Vector3 0.5,0,0)
+Color $color=fun create.color(Color 0,0,0,255)
+Float 色相=fun math.rand(Float 0:Float 1)
+Vector3 hsv=fun creatVariable.Vector3(var 色相:Float 1:Float 1)
+varf Color.$color.fromHSV(var hsv)
+varf UIRawImage.$icon.setCustomColor(String color:var $color)
+Float $now=fun time.time()
+varf UIRawImage.$icon.setCustomFloat(String start:var $now)
+Float $index=varf List.LikeAnimations.find(var $parent)
+if{fun float.Approximately(var $index:Float -1)
+  varf List.LikeAnimations.add(var $parent)
+}
+if{fun bool.not(var LikeAnimationLp)
+  act 1101.this.loopFun(String UI_Loop'LikeAnimationUpdate:Float 0)
+  act 1101.this.UI_Loop'LikeAnimationUpdate()
+  Bool LikeAnimationLp=fun create.bool(Bool 1)
+}
+endcode

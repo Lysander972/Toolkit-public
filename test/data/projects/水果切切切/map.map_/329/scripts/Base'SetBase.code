@@ -1,0 +1,24 @@
+begincodeV2
+color:104,0,255
+name:Base'SetBase
+params:Long faction,Vector3 postition,Vector3 direction,String modelKey,Long type,Struct initPlayer
+return:Mech obj
+lines:
+List unusedList=varf Struct.Base'Unused.getList(var modelKey:Bool 0)
+Float index=varf List.unusedList.count()
+Bool exist=fun float.gt(var index:Float 0)
+Bool exist=fun create.bool(Bool 0)
+if{fun create.bool(var exist)
+  varf Float.index.minusEqual(Float 1)
+  Mech obj=varf List.unusedList.readMech(var index)
+  varf Mech.obj.setActive(Bool 1)
+  varf List.unusedList.remove(var index)
+}
+if{fun bool.not(var exist)
+  Mech obj=act 1101.this.Base'New(var postition:var direction:var modelKey)
+}
+varf Mech.obj.move(var postition:Enum 0)
+varf Mech.obj.rot(var direction:Vector3 0,1,0)
+Device core=varf Mech.obj.getCoreDevice()
+varf Device.core.callFun3(String Public'Initialize:var faction:var type:var initPlayer)
+endcode

@@ -1,0 +1,34 @@
+begincodeV2
+name:通用武器动图'回调_应用事件并播放音效
+params:UIRect 根节点
+lines:
+Bool 播放音效=fun create.bool(Bool 0)
+Float 生效比例=varf UIRect.根节点.customFloat(String 生效比例)
+Canvas 武器UI=varf UIRect.根节点.customCanvas(String 武器UI)
+List 延迟事件列表=act 1101.this.通用武器动图'得到挂载延迟事件列表(var 武器UI)
+Float 序号=varf List.延迟事件列表.count()
+while{fun float.gt(var 序号:Float 0)
+  Bool 播放音效=fun create.bool(Bool 1)
+  varf Float.序号.minusEqual(Float 1)
+  Dict 延迟事件=varf List.延迟事件列表.readDict(var 序号)
+  act 1101.this.局内逻辑'延迟效果_标记生效比例(var 延迟事件:var 生效比例)
+  if{varf Dict.延迟事件.readBool(String 停止维护:Bool 0)
+    varf List.延迟事件列表.remove(var 序号)
+  }
+}
+if{fun create.bool(var 播放音效)
+  Long 随机音效=fun long.rand(Long 0:Long 3)
+  if{fun long.equal(var 随机音效:Long 0)
+    act 1101./主界面.播放音效(String 武器撞击1.ogg:Float 1)
+  }
+  if{fun long.equal(var 随机音效:Long 1)
+    act 1101./主界面.播放音效(String 武器撞击2.ogg:Float 1)
+  }
+  if{fun long.equal(var 随机音效:Long 2)
+    act 1101./主界面.播放音效(String 武器撞击3.ogg:Float 1)
+  }
+  if{fun long.equal(var 随机音效:Long 3)
+    act 1101./主界面.播放音效(String 武器撞击4.ogg:Float 1)
+  }
+}
+endcode

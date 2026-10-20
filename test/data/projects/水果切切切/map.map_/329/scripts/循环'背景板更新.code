@@ -1,0 +1,10 @@
+begincodeV2
+name:循环'背景板更新
+lines:
+Float 修正偏移=fun float.mod(var 守方虚拟位置:Float 120)
+varf Float.修正偏移.addEqual(Float 10)
+Vector3 temp=fun creatVariable.Vector3(Float 0:Float 0.0001:var 修正偏移)
+Vector3 temp=fun vector3.multilply(var temp:Float 1)
+Vector3 temp=fun vector3.add(var temp:var ScenarioOffset)
+varf Mech.背景板.move(var temp:Enum 0)
+endcode

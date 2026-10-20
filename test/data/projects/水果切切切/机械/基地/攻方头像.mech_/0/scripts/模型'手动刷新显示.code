@@ -1,0 +1,34 @@
+begincodeV2
+name:模型'手动刷新显示
+lines:
+if{fun create.bool(var Frozen)
+  act 362./边框.setDynamicShader(String Device emmit)
+  act 362./边框.setDynamicMatPic(String _MainTex:String Frozen_Lake_2_BaseColorAdjusted8.png)
+  act 362./边框.setDynamicMatPic(String _EmissionMap:String 全发光贴图.png)
+  act 362./边框.setMatCustomColor(String _PaintColor:var FrameBaseColor)
+  act 362./边框.setMatCustomColor(String _EmmitColor:var FrameEmmitColor)
+  act 362./头像.setDynamicShader(String Device emmit)
+  act 362./头像.setDynamicMatPic(String _MainTex:String Frozen_Lake_2_BaseColorAdjusted8.png)
+  act 362./头像.setDynamicMatPic(String _EmissionMap:String 全发光贴图.png)
+  act 362./头像.setMatCustomColor(String _PaintColor:Color 255,255,255,255)
+  act 362./头像.setMatCustomColor(String _EmmitColor:Color 255,255,255,255)
+}
+if{fun bool.not(var Frozen)
+  act 362./边框.setDynamicShader(String Device emmit)
+  act 362./边框.setDynamicMatPic(String _MainTex:String 全白贴图.png)
+  act 362./边框.setDynamicMatPic(String _EmissionMap:String 全发光贴图.png)
+  act 362./边框.setMatCustomColor(String _PaintColor:var FrameBaseColor)
+  act 362./边框.setMatCustomColor(String _EmmitColor:var FrameEmmitColor)
+  act 362./头像.setDynamicShader(String Device emmit)
+  act 362./头像.setDynamicMatPic(String _MainTex:String 全白贴图.png)
+  act 362./头像.setDynamicMatURLPic(String _EmissionMap:var AvatarUrl)
+  act 362./头像.setMatCustomColor(String _PaintColor:Color 0,0,0,255)
+  act 362./头像.setMatCustomColor(String _EmmitColor:Color 255,255,255,255)
+  act 362./头像框.show(var ShowFrame)
+}
+if{fun create.bool(var ShowFrame)
+  act 362./头像框.setDynamicShader(String Device Transparent)
+  act 362./头像框.setMatCustomColor(String _PaintColor:Color 255,255,255,255)
+  act 362./头像框.setDynamicMatPic(String _MainTex:var FrameFile)
+}
+endcode

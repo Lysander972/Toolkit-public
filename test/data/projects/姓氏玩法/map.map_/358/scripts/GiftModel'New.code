@@ -1,0 +1,17 @@
+begincodeV2
+private:1
+color:104,0,255
+name:GiftModel'New
+comment:创建一个普通子弹
+params:String modelKey
+return:Mech obj
+lines:
+/*varf Long.统计'礼物替身创建数.addEqual(Long 1)
+/*fun debug.print(var 统计'礼物替身创建数:Color 88,255,0,255:Bool 0)
+String modelName=fun string.add(var modelKey:String .mech)
+List bulletList=varf Struct.Model'All.getList(var modelKey:Bool 0)
+act 1110./模型创建器.changeMech(var modelName)
+Mech obj=fun createAIMech(String 礼物替身:Float 0:Vector3 0,-1e+05,0:Vector3 1,0,0:Enum 0:Bool 0)
+act 1101.this.Generic'MechPhysics(var obj:Bool 1:Float 0:Float 0:Float 0)
+varf List.bulletList.add(var obj)
+endcode

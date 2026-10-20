@@ -1,0 +1,11 @@
+begincodeV2
+skip:1
+name:输出摄像机信息
+lines:
+if{fun keyboard.keyUp2(Enum 6)
+  String 输出=fun string.add2(String 摄像机角度:var CameraAngle:String 摄像机距离:var CameraDistance)
+  fun string.popNotify(var 输出:Float 3)
+  fun debug.print(var CameraAngle:Color 255,255,255,255:Bool 0)
+  fun debug.print(var CameraDistance:Color 255,255,255,255:Bool 0)
+}
+endcode

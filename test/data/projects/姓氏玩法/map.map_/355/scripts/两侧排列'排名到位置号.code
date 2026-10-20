@@ -1,0 +1,23 @@
+begincodeV2
+name:两侧排列'排名到位置号
+params:Float 排名
+return:Float 位置
+lines:
+Float 位置数量=act 1101.this.工具'得到位置数量()
+Float 排名=act 1101.this.工具'取模操作(var 排名:var 位置数量)
+Float 余数=fun float.mod(var 排名:Float 2)
+Bool 是偶数=fun float.Approximately(var 余数:Float 0)
+//偶数序号,奇数名@4含第一@5
+if{fun create.bool(var 是偶数)
+  Float 位置=fun float.division(var 排名:Float 2)
+  Float 位置=varf Float.位置.floor()
+}
+//奇数序号,偶数名
+if{fun bool.not(var 是偶数)
+  Float temp=fun float.minus(var 排名:Float 1)
+  Float temp=fun float.division(var temp:Float 2)
+  Float temp=varf Float.temp.floor()
+  Float 位置=fun float.minus1(var 位置数量:Float 1:var temp)
+}
+Float 位置=act 1101.this.工具'取模操作(var 位置:var 位置数量)
+endcode

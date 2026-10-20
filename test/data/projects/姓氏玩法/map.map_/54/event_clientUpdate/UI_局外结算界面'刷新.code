@@ -1,0 +1,16 @@
+begincodeV2
+name:UI_局外结算界面'刷新
+lines:
+if{act 1101.this.UI_局外结算页面'是否本界面()
+  Float 当前时间=fun time.scaleTime()
+  Float 已使用时间=fun float.minus(var 当前时间:var UI_局外结算界面'进入时间)
+  Float 剩余时间=fun float.minus(Float 60:var 已使用时间)
+  Long 显示剩余时间=varf Float.剩余时间.toLong()
+  String 显示=fun string.Format1(String 再来一局@4%1秒@5:var 显示剩余时间)
+  UILabel 倒计时显示=varf Canvas.UI_局外结算界面'布局.readUILabel(String 结算界面/确认/label)
+  varf UILabel.倒计时显示.text(var 显示)
+  if{fun float.lte(var 剩余时间:Float 0)
+    act 1101.this.UI_局外结算页面'按钮点击_重启玩法()
+  }
+}
+endcode

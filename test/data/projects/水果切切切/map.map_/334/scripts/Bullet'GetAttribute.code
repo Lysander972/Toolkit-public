@@ -1,0 +1,170 @@
+begincodeV2
+color:0,138,255
+name:Bullet'GetAttribute
+comment:获取属性
+lines:
+//樱桃
+Bool bool1=fun long.gte(var Attr'Type:Long 1001)
+Bool bool2=fun long.lte(var Attr'Type:Long 1004)
+Bool bool3=fun long.gte(var Attr'Type:Long 1010)
+Bool bool4=fun long.lte(var Attr'Type:Long 1022)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1000s()
+}
+//葡萄
+Bool bool1=fun long.equal(var Attr'Type:Long 1100)
+Bool bool2=fun long.equal(var Attr'Type:Long 1110)
+Bool bool3=fun long.equal(var Attr'Type:Long 1120)
+Bool bool4=fun long.equal(var Attr'Type:Long 1130)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1100s()
+}
+//苹果
+Bool bool1=fun long.equal(var Attr'Type:Long 1200)
+Bool bool2=fun long.equal(var Attr'Type:Long 1210)
+Bool bool3=fun long.equal(var Attr'Type:Long 1220)
+Bool bool4=fun long.equal(var Attr'Type:Long 1230)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1200s()
+}
+//半个苹果
+Bool bool1=fun long.equal(var Attr'Type:Long 1201)
+Bool bool2=fun long.equal(var Attr'Type:Long 1211)
+Bool bool3=fun long.equal(var Attr'Type:Long 1221)
+Bool bool4=fun long.equal(var Attr'Type:Long 1231)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1201s()
+}
+//半个苹果
+Bool bool1=fun long.equal(var Attr'Type:Long 1202)
+Bool bool2=fun long.equal(var Attr'Type:Long 1212)
+Bool bool3=fun long.equal(var Attr'Type:Long 1222)
+Bool bool4=fun long.equal(var Attr'Type:Long 1232)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1201s()
+}
+//香蕉串
+Bool bool1=fun long.equal(var Attr'Type:Long 1300)
+Bool bool2=fun long.equal(var Attr'Type:Long 1310)
+Bool bool3=fun long.equal(var Attr'Type:Long 1320)
+Bool bool4=fun long.equal(var Attr'Type:Long 1330)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1300s()
+}
+//单个香蕉
+Bool bool1=fun long.equal(var Attr'Type:Long 1301)
+Bool bool2=fun long.equal(var Attr'Type:Long 1311)
+Bool bool3=fun long.equal(var Attr'Type:Long 1321)
+Bool bool4=fun long.equal(var Attr'Type:Long 1331)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1301s()
+}
+//冰块
+Bool bool1=fun long.equal(var Attr'Type:Long 1400)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'1400s()
+}
+//煤气罐
+Bool bool1=fun long.equal(var Attr'Type:Long 1520)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'1520s()
+}
+//果篮@4作废@5
+/*Bool bool1=fun long.equal(var Attr'Type:Long 1600)
+/*if{fun create.bool(var bool1)
+/*  act 1.this.Attribute'1600s()
+}
+//大西瓜
+Bool bool1=fun long.equal(var Attr'Type:Long 1610)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'1610s()
+}
+//半个大西瓜
+Bool bool1=fun long.equal(var Attr'Type:Long 1611)
+Bool bool2=fun long.equal(var Attr'Type:Long 1612)
+if{fun bool.or(var bool1:var bool2)
+  act 1.this.Attribute'1611s()
+}
+//小西瓜
+Bool bool1=fun long.equal(var Attr'Type:Long 1620)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'1620s()
+}
+//半个小西瓜
+Bool bool1=fun long.equal(var Attr'Type:Long 1621)
+Bool bool2=fun long.equal(var Attr'Type:Long 1622)
+if{fun bool.or(var bool1:var bool2)
+  act 1.this.Attribute'1621s()
+}
+//椰子
+Bool bool1=fun long.equal(var Attr'Type:Long 1900)
+Bool bool2=fun long.equal(var Attr'Type:Long 1910)
+if{fun bool.or(var bool1:var bool2)
+  act 1.this.Attribute'1900s()
+}
+//半个椰子
+Bool bool1=fun long.equal(var Attr'Type:Long 1901)
+Bool bool2=fun long.equal(var Attr'Type:Long 1902)
+Bool bool3=fun long.equal(var Attr'Type:Long 1911)
+Bool bool4=fun long.equal(var Attr'Type:Long 1912)
+if{fun bool.or2(var bool1:var bool2:var bool3:var bool4)
+  act 1.this.Attribute'1901s()
+}
+//普通子弹
+Bool bool1=fun long.equal(var Attr'Type:Long 2000)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2000s()
+}
+//强化子弹
+Bool bool1=fun long.equal(var Attr'Type:Long 2001)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2001s()
+}
+//飞刀
+Bool bool1=fun long.equal(var Attr'Type:Long 2200)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2200s()
+}
+Bool bool1=fun long.equal(var Attr'Type:Long 2201)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2201s()
+}
+//重炮
+Bool bool1=fun long.equal(var Attr'Type:Long 2300)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2300s()
+}
+//滚筒普通节点
+Bool bool1=fun long.equal(var Attr'Type:Long 2400)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2400s()
+}
+//滚筒中段节点
+Bool bool1=fun long.equal(var Attr'Type:Long 2401)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2401s()
+}
+//栅栏
+Bool bool1=fun long.equal(var Attr'Type:Long 2500)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2500s()
+}
+//巨型火球
+Bool bool1=fun long.equal(var Attr'Type:Long 2600)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2600s()
+}
+//小火球
+Bool bool1=fun long.equal(var Attr'Type:Long 2601)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2601s()
+}
+Bool bool1=fun long.equal(var Attr'Type:Long 2602)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2602s()
+}
+Bool bool1=fun long.equal(var Attr'Type:Long 2900)
+if{fun create.bool(var bool1)
+  act 1.this.Attribute'2900s()
+}
+endcode

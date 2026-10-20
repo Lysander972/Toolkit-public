@@ -1,0 +1,32 @@
+begincodeV2
+name:内部'每帧刷新_更新旗帜相位
+lines:
+Float 当前时间=fun time.scaleTime()
+//计算动态抖动效果相位
+Float temp1=fun float.mod(var 当前时间:Float 3)
+Float temp1=fun float.multiply(var temp1:Float 120)
+Float temp1=fun float.triangle.sin(var temp1)
+Float 旗帜角度抖动1=fun float.multiply(var temp1:Float 0.5)
+Float 旗帜纵向摇动1=fun float.multiply(var temp1:Float 2)
+Float temp2=fun float.mod(var 当前时间:Float 3)
+Float temp2=fun float.multiply(var temp2:Float 240)
+Float temp2=fun float.triangle.sin(var temp2)
+Float 旗帜角度抖动2=fun float.multiply(var temp2:Float 1.5)
+Float 旗帜纵向摇动2=fun float.multiply(var temp2:Float 3)
+Float 旗帜角度抖动=fun float.add(var 旗帜角度抖动1:var 旗帜角度抖动2)
+Float 旗帜纵向摇动=fun float.add(var 旗帜纵向摇动1:var 旗帜纵向摇动2)
+varf Float.旗帜纵向摇动.addEqual(Float 5)
+Float 旗帜角度=fun float.add(var 旗帜角度抖动:Float 0)
+Vector3 旗帜坐标=fun creatVariable.Vector3(Float 50:var 旗帜纵向摇动:Float 0)
+//每个位置的相位
+Float temp1=fun float.mod(var 当前时间:Float 2)
+Float temp1=fun float.multiply(var temp1:Float 180)
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:Float 5)
+  Float temp1=fun float.add(var temp1:Float 36)
+  Float temp2=fun float.triangle.sin(var temp1)
+  Float 头像纵向摇动=fun float.multiply(var temp2:Float 2)
+  varf List.相位计算.replace(var 循环:var 头像纵向摇动)
+  varf Float.循环.addEqual(Float 1)
+}
+endcode

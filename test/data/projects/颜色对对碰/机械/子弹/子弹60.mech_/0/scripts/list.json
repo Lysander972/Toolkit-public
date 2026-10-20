@@ -1,0 +1,17 @@
+[
+ {
+  guid:c77f73131ec54daf86b323eab9670f25
+  name:播放音效
+ }
+ Public'SetSize
+ Public'SetWeight
+ Public'ReclaimModel
+ 造成伤害
+ 播放效果
+ Public'PreReclaim
+ 彩带过渡
+ Public'Open
+ Public'Close
+ Public'SetColor
+ Public'SetLayer
+]

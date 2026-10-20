@@ -1,0 +1,22 @@
+begincodeV2
+guid:16bdeea3dd6a4092b95617b3a5e450b8
+name:启动
+lines:
+Mech this=act 1.this.getMech()
+Float N=varf Mech.this.deviceNum()
+Float i=fun create.float(Float 1)
+while{fun float.lt(var i:var N)
+  Device D=varf Mech.this.getDevice(var i)
+  Float type=varf Device.D.typeID()
+  if{fun float.Approximately(var type:Float 362)
+    varf Device.D.show(Bool 0)
+    //默认有碰撞事件，会有消耗
+    varf Device.D.DisableCollideEvent()
+    varf Device.D.setDrag(Float 0)
+    varf Device.D.setLayer(Float 3)
+  }
+  varf Float.i.addEqual(Float 1)
+}
+act 1.this.show(Bool 0)
+act 1.this.enableCollide(Bool 0)
+endcode

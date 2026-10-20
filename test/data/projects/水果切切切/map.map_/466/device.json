@@ -1,0 +1,8 @@
+type:1110
+pos:[0,0,0]
+quat:[0,1,0,0]
+ext:
+{
+ logicName:开火特效
+ mechFileGUID:98b62f04e28248dc9dc2e6e2ab21f1b9
+}

@@ -1,0 +1,24 @@
+type:362
+pos:[1.311342E-08,-0.5,-0.15]
+quat:[2.117582E-22,-1,5.960465E-08,3.552714E-15]
+scale:0.5
+ext:
+{
+ logicName:称号区域
+ modelGuid:ccc5f1659f0d4050a037e28ae75bc084
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Device Transparent"
+ shader:
+ [
+  {
+   n:_PaintColor
+   type:Color
+   v:[1,1,1,1]
+  }
+  {
+   n:_Tiling
+   type:Vector
+   v:[1,1,0]
+  }
+ ]
+}

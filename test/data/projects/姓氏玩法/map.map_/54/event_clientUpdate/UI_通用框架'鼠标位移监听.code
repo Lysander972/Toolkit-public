@@ -1,0 +1,7 @@
+begincodeV2
+name:UI_通用框架'鼠标位移监听
+lines:
+Vector3 当前帧鼠标位置=fun mouse.pos()
+Vector3 UI'鼠标位移=fun vector3.minus(var 当前帧鼠标位置:var 上一帧鼠标位置)
+Vector3 上一帧鼠标位置=varf Vector3.当前帧鼠标位置.copy()
+endcode

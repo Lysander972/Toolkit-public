@@ -1,0 +1,86 @@
+begincodeV2
+color:8,0,255
+name:Public'Initialize
+comment:子弹公共初始化方法
+params:Vector3 $pos,Vector3 $direction,Long $type,Long $faction,Float $height,Struct $player,Vector3 $globalOffset
+lines:
+Bool Alive=fun create.bool(Bool 1)
+Long Type=fun create.long(var $type)
+Long Faction=fun create.long(var $faction)
+Struct Creator=varf Struct.$player.ref()
+Vector3 GlobalOffset=varf Vector3.$globalOffset.copy()
+act 1.this.Bullet'GetAttribute()
+Float RebondCD=fun create.float(Float 0)
+Float TurretRebondCD=fun create.float(Float 0)
+//得到层和颜色
+Float $layer=fun create.float(Float 0)
+Color $color1=fun create.color(Color 0,0,0,255)
+if{fun long.equal(var $faction:Long 1)
+  if{fun bool.not(var Advanced)
+    Float $layer=fun create.float(Float 3)
+  }
+  if{fun create.bool(var Advanced)
+    Float $layer=fun create.float(Float 5)
+  }
+  if{fun long.lt(var $type:Long 10)
+    Float $layer=fun create.float(Float 12)
+  }
+  if{fun long.equal(var $type:Long 60)
+    Float $layer=fun create.float(Float 7)
+  }
+  if{fun long.equal(var $type:Long 61)
+    Float $layer=fun create.float(Float 7)
+  }
+/*  Color $color1=fun create.color(Color 0,190,255,255,子弹-蓝色)
+  Color $color1=fun create.color(Color 0,460,473,255)
+  Color $color2=fun create.color(Color 0,190,255,255)
+/*  if{fun long.equal(var $type:Long 0)
+/*    Color $color1=fun create.color(Color 0,460,473,255)
+  }
+/*  if{fun long.equal(var $type:Long 1)
+/*    Color $color1=fun create.color(Color 0,460,473,255)
+  }
+/*  if{fun long.equal(var $type:Long 10)
+/*    Color $color1=fun create.color(Color 0,460,473,255)
+  }
+}
+if{fun long.equal(var $faction:Long 2)
+  if{fun bool.not(var Advanced)
+    Float $layer=fun create.float(Float 4)
+  }
+  if{fun create.bool(var Advanced)
+    Float $layer=fun create.float(Float 6)
+  }
+  if{fun long.lt(var $type:Long 10)
+    Float $layer=fun create.float(Float 13)
+  }
+  if{fun long.equal(var $type:Long 60)
+    Float $layer=fun create.float(Float 8)
+  }
+  if{fun long.equal(var $type:Long 61)
+    Float $layer=fun create.float(Float 8)
+  }
+/*  Color $color1=fun create.color(Color 255,51,0,255,子弹-红色)
+  Color $color1=fun create.color(Color 531,241,0,255)
+  Color $color2=fun create.color(Color 255,47,0,255)
+/*  if{fun long.equal(var $type:Long 0)
+/*    Color $color1=fun create.color(Color 531,241,0,255)
+  }
+/*  if{fun long.equal(var $type:Long 1)
+/*    Color $color1=fun create.color(Color 531,241,0,255)
+  }
+/*  if{fun long.equal(var $type:Long 10)
+/*    Color $color1=fun create.color(Color 531,241,0,255)
+  }
+}
+//更新物理
+act 1.this.Private'UpdateHP(var maxHP)
+=act 1.this.Private_Physic'ResetPhysic(var $pos:var $direction:var $layer:var $color1:var $color2:var $height)
+//启用技能
+act 1.this.Private_Skill'OnBirth()
+act 1.this.Private_Skill'StartCycle()
+//启用UI
+act 1.this.Private_UI'Reset()
+//启用炮塔功能
+act 1.this.Private_Turret'OnBirth()
+endcode

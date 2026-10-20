@@ -1,0 +1,12 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_按钮点击_帧率模式
+params:Long 选项
+lines:
+if{fun long.equal(var 选项:var 局内功能设置'帧率模式)
+  fun break()
+}
+Long 局内功能设置'帧率模式=fun create.long(var 选项)
+act 1101.this.局内功能设置'帧率模式_应用并刷新()
+act 1101.this.局内功能设置'帧率模式_上传()
+endcode

@@ -1,0 +1,31 @@
+begincodeV2
+name:按钮点击'补偿玩家
+params:Canvas ui
+lines:
+UIInput input=varf Canvas.ui.readUIInput(String panel/scoreInput)
+String s=varf UIInput.input.getText()
+Long 积分=varf String.s.toLong()
+UIInput input=varf Canvas.ui.readUIInput(String panel/winInput)
+String s=varf UIInput.input.getText()
+Long 连胜=varf String.s.toLong()
+List List=fun create.list()
+Dict D=fun create.dict()
+UIInput uidInput=varf Canvas.ui.readUIInput(String panel/uidInput)
+String uid=varf UIInput.uidInput.getText()
+varf Dict.D.insert(String uid:var uid)
+varf Dict.D.insert(String score:var 积分)
+/*Long 战神分=fun create.long(Long 0)
+/*varf Dict.D.insert(String defeat:var 战神分)
+varf Dict.D.insert(String wins:var 连胜)
+/*Bool bLose=fun create.bool(Bool 1)
+/*varf Dict.D.insert(String bLose:var bLose)
+UIInput nameInput=varf Canvas.ui.readUIInput(String panel/nameInput)
+String name=varf UIInput.nameInput.getText()
+varf Dict.D.insert(String name:var name)
+varf List.List.add(var D)
+Dict req=fun create.dict()
+varf Dict.req.insert(String list:var List)
+=varf Dict.req.detail()
+async =fun dynamicCallRet(String DanmuAddRank:var req)
+fun string.popNotify(String 补了:Float 3)
+endcode

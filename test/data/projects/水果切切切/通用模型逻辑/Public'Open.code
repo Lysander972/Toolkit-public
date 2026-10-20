@@ -1,0 +1,8 @@
+begincodeV2
+guid:9d82ee3d7fa846b38c8653dd73399085
+name:Public'Open
+lines:
+act 362./1.show(Bool 1)
+fun break()
+act 362./1.enableCollide(Bool 1)
+endcode

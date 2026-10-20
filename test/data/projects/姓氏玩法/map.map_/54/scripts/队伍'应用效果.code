@@ -1,0 +1,28 @@
+begincodeV2
+color:255,255,255
+name:队伍'应用效果
+comment:持续时间如果是0或者负数代表不限制时长
+params:Struct 玩家,Struct 队伍,Long 速度变化,Long 数值变化,Float 持续时间,Long buff类型,Long 层数变化
+lines:
+if{fun long.notEqual(var 速度变化:Long 0)
+  act 1101.this.队伍'属性修改_速度变化(var 队伍:var 速度变化)
+  act 1101.this.UI_局内风格接口封装'队伍速度变化(var 玩家:var 队伍:var 速度变化:Bool 1)
+}
+if{fun long.notEqual(var 数值变化:Long 0)
+  act 1101.this.队伍'属性修改_数值变化(var 队伍:var 数值变化)
+  act 1101.this.UI_局内风格接口封装'队伍数值变化(var 玩家:var 队伍:var 数值变化)
+}
+if{fun float.gt(var 持续时间:Float 0)
+  Long 失效时_速度变化=fun long.multiply(var 速度变化:Long -1)
+  Long 失效时_层数变化=fun long.multiply(var 层数变化:Long -1)
+  act 1101.this.局内逻辑'定时任务事件队列_注册定时任务(var 玩家:var 队伍:var 失效时_速度变化:var 持续时间:var buff类型:var 失效时_层数变化)
+}
+act 1101.this.UI_局内风格接口封装'队伍buff层数变化(var 队伍:var buff类型:var 层数变化)
+Bool 局内'队伍_更新排名需求=fun create.bool(Bool 1)
+/*if{fun create.bool(var 局内'启用调试输出)
+/*  Float 局内时间=act 1101.this.工具'得到距开局时间()
+/*  String 队伍名=act 1101.this.队伍结构'读取_name(var 队伍)
+/*  String 输出=fun string.Format5(String [应用效果]局内时间@1 %1,队伍@1 %2,速度变化@1 %3,数值变化@1 %4,持续时间@1 %5:var 局内时间:var 队伍名:var 速度变化:var 数值变化:var 持续时间)
+/*  fun debug.print(var 输出:Color 123,255,0,255:Bool 0)
+}
+endcode

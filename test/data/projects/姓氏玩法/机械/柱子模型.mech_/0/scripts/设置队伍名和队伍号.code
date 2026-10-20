@@ -1,0 +1,9 @@
+begincodeV2
+name:设置队伍名和队伍号
+params:String 队伍名,String 队伍序号
+lines:
+UILabel 文本框=act 1102./队伍名.getLabel()
+varf UILabel.文本框.text(var 队伍名)
+UILabel 文本框=act 1102./队伍序号.getLabel()
+varf UILabel.文本框.text(var 队伍序号)
+endcode

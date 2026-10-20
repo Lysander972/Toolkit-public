@@ -1,0 +1,7 @@
+begincodeV2
+name:清空积分
+lines:
+fun string.popNotify(String 为防止误触，此功能已经禁用:Float 3)
+fun break()
+fun danmu.clearRank()
+endcode

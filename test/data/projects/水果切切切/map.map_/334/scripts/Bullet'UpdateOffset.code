@@ -1,0 +1,9 @@
+begincodeV2
+name:Bullet'UpdateOffset
+params:Float radius,Float value
+lines:
+Float offset=fun float.multiply1(var radius:var Physic'Size:var Attr'模型放大倍数)
+Float offset=fun float.add(var offset:var value)
+Float offset=fun float.multiply(var offset:Float -1)
+varf Mech.Self.setCustomFloat(String 索敌修正:var offset)
+endcode

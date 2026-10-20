@@ -1,0 +1,14 @@
+begincodeV2
+name:Base'AddBullet
+params:Long $faction,String $key,Long $amount,Struct $player
+lines:
+if{fun long.equal(var $faction:Long 1)
+  Mech $target=fun creatVariable.mech(var BuleBase)
+}
+if{fun long.equal(var $faction:Long 2)
+  Mech $target=fun creatVariable.mech(var RedBase)
+}
+if{varf Mech.$target.alive()
+  varf Mech.$target.callFun3(String Public'AddBullet:var $key:var $amount:var $player)
+}
+endcode

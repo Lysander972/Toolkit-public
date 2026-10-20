@@ -1,0 +1,8 @@
+begincodeV2
+name:动画控制'UI_关联到父级节点
+params:UIRect 当前组件,UIRect 父级组件
+lines:
+varf UIRect.当前组件.setCustomUIRect(String 父级:var 父级组件)
+varf UIRect.当前组件.setCustomBool(String 启用基准:Bool 1)
+varf UIRect.当前组件.setCustomUIRect(String 基准:var 父级组件)
+endcode

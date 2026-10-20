@@ -1,0 +1,16 @@
+begincodeV2
+name:UI'回收UI
+lines:
+if{fun create.bool(var UI'循环已设置)
+  String method1=fun create.string(String UI'循环朝向摄像机)
+  String method2=fun create.string(String UI'循环跟随局部坐标)
+  if{fun long.equal(var UI'mode:Long 0)
+    act 1.this.DisableFun(var method1)
+  }
+  if{fun long.equal(var UI'mode:Long 1)
+    act 1.this.DisableFun(var method2)
+  }
+  String key=fun create.string(String 血量马甲)
+  varf Device.map_handler.callFun2(String Model'OnReclaim:var UI'血量马甲:var key)
+}
+endcode

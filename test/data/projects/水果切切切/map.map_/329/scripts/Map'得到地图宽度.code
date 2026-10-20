@@ -1,0 +1,6 @@
+begincodeV2
+name:Map'得到地图宽度
+return:Float ret
+lines:
+Float ret=fun create.float(var 地图宽度)
+endcode

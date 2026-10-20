@@ -1,0 +1,11 @@
+type:126
+pos:[-2.235174E-07,0.05000007,0.05000007]
+quat:[-0.4999999,-0.5000002,-0.4999997,0.5000003]
+ext:
+{
+ Color:[0.4341784,2.963907,13.14939,0]
+ vfx_Thickness:0.03
+ vfx_NoiseSpeed:1.5
+ vfx_NoisePower:0.15
+ vfx_NoiseFrequency:1.32
+}

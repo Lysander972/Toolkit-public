@@ -1,0 +1,15 @@
+begincodeV2
+name:时间控制'设置慢镜头需求
+params:Float 慢镜头倍数
+return:String key
+lines:
+String key=fun create.string(String )
+Bool bool1=fun float.gt(var 慢镜头倍数:Float 0)
+Bool bool2=fun float.lt(var 慢镜头倍数:Float 1)
+if{fun bool.and(var bool1:var bool2)
+  varf Long.时间控制'慢镜头ID.addEqual(Long 1)
+  String key=fun create.string(var 时间控制'慢镜头ID)
+  varf Dict.时间控制'慢镜头信息.insert(var key:var 慢镜头倍数)
+  act 1101.this.时间控制'更新时间流速()
+}
+endcode

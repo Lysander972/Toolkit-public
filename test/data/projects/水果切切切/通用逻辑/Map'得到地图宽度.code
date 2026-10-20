@@ -1,0 +1,9 @@
+begincodeV2
+guid:d088430589224c488014a0552ff2a543
+color:0,43,255
+name:Map'得到地图宽度
+comment:得到地图大小
+return:Float ret
+lines:
+Float ret=varf Device.map_handler.callReturnFloat0(String Map'得到地图宽度)
+endcode

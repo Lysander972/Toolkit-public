@@ -1,0 +1,30 @@
+guid:d0a611ad75e0489ca4bd2f1f0dea9ef0
+meshes:
+[
+ {
+  n:Gooseberry_Green
+ }
+]
+matFolderName:cfb004b5c8734c3685b4724440bd1d71
+Albedo.UID:cfb004b5c8734c3685b4724440bd1d71
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.0004062019,0.07917333,3.72529E-09]
+bounds.size:[0.1223767,0.1583467,0.1223767]

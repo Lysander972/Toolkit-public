@@ -1,0 +1,8 @@
+begincodeV2
+name:通用武器动图'获取层数
+params:Canvas 武器UI
+return:Long 已有层数
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+Long 已有层数=varf UIRect.根节点.customLong(String 层数)
+endcode

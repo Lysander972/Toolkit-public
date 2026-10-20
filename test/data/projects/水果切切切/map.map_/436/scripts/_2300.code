@@ -1,0 +1,23 @@
+begincodeV2
+color:65,0,255
+name:_2300
+comment:小火球
+params:Vector3 坐标,Float 整体缩放,Long 摧毁模式
+lines:
+act 1101./主界面.播放音效(String 炮弹爆炸1.ogg:Float 0.8)
+if{fun bool.not(var 简化特效生效)
+  fun screen.shake(Float 0.1:Float 500:Float 0.7)
+}
+/*if{fun create.bool(var 简化特效生效)
+/*  fun screen.shake(Float 0.02:Float 500:Float 0.7)
+}
+Float 特效缩放=fun float.multiply(Float 5:var 整体缩放)
+Float 冲击波缩放=fun float.multiply(Float 80:var 整体缩放)
+if{fun long.equal(var 摧毁模式:Long 0)
+  act 336./特效发射器.发射(var 坐标:Float 20:var 特效缩放)
+/*  act 336./特效发射器.发射(var 坐标:Float 19:var 特效缩放)
+  if{fun bool.not(var 简化特效生效)
+    act 336./爆炸力场发射器.发射力场(var 坐标:var 冲击波缩放:Color 255,255,255,255:Float 0.4)
+  }
+}
+endcode

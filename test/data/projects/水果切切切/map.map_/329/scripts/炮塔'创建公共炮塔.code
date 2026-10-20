@@ -1,0 +1,19 @@
+begincodeV2
+name:炮塔'创建公共炮塔
+comment:分别创建攻方公共和守方公共炮塔,作为高阶礼物出兵点
+lines:
+//攻方炮塔
+Float z=fun float.multiply(var 地图宽度:Float 0.5)
+Float z=fun float.add(var z:var 攻方区域长度)
+varf Float.z.minusEqual(Float 40)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 20:var z)
+Vector3 global=fun vector3.add(var relative:var ScenarioOffset)
+Mech 攻方公共炮塔=act 1101.this.Base'SetBase(Long 1:var global:Vector3 0,0,-1:String 默认基地:Long 10:var Player'default)
+//守方炮塔
+/*Float offset=act 1101./参数调节模块.读取(String 留白区域:Float 10:Float 5:Float 20:Color 0,0,0,255)
+Float offset=fun create.float(Float 10)
+Float z=fun float.multiply(Float -1:var offset)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 20:var z)
+Vector3 global=fun vector3.add(var relative:var ScenarioOffset)
+Mech 守方公共炮塔=act 1101.this.Base'SetBase(Long 2:var global:Vector3 0,0,1:String 默认基地:Long 20:var Player'default)
+endcode

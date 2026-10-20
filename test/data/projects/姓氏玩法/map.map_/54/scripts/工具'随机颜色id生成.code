@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:工具'随机颜色id生成
+return:Long 选中颜色
+lines:
+Long 随机步长=fun long.rand(Long 1:Long 4)
+varf Long.UI_局内'颜色抽取累积.addEqual(var 随机步长)
+Long 选中颜色=fun long.mod(var UI_局内'颜色抽取累积:Long 12)
+endcode

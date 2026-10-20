@@ -1,0 +1,10 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.enableGravity(Bool 0)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.enableCollide(Bool 0)
+act 337./粒子.gravityModifierMultiplier(Float 1)
+act 337./粒子.setLayer(Float 0)
+endcode

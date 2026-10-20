@@ -1,0 +1,23 @@
+begincodeV2
+name:UI_Loop'刷新冰冻边框
+lines:
+if{fun bool.not(var init)
+  UIRect 边框=varf Canvas.GameUI.readUIRect(String root/冰冻边框)
+  Bool init=fun create.bool(Bool 1)
+}
+Float 当前时间=fun time.scaleTime()
+Bool 显示边框=fun float.lt(var 当前时间:var 冰冻边框'结束时间)
+varf UIRect.边框.active(var 显示边框)
+if{fun create.bool(var 显示边框)
+  Float 已过=fun float.minus(var 当前时间:var 冰冻边框'开始时间)
+  Float 总=fun float.minus(var 冰冻边框'结束时间:var 冰冻边框'开始时间)
+  Float 总=fun float.max(var 总:Float 0.1)
+  Float 比例=fun float.division(var 已过:var 总)
+  Color 冰冻颜色=fun create.color(Color 125,178,255,255,颜色1400_0)
+  varf Color.冰冻颜色.setA(Float 0.5)
+  Color 透明=varf Color.冰冻颜色.copy()
+  varf Color.透明.setA(Float 0)
+  Color 显示=varf Color.冰冻颜色.lerp(var 透明:var 比例)
+  varf UIRect.边框.setColor(var 显示)
+}
+endcode

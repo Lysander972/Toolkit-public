@@ -1,0 +1,16 @@
+begincodeV2
+skip:1
+name:调试重新读取
+lines:
+Float 抬起周期=act 1.this.读取(String 抬起周期:Float 0.55:Float 0:Float 1)
+Float 落下周期=act 1.this.读取(String 落下周期:Float 0.05:Float 0:Float 1)
+Float 总时长=act 1.this.读取(String 总时长:Float 0.7:Float 0:Float 2)
+Float 手掌高度=act 1.this.读取(String 手掌高度:Float 20:Float 0:Float 50)
+Float 应用剩余效果比例=act 1.this.读取(String 应用剩余效果比例:Float 0:Float 0:Float 1)
+Float 应用全部效果比例=act 1.this.读取(String 应用全部效果比例:Float 0.05:Float 0:Float 1)
+/*Float 抬起周期=fun create.float(Float 0.3)
+/*Float 落下周期=fun create.float(Float 0.2)
+Float 悬空周期=fun float.minus1(var 总时长:var 抬起周期:var 落下周期)
+Vector3 常态举起高度=fun creatVariable.Vector3(Float 0:var 手掌高度:Float 0)
+Float 震屏=act 1.this.读取(String 震屏:Float 0.4:Float 0:Float 1)
+endcode

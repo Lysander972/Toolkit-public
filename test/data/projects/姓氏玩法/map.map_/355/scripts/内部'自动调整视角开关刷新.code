@@ -1,0 +1,23 @@
+begincodeV2
+name:内部'自动调整视角开关刷新
+lines:
+UIButton 开关按钮=varf Canvas.风格主布局.readUIButton(String 根节点/快捷设置面板/自动视角子面板/开关)
+if{fun create.bool(var 摄像机'是否自动切换)
+  Color 颜色=fun create.color(Color 0,147,255,255)
+  UIRect 选中项方框=varf Canvas.风格主布局.readUIRect(String 根节点/快捷设置面板/自动视角子面板/开关/选中项)
+  varf UIRect.选中项方框.pos(Vector3 0.5,0.5,0)
+  UILabel 按钮标题=varf Canvas.风格主布局.readUILabel(String 根节点/快捷设置面板/自动视角子面板/开关/选中项/标题)
+  varf UILabel.按钮标题.text(String 开)
+  varf UIButton.开关按钮.setColor(var 颜色)
+  varf UILabel.按钮标题.setColor(var 颜色)
+}
+if{fun bool.not(var 摄像机'是否自动切换)
+  Color 颜色=fun create.color(Color 255,0,0,255)
+  UIRect 选中项方框=varf Canvas.风格主布局.readUIRect(String 根节点/快捷设置面板/自动视角子面板/开关/选中项)
+  varf UIRect.选中项方框.pos(Vector3 0,0.5,0)
+  UILabel 按钮标题=varf Canvas.风格主布局.readUILabel(String 根节点/快捷设置面板/自动视角子面板/开关/选中项/标题)
+  varf UILabel.按钮标题.text(String 关)
+  varf UIButton.开关按钮.setColor(var 颜色)
+  varf UILabel.按钮标题.setColor(var 颜色)
+}
+endcode

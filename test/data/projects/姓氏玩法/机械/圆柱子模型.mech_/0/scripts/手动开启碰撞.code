@@ -1,0 +1,5 @@
+begincodeV2
+name:手动开启碰撞
+lines:
+act 22.15.enableCollide(Bool 1)
+endcode

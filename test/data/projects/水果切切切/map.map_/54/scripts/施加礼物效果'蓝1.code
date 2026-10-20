@@ -1,0 +1,23 @@
+begincodeV2
+color:112,0,255
+name:施加礼物效果'蓝1
+comment:1/1
+params:Long count,Struct player,Bool purchased
+return:String str
+lines:
+Long 技能数=fun long.multiply(var count:Long 2)
+act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1100:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:Long 5)
+act 1101./Scenario.技能'添加到攻方玩家炮塔(String 1000:var 技能数:var player)
+Long 技能数=fun long.multiply(var count:Long 2)
+String str=fun string.Format1(String 葡萄×%1:var 技能数)
+=fun create.bool(var purchased)
+/*if{fun create.bool(var purchased)
+/*  if{fun long.gte(var count:Long 66)
+/*    String str=fun string.add(var str:String \n自动点赞速度已提升!)
+/*    Float 技能数F=fun long.division(var count:Long 66)
+/*    Long 技能数=varf Float.技能数F.toLong()
+/*    act 1101./Scenario.技能'添加到攻方玩家炮塔(String 10000:var 技能数:var player)
+  }
+}
+endcode

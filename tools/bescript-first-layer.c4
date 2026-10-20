@@ -1,0 +1,9 @@
+views {
+  view bescript_first_layer of toolkit.script {
+    title '第一层：BEScript 文本与局部 AST'
+    include toolkit.script.conversion.first
+    include toolkit.script.text.*
+    include toolkit.script.ast.*
+    include specifications.bescript
+  }
+}

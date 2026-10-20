@@ -1,0 +1,30 @@
+guid:72b845fd076646c998d4dc38f7826ee3
+meshes:
+[
+ {
+  n:Jackfruit
+ }
+]
+matFolderName:3aee20f2224a47729536f611911db18e
+Albedo.UID:3aee20f2224a47729536f611911db18e
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.01375864,0.3955025,5.960464E-08]
+bounds.size:[0.5809385,0.791005,0.5786762]

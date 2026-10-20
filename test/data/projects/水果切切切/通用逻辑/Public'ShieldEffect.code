@@ -1,0 +1,18 @@
+begincodeV2
+guid:710c92cbe2614799a176a8a1f3955a32
+name:Public'ShieldEffect
+params:Bool open
+lines:
+if{fun create.bool(var open)
+  act 362./1.setDynamicShader(String RimLight)
+  act 362./1.setMatCustomColor(String _BaseColor:Color 255,255,255,255)
+  act 362./1.setMatCustomColor(String _PaintColor:Color 0,251,255,255)
+  act 362./1.setDynamicMatFloat(String _Power:Float 2)
+  act 362./1.setDynamicMatFloat(String _Rate:Float 3)
+}
+if{fun bool.not(var open)
+  act 362./1.setDynamicShader(String Diffuse)
+  act 362./1.setMatCustomColor(String _Color:Color 255,255,255,255)
+/*  act 362./1.setDynamicMatPic(String _MetallicGlossMap:String 金属0染色1光泽0.png)
+}
+endcode

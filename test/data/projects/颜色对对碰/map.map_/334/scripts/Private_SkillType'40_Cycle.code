@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+name:Private_SkillType'40_Cycle
+comment:小炮塔循环
+lines:
+/*fun break()
+if{fun create.bool(var Alive)
+  =act 1.this.Launcher'LaunchUniformlyWithP(Long 42:var 当前瞄准角度:Long 2:Float 10:Float 0:Bool 0:var Creator)
+  delay fun create.float(Float 0.06)
+}
+endcode

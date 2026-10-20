@@ -1,0 +1,16 @@
+begincodeV2
+name:动画控制'UI_打断当前动画
+params:UIRect 当前节点,Bool 保留动画
+lines:
+act 1101.this.动画控制'UI_初始化动画控制(var 当前节点)
+List 动画队列=varf UIRect.当前节点.customList(String 动画队列)
+Float 数量=varf List.动画队列.count()
+if{fun float.gte(var 数量:Float 1)
+  Dict 生效动画字典=varf List.动画队列.readDict(Float 0)
+  Bool 正在播放=fun create.bool(Bool 0)
+  varf Dict.生效动画字典.insert(String 正在播放:var 正在播放)
+  if{fun bool.not(var 保留动画)
+    varf List.动画队列.remove(Float 0)
+  }
+}
+endcode

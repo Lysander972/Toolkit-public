@@ -1,0 +1,11 @@
+begincodeV2
+guid:a30fb5355c5d4a0ba215834a9b676cd7
+name:计算'弧度转方向
+params:Float 弧度
+return:Vector3 世界方向
+lines:
+Float 角度=act 1.this.计算'弧度转角度(var 弧度)
+Vector3 局部方向=fun vector3.rotateAround(Vector3 0,0,-1:Vector3 0,1,0:var 角度)
+Vector3 世界方向=act 1.this.localToWorldDir(var 局部方向)
+varf Vector3.世界方向.setY(Float 0)
+endcode

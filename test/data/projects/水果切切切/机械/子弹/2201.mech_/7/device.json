@@ -1,0 +1,14 @@
+type:242
+pos:[2.399166E-06,-1.192093E-07,-30]
+quat:[-9.860761E-32,-1,-3.061617E-17,3.552714E-15]
+ext:
+{
+ boolHideUI:1
+ logicName:拖尾
+ boolLight:true
+ size:240
+ colorValue:[0.256509,0.1884491,0,1]
+ timeLen:1
+ boolAlphaBlend:false
+ picFileGuid:11469f9feb5e4248b47a443a30707e6b
+}

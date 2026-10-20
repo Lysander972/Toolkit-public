@@ -1,0 +1,13 @@
+type:8
+pos:[13.27879,0,0.2469711]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[270,0,0]
+ boolTurn:true
+ motorForceRate:3
+ motorVelocityRate:1
+ speedUpTime:1
+ speedDownTime:0.5
+ controlType:2
+}

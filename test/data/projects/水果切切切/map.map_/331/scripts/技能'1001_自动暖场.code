@@ -1,0 +1,11 @@
+begincodeV2
+color:221,0,255
+name:技能'1001_自动暖场
+comment:作废
+lines:
+delay fun create.float(Float 2)
+if{act 1.this.Skills'LessOrEqual(String 1000:Long 0)
+  String key=fun create.string(String 1000)
+  act 1.this.Public'AddBullet(var key:Long 2:var 属性'玩家)
+}
+endcode

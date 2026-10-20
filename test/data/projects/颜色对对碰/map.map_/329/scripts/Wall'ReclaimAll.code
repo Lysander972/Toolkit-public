@@ -1,0 +1,13 @@
+begincodeV2
+color:8,0,255
+name:Wall'ReclaimAll
+lines:
+Float $index=varf List.WallUsing.count()
+while{fun float.gt(var $index:Float 0)
+  varf Float.$index.minusEqual(Float 1)
+  Mech $obj=varf List.WallUsing.readMech(var $index)
+  varf Mech.$obj.setActive(Bool 0)
+  varf List.WallUsing.remove(var $index)
+  varf List.WallUnused.add(var $obj)
+}
+endcode

@@ -1,0 +1,7 @@
+{
+  "$schema": "../../schemas/tmlanguage.json",
+  "name": "BEScript",
+  "scopeName": "source.bescript",
+  "patterns": [],
+  "repository": {}
+}

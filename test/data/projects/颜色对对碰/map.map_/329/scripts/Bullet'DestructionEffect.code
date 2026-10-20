@@ -1,0 +1,176 @@
+begincodeV2
+name:Bullet'DestructionEffect
+comment:摧毁时特效
+params:Mech $obj,Long $type,Long $faction
+lines:
+Vector3 $pos=varf Mech.$obj.corePos()
+if{fun long.equal(var $faction:Long 1)
+  Color $color=fun create.color(Color 101,251,252,255,子弹-蓝色修正)
+}
+if{fun long.equal(var $faction:Long 2)
+  Color $color=fun create.color(Color 254,224,100,255,子弹-红色修正)
+}
+if{fun long.equal(var $type:Long 0)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.2:Float 1)
+  fun break()
+  Long $rand=fun long.rand(Long 0:Long 1)
+  Float $volume=fun create.float(Float 0.05)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Metal Light 1.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Metal Light 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 1)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.3:Float 1)
+  Long $rand=fun long.rand(Long 0:Long 1)
+  Float $volume=fun create.float(Float 0.05)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Metal Light 1.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Metal Light 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 10)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.45:Float 1)
+  Long $rand=fun long.rand(Long 0:Long 3)
+  Float $volume=fun create.float(Float 0.2)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Glass 5.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Glass 6.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 2)
+    act 1101./主界面.播放音效(String Glass 7.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 3)
+    act 1101./主界面.播放音效(String Glass 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 20)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.42:Float 8)
+  act 336./特效发射器.发射(var $pos:Float 69:Float 1)
+  Long $rand=fun long.rand(Long 0:Long 3)
+  Float $volume=fun create.float(Float 0.5)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Glass 5.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Glass 6.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 2)
+    act 1101./主界面.播放音效(String Glass 7.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 3)
+    act 1101./主界面.播放音效(String Glass 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 30)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.42:Float 23)
+  act 336./特效发射器.发射(var $pos:Float 69:Float 1.5)
+  Long $rand=fun long.rand(Long 0:Long 3)
+  Float $volume=fun create.float(Float 0.8)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Glass 5.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Glass 6.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 2)
+    act 1101./主界面.播放音效(String Glass 7.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 3)
+    act 1101./主界面.播放音效(String Glass 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 40)
+  act 336./特效发射器.发射(var $pos:Float 48:Float 0.5)
+  fun screen.shake(Float 0.03:Float 2000:Float 0.6)
+  Long $rand=fun long.rand(Long 0:Long 2)
+  Float $volume=fun create.float(Float 0.7)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Explosion Classic_04.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Explosion Fireworks_01.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 2)
+    act 1101./主界面.播放音效(String Explosion Fireworks_02.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 41)
+  act 336./特效发射器.发射(var $pos:Float 48:Float 0.5)
+  fun screen.shake(Float 0.05:Float 2000:Float 0.6)
+  Long $rand=fun long.rand(Long 0:Long 2)
+  Float $volume=fun create.float(Float 0.8)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Explosion Classic_04.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Explosion Fireworks_01.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 2)
+    act 1101./主界面.播放音效(String Explosion Fireworks_02.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 42)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.3:Float 1)
+  fun break()
+  Long $rand=fun long.rand(Long 0:Long 1)
+  Float $volume=fun create.float(Float 0.05)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Metal Light 1.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Metal Light 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 43)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.37:Float 1)
+  fun break()
+  Long $rand=fun long.rand(Long 0:Long 1)
+  Float $volume=fun create.float(Float 0.05)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Metal Light 1.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Metal Light 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 50)
+  act 336./特效发射器.发射(var $pos:Float 48:Float 0.5)
+  fun screen.shake(Float 0.15:Float 2000:Float 0.6)
+  Long $rand=fun long.rand(Long 0:Long 2)
+  Float $volume=fun create.float(Float 1)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Explosion Classic_04.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Explosion Fireworks_01.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 2)
+    act 1101./主界面.播放音效(String Explosion Fireworks_02.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 51)
+  act 336./粒子特效发射器.发射(var $pos:var $color:Float 0.3:Float 4)
+  fun break()
+  Long $rand=fun long.rand(Long 0:Long 1)
+  Float $volume=fun create.float(Float 0.05)
+  if{fun long.equal(var $rand:Long 0)
+    act 1101./主界面.播放音效(String Metal Light 1.ogg:var $volume)
+  }
+  if{fun long.equal(var $rand:Long 1)
+    act 1101./主界面.播放音效(String Metal Light 8.ogg:var $volume)
+  }
+}
+if{fun long.equal(var $type:Long 60)
+  fun break()
+}
+if{fun long.equal(var $type:Long 61)
+  fun break()
+}
+endcode

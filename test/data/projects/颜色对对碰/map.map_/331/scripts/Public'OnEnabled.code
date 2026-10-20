@@ -1,0 +1,18 @@
+begincodeV2
+color:8,0,255
+name:Public'OnEnabled
+comment:启用对象时
+params:Long $faction,Float $maxHP,Long $mapSize,Vector3 $globalOffset
+lines:
+Float maxHP=fun create.float(var $maxHP)
+Long Faction=fun create.long(Long -1)
+Float HP=fun create.float(Float -1)
+Long MapSize=fun create.long(var $mapSize)
+Vector3 GlobalOffset=varf Vector3.$globalOffset.copy()
+act 1.this.Skill'ResetAll()
+act 1.this.Private'UpdateFaction(var $faction)
+act 1.this.Private'UpdateHP(var maxHP)
+varf Mech.Self.setActive(Bool 1)
+act 1.this.跟随UI初始化()
+act 1.this.技能'重置暖场()
+endcode

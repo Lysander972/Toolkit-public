@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "基础已提交 d4a01b37 并推送到 PR180；开发基础正在最终提交，后续三批尚未交付，迁移计划没有写成全部完成。",
+      "score": 1,
+      "suggestion": "继续基于前一分支建立各批 PR，并分别核对 HEAD 检视和托管测试。"
+    },
+    "parent_fit": {
+      "reason": "用户要求的先新功能、后删除旧逻辑、hooks 环境、旧规范逐批 stack 四个顺序全部保留。基础 PR 聚合已连续实施的两个阶段，后续能力批次仍分 PR，不要求一次迁移全部正文。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "以已验证的新版替代旧入口，旧规范逐批原文迁移和独立检视，避免新旧流程并行执行；分界按开发基础、Host、语言、渲染与前端职责划分。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "0fea1910-bd2c-402a-a056-66bbdc955aa4",
+  "reviewed_fingerprint": "0918a1f0d61744e543ed426611bb1c3bc5b8428faecdcd494e9a9924bfefb6a2",
+  "schema": 2,
+  "summary": "核对实际基础 PR 与后续 stack 分界，保留分阶段实施顺序。"
+}

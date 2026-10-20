@@ -1,0 +1,14 @@
+begincodeV2
+name:Public'SetAvatar
+params:Bool open,String url
+lines:
+act 362./avatar.show(var open)
+if{fun string.notEqual(var AvatarMainUrl:var url)
+  act 362./avatar.setDynamicMatURLPic(String _MainTex:var url)
+  String AvatarMainUrl=fun create.string(var url)
+}
+if{fun string.notEqual(var AvatarEmmitUrl:var url)
+  act 362./avatar.setDynamicMatURLPic(String _MainTex:var url)
+  String AvatarEmmitUrl=fun create.string(var url)
+}
+endcode

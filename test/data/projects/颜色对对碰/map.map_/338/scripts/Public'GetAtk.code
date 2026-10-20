@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetAtk
+return:Float $ret
+lines:
+Float $ret=fun create.float(Float 0)
+endcode

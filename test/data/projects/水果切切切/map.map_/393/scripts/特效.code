@@ -1,0 +1,29 @@
+begincodeV2
+name:特效
+params:Float scale,Float count,Color color,Float duration
+lines:
+varf Float.count.minusEqual(Float 1)
+act 337./粒子.startLifetimeMultiplier(var duration)
+act 337./粒子.gravityModifierMultiplier(Float 1)
+Float minscale=fun float.multiply(var scale:Float 5)
+Float maxscale=fun float.multiply(var scale:Float 10)
+act 337./粒子.startSize(var minscale:var maxscale)
+/*Color color=fun create.color(Color 255,255,255,255)
+/*Float strength=fun create.float(Float 5)
+/*Float r=varf Color.color.r()
+/*Float r=fun float.multiply(var r:var strength)
+/*Float g=varf Color.color.g()
+/*Float g=fun float.multiply(var g:var strength)
+/*Float b=varf Color.color.b()
+/*Float b=fun float.multiply(var b:var strength)
+/*varf Color.color.setR(var r)
+/*varf Color.color.setG(var g)
+/*varf Color.color.setB(var b)
+/*Color color=fun create.color(Color 255,0,0,255)
+/*Vector3 v=varf Color.color.toVec()
+/*Vector3 v=fun vector3.multilply(var v:var strength)
+/*Color color=varf Vector3.v.toColor()
+/*act 337./粒子.matType(Enum 4)
+act 337./粒子.color(var color:var color)
+act 337./粒子.emit(var count)
+endcode

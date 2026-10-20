@@ -1,0 +1,28 @@
+begincodeV2
+color:123,255,0
+name:局内逻辑'延迟效果_注册
+params:Struct 玩家,Struct 队伍,Long 速度变化,Long 数值变化,Float 持续时间,Long 类型,Long 层数
+return:Dict 延迟效果注册信息
+lines:
+//封装注册信息
+Dict 延迟效果注册信息=fun create.dict()
+Bool 是延迟效果注册信息=fun create.bool(Bool 1)
+varf Dict.延迟效果注册信息.insert(String 是延迟效果注册信息:var 是延迟效果注册信息)
+varf Dict.延迟效果注册信息.insert(String 玩家:var 玩家)
+varf Dict.延迟效果注册信息.insert(String 队伍:var 队伍)
+varf Dict.延迟效果注册信息.insert(String 速度变化:var 速度变化)
+varf Dict.延迟效果注册信息.insert(String 数值变化:var 数值变化)
+varf Dict.延迟效果注册信息.insert(String 持续时间:var 持续时间)
+varf Dict.延迟效果注册信息.insert(String 类型:var 类型)
+varf Dict.延迟效果注册信息.insert(String 层数:var 层数)
+Float 已生效比例=fun create.float(Float 0)
+varf Dict.延迟效果注册信息.insert(String 已生效比例:var 已生效比例)
+Float 处理的已生效比例=fun create.float(Float 0)
+varf Dict.延迟效果注册信息.insert(String 处理的已生效比例:var 处理的已生效比例)
+Bool 首次处理=fun create.bool(Bool 0)
+varf Dict.延迟效果注册信息.insert(String 首次处理:var 首次处理)
+Bool 停止维护=fun create.bool(Bool 0)
+varf Dict.延迟效果注册信息.insert(String 停止维护:var 停止维护)
+//添加到队列
+varf List.局内'延迟效果表.add(var 延迟效果注册信息)
+endcode

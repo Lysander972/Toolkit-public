@@ -1,0 +1,20 @@
+begincodeV2
+name:vector_
+lines:
+Vector3 v=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+=varf Vector3.v.x()
+=varf Vector3.v.y()
+=varf Vector3.v.z()
+=varf Vector3.v.length()
+=varf Vector3.v.copy()
+varf Vector3.v.set(Vector3 0,0,0)
+=varf Vector3.v.equal(Vector3 0,0,0)
+=varf Vector3.v.setLength(Float 1)
+=varf Vector3.v.limitLength(Float 0)
+varf Vector3.v.setX(Float 0)
+varf Vector3.v.setY(Float 0)
+varf Vector3.v.setZ(Float 0)
+=varf Vector3.v.rotAxis(Vector3 0,0,0:Float 0)
+=varf Vector3.v.rotPos(Vector3 0,0,0:Vector3 0,0,0:Float 0)
+=varf Vector3.v.toColor()
+endcode

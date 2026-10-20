@@ -1,0 +1,8 @@
+begincodeV2
+name:持续刷新时间流速
+lines:
+if{fun float.notEqual(var 上次时间流速:var 时间控制'目标流速)
+  fun setTimeScale(var 时间控制'目标流速)
+  Float 上次时间流速=fun create.float(var 时间控制'目标流速)
+}
+endcode

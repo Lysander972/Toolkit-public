@@ -1,0 +1,22 @@
+begincodeV2
+name:处理弹幕
+lines:
+if{fun bool.not(var GameStart)
+  fun break()
+}
+Float $count=varf List.$list.count()
+Float $index=fun create.float(Float 0)
+while{fun float.lt(var $index:var $count)
+  Dict $msgObj=varf List.$list.readDict(var $index)
+  if{varf Enum.$type.equal(Enum 0)
+    act 1101.this.BarrageHandler'Comment(var $msgObj)
+  }
+  if{varf Enum.$type.equal(Enum 1)
+    act 1101.this.BarrageHandler'Gift(var $msgObj)
+  }
+  if{varf Enum.$type.equal(Enum 2)
+    act 1101.this.BarrageHandler'Like(var $msgObj)
+  }
+  varf Float.$index.addEqual(Float 1)
+}
+endcode

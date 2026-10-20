@@ -1,0 +1,13 @@
+begincodeV2
+color:104,0,255
+name:Bullet'DestructionEffect
+comment:摧毁时特效
+params:Mech obj,Float scale,Long method
+lines:
+String name=varf Mech.obj.name()
+String methodName=fun string.add(String _:var name)
+Device core=varf Mech.obj.getCoreDevice()
+Vector3 pos=varf Device.core.callReturnVector30(String Public'GetCenter)
+Device handler=act 1101./物体特效管理器.getDevice()
+varf Device.handler.callFun3(var methodName:var pos:var scale:var method)
+endcode

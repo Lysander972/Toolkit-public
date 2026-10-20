@@ -1,0 +1,47 @@
+begincodeV2
+name:技能'赠送礼物效果
+params:Long team,Long type,Struct player
+return:String str
+lines:
+String str=fun create.string(String )
+if{fun long.equal(var team:Long 1)
+  if{fun long.equal(var type:Long 1)
+    String str=act 1101./弹幕.施加礼物效果'蓝1(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 2)
+    String str=act 1101./弹幕.施加礼物效果'蓝2(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 3)
+    String str=act 1101./弹幕.施加礼物效果'蓝3(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 4)
+    String str=act 1101./弹幕.施加礼物效果'蓝4(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 5)
+    String str=act 1101./弹幕.施加礼物效果'蓝5(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 6)
+    String str=act 1101./弹幕.施加礼物效果'蓝6(Long 1:var player:Bool 0)
+  }
+}
+if{fun long.equal(var team:Long 2)
+  if{fun long.equal(var type:Long 1)
+    String str=act 1101./弹幕.施加礼物效果'红1(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 2)
+    String str=act 1101./弹幕.施加礼物效果'红2(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 3)
+    String str=act 1101./弹幕.施加礼物效果'红3(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 4)
+    String str=act 1101./弹幕.施加礼物效果'红4(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 5)
+    String str=act 1101./弹幕.施加礼物效果'红5(Long 1:var player:Bool 0)
+  }
+  if{fun long.equal(var type:Long 6)
+    String str=act 1101./弹幕.施加礼物效果'红6(Long 1:var player:Bool 0)
+  }
+}
+endcode

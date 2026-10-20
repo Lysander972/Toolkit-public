@@ -1,0 +1,19 @@
+begincodeV2
+name:ForceReset
+lines:
+if{fun keyboard.keyHeld2(Enum 62)
+  act 1101.this.Camera'Update()
+}
+/*if{fun keyboard.keyHeld2(Enum 1)
+/*  fun time.SetFixedFrame(Long 10)
+/*  delay fun create.float(Float 0)
+/*  fun screen.shake(Float 2:Float 2000:Float 0.2)
+/*  fun screen.shake(Float 2:Float 2000:Float 0.2)
+/*  fun screen.shake(Float 2:Float 2000:Float 0.2)
+/*  fun screen.shake(Float 2:Float 2000:Float 0.2)
+/*  fun screen.shake(Float 2:Float 2000:Float 0.2)
+/*  fun screen.shake(Float 2:Float 2000:Float 0.2)
+/*  delay fun create.float(Float 0)
+/*  fun time.SetFixedFrame(Long 120)
+}
+endcode

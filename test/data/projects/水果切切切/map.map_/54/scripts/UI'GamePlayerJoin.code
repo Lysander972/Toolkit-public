@@ -1,0 +1,38 @@
+begincodeV2
+color:156,0,255
+name:UI'GamePlayerJoin
+params:Struct player
+return:Bool ok
+lines:
+Bool ok=fun create.bool(Bool 1)
+Long rank=varf Struct.player.getLong(String 排行榜名次:Bool 1)
+if{fun create.bool(var IsGM)
+  Float 动态模拟排行=act 1101./参数调节模块.读取(String 模拟排行:Float 9999:Float -1:Float 9999:Color 255,255,255,255)
+  Float 动态模拟排行开关=act 1101./参数调节模块.读取(String 模拟排行开关:Float 0:Float 0:Float 1:Color 255,255,255,255)
+  if{fun float.notEqual(var 动态模拟排行开关:Float 0)
+    Long rank=varf Float.动态模拟排行.toLong()
+/*    Long rank=fun create.long(Long 0)
+/*    Long rank=fun create.long(Long 1)
+/*    Long rank=fun create.long(Long 3)
+/*    Long rank=fun create.long(Long 10)
+/*    Long rank=fun create.long(Long 20)
+/*    Long rank=fun create.long(Long 40)
+/*    Long rank=fun create.long(Long 70)
+  }
+}
+Long team=varf Struct.player.getLong(String team:Bool 1)
+String uid=varf Struct.player.getString(String id:Bool 1)
+String uidproxy=varf Struct.player.getString(String idproxy:Bool 1)
+if{fun string.equal(var uidproxy:var uid)
+  Bool 未上榜=fun long.lt(var rank:Long 0)
+  Bool 百名以外=fun long.gte(var rank:Long 100)
+  String name=varf Struct.player.getString(String name:Bool 1)
+  if{fun bool.or(var 未上榜:var 百名以外)
+    act 1101.this.播报'非百强玩家加入(var player)
+    fun break()
+  }
+  Mech M=fun createAIMech(String 玩家入场:Float 99:Vector3 0,0,0:Vector3 0,0,1:Enum 0:Bool 0)
+  Device core=varf Mech.M.getCoreDevice()
+  varf Device.core.callFun2(String 设置排名:var rank:var player)
+}
+endcode

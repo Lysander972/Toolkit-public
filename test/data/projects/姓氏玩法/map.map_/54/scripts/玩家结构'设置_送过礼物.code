@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_送过礼物
+comment:设置玩家分数
+params:Struct 结构,Bool 送过礼物
+lines:
+varf Struct.结构.set(String 送过礼物:var 送过礼物)
+endcode

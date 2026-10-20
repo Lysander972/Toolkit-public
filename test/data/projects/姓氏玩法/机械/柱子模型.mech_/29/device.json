@@ -1,0 +1,37 @@
+type:337
+pos:[0,0,0]
+quat:[0.4999999,0.5000001,0.5000001,-0.4999999]
+ext:
+{
+ logicName:碎片14
+ offset:1
+ startLifetimeMultiplier:10
+ startSpeed:[0,0]
+ startSize:[100,100]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,1,1,1]
+ startColor.max:[1,1,1,1]
+ customData1.x:0
+ emission:true
+ modelFileGuids:436aeb7ea96e4326bef543c30169c2e2;e41ab9a4a314404796f21deee2d0e440;633c235487d741a3897864b234ac4d07;
+ rateOverTime:1
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:1,1,1,1"
+  "0.2500038:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,1"
+ ]
+ rotSpeed:5.235988
+ renderMode:4
+ renderAlign:1
+ lengthScale:2
+ simulationSpace:1
+ collision:true
+ collisionDampen:0.1
+ collisionBounce:0.5
+}

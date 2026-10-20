@@ -1,0 +1,8 @@
+begincodeV2
+color:0,0,255
+name:Public'GetAtk
+comment:攻击力
+return:Float atk
+lines:
+Float atk=fun create.float(Float 0)
+endcode

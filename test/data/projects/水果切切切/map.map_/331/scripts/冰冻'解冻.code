@@ -1,0 +1,7 @@
+begincodeV2
+name:冰冻'解冻
+lines:
+Float 冰冻'结束时间=fun create.float(Float 0)
+Float 当前时间=fun time.scaleTime()
+Float 冰冻'保护时间=fun float.add(var 当前时间:Float 1)
+endcode

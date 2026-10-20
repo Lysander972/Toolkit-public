@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:播报元素'设置数字动效
+comment:设置时间并重置计时
+params:Canvas canvas,Bool 启用数字动效
+lines:
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+varf UIRect.background.setCustomBool(String 启用数字效果:var 启用数字动效)
+act 1101.this.播报元素'重置数字动效计时(var canvas)
+endcode

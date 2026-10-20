@@ -1,0 +1,15 @@
+begincodeV2
+color:255,0,0
+name:游戏'开始
+comment:开局
+lines:
+if{fun create.bool(var 局外功能设置'预设队伍)
+  Long 当前队伍数=fun create.long(var 局内'队伍_id计数)
+  Long 补充队伍数=fun long.minus(Long 1:var 当前队伍数)
+  if{fun long.gt(var 补充队伍数:Long 0)
+    act 1101.this.队伍'随机预设(var 补充队伍数)
+  }
+}
+Bool 局内'游戏中=fun create.bool(Bool 1)
+Float 局内_游戏规则'开局时间=fun time.scaleTime()
+endcode

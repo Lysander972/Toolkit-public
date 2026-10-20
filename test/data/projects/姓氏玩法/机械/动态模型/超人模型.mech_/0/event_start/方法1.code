@@ -1,0 +1,7 @@
+begincodeV2
+name:方法1
+lines:
+act 337./左.active(Bool 1:Float 0)
+act 337./右.active(Bool 1:Float 0)
+act 337./加速线.active(Bool 1:Float 0)
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:测试'发送默认玩家礼物消息
+params:Long 礼物序号,Long 礼物数量
+lines:
+act 1101.this.测试'发送礼物消息(String _0001Qzypt5TBz3HySUpWYnj0aFShivWFyC3:var 礼物序号:var 礼物数量:String https@1//p26.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813_ogD5AAEheDINHKA9JgAhjIAAEA3zABzQLsVAfC.jpeg?from@33067671334:String test)
+endcode

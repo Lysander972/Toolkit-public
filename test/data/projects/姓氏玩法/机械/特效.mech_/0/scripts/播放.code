@@ -1,0 +1,6 @@
+begincodeV2
+name:播放
+params:Float 序号,Float 缩放
+lines:
+act 145.1.play(var 序号:var 缩放)
+endcode

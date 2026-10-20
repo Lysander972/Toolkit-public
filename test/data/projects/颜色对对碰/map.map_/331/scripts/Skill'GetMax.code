@@ -1,0 +1,9 @@
+begincodeV2
+color:169,0,255
+name:Skill'GetMax
+params:String $key,Long $max
+return:Long $ret
+lines:
+Long $value=varf Struct.SkillCount.getLong(var $key:Bool 0)
+Long $ret=fun long.max(var $value:var $max)
+endcode

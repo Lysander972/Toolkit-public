@@ -1,0 +1,45 @@
+begincodeV2
+name:工具'坐标逼近
+params:Vector3 当前坐标,Vector3 目标坐标
+return:Vector3 输出
+lines:
+Vector3 按插值移动=fun vector3.lerp(var 当前坐标:var 目标坐标:Float 0.1)
+Float x移动速度=fun create.float(Float 5)
+Float y移动速度=fun create.float(Float 5)
+Vector3 坐标差=fun vector3.minus(var 目标坐标:var 当前坐标)
+Float 当前坐标x=varf Vector3.当前坐标.x()
+Float 目标坐标x=varf Vector3.目标坐标.x()
+Float 坐标差x=varf Vector3.坐标差.x()
+Float 坐标差x=varf Float.坐标差x.abs()
+if{fun float.lt(var 坐标差x:Float 0)
+  Float 按固定速度x=fun float.minus(var 当前坐标x:var x移动速度)
+}
+if{fun float.gt(var 坐标差x:Float 0)
+  Float 按固定速度x=fun float.add(var 当前坐标x:var x移动速度)
+}
+if{fun float.lte(var 坐标差x:var x移动速度)
+  Float 按固定速度x=fun create.float(var 目标坐标x)
+}
+Float 当前坐标y=varf Vector3.当前坐标.y()
+Float 目标坐标y=varf Vector3.目标坐标.y()
+Float 坐标差y=varf Vector3.坐标差.y()
+Float 坐标差y=varf Float.坐标差y.abs()
+if{fun float.lt(var 坐标差y:Float 0)
+  Float 按固定速度y=fun float.minus(var 当前坐标y:var y移动速度)
+}
+if{fun float.gt(var 坐标差y:Float 0)
+  Float 按固定速度y=fun float.add(var 当前坐标y:var y移动速度)
+}
+if{fun float.lte(var 坐标差y:var y移动速度)
+  Float 按固定速度y=fun create.float(var 目标坐标y)
+}
+Vector3 按固定速度=fun creatVariable.Vector3(var 按固定速度x:var 按固定速度y:Float 0)
+Vector3 插值方式坐标差=fun vector3.minus(var 目标坐标:var 按插值移动)
+Vector3 固定速度方式坐标差=fun vector3.minus(var 目标坐标:var 按固定速度)
+Float 长度1=varf Vector3.插值方式坐标差.length()
+Float 长度2=varf Vector3.固定速度方式坐标差.length()
+Vector3 输出=varf Vector3.按插值移动.copy()
+if{fun float.lt(var 长度2:var 长度1)
+  Vector3 输出=varf Vector3.按固定速度.copy()
+}
+endcode

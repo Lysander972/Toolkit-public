@@ -1,0 +1,6 @@
+begincodeV2
+name:瞄准'添加候选
+params:Mech obj
+lines:
+varf List.瞄准'候选列表.add(var obj)
+endcode

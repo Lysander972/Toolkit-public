@@ -1,0 +1,81 @@
+begincodeV2
+color:221,0,255
+name:技能'2910_炮塔模型
+lines:
+Float 当前时间=fun time.scaleTime()
+Bool 显示模型=fun float.lt(var 当前时间:var 炮塔模型'结束时间)
+if{fun create.bool(var 显示模型)
+  Float 距开始时间=fun float.minus(var 当前时间:var 炮塔模型'开始时间)
+  Float 距结束时间=fun float.minus(var 炮塔模型'结束时间:var 当前时间)
+  Float 两侧时间=fun float.min(var 距开始时间:var 距结束时间)
+  Float 缩放比例=fun float.division(var 两侧时间:Float 0.5)
+  Float 缩放比例=fun float.clamp(var 缩放比例:Float 0:Float 1)
+  Float 实际缩放=fun float.SmoothStep(Float 0:Float 1:var 缩放比例)
+  Float 实际缩放=fun float.multiply(var 实际缩放:Float 80)
+  //fix@1纠正瞄准方向不准的问题
+  if{fun bool.not(var 创建模型)
+    fun ui.2dmode(Bool 1)
+    Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgRyb290A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAAkMAAEhCAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAAC0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxADABEMAAR0eXBlBgdUZXh0UHJvBG5hbWUGCeW8ueiNr+aVsANQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgFAAAAAAAAAAZhbmNob3IYBQAAAAAAAAALd2lkdGhFeHRlbmQYAgAAAAAAAAAEc2l6ZQQAACBCAABIQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwR0ZXh0BgU5OTk5OQhGb250U2l6ZQEAAOBBCUFsaWdubWVudBgDAAAAAAAAAAtsaW5lU3BhY2luZwEAAIA/EQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYEaWNvbgNQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgDAAAAAAAAAAZhbmNob3IYAwAAAAAAAAAEc2l6ZQQAACBCAAAgQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwhmaWxlR3VpZAYgOGI3NGM1OThiNDIyNGJjYmIwYmFlYmVkNDllNzQ0ODIRCgAEdHlwZQYHVGV4dFBybwRuYW1lBgRuYW1lA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAEAAAAAAAAABmFuY2hvchgHAAAAAAAAAARzaXplBAAAyEMAAEhCAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/BHRleHQGAT8IRm9udFNpemUBAADAQQtsaW5lU3BhY2luZwEAAIA/)
+    UIRect root=varf Canvas.UI.readUIRect(String root)
+    UILabel 名字文本框=varf Canvas.UI.readUILabel(String root/name)
+    UILabel 弹药数文本框=varf Canvas.UI.readUILabel(String root/弹药数)
+    String key=fun create.string(String 机枪马甲)
+    Vector3 坐标=fun creatVariable.Vector3(Float 0:Float -100000:Float 0)
+    Vector3 炮塔朝向=fun creatVariable.Vector3(Float 0:Float 0:Float -1)
+    Mech 模型=varf Device.map_handler.callReturnMech3(String Model'SetModel:var 坐标:var 炮塔朝向:var key)
+    Device core=varf Mech.模型.getCoreDevice()
+    varf UIRect.root.followDevice(var core:Vector3 0,3,3)
+    Bool 创建模型=fun create.bool(Bool 1)
+  }
+  if{fun bool.not(var 当前瞄准'有目标)
+    Float 角度差=fun create.float(Float 0)
+  }
+  if{fun create.bool(var 当前瞄准'有目标)
+    Device core=varf Mech.当前瞄准'目标单位.getCoreDevice()
+    Vector3 pos=varf Device.core.callReturnVector30(String Public'GetCenter)
+    Device dev=varf Mech.模型.getCoreDevice()
+    Vector3 局部方位角=act 1.this.Utils'世界坐标转零件局部方位角(var pos:var dev)
+    Float 方位角x=varf Vector3.局部方位角.x()
+    Float 角度差=fun float.multiply(var 方位角x:Float 1)
+  }
+  //计算角度差
+  Float 每帧间隔=fun time.deltaTime()
+  if{fun float.gte(var 角度差:Float 0)
+    Float 最大转速=fun float.multiply(var 每帧间隔:Float 20)
+    Float 转动角度=fun float.min(var 角度差:var 最大转速)
+  }
+  if{fun float.lt(var 角度差:Float 0)
+    Float 最大转速=fun float.multiply(var 每帧间隔:Float -20)
+    Float 转动角度=fun float.max(var 角度差:var 最大转速)
+  }
+  varf Float.炮塔模型'炮塔角度.addEqual(var 转动角度)
+  Float 修正=fun float.add(var 炮塔模型'炮塔角度:Float 180)
+  Vector3 方位角=fun creatVariable.Vector3(var 修正:Float 0:Float 0)
+  Vector3 炮塔朝向=act 1.this.Utils'AzimuthToVector(var 方位角)
+  Vector3 坐标=act 1.this.getPosition()
+  varf Mech.模型.move(var 坐标:Enum 0)
+  Float 实际缩放=fun float.max(var 实际缩放:Float 0.01)
+  varf Mech.模型.rot(var 炮塔朝向:Vector3 0,1,0)
+  varf Mech.模型.scale(var 实际缩放)
+  Long 弹药数=act 1.this.Skills'GetValue(String 2910)
+  varf UILabel.弹药数文本框.text(var 弹药数)
+  String rawName=varf Struct.属性'玩家.getString(String name:Bool 1)
+  String simpName=act 1.this.限制昵称长度(var rawName)
+  varf UILabel.名字文本框.text(var simpName)
+}
+if{fun bool.xor(var 显示模型:var 上次显示)
+  varf Mech.模型.setActive(var 显示模型)
+  if{varf UIRect.root.exist()
+    varf UIRect.root.active(var 显示模型)
+  }
+}
+Bool 上次显示=fun create.bool(var 显示模型)
+if{fun create.bool(var 创建模型)
+  if{fun bool.xor(var 上次冰冻:var 冰冻'冰冻)
+    Device core=varf Mech.模型.getCoreDevice()
+    varf Device.core.callFun1(String 模型'开关冰冻效果:var 冰冻'冰冻)
+    varf Device.core.callFun0(String 模型'手动刷新显示)
+  }
+  Bool 上次冰冻=fun create.bool(var 冰冻'冰冻)
+}
+endcode

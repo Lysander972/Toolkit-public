@@ -1,0 +1,17 @@
+version:1
+setting:
+{
+ terrainLayer1Index:4
+ terrainLayer2Index:10
+ terrainLayer3Index:12
+ layerTextureTilling:5
+ templateMechBirthName:拼装模板
+ gravity:10
+ boolPhysics:false
+ water:true
+ waterHeight:10
+ groundType:3
+ mapSize:10000
+ boolInfiniteTerrain:true
+ groundColor:[0,0,0,1]
+}

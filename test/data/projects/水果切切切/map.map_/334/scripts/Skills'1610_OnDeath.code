@@ -1,0 +1,7 @@
+begincodeV2
+private:1
+name:Skills'1610_OnDeath
+comment:大西瓜亡语-慢镜头特写
+lines:
+fun break()
+endcode

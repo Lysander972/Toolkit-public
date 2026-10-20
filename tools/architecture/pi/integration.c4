@@ -1,0 +1,129 @@
+model {
+  pi_agent = system 'Pi 官方运行时' {
+    #external
+    description '外部 Pi v1.0.0，官方提交 a13d35a742c6ef8462812a28fbe1d8c8b7431c32。拥有会话、扩展事件、MCP 客户端、工具取消与文本和图片交付；Toolkit 不建立第二 Agent 会话。'
+  }
+  extend resources {
+    pi_reference = document 'Pi 官方接口基线' {
+      #doc
+      description '上游 https://github.com/earendil-works/pi，固定提交 a13d35a742c6ef8462812a28fbe1d8c8b7431c32（v1.0.0）；保存官方配置、settings、MCP、skills、packages、extensions 原文及文件 SHA-256。扩展事件与 MCP 接入按此版本解释；没有另造 Pi 配置 Schema。'
+      metadata { files ['res/architecture/pi/*.md', 'res/architecture/pi/extension-types.ts', 'res/architecture/pi/*.json'] }
+    }
+  }
+  extend toolkit {
+    pi_plugin = container 'Pi 官方扩展适配' {
+      #build
+      #todo
+      description 'Pi 进程内加载扩展；会话开始创建 memory Host 与回环 HTTP MCP，使用官方 registerMcpServer 消费唯一 MCP 工具合同。会话结束注销连接并释放 Host；文本、HTML/XML、PNG 和错误由官方 MCP 客户端交付。'
+      metadata {
+        todo '官方默认扩展入口与 pi.extensions 已登记，固定官方 1.0.0 宿主类型；登记执行保持 TODO'
+        files ['src/toolkit/pi_plugin/package.json']
+      }
+      logic = container '扩展生命周期与接入' {
+        #common
+        #todo
+        description '扩展工厂只注册 flags 和事件；session_start 从 ctx.cwd 建立专属 memory Host、HTTP 服务和官方 MCP 连接；session_shutdown 先注销 MCP，再关闭 HTTP，最后关闭 Host。new/resume/fork/reload 使用同一开始结束合同，不从会话历史重建工程状态。'
+        metadata {
+          todo '官方扩展、工作区与上下文端口已声明；会话执行保持 TODO'
+          sourcePath 'src/toolkit/pi_plugin'
+          files ['src/toolkit/pi_plugin/*.ts']
+        }
+        registration = container '扩展工厂与 flags' {
+          #todo
+          description '默认导出扩展工厂调用 PiExtension.register；通过 registerFlag/getFlag 读取必填 toolkit-mcp-port（整数 1..65535）和显式 toolkit-assets-config 文件输入。资产配置缺失以 Option 表达未启用；不补另一份默认值。工厂不打开 socket、监听或工程。'
+          metadata { todo '官方 ExtensionFactory 输入已绑定；flags 与事件登记保持 TODO' code ['src/toolkit/pi_plugin/PiExtension.ts#PiExtension', 'src/toolkit/pi_plugin/PiExtension.ts#PiExtensionSession'] }
+        }
+        lifecycle = container '会话拥有的工作区资源' {
+          #todo
+          description '输入 ctx.cwd、只读配置与注入 logger；open 按 Host→HTTP→MCP 建立资源，close 按 MCP→HTTP→Host 释放。会话关闭取消工作区调用并释放任务候选；取消、reload 和 session_shutdown 收敛到同一资源所有权。'
+          metadata { todo '官方上下文、配置、Host 和 HTTP 类型合同已声明；生命周期执行保持 TODO' code ['src/toolkit/pi_plugin/PiWorkspace.ts#PiWorkspace'] }
+        }
+        context = container 'Skills 与结果上下文' {
+          #todo
+          description 'resources_discover 提供同树版本的 MechToolkit Skill；tool_call/tool_result 只关联官方调用标识、结果和取消，不维护工具 schema 或第二任务状态。会话记录仅保存交付内容与任务标识，跨会话标识不能复活已关闭 Host 的任务。'
+          metadata { todo '官方 ExtensionAPI 输入已声明；Skills 与结果事件登记保持 TODO' code ['src/toolkit/pi_plugin/PiContext.ts#PiContext'] }
+        }
+      }
+      tests = container 'Pi 生命周期与交付验证' {
+        #test
+        #todo
+        description '验证官方扩展骨架明确失败；正式生命周期、HTTP MCP 交付及取消随业务实现验证。'
+        metadata {
+          todo '官方入口失败已验证；会话资源与交付行为随正式实现验证'
+          sourcePath 'test/modules/toolkit-pi-plugin'
+          files ['test/modules/toolkit-pi-plugin/*.ts']
+        }
+      }
+    }
+  }
+  extend toolkit.config.logic {
+    pi = container 'Pi 只读参数归一化' {
+      #todo
+      description 'PiConfigSource 从扩展传入的 flags 与显式配置输入产生 ToolkitConfig；当前 read 失败。具体资产配置与凭据来源在入口确定，不读取 VS Code、不消费环境变量，不创建或同步配置。'
+      metadata { todo 'PiConfigSource 已明确失败；官方显式输入接入待实现' code ['src/toolkit/config/PiConfigSource.ts#PiConfigSource.read'] }
+    }
+  }
+  pi_agent -> toolkit.pi_plugin.logic '官方扩展加载、会话事件、MCP 连接与结果交付'
+  toolkit.pi_plugin.logic -> toolkit.host.logic '专属 memory Host 的建立与释放' #todo {
+    metadata {
+      todo 'Host.open 成功类型及 logger 输入已绑定；执行保持 TODO'
+    }
+  }
+  toolkit.pi_plugin.logic -> toolkit.mcp.logic '启动回环 HTTP，交由 Pi 官方 MCP 客户端消费' #todo {
+    metadata {
+      todo 'HttpMcp.listen 成功类型绑定工作区 HTTP 资源；执行保持 TODO'
+    }
+  }
+  toolkit.pi_plugin.logic -> toolkit.config.logic '官方显式参数进入统一只读配置' #todo {
+    metadata {
+      todo 'ConfigSource.read 成功类型绑定工作区配置输入；读取执行保持 TODO'
+    }
+  }
+  toolkit.pi_plugin.logic.registration -> toolkit.pi_plugin.logic.lifecycle '声明会话唯一工作区资源'
+  toolkit.pi_plugin.logic.registration -> toolkit.pi_plugin.logic.context '绑定官方上下文输入'
+  toolkit.pi_plugin.logic.lifecycle -> toolkit.host.logic.lifecycle '绑定唯一 Host 生命周期合同'
+  toolkit.pi_plugin.logic -> resources.pi_reference '官方固定版本合同依据'
+  toolkit.pi_plugin.logic -> documentation.manual '同树版本的 MechToolkit Skill'
+  toolkit.pi_plugin.logic -> specifications.runtime
+  toolkit.pi_plugin.tests -> toolkit.pi_plugin.logic
+}
+views {
+  dynamic view pi_session_start {
+    title '06c · Pi 会话启动与读取交付'
+    pi_agent -> toolkit.pi_plugin.logic 'session_start：ctx.cwd 与 flags'
+    toolkit.pi_plugin.logic -> toolkit.config.logic '读取显式配置'
+    toolkit.pi_plugin.logic -> toolkit.host.logic '建立 memory Host'
+    toolkit.pi_plugin.logic -> toolkit.mcp.logic '启动回环 HTTP，取得 endpoint'
+    toolkit.pi_plugin.logic -> pi_agent 'registerMcpServer：官方客户端连接'
+    pi_agent -> toolkit.mcp.logic '具名工具请求与取消信号'
+    toolkit.mcp.logic -> toolkit.host.logic '受控读取或预览请求'
+    toolkit.host.logic -> toolkit.view_service '取得 HTML/XML 具名视图'
+    toolkit.host.logic -> toolkit.preview '视图与完整资源到 PNG'
+    toolkit.mcp.logic -> pi_agent '文本、PNG、结构化结果或实际错误'
+  }
+  dynamic view pi_session_shutdown {
+    title '06d · Pi 关闭、替换与 reload'
+    pi_agent -> toolkit.pi_plugin.logic 'session_shutdown'
+    toolkit.pi_plugin.logic -> pi_agent 'unregisterMcpServer：结束连接与调用'
+    toolkit.pi_plugin.logic -> toolkit.mcp.logic '关闭回环 HTTP'
+    toolkit.pi_plugin.logic -> toolkit.host.logic '关闭 Scope，取消调用并释放候选'
+  }
+  view pi_context {
+    title '06 · Pi 系统上下文'
+    include pi_agent
+    include toolkit
+    include documentation.manual
+  }
+  view pi_integration of toolkit {
+    title '06a · Pi 容器与生命周期'
+    include toolkit.pi_plugin.logic.*
+    include toolkit.config.logic.pi
+    include toolkit.host.logic
+    include toolkit.mcp.logic
+    include toolkit.invocations
+  }
+  view pi_components of toolkit.pi_plugin.logic {
+    title '06b · Pi 扩展组件与代码端口'
+    include toolkit.pi_plugin.logic.*
+  }
+}

@@ -1,0 +1,35 @@
+guid:81727d74411243d0b9950a631b9ccab4
+meshes:
+[
+ {
+  n:Apple_Mix_Whole
+ }
+]
+matFolderName:eec42005f6e545ba937c8f47a94d90db
+Albedo.UID:eec42005f6e545ba937c8f47a94d90db
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:2
+ColliderRadius:0.9
+ColliderPos:[0,-0.03,0]
+bounds.center:[1.117587E-07,0.2023652,-4.023314E-07]
+bounds.size:[0.3134613,0.3829205,0.3134612]

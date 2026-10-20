@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:玩家结构'读取_抢夺连胜
+comment:读取玩家分数
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String 抢夺连胜:Bool 0)
+endcode

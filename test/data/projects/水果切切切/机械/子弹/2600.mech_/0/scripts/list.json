@@ -1,0 +1,17 @@
+[
+ Public'GetMainDevice
+ Public'SetDensity
+ {
+  guid:b8f591ba371745d6addc74829ec37ce5
+  name:Public'GetAffectedList
+ }
+ Public'FrozenEffect
+ Public'GetCenter
+ Public'SetSize
+ Public'SetWeight
+ Public'PreReclaim
+ Public'Open
+ Public'Close
+ Public'SetColor
+ Public'SetLayer
+]

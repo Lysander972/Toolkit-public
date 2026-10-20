@@ -1,0 +1,76 @@
+begincodeV2
+color:255,255,255
+name:工具'补充颜色计算
+params:Color 颜色1
+return:Color 颜色2
+lines:
+Vector3 HSV=varf Color.颜色1.toHSV()
+//H计算
+Float h=varf Vector3.HSV.x()
+Float 色相=fun float.multiply(var h:Float 360)
+Float 基础偏移=fun create.float(Float 180)
+Float 随机偏移范围=fun create.float(Float 30)
+Float 随机下限=fun float.minus(var 基础偏移:var 随机偏移范围)
+Float 随机上限=fun float.add(var 基础偏移:var 随机偏移范围)
+Float 随机相位=fun math.rand(var 随机下限:var 随机上限)
+Float 新色相=fun float.add(var 色相:var 随机相位)
+Float 新色相=fun float.mod(var 新色相:Float 360)
+Float 新h=fun float.division(var 新色相:Float 360)
+//S计算
+Float s=varf Vector3.HSV.y()
+Float 互补s=fun float.minus(Float 1:var s)
+Float 最小差异=fun create.float(Float 0.15)
+Float 最大差异=fun create.float(Float 0.5)
+Float 随机扰动值=fun math.rand(var 最小差异:var 最大差异)
+Long 随机整数=fun long.rand(Long 0:Long 1)
+if{fun long.equal(var 随机整数:Long 0)
+  Float 偏差方向=fun create.float(Float 1)
+}
+if{fun long.equal(var 随机整数:Long 1)
+  Float 偏差方向=fun create.float(Float -1)
+}
+if{fun float.lte(var 互补s:var 随机扰动值)
+  Float 偏差方向=fun create.float(Float 1)
+}
+Float 假设向上修正=fun float.add(var 互补s:var 随机扰动值)
+if{fun float.gte(var 假设向上修正:Float 1)
+  Float 偏差方向=fun create.float(Float -1)
+}
+Float 最终修正=fun float.multiply(var 偏差方向:var 随机扰动值)
+Float 新s=fun float.add(var 互补s:var 最终修正)
+Float 新s=fun float.clamp(var 新s:Float 0:Float 1)
+//V计算
+Float v=varf Vector3.HSV.z()
+Float 互补v=fun float.minus(Float 1:var v)
+/*Float 互补v=fun create.float(var v)
+Float 最小差异=fun create.float(Float 0.15)
+Float 最大差异=fun create.float(Float 0.3)
+Float 随机扰动值=fun math.rand(var 最小差异:var 最大差异)
+Float 随机浮点=fun math.rand(Float 0:Float 1)
+Long 随机整数=fun long.rand(Long 0:Long 1)
+if{fun long.equal(var 随机整数:Long 0)
+  Float 偏差方向=fun create.float(Float 1)
+}
+if{fun long.equal(var 随机整数:Long 1)
+  Float 偏差方向=fun create.float(Float -1)
+}
+if{fun float.lt(var 随机浮点:Float 0.7)
+  Float 偏差方向=fun create.float(Float -1)
+  if{fun float.lt(var 互补v:Float 0.5)
+    Float 偏差方向=fun create.float(Float 1)
+  }
+}
+if{fun float.lte(var 互补v:var 随机扰动值)
+  Float 偏差方向=fun create.float(Float 1)
+}
+Float 假设向上修正=fun float.add(var 互补v:var 随机扰动值)
+if{fun float.gte(var 假设向上修正:Float 1)
+  Float 偏差方向=fun create.float(Float -1)
+}
+Float 最终修正=fun float.multiply(var 偏差方向:var 随机扰动值)
+Float 新v=fun float.add(var 互补v:var 最终修正)
+Float 新v=fun float.clamp(var 新v:Float 0:Float 1)
+//生成新HSV
+Vector3 新HSV=fun creatVariable.Vector3(var 新h:var 新s:var 新v)
+Color 颜色2=varf Vector3.新HSV.toColor()
+endcode

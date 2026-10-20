@@ -1,0 +1,11 @@
+begincodeV2
+name:UI'循环跟随局部坐标
+lines:
+if{fun create.bool(var Initialized)
+  Vector3 世界坐标=act 1.this.localToWorldPos(var UI'LocalPos)
+  varf Mech.UI'血量马甲.move(var 世界坐标:Enum 0)
+  Vector3 世界方向F=act 1.this.localToWorldDir(var UI'LocalF)
+  Vector3 世界方向U=act 1.this.localToWorldDir(var UI'LocalU)
+  varf Mech.UI'血量马甲.rot(var 世界方向F:var 世界方向U)
+}
+endcode

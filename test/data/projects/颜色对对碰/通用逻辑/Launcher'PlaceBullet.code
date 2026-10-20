@@ -1,0 +1,12 @@
+begincodeV2
+guid:ebdd4ef4300947d6a882265548f48664
+color:255,0,0
+name:Launcher'PlaceBullet
+comment:放置静止的子弹@4世界坐标,并修正@5
+params:Long $type,Vector3 $position,Struct $player
+return:Bool $ret
+lines:
+Vector3 $direction=act 1.this.localToWorldDir(Vector3 0,0,1)
+Vector3 $position=fun vector3.add(var $position:var GlobalOffset)
+Bool $ret=act 1.this.Launcher'AbstractSetBullet(var $position:var $direction:var $type:var Faction:var $player)
+endcode

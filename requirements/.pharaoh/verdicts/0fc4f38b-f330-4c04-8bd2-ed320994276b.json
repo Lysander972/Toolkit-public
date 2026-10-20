@@ -1,0 +1,22 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "关联 source 逐字保留当前会话消息；下游 stack 决策分别声明工具接通、替代验证与能力域迁移。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "按用户四行补充原文核对，保持新版先运行、旧逻辑后拔除、hooks 准备环境和旧规范分批 stack 的顺序。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "从可运行替代与可复现环境推导分阶段验收，未把迁移计划改写为迁移已完成。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "0fc4f38b-f330-4c04-8bd2-ed320994276b",
+  "reviewed_fingerprint": "0c9ecd3790017892238c1fde6710fa1f14d5405ef998b86ee5b38e0b331380ed",
+  "schema": 2
+}

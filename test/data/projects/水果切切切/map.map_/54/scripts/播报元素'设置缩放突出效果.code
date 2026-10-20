@@ -1,0 +1,9 @@
+begincodeV2
+name:播报元素'设置缩放突出效果
+comment:设置时间并重置计时
+params:Canvas canvas,Bool 启用缩放突出
+lines:
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+varf UIRect.background.setCustomBool(String 启用缩放突出标志位:var 启用缩放突出)
+act 1101.this.播报元素'重置缩放动效计时(var canvas)
+endcode

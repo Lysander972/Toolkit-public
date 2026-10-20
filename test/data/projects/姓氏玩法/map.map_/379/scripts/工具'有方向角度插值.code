@@ -1,0 +1,22 @@
+begincodeV2
+name:工具'有方向角度插值
+params:Float 初始角度,Float 目标角度,Float 插值
+return:Float 生效角度
+lines:
+Float 角度差=fun float.minus(var 目标角度:var 初始角度)
+if{fun float.gte(var 角度差:Float 180)
+  varf Float.角度差.minusEqual(Float 360)
+}
+if{fun float.lt(var 角度差:Float -180)
+  varf Float.角度差.addEqual(Float 360)
+}
+Float 绝对差=varf Float.角度差.abs()
+Bool 使用插值=fun float.gte(var 绝对差:Float 0.001)
+if{fun create.bool(var 使用插值)
+  Float 角度变化=fun float.lerp(Float 0:var 角度差:var 插值)
+  Float 生效角度=fun float.add(var 初始角度:var 角度变化)
+}
+if{fun bool.not(var 使用插值)
+  Float 生效角度=fun create.float(var 目标角度)
+}
+endcode

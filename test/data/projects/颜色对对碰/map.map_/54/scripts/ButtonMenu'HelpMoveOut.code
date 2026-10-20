@@ -1,0 +1,6 @@
+begincodeV2
+name:ButtonMenu'HelpMoveOut
+lines:
+Bool HelpIn=fun create.bool(Bool 0)
+act 1101.this.ButtonMenu'HelpRefresh()
+endcode

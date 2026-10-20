@@ -1,0 +1,8 @@
+version:1
+setting:
+{
+ layerTextureTilling:5
+ templateMechBirthName:拼装模板
+ gravity:0
+ groundType:4
+}

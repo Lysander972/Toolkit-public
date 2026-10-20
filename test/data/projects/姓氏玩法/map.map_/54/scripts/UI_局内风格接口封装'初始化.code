@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口封装'初始化
+params:UIRect 根节点_2D,UIRect 根节点_3D
+lines:
+varf Device.局外功能设置'使用风格实现.callFun2(String UI_局内风格接口'初始化:var 根节点_2D:var 根节点_3D)
+endcode

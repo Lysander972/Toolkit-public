@@ -1,0 +1,27 @@
+begincodeV2
+name:工具'队伍高度映射
+params:Long 原始value
+return:Float 选用值
+lines:
+//新版
+/*Long 最大value=act 1101./弹幕.队伍'读取全场最大值()
+/*Long 最大value=fun long.max(var 最大value:Long 1)
+/*Float 最大高度=fun long.division(var 最大value:Long 409600)
+/*if{fun float.gt(var 最大高度:Float 10000)
+/*  Float 最大高度=fun create.float(Float 10000)
+}
+/*Float 高度比例=fun long.division(var 原始value:var 最大value)
+/*Float 显示高度=fun float.multiply(var 高度比例:var 最大高度)
+/*Float 选用值=fun create.float(var 显示高度)
+/*varf Float.选用值.addEqual(Float 5)
+/*fun break()
+//旧版
+Float 潜在选项1=fun long.division(var 原始value:Long 409600)
+Float 潜在选项2=fun long.division(var 原始value:Long 102400)
+Float 潜在选项2=fun float.max(var 潜在选项2:Float 1)
+Float 潜在选项2=fun float.log(var 潜在选项2:Float 1.01)
+Float 潜在选项2=fun float.lerp(var 潜在选项2:var 潜在选项1:Float 0.1)
+Float 选用值=fun float.min(var 潜在选项1:var 潜在选项2)
+//固定的高度修饰,无论高度多大都上移5距离
+varf Float.选用值.addEqual(Float 15)
+endcode

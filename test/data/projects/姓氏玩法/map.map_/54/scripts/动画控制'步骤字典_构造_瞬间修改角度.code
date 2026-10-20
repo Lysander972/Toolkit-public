@@ -1,0 +1,8 @@
+begincodeV2
+name:动画控制'步骤字典_构造_瞬间修改角度
+params:Float 角度,String 开始时回调,String 结束时回调
+return:Dict 步骤字典
+lines:
+Dict 步骤字典=act 1101.this.动画控制'步骤字典_构造_通用(Float 0:Long 0:Long 5:Bool 0:Float 0:Bool 0:Float 0:var 开始时回调:var 结束时回调)
+varf Dict.步骤字典.insert(String 角度:var 角度)
+endcode

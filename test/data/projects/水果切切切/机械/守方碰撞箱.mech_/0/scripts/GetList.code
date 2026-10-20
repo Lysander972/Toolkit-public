@@ -1,0 +1,6 @@
+begincodeV2
+name:GetList
+return:List ret
+lines:
+List ret=act 1100./伤害计算区.getInsideMechs()
+endcode

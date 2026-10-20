@@ -1,0 +1,8 @@
+begincodeV2
+name:测试'发送礼物消息
+params:String 玩家id,Long 礼物序号,Long 礼物数量,String 头像url,String 玩家昵称
+lines:
+String 礼物id=act 1101.this.测试'得到抖音礼物id(var 礼物序号)
+String 礼物消息=fun string.Format5(String [{"msg_id"@1 "1","sec_openid"@1 "%1","sec_gift_id"@1 "%2","gift_num"@1 %3,"gift_value"@1 10000,"avatar_url"@1 "%4","nickname"@1 "%5","timestamp"@1 1}]:var 玩家id:var 礼物id:var 礼物数量:var 头像url:var 玩家昵称)
+fun simulate_comment(String live_gift:var 礼物消息)
+endcode

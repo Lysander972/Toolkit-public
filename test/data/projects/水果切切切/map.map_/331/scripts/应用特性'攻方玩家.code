@@ -1,0 +1,22 @@
+begincodeV2
+name:应用特性'攻方玩家
+lines:
+//更新头像url
+String avatarUrl=varf Struct.属性'玩家.getString(String avatarUrl:Bool 0)
+act 1.this.模型'设置头像(var avatarUrl)
+//更新等级文本框
+act 1.this.模型'设置弹药数文本框(Bool 1:Float 7:Float 1:Float 1)
+act 1.this.模型'设置等级文本框(Bool 1:Float 7:Float 1:Float 1)
+act 1.this.UI'攻方刷新弹药数()
+//刷新显示
+act 1.this.模型'手动刷新显示()
+Bool 属性'显示=fun create.bool(Bool 1)
+Long 属性'自动点赞速度=fun create.long(Long 0)
+Bool 物理效果'启用物理=fun create.bool(Bool 0)
+act 1.this.瞄准方向更新'攻方()
+act 1.this.技能检测'攻方私有()
+act 1.this.loopFun(String 瞄准方向更新'攻方:Float 0)
+act 1.this.loopFun(String 技能检测'攻方私有:Float 0)
+act 1.this.Public'SetLayer(Float 5)
+varf Mech.Self.enablePhysics(Bool 0)
+endcode

@@ -1,0 +1,24 @@
+begincodeV2
+name:内部'排序方式开关刷新
+lines:
+Bool 使用顺序排序方式=fun float.Approximately(var 场景'排序方式:Float 0)
+UIButton 开关按钮=varf Canvas.风格主布局.readUIButton(String 根节点/快捷设置面板/排序方式子面板/开关)
+if{fun create.bool(var 使用顺序排序方式)
+  Color 颜色=fun create.color(Color 0,147,255,255)
+  UIRect 选中项方框=varf Canvas.风格主布局.readUIRect(String 根节点/快捷设置面板/排序方式子面板/开关/选中项)
+  varf UIRect.选中项方框.pos(Vector3 0.5,0.5,0)
+  UILabel 按钮标题=varf Canvas.风格主布局.readUILabel(String 根节点/快捷设置面板/排序方式子面板/开关/选中项/标题)
+  varf UILabel.按钮标题.text(String 风格1)
+  varf UIButton.开关按钮.setColor(var 颜色)
+  varf UILabel.按钮标题.setColor(var 颜色)
+}
+if{fun bool.not(var 使用顺序排序方式)
+  Color 颜色=fun create.color(Color 255,0,0,255)
+  UIRect 选中项方框=varf Canvas.风格主布局.readUIRect(String 根节点/快捷设置面板/排序方式子面板/开关/选中项)
+  varf UIRect.选中项方框.pos(Vector3 0,0.5,0)
+  UILabel 按钮标题=varf Canvas.风格主布局.readUILabel(String 根节点/快捷设置面板/排序方式子面板/开关/选中项/标题)
+  varf UILabel.按钮标题.text(String 风格2)
+  varf UIButton.开关按钮.setColor(var 颜色)
+  varf UILabel.按钮标题.setColor(var 颜色)
+}
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:Base'New
+params:Vector3 $postition,Vector3 $direction
+return:Mech $base
+lines:
+Mech $base=fun createAIMech(String 基地:Float 0:var $postition:var $direction:Enum 0:Bool 0)
+endcode

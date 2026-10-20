@@ -1,0 +1,8 @@
+type:1100
+pos:[-2.235174E-07,-20,-1.954051E-14]
+ext:
+{
+ logicName:攻击判定
+ localScale:[5,50,10]
+ boolOneMechOnlyOnce:true
+}

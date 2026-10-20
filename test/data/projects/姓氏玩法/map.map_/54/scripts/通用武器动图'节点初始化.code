@@ -1,0 +1,65 @@
+begincodeV2
+name:通用武器动图'节点初始化
+params:Canvas 布局,Long 拖尾动图id,Long 武器动图id,String 对齐方式,Float 整体旋转角度,Bool 附带层数,Float 层数UI角度,String 武器名,Bool 有击退效果
+lines:
+UIRect 根节点=varf Canvas.布局.readUIRect(String 根节点)
+varf UIRect.根节点.setCustomCanvas(String 武器UI:var 布局)
+if{fun string.equal(var 对齐方式:String 左上)
+  varf UIRect.根节点.parentAnchor(Enum 0)
+}
+if{fun string.equal(var 对齐方式:String 上)
+  varf UIRect.根节点.parentAnchor(Enum 1)
+}
+if{fun string.equal(var 对齐方式:String 右上)
+  varf UIRect.根节点.parentAnchor(Enum 2)
+}
+if{fun string.equal(var 对齐方式:String 左)
+  varf UIRect.根节点.parentAnchor(Enum 3)
+}
+if{fun string.equal(var 对齐方式:String 居中)
+  varf UIRect.根节点.parentAnchor(Enum 4)
+}
+if{fun string.equal(var 对齐方式:String 右)
+  varf UIRect.根节点.parentAnchor(Enum 5)
+}
+if{fun string.equal(var 对齐方式:String 左下)
+  varf UIRect.根节点.parentAnchor(Enum 6)
+}
+if{fun string.equal(var 对齐方式:String 下)
+  varf UIRect.根节点.parentAnchor(Enum 7)
+}
+if{fun string.equal(var 对齐方式:String 右下)
+  varf UIRect.根节点.parentAnchor(Enum 8)
+}
+UIRawImage 拖尾=varf Canvas.布局.readUIRawImage(String 根节点/拖尾)
+UIRawImage 武器=varf Canvas.布局.readUIRawImage(String 根节点/拖尾/武器)
+act 1101.this.动图'应用动图(var 拖尾:var 拖尾动图id:Long 0:Bool 0)
+act 1101.this.动图'应用动图(var 武器:var 武器动图id:Long 0:Bool 0)
+varf UIRect.根节点.setCustomFloat(String 整体旋转角度:var 整体旋转角度)
+varf UIRect.根节点.setCustomBool(String 有击退效果:var 有击退效果)
+UIRect 层数显示根节点=varf Canvas.布局.readUIRect(String 根节点/拖尾/武器/层数UI)
+varf UIRect.层数显示根节点.scale(Float 1.3)
+varf UIRect.层数显示根节点.rot(var 层数UI角度)
+varf UIRect.层数显示根节点.active(var 附带层数)
+act 1101.this.通用武器动图'附加层数修改(var 布局:Long 0)
+varf UIRect.根节点.setCustomString(String 武器名:var 武器名)
+varf List.UI'通用武器_维护节点表.add(var 布局)
+//拖尾和武器的浮动
+Vector3 布局坐标=varf UIRawImage.拖尾.getCanvasPos()
+Vector3 布局坐标=fun vector3.rotateAround(var 布局坐标:Vector3 0,0,1:var 整体旋转角度)
+varf UIRawImage.拖尾.rot(var 整体旋转角度)
+varf UIRawImage.拖尾.setCanvasPos(var 布局坐标)
+Float 初始x相位=fun math.rand(Float -5:Float 5)
+Float 初始y相位=fun math.rand(Float -5:Float 5)
+Float 动图x周期=fun math.rand(Float 0.7:Float 1)
+Float 动图y周期=fun math.rand(Float 0.7:Float 1)
+Float 动画x幅度=fun math.rand(Float 4:Float 6)
+Float 动画y幅度=fun math.rand(Float 3:Float 5)
+varf UIRawImage.拖尾.setCustomVector3(String 初始坐标:var 布局坐标)
+varf UIRawImage.拖尾.setCustomFloat(String 动图x周期:var 动图x周期)
+varf UIRawImage.拖尾.setCustomFloat(String 动图y周期:var 动图y周期)
+varf UIRawImage.拖尾.setCustomFloat(String 初始x相位:var 初始x相位)
+varf UIRawImage.拖尾.setCustomFloat(String 初始y相位:var 初始y相位)
+varf UIRawImage.拖尾.setCustomFloat(String 动画x幅度:var 动画x幅度)
+varf UIRawImage.拖尾.setCustomFloat(String 动画y幅度:var 动画y幅度)
+endcode

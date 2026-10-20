@@ -1,0 +1,7 @@
+begincodeV2
+guid:fa4a8e70e8484eb5bc39a8df9d72a896
+name:Public'SetSize
+params:Float size
+lines:
+act 1.this.setScale(var size)
+endcode

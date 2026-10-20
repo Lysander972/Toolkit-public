@@ -1,0 +1,30 @@
+guid:72aad2b0a66a450eba9a791a3b91e17b
+meshes:
+[
+ {
+  n:Starfruit
+ }
+]
+matFolderName:8121c890534046368c18da359705be62
+Albedo.UID:8121c890534046368c18da359705be62
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.004053593,0.2362796,0.01436688]
+bounds.size:[0.4363516,0.4725592,0.4194843]

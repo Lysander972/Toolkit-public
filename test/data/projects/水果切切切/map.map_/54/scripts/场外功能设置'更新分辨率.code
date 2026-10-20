@@ -1,0 +1,31 @@
+begincodeV2
+name:场外功能设置'更新分辨率
+params:Long 新分辨率选项
+lines:
+Long 场外功能设置'分辨率选项=fun create.long(var 新分辨率选项)
+act 1101.this.ButtonMenu'刷新分辨率按钮()
+if{fun long.equal(var 场外功能设置'分辨率选项:Long 0)
+  fun screen.setResolution(Float 760:Float 1334)
+}
+if{fun long.equal(var 场外功能设置'分辨率选项:Long 1)
+  fun screen.setResolution(Float 1080:Float 1920)
+}
+if{fun long.equal(var 场外功能设置'分辨率选项:Long 2)
+  fun screen.setResolution(Float 1440:Float 2660)
+}
+if{fun long.equal(var 场外功能设置'分辨率选项:Long 3)
+  fun screen.setResolution(Float 2160:Float 3980)
+}
+if{fun long.equal(var 场外功能设置'分辨率选项:Long 4)
+/*  Dict data=fun map.load()
+/*  Bool 已设置=varf Dict.data.contains(String 手动分辨率)
+/*  Vector3 手动分辨率=fun screen.size()
+/*  if{fun create.bool(var 已设置)
+/*    Vector3 手动分辨率=varf Dict.data.readVector3(String 手动分辨率:Bool 0)
+/*    Float x=varf Vector3.手动分辨率.x()
+/*    Float y=varf Vector3.手动分辨率.y()
+/*    fun screen.setResolution(var x:var y)
+  }
+  fun break()
+}
+endcode

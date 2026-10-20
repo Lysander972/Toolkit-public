@@ -1,0 +1,7 @@
+begincodeV2
+name:技能检测'守方公共
+lines:
+act 1.this.瞄准方向更新'守方()
+act 1.this.技能'21000()
+act 1.this.技能'21001()
+endcode

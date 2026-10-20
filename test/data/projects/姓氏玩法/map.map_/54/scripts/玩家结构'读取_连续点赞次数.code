@@ -1,0 +1,7 @@
+begincodeV2
+name:玩家结构'读取_连续点赞次数
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String combo_like:Bool 0)
+endcode

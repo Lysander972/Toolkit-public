@@ -1,0 +1,14 @@
+type:22
+pos:[0,8,0]
+enableManualWeld:true
+attach:
+[
+]
+ignorePress:true
+ext:
+{
+ logicName:上边界
+ echoInPlay:false
+ color:[0,0,0,0]
+ size:[200,1,200]
+}

@@ -1,0 +1,48 @@
+type:337
+pos:[0,0,0]
+quat:[2.512148E-15,-0.7071068,0.7071068,2.512148E-15]
+ext:
+{
+ logicName:能力药丸粒子
+ offset:-9
+ startLifetimeMultiplier:2
+ startSpeed:[5,5]
+ startSize:[1,1]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[1,0.7960784,0.5333334,1]
+ startColor.max:[1,0.6470588,0.5333334,1]
+ customData1.x:2
+ emission:true
+ rateOverTime:2
+ radius:1
+ shapeScale:[2,2,2]
+ colorOverLifetime:
+ [
+  "0:1,1,1,0"
+  "0.07188525:1,1,1,1"
+  "0.5000076:1,1,1,1"
+  "0.7499962:1,1,1,1"
+  "1:1,1,1,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:1"
+  "0.1922258:1"
+  "0.4999938:1"
+  "0.7499909:1"
+  "1:1"
+ ]
+ velocityOverLifetime:
+ [
+  "0:1"
+  "0.2476871:1"
+  "0.5000027:1"
+  "0.7500077:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ matType:5
+ picFileGuid:676cc039e00c46e69e838618f2e71cd6
+}

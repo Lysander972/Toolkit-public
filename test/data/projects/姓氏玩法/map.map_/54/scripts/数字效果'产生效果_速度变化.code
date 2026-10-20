@@ -1,0 +1,46 @@
+begincodeV2
+name:数字效果'产生效果_速度变化
+params:Long 数值,UIRect 绑定父节点,Vector3 坐标,Color 主题色,Bool 是2D,Float 方向
+lines:
+if{fun long.equal(var 数值:Long 0)
+  fun break()
+}
+Float 显示值=act 1101.this.工具'转为显示值(var 数值)
+//数值增加
+Bool bool1=fun float.gt(var 显示值:Float 0)
+//数值减少
+Bool bool2=fun float.lt(var 显示值:Float 0)
+fun ui.2dmode(var 是2D)
+Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgbog4zmma8DUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYAAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAABHNpemUEAACWQwAAyEIAAIA/BWNvbG9yDAAAAAAAAAAAAAAAAAAAAAALQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAAAARzb25zEAEAEQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYG5Zu+5qCHA1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgDAAAAAAAAAARzaXplBAAASEMAAEhDAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/CGZpbGVHdWlkBiA5Njc1YWY0YzY4YzQ0NGEyOWM5MmMxOGE5MWNiYzNkMA@3@3)
+if{fun create.bool(var bool1)
+  UIRawImage 图标=varf Canvas.UI.readUIRawImage(String 背景/图标)
+  act 1101.this.动图'应用动图(var 图标:Long 8:Long 0:Bool 1)
+}
+if{fun create.bool(var bool2)
+  UIRawImage 图标=varf Canvas.UI.readUIRawImage(String 背景/图标)
+  act 1101.this.动图'应用动图(var 图标:Long 9:Long 0:Bool 1)
+}
+varf UIRawImage.图标.setColor(Color 255,255,255,0)
+varf UIRawImage.图标.rot(var 方向)
+Float 持续=fun create.float(Float 1)
+Float 缩放=fun create.float(Float 0.8)
+Float 速度权重=fun float.abs(var 显示值)
+if{fun float.gte(var 速度权重:Float 300)
+  Float 持续=fun create.float(Float 1)
+  Float 缩放=fun create.float(Float 1)
+}
+if{fun float.gte(var 速度权重:Float 1000)
+  Float 持续=fun create.float(Float 1)
+  Float 缩放=fun create.float(Float 1.2)
+}
+UIRect 背景=varf Canvas.UI.readUIRect(String 背景)
+Float 初始时间=fun time.scaleTime()
+varf Color.主题色.setA(Float 0.8)
+varf UIRect.背景.setCustomColor(String 初始颜色:var 主题色)
+varf UIRect.背景.setCustomFloat(String 初始时间:var 初始时间)
+varf UIRect.背景.setCustomFloat(String 持续:var 持续)
+varf UIRect.背景.setCustomFloat(String 缩放:var 缩放)
+varf UIRect.绑定父节点.addSon(var 背景)
+varf UIRect.背景.setCanvasPos(var 坐标)
+varf List.UI_局内'速度变化维护队列.add(var UI)
+endcode

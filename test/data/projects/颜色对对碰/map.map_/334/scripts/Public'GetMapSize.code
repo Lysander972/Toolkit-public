@@ -1,0 +1,8 @@
+begincodeV2
+color:0,43,255
+name:Public'GetMapSize
+comment:得到地图大小
+return:Long $size
+lines:
+Long $size=varf Device.map_handler.callReturnLong0(String Public'GetMapSize)
+endcode

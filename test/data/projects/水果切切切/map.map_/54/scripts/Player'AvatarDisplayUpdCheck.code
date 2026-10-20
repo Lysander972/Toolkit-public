@@ -1,0 +1,19 @@
+begincodeV2
+name:Player'AvatarDisplayUpdCheck
+comment:检查是否有必要重排玩家顺序
+params:List playerList
+return:Bool needUpd
+lines:
+Bool needUpd=fun create.bool(Bool 0)
+Float total=varf List.playerList.count()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Struct player=varf List.playerList.readStruct(var index)
+  Float rankBefore=varf Struct.player.getFloat(String rankBefore:Bool 0)
+  if{fun float.notEqual(var rankBefore:var index)
+    Bool needUpd=fun create.bool(Bool 1)
+    Float rankBefore=fun create.float(var index)
+  }
+  varf Float.index.addEqual(Float 1)
+}
+endcode

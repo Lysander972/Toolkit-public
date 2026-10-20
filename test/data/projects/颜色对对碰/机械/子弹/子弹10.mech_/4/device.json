@@ -1,0 +1,12 @@
+type:242
+pos:[6.36024E-15,1.490112E-08,-7.275267E-08]
+quat:[-0.4999999,-0.5000004,-0.5000001,-0.4999996]
+ext:
+{
+ boolHideUI:1
+ boolLight:false
+ size:7
+ colorValue:[1,1,1,1]
+ timeLen:0.25
+ boolAlphaBlend:false
+}

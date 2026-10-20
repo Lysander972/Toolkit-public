@@ -1,0 +1,33 @@
+begincodeV2
+name:按钮
+params:String 名称,Color 颜色,String 调用方法
+lines:
+if{fun bool.not(var 是否为GM)
+  fun break()
+}
+String name=fun string.add(String b.:var 名称)
+Bool 包含=varf Dict.UI字典.contains(var name)
+if{fun create.bool(var 包含)
+  UIButton button=varf Dict.UI字典.readUIButton(var name:Bool 1)
+}
+if{fun bool.not(var 包含)
+  Canvas UI=fun create.canvas(Canvas canvas@1@3EAEAEQkABHR5cGUGCFVJQnV0dG9uBG5hbWUGBmJ1dHRvbgNwb3MEcphRRAhN8kMAAAAABHNpemUEAACjQwAANEIAAIA/BWNvbG9yDAAAAACFnm8/rGF7P+Al7T4LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAgQQVsYWJlbAYABHNvbnMQAQARCwAEdHlwZQYHVUlMYWJlbARuYW1lBgFuA3BvcwQAAIC4AADANwAAAAAMcGFyZW50QW5jaG9yGAQAAAAAAAAABmFuY2hvchgEAAAAAAAAAAt3aWR0aEV4dGVuZBgBAAAAAAAAAAxoZWlnaHRFeHRlbmQYAQAAAAAAAAAEc2l6ZQQAAIA/AACAPwAAgD8FY29sb3IMAAAAAAAAAADxmDs9AACAPwR0ZXh0BgE/CEZvbnRTaXplAQAAAEI@3)
+  UIButton button=varf Canvas.UI.readUIButton(String button)
+  UILabel label=varf Canvas.UI.readUILabel(String button/n)
+  varf UILabel.label.text(var 名称)
+  varf UIRect.参数列表底板.addSon(var button)
+  varf Dict.UI字典.insert(var name:var button)
+  varf UIButton.button.clickCB0(var 调用方法)
+  varf UIButton.button.setColor(var 颜色)
+  Float r=varf Color.颜色.r()
+  Float g=varf Color.颜色.g()
+  Float b=varf Color.颜色.b()
+  Float r=fun float.minus(Float 1:var r)
+  Float g=fun float.minus(Float 1:var g)
+  Float b=fun float.minus(Float 1:var b)
+  varf Color.颜色.setR(var r)
+  varf Color.颜色.setG(var g)
+  varf Color.颜色.setB(var b)
+  varf UILabel.label.setColor(var 颜色)
+}
+endcode

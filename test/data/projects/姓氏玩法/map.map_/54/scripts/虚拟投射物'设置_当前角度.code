@@ -1,0 +1,6 @@
+begincodeV2
+name:虚拟投射物'设置_当前角度
+params:UIRect 虚拟投射物,Float 当前角度
+lines:
+varf UIRect.虚拟投射物.setCustomFloat(String 当前角度:var 当前角度)
+endcode

@@ -1,0 +1,17 @@
+begincodeV2
+color:8,0,255
+name:Wall'ReclaimAll
+lines:
+if{varf Struct.Model'All.contains(String wall)
+  List list=varf Struct.Model'All.getList(String wall:Bool 0)
+  List unused=varf Struct.Model'Unused.getList(String wall:Bool 0)
+  varf List.unused.clear()
+  Float index=varf List.list.count()
+  while{fun float.gt(var index:Float 0)
+    varf Float.index.minusEqual(Float 1)
+    Mech obj=varf List.list.readMech(var index)
+    varf Mech.obj.setActive(Bool 0)
+  }
+  varf List.unused.add(var obj)
+}
+endcode

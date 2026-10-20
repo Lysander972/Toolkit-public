@@ -1,0 +1,78 @@
+begincodeV2
+name:设置排名
+params:Long 世界榜周榜,Struct 玩家,Struct 队伍
+lines:
+/*fun break()
+Canvas 局内主布局=fun findCanvas(String 局内通用组件_2D)
+UIRect 父UI节点=varf Canvas.局内主布局.readUIRect(String 根节点_2D/百强特效标题图层)
+//创建
+fun ui.2dmode(Bool 1)
+Canvas 特效UI=fun create.canvas(Canvas guid@1fbbc6162c83f4256a2a81adbac4bb7fe)
+//根节点添加
+UIRect 特效UI根节点=varf Canvas.特效UI.readUIRect(String back)
+varf UIRect.父UI节点.addSon(var 特效UI根节点)
+//昵称组件
+UILabel 用户名组件=varf Canvas.特效UI.readUILabel(String back/front/nick)
+String name=act 1.this.玩家结构'读取_name(var 玩家:Bool 0)
+varf UILabel.用户名组件.text(var name)
+//头像
+String uid=act 1.this.玩家结构'读取_id(var 玩家)
+UIRect 头像根节点=varf Canvas.特效UI.readUIRect(String back/front/avatar/mask)
+UIRawImage 头像图标=fun ui.newDanmuAvatar(Vector3 0.5,0.5,0:Float 70:var uid)
+varf UIRect.头像根节点.addSon(var 头像图标)
+varf UIRawImage.头像图标.setCanvasPos(Vector3 0,0,0)
+/*Long team=act 1.this.玩家结构'读取_team(var 玩家)
+/*String uid=varf Struct.player.getString(String id:Bool 1)
+//排行榜
+UILabel 排行榜文本框=varf Canvas.特效UI.readUILabel(String back/rank/label)
+Long 名次=fun long.add(var 世界榜周榜:Long 1)
+String 排行榜文本框显示=fun string.add(String 世界排名 :var 名次)
+varf UILabel.排行榜文本框.text(var 排行榜文本框显示)
+//顶部描述
+UILabel 加入描述文本框=varf Canvas.特效UI.readUILabel(String back/front/join)
+Color 队伍主题色=act 1.this.队伍结构'读取_color1(var 队伍)
+varf UILabel.加入描述文本框.setColor(var 队伍主题色)
+String 队伍名=act 1.this.队伍结构'读取_name(var 队伍)
+String 队伍名显示=fun string.Format1(String 加入 %1:var 队伍名)
+varf UILabel.加入描述文本框.text(var 队伍名显示)
+//区分排名
+/*Bool 级别1=fun long.equal(var 世界榜周榜:Long 0)
+/*Bool 级别2=fun long.lte(var 世界榜周榜:Long 2)
+/*Bool 级别3=fun long.lte(var 世界榜周榜:Long 19)
+/*Bool 级别4=fun long.gte(var 世界榜周榜:Long 20)
+if{fun long.gt(var 世界榜周榜:Long 0)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/top)
+  varf UIRawImage.ui1.active(Bool 0)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/leftWing)
+  varf UIRawImage.ui1.active(Bool 0)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/rightWing)
+  varf UIRawImage.ui1.active(Bool 0)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/rightBottom)
+  varf UIRawImage.ui1.active(Bool 0)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/leftBottom)
+  varf UIRawImage.ui1.active(Bool 0)
+}
+if{fun long.gt(var 世界榜周榜:Long 2)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/rightFlag)
+  varf UIRawImage.ui1.active(Bool 0)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/leftFlag)
+  varf UIRawImage.ui1.active(Bool 0)
+}
+if{fun long.gt(var 世界榜周榜:Long 19)
+  UIRawImage ui1=varf Canvas.特效UI.readUIRawImage(String back/bottom)
+  varf UIRawImage.ui1.active(Bool 0)
+}
+//注册动图维护表
+UIRawImage 动图=varf Canvas.特效UI.readUIRawImage(String back/icon)
+Long 组号=act 1.this.callClientMapRetLongFunc1(String 弹幕.动图'计算组编号:var 世界榜周榜)
+Long 播放次数=fun create.long(Long 0)
+Bool 自动删除=fun create.bool(Bool 1)
+act 1.this.callMapFunc4(String 弹幕.动图'应用动图:var 动图:var 组号:var 播放次数:var 自动删除)
+//开始播放动画
+=act 1.this.入场动图(var 世界榜周榜)
+delay fun create.float(Float 2)
+//动画播放结束
+varf UIRect.特效UI根节点.del(Float 0)
+Mech M=act 1.this.getMech()
+varf Mech.M.Del(Float 0)
+endcode

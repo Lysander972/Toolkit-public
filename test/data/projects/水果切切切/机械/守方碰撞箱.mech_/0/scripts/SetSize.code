@@ -1,0 +1,52 @@
+begincodeV2
+name:SetSize
+params:Float width,Float offset1,Float offset2
+lines:
+//更新触发器尺寸
+Vector3 size=fun creatVariable.Vector3(var width:var width:Float 30)
+act 1100./伤害计算区.setTriggerSize(var size)
+//获取变量
+Mech self=act 1.this.getMech()
+Device this=act 1.this.getDevice()
+//放置上方碰撞区空气墙
+Float temp=fun float.multiply(var offset1:Float -0.5)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 15:var temp)
+Vector3 global=act 1.this.localToWorldPos(var relative)
+Device new=fun map.dynAddDevice(var self:Float 1:var global:Vector3 0,0,1:Vector3 0,1,0:Float 1:var this)
+Float temp=fun float.minus(var width:var offset1)
+Vector3 size=fun creatVariable.Vector3(var width:Float 30:var temp)
+Vector3 size=fun vector3.add(var size:Vector3 2e+03,2e+03,0)
+varf Device.new.callFun1(String setSize:var size)
+varf Device.new.setLayer(Float 4)
+varf Device.new.show(Bool 0)
+varf Device.new.setMass(Float 0)
+varf Device.new.SetPhysicsMaterial(Float 0:Float 1:Float 1)
+varf Device.new.switchCollider(Bool 1)
+//放置碰撞区边界指示器
+Float temp=fun float.multiply(var width:Float 0.5)
+varf Float.temp.minusEqual(var offset1)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 0:var temp)
+Vector3 global=act 1.this.localToWorldPos(var relative)
+Device new=fun map.dynAddDevice(var self:Float 4:var global:Vector3 0,0,1:Vector3 0,1,0:Float 1:var this)
+Vector3 size=fun creatVariable.Vector3(var width:Float 0.001:Float 1)
+varf Device.new.callFun1(String setSize:var size)
+varf Device.new.setLayer(Float 0)
+varf Device.new.show(Bool 1)
+varf Device.new.setMass(Float 0)
+varf Device.new.switchCollider(Bool 0)
+//放置防炮塔越界空气墙
+Float temp=fun float.minus(Float 500:var offset2)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 15:var temp)
+Vector3 global=act 1.this.localToWorldPos(var relative)
+Device new=fun map.dynAddDevice(var self:Float 1:var global:Vector3 0,0,1:Vector3 0,1,0:Float 1:var this)
+Float temp=fun float.minus(Float 1000:var width)
+Float temp=fun float.add1(var temp:var offset1:var offset1)
+Vector3 size=fun creatVariable.Vector3(var width:Float 30:var temp)
+Vector3 size=fun vector3.add(var size:Vector3 2e+03,2e+03,0)
+varf Device.new.callFun1(String setSize:var size)
+varf Device.new.setLayer(Float 11)
+varf Device.new.show(Bool 0)
+varf Device.new.setMass(Float 0)
+varf Device.new.SetPhysicsMaterial(Float 0:Float 0:Float 0)
+varf Device.new.switchCollider(Bool 1)
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:Preheat
+lines:
+act 1101.this.Map'Preheat()
+Bool FirstInitialize=fun create.bool(Bool 1)
+endcode

@@ -1,0 +1,32 @@
+guid:89fd42ba2ad645fda5dd85364f2e8c05
+meshes:
+[
+ {
+  n:Banana_Peeled
+ }
+]
+matFolderName:1f754c9e36f9425e83eb62d749c93795
+Albedo.UID:1f754c9e36f9425e83eb62d749c93795
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.01566696,0.2831151,-0.05199616]
+bounds.size:[0.4467111,0.584977,0.6235119]

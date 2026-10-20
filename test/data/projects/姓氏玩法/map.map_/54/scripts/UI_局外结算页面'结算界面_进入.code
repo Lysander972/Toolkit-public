@@ -1,0 +1,31 @@
+begincodeV2
+color:255,0,0
+name:UI_局外结算页面'结算界面_进入
+params:Long 获胜队伍id,List 周排行榜结果,List 月排行榜结果
+lines:
+//通用结构@1首先检测是否已经在此界面,是则跳过.随后退出其他界面
+if{act 1101.this.UI_局外结算页面'是否本界面()
+  fun break()
+}
+act 1101.this.UI_局外主菜单'主菜单_退出()
+act 1101.this.UI_局内'游戏主界面_退出()
+//更新界面枚举
+Long UI'状态枚举=fun create.long(Long 2)
+//屏蔽全部局内音效
+fun audio.setVolume(Float 0)
+//创建结算页
+Bool exist=varf Canvas.UI_局外结算界面'布局.exist()
+if{fun bool.not(var exist)
+  fun ui.2dmode(Bool 1)
+  Canvas UI_局外结算界面'布局=fun create.canvas(Canvas guid@10e5ae075677c40ae878933b7dde99df4)
+  UIRect 主面板=varf Canvas.UI_局外结算界面'布局.readUIRect(String 结算界面/scroll/panel)
+  UIRect 滚动面板=varf Canvas.UI_局外结算界面'布局.readUIRect(String 结算界面/scroll)
+  UILabel 标题文本框=varf Canvas.UI_局外结算界面'布局.readUILabel(String 结算界面/winer/label)
+}
+act 1101.this.UI_局外结算页面'项目显示(var 主面板:var 局内'玩家_已下场列表:var 周排行榜结果:var 月排行榜结果:var 获胜队伍id)
+Vector3 size=varf UIRect.主面板.getSize()
+Float 宽度=varf Vector3.size.x()
+Float 玩家数=varf List.局内'玩家_已下场列表.count()
+act 1101.this.工具'滑动区域适配(var 玩家数:var 宽度:var 主面板:var 滚动面板:Float 100:Float 10)
+Float UI_局外结算界面'进入时间=fun time.scaleTime()
+endcode

@@ -1,0 +1,24 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_音量调节
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  if{fun bool.not(var init)
+    UIButton 音量控制按钮=varf Canvas.UI_局内'主布局_2D.readUIButton(String 根节点_2D/风格面板副图层/设置面板/子组件排版区/音量/拖动条)
+    Bool init=fun create.bool(Bool 1)
+  }
+  Bool 更新=fun create.bool(Bool 0)
+  if{varf UIButton.音量控制按钮.pressing()
+    Vector3 pos=varf UIButton.音量控制按钮.touchPos(Bool 1)
+    Float x=varf Vector3.pos.x()
+    Float 目标音量=fun float.clamp(var x:Float 0:Float 1)
+    Bool 更新=fun create.bool(Bool 1)
+  }
+  if{fun create.bool(var 更新)
+    act 1101.this.局内功能设置'音量值_应用并刷新(var 目标音量)
+  }
+  if{varf UIButton.音量控制按钮.isRelease()
+    act 1101.this.局内功能设置'音量值_上传()
+  }
+}
+endcode

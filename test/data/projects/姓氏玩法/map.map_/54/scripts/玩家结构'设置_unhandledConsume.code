@@ -1,0 +1,8 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_unhandledConsume
+params:Struct 结构,Long unhandledConsume
+lines:
+varf Struct.结构.set(String unhandledConsume:var unhandledConsume)
+endcode

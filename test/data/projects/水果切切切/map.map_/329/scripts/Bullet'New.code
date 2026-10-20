@@ -1,0 +1,23 @@
+begincodeV2
+private:1
+color:104,0,255
+name:Bullet'New
+comment:创建一个普通子弹
+params:String modelKey,Vector3 pos,Vector3 dir,Long faction
+return:Mech obj
+lines:
+/*varf Long.统计'子弹创建数.addEqual(Long 1)
+/*fun debug.print(var 统计'子弹创建数:Color 104,0,255,255:Bool 0)
+String modelFile=fun string.add(var modelKey:String .mech)
+List bulletList=varf Struct.Bullet'All.getList(var modelKey:Bool 0)
+act 1110./子弹.changeMech(var modelFile)
+Mech obj=fun createAIMech(String 子弹:Float 0:var pos:var dir:Enum 1:Bool 0)
+if{fun long.equal(var faction:Long 1)
+  act 1101.this.Generic'MechPhysics(var obj:Bool 0:Float 0.1:Float 0.7:Float 0.7)
+}
+if{fun long.equal(var faction:Long 2)
+  act 1101.this.Generic'MechPhysics(var obj:Bool 0:Float 1:Float 0:Float 0)
+}
+varf List.bulletList.add(var obj)
+varf Mech.obj.setCustomBool(String areaCheck:Bool 0)
+endcode

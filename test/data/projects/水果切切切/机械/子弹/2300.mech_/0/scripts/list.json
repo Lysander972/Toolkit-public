@@ -1,0 +1,18 @@
+[
+ Public'GetMainDevice
+ Public'SetDensity
+ {
+  guid:68e7c6be462f488b892d1e0dc05a3245
+  name:彩带过渡
+ }
+ Public'GetAffectedList
+ Public'FrozenEffect
+ Public'GetCenter
+ Public'SetSize
+ Public'SetWeight
+ Public'PreReclaim
+ Public'Open
+ Public'Close
+ Public'SetColor
+ Public'SetLayer
+]

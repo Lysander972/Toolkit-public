@@ -1,0 +1,46 @@
+{
+  "schemas": [
+    {
+      "id": "one-active-interpretation",
+      "message": "每份有效原文必须且只能有一个有效解读",
+      "select": {
+        "properties": { "type": { "const": "source" }, "status": { "const": "active" } }
+      },
+      "validate": {
+        "network_back": {
+          "implements": {
+            "contains": {
+              "local": {
+                "properties": {
+                  "type": { "const": "interpretation" },
+                  "status": { "const": "active" }
+                }
+              }
+            },
+            "minContains": 1,
+            "maxContains": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "interpretation-has-source",
+      "select": {
+        "properties": { "type": { "const": "interpretation" }, "status": { "const": "active" } }
+      },
+      "validate": {
+        "network": {
+          "implements": {
+            "items": {
+              "local": {
+                "properties": { "type": { "const": "source" }, "status": { "const": "active" } }
+              }
+            },
+            "contains": { "local": { "properties": { "type": { "const": "source" } } } },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ]
+}

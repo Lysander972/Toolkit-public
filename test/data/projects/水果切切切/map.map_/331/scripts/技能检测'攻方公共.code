@@ -1,0 +1,8 @@
+begincodeV2
+name:技能检测'攻方公共
+lines:
+act 1.this.瞄准方向更新'攻方()
+act 1.this.技能'1002_全局自动暖场()
+act 1.this.技能'11000()
+act 1.this.技能'11001()
+endcode

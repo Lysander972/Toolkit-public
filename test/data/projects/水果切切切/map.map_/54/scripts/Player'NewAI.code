@@ -1,0 +1,27 @@
+begincodeV2
+color:255,243,0
+name:Player'NewAI
+lines:
+Device handler=act 1101.this.getDevice()
+Float amount=fun create.float(Float 10)
+Float playerCount=varf Dict.PlayerMap.count()
+Long team=fun create.long(Long 1)
+while{fun long.lte(var team:Long 2)
+  Float newCount=fun create.float(Float 0)
+  while{fun float.lt(var newCount:var amount)
+    String tmp=fun create.string(var playerCount)
+    String name=act 1101.this.Uitls'RandomName()
+    Struct player=act 1101.this.Player'New(var tmp:var tmp:var name:String https@1//p6.douyinpic.com/aweme/720x720/aweme-avatar/tos-cn-avt-0015_26d2605c0f145704542ca11ce389b176.jpeg)
+    Bool true=fun create.bool(Bool 1)
+    varf Struct.player.set(String isAI:var true)
+    varf Float.playerCount.addEqual(Float 1)
+    String tmp=fun create.string(var team)
+    =act 1101.this.Player'SelectFaction(var tmp:var player)
+    Mech obj=fun createAIMech(String AI玩家:Float 0:Vector3 0,0,0:Vector3 0,0,1:Enum 0:Bool 0)
+    Device core=varf Mech.obj.getCoreDevice()
+    varf Device.core.callFun2(String 设置玩家:var player:var handler)
+    varf Float.newCount.addEqual(Float 1)
+  }
+  varf Long.team.addEqual(Long 1)
+}
+endcode

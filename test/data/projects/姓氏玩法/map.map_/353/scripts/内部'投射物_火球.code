@@ -1,0 +1,49 @@
+begincodeV2
+name:内部'投射物_火球
+params:Struct 发起者队伍,Struct 目标队伍,Dict 事件,Float 火球数量,Float 缩放
+lines:
+//找到发起者队伍UI
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 发起者队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  act 1101.this.内部'队伍UI_创建(var 发起者队伍)
+}
+Canvas 发起者队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+//找到目标队伍UI
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  act 1101.this.内部'队伍UI_创建(var 目标队伍)
+}
+Canvas 目标队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+//得到锚定节点
+UIRect 发起者队伍根节点=varf Canvas.发起者队伍UI布局.readUIRect(String 根节点)
+Vector3 投射物产生位置=varf UIRect.发起者队伍根节点.getCanvasPos()
+UIRect 目标队伍根节点=varf Canvas.目标队伍UI布局.readUIRect(String 根节点)
+UIRect 目标队伍公共锚定节点=varf UIRect.目标队伍根节点.customUIRect(String 公共锚定节点)
+Float 循环=fun create.float(Float 0)
+Float 散布角度范围=fun float.multiply(Float 10:var 火球数量)
+Float 散布角度范围=fun float.minus(var 散布角度范围:Float 10)
+Float 发射角度=fun float.minus(Float 0:var 散布角度范围)
+Float 延迟=fun create.float(Float 0)
+while{fun float.lt(var 循环:var 火球数量)
+  //创建布局
+  fun ui.2dmode(var 平面UI开关)
+  Canvas 投射物布局=fun create.canvas(Canvas canvas@1@3EAEAEQoABHR5cGUGBlVJUmVjdARuYW1lBgRyb290A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAAAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAyEIAAMhCAACAPwVjb2xvcgwAAAAAAAAAAAAAAAAAAAAAC0JvcmRlcldpZHRoAQAAAAAGUmFkaXVzAQAAAAAEc29ucxABABEIAAR0eXBlBgpVSVJhd0ltYWdlBG5hbWUGBuWKqOWbvgNQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgEAAAAAAAAAAZhbmNob3IYBAAAAAAAAAAEc2l6ZQQAAARDAAAEQwAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwhmaWxlR3VpZAYgOTY3NWFmNGM2OGM0NDRhMjljOTJjMThhOTFjYmMzZDA@3)
+  //设置动图
+  UIRawImage 动图=varf Canvas.投射物布局.readUIRawImage(String root/动图)
+  varf UIRawImage.动图.scale(var 缩放)
+  act 1101./弹幕.动图'应用动图(var 动图:Long 11:Long 0:Bool 1)
+  //更新标记
+  UIRect 投射物根节点=varf Canvas.投射物布局.readUIRect(String root)
+  varf UIRect.投射物根节点.setCustomFloat(String 缩放:var 缩放)
+  Float 随机速度=fun math.rand(Float 800:Float 1200)
+  act 1101.this.内部'投射物_通用初始化(var 投射物根节点:var 动图:String 火球:var 事件:var 图表特效图层:var 图表特效图层:var 投射物产生位置:var 目标队伍公共锚定节点:var 随机速度:var 发射角度:Float 360:Float 180:var 延迟:Color 255,255,255,255)
+  Float 发射角度=fun float.add(var 发射角度:Float 20)
+  Float 发射角度=act 1101./弹幕.工具'角度标准化(var 发射角度)
+  Float 延迟=fun float.add(var 延迟:Float 0.05)
+  varf Float.循环.addEqual(Float 1)
+}
+endcode

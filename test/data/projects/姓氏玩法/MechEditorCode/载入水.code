@@ -1,0 +1,11 @@
+begincodeV2
+skip:1
+name:载入水
+lines:
+=fun float.division(Float 0:Float 0)
+fun skyReflect(Enum 0)
+fun skyReflect(Enum 1)
+String rule=fun readExcel2_String(Long 20:String 文字:String 规则)
+=toolf 解析'解析字符串(var rule)
+fun script.skip()
+endcode

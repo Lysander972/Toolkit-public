@@ -1,0 +1,15 @@
+begincodeV2
+name:Public'AddBullet
+comment:注入各种子弹
+params:String key,Long amount,Struct player
+lines:
+=act 1.this.Skills'Increase(var key:var amount:var player)
+if{fun string.equal(var key:String 2000)
+  act 1.this.UI'守方刷新弹药数()
+}
+if{fun string.equal(var key:String 1000)
+  act 1.this.UI'攻方刷新弹药数()
+}
+/*Float 当前时间=fun time.scaleTime()
+/*Float 自动暖场时间=fun float.add(var 当前时间:Float 5)
+endcode

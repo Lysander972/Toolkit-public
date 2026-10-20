@@ -1,0 +1,9 @@
+begincodeV2
+name:通用武器动图'回调_触发撞击效果
+params:UIRect 根节点
+lines:
+if{varf UIRect.根节点.customBool(String 有击退效果)
+  Struct 队伍=varf UIRect.根节点.customStruct(String 队伍)
+  act 1101.this.UI_局内风格接口封装'击退队伍(var 队伍)
+}
+endcode

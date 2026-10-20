@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:工具'礼物音效
+params:Float strength
+lines:
+act 1101./主界面.播放音效(String Buff 9.ogg:var strength)
+endcode

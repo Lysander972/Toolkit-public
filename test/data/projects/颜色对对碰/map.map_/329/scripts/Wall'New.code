@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Wall'New
+params:Vector3 $pos,Vector3 $direction
+return:Mech $obj
+lines:
+Mech $obj=fun createAIMech(String 边界:Float 0:var $pos:var $direction:Enum 0:Bool 0)
+act 1101.this.Generic'MechPhysics(var $obj:Bool 1:Float 1)
+varf List.WallUsing.add(var $obj)
+endcode

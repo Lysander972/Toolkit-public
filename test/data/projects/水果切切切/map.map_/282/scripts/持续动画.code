@@ -1,0 +1,34 @@
+begincodeV2
+name:持续动画
+params:Vector3 起点,Vector3 终点,Mech 参照物,Float 持续
+return:Bool 完成
+lines:
+Bool 完成=fun create.bool(Bool 0)
+Bool 使用参照物=varf Mech.参照物.alive()
+act 1.this.setPosKinematic(var 起点)
+Float 开始=fun time.time()
+Float 当前=fun time.time()
+Float 结束=fun float.add(var 开始:var 持续)
+while{fun float.lt(var 当前:var 结束)
+  Float 已过时间=fun float.minus(var 当前:var 开始)
+  Float 比例=fun float.division(var 已过时间:var 持续)
+  Float 平滑比例=fun float.SmoothStep(Float 0:Float 1:var 比例)
+  Float 缩放=fun float.lerp(Float 1:Float 0.01:var 平滑比例)
+  act 1.this.setScale(var 缩放)
+  if{fun create.bool(var 使用参照物)
+    Vector3 基准=varf Mech.参照物.corePos()
+    Vector3 实际终点=fun vector3.add(var 终点:var 基准)
+    Vector3 新位置=fun vector3.lerp(var 起点:var 实际终点:var 平滑比例)
+  }
+  if{fun bool.not(var 使用参照物)
+    Vector3 新位置=fun vector3.lerp(var 起点:var 终点:var 平滑比例)
+  }
+  act 1.this.setPosKinematic(var 新位置)
+  Vector3 世界方向F=varf Device.map_handler.localToWorldDir(Vector3 0,0,-1)
+  Vector3 世界方向U=varf Device.map_handler.localToWorldDir(Vector3 0,1,0)
+  varf Mech.Self.rot(var 世界方向F:var 世界方向U)
+  delay fun create.float(Float 0)
+  Float 当前=fun time.time()
+}
+Bool 完成=fun create.bool(Bool 1)
+endcode

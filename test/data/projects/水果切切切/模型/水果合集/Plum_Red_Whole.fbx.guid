@@ -1,0 +1,30 @@
+guid:c23fc8196ee34d5c93f3e74ebedc56da
+meshes:
+[
+ {
+  n:Plum_Red_Whole
+ }
+]
+matFolderName:e194378bd5f846c1a0a4929ac533410d
+Albedo.UID:e194378bd5f846c1a0a4929ac533410d
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.01054105,0.1431283,0.006546214]
+bounds.size:[0.2869612,0.2862566,0.2839371]

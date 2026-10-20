@@ -1,0 +1,30 @@
+guid:5116af00f0e24ce984681b2981ff009a
+meshes:
+[
+ {
+  n:Watermelon_Quarter
+ }
+]
+matFolderName:d4d3411af101482eb60059e6b5caae56
+Albedo.UID:d4d3411af101482eb60059e6b5caae56
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-4.61936E-07,0.1230403,2.980232E-08]
+bounds.size:[0.2554971,0.2460806,0.5986565]

@@ -1,0 +1,31 @@
+guid:2c794a3887a44c9292d4407c401e8825
+meshes:
+[
+ {
+  n:SM_Prop_Oxygen_Tank_Large
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.430511E-06,0.7953312,3.33786E-06]
+bounds.size:[0.3374262,1.590662,0.3374243]

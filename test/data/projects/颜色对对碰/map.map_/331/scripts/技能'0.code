@@ -1,0 +1,39 @@
+begincodeV2
+name:技能'0
+comment:普通攻击
+lines:
+/*fun break()
+Long $type=fun create.long(Long 0)
+String $skillKey=fun create.string(var $type)
+Long $rate=fun create.long(Long 0)
+Long $cost=fun create.long(Long 0)
+if{act 1.this.Skill'Greater(var $skillKey:Long 0)
+  Long $rate=fun create.long(Long 1)
+  Long $cost=fun long.minus(var $rate:Long 1)
+}
+if{act 1.this.Skill'Greater(var $skillKey:Long 5000)
+  Long $rate=fun create.long(Long 2)
+  Long $cost=fun long.minus(var $rate:Long 1)
+}
+if{act 1.this.Skill'Greater(var $skillKey:Long 10000)
+  Long $rate=fun create.long(Long 3)
+  Long $cost=fun long.minus(var $rate:Long 1)
+}
+if{act 1.this.Skill'Greater(var $skillKey:Long 15000)
+  Long $rate=fun create.long(Long 4)
+  Long $cost=fun long.minus(var $rate:Long 1)
+}
+if{act 1.this.Skill'Greater(var $skillKey:Long 20000)
+  Long $rate=fun create.long(Long 5)
+  Long $cost=fun long.minus(var $rate:Long 1)
+}
+if{fun long.gt(var $rate:Long 0)
+  =act 1.this.Launcher'LaunchUniformlyAuto(var $type:var 当前瞄准角度:var $rate:Float 5:Float 0:Bool 0:var $skillKey:var $cost)
+  act 1.this.刷新'普攻显示()
+  if{act 1.this.Skill'Equal(var $skillKey:Long 0)
+    act 1.this.技能'重置暖场()
+  }
+  delay fun create.float(Float 0)
+  fun break()
+}
+endcode

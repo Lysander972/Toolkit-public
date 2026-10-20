@@ -1,0 +1,17 @@
+begincodeV2
+name:Logger'记录日志
+params:Long 获胜队伍
+lines:
+List 待输出=fun create.list()
+Datetime 系统日期=fun time.datetime()
+String 拼接=fun create.string(var 系统日期)
+varf List.待输出.add(var 拼接)
+String 拼接=fun string.Format1(String 上方积分池@1%1:var 蓝方连胜池)
+varf List.待输出.add(var 拼接)
+String 拼接=fun string.Format1(String 下方积分池@1%1:var 红方连胜池)
+varf List.待输出.add(var 拼接)
+String 拼接=fun string.Format1(String 获胜队伍@1%1:var 获胜队伍)
+varf List.待输出.add(var 拼接)
+String 输出=varf List.待输出.print()
+String 拼接=varf Dict.PlayerMap.detail()
+endcode

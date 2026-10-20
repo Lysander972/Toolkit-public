@@ -1,0 +1,8 @@
+begincodeV2
+name:排行榜按钮'设置是否可用
+params:UIButton 按钮,Bool 是否可用
+lines:
+UIButton 不可用子按钮=varf UIButton.按钮.getSonUIButton(String /不可用按钮)
+Bool 显示不可用状态=fun bool.not(var 是否可用)
+varf UIButton.不可用子按钮.active(var 显示不可用状态)
+endcode

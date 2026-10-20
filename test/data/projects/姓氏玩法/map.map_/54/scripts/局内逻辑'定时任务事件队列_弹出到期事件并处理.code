@@ -1,0 +1,29 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'定时任务事件队列_弹出到期事件并处理
+lines:
+Float 距开局时间=act 1101.this.工具'得到距开局时间()
+Float 剩余事件数=varf List.局内'定时任务事件队列.count()
+while{fun float.gt(var 剩余事件数:Float 0)
+  Dict 堆顶事件=varf List.局内'定时任务事件队列.readDict(Float 0)
+  Float 堆顶事件生效时间=act 1101.this.定时任务事件结构'读取_生效时间(var 堆顶事件)
+  if{fun float.lt(var 距开局时间:var 堆顶事件生效时间)
+    fun break()
+  }
+  if{fun float.gte(var 距开局时间:var 堆顶事件生效时间)
+    Float 剩余事件数=varf List.局内'定时任务事件队列.count()
+    Float 队尾序号=fun float.minus(var 剩余事件数:Float 1)
+    Dict 队尾事件=varf List.局内'定时任务事件队列.readDict(var 队尾序号)
+    varf List.局内'定时任务事件队列.replace(Float 0:var 队尾事件)
+    varf List.局内'定时任务事件队列.remove(var 队尾序号)
+    //堆顶事件是已经到期可用的事件,进行处理后丢弃
+    act 1101.this.局内逻辑'定时任务事件队列_处理(var 堆顶事件)
+    //恢复堆结构
+    Float 剩余事件数=varf List.局内'定时任务事件队列.count()
+    if{fun float.gt(var 剩余事件数:Float 0)
+      act 1101.this.局内逻辑'定时任务事件队列_下沉(Long 0)
+    }
+  }
+  //完成后继续循环
+}
+endcode

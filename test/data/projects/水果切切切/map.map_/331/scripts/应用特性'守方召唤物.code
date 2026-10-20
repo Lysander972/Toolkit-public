@@ -1,0 +1,37 @@
+begincodeV2
+name:应用特性'守方召唤物
+lines:
+Vector3 BulletOffset=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+act 1.this.模型'设置本体显示(Bool 0)
+act 1.this.模型'手动刷新显示()
+Bool 物理效果'启用物理=fun create.bool(Bool 1)
+//设置一个新的缩放
+act 1.this.物理效果'缩放开始渐变(Float 4)
+//自动更新瞄准
+act 1.this.瞄准方向更新'守方()
+act 1.this.loopFun(String 瞄准方向更新'守方:Float 0.1)
+//更新物理
+act 1.this.Public'SetLayer(Float 6)
+varf Mech.Self.enablePhysics(Bool 1)
+//更新物理材质
+varf Mech.Self.setPhysicsMaterial(Float 0:Float 0:Float 0)
+Float total=varf Mech.Self.deviceNum()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Device dev=varf Mech.Self.getDevice(var index)
+  Vector3 惯量=fun vector3.multilply(var 惯量:Float 1E+09)
+  varf Device.dev.SetInertiaTensor(var 惯量)
+  varf Device.dev.SetMaxAngularVelocity(Float 0)
+  varf Float.index.addEqual(Float 1)
+}
+//持续获得拉力
+delay fun create.float(Float 0)
+if{fun long.equal(var Attr'Type:Long 22)
+  act 1.this.技能检测'守方重炮()
+  act 1.this.loopFun(String 技能检测'守方重炮:Float 0)
+}
+if{fun long.equal(var Attr'Type:Long 23)
+  act 1.this.技能检测'守方机枪()
+  act 1.this.loopFun(String 技能检测'守方机枪:Float 0)
+}
+endcode

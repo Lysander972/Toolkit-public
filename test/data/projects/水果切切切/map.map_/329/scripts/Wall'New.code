@@ -1,0 +1,12 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Wall'New
+params:Vector3 pos,Vector3 direction
+return:Mech obj
+lines:
+List list=varf Struct.Model'All.getList(String wall:Bool 0)
+Mech obj=fun createAIMech(String 边界:Float 0:var pos:var direction:Enum 0:Bool 0)
+act 1101.this.Generic'MechPhysics(var obj:Bool 1:Float 1:Float 0:Float 0)
+varf List.list.add(var obj)
+endcode

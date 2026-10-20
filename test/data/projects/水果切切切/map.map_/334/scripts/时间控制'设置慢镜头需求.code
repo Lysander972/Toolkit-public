@@ -1,0 +1,7 @@
+begincodeV2
+name:时间控制'设置慢镜头需求
+params:Float value
+return:String ret
+lines:
+String ret=varf Device.map_handler.callReturnString1(String 时间控制'设置慢镜头需求:var value)
+endcode

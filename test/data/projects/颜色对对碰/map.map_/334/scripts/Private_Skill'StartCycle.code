@@ -1,0 +1,18 @@
+begincodeV2
+private:1
+name:Private_Skill'StartCycle
+comment:启动技能的循环检查和自动释放
+lines:
+if{fun long.equal(var Type:Long 40)
+  act 1.this.loopFun(String Private_SkillType'40_Cycle:Float 0)
+  act 1.this.loopFun(String Private_SkillType'HPLoss_Cycle:Float 1)
+}
+if{fun long.equal(var Type:Long 41)
+  act 1.this.loopFun(String Private_SkillType'41_Cycle:Float 0)
+  act 1.this.loopFun(String Private_SkillType'HPLoss_Cycle:Float 1)
+}
+if{fun long.equal(var Type:Long 50)
+  act 1.this.loopFun(String Private_SkillType'50_Cycle:Float 0)
+  act 1.this.loopFun(String Private_SkillType'HPLoss_Cycle:Float 1)
+}
+endcode

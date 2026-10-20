@@ -1,0 +1,5 @@
+begincodeV2
+name:更新简化特效生效状态
+lines:
+Bool 简化特效生效=fun map.getCustomBool(String 简化特效生效标志位)
+endcode

@@ -1,0 +1,17 @@
+[
+ Public'Damage
+ Public'GetHP
+ Public'GetFaction
+ Public'SetLayer
+ Public'BidirectionalBinding
+ Private'AfterChangeHP
+ Private'BeforeChangeHP
+ Private'UpdateHP
+ Public'Occupy
+ Public'OnReclaim
+ Private'AfterChangeFaction
+ Private'BeforeChangeFaction
+ Private'UpdateFaction
+ Public'OnEnabled
+ Public'OnCollision
+]

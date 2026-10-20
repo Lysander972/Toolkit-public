@@ -1,0 +1,24 @@
+begincodeV2
+name:Utils'世界坐标转零件局部方位角
+params:Vector3 世界坐标,Device dev
+return:Vector3 方位角
+lines:
+Vector3 局部坐标=varf Device.dev.worldToLocalPos(var 世界坐标)
+Float x=varf Vector3.局部坐标.x()
+Float y=varf Vector3.局部坐标.y()
+Float z=varf Vector3.局部坐标.z()
+Float temp0=fun float.pow(var x:Float 2)
+Float temp1=fun float.pow(var z:Float 2)
+Float temp2=fun float.add(var temp0:var temp1)
+Float temp2=fun float.pow(var temp2:Float 0.5)
+if{fun float.notEqual(var temp2:Float 0)
+  Float tany=fun float.division(var y:var temp2)
+  Float y角度=fun float.triangle.atan(var tany)
+  Vector3 水平分量=fun creatVariable.Vector3(var x:Float 0:var z)
+  Float x角度=fun vector3.signedAngle(var 水平分量:Vector3 0,0,1:Vector3 0,-1,0)
+  Vector3 方位角=fun creatVariable.Vector3(var x角度:var y角度:Float 0)
+}
+if{fun float.Approximately(var temp2:Float 0)
+  Vector3 方位角=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+}
+endcode

@@ -1,0 +1,20 @@
+begincodeV2
+name:动画控制'动画字典_构造
+params:Bool 是否循环,String 开始时回调,String 结束时回调
+return:Dict 动画字典
+lines:
+Dict 动画字典=fun create.dict()
+Bool 正在播放=fun create.bool(Bool 0)
+varf Dict.动画字典.insert(String 正在播放:var 正在播放)
+List 动画步骤队列=fun create.list()
+varf Dict.动画字典.insert(String 动画步骤队列:var 动画步骤队列)
+Float 当前步骤索引=fun create.float(Float -1)
+varf Dict.动画字典.insert(String 当前步骤索引:var 当前步骤索引)
+Float 动画启动时间=fun create.float(Float -1)
+varf Dict.动画字典.insert(String 动画启动时间:var 动画启动时间)
+Float 当前步骤启动时间=fun create.float(Float -1)
+varf Dict.动画字典.insert(String 当前步骤启动时间:var 当前步骤启动时间)
+varf Dict.动画字典.insert(String 是否循环:var 是否循环)
+varf Dict.动画字典.insert(String 开始时回调:var 开始时回调)
+varf Dict.动画字典.insert(String 结束时回调:var 结束时回调)
+endcode

@@ -1,0 +1,32 @@
+guid:c36e7745b3924456941e4459f7e63349
+meshes:
+[
+ {
+  n:""
+ }
+]
+matFolderName:00abe51985b346e0a79e33edf6bd2bb9
+Albedo.UID:00abe51985b346e0a79e33edf6bd2bb9
+Emission.UID:5bbebdf22bdc4f77b2180de7be2534c7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+scale:10
+bounds.center:[3.814697E-06,0.0064151,-0.0003135013]
+bounds.size:[0.01017487,0.01333069,0.01283285]

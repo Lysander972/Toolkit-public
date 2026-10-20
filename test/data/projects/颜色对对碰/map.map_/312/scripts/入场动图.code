@@ -1,0 +1,46 @@
+begincodeV2
+name:入场动图
+params:Long rank
+return:Bool ok
+lines:
+if{fun long.gte(var rank:Long 100)
+  fun break()
+}
+Canvas test=fun create.canvas(Canvas canvas@1@3EAEAEQkABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYH5peg5ZCNMANQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgEAAAAAAAAAAZhbmNob3IYBAAAAAAAAAALd2lkdGhFeHRlbmQYAQAAAAAAAAAMaGVpZ2h0RXh0ZW5kGAEAAAAAAAAABHNpemUEAACAPwAAgD8AAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8@3)
+Canvas 主UI=fun findCanvas(String 主UI)
+UIRect layer2=varf Canvas.主UI.readUIRect(String root/layer2)
+fun ui.2dmode(Bool 1)
+UIRawImage t=varf Canvas.test.readUIRawImage(String 无名0)
+varf UIRect.layer2.addSon(var t)
+//第一名
+if{fun long.equal(var rank:Long 0)
+  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 金光剑仙:Long 0:Long 99:Float 3:var t)
+}
+//第二名
+if{fun long.equal(var rank:Long 1)
+  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 翅膀女神:Long 0:Long 99:Float 3:var t)
+}
+//第三名
+if{fun long.equal(var rank:Long 2)
+  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 王座剑仙:Long 0:Long 99:Float 3:var t)
+}
+//第4~10名
+Bool b1=fun long.gt(var rank:Long 2)
+Bool b2=fun long.lte(var rank:Long 9)
+if{fun bool.and(var b1:var b2)
+  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 水龙卷武侠:Long 0:Long 49:Float 2:var t)
+}
+//第11~30名
+Bool b1=fun long.gt(var rank:Long 9)
+Bool b2=fun long.lte(var rank:Long 29)
+if{fun bool.and(var b1:var b2)
+  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 雷电玄幻:Long 0:Long 49:Float 2:var t)
+}
+//第31~100名
+Bool b1=fun long.gt(var rank:Long 29)
+Bool b2=fun long.lte(var rank:Long 99)
+if{fun bool.and(var b1:var b2)
+  Bool ok=act 1.this.Generic'PlayAnimationAsPic(String 绿光哪吒:Long 0:Long 49:Float 2:var t)
+}
+varf UIRawImage.t.del(Float 0)
+endcode

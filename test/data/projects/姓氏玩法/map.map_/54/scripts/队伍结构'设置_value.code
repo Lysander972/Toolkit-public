@@ -1,0 +1,25 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍结构'设置_value
+params:Struct 结构,Long value
+lines:
+//最小只能减到0
+Bool 是填充=act 1101.this.队伍结构'读取_填充(var 结构)
+if{fun create.bool(var 是填充)
+  Long value=fun long.max(var value:var 局内'无人队伍最小值)
+}
+if{fun bool.not(var 是填充)
+  Long value=fun long.max(var value:var 局内'有人队伍最小值)
+}
+varf Struct.结构.set(String value:var value)
+//更新排序使用值
+act 1101.this.队伍结构'更新_internal_value(var 结构)
+//取到显示专用值
+Long fordisplay=act 1101.this.队伍结构'读取_valuefordisplay(var 结构)
+//转为浮点数
+Float shown=act 1101.this.工具'转为显示值(var fordisplay)
+//转为有确定性的字符串
+String shown_string=act 1101.this.工具'强制保留有效位数(var shown:Bool 1)
+varf Struct.结构.set(String value_shown:var shown_string)
+endcode

@@ -1,0 +1,13 @@
+begincodeV2
+private:1
+color:8,0,255
+name:Private'AfterChangeHP
+comment:HP变更后
+params:Float oldHP,Float newHP
+lines:
+Float UI'血量变化值=fun float.minus(var newHP:var oldHP)
+if{fun bool.and1(var Initialized:var UI'show:var UI'showHP)
+  act 1.this.UI'更新血量()
+}
+fun break()
+endcode

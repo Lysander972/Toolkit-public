@@ -1,0 +1,30 @@
+guid:667306a2fc2240bc9d46ba2a07f32a0d
+meshes:
+[
+ {
+  n:Persimmon_Yellow_Half
+ }
+]
+matFolderName:a701019297c24bda9c44d73c13b61c76
+Albedo.UID:a701019297c24bda9c44d73c13b61c76
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[3.72529E-08,0.07877088,-0.0106407]
+bounds.size:[0.2828403,0.1479515,0.2618324]

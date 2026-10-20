@@ -1,0 +1,14 @@
+begincodeV2
+name:UI_Tip'SetFactor
+params:Float index,Float factor,Long forteam
+lines:
+if{fun float.lt(var index:Float 0)
+  fun break()
+}
+Float size=varf List.Tip'SubPanels.count()
+if{fun float.lt(var index:var size)
+  UIRect sub=varf List.Tip'SubPanels.readUIRect(var index)
+  varf UIRect.sub.setCustomFloat(String factor:var factor)
+  varf UIRect.sub.setCustomLong(String forteam:var forteam)
+}
+endcode

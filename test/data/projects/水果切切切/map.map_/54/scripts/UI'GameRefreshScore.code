@@ -1,0 +1,65 @@
+begincodeV2
+color:255,244,0
+name:UI'GameRefreshScore
+comment:刷新左侧进度条和提示
+params:Float current,Float total,Float 未实现的增长,Float 栅栏血量
+lines:
+if{fun bool.not(var init)
+  UIRect 攻方=varf Canvas.GameUI.readUIRect(String root/leftpanel/进度条/攻方)
+  UIRect 图标=varf Canvas.GameUI.readUIRect(String root/leftpanel/进度条/进度)
+  UILabel 进度=varf Canvas.GameUI.readUILabel(String root/leftpanel/进度条/进度/背景/显示区/数值)
+  UIRect 结算提示框=varf Canvas.GameUI.readUIRect(String root/结算提示)
+  UIRect 米数组件=varf Canvas.GameUI.readUIRect(String root/结算提示/提示组2)
+  UILabel 米数=varf Canvas.GameUI.readUILabel(String root/结算提示/提示组2/tips2)
+  UIRect 播报区=varf Canvas.GameUI.readUIRect(String root/leftpanel/进度条/进度/背景/播报区)
+  UIRect 栅栏区=varf Canvas.GameUI.readUIRect(String root/leftpanel/进度条/进度/背景/栅栏区)
+/*  UIRawImage 栅栏图标=varf Canvas.GameUI.readUIRawImage(String root/leftpanel/进度条/进度/背景/栅栏区/icon)
+  UILabel 栅栏血量值=varf Canvas.GameUI.readUILabel(String root/leftpanel/进度条/进度/背景/栅栏区/label)
+  Bool init=fun create.bool(Bool 1)
+}
+if{fun bool.not(var GameStart)
+  fun break()
+}
+Float buleRatio=fun float.division(var current:var total)
+Float buleRatio=fun float.clamp(var buleRatio:Float 0:Float 1)
+varf UIRect.攻方.fillMode(Enum 1:var buleRatio)
+Float 剩余=fun float.minus(var total:var current)
+Float 简化=fun float.round(var 剩余:Float 0)
+String 显示内容=fun string.add(var 简化:String 米)
+if{fun float.gt(var 未实现的增长:Float 0)
+  Float 未实现增长简化=fun float.round(var 未实现的增长:Float 0)
+  String 显示内容=fun string.add2(var 显示内容:String  <color@3#FFDF00>+:var 未实现增长简化:String 米</color>)
+}
+varf UILabel.进度.text(var 显示内容)
+Float y=fun float.minus(Float 1:var buleRatio)
+Vector3 位置=fun creatVariable.Vector3(Float 0.5:var y:Float 0)
+varf UIRect.图标.pos(var 位置)
+Bool 上方即将获胜=fun float.lte(var 简化:Float 99)
+varf UIRect.米数组件.active(var 上方即将获胜)
+if{fun create.bool(var 上方即将获胜)
+  String 显示内容=fun create.string(var 简化)
+  Bool 显示小数点=fun float.lte(var 剩余:Float 5)
+  if{fun create.bool(var 显示小数点)
+    Float temp=fun float.division(var 剩余:Float 0.1)
+    Long tempL=varf Float.temp.toLong()
+    Long tempL=fun long.max(var tempL:Long 1)
+    if{fun long.lt(var tempL:Long 10)
+      String 显示内容=fun string.add(String 0.:var tempL)
+    }
+    if{fun long.gte(var tempL:Long 10)
+      Float temp=fun long.division(var tempL:Long 10)
+      Long tempL1=varf Float.temp.toLong()
+      Long tempL2=fun long.mod(var tempL:Long 10)
+      String 显示内容=fun string.add1(var tempL1:String .:var tempL2)
+    }
+  }
+  varf UILabel.米数.text(var 显示内容)
+}
+Bool 显示栅栏血量=fun float.gte(var 栅栏血量:Float 1)
+varf UIRect.栅栏区.active(var 显示栅栏血量)
+if{fun create.bool(var 显示栅栏血量)
+  Float 简化=varf Float.栅栏血量.floor()
+  String 显示内容=fun create.string(var 简化)
+  varf UILabel.栅栏血量值.text(var 显示内容)
+}
+endcode

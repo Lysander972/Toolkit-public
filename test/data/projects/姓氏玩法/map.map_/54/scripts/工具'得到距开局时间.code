@@ -1,0 +1,12 @@
+begincodeV2
+name:工具'得到距开局时间
+return:Float 已开局时间
+lines:
+if{fun bool.not(var 局内'游戏中)
+  Float 已开局时间=fun create.float(Float 0)
+}
+if{fun create.bool(var 局内'游戏中)
+  Float 当前时间=fun time.scaleTime()
+  Float 已开局时间=fun float.minus(var 当前时间:var 局内_游戏规则'开局时间)
+}
+endcode

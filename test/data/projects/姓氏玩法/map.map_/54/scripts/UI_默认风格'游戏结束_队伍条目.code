@@ -1,0 +1,45 @@
+begincodeV2
+name:UI_默认风格'游戏结束_队伍条目
+params:Struct 队伍
+return:UIRect 根节点
+lines:
+Canvas 布局=fun create.canvas(Canvas guid@1f9303ef09589431ba4d974932daa3951)
+UIRect 根节点=varf Canvas.布局.readUIRect(String 根节点)
+UIRawImage 排名图标=varf Canvas.布局.readUIRawImage(String 根节点/排名图标)
+UILabel 排名文本框=varf Canvas.布局.readUILabel(String 根节点/排名文本框)
+UILabel 队名文本框=varf Canvas.布局.readUILabel(String 根节点/阵营名)
+Float 排名=act 1101.this.队伍结构'读取_rank(var 队伍)
+if{fun float.Approximately(var 排名:Float 0)
+  varf UIRawImage.排名图标.active(Bool 1)
+  varf UIRawImage.排名图标.loadPic(String icon_color_medal_gold.webp)
+  varf UILabel.排名文本框.active(Bool 0)
+}
+if{fun float.Approximately(var 排名:Float 1)
+  varf UIRawImage.排名图标.active(Bool 1)
+  varf UIRawImage.排名图标.loadPic(String icon_color_medal_silver.webp)
+  varf UILabel.排名文本框.active(Bool 0)
+}
+if{fun float.Approximately(var 排名:Float 2)
+  varf UIRawImage.排名图标.active(Bool 1)
+  varf UIRawImage.排名图标.loadPic(String icon_color_medal_bronze.webp)
+  varf UILabel.排名文本框.active(Bool 0)
+}
+if{fun float.gte(var 排名:Float 3)
+  varf UIRawImage.排名图标.active(Bool 0)
+  varf UILabel.排名文本框.active(Bool 1)
+  Float 排名显示=fun float.add(var 排名:Float 1)
+  varf UILabel.排名文本框.text(var 排名显示)
+}
+String 队名=act 1101.this.队伍结构'读取_name(var 队伍)
+varf UILabel.队名文本框.text(var 队名)
+UILabel 距离文本框=varf Canvas.布局.readUILabel(String 根节点/距离)
+Color 主题色=act 1101.this.队伍结构'读取_color1(var 队伍)
+varf Color.主题色.setA(Float 0.8)
+varf UIRect.根节点.setColor(var 主题色)
+String 距离显示=act 1101.this.队伍结构'读取_数值显示(var 队伍)
+varf UILabel.距离文本框.text(var 距离显示)
+UILabel 积分文本框=varf Canvas.布局.readUILabel(String 根节点/总积分)
+Long 积分数值=act 1101.this.队伍结构'读取_score(var 队伍)
+String 积分显示=act 1101.this.工具'数值简化_中文(var 积分数值)
+varf UILabel.积分文本框.text(var 积分显示)
+endcode

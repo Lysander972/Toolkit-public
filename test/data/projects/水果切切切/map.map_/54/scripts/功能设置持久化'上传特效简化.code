@@ -1,0 +1,7 @@
+begincodeV2
+name:功能设置持久化'上传特效简化
+lines:
+Dict data=fun map.load()
+varf Dict.data.insert(String 特效简化存档标志位:var 功能开关'特效简化)
+act 1101.this.存档'上传(Bool 1)
+endcode

@@ -1,0 +1,7 @@
+begincodeV2
+name:模型'设置边框
+params:Color baseColor,Color emmitColor
+lines:
+Color FrameBaseColor=fun create.color(var baseColor)
+Color FrameEmmitColor=fun create.color(var emmitColor)
+endcode

@@ -1,0 +1,10 @@
+begincodeV2
+name:模型'设置弹药数文本框
+params:Bool open,Float 字号,Float 加粗,Float 描边
+lines:
+act 1102./弹药数文字.show(var open)
+UILabel label=act 1102./弹药数文字.getLabel()
+varf UILabel.label.setFontSize(var 字号)
+varf UILabel.label.labelEffect(var 加粗:Vector3 0,0,0:Enum 0)
+varf UILabel.label.outline(var 描边:Color 0,0,0,255)
+endcode

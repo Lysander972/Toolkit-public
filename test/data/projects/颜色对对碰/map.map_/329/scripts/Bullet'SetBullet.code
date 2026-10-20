@@ -1,0 +1,61 @@
+begincodeV2
+color:0,138,255
+name:Bullet'SetBullet
+comment:设置一个普通子弹
+params:Vector3 $pos,Vector3 $direction,Long $type,Long $faction,Struct $player
+return:Bool $success
+lines:
+if{fun bool.not(var GameStarted)
+  Bool $success=fun create.bool(Bool 0)
+  fun break()
+}
+String $bulletKey=fun create.string(var $type)
+Struct $info=varf Struct.BulletRegInfo.getStruct(var $bulletKey:Bool 0)
+String $modelKey=varf Struct.$info.getString(String modelKey:Bool 0)
+Long $teamLimit=varf Struct.$info.getLong(String teamLimit:Bool 0)
+Long $team1Current=varf Struct.$info.getLong(String team1Current:Bool 0)
+Long $team2Current=varf Struct.$info.getLong(String team2Current:Bool 0)
+Long $globalLimit=varf Struct.$info.getLong(String globalLimit:Bool 0)
+Long $globalCurrent=varf Struct.$info.getLong(String globalCurrent:Bool 0)
+Bool $b1=fun create.bool(Bool 0)
+if{fun long.equal(var $faction:Long 1)
+  Long $temp=fun long.add(var $team1Current:Long 1)
+  Bool $b1=fun long.lte(var $temp:var $teamLimit)
+  Bool $b2=fun long.equal(var $teamLimit:Long -1)
+  Bool $b1=fun bool.or(var $b1:var $b2)
+}
+if{fun long.equal(var $faction:Long 2)
+  Long $temp=fun long.add(var $team2Current:Long 1)
+  Bool $b1=fun long.lte(var $temp:var $teamLimit)
+  Bool $b2=fun long.equal(var $teamLimit:Long -1)
+  Bool $b1=fun bool.or(var $b1:var $b2)
+}
+Long $temp=fun long.add(var $globalCurrent:Long 1)
+Bool $b3=fun long.lte(var $temp:var $globalLimit)
+Bool $b4=fun long.equal(var $globalLimit:Long -1)
+Bool $b2=fun bool.or(var $b3:var $b4)
+Bool $success=fun bool.and(var $b1:var $b2)
+if{fun create.bool(var $success)
+  Float $height=act 1101.this.Bullet'GetModelHeight(var $modelKey)
+  List $unusedList=varf Struct.BulletUnused.getList(var $modelKey:Bool 0)
+  Float $index=varf List.$unusedList.count()
+  Bool $exist=fun float.gt(var $index:Float 0)
+  if{fun create.bool(var $exist)
+    varf Float.$index.minusEqual(Float 1)
+    Mech $obj=varf List.$unusedList.readMech(var $index)
+    varf Mech.$obj.setActive(Bool 1)
+    varf List.$unusedList.remove(var $index)
+  }
+  if{fun bool.not(var $exist)
+    Mech $obj=act 1101.this.Bullet'New(var $modelKey:Vector3 1e+03,0,0:var $direction)
+  }
+  act 1101.this.Generic'BulletInitialize(var $obj:var $pos:var $direction:var $type:var $faction:var $height:var $player)
+  varf Long.$globalCurrent.addEqual(Long 1)
+  if{fun long.equal(var $faction:Long 1)
+    varf Long.$team1Current.addEqual(Long 1)
+  }
+  if{fun long.equal(var $faction:Long 2)
+    varf Long.$team2Current.addEqual(Long 1)
+  }
+}
+endcode

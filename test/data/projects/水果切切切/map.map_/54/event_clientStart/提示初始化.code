@@ -1,0 +1,39 @@
+begincodeV2
+name:提示初始化
+lines:
+act 1101.this.UI_Tip'Initialize()
+act 1101.this.UI_Tip'SetFactor(Float 0:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 1:Float 1:Long 1)
+act 1101.this.UI_Tip'SetFactor(Float 2:Float 1:Long 1)
+act 1101.this.UI_Tip'SetFactor(Float 3:Float 1:Long 1)
+act 1101.this.UI_Tip'SetFactor(Float 4:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 5:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 6:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 7:Float 1:Long 2)
+if{fun create.bool(var 模式'快手)
+  act 1101.this.UI_Tip'SetFactor(Float 8:Float 0:Long 0)
+  act 1101.this.UI_Tip'SetFactor(Float 9:Float 5:Long 0)
+}
+if{fun bool.not(var 模式'快手)
+  act 1101.this.UI_Tip'SetFactor(Float 8:Float 5:Long 0)
+  act 1101.this.UI_Tip'SetFactor(Float 9:Float 0:Long 0)
+}
+act 1101.this.UI_Tip'SetFactor(Float 10:Float 1:Long 0)
+act 1101.this.UI_Tip'SetFactor(Float 11:Float 1:Long 0)
+if{fun create.bool(var 模式'快手)
+  act 1101.this.UI_Tip'SetFactor(Float 12:Float 15:Long 0)
+  act 1101.this.UI_Tip'SetFactor(Float 13:Float 15:Long 0)
+}
+if{fun bool.not(var 模式'快手)
+  act 1101.this.UI_Tip'SetFactor(Float 12:Float 0:Long 0)
+  act 1101.this.UI_Tip'SetFactor(Float 13:Float 0:Long 0)
+}
+act 1101.this.UI_Tip'SetFactor(Float 14:Float 0.2:Long 0)
+act 1101.this.UI_Tip'SetFactor(Float 15:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 16:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 17:Float 1:Long 2)
+act 1101.this.UI_Tip'SetFactor(Float 18:Float 1:Long 1)
+act 1101.this.UI_Tip'SetFactor(Float 19:Float 1:Long 0)
+act 1101.this.UI_Tip'SetFactor(Float 20:Float 1:Long 1)
+act 1101.this.UI_Tip'SetFactor(Float 21:Float 1:Long 2)
+endcode

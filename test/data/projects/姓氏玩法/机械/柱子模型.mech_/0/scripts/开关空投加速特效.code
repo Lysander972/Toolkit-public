@@ -1,0 +1,10 @@
+begincodeV2
+name:开关空投加速特效
+params:Bool 启用特效
+lines:
+act 337./空投加速.active(var 启用特效:Float 0)
+Bool 加速4=fun create.bool(var 启用特效)
+Bool 高级加速启用=fun bool.or1(var 加速2:var 加速3:var 加速4)
+act 337./空投加速.active(var 启用特效:Float 0)
+act 337./高级加速.active(var 高级加速启用:Float 0)
+endcode

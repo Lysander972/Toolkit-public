@@ -1,0 +1,34 @@
+guid:bc20324c0c3146daba525c230da9cd74
+meshes:
+[
+ {
+  n:Grapes_03
+ }
+]
+matFolderName:42462431c4894e8ebb0a76778ba86ac8
+Albedo.UID:42462431c4894e8ebb0a76778ba86ac8
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+ColliderSize:[0.9,0.8,0.8]
+ColliderPos:[0,0,0.05]
+bounds.center:[0.004700191,0.1111448,-0.01261845]
+bounds.size:[0.3659664,0.2330678,0.639518]

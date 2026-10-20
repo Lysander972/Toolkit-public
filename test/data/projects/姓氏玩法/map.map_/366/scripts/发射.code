@@ -1,0 +1,7 @@
+begincodeV2
+name:发射
+params:Vector3 坐标,Vector3 向前,Vector3 向上,Float 缩放,Float 爆裂力度,Vector3 初速度
+lines:
+act 336.this.setPosOffset(Vector3 0,0,0)
+act 336.this.shootDir6(Vector3 0,0,0:String 物体重用:var 坐标:var 向前:var 向上:var 缩放:var 爆裂力度:var 初速度)
+endcode

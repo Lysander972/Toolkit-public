@@ -1,0 +1,30 @@
+guid:333afcaddc67474fb7759af335a26168
+meshes:
+[
+ {
+  n:PassionFruit_Purple_Half
+ }
+]
+matFolderName:4871184a6cc34c10bd26a08585996a8f
+Albedo.UID:4871184a6cc34c10bd26a08585996a8f
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.09593759,0]
+bounds.size:[0.310279,0.1918752,0.310279]

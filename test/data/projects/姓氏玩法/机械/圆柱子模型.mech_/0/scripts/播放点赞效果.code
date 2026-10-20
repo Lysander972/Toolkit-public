@@ -1,0 +1,8 @@
+begincodeV2
+name:播放点赞效果
+params:Long 播放次数
+lines:
+Float 粒子个数=varf Long.播放次数.toFloat()
+act 337./点赞粒子.emit(var 粒子个数)
+delay fun create.float(Float 0.2)
+endcode

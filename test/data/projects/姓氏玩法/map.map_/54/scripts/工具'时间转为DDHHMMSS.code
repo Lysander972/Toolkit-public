@@ -1,0 +1,42 @@
+begincodeV2
+color:255,255,255
+name:工具'时间转为DDHHMMSS
+comment:输入秒,输出DD@1HH@1MM@1SS.数值不够大时自动省略前面部分
+params:Long 秒
+return:String r
+lines:
+String r=fun create.string(String )
+if{fun long.gt(var 秒:Long 86400)
+  Float day=fun long.division(var 秒:Long 86400)
+  Long 天=varf Float.day.toLong()
+  String 文字=fun create.string(String @1)
+  String r=fun string.add(var 天:var 文字)
+  Long 秒=fun long.mod(var 秒:Long 86400)
+}
+if{fun long.gt(var 秒:Long 3600)
+  Float hour=fun long.division(var 秒:Long 3600)
+  Long 小时=varf Float.hour.toLong()
+  if{fun long.gt(var 天:Long 1)
+    if{fun long.lt(var 小时:Long 10)
+      String r=fun string.add(var r:String 0)
+    }
+  }
+  String 文字=fun create.string(String @1)
+  String r=fun string.add1(var r:var 小时:var 文字)
+  Long 秒=fun long.mod(var 秒:Long 3600)
+}
+Float min=fun long.division(var 秒:Long 60)
+Long 分钟=varf Float.min.toLong()
+if{fun long.gt(var 小时:Long 1)
+  if{fun long.lt(var 分钟:Long 10)
+    String r=fun string.add(var r:String 0)
+  }
+}
+String 文字=fun create.string(String @1)
+String r=fun string.add1(var r:var 分钟:var 文字)
+Long 秒=fun long.mod(var 秒:Long 60)
+if{fun long.lt(var 秒:Long 10)
+  String r=fun string.add(var r:String 0)
+}
+String r=fun string.add(var r:var 秒)
+endcode

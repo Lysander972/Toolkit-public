@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'拖动面板_监听
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  act 1101.this.UI_局内'拖动面板_刷新特定面板_右下(var UI_局内风格面板'礼物图:String giftPanel)
+  act 1101.this.UI_局内'拖动面板_刷新特定面板_右下(var UI_局内'调试面板:String testPanel)
+}
+endcode

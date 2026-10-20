@@ -1,0 +1,30 @@
+guid:cf8c98f5caa344b7a57279048d008a7a
+meshes:
+[
+ {
+  n:Berrry_Box
+ }
+]
+matFolderName:b7d60d40274f4b5fae15d54c83d8a54f
+Albedo.UID:b7d60d40274f4b5fae15d54c83d8a54f
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[6.15567E-05,0.1737263,-6.705523E-07]
+bounds.size:[0.5056205,0.3474526,0.5178035]

@@ -1,0 +1,35 @@
+guid:dfdc26a59dfe45f98dbe6a68b9a38ccd
+meshes:
+[
+ {
+  n:Watermelon_Large
+ }
+]
+matFolderName:b41f9f236be24fb9821ddbccf3081368
+Albedo.UID:b41f9f236be24fb9821ddbccf3081368
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:4
+OriginType:1
+ColliderRadius:0.8
+bounds.center:[0,0,0]
+bounds.size:[0.545821,0.6989463,0.5458211]

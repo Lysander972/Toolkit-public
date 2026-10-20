@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:测试'发送点赞消息_通用
+params:String 玩家id,String 头像url,String 玩家昵称,Long 点赞数量
+lines:
+String 点赞消息=fun string.Format4(String [{"msg_id"@1 "1","sec_openid"@1 "%1","like_num"@1 %2,"avatar_url"@1 "%3","nickname"@1 "%4","timestamp"@1 1}]:var 玩家id:var 点赞数量:var 头像url:var 玩家昵称)
+fun simulate_comment(String live_like:var 点赞消息)
+endcode

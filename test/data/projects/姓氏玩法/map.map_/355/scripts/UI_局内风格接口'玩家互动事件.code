@@ -1,0 +1,158 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'玩家互动事件
+params:Struct 玩家,Struct 发起者队伍,Struct 目标队伍,Long 事件类型,Dict 事件,Long 层数
+lines:
+Vector3 initialpos=fun creatVariable.Vector3(Float 0:Float -1000:Float 0)
+Bool 强制切换摄像机视角=fun create.bool(Bool 0)
+if{fun long.equal(var 事件类型:Long 0)
+  =act 1101./弹幕.玩家结构'读取_name(var 玩家:Bool 0)
+  fun break()
+}
+Long 目标队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+String 目标队伍idS=fun create.string(var 目标队伍id)
+if{varf Dict.队伍UI映射.contains(var 目标队伍idS)
+  Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 目标队伍idS:Bool 0)
+  Mech 队伍模型=varf Struct.队伍映射.getMech(String 队伍模型:Bool 0)
+}
+//玩家加入事件
+if{fun long.equal(var 事件类型:Long 1)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+}
+//玩家点赞事件
+if{fun long.equal(var 事件类型:Long 2)
+  Long 播放次数=fun long.min(var 层数:Long 2)
+  varf Mech.队伍模型.callFun1(String 播放点赞效果:var 播放次数)
+  act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+}
+//玩家捣乱事件
+if{fun long.equal(var 事件类型:Long 3)
+  act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+}
+//从甜甜圈开始设置特效,把延迟事件挂载到生成的机械上.在机械的入场结束,如果发现其他机械已绑定,就会把自己的事件转交给已绑定的模型,然后自身清空层数并离开
+//离开前会检查自身挂载的延迟事件,如果并未移交给其他模型@4并清空自身@5会立即让事件完全生效
+//仙女棒加速
+if{fun long.equal(var 事件类型:Long 10)
+  varf Mech.队伍模型.callFun0(String 增益效果)
+  varf Mech.队伍模型.callFun0(String 播放仙女棒效果)
+  //入场动画
+  Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 飞机模型)
+  varf Mech.绑定模型.setCustomString(String modelkey:String 飞机模型)
+  String 字段名=fun create.string(String 基础模型)
+  Float 整体缩放=fun create.float(Float 1)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+  Float 入场离场偏移=fun create.float(Float 1)
+  varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 入场离场偏移)
+  Bool 开关加力效果=fun create.bool(Bool 1)
+  varf Mech.绑定模型.callFun1(String 开关加力:var 开关加力效果)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  act 1101.this.内部'播放礼物视频(String 箭头水平.mp4)
+}
+//能力药丸减速
+if{fun long.equal(var 事件类型:Long 11)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  Long 循环=fun create.long(Long 0)
+  Long 轰炸次数=fun long.add(Long 4:var 层数)
+  Long 轰炸次数=fun long.clamp(var 轰炸次数:Long 5:Long 20)
+  Float 每次生效比例=fun long.division(Long 1:var 轰炸次数)
+  Float 延迟=fun create.float(Float 0)
+  while{fun long.lt(var 循环:var 轰炸次数)
+    Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 炸弹模型)
+    varf Mech.绑定模型.setCustomString(String modelkey:String 炸弹模型)
+    String 字段名=fun create.string(String 药丸buff模型)
+    Float 整体缩放=fun create.float(Float 1)
+    Float 随机角度=fun math.rand(Float 0:Float 360)
+    Float 随机距离=fun math.rand(Float 0:Float 5)
+    Vector3 基础方向=fun creatVariable.Vector3(Float 0:Float 0:var 随机距离)
+    Vector3 基础方向=fun vector3.rotateAround(var 基础方向:Vector3 0,1,0:var 随机角度)
+    Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 3:Float 0)
+    Vector3 偏移量=fun vector3.add(var 偏移量:var 基础方向)
+    Float 随机延迟=fun math.rand(Float 0.3:Float 0.5)
+    Float 延迟=fun float.add(var 延迟:var 随机延迟)
+    varf Mech.绑定模型.callFun7(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 延迟:var 每次生效比例)
+    varf Long.循环.addEqual(Long 1)
+  }
+  act 1101.this.内部'播放礼物视频(String 航弹.mp4)
+}
+//甜甜圈加速,火箭模型
+if{fun long.equal(var 事件类型:Long 13)
+  varf Mech.队伍模型.callFun0(String 增益效果)
+  //入场动画
+  Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 导弹模型)
+  varf Mech.绑定模型.setCustomString(String modelkey:String 导弹模型)
+  String 字段名=fun create.string(String 甜甜圈buff模型)
+  Float 整体缩放=fun create.float(Float 2)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 5:Float -3)
+  Float 入场离场偏移=fun create.float(Float 1)
+  varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 入场离场偏移)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  act 1101.this.内部'播放礼物视频(String 导弹.mp4)
+}
+//电池减速
+if{fun long.equal(var 事件类型:Long 14)
+  Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 锤子模型)
+  varf Mech.绑定模型.setCustomString(String modelkey:String 锤子模型)
+  //入场动画
+  String 字段名=fun create.string(String 电池buff模型)
+  Float 整体缩放=fun create.float(Float 1.3)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+  Float 入场离场偏移=fun create.float(Float 1)
+  varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 入场离场偏移)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  act 1101.this.内部'播放礼物视频(String 锤子.mp4)
+}
+//炸弹加速
+if{fun long.equal(var 事件类型:Long 15)
+  varf Mech.队伍模型.callFun0(String 增益效果)
+  //入场动画
+  Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 航天飞机模型)
+  varf Mech.绑定模型.setCustomString(String modelkey:String 航天飞机模型)
+  String 字段名=fun create.string(String 炸弹buff模型)
+  Float 整体缩放=fun create.float(Float 2)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 3:Float -5)
+  Float 入场离场偏移=fun create.float(Float 1)
+  varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 入场离场偏移)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  act 1101.this.内部'播放礼物视频(String 航天飞机.mp4)
+}
+//话筒减速
+if{fun long.equal(var 事件类型:Long 16)
+  //入场动画
+  Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 手掌模型)
+  varf Mech.绑定模型.setCustomString(String modelkey:String 手掌模型)
+  String 字段名=fun create.string(String 话筒buff模型)
+  Float 整体缩放=fun create.float(Float 1)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+  Float 入场离场偏移=fun create.float(Float 1)
+  varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 入场离场偏移)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  act 1101.this.内部'播放礼物视频(String 手掌.mp4)
+}
+//空投加速
+if{fun long.equal(var 事件类型:Long 17)
+  varf Mech.队伍模型.callFun0(String 增益效果)
+  //入场动画
+  Mech 绑定模型=act 1101./Scenario.Model'SetModel(var initialpos:Vector3 1,0,0:String 超人模型)
+  varf Mech.绑定模型.setCustomString(String modelkey:String 超人模型)
+  String 字段名=fun create.string(String 空投buff模型)
+  Float 整体缩放=fun create.float(Float 0.5)
+  Vector3 偏移量=fun creatVariable.Vector3(Float 0:Float -1:Float -10)
+  Float 入场离场偏移=fun create.float(Float 1)
+  varf Mech.绑定模型.callFun6(String 播放动画:var 队伍模型:var 字段名:var 整体缩放:var 偏移量:var 事件:var 入场离场偏移)
+  Bool 强制切换摄像机视角=fun create.bool(Bool 1)
+  act 1101.this.内部'播放礼物视频(String 飞船.mp4)
+}
+//仅在锁定特定队伍的情况下,送礼增加特写效果
+if{fun bool.and(var 强制切换摄像机视角:var 摄像机'是否自动切换)
+  Float 当前时间=fun time.scaleTime()
+  Float 距离上次切换=fun float.minus(var 当前时间:var 摄像机'特写开始时间)
+  if{fun float.gte(var 距离上次切换:Float 0)
+    Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+    Bool 摄像机'自动跟随中=fun create.bool(Bool 1)
+    String 摄像机'自动跟随队伍id=fun create.string(var 队伍id)
+    Float 摄像机'特写开始时间=fun time.scaleTime()
+  }
+}
+//临时将延迟效果标记为完全生效
+/*act 1101./弹幕.局内逻辑'延迟效果_标记完全生效(var 事件)
+endcode

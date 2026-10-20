@@ -1,0 +1,31 @@
+guid:544f284b29664d1bba981e7b765720fa
+meshes:
+[
+ {
+  n:SM_Hud_Reticle_07
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,-7.674098E-07,0]
+bounds.size:[0.2781372,0.2781357,0.01677856]

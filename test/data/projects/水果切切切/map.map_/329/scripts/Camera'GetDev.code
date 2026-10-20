@@ -1,0 +1,7 @@
+begincodeV2
+name:Camera'GetDev
+comment:得到零件本身
+return:Device this
+lines:
+Device this=act 1101.this.getDevice()
+endcode

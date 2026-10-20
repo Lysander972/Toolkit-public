@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "实际四个blob保持一致；严格构建成功，33项行为测试通过，绑定覆盖Host与文件实体主入口；详细运行时专项和最终index/HEAD验收待补。",
+      "score": 1,
+      "suggestion": "按正式入口完成本批暂存门禁和提交后HEAD验证；后续批次扩展转换/前端并进一步绑定实体详细操作。"
+    },
+    "parent_fit": {
+      "reason": "设计落实逐字来源、唯一解读、C4单一权威及原生implements/评分失效；参考配置不绑定现役完成证据，未增加第二逻辑权威。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "每份来源独占目录与specPath配对，源码和测试全文按现有绑定导入，统一图取代旧路径；TODO测试仅证明失败和副作用边界，验收层次明确。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "ead1b3ba-acd4-4d46-9c60-b72e540bf8d6",
+  "reviewed_fingerprint": "495a36cc9f116ba1ba091d77d0b382376d7cd4c8feea8a2561c9d8cf7bd1d6b0",
+  "schema": 2,
+  "summary": "来源与主入口追踪设计已落地，正式终态与专项覆盖仍需继续验收。"
+}

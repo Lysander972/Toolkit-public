@@ -1,0 +1,7 @@
+begincodeV2
+name:动画控制'步骤字典_构造_基础
+params:Float 持续时间,Long 插值类型,Bool 启用缩放,Float 目标缩放,Bool 启用透明度修改,Float 目标透明度,String 开始时回调,String 结束时回调
+return:Dict 步骤字典
+lines:
+Dict 步骤字典=act 1101.this.动画控制'步骤字典_构造_通用(var 持续时间:var 插值类型:Long 0:var 启用缩放:var 目标缩放:var 启用透明度修改:var 目标透明度:var 开始时回调:var 结束时回调)
+endcode

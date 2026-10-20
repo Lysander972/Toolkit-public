@@ -1,0 +1,10 @@
+type:283
+pos:[-0.0330143,0,3.905903]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ boolHideUI:1
+ boolLight:true
+ fireSize:1
+ colorValue:[0.4339623,0.4237273,0.4237273,1]
+}

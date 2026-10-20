@@ -1,0 +1,8 @@
+begincodeV2
+name:回调'排序方式开关
+lines:
+Float 场景'排序方式=varf Float.场景'排序方式.floor()
+varf Float.场景'排序方式.addEqual(Float 1)
+Float 场景'排序方式=fun float.mod(var 场景'排序方式:Float 2)
+act 1101.this.内部'排序方式开关刷新()
+endcode

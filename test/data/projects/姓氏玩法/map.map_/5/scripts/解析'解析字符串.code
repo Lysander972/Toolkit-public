@@ -1,0 +1,112 @@
+begincodeV2
+private:1
+name:解析'解析字符串
+params:String 文本
+return:Dict 解析返回字典
+lines:
+List 属性列表=fun getWaterParams()
+Dict 解析返回字典=fun create.dict()
+if{fun string.notEqual(var 文本:String )
+  List 初级参数分离列表=varf String.文本.split(String |)
+  Float 初级目标循环次数=varf List.初级参数分离列表.count()
+  if{fun float.gt(var 初级目标循环次数:Float 0)
+    Float 初级循环次数=fun create.float(Float 0)
+    while{fun float.lt(var 初级循环次数:var 初级目标循环次数)
+      String 初级参数分离结果=varf List.初级参数分离列表.readString(var 初级循环次数)
+      Bool 终止=fun string.equal(var 初级参数分离结果:String )
+      if{fun string.notEqual(var 初级参数分离结果:String )
+        List 二级变量名分离列表=varf String.初级参数分离结果.split(String #)
+        Float 二级分离列表数量=varf List.二级变量名分离列表.count()
+        Bool 终止=fun float.lte(var 二级分离列表数量:Float 1)
+        if{fun float.gt(var 二级分离列表数量:Float 1)
+          String 读取变量名称=varf List.二级变量名分离列表.readString(Float 0)
+          Bool 终止=fun string.equal(var 读取变量名称:String )
+          if{fun string.notEqual(var 读取变量名称:String )
+            String 读取三级分离文本=varf List.二级变量名分离列表.readString(Float 1)
+            if{fun string.notEqual(var 读取三级分离文本:String )
+              List 读取三级分离结果=varf String.读取三级分离文本.split(String @1)
+              Float 三级分离列表数量=varf List.读取三级分离结果.count()
+              Bool 终止=fun float.lte(var 二级分离列表数量:Float 1)
+              if{fun float.gt(var 三级分离列表数量:Float 1)
+                String 读取变量类型=varf List.读取三级分离结果.readString(Float 0)
+                Bool 终止=fun string.equal(var 读取变量类型:String )
+                if{fun string.notEqual(var 读取变量类型:String )
+                  String 读取变量数据=varf List.读取三级分离结果.readString(Float 1)
+                  Bool 终止=fun string.equal(var 读取变量数据:String )
+                  if{fun string.notEqual(var 读取变量数据:String )
+                    Bool 变量类型合法判定=fun create.bool(Bool 0)
+                    if{fun string.equal(var 读取变量类型:String float)
+                      Float 解析结果'小数=varf String.读取变量数据.toFloat()
+                      Float 查找=varf List.属性列表.find(var 读取变量名称)
+                      if{fun float.notEqual(var 查找:Float -1)
+                        fun setWaterFloat(var 读取变量名称:var 解析结果'小数)
+                      }
+/*                      varf Dict.解析返回字典.insert(var 读取变量名称:var 解析结果'小数)
+                      Bool 变量类型合法判定=fun create.bool(Bool 1)
+                    }
+                    if{fun string.equal(var 读取变量类型:String long)
+                      Long 解析结果'整数=varf String.读取变量数据.toLong()
+                      varf Dict.解析返回字典.insert(var 读取变量名称:var 解析结果'整数)
+                      Bool 变量类型合法判定=fun create.bool(Bool 1)
+                    }
+                    if{fun string.equal(var 读取变量类型:String vector)
+                      List 向量解析列表=varf String.读取变量数据.split(String ,)
+                      String 解析向量x文本=varf List.向量解析列表.readString(Float 0)
+                      String 解析向量y文本=varf List.向量解析列表.readString(Float 1)
+                      String 解析向量z文本=varf List.向量解析列表.readString(Float 2)
+                      Float 解析向量x=varf String.解析向量x文本.toFloat()
+                      Float 解析向量y=varf String.解析向量y文本.toFloat()
+                      Float 解析向量z=varf String.解析向量z文本.toFloat()
+                      Vector3 解析结果'向量=fun creatVariable.Vector3(var 解析向量x:var 解析向量y:var 解析向量z)
+                      varf Dict.解析返回字典.insert(var 读取变量名称:var 解析结果'向量)
+                      Bool 变量类型合法判定=fun create.bool(Bool 1)
+                    }
+                    if{fun string.equal(var 读取变量类型:String bool)
+                      Bool 解析结果'布尔值=fun string.equal(var 读取变量数据:String True)
+                      varf Dict.解析返回字典.insert(var 读取变量名称:var 解析结果'布尔值)
+                      Bool 变量类型合法判定=fun create.bool(Bool 1)
+                    }
+                    if{fun string.equal(var 读取变量类型:String string)
+                      String 解析结果'文本=fun create.string(var 读取变量数据)
+                      varf Dict.解析返回字典.insert(var 读取变量名称:var 解析结果'文本)
+                      Bool 变量类型合法判定=fun create.bool(Bool 1)
+                    }
+                    if{fun string.equal(var 读取变量类型:String color)
+                      List 颜色解析列表=varf String.读取变量数据.split(String ,)
+                      String 解析颜色r文本=varf List.颜色解析列表.readString(Float 0)
+                      String 解析颜色g文本=varf List.颜色解析列表.readString(Float 1)
+                      String 解析颜色b文本=varf List.颜色解析列表.readString(Float 2)
+                      String 解析颜色a文本=varf List.颜色解析列表.readString(Float 3)
+                      Float 解析颜色r=varf String.解析颜色r文本.toFloat()
+                      Float 解析颜色g=varf String.解析颜色g文本.toFloat()
+                      Float 解析颜色b=varf String.解析颜色b文本.toFloat()
+                      Float 解析颜色a=varf String.解析颜色a文本.toFloat()
+                      Vector3 解析颜色向量=fun creatVariable.Vector3(var 解析颜色r:var 解析颜色g:var 解析颜色b)
+                      Color 解析结果'颜色=varf Vector3.解析颜色向量.toColor()
+                      varf Color.解析结果'颜色.setA(var 解析颜色a)
+                      Float 查找=varf List.属性列表.find(var 读取变量名称)
+                      if{fun float.notEqual(var 查找:Float -1)
+                        fun setWaterColor(var 读取变量名称:var 解析结果'颜色)
+                      }
+/*                      varf Dict.解析返回字典.insert(var 读取变量名称:var 解析结果'颜色)
+                      Bool 变量类型合法判定=fun create.bool(Bool 1)
+                    }
+                    if{fun bool.not(var 变量类型合法判定)
+                      Bool 终止=fun create.bool(Bool 1)
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      if{fun create.bool(var 终止)
+        varf Dict.解析返回字典.clear()
+        fun break()
+      }
+      Float 初级循环次数=fun float.add(var 初级循环次数:Float 1)
+    }
+  }
+}
+endcode

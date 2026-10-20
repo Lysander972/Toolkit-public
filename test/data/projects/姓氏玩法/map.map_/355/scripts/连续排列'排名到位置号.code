@@ -1,0 +1,8 @@
+begincodeV2
+name:连续排列'排名到位置号
+params:Float 排名
+return:Float 位置
+lines:
+Float 位置数量=act 1101.this.工具'得到位置数量()
+Float 位置=act 1101.this.工具'取模操作(var 排名:var 位置数量)
+endcode

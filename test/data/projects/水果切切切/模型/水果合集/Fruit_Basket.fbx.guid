@@ -1,0 +1,29 @@
+guid:b78c285e9d554bf49109515995889a75
+meshes:
+[
+ {
+  n:Fruit_Basket
+ }
+]
+matFolderName:556fafaeff65419b8502e73b03d5a3c6
+Albedo.UID:556fafaeff65419b8502e73b03d5a3c6
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+ColliderSize:[1,0.4,1]
+ColliderPos:[0,-0.4,0]
+bounds.center:[3.148433E-08,0.5828696,0]
+bounds.size:[1.035393,1.158108,0.9948761]

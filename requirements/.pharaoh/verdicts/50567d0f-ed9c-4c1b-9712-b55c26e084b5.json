@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "SymbolTable/CallGraph源码及analysis.test全文已读并绑定；测试覆盖缺失来源、重复GUID、变量归属、回调、作用域和候选诊断。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "完整原文的符号表、调用图、导入机械闭包、私有/事件/禁用和动态候选均在解读中保持。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "由实体绑定身份与来源可用性推导纯分析边界，明确自定义优先、平台显式输入和迁移不新增算法。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "50567d0f-ed9c-4c1b-9712-b55c26e084b5",
+  "reviewed_fingerprint": "b28582d4c39e6b1188f8e5d808c6f6fbde13dae34a7f5bdcdeeb47cbc52b38eb",
+  "schema": 2,
+  "summary": "分析仅消费实体与第一层AST，保留绑定身份、缺失来源诊断及候选边，不扩张通用图算法。"
+}

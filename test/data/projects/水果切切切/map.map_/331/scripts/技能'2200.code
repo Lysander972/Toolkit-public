@@ -1,0 +1,50 @@
+begincodeV2
+color:221,0,255
+name:技能'2200
+comment:飞刀
+lines:
+String key=fun create.string(String 2200)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Vector3 方位角=act 1.this.Utils'世界坐标转局部方位角(Vector3 0,0,100)
+  Float x=varf Vector3.方位角.x()
+  Long 攻击轮次=fun create.long(Long 0)
+  while{fun long.lt(var 攻击轮次:Long 8)
+    Long 轮数类型=fun long.mod(var 攻击轮次:Long 2)
+    Float 本组发射=fun create.float(Float 0)
+    Float 本轮发射组数=fun create.float(Float 7)
+    while{fun float.lt(var 本组发射:var 本轮发射组数)
+      if{fun long.equal(var 轮数类型:Long 0)
+        Float x修正=fun float.multiply(var 本组发射:Float 7)
+      }
+      if{fun long.equal(var 轮数类型:Long 1)
+        Float x修正=fun float.minus1(var 本轮发射组数:var 本组发射:Float 0.5)
+        Float x修正=fun float.multiply(var x修正:Float 7)
+      }
+      Float 实际x=fun float.add(var x:var x修正)
+      Bool 发射成功=act 1.this.Launcher'LaunchFixedly(Long 2200:var 实际x:Float 0:Bool 1:var 属性'玩家:Float 1:Float 0:Float 1:Bool 0:Float 0)
+      while{fun bool.not(var 发射成功)
+        delay fun create.float(Float 0.2)
+        Bool 发射成功=act 1.this.Launcher'LaunchFixedly(Long 2200:var 实际x:Float 0:Bool 1:var 属性'玩家:Float 1:Float 0:Float 1:Bool 0:Float 0)
+      }
+      if{fun float.notEqual(var x修正:Float 0)
+        Float 实际x=fun float.minus(var x:var x修正)
+        Bool 发射成功=act 1.this.Launcher'LaunchFixedly(Long 2200:var 实际x:Float 0:Bool 1:var 属性'玩家:Float 1:Float 0:Float 1:Bool 0:Float 0)
+        while{fun bool.not(var 发射成功)
+          delay fun create.float(Float 0.2)
+          Bool 发射成功=act 1.this.Launcher'LaunchFixedly(Long 2200:var 实际x:Float 0:Bool 1:var 属性'玩家:Float 1:Float 0:Float 1:Bool 0:Float 0)
+        }
+      }
+      act 1.this.播放音效(String 飞刀投掷.ogg:Float 0.5)
+      delay fun create.float(Float 0.05)
+      varf Float.本组发射.addEqual(Float 1)
+    }
+    varf Long.攻击轮次.addEqual(Long 1)
+  }
+  delay fun create.float(Float 1)
+  fun screen.shake(Float 0.15:Float 2000:Float 0.8)
+  act 1.this.播放音效(String 飞刀多个投掷.ogg:Float 1.2)
+  =act 1.this.Launcher'LaunchUniformlyWithP(Long 2201:var x:Float 0:Long 15:Float 7:Float 0:Bool 0:Bool 1:var 属性'玩家:Float 1:Float 0:Float 1:Bool 0:Float 0)
+  =act 1.this.Skills'Decrease(var key:Long 1)
+}
+delay fun create.float(Float 0.5)
+endcode

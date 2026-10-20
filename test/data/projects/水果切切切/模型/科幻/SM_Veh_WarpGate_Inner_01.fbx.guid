@@ -1,0 +1,31 @@
+guid:13046fac9f10407fa2c8ba7b5cb075de
+meshes:
+[
+ {
+  n:SM_Veh_WarpGate_Inner_01
+ }
+]
+matFolderName:b49513a78f974d48be598af9e6918489
+Albedo.UID:b49513a78f974d48be598af9e6918489
+Emission.UID:7900173565e641a99bb34962e99e35c8
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,7.602016,0]
+bounds.size:[458.1322,101.726,470.3867]

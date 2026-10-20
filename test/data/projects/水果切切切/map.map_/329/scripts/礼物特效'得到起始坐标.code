@@ -1,0 +1,22 @@
+begincodeV2
+name:礼物特效'得到起始坐标
+params:Struct player
+return:Vector3 ret
+lines:
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.equal(var team:Long 1)
+  Vector3 ret=fun creatVariable.Vector3(Float 0:Float 25:var 攻方区域长度)
+  Vector3 ret=fun vector3.minus(var ret:Vector3 0,0,30)
+}
+if{fun long.equal(var team:Long 2)
+  String uid=varf Struct.player.getString(String id:Bool 1)
+  Mech target=varf Dict.守方炮塔记录.readMech(var uid:Bool 0)
+  Vector3 ret=varf Mech.target.corePos()
+  varf Vector3.ret.setY(Float 25)
+}
+Float rand1=fun math.rand(Float -3:Float 3)
+Float rand2=fun math.rand(Float -3:Float 3)
+Float rand3=fun math.rand(Float -3:Float 3)
+Vector3 修正=fun creatVariable.Vector3(var rand1:var rand2:var rand3)
+Vector3 ret=fun vector3.add(var ret:var 修正)
+endcode

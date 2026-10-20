@@ -1,0 +1,6 @@
+begincodeV2
+name:技能'添加到攻方公共
+params:String key,Long amount,Struct player
+lines:
+act 1101.this.技能'通用添加方法(var 攻方公共炮塔:var key:var amount:var player)
+endcode

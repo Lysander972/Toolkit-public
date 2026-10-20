@@ -1,0 +1,8 @@
+begincodeV2
+name:Public'Freeze
+lines:
+if{fun bool.or(var 冰冻'冰冻:var 冰冻'免疫)
+  fun break()
+}
+act 1.this.冰冻'开关冰冻(Bool 1)
+endcode

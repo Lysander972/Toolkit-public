@@ -1,0 +1,94 @@
+begincodeV2
+name:ButtonMenu'Refresh
+lines:
+Bool $page1=fun long.equal(var MenuMode:Long 0)
+Bool $page2=fun long.equal(var MenuMode:Long 1)
+//1
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub1)
+varf UIRect.$rect.active(var $page2)
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub1/buttons/1)
+Long $value=fun create.long(Long 1)
+if{fun long.equal(var GameSettings0:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings0:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub1/buttons/2)
+Long $value=fun create.long(Long 2)
+if{fun long.equal(var GameSettings0:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings0:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+//2
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub2)
+varf UIRect.$rect.active(var $page2)
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub2/buttons/1)
+Long $value=fun create.long(Long 1)
+if{fun long.equal(var GameSettings1:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings1:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub2/buttons/2)
+Long $value=fun create.long(Long 2)
+if{fun long.equal(var GameSettings1:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings1:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub2/buttons/3)
+Long $value=fun create.long(Long 3)
+if{fun long.equal(var GameSettings1:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings1:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+//3
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub3)
+varf UIRect.$rect.active(var $page2)
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub3/buttons/1)
+Long $value=fun create.long(Long 1)
+if{fun long.equal(var GameSettings2:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings2:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub3/buttons/2)
+Long $value=fun create.long(Long 2)
+if{fun long.equal(var GameSettings2:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings2:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+UIButton $button=varf Canvas.MenuUI.readUIButton(String panel/bottom/sub3/buttons/3)
+Long $value=fun create.long(Long 3)
+if{fun long.equal(var GameSettings2:var $value)
+  varf UIButton.$button.setColor(Color 255,255,255,255)
+}
+if{fun long.notEqual(var GameSettings2:var $value)
+  varf UIButton.$button.setColor(Color 126,126,126,255)
+}
+//4
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub4)
+varf UIRect.$rect.active(var $page2)
+//5
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub5)
+varf UIRect.$rect.active(var $page1)
+//6
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub6)
+varf UIRect.$rect.active(var $page1)
+//7
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub7)
+varf UIRect.$rect.active(var $page1)
+//8
+UIRect $rect=varf Canvas.MenuUI.readUIRect(String panel/bottom/sub8)
+varf UIRect.$rect.active(var $page1)
+endcode

@@ -1,0 +1,26 @@
+begincodeV2
+name:Private_UI'Update
+lines:
+/*Device $this=act 1.this.getDevice()
+/*Vector3 $global=varf Device.$this.pos()
+/*Vector3 $local=fun screen.WorldToScreenPoint(var $global)
+/*Float $z=varf Vector3.$local.z()
+/*Vector3 $local2=fun screen.WorldToScreenPoint(Vector3 0,1,0)
+/*Vector3 $delta=fun vector3.minus(var $local:var $local2)
+/*Vector3 $delta=fun vector3.multilply(var $delta:var $z)
+/*Vector3 $local=fun vector3.add(var $local2:var $delta)
+/*varf Vector3.$local.setZ(var $z)
+/*varf UIRect.Background.setPixelPos(var $local:Enum 4)
+Bool UICycleStarted=fun create.bool(Bool 1)
+//点击这里写注释
+Device $this=act 1.this.getDevice()
+Vector3 $global=varf Device.$this.pos()
+/*Vector3 $local=fun screen.WorldToScreenPoint(var $global)
+/*Float $z=varf Vector3.$local.z()
+Vector3 $local=fun screen.fromPixel(var $global)
+Vector3 $local=fun vector3.multilply(var $local:Float 10)
+/*varf Vector3.$local.setZ(var $z)
+Vector3 $local=fun vector3.add(var $local:Vector3 0.5,0.5,0)
+varf UIRect.Background.pos(var $local)
+/*varf UIRect.Background.setPixelPos(var $local:Enum 4)
+endcode

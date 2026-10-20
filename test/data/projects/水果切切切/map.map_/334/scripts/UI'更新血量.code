@@ -1,0 +1,17 @@
+begincodeV2
+name:UI'更新血量
+lines:
+Long hpL=varf Float.Attr'HP.toLong()
+varf UILabel.UI'血量文本框.text(var hpL)
+Float 当前时间=fun time.scaleTime()
+if{fun bool.not(var UI'血量动效)
+  act 1.this.UI'血量动效()
+  act 1.this.loopFun(String UI'血量动效:Float 0)
+  Bool UI'血量动效=fun create.bool(Bool 1)
+}
+//重置动态效果
+Float 时间差=fun float.minus(var 当前时间:var UI'血量上次更新)
+if{fun float.gte(var 时间差:Float 0.3)
+  Float UI'血量上次更新=fun create.float(var 当前时间)
+}
+endcode

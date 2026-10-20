@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'OnCollision
+params:Mech from
+lines:
+varf Mech.Grid.callFun1(String Public'OnCollision:var from)
+endcode

@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "modules": {
+    "renderer": {
+      "coverage": null,
+      "mutation": null
+    },
+    "tools.cli": {
+      "coverage": {
+        "lines": 86.17,
+        "statements": 85,
+        "functions": 84.01,
+        "branches": 76.83
+      },
+      "mutation": 76.3855421686747
+    },
+    "tools.architecture": {
+      "coverage": {
+        "lines": 95.34,
+        "statements": 95.41,
+        "functions": 94.4,
+        "branches": 87.93
+      },
+      "mutation": 79.72283005105763
+    },
+    "tools.anchoring": {
+      "coverage": {
+        "lines": 92.59,
+        "statements": 92.28,
+        "functions": 92.98,
+        "branches": 89.04
+      },
+      "mutation": 81.6196542311192
+    },
+    "tools.coding": {
+      "coverage": {
+        "lines": 96.25,
+        "statements": 96.33,
+        "functions": 92.68,
+        "branches": 93.48
+      },
+      "mutation": 0
+    },
+    "tools.testing": {
+      "coverage": {
+        "lines": 97.51,
+        "statements": 97,
+        "functions": 89.18,
+        "branches": 81.48
+      },
+      "mutation": 98.16849816849816
+    },
+    "toolkit.files": {
+      "coverage": {
+        "lines": 92.06,
+        "statements": 92.24,
+        "functions": 89.23,
+        "branches": 91.11
+      },
+      "mutation": 0
+    },
+    "toolkit.entities": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.semantic": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.view_service": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.diagnostics": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.editing": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.preview": {
+      "coverage": null,
+      "mutation": null
+    },
+    "canvas.renderer_support": {
+      "coverage": {
+        "lines": 100,
+        "statements": 100,
+        "functions": 75,
+        "branches": 100
+      },
+      "mutation": 100
+    },
+    "canvas.renderer_tests": {
+      "coverage": null,
+      "mutation": null
+    },
+    "frontend.host_client": {
+      "coverage": null,
+      "mutation": null
+    },
+    "frontend.language": {
+      "coverage": null,
+      "mutation": null
+    },
+    "frontend.ui": {
+      "coverage": {
+        "lines": 88.57,
+        "statements": 88.57,
+        "functions": 90.47,
+        "branches": 90
+      },
+      "mutation": 60.86956521739131
+    },
+    "frontend.plugin": {
+      "coverage": {
+        "lines": 42.99,
+        "statements": 42.18,
+        "functions": 63.15,
+        "branches": 13.88
+      },
+      "mutation": 3.225806451612903
+    },
+    "preview.site": {
+      "coverage": {
+        "lines": 69.44,
+        "statements": 64.28,
+        "functions": 55.55,
+        "branches": 50
+      },
+      "mutation": 23.52941176470588
+    },
+    "preview.scenes": {
+      "coverage": {
+        "lines": 72.22,
+        "statements": 72.22,
+        "functions": 100,
+        "branches": 40
+      },
+      "mutation": 68
+    },
+    "preview.assets": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.assets": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.asset_generation": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.asset_processing": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.asset_candidates": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.config.logic": {
+      "coverage": null,
+      "mutation": null
+    },
+    "pure.change_plan": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.lint": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.language": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.invocations": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.host.logic": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.project_model.logic": {
+      "coverage": {
+        "lines": 92.42,
+        "statements": 92.38,
+        "functions": 93.25,
+        "branches": 90.21
+      },
+      "mutation": 16.121495327102803
+    },
+    "toolkit.script.test_support": {
+      "coverage": {
+        "lines": 100,
+        "statements": 100,
+        "functions": 80,
+        "branches": 100
+      },
+      "mutation": 0
+    },
+    "toolkit.host.test_support": {
+      "coverage": {
+        "lines": 89.92,
+        "statements": 88.96,
+        "functions": 89.65,
+        "branches": 65.3
+      },
+      "mutation": 50
+    },
+    "toolkit.conversion.canvas": {
+      "coverage": {
+        "lines": 95.06,
+        "statements": 95.29,
+        "functions": 91.66,
+        "branches": 100
+      },
+      "mutation": 0
+    },
+    "toolkit.conversion.ts": {
+      "coverage": {
+        "lines": 93.33,
+        "statements": 93.54,
+        "functions": 88.23,
+        "branches": 100
+      },
+      "mutation": 0
+    },
+    "toolkit.conversion.html": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.analysis.logic": {
+      "coverage": {
+        "lines": 99.35,
+        "statements": 98.78,
+        "functions": 93.33,
+        "branches": 97.88
+      },
+      "mutation": 0
+    },
+    "toolkit.mcp.logic": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.pi_plugin.logic": {
+      "coverage": null,
+      "mutation": null
+    },
+    "toolkit.pi_plugin.tests": {
+      "coverage": null,
+      "mutation": null
+    },
+    "pure.canvas.logic": {
+      "coverage": {
+        "lines": 91.92,
+        "statements": 88.34,
+        "functions": 95.18,
+        "branches": 79.58
+      },
+      "mutation": 74.8270356572645
+    },
+    "toolkit.script.text.vocabulary": {
+      "coverage": {
+        "lines": 90.19,
+        "statements": 90.56,
+        "functions": 93.33,
+        "branches": 86.84
+      },
+      "mutation": 0
+    },
+    "toolkit.script.text.code_file": {
+      "coverage": {
+        "lines": 89.26,
+        "statements": 89.67,
+        "functions": 100,
+        "branches": 81.17
+      },
+      "mutation": 0
+    },
+    "toolkit.script.ast.local_ast": {
+      "coverage": {
+        "lines": 90.14,
+        "statements": 90,
+        "functions": 89.47,
+        "branches": 89.51
+      },
+      "mutation": 0
+    },
+    "toolkit.script.context.device_context": {
+      "coverage": {
+        "lines": 98.55,
+        "statements": 98.55,
+        "functions": 81.81,
+        "branches": 97.43
+      },
+      "mutation": 0
+    },
+    "toolkit.script.conversion.first": {
+      "coverage": {
+        "lines": 98.97,
+        "statements": 97.7,
+        "functions": 93.91,
+        "branches": 93.68
+      },
+      "mutation": 0
+    },
+    "toolkit.script.conversion.second": {
+      "coverage": {
+        "lines": 90.98,
+        "statements": 87.89,
+        "functions": 91.73,
+        "branches": 85.03
+      },
+      "mutation": 0
+    },
+    "toolkit.script.conversion.third": {
+      "coverage": {
+        "lines": 92.92,
+        "statements": 90.9,
+        "functions": 83.33,
+        "branches": 78.57
+      },
+      "mutation": 0
+    }
+  }
+}

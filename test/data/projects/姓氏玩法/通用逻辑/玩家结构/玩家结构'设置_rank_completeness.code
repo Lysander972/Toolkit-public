@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+guid:63016a3dff4b4c319e96baafb7860ebe
+color:255,255,255
+name:玩家结构'设置_rank_completeness
+comment:设置玩家排行榜数据是否完整,下载完成后更新
+params:Struct 结构,Bool rank_completeness
+lines:
+varf Struct.结构.set(String rank_completeness:var rank_completeness)
+act 1101.this.玩家结构'更新_completeness(var 结构)
+endcode

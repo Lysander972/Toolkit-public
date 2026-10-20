@@ -1,0 +1,30 @@
+begincodeV2
+name:CameraUpdateListener
+lines:
+if{fun create.bool(var GameStarted)
+  Bool 更新=fun create.bool(Bool 0)
+  Float 滚轮=fun mouse.scroll()
+  if{fun float.notEqual(var 滚轮:Float 0)
+    Float 距离调整=fun float.multiply(Float -5:var 滚轮)
+    varf Float.CameraDistance.addEqual(var 距离调整)
+    Float CameraDistance=fun float.clamp(var CameraDistance:Float 40:Float 200)
+    Bool 更新=fun create.bool(Bool 1)
+  }
+/*  if{fun keyboard.keyHeld2(Enum 138)
+/*    Vector3 位移=fun mouse.mouseMove()
+/*    Float 位移x=varf Vector3.位移.x()
+/*    Float 位移y=varf Vector3.位移.y()
+/*    Float 当前x=varf Vector3.CameraAngle.x()
+/*    Float 当前y=varf Vector3.CameraAngle.y()
+/*    Float 当前x=fun float.add(var 当前x:var 位移x)
+/*    Float 当前x=fun float.mod(var 当前x:Float 360)
+/*    Float 当前y=fun float.minus(var 当前y:var 位移y)
+/*    Float 当前y=fun float.clamp(var 当前y:Float 30:Float 89)
+/*    Vector3 CameraAngle=fun creatVariable.Vector3(var 当前x:var 当前y:Float 0)
+/*    Bool 更新=fun create.bool(Bool 1)
+  }
+  if{fun create.bool(var 更新)
+    act 1101.this.Camera'Update()
+  }
+}
+endcode

@@ -1,0 +1,31 @@
+begincodeV2
+name:队伍'GreaterThan
+comment:队伍1>队伍2,用于判定是否需要交换位置
+params:Struct 队伍1,Struct 队伍2
+return:Bool ret
+lines:
+Bool ret=fun create.bool(Bool 0)
+Float value1=act 1101.this.队伍结构'读取_value(var 队伍1)
+Float value2=act 1101.this.队伍结构'读取_value(var 队伍2)
+if{fun float.gt(var value1:var value2)
+  Bool ret=fun create.bool(Bool 1)
+  fun break()
+}
+if{fun float.Approximately(var value1:var value2)
+  Bool 是填充1=act 1101.this.队伍结构'读取_填充(var 队伍1)
+  Bool 非填充1=fun bool.not(var 是填充1)
+  Bool 是填充2=act 1101.this.队伍结构'读取_填充(var 队伍2)
+  if{fun bool.and(var 非填充1:var 是填充2)
+    Bool ret=fun create.bool(Bool 1)
+    fun break()
+  }
+  if{fun bool.equal(var 是填充1:var 是填充2)
+    Long id1=act 1101.this.队伍结构'读取_id(var 队伍1)
+    Long id2=act 1101.this.队伍结构'读取_id(var 队伍2)
+    if{fun long.lt(var id1:var id2)
+      Bool ret=fun create.bool(Bool 1)
+      fun break()
+    }
+  }
+}
+endcode

@@ -1,0 +1,57 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'队伍buff层数变化
+params:Struct 队伍,Long buff类型,Long 层数变化
+lines:
+String 武器名=fun create.string(String )
+if{fun long.equal(var buff类型:Long 3)
+  String 武器名=fun create.string(String 减速1)
+}
+if{fun long.equal(var buff类型:Long 10)
+  String 武器名=fun create.string(String 加速1)
+}
+if{fun long.equal(var buff类型:Long 11)
+  String 武器名=fun create.string(String 减速2)
+}
+if{fun long.equal(var buff类型:Long 13)
+  String 武器名=fun create.string(String 加速2)
+}
+if{fun long.equal(var buff类型:Long 14)
+  String 武器名=fun create.string(String 减速3)
+}
+if{fun long.equal(var buff类型:Long 15)
+  String 武器名=fun create.string(String 加速3)
+}
+if{fun long.equal(var buff类型:Long 16)
+  String 武器名=fun create.string(String 减速4)
+}
+if{fun long.equal(var buff类型:Long 17)
+  String 武器名=fun create.string(String 加速4)
+}
+if{fun string.equal(var 武器名:String )
+  fun break()
+}
+//找到目标队伍UI
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  fun break()
+}
+Canvas 目标队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+UIRect 队伍根节点=varf Canvas.目标队伍UI布局.readUIRect(String 根节点)
+if{fun long.lt(var 层数变化:Long 0)
+  Dict 关联武器=varf UIRect.队伍根节点.customDict(String 关联武器)
+  Bool 已绑定武器=varf Dict.关联武器.contains(var 武器名)
+  if{fun create.bool(var 已绑定武器)
+    Canvas 武器UI=varf Dict.关联武器.readCanvas(var 武器名:Bool 0)
+    act 1101./弹幕.通用武器动图'附加层数修改(var 武器UI:var 层数变化)
+    Long 剩余层数=act 1101./弹幕.通用武器动图'获取层数(var 武器UI)
+    if{fun long.lte(var 剩余层数:Long 0)
+      UIRect 武器根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+      act 1101./弹幕.通用武器动图'添加常驻武器离场动画(var 武器UI)
+      varf Dict.关联武器.remove(var 武器名)
+    }
+  }
+}
+endcode

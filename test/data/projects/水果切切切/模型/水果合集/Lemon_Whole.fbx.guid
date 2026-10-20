@@ -1,0 +1,35 @@
+guid:87ce4a3d11b94a36a504b22258d11201
+meshes:
+[
+ {
+  n:Lemon_Whole
+ }
+]
+matFolderName:876fae443e3c4b07b59f0d6492257bdd
+Albedo.UID:876fae443e3c4b07b59f0d6492257bdd
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:4
+OriginType:1
+ColliderRadius:0.8
+ColliderHeight:0.95
+ColliderPos:[0,-0.02,0]
+bounds.center:[0,0,0]
+bounds.size:[0.2472547,0.3015775,0.2472546]

@@ -1,0 +1,55 @@
+begincodeV2
+guid:117ef6cc070042c092a3db9b0552ef7c
+color:255,0,0
+name:Launcher'LaunchUniformlyAuto
+comment:均匀发射多个自动获取玩家
+params:Long $type,Float $aimedAngle,Long $amount,Float $maxIncAngle,Float $offset,Bool $limited,String $skillKey,Long $extraCost
+return:Long $count
+lines:
+Long $amount=act 1.this.Skill'GetMin(var $skillKey:var $amount)
+if{fun long.lte(var $amount:Long 0)
+  fun break()
+}
+Long $count=fun create.long(Long 0)
+if{fun long.equal(var $amount:Long 1)
+  Vector3 $bulletDir=act 1.this.计算'角度转方向(var $aimedAngle)
+  Struct $player=act 1.this.Skill'GetFirstElement(var $skillKey)
+  if{act 1.this.Launcher'Launch(var $type:var $bulletDir:var $offset:var $player)
+    Long $totalCost=fun long.add(Long 1:var $extraCost)
+    =act 1.this.Skill'Decrease(var $skillKey:var $totalCost)
+    Long $count=fun create.long(Long 1)
+  }
+  fun break()
+}
+//得到最大扇形角度
+Float $temp3=varf Long.$amount.toFloat()
+varf Float.$temp3.minusEqual(Float 1)
+Float $temp0=fun float.multiply(var $temp3:var $maxIncAngle)
+Float $temp1=fun float.minus(var 瞄准角度上限:var 瞄准角度下限)
+Float $temp0=fun float.clamp(var $temp0:Float 0:var $temp1)
+Float $actualIncAngle=fun float.division(var $temp0:var $temp3)
+//得到实际扇形
+Float $temp2=fun float.multiply(var $temp0:Float 0.5)
+if{fun create.bool(var $limited)
+  Float $actualMax=fun float.minus(var 瞄准角度上限:var $temp2)
+  Float $actualMin=fun float.add(var 瞄准角度下限:var $temp2)
+  Float $aimedAngle=fun float.clamp(var $aimedAngle:var $actualMin:var $actualMax)
+}
+//修正中心角度
+Float $angle=fun float.minus(var $aimedAngle:var $temp2)
+Long $count=fun create.long(Long 0)
+while{fun long.lt(var $count:var $amount)
+  Vector3 $bulletDir=act 1.this.计算'角度转方向(var $angle)
+  Struct $player=act 1.this.Skill'GetFirstElement(var $skillKey)
+  Bool $success=act 1.this.Launcher'Launch(var $type:var $bulletDir:var $offset:var $player)
+  if{fun create.bool(var $success)
+    Long $totalCost=fun long.add(Long 1:var $extraCost)
+    =act 1.this.Skill'Decrease(var $skillKey:var $totalCost)
+    varf Float.$angle.addEqual(var $actualIncAngle)
+    varf Long.$count.addEqual(Long 1)
+  }
+  if{fun bool.not(var $success)
+    fun break()
+  }
+}
+endcode

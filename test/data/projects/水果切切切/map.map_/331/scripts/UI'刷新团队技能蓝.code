@@ -1,0 +1,8 @@
+begincodeV2
+name:UI'刷新团队技能蓝
+return:Bool 成功
+lines:
+String key0=fun create.string(String 11000)
+Long skill=act 1.this.Skills'GetValue(var key0)
+Bool 成功=act 1.this.callClientMapRetBoolFunc1(String 弹幕.UI'刷新团队技能蓝:var skill)
+endcode

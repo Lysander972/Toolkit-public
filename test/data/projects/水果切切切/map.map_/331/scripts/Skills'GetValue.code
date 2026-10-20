@@ -1,0 +1,8 @@
+begincodeV2
+color:169,0,255
+name:Skills'GetValue
+params:String key
+return:Long value
+lines:
+Long value=varf Struct.SkillCount.getLong(var key:Bool 0)
+endcode

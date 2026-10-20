@@ -1,0 +1,21 @@
+begincodeV2
+color:221,0,255
+name:技能'1500
+lines:
+String key=fun create.string(String 1500)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+/*  Long rand=fun long.rand(Long 0:Long 1)
+/*  if{fun long.equal(var rand:Long 0)
+/*    Bool success=act 1.this.Launcher'攻方随机放置(Long 1500:var 属性'玩家:Vector3 0,0,1:Float 1:Float 1:Float 0)
+  }
+/*  if{fun long.equal(var rand:Long 1)
+/*    Bool success=act 1.this.Launcher'攻方随机放置(Long 1510:var 属性'玩家:Vector3 0,0,1:Float 1:Float 1:Float 0)
+  }
+/*  Bool success=act 1.this.Launcher'攻方随机放置(Long 1520:var 属性'玩家:Vector3 0,0,1:Float 1:Float 0:Float 1)
+  Bool success=act 1.this.Launcher'攻方贴脸放置(Long 1520:var 属性'玩家:Vector3 0,0,-1:Float 1:Float 0:Float 1)
+  if{fun create.bool(var success)
+    =act 1.this.Skills'Decrease(var key:Long 1)
+  }
+}
+delay fun create.float(Float 0.1)
+endcode

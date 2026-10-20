@@ -1,0 +1,12 @@
+begincodeV2
+name:内部'每帧循环_得到目标位置_生效值
+return:Float 目标位置生效值
+lines:
+Float 目标位置生效值=fun create.float(var 摄像机'锁定位置)
+if{fun create.bool(var 摄像机'自动跟随中)
+  Struct 队伍映射=varf Dict.队伍UI映射.readStruct(var 摄像机'自动跟随队伍id:Bool 0)
+  Struct 队伍=varf Struct.队伍映射.getStruct(String 队伍:Bool 0)
+  Float 队伍排名=act 1101./弹幕.队伍结构'读取_rank(var 队伍)
+  Float 目标位置生效值=act 1101.this.工具'排名到位置号映射(var 队伍排名)
+}
+endcode

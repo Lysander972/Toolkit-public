@@ -1,0 +1,10 @@
+begincodeV2
+name:功能设置持久化'下载卡顿保护并应用
+lines:
+Bool 功能开关'卡顿保护=fun create.bool(Bool 1)
+Dict data=fun map.load()
+if{varf Dict.data.contains(String 防卡顿存档标志位)
+  Bool 功能开关'卡顿保护=varf Dict.data.readBool(String 防卡顿存档标志位:Bool 0)
+}
+act 1101.this.UI_功能面板'应用并刷新卡顿保护显示()
+endcode

@@ -1,0 +1,11 @@
+type:23
+pos:[9.229362,0,3.902802]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ quat:[270,269.9998,0]
+ limitRate:1
+ limitRate2:1
+ motorForceRate:1
+ knobAngle:0
+}

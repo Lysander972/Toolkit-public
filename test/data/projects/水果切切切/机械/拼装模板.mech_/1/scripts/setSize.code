@@ -1,0 +1,6 @@
+begincodeV2
+name:setSize
+params:Vector3 size
+lines:
+act 22.this.setSize(var size)
+endcode

@@ -1,0 +1,33 @@
+begincodeV2
+color:255,243,0
+name:Utils'GetRecommendedFaction
+comment:得到推荐阵营
+return:Long $select
+lines:
+List $idList=varf Dict.PlayerMap.names()
+Float $playerCount=varf List.$idList.count()
+Float $index=fun create.float(Float 0)
+Long $team1C=fun create.long(Long 0)
+Long $team2C=fun create.long(Long 0)
+while{fun float.lt(var $index:var $playerCount)
+  String $key=varf List.$idList.readString(var $index)
+  Struct $player=varf Dict.PlayerMap.readStruct(var $key:Bool 1)
+  Long $team=varf Struct.$player.getLong(String team:Bool 0)
+  if{fun long.equal(var $team:Long 1)
+    varf Long.$team1C.addEqual(Long 1)
+  }
+  if{fun long.equal(var $team:Long 2)
+    varf Long.$team2C.addEqual(Long 1)
+  }
+  varf Float.$index.addEqual(Float 1)
+}
+if{fun long.equal(var $team1C:var $team2C)
+  Long $select=fun long.rand(Long 1:Long 2)
+}
+if{fun long.lt(var $team1C:var $team2C)
+  Long $select=fun create.long(Long 1)
+}
+if{fun long.gt(var $team1C:var $team2C)
+  Long $select=fun create.long(Long 2)
+}
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:按钮点击'排行榜下一页
+lines:
+varf Long.分页.addEqual(Long 1)
+act 1101.this.积分榜刷新()
+endcode

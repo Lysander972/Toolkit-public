@@ -1,0 +1,40 @@
+begincodeV2
+name:内部'事件_加速效果层数变化
+params:Struct 目标队伍,Long 层数变化,Long 级别
+lines:
+//找到目标队伍UI
+Long 队伍id=act 1101./弹幕.队伍结构'读取_id(var 目标队伍)
+String 字符串id=fun create.string(var 队伍id)
+Bool 是否创建=varf Dict.队伍UI映射.contains(var 字符串id)
+if{fun bool.not(var 是否创建)
+  act 1101.this.内部'队伍UI_创建(var 目标队伍)
+}
+Canvas 目标队伍UI布局=varf Dict.队伍UI映射.readCanvas(var 字符串id:Bool 1)
+//更新层数
+if{fun long.equal(var 级别:Long 1)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/1级加速状态动图)
+}
+if{fun long.equal(var 级别:Long 2)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/2级加速状态动图)
+}
+if{fun long.equal(var 级别:Long 3)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/3级加速状态动图)
+}
+if{fun long.equal(var 级别:Long 4)
+  UIRawImage 动图=varf Canvas.目标队伍UI布局.readUIRawImage(String 根节点/进度条/4级加速状态动图)
+}
+Long 层数=varf UIRawImage.动图.customLong(String 效果层数)
+varf Long.层数.addEqual(var 层数变化)
+varf UIRawImage.动图.setCustomLong(String 效果层数:var 层数)
+Bool 是否显示=fun long.gt(var 层数:Long 0)
+varf UIRawImage.动图.active(var 是否显示)
+if{fun long.equal(var 级别:Long 3)
+  UIRect 层数边框=varf Canvas.目标队伍UI布局.readUIRect(String 根节点/进度条/3级加速状态动图/层数UI)
+  UILabel 数值文本框=varf Canvas.目标队伍UI布局.readUILabel(String 根节点/进度条/3级加速状态动图/层数UI/数值)
+  String 层数显示=fun string.Format1(String ×%1:var 层数)
+  varf UILabel.数值文本框.text(var 层数显示)
+  Vector3 尺寸=varf UILabel.数值文本框.getTextSize()
+  Vector3 尺寸=fun vector3.add(var 尺寸:Vector3 30,10,0)
+  varf UIRect.层数边框.size(var 尺寸)
+}
+endcode

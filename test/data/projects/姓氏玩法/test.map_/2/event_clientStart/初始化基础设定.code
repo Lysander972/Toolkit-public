@@ -1,0 +1,22 @@
+begincodeV2
+skip:1
+name:初始化基础设定
+lines:
+fun ui.2dmode(Bool 1)
+fun time.SetFixedFrame(Long 30)
+fun debug.maxRunTime(Float 50000)
+fun map.setMechNumLimit(Float 50000)
+fun light(Float 1)
+fun setRefectionIntensity(Float 2)
+fun setDirLight(Vector3 1,-1,-1:Color 255,255,255,255:Float 1)
+fun debug.errorStop(Bool 0)
+/*fun debug.methodProfile()
+String 房顶=fun create.string(String 二次元1.webp)
+String 墙1=fun create.string(String 二次元2.webp)
+String 墙2=fun create.string(String 二次元3.webp)
+String 墙3=fun create.string(String 二次元4.webp)
+String 墙4=fun create.string(String 二次元5.webp)
+String 地板=fun create.string(String 二次元6.webp)
+List 列表=fun create.list6(var 房顶:var 墙1:var 墙2:var 墙3:var 墙4:var 地板)
+fun customSky(var 列表)
+endcode

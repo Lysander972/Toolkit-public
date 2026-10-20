@@ -1,0 +1,13 @@
+begincodeV2
+name:UI_Tip'SetTip
+params:Float index
+lines:
+Float Tip'showing=fun create.float(var index)
+if{fun bool.not(var Tip'AniActivate)
+  Float Tip'AniStart=fun time.time()
+  Bool Tip'Refreshed=fun create.bool(Bool 0)
+  act 1101.this.UI_Tip'Animation()
+  act 1101.this.loopFun(String UI_Tip'Animation:Float 0)
+  Bool Tip'AniActivate=fun create.bool(Bool 1)
+}
+endcode

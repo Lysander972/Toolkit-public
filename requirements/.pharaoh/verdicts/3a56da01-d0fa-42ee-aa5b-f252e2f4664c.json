@@ -1,0 +1,24 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "完整Host与WorkspaceServices/Updates源码和真实测试支持生命周期、查询、取消、源事件消费以及刷新TODO零写入；未覆盖整个运行时所有端口，MCP/Pi和资产等专项仍需进一步绑定。",
+      "score": 1,
+      "suggestion": "后续转换、渲染、前端批次扩展对应全文和真实测试；运行时端口按实际实现逐项检视，保持未实现业务的失败状态可见。"
+    },
+    "parent_fit": {
+      "reason": "对照此前逐段完整阅读、blob 02e9a78811419550391e165a495c32dbdee61e73 未变的运行时全文，保留 Effect/Host/Scope、文件与memory共享前缀、层级所有权、MCP注册范围和配置合同；资产、Pi、编辑、语言和刷新等原TODO均未被误写成完成。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "按控制权和实际交付区分成熟服务复用与TODO目标，旧预算审计只依据PR3终止；明确新版只读配置不继承参考加密层，专项转换和前端分给后续批次。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "3a56da01-d0fa-42ee-aa5b-f252e2f4664c",
+  "reviewed_fingerprint": "0de1256362dedc7b82a504863426bdc34e69c45da3dcc0216c1f23b6d17278ba",
+  "schema": 2,
+  "summary": "运行时逻辑合同完整延续，主入口证据与未实现目标分开记录。"
+}

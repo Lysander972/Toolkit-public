@@ -1,0 +1,16 @@
+begincodeV2
+name:Preheat
+lines:
+act 1101.this.Map'Preheat()
+Bool FirstInitialize=fun create.bool(Bool 1)
+Long Base'召唤物容量=fun create.long(Long 20)
+=act 1101./参数调节模块.读取(String 留白区域1:Float 5:Float 3:Float 20:Color 0,0,0,255)
+=act 1101./参数调节模块.读取(String 留白区域2:Float 15:Float 5:Float 20:Color 0,0,0,255)
+fun map.setCustomBool(String 推进中:Bool 0)
+Float 时间控制'基础流速=fun create.float(Float 1)
+act 1101.this.时间控制'更新时间流速()
+fun map.setCustomFloat(String 攻方玩家数:Float 0)
+fun map.setCustomFloat(String 守方玩家数:Float 0)
+fun map.setCustomFloat(String 守方重炮数:Float 0)
+fun map.setCustomFloat(String 最近位置标志位:Float 170)
+endcode

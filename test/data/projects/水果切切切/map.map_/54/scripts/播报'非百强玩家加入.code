@@ -1,0 +1,23 @@
+begincodeV2
+color:255,0,228
+name:播报'非百强玩家加入
+params:Struct player
+lines:
+fun ui.2dmode(Bool 1)
+Canvas canvas=fun create.canvas(Canvas canvas@1@3EAEAEQgABHR5cGUGBlVJUmVjdARuYW1lBgpiYWNrZ3JvdW5kA1BvcwQAAAAAAAAAAAAAAAAEc2l6ZQQAAOFDAABgQgAAgD8FY29sb3IMAAAAAAAAAAAAAAAAAAAAAAtCb3JkZXJXaWR0aAEAAAAABlJhZGl1cwEAAAAABHNvbnMQAQARDQAEdHlwZQYGVUlSZWN0BG5hbWUGBXBhbmVsA1BvcwQAPBzGAAAAAAAAAAAEc2l6ZQQAAOFDAABgQgAAgD8FY29sb3IMAACAPwAAgD8AAIA/AACAPwtCb3JkZXJXaWR0aAEAAIC/BlJhZGl1cwEAACBBDXNsaWNlZFBpY0d1aWQGIGY5MjlhNWQxMjZiMzQ4NTA5ZTkwYjFjZmI5MzQ5MTFkDnNsaWNlZEJvcmRlckxCBAAAtEIAAF5CAAAAAA5zbGljZWRCb3JkZXJSVAQAALRCAABeQgAAAAAMc2xpY2VkUmVjdExCBAAAAAAAAAAAAAAAAAxzbGljZWRSZWN0UlQEAAA0QwAA3kIAAAAABHNvbnMQAQARDQAEdHlwZQYHVUlMYWJlbARuYW1lBgVsYWJlbANQb3MEAAAAAAAAAAAAAAAADHBhcmVudEFuY2hvchgEAAAAAAAAAAZhbmNob3IYBAAAAAAAAAALd2lkdGhFeHRlbmQYAQAAAAAAAAAMaGVpZ2h0RXh0ZW5kGAEAAAAAAAAABHNpemUEAACAPwAAgD8AAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8Mb3V0bGluZUNvbG9yDAAAAAAAAAAAAAAAAAAAgD8Pb3V0bGluZURpc3RhbmNlBAAAgD8AAIC/AAAAAAR0ZXh0BgE/CEZvbnRTaXplAQAAAEI@3)
+UILabel label=varf Canvas.canvas.readUILabel(String background/panel/label)
+String rawName=varf Struct.player.getString(String name:Bool 1)
+String simpName=act 1101.this.限制昵称长度(var rawName)
+String text=fun string.Format1(String %1加入玩法:var simpName)
+varf UILabel.label.text(var text)
+UIRect background=varf Canvas.canvas.readUIRect(String background)
+varf UIRect.background.active(Bool 0)
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.equal(var team:Long 1)
+  varf List.播报'等待队列左.add(var canvas)
+}
+if{fun long.equal(var team:Long 2)
+  varf List.播报'等待队列右.add(var canvas)
+}
+act 1101.this.播报元素'注册(var canvas:Float 100:Float 3)
+endcode

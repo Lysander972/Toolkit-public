@@ -1,0 +1,12 @@
+begincodeV2
+skip:1
+name:复制
+lines:
+Device dev=fun mech.focusDevice()
+if{fun keyboard.keyHeld2(Enum 0)
+  if{fun mech.deviceNotNull(var dev)
+    Device new=fun mech.clone(var dev)
+    fun script.skip()
+  }
+}
+endcode

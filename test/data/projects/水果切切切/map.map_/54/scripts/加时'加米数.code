@@ -1,0 +1,8 @@
+begincodeV2
+name:加时'加米数
+params:Float 每个增加,Long 增加次数,Struct 玩家
+lines:
+if{fun create.bool(var 场外功能设置'启用加时)
+  act 1101./Scenario.守方检测区'增加长度(var 每个增加:var 增加次数:var 玩家)
+}
+endcode

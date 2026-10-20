@@ -1,0 +1,191 @@
+begincodeV2
+name:动画控制'应用动画步骤
+params:UIRect 根节点,Dict 动画步骤字典,Float 步骤内时间
+lines:
+Float 上次步骤内时间=varf Dict.动画步骤字典.readFloat(String 上次步骤内时间:Bool 0)
+Float 时间间隔=fun float.minus(var 步骤内时间:var 上次步骤内时间)
+varf Dict.动画步骤字典.insert(String 上次步骤内时间:var 步骤内时间)
+//根据时间计算插值
+Float 持续时间=varf Dict.动画步骤字典.readFloat(String 持续时间:Bool 0)
+if{fun float.Approximately(var 持续时间:Float 0)
+  Float 旧插值=fun create.float(Float 0)
+  Float 插值=fun create.float(Float 1)
+}
+if{fun float.notEqual(var 持续时间:Float 0)
+  Long 插值类型=varf Dict.动画步骤字典.readLong(String 插值类型:Bool 0)
+  //线性
+  if{fun long.equal(var 插值类型:Long 0)
+    Float 旧插值=fun float.division(var 上次步骤内时间:var 持续时间)
+    Float 插值=fun float.division(var 步骤内时间:var 持续时间)
+  }
+  //贝塞尔
+  if{fun long.equal(var 插值类型:Long 1)
+    Float 比例=fun float.division(var 上次步骤内时间:var 持续时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Float 旧插值=fun float.SmoothStep(Float 0:Float 1:var 比例)
+    Float 比例=fun float.division(var 步骤内时间:var 持续时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Float 插值=fun float.SmoothStep(Float 0:Float 1:var 比例)
+  }
+  //二次
+  if{fun long.equal(var 插值类型:Long 2)
+    Float 比例=fun float.division(var 上次步骤内时间:var 持续时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Float 旧插值=fun float.pow(var 比例:Float 2)
+    Float 比例=fun float.division(var 步骤内时间:var 持续时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Float 插值=fun float.pow(var 比例:Float 2)
+  }
+  //0.5次
+  if{fun long.equal(var 插值类型:Long 3)
+    Float 比例=fun float.division(var 上次步骤内时间:var 持续时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Float 旧插值=fun float.pow(var 比例:Float 0.5)
+    Float 比例=fun float.division(var 步骤内时间:var 持续时间)
+    Float 比例=fun float.clamp(var 比例:Float 0:Float 1)
+    Float 插值=fun float.pow(var 比例:Float 0.5)
+  }
+}
+Float 旧插值=fun float.clamp(var 旧插值:Float 0:Float 1)
+Float 插值=fun float.clamp(var 插值:Float 0:Float 1)
+/*Float 插值增量=fun float.minus(var 插值:var 旧插值)
+//根据运动模式进行计算
+Long 运动模式=varf Dict.动画步骤字典.readLong(String 运动模式:Bool 0)
+//运动模式0无效果
+if{fun long.equal(var 运动模式:Long 1)
+  //运动模式1@1非物理目标
+  Bool 启用抛物线模式=varf Dict.动画步骤字典.readBool(String 启用抛物线模式:Bool 0)
+  if{fun create.bool(var 启用抛物线模式)
+    //抛物线模式,和初速度相同的方向使用插值加速,和初速度垂直的方向使用插值的平方加速
+    Vector3 目标位置=varf Dict.动画步骤字典.readVector3(String 目标位置:Bool 0)
+    Vector3 初始坐标=varf UIRect.根节点.customVector3(String 初始坐标)
+    Vector3 总位移=fun vector3.minus(var 目标位置:var 初始坐标)
+    Float 初始角度=varf UIRect.根节点.customFloat(String 初始角度)
+    Vector3 初始方向=act 1101.this.工具'UI角度转方向(var 初始角度)
+    Vector3 垂直方向=fun vector3.rotateAround(var 初始方向:Vector3 0,0,1:Float 90)
+    Float 点乘1=fun vector3.dot(var 初始方向:var 总位移)
+    Vector3 初始方向位移分量=fun vector3.multilply(var 初始方向:var 点乘1)
+    Float 点乘2=fun vector3.dot(var 垂直方向:var 总位移)
+    Vector3 垂直方向位移分量=fun vector3.multilply(var 垂直方向:var 点乘2)
+    Vector3 同方向位移=fun vector3.lerp(Vector3 0,0,0:var 初始方向位移分量:var 插值)
+    Float 垂直方向位移插值=fun float.pow(var 插值:Float 2)
+    Vector3 垂直方向位移=fun vector3.lerp(Vector3 0,0,0:var 垂直方向位移分量:var 垂直方向位移插值)
+    Vector3 新坐标=fun vector3.add1(var 同方向位移:var 垂直方向位移:var 初始坐标)
+    varf UIRect.根节点.setCustomVector3(String 坐标:var 新坐标)
+    Vector3 同方向位移=fun vector3.lerp(Vector3 0,0,0:var 初始方向位移分量:var 旧插值)
+    Float 垂直方向位移插值=fun float.pow(var 旧插值:Float 2)
+    Vector3 垂直方向位移=fun vector3.lerp(Vector3 0,0,0:var 垂直方向位移分量:var 垂直方向位移插值)
+    Vector3 旧坐标=fun vector3.add1(var 同方向位移:var 垂直方向位移:var 初始坐标)
+  }
+  if{fun bool.not(var 启用抛物线模式)
+    //直接在两点连线上插值
+    Vector3 目标位置=varf Dict.动画步骤字典.readVector3(String 目标位置:Bool 0)
+    Vector3 初始坐标=varf UIRect.根节点.customVector3(String 初始坐标)
+    Vector3 旧坐标=fun vector3.lerp(var 初始坐标:var 目标位置:var 旧插值)
+    Vector3 新坐标=fun vector3.lerp(var 初始坐标:var 目标位置:var 插值)
+    varf UIRect.根节点.setCustomVector3(String 坐标:var 新坐标)
+  }
+  Bool 启用锁定角度=varf Dict.动画步骤字典.readBool(String 启用锁定角度:Bool 0)
+  if{fun bool.not(var 启用锁定角度)
+    Vector3 坐标变化=fun vector3.minus(var 新坐标:var 旧坐标)
+    Float 新角度=act 1101.this.工具'UI方向转角度(var 坐标变化)
+    varf UIRect.根节点.rot(var 新角度)
+    varf UIRect.根节点.setCustomFloat(String 角度:var 新角度)
+  }
+  if{fun create.bool(var 启用锁定角度)
+    Float 锁定角度=varf Dict.动画步骤字典.readFloat(String 锁定角度:Bool 0)
+    varf UIRect.根节点.rot(var 锁定角度)
+    varf UIRect.根节点.setCustomFloat(String 角度:var 锁定角度)
+  }
+}
+if{fun long.equal(var 运动模式:Long 2)
+  //运动模式2@1物理移动
+  //更新速度
+  Vector3 目标位置=varf Dict.动画步骤字典.readVector3(String 目标位置:Bool 0)
+  Float 弹性系数=varf Dict.动画步骤字典.readFloat(String 弹性系数:Bool 0)
+  Float 阻尼系数=varf Dict.动画步骤字典.readFloat(String 阻尼系数:Bool 0)
+  Bool 自动更新角度=varf Dict.动画步骤字典.readBool(String 自动更新角度:Bool 0)
+  Vector3 当前坐标=varf UIRect.根节点.customVector3(String 坐标)
+  Vector3 目标方向=fun vector3.minus(var 目标位置:var 当前坐标)
+  Float 距离绝对值=varf Vector3.目标方向.length()
+  if{fun float.lte(var 距离绝对值:Float 1)
+    Vector3 目标方向=fun creatVariable.Vector3(Float 0:Float 0:Float 0)
+  }
+  Float 加速度绝对值=fun float.multiply(var 距离绝对值:var 弹性系数)
+  Float 速度变化绝对值=fun float.multiply(var 加速度绝对值:var 时间间隔)
+  Vector3 速度变化=varf Vector3.目标方向.setLength(var 速度变化绝对值)
+  Vector3 原速度=varf UIRect.根节点.customVector3(String 速度)
+  Vector3 新速度=fun vector3.add(var 原速度:var 速度变化)
+  Float 扣除速度比例=fun float.multiply(var 阻尼系数:var 时间间隔)
+  Float 速度留存=fun float.minus(Float 1:var 扣除速度比例)
+  Float 速度留存=fun float.clamp(var 速度留存:Float 0:Float 1)
+  Vector3 新速度=fun vector3.multilply(var 新速度:var 速度留存)
+  varf UIRect.根节点.setCustomVector3(String 速度:var 新速度)
+  if{fun create.bool(var 自动更新角度)
+    //旋转部分
+    Float 新角度=act 1101.this.工具'UI方向转角度(var 新速度)
+    varf UIRect.根节点.rot(var 新角度)
+    varf UIRect.根节点.setCustomFloat(String 角度:var 新角度)
+  }
+}
+if{fun long.equal(var 运动模式:Long 3)
+  //运动模式3@1修改坐标
+  Vector3 新坐标=varf Dict.动画步骤字典.readVector3(String 目标:Bool 0)
+  varf UIRect.根节点.setCustomVector3(String 坐标:var 新坐标)
+}
+if{fun long.equal(var 运动模式:Long 4)
+  //运动模式4@1修改速度
+  Vector3 速度=varf Dict.动画步骤字典.readVector3(String 速度:Bool 0)
+  varf UIRect.根节点.setCustomVector3(String 速度:var 速度)
+}
+if{fun long.equal(var 运动模式:Long 5)
+  //运动模式5@1修改角度
+  Float 新角度=varf Dict.动画步骤字典.readFloat(String 角度:Bool 0)
+  varf UIRect.根节点.rot(var 新角度)
+  varf UIRect.根节点.setCustomFloat(String 角度:var 新角度)
+}
+if{fun long.equal(var 运动模式:Long 6)
+  //运动模式1@1非物理加速度
+  Vector3 坐标=varf Dict.动画步骤字典.readVector3(String 加速度:Bool 0)
+  Vector3 速度变化=fun vector3.multilply(var 坐标:var 时间间隔)
+  Vector3 原速度=varf UIRect.根节点.customVector3(String 速度)
+  Vector3 新速度=fun vector3.add(var 原速度:var 速度变化)
+  varf UIRect.根节点.setCustomVector3(String 速度:var 新速度)
+  //旋转部分
+  Float 新角度=act 1101.this.工具'UI方向转角度(var 新速度)
+  varf UIRect.根节点.rot(var 新角度)
+  varf UIRect.根节点.setCustomFloat(String 角度:var 新角度)
+}
+//另外应用缩放修改
+if{varf Dict.动画步骤字典.readBool(String 启用缩放:Bool 0)
+  Float 初始缩放=varf UIRect.根节点.customFloat(String 初始缩放)
+  Float 目标缩放=varf Dict.动画步骤字典.readFloat(String 目标缩放:Bool 0)
+  Float 应用缩放=fun float.lerp(var 初始缩放:var 目标缩放:var 插值)
+  varf UIRect.根节点.scale(var 应用缩放)
+  varf UIRect.根节点.setCustomFloat(String 应用缩放:var 应用缩放)
+}
+//另外应用透明度修改
+if{varf Dict.动画步骤字典.readBool(String 启用透明度修改:Bool 0)
+  Float 初始透明度=varf UIRect.根节点.customFloat(String 初始透明度)
+  Float 目标透明度=varf Dict.动画步骤字典.readFloat(String 目标透明度:Bool 0)
+  Float 应用透明度=fun float.lerp(var 初始透明度:var 目标透明度:var 插值)
+  varf UIRect.根节点.setCustomFloat(String 透明度:var 应用透明度)
+  Float 生效透明度=act 1101.this.动画控制'UI_获取生效透明度(var 根节点)
+  Float 生效透明度=fun float.multiply(var 应用透明度:var 生效透明度)
+  Color 颜色=fun create.color(Color 255,255,255,255)
+  varf Color.颜色.setA(var 生效透明度)
+  varf UIRect.根节点.setColor(var 颜色)
+}
+//获取当前坐标应用速度
+Vector3 速度=varf UIRect.根节点.customVector3(String 速度)
+Vector3 当前坐标=varf UIRect.根节点.customVector3(String 坐标)
+Vector3 位移=fun vector3.multilply(var 速度:var 时间间隔)
+Vector3 新坐标=fun vector3.add(var 当前坐标:var 位移)
+varf UIRect.根节点.setCustomVector3(String 坐标:var 新坐标)
+if{varf UIRect.根节点.customBool(String 启用基准)
+  UIRect 基准=varf UIRect.根节点.customUIRect(String 基准)
+  Vector3 锚点=act 1101.this.动画控制'UI_获取锚点(var 基准)
+  Vector3 新坐标=fun vector3.add(var 新坐标:var 锚点)
+}
+varf UIRect.根节点.setCanvasPos(var 新坐标)
+endcode

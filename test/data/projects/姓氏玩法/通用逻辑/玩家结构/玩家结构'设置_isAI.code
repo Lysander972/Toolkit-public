@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:9b003cfba3894d0db3eea15ad803a75d
+color:255,255,255
+name:玩家结构'设置_isAI
+comment:设置是否AI
+params:Struct 结构,Bool isAI
+lines:
+varf Struct.结构.set(String isAI:var isAI)
+endcode

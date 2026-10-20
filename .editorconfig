@@ -1,0 +1,72 @@
+# EditorConfig 统一换行符为 LF
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+# `tools/cli` 的 `check text` 收敛为恰好一个尾部 LF，不允许额外空行或 UTF-8 BOM。
+
+[*.cs]
+indent_style = space
+indent_size = 4
+
+# ============================================================================
+# 类型安全强制规则：禁止滥用 var，强制显式类型
+# ============================================================================
+# IDE0008: 使用显式类型而不是 var
+dotnet_diagnostic.IDE0008.severity = error
+
+# IDE0005: 移除不必要的 using 语句
+dotnet_diagnostic.IDE0005.severity = error
+
+# IDE0010: 补充 switch 中的缺失情况
+dotnet_diagnostic.IDE0010.severity = error
+
+# ============================================================================
+# 模式匹配偏好：使用 is 而不是 as + null 检查
+# ============================================================================
+# IDE0019: 使用模式匹配而不是 as + null 检查
+dotnet_diagnostic.IDE0019.severity = error
+
+# IDE0020: 使用模式匹配而不是 is + cast
+dotnet_diagnostic.IDE0020.severity = error
+
+# IDE0038: 使用模式匹配而不是 is + cast
+dotnet_diagnostic.IDE0038.severity = error
+
+# ============================================================================
+# 空引用安全
+# ============================================================================
+# CS8600: 转换可能为 null 的值 - 警告
+# CS8601: 可能的 null 引用赋值 - 警告
+# CS8602: 可能的 null 引用解引用 - 警告
+# CS8603: 可能的 null 引用返回 - 警告
+# CS8604: 可能的 null 引用参数 - 警告
+
+# ============================================================================
+# 编译诊断降噪
+# ============================================================================
+# CS1587: XML 注释没有放在有效语言元素上（注释漂移在声明外）——纯格式噪声，
+# 不反映任何代码问题，专门单独禁用，避免污染每次构建输出。
+dotnet_diagnostic.CS1587.severity = none
+# CS1573: XML 注释缺少部分参数/成员描述——与 CS1587 同类纯格式噪声，
+# 不反映任何代码问题，单独禁用避免每次构建刷屏。
+dotnet_diagnostic.CS1573.severity = none
+
+[*.{json,csproj,sh}]
+indent_style = space
+indent_size = 2
+
+[*.json]
+insert_final_newline = false
+# `tools/cli` 的 `check text` 收敛为无尾部换行，不允许额外空行或 UTF-8 BOM。
+
+[test/data/projects/**]
+insert_final_newline = false
+# 游戏工程测试数据末端禁止任何换行；`tools/cli` 的 `check text` 同步强制执行。
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2

@@ -1,0 +1,5 @@
+begincodeV2
+name:UI_局内风格接口封装'重置
+lines:
+varf Device.局外功能设置'使用风格实现.callFun0(String UI_局内风格接口'重置)
+endcode

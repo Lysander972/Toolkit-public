@@ -1,0 +1,27 @@
+guid:ccc5f1659f0d4050a037e28ae75bc084
+meshes:
+[
+ {
+  n:平面
+ }
+]
+matFolderName:9af5bf5c486343fdbd072eb276f894f4
+Albedo.UID:9af5bf5c486343fdbd072eb276f894f4
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:9af5bf5c486343fdbd072eb276f894f4
+shaderName:"Shader Graphs/Device Transparent"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_Tiling
+  type:Vector
+  v:[1,1,0]
+ }
+]
+bounds.center:[0,0,0]
+bounds.size:[700,3.576278E-05,299.9999]

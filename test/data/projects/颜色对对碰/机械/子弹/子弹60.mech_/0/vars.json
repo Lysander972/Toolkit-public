@@ -1,0 +1,10 @@
+[
+ {
+  name:Color
+  type:Color
+ }
+ {
+  name:Size
+  type:Float
+ }
+]

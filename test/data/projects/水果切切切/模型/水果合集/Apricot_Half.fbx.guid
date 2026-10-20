@@ -1,0 +1,32 @@
+guid:b604d968777c45ba8dac36de0de6d85f
+meshes:
+[
+ {
+  n:Apricot_Half
+ }
+]
+matFolderName:e194378bd5f846c1a0a4929ac533410d
+Albedo.UID:e194378bd5f846c1a0a4929ac533410d
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[8.924678E-05,0.107331,-0.05319702]
+bounds.size:[0.2256235,0.214662,0.1253836]

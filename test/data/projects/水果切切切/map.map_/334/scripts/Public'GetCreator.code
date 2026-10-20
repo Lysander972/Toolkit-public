@@ -1,0 +1,6 @@
+begincodeV2
+name:Public'GetCreator
+return:Struct ret
+lines:
+Struct ret=varf Struct.Creator.ref()
+endcode

@@ -1,0 +1,32 @@
+begincodeV2
+name:工具'可用汉字判定_是黑名单
+params:String 字符串
+return:Bool 是黑名单
+lines:
+if{fun bool.not(var init)
+  //预设黑名单表
+  List 黑名单列表=fun create.list()
+  List 黑名单ID表=fun map.excelGetIDList2(String 黑名单表)
+  Float 数量=varf List.黑名单ID表.count()
+  Float 序号=fun create.float(Float 0)
+  while{fun float.lt(var 序号:var 数量)
+    Long ID=varf List.黑名单ID表.readLong(var 序号)
+    String 黑名单=fun readExcel2_String(var ID:String 汉字:String 黑名单表)
+    varf List.黑名单列表.add(var 黑名单)
+    varf Float.序号.addEqual(Float 1)
+  }
+  Float 黑名单数量=varf List.黑名单列表.count()
+  Bool init=fun create.bool(Bool 1)
+}
+//首先排除黑名单
+Bool 是黑名单=fun create.bool(Bool 0)
+Float 序号=fun create.float(Float 0)
+while{fun float.lt(var 序号:var 黑名单数量)
+  String 黑名单=varf List.黑名单列表.readString(var 序号)
+  if{fun string.equal(var 黑名单:var 字符串)
+    Bool 是黑名单=fun create.bool(Bool 1)
+    fun break()
+  }
+  varf Float.序号.addEqual(Float 1)
+}
+endcode

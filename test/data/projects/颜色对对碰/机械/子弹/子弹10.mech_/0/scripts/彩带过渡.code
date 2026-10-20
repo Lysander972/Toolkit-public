@@ -1,0 +1,14 @@
+begincodeV2
+name:彩带过渡
+params:Float 目标持续
+lines:
+act 242.4.active()
+Float 持续=fun create.float(Float 0)
+while{fun float.lt(var 持续:var 目标持续)
+  act 242.4.parts_Duration(var 持续)
+  delay fun create.float(Float 0)
+  Float 间隔=fun time.deltaTime()
+  Float 持续=fun float.add(var 持续:var 间隔)
+}
+act 242.4.parts_Duration(var 目标持续)
+endcode

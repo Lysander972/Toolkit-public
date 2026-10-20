@@ -1,0 +1,49 @@
+begincodeV2
+name:UI'应用UI
+params:Vector3 pos,Vector3 direction
+lines:
+if{fun bool.not(var Attr'Alive)
+  fun break()
+}
+if{fun bool.not(var UI'循环已设置)
+  String key=fun create.string(String 血量马甲)
+  //按照UI缩放整体缩放
+  Mech UI'血量马甲=varf Device.map_handler.callReturnMech3(String Model'SetModel:var pos:var direction:var key)
+  varf Mech.UI'血量马甲.scale(var UI'Size)
+  Device core=varf Mech.UI'血量马甲.getCoreDevice()
+  //得到文本框更新样式
+  String rawName=varf Struct.Creator.getString(String name:Bool 0)
+  String simpName=act 1.this.限制昵称长度(var rawName)
+  varf Device.core.callFun3(String Public'SetLabel:var UI'showHP:var UI'showName:var simpName)
+  if{fun create.bool(var UI'showHP)
+    UILabel UI'血量文本框=varf Device.core.callReturnUILabel0(String Public'GetLabel)
+    varf UILabel.UI'血量文本框.labelEffect(Float 0.5:Vector3 0,0,0:Enum 0)
+    varf UILabel.UI'血量文本框.outline(Float 0.5:Color 0,0,0,255)
+    act 1.this.UI'更新血量()
+  }
+  //初始化头像框和头像
+  String 文件=act 1.this.UI'获得头像框名称(var Creator)
+  Bool showframe=fun string.notEqual(var 文件:String )
+  Bool showframe=fun bool.and(var showframe:var UI'showAvatar)
+  String url=varf Struct.Creator.getString(String avatarUrl:Bool 0)
+  Bool 空头像=fun string.equal(var url:String )
+  varf Device.core.callFun2(String Public'SetFrame:var showframe:var 文件)
+  varf Device.core.callFun2(String Public'SetAvatar:var UI'showAvatar:var url)
+  if{fun bool.and(var 空头像:var UI'showAvatar)
+    Device this=act 1.this.getDevice()
+    varf Device.this.laterCallFun0(String UI'头像缺失补偿:Float 1)
+  }
+  //启用跟随方法
+  String method1=fun create.string(String UI'循环朝向摄像机)
+  String method2=fun create.string(String UI'循环跟随局部坐标)
+  if{fun long.equal(var UI'mode:Long 0)
+    act 1.this.UI'循环朝向摄像机()
+    act 1.this.loopFun(var method1:Float 0)
+  }
+  if{fun long.equal(var UI'mode:Long 1)
+    act 1.this.UI'循环跟随局部坐标()
+    act 1.this.loopFun(var method2:Float 0)
+  }
+  Bool UI'循环已设置=fun create.bool(Bool 1)
+}
+endcode

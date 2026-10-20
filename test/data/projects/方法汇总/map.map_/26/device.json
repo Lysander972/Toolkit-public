@@ -1,0 +1,13 @@
+type:112
+pos:[0.2159367,0,-4.59792]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ scaleX:1
+ scaleY:1
+ scaleZ:1
+ colorValue:[0.4858491,0.5148131,1,1]
+ metalicRate:0.5
+ glossinessRate:0.5
+ matAlpha:1
+}

@@ -1,0 +1,183 @@
+/* CreatAI 设计系统 token（Steam 蓝灰，纯 CSS 变量，亮/暗双套）。
+ * 宿主唯一主题来源：
+ * - 暗色（默认）= :root 套
+ * - 亮色 = body.vscode-light 覆盖套（VSCode webview 官方机制：宿主按当前主题
+ *   自动维护 body 的 vscode-light/vscode-dark/vscode-high-contrast class，
+ *   主题切换即生效，无需 JS 订阅）
+ * - vscode-high-contrast 暂沿用暗色套（完整高对比适配待做，已知差异）
+ * 预览（tools/preview）由 driver 注入同名 class 模拟主题。
+ * 定义变量、工具类、全局 reset（button cursor）、hover 伪类。
+ */
+
+:root {
+  /* 背景层级（Steam 蓝灰岩层，越靠上层越亮） */
+  --tk-bg: oklch(0.19 0.022 250);
+  --tk-surface: oklch(0.26 0.03 250);
+  --tk-surface-2: oklch(0.34 0.038 245);
+
+  /* 描边与分隔 */
+  --tk-border: oklch(0.38 0.035 245);
+  --tk-border-strong: oklch(0.47 0.04 240);
+
+  /* 强调色（Steam 青蓝，全系统唯一点缀色） */
+  --tk-accent: oklch(0.78 0.13 230);
+  --tk-accent-hover: oklch(0.85 0.12 225);
+  --tk-accent-dim: oklch(0.78 0.13 230 / 0.16);
+
+  /* 文本（Steam 冷调蓝白） */
+  --tk-text: oklch(0.93 0.012 240);
+  --tk-text-dim: oklch(0.68 0.018 245);
+
+  /* 语义状态色（-dim = 状态底色 alpha 版；-line = 状态描边 alpha 版） */
+  --tk-success: oklch(0.8 0.15 145);
+  --tk-danger: oklch(0.66 0.18 25);
+  --tk-warn: oklch(0.82 0.13 80);
+  --tk-success-dim: oklch(0.8 0.15 145 / 0.14);
+  --tk-success-line: oklch(0.8 0.15 145 / 0.55);
+  --tk-danger-dim: oklch(0.66 0.18 25 / 0.14);
+  --tk-danger-line: oklch(0.66 0.18 25 / 0.55);
+  --tk-warn-dim: oklch(0.82 0.13 80 / 0.14);
+  --tk-warn-line: oklch(0.82 0.13 80 / 0.55);
+  --tk-neutral-dim: oklch(0.68 0.018 245 / 0.14);
+  --tk-neutral-line: oklch(0.68 0.018 245 / 0.45);
+
+  /* 形状 / 字体 / 阴影 */
+  --tk-radius: 4px;
+  --tk-font-ui: 'Alibaba PuHuiTi 3.0', 'PingFang SC', 'Microsoft YaHei',
+    'Segoe UI', system-ui, sans-serif;
+  --tk-font-mono: 'SFMono-Regular', 'JetBrains Mono', 'Cascadia Code',
+    'Consolas', 'Menlo', monospace;
+  --tk-shadow: 0 8px 24px oklch(0 0 0 / 0.5), 0 2px 6px oklch(0 0 0 / 0.4);
+  --tk-accent-gradient: linear-gradient(
+    90deg,
+    oklch(0.82 0.12 235) 0%,
+    oklch(0.72 0.14 250) 100%
+  );
+}
+
+/* 亮色套（Steam 蓝灰岩层亮色化；同 hue 骨架，accent/语义色加深保白底对比） */
+body.vscode-light {
+  --tk-bg: oklch(0.975 0.005 250);
+  --tk-surface: oklch(0.945 0.008 250);
+  --tk-surface-2: oklch(0.9 0.012 250);
+
+  --tk-border: oklch(0.85 0.012 250);
+  --tk-border-strong: oklch(0.74 0.02 250);
+
+  --tk-accent: oklch(0.52 0.13 235);
+  --tk-accent-hover: oklch(0.45 0.12 235);
+  --tk-accent-dim: oklch(0.52 0.13 235 / 0.12);
+
+  --tk-text: oklch(0.22 0.02 250);
+  --tk-text-dim: oklch(0.42 0.02 250);
+
+  --tk-success: oklch(0.5 0.14 150);
+  --tk-danger: oklch(0.5 0.19 27);
+  --tk-warn: oklch(0.55 0.14 70);
+  --tk-success-dim: oklch(0.5 0.14 150 / 0.1);
+  --tk-success-line: oklch(0.5 0.14 150 / 0.65);
+  --tk-danger-dim: oklch(0.5 0.19 27 / 0.1);
+  --tk-danger-line: oklch(0.5 0.19 27 / 0.65);
+  --tk-warn-dim: oklch(0.55 0.14 70 / 0.12);
+  --tk-warn-line: oklch(0.55 0.14 70 / 0.65);
+  --tk-neutral-dim: oklch(0.42 0.02 250 / 0.1);
+  --tk-neutral-line: oklch(0.42 0.02 250 / 0.5);
+
+  --tk-shadow: 0 8px 24px oklch(0.3 0.03 250 / 0.18), 0 2px 6px oklch(0.3 0.03 250 / 0.12);
+  --tk-accent-gradient: linear-gradient(
+    90deg,
+    oklch(0.6 0.12 235) 0%,
+    oklch(0.52 0.13 250) 100%
+  );
+}
+
+/* AI 执行态呼吸光晕（签名元素） */
+@keyframes tk-agent-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--tk-accent), 0 0 0 0 oklch(0.78 0.13 230 / 0);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--tk-accent),
+      0 0 16px 2px oklch(0.78 0.13 230 / 0.4);
+  }
+}
+
+.tk-is-running {
+  border-radius: var(--tk-radius);
+  animation: tk-agent-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-is-running {
+    animation: none;
+    box-shadow: 0 0 0 1px var(--tk-accent);
+  }
+}
+
+/* 打字光标 */
+@keyframes tk-caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.tk-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  background: var(--tk-accent);
+  animation: tk-caret-blink 1s steps(1) infinite;
+}
+
+/* 滚动条（贴合暗色开发工具观感） */
+.tk-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tk-border-strong) transparent;
+}
+
+.tk-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.tk-scroll::-webkit-scrollbar-thumb {
+  background: var(--tk-border-strong);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.tk-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--tk-accent-dim);
+  background-clip: content-box;
+}
+
+/* 全局 button cursor（现代浏览器原生 button 默认 cursor:default，需统一） */
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+
+/* hover 伪类：替代命令式 onMouseEnter/onMouseLeave 改 DOM 的写法。
+ * 组合使用：.tk-hover-surface 同时叠加背景变化。 */
+.tk-hover-surface:hover {
+  background-color: var(--tk-surface);
+}
+
+.tk-hover-surface-2:hover {
+  background-color: var(--tk-surface-2);
+}
+
+.tk-hover-text:hover {
+  color: var(--tk-text);
+}

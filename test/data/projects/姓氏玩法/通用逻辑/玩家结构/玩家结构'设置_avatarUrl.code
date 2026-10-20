@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:d2e5f0facd1d4858a996ef0fef6f843c
+color:255,255,255
+name:玩家结构'设置_avatarUrl
+comment:设置玩家头像url
+params:Struct 结构,String avatarUrl
+lines:
+varf Struct.结构.set(String avatarUrl:var avatarUrl)
+endcode

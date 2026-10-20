@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:弹幕处理'点赞
+params:Long 点赞数量,Struct 玩家
+lines:
+if{fun create.bool(var 局内功能设置'自动下场)
+  act 1101.this.玩家'自动下场检查(var 玩家)
+}
+act 1101.this.得到礼物'点赞(var 点赞数量:var 玩家)
+endcode

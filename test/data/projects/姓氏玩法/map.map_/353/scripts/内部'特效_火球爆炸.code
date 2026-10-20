@@ -1,0 +1,18 @@
+begincodeV2
+name:内部'特效_火球爆炸
+params:UIRect 根节点
+lines:
+Float 缩放=varf UIRect.根节点.customFloat(String 缩放)
+Vector3 坐标=varf UIRect.根节点.getCanvasPos()
+fun ui.2dmode(var 平面UI开关)
+Canvas 爆炸布局=fun create.canvas(Canvas canvas@1@3EAEAEQgABHR5cGUGClVJUmF3SW1hZ2UEbmFtZQYG5Yqo5Zu+A1BvcwQAAAAAAAAAAAAAAAAMcGFyZW50QW5jaG9yGAAAAAAAAAAABmFuY2hvchgEAAAAAAAAAARzaXplBAAAlkMAAJZDAACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/CGZpbGVHdWlkBiA5Njc1YWY0YzY4YzQ0NGEyOWM5MmMxOGE5MWNiYzNkMA@3@3)
+UIRawImage 动图=varf Canvas.爆炸布局.readUIRawImage(String 动图)
+Float 旋转=fun math.rand(Float 0:Float 360)
+varf UIRawImage.动图.rot(var 旋转)
+varf UIRawImage.动图.scale(var 缩放)
+varf UIRect.图表特效图层.addSon(var 动图)
+varf UIRawImage.动图.setCanvasPos(var 坐标)
+act 1101./弹幕.动图'应用动图(var 动图:Long 12:Long 1:Bool 1)
+act 1101./主界面.播放音效(String 炮弹爆炸2.ogg:Float 0.5)
+act 1101.this.内部'其他特效维护(var 动图:var 图表特效图层:Color 255,255,255,255)
+endcode

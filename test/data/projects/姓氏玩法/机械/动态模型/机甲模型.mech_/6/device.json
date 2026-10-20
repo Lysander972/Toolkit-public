@@ -1,0 +1,50 @@
+type:337
+pos:[5.332789E-07,-5,-6]
+quat:[0.8433915,8.807024E-08,-1.382426E-07,0.5372996]
+scale:5
+ext:
+{
+ logicName:中
+ offset:2
+ startLifetimeMultiplier:1
+ startSpeed:[3,3]
+ startSize:[2,2]
+ startRotationX:[0,0]
+ startRotationY:[0,0]
+ startRotation:[0,0]
+ startColor.min:[0.4947799,0.9758976,1,1]
+ startColor.max:[0.4947799,0.9758976,1,1]
+ customData1.x:1.5
+ emission:true
+ modelFileGuids:483a5f1e2e734e5797779f81f8b8179c;
+ rateOverTime:10
+ radius:0.0001
+ colorOverLifetime:
+ [
+  "0:0.7968196,0.8984098,1,1"
+  "0.2593118:0.7968196,0.8984098,1,1"
+  "0.5063859:1,0.4980392,0.4993618,1"
+  "0.7555962:1,0.2509804,0,1"
+  "0.9914855:1,0.4993617,0,0"
+ ]
+ sizeOverLifetime:
+ [
+  "0:0.7158495"
+  "0.2199148:0.8031508"
+  "0.4840255:0.8825161"
+  "0.7337593:1"
+  "1:1"
+ ]
+ velocityOverLifetime:
+ [
+  "0:1"
+  "0.2476871:1"
+  "0.5000027:1"
+  "0.7500077:1"
+  "1:1"
+ ]
+ rotSpeed:0
+ renderMode:1
+ lengthScale:1
+ velocityScale:1
+}

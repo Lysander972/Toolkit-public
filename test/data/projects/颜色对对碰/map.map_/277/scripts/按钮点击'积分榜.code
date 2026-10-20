@@ -1,0 +1,11 @@
+begincodeV2
+name:按钮点击'积分榜
+lines:
+/*UIButton b=varf Canvas.世界榜UI.readUIButton(String panel/base/战神榜按钮)
+/*varf UIButton.b.setColor(Color 99,99,99,255)
+UIButton b=varf Canvas.世界榜UI.readUIButton(String panel/base/积分榜按钮)
+varf UIButton.b.setColor(Color 536,517,0,255)
+Long 分页=fun create.long(Long 0)
+Long 排行榜种类=fun create.long(Long 1)
+act 1101.this.积分榜刷新()
+endcode

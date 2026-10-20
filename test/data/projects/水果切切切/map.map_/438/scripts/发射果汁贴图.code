@@ -1,0 +1,14 @@
+begincodeV2
+name:发射果汁贴图
+params:Vector3 p,Float scale,Color color,Bool 简化
+lines:
+varf Vector3.p.setY(Float 0.13)
+Vector3 p=act 336.this.wordToLocalPos(var p)
+act 336.this.setPosOffset(var p)
+Float 数量=fun create.float(Float 1)
+Float 持续时间=fun create.float(Float 5)
+if{fun create.bool(var 简化)
+  Float 持续时间=fun create.float(Float 2)
+}
+act 336.this.shootDir4(Vector3 0,0,0.0001:String 特效:var scale:var 数量:var color:var 持续时间)
+endcode

@@ -1,0 +1,95 @@
+begincodeV2
+name:内部'每帧刷新_更新队内玩家头像
+params:Struct 队伍,Canvas 布局,Bool 更新透明度,Float 新透明度
+lines:
+UIRect 队伍根节点=varf Canvas.布局.readUIRect(String 根节点)
+//更新玩家头像
+List 队内玩家表=act 1101./弹幕.队伍结构'读取_playerRankList(var 队伍)
+Float 队内玩家数=varf List.队内玩家表.count()
+//是否绘制最右侧玩家头像
+Bool 绘制头像=fun float.gte(var 队内玩家数:Float 1)
+UIRect 玩家头像区=varf Canvas.布局.readUIRect(String 根节点/进度条/头像框根节点)
+varf UIRect.玩家头像区.active(var 绘制头像)
+if{fun create.bool(var 绘制头像)
+  Struct 玩家=varf List.队内玩家表.readStruct(Float 0)
+  UIRawImage 玩家头像=varf Canvas.布局.readUIRawImage(String 根节点/进度条/头像框根节点/头像区域/头像)
+  UIRawImage 玩家头像框=varf Canvas.布局.readUIRawImage(String 根节点/进度条/头像框根节点/头像框)
+/*  UIRawImage 称号动图区=varf Canvas.布局.readUIRawImage(String 根节点/进度条/头像框根节点/称号动图)
+  String 头像框url=act 1101./弹幕.玩家结构'读取_avatarUrl(var 玩家)
+  String 头像框file=act 1101./弹幕.工具'获得头像框名称(var 玩家)
+/*  Long 世界榜周榜=act 1101./弹幕.玩家结构'读取_globalRank(var 玩家)
+/*  Long 动图编号=act 1101./弹幕.动图'计算组编号(var 世界榜周榜)
+  String 已设置url=varf UIRawImage.玩家头像.customString(String url)
+  if{fun string.notEqual(var 已设置url:var 头像框url)
+    varf UIRawImage.玩家头像.SetURLPic(var 头像框url)
+    varf UIRawImage.玩家头像.setCustomString(String url:var 头像框url)
+  }
+  String 已设置file=varf UIRawImage.玩家头像框.customString(String file)
+  if{fun string.notEqual(var 已设置file:var 头像框file)
+    if{fun string.notEqual(var 头像框file:String )
+      varf UIRawImage.玩家头像框.active(Bool 1)
+      varf UIRawImage.玩家头像框.loadPic(var 头像框file)
+    }
+    if{fun string.equal(var 头像框file:String )
+      varf UIRawImage.玩家头像框.active(Bool 0)
+    }
+    varf UIRawImage.玩家头像框.setCustomString(String file:var 头像框file)
+  }
+/*  Long 已设置动图编号=varf UIRawImage.称号动图区.customLong(String 动图编号)
+/*  if{fun long.notEqual(var 动图编号:var 已设置动图编号)
+/*    Bool 有称号=fun long.gt(var 动图编号:Long 0)
+/*    varf UIRawImage.称号动图区.active(var 有称号)
+/*    act 1101./弹幕.动图'应用动图(var 称号动图区:var 动图编号:Long 0:Bool 0)
+/*    varf UIRawImage.称号动图区.setCustomLong(String 动图编号:var 动图编号)
+  }
+  if{fun create.bool(var 更新透明度)
+    Color 默认颜色=fun create.color(Color 255,255,255,255)
+    Color 透明颜色=varf Color.默认颜色.copy()
+    varf Color.透明颜色.setA(Float 0)
+    Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 新透明度)
+    varf UIRawImage.玩家头像.setColor(var 生效颜色)
+    varf UIRawImage.玩家头像框.setColor(var 生效颜色)
+/*    varf UIRawImage.称号动图区.setColor(var 生效颜色)
+    UIRect 头像框边缘=varf Canvas.布局.readUIRect(String 根节点/进度条/头像框根节点/头像区域/边缘)
+    varf UIRect.头像框边缘.setColor(var 生效颜色)
+  }
+}
+//队内玩家列表重绘
+List 玩家头像表=varf UIRect.队伍根节点.customList(String 玩家头像表)
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:Float 5)
+  Canvas 头像布局=varf List.玩家头像表.readCanvas(var 循环)
+  Float 队内玩家序号=fun float.add(var 循环:Float 1)
+  UIRect 头像位置=varf Canvas.头像布局.readUIRect(String 锚定点)
+  Bool 显示=fun float.lt(var 队内玩家序号:var 队内玩家数)
+  varf UIRect.头像位置.active(var 显示)
+  //得到UI
+  UIRawImage 玩家头像=varf Canvas.头像布局.readUIRawImage(String 锚定点/头像区域/头像)
+  if{fun create.bool(var 显示)
+    //纵向跳动
+    UIRect 头像区域=varf Canvas.头像布局.readUIRect(String 锚定点/头像区域)
+    Float 头像纵向摇动=varf List.相位计算.readFloat(var 循环)
+    Vector3 相对坐标=fun creatVariable.Vector3(Float 0:var 头像纵向摇动:Float 0)
+    varf UIRect.头像区域.setCanvasPos(var 相对坐标)
+    //刷新玩家信息
+    Struct 玩家=varf List.队内玩家表.readStruct(var 队内玩家序号)
+    //更新设置
+    String 头像框url=act 1101./弹幕.玩家结构'读取_avatarUrl(var 玩家)
+    String 已设置url=varf UIRawImage.玩家头像.customString(String url)
+    if{fun string.notEqual(var 已设置url:var 头像框url)
+      varf UIRawImage.玩家头像.SetURLPic(var 头像框url)
+      varf UIRawImage.玩家头像.setCustomString(String url:var 头像框url)
+    }
+  }
+  if{fun create.bool(var 更新透明度)
+    Color 默认颜色=fun create.color(Color 255,255,255,255)
+    Color 透明颜色=varf Color.默认颜色.copy()
+    varf Color.透明颜色.setA(Float 0)
+    Color 生效颜色=varf Color.透明颜色.lerp(var 默认颜色:var 新透明度)
+    varf UIRawImage.玩家头像.setColor(var 生效颜色)
+    UIRect 头像框边缘=varf Canvas.头像布局.readUIRect(String 锚定点/头像区域/边缘)
+    varf UIRect.头像框边缘.setColor(var 生效颜色)
+  }
+  varf Float.循环.addEqual(Float 1)
+}
+endcode

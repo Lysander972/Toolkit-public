@@ -1,0 +1,50 @@
+begincodeV2
+name:应用特性'守方玩家
+lines:
+Vector3 BulletOffset=fun creatVariable.Vector3(Float 0:Float 1:Float 0)
+//更新头像url
+String avatarUrl=varf Struct.属性'玩家.getString(String avatarUrl:Bool 0)
+act 1.this.模型'设置头像(var avatarUrl)
+//更新等级文本框
+act 1.this.模型'设置等级文本框(Bool 1:Float 6:Float 0.5:Float 0.5)
+act 1.this.模型'设置弹药数文本框(Bool 1:Float 6:Float 0.5:Float 0.5)
+act 1.this.模型'设置本体显示(Bool 1)
+//刷新显示
+act 1.this.模型'手动刷新显示()
+Bool 属性'显示=fun create.bool(Bool 1)
+Long 属性'自动点赞速度=fun create.long(Long 0)
+Float 守方玩家数=fun map.getCustomFloat(String 守方玩家数)
+Bool 物理效果'启用物理=fun float.lt(var 守方玩家数:Float 31)
+//更新物理
+varf Mech.Self.enablePhysics(var 物理效果'启用物理)
+act 1.this.Public'SetLayer(Float 6)
+if{fun bool.not(var 物理效果'启用物理)
+  act 22.9.switchCollider(Bool 0)
+  act 26.10.switchCollider(Bool 0)
+}
+//更新物理材质
+varf Mech.Self.setPhysicsMaterial(Float 0:Float 0:Float 0)
+Float total=varf Mech.Self.deviceNum()
+Float index=fun create.float(Float 0)
+while{fun float.lt(var index:var total)
+  Device dev=varf Mech.Self.getDevice(var index)
+  Vector3 惯量=fun creatVariable.Vector3(Float 1:Float 1:Float 1)
+  Vector3 惯量=fun vector3.multilply(var 惯量:Float 1E+09)
+  varf Device.dev.SetInertiaTensor(var 惯量)
+  varf Device.dev.SetMaxAngularVelocity(Float 0)
+  varf Float.index.addEqual(Float 1)
+}
+//持续获得拉力
+//延迟后开启攻击
+if{fun bool.not(var 物理效果'启用物理)
+  varf Mech.Self.move(Vector3 0,0,-100:Enum 0)
+  act 362./边框.show(Bool 0)
+  act 362./头像.show(Bool 0)
+  act 362./头像框.show(Bool 0)
+  act 362./冰冻外壳.show(Bool 0)
+  act 362./称号区域.show(Bool 0)
+}
+delay fun create.float(Float 3)
+act 1.this.技能检测'守方私有()
+act 1.this.loopFun(String 技能检测'守方私有:Float 0)
+endcode

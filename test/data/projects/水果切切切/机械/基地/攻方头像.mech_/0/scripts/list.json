@@ -1,0 +1,19 @@
+[
+ 模型'设置等级文字
+ 模型'设置等级文本框
+ 模型'设置弹药数文字
+ 模型'设置弹药数文本框
+ 模型'手动刷新显示
+ 模型'设置边框
+ 模型'设置头像框
+ 模型'设置头像
+ Public'SetSize
+ Public'SetWeight
+ Public'PreReclaim
+ Public'Open
+ Public'Close
+ Public'SetColor
+ Public'SetLayer
+ 模型'开关头像框
+ 模型'开关冰冻效果
+]

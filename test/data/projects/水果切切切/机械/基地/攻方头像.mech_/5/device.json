@@ -1,0 +1,24 @@
+type:362
+pos:[1.101527E-08,0,-0.126]
+quat:[0,-0.7071067,0.7071068,0]
+scale:1.44
+ext:
+{
+ logicName:头像框
+ modelGuid:50997b2ab2a84971b339fe0c3ea5d0bc
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/Device emmit"
+ shader:
+ [
+  {
+   n:_PaintColor
+   type:Color
+   v:[1,1,1,1]
+  }
+  {
+   n:_EmmitColor
+   type:Color
+   v:[11.98431,11.98431,11.98431,0]
+  }
+ ]
+}

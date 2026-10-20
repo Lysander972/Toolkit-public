@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:e684626c29cd46c68e5929d1cb11b657
+color:255,255,255
+name:玩家结构'设置_skillused
+comment:设置是否使用过技能
+params:Struct 结构,Bool skillused
+lines:
+varf Struct.结构.set(String skillused:var skillused)
+endcode

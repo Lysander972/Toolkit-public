@@ -1,0 +1,8 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.setMass(Float 0)
+act 1.this.switchCollider(Bool 0)
+endcode

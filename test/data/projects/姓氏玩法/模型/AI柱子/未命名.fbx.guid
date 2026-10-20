@@ -1,0 +1,22 @@
+guid:266d2c5036674568b941abeb52674336
+meshes:
+[
+ {
+  n:model
+ }
+]
+matFolderName:d4f242f7aceb410c8f39b631695bdf1b
+Albedo.UID:d4f242f7aceb410c8f39b631695bdf1b
+Normal.UID:13bd70122304493faab3df24ca204f51
+Metal.UID:5218179f74a34d77b292d2b33a9b5324
+shaderName:"Shader Graphs/Metallic"
+shader:
+[
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[3.354775E-05,-0.002058757,-4.375586E-06]
+bounds.size:[0.007244187,0.04205558,0.007128299]

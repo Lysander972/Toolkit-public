@@ -1,0 +1,12 @@
+begincodeV2
+color:8,0,255
+name:Generic'MechPhysics
+params:Mech $obj,Bool $closePhysics,Float 弹性
+lines:
+if{fun create.bool(var $closePhysics)
+  varf Mech.$obj.enablePhysics(Bool 0)
+}
+varf Mech.$obj.setPhysicsMaterial(var 弹性:Float 0:Float 0)
+varf Mech.$obj.setDrag(Float 0)
+varf Mech.$obj.setAngularDrag(Float 1)
+endcode

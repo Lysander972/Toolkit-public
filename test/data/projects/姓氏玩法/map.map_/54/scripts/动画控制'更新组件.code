@@ -1,0 +1,143 @@
+begincodeV2
+name:动画控制'更新组件
+params:UIRect 当前组件
+lines:
+//注@1 一帧内只能播放一个动画,动画播放完毕后需要下一帧开始下一个动画.包括循环的动画也需要在下一帧重新启动
+//动画内的步骤,可以一帧内多次完成.即一帧内进行多个步骤
+List 动画队列=varf UIRect.当前组件.customList(String 动画队列)
+//动画数量不足时不进行处理
+Float 动画队列数量=varf List.动画队列.count()
+if{fun float.lt(var 动画队列数量:Float 1)
+  fun break()
+}
+//选中队首的动画
+Float 当前时间=fun time.scaleTime()
+Dict 生效动画字典=varf List.动画队列.readDict(Float 0)
+Bool 正在播放=varf Dict.生效动画字典.readBool(String 正在播放:Bool 0)
+Bool 是否循环=varf Dict.生效动画字典.readBool(String 是否循环:Bool 0)
+Float 动画启动时间=varf Dict.生效动画字典.readFloat(String 动画启动时间:Bool 0)
+Float 当前步骤启动时间=varf Dict.生效动画字典.readFloat(String 当前步骤启动时间:Bool 0)
+List 动画步骤队列=varf Dict.生效动画字典.readList(String 动画步骤队列:Bool 0)
+Float 当前步骤索引=varf Dict.生效动画字典.readFloat(String 当前步骤索引:Bool 0)
+Float 动画步骤队列数量=varf List.动画步骤队列.count()
+//如果队首动画未处于播放中,设置为播放中并初始化状态
+if{fun bool.not(var 正在播放)
+  Bool 正在播放=fun create.bool(Bool 1)
+  varf Dict.生效动画字典.insert(String 正在播放:var 正在播放)
+  Float 动画启动时间=fun create.float(var 当前时间)
+  varf Dict.生效动画字典.insert(String 动画启动时间:var 动画启动时间)
+  Float 当前步骤启动时间=fun create.float(var 当前时间)
+  varf Dict.生效动画字典.insert(String 当前步骤启动时间:var 当前步骤启动时间)
+  Float 当前步骤索引=fun create.float(Float -1)
+  varf Dict.生效动画字典.insert(String 当前步骤索引:var 当前步骤索引)
+  String 开始时回调=varf Dict.生效动画字典.readString(String 开始时回调:Bool 0)
+  if{fun string.notEqual(var 开始时回调:String )
+    act 1101.this.callMapFunc1(var 开始时回调:var 当前组件)
+  }
+}
+Bool 动画播放完毕=fun create.bool(Bool 0)
+//对于步骤不足的动画,直接弹出并跳过
+Bool 存在步骤=fun float.lt(var 当前步骤索引:var 动画步骤队列数量)
+if{fun bool.not(var 存在步骤)
+  Bool 动画播放完毕=fun create.bool(Bool 1)
+}
+//如果存在足够的步骤,那么需要检查是否播放完本轮.播放完本轮的情况下如果未启用循环则也属于播放完毕
+/*Float 总时间间隔=fun time.deltaTime()
+if{fun create.bool(var 存在步骤)
+  //获取到当前时间和每帧时间间隔
+  Bool 本轮播放完毕=fun create.bool(Bool 0)
+  Bool 切换步骤=fun create.bool(Bool 0)
+  Bool 首次启动=fun float.Approximately(var 当前步骤索引:Float -1)
+  //两种情况在需要切换步骤时,都更新上一步骤完毕时间
+  if{fun create.bool(var 首次启动)
+    //当首次启用时需要进行额外的一次切换
+    Bool 切换步骤=fun create.bool(Bool 1)
+    Float 上一步骤完毕时间=varf Dict.生效动画字典.readFloat(String 动画启动时间:Bool 0)
+  }
+  if{fun bool.not(var 首次启动)
+    //如果不是首次启动,则从上次记录的位置还原
+    Dict 当前步骤=varf List.动画步骤队列.readDict(var 当前步骤索引)
+    //得到动画的持续时间
+    Float 持续时间=varf Dict.当前步骤.readFloat(String 持续时间:Bool 0)
+    //计算步骤内的时间
+    Float 步骤内时间=fun float.minus(var 当前时间:var 当前步骤启动时间)
+    Bool 结束当前步骤=fun float.gte(var 步骤内时间:var 持续时间)
+    Float 步骤内时间=fun float.min(var 步骤内时间:var 持续时间)
+    //应用动画步骤
+    act 1101.this.动画控制'应用动画步骤(var 当前组件:var 当前步骤:var 步骤内时间)
+    if{fun create.bool(var 结束当前步骤)
+      String 结束时回调=varf Dict.当前步骤.readString(String 结束时回调:Bool 0)
+      if{fun string.notEqual(var 结束时回调:String )
+        act 1101.this.callMapFunc1(var 结束时回调:var 当前组件)
+      }
+      Float 上一步骤完毕时间=fun float.add(var 当前步骤启动时间:var 持续时间)
+      Bool 切换步骤=fun create.bool(Bool 1)
+    }
+  }
+  //随后每次切换
+  while{fun create.bool(var 切换步骤)
+    //更新索引
+    varf Float.当前步骤索引.addEqual(Float 1)
+    Bool 本轮播放完毕=fun float.gte(var 当前步骤索引:var 动画步骤队列数量)
+    Float 当前步骤索引=fun float.mod(var 当前步骤索引:var 动画步骤队列数量)
+    varf Dict.生效动画字典.insert(String 当前步骤索引:var 当前步骤索引)
+    //使用上一步骤完毕的时间作为下一次使用的启动时间
+    Float 当前步骤启动时间=fun create.float(var 上一步骤完毕时间)
+    varf Dict.生效动画字典.insert(String 当前步骤启动时间:var 当前步骤启动时间)
+    //重置切换步骤标志位为假
+    Bool 切换步骤=fun create.bool(Bool 0)
+    //读取步骤并应用
+    Dict 当前步骤=varf List.动画步骤队列.readDict(var 当前步骤索引)
+    //开始时回调
+    String 开始时回调=varf Dict.当前步骤.readString(String 开始时回调:Bool 0)
+    if{fun string.notEqual(var 开始时回调:String )
+      act 1101.this.callMapFunc1(var 开始时回调:var 当前组件)
+    }
+    //重置上次步骤内时间为0
+    Float 上次步骤内时间=fun create.float(Float 0)
+    varf Dict.当前步骤.insert(String 上次步骤内时间:var 上次步骤内时间)
+    //重置初始坐标
+    Vector3 当前坐标=varf UIRect.当前组件.customVector3(String 坐标)
+    varf UIRect.当前组件.setCustomVector3(String 初始坐标:var 当前坐标)
+    Float 当前角度=varf UIRect.当前组件.customFloat(String 角度)
+    varf UIRect.当前组件.setCustomFloat(String 角度:var 当前角度)
+    Float 当前缩放=varf UIRect.当前组件.customFloat(String 应用缩放)
+    varf UIRect.当前组件.setCustomFloat(String 初始缩放:var 当前缩放)
+    //如果刚好已经播放完一轮那么跳过,重置数据之后就等待下一轮
+    if{fun create.bool(var 本轮播放完毕)
+      fun break()
+    }
+    //得到动画的持续时间
+    Float 持续时间=varf Dict.当前步骤.readFloat(String 持续时间:Bool 0)
+    //计算步骤内的时间
+    Float 步骤内时间=fun float.minus(var 当前时间:var 当前步骤启动时间)
+    Bool 结束当前步骤=fun float.gte(var 步骤内时间:var 持续时间)
+    Float 步骤内时间=fun float.min(var 步骤内时间:var 持续时间)
+    //应用动画步骤
+    act 1101.this.动画控制'应用动画步骤(var 当前组件:var 当前步骤:var 步骤内时间)
+    if{fun create.bool(var 结束当前步骤)
+      String 结束时回调=varf Dict.当前步骤.readString(String 结束时回调:Bool 0)
+      if{fun string.notEqual(var 结束时回调:String )
+        act 1101.this.callMapFunc1(var 结束时回调:var 当前组件)
+      }
+      Float 上一步骤完毕时间=fun float.add(var 当前步骤启动时间:var 持续时间)
+      Bool 切换步骤=fun create.bool(Bool 1)
+    }
+  }
+  if{fun create.bool(var 本轮播放完毕)
+    if{fun bool.not(var 是否循环)
+      Bool 动画播放完毕=fun create.bool(Bool 1)
+    }
+  }
+}
+//删除第一项
+if{fun create.bool(var 动画播放完毕)
+  String 结束时回调=varf Dict.生效动画字典.readString(String 结束时回调:Bool 0)
+  if{fun string.notEqual(var 结束时回调:String )
+    act 1101.this.callMapFunc1(var 结束时回调:var 当前组件)
+  }
+  Bool 正在播放=fun create.bool(Bool 0)
+  varf Dict.生效动画字典.insert(String 正在播放:var 正在播放)
+  varf List.动画队列.remove(Float 0)
+}
+endcode

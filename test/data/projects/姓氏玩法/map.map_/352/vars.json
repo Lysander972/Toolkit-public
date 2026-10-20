@@ -1,0 +1,10 @@
+[
+ {
+  name:AI玩家
+  type:Struct
+ }
+ {
+  name:handler
+  type:Device
+ }
+]

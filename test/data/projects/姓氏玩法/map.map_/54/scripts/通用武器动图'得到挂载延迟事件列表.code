@@ -1,0 +1,14 @@
+begincodeV2
+name:通用武器动图'得到挂载延迟事件列表
+params:Canvas 武器UI
+return:List 挂载延迟事件列表
+lines:
+UIRect 根节点=varf Canvas.武器UI.readUIRect(String 根节点)
+Bool 初始化延迟事件=varf UIRect.根节点.customBool(String 初始化延迟事件)
+if{fun bool.not(var 初始化延迟事件)
+  List 挂载延迟事件列表=fun create.list()
+  varf UIRect.根节点.setCustomBool(String 初始化延迟事件:Bool 1)
+  varf UIRect.根节点.setCustomList(String 挂载延迟事件列表:var 挂载延迟事件列表)
+}
+List 挂载延迟事件列表=varf UIRect.根节点.customList(String 挂载延迟事件列表)
+endcode

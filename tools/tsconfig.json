@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "include": [
+    "**/*.ts",
+    "../knip.config.ts",
+    "../src/toolkit/**/*.ts",
+    "../src/canvas_render/**/*.ts",
+    "../test/modules/**/*",
+    "../src/frontend/**/*",
+    "../src/preview/**/*"
+  ]
+}

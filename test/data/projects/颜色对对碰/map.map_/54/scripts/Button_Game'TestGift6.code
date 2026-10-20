@@ -1,0 +1,26 @@
+begincodeV2
+color:255,243,0
+name:Button_Game'TestGift6
+lines:
+if{fun create.bool(var IsGM)
+  String test=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "_0001Qzypt5TBz3HySUpWYnj0aFShivWFyC3","sec_gift_id"@1 "gx7pmjQfhBaDOG2XkWI2peZ66YFWkCWRjZXpTqb23O/epru+sxWyTV/3Ufs@3","gift_num"@1 1,"gift_value"@1 10000,"avatar_url"@1 "https@1//p26.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813_ogD5AAEheDINHKA9JgAhjIAAEA3zABzQLsVAfC.jpeg?from@33067671334","nickname"@1 "test","timestamp"@1 1}])
+  Bool x10=fun keyboard.keyHeld2(Enum 123)
+  Bool x100=fun keyboard.keyHeld2(Enum 121)
+  if{fun bool.and(var x10:var x100)
+    String test=varf String.test.replace(String "gift_num"@1 1:String "gift_num"@1 1000)
+    fun simulate_comment(String live_gift:var test)
+    fun break()
+  }
+  if{fun create.bool(var x10)
+    String test=varf String.test.replace(String "gift_num"@1 1:String "gift_num"@1 10)
+    fun simulate_comment(String live_gift:var test)
+    fun break()
+  }
+  if{fun create.bool(var x100)
+    String test=varf String.test.replace(String "gift_num"@1 1:String "gift_num"@1 100)
+    fun simulate_comment(String live_gift:var test)
+    fun break()
+  }
+  fun simulate_comment(String live_gift:var test)
+}
+endcode

@@ -1,0 +1,12 @@
+begincodeV2
+name:刷新参数
+lines:
+if{fun create.bool(var 是否激活)
+  Float 目标值=fun float.multiply(var 整体缩放:Float 0.15)
+}
+if{fun bool.not(var 是否激活)
+  Float 目标值=fun float.multiply(var 整体缩放:Float 0.1)
+}
+Float 生效整体缩放=fun float.lerp(var 生效整体缩放:var 目标值:Float 0.06)
+varf Mech.this.scale(var 生效整体缩放)
+endcode

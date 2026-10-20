@@ -1,0 +1,7 @@
+begincodeV2
+name:解除冰冻尝试
+lines:
+Mech target=varf Device.$trigger.mech()
+Device this=act 1.0.getDevice()
+varf Device.this.callFun1(String Public'移除冰冻效果:var target)
+endcode

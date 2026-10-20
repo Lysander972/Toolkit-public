@@ -1,0 +1,30 @@
+guid:dfe89e37e5d846eaa87f22ee07338640
+meshes:
+[
+ {
+  n:Fig_Purple_Half
+ }
+]
+matFolderName:5512dba075114fb9bf99ff36e59fba6f
+Albedo.UID:5512dba075114fb9bf99ff36e59fba6f
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-7.010996E-06,0.1448374,0.05181779]
+bounds.size:[0.238761,0.2896749,0.1162285]

@@ -1,0 +1,9 @@
+begincodeV2
+name:UI'攻方刷新弹药数
+lines:
+Long 实际弹药数=act 1.this.Skills'GetValue(String 1000)
+Float 映射弹药数F=fun long.division(var 实际弹药数:Long 2)
+Long 映射弹药数=varf Float.映射弹药数F.toLong()
+String 文字=fun create.string(var 映射弹药数)
+act 1.this.模型'设置弹药数文字(var 文字)
+endcode

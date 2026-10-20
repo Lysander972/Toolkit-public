@@ -1,0 +1,14 @@
+begincodeV2
+guid:092f7874c1f54dc19287189d1a2e76ee
+color:255,132,255
+name:限制昵称长度
+params:String w
+return:String r
+lines:
+Float N=varf String.w.length()
+if{fun float.gt(var N:Float 8)
+  String w=varf String.w.substring(Float 0:Float 6)
+  String w=fun string.add(var w:String ...)
+}
+String r=fun create.string(var w)
+endcode

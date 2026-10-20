@@ -1,0 +1,20 @@
+begincodeV2
+color:255,0,255
+name:Lifting'SetTarget
+params:Float $target
+lines:
+if{fun bool.not(var LiftingFirstT)
+  if{fun float.Approximately(var $target:var LiftingTarget)
+    fun break()
+  }
+}
+Float LiftingTarget=fun create.float(var $target)
+Float LiftingProgress=fun create.float(Float 0)
+Float LiftingInitial=fun create.float(var LiftingRate)
+Bool LiftingFirstT=fun create.bool(Bool 0)
+if{fun bool.not(var IsLifting)
+  act 1.this.loopFun(String Lifting'Cycle:Float 0)
+  act 1.this.Lifting'Cycle()
+  Bool IsLifting=fun create.bool(Bool 1)
+}
+endcode

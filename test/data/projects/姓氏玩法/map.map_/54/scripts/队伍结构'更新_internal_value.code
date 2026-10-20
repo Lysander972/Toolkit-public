@@ -1,0 +1,31 @@
+begincodeV2
+private:1
+color:255,255,255
+name:队伍结构'更新_internal_value
+comment:只有整数部分有效
+params:Struct 结构
+lines:
+Long value=act 1101.this.队伍结构'读取_value(var 结构)
+Long internal_value=fun create.long(var value)
+//非填充即有玩家的队伍更靠前
+Long internal_value=fun long.LeftShift(var internal_value:Long 5)
+List 玩家列表=act 1101.this.队伍结构'读取_playerRankList(var 结构)
+Float 玩家数量=varf List.玩家列表.count()
+Float 玩家数量=fun float.min(var 玩家数量:Float 31)
+Long 玩家数量L=varf Float.玩家数量.toLong()
+varf Long.internal_value.addEqual(var 玩家数量L)
+/*Bool 是填充=act 1101.this.队伍结构'读取_填充(var 结构)
+/*if{fun bool.not(var 是填充)
+/*  varf Long.internal_value.addEqual(Long 1)
+}
+//首位先填充,再减id
+Long internal_value=fun long.LeftShift(var internal_value:Long 1)
+varf Long.internal_value.addEqual(Long 1)
+Long internal_value=fun long.LeftShift(var internal_value:Long 9)
+//id越靠前越优先,越大value越小
+Long id=act 1101.this.队伍结构'读取_id(var 结构)
+varf Long.internal_value.minusEqual(var id)
+//更新字段
+varf Struct.结构.set(String internal_value:var internal_value)
+Bool 局内'队伍_更新排名需求=fun create.bool(Bool 1)
+endcode

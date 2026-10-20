@@ -1,0 +1,7 @@
+begincodeV2
+name:方法1
+lines:
+Player Me=fun getCurrentPlayer()
+varf Player.Me.setPlayerDataLong(String 击杀:Long 0)
+varf Player.Me.setPlayerDataLong(String 死亡:Long 0)
+endcode

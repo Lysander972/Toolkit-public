@@ -1,0 +1,14 @@
+[
+ {
+  name:世界榜UI
+  type:Canvas
+ }
+ {
+  name:排行榜种类
+  type:Long
+ }
+ {
+  name:分页
+  type:Long
+ }
+]

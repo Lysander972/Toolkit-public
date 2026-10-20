@@ -1,0 +1,27 @@
+model {
+  extend pure {
+    canvas = container 'Canvas 四向转换' {
+      #build
+      description '内联 Base64、内联 Hjson、Canvas 二进制与 HTML 视图之间的无状态转换'
+      metadata {
+        files ['src/toolkit/canvas/package.json']
+      }
+      logic = container '四向格式转换' {
+        #common
+        description '以 Canvas 节点为中心的纯计算。Base64 是原版旧数据兼容格式。'
+        metadata {
+          sourcePath 'src/toolkit/canvas'
+          files ['src/toolkit/canvas/*.ts']
+        }
+      }
+      tests = container '四向转换测试' {
+        #test
+        description '读取只读语料并验证 Canvas 四向转换的字段保真与非法输入；不管理用户工程 IO。'
+        metadata {
+          sourcePath 'test/modules/toolkit-canvas'
+          files ['test/modules/toolkit-canvas/*.test.ts']
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+begincodeV2
+name:Public'攻击计算
+params:Mech 攻击方,Mech 受击方,Vector3 坐标
+lines:
+Device 攻击核心=varf Mech.攻击方.getCoreDevice()
+Device 受击核心=varf Mech.受击方.getCoreDevice()
+Long 攻击阵营=varf Device.攻击核心.callReturnLong0(String Public'GetFaction)
+Long 受击阵营=varf Device.受击核心.callReturnLong0(String Public'GetFaction)
+Float 暴击率=varf Device.攻击核心.callReturnFloat0(String Public'得到暴击率)
+Float 被暴击乘数=varf Device.受击核心.callReturnFloat0(String Public'得到被暴击乘数)
+Float 实际暴击率=fun float.multiply(var 被暴击乘数:var 暴击率)
+Float 随机=fun math.rand(Float 0:Float 1)
+Bool 是否暴击=fun float.lt(var 随机:var 实际暴击率)
+Float 伤害=varf Device.攻击核心.callReturnFloat0(String Public'GetAtk)
+Float 最大伤害=varf Device.攻击核心.callReturnFloat0(String Public'GetHP)
+Float 伤害=fun float.min(var 伤害:var 最大伤害)
+if{fun create.bool(var 是否暴击)
+  Float 伤害=fun float.multiply(var 伤害:Float 2)
+}
+Float 目标HP=varf Device.受击核心.callReturnFloat0(String Public'GetHP)
+Float 有效伤害=fun float.min(var 目标HP:var 伤害)
+//播报部分
+Float 最大血量=varf Device.受击核心.callReturnFloat0(String Public'GetMaxHP)
+Bool 可碾压=fun float.gte(var 伤害:var 最大血量)
+Bool 特殊播报=fun create.bool(Bool 0)
+if{fun create.bool(var 可碾压)
+  Long 类型=varf Device.攻击核心.callReturnLong0(String Public'GetType)
+  Bool bool1=fun long.equal(var 类型:Long 2400)
+  Bool bool2=fun long.equal(var 类型:Long 2401)
+  Bool bool3=fun long.equal(var 类型:Long 2600)
+  Bool 特殊播报=fun bool.or1(var bool1:var bool2:var bool3)
+  if{fun create.bool(var 特殊播报)
+    act 1.this.播放音效(String 碾压.ogg:Float 0.7)
+    Long 播报类型=fun create.long(Long 6)
+    fun screen.shake(Float 0.02:Float 500:Float 0.8)
+    varf Device.map_handler.callFun4(String 数字效果'产生效果:var 目标HP:var 播报类型:var 是否暴击:var 坐标)
+  }
+}
+Bool 主动攻击=fun bool.not(var 特殊播报)
+varf Device.受击核心.callFun5(String Public'Damage:var 伤害:var 攻击阵营:var 坐标:var 是否暴击:var 主动攻击)
+Bool 主动攻击=fun create.bool(Bool 0)
+varf Device.攻击核心.callFun5(String Public'Damage:var 有效伤害:var 受击阵营:var 坐标:var 是否暴击:var 主动攻击)
+endcode

@@ -1,0 +1,50 @@
+begincodeV2
+color:0,215,255
+name:刷新滑动条
+params:Canvas UI布局
+lines:
+UIButton 感应区=varf Canvas.UI布局.readUIButton(String 模块底板/进度条底板/滑动条感应区)
+UIInput 输入框=varf Canvas.UI布局.readUIInput(String 模块底板/输入框)
+Float 最小值=varf UIInput.输入框.customFloat(String 最小)
+Float 最大值=varf UIInput.输入框.customFloat(String 最大)
+UILabel 文本框_标题=varf Canvas.UI布局.readUILabel(String 模块底板/标题)
+UIRect 内核=varf Canvas.UI布局.readUIRect(String 模块底板/进度条底板/滑动条感应区/进度条内核)
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+/*varf UILabel.文本框_标题.text(var 标题)
+Bool UI初始化=varf UIInput.输入框.customBool(String 初始化)
+if{fun bool.not(var UI初始化)
+  Float 默认值=varf UIInput.输入框.customFloat(String 默认)
+  varf UIInput.输入框.setText(var 默认值)
+  varf UIInput.输入框.setCustomBool(String 初始化:Bool 1)
+}
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+String 输入框文本=varf UIInput.输入框.getText()
+Float 对象数值=varf String.输入框文本.toFloat()
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+if{fun float.lt(var 对象数值:var 最小值)
+  varf UIInput.输入框.setText(var 最小值)
+}
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+if{fun float.gt(var 对象数值:var 最大值)
+  varf UIInput.输入框.setText(var 最大值)
+}
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+if{varf UIButton.感应区.pressing()
+  Vector3 拖动距离变量=fun input.deltaByIndex(Float 0)
+  Float dis=fun float.minus(var 最大值:var 最小值)
+  Float 距离_x=varf Vector3.拖动距离变量.x()
+  Float 增量=fun float.multiply1(var dis:var 距离_x:Float -2)
+  Float 对象数值=fun float.minus(var 对象数值:var 增量)
+  //@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+  Float 对象数值=fun float.min(var 对象数值:var 最大值)
+  Float 对象数值=fun float.max(var 最小值:var 对象数值)
+  varf UIInput.输入框.setText(var 对象数值)
+}
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+varf UIInput.输入框.setCustomFloat(String 输出:var 对象数值)
+Float 进度数=fun float.minus(var 对象数值:var 最小值)
+Float 进度条长度=fun float.minus(var 最大值:var 最小值)
+Float 进度比=fun float.division(var 进度数:var 进度条长度)
+//@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3@3
+varf UIRect.内核.fillMode(Enum 0:var 进度比)
+endcode

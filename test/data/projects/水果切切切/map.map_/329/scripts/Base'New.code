@@ -1,0 +1,13 @@
+begincodeV2
+private:1
+color:104,0,255
+name:Base'New
+params:Vector3 postition,Vector3 direction,String modelKey
+return:Mech obj
+lines:
+String modelFile=fun string.add(var modelKey:String .mech)
+List list=varf Struct.Base'All.getList(var modelKey:Bool 0)
+act 1110./基地.changeMech(var modelFile)
+Mech obj=fun createAIMech(String 基地:Float 0:var postition:var direction:Enum 0:Bool 0)
+varf List.list.add(var obj)
+endcode

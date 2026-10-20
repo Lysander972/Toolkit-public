@@ -1,0 +1,22 @@
+begincodeV2
+color:104,0,255
+name:Model'SetModel
+comment:设置一个普通模型
+params:Vector3 pos,Vector3 direction,String modelKey
+return:Mech obj
+lines:
+List unusedList=varf Struct.Model'Unused.getList(var modelKey:Bool 0)
+Float index=varf List.unusedList.count()
+Bool exist=fun float.gt(var index:Float 0)
+if{fun create.bool(var exist)
+  varf Float.index.minusEqual(Float 1)
+  Mech obj=varf List.unusedList.readMech(var index)
+  varf Mech.obj.setActive(Bool 1)
+  varf List.unusedList.remove(var index)
+}
+if{fun bool.not(var exist)
+  Mech obj=act 1101.this.Model'New(var modelKey:var pos:var direction)
+}
+varf Mech.obj.move(var pos:Enum 0)
+varf Mech.obj.rot(var direction:Vector3 0,1,0)
+endcode

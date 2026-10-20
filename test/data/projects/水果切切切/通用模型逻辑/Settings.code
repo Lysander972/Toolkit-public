@@ -1,0 +1,14 @@
+begincodeV2
+guid:8d2c2ea9c6c649108cbe8f3aa56c1705
+name:Settings
+lines:
+act 1.this.setMass(Float 0)
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 0)
+act 1.this.enableCollide(Bool 0)
+act 362./1.setMass(Float 1)
+act 362./1.setLayer(Float 0)
+act 362./1.show(Bool 1)
+act 362./1.switchCollider(Bool 1)
+act 362./1.autoSetMassCenter()
+endcode

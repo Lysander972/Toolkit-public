@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:GenericInitialize
+lines:
+Mech Self=act 1.this.getMech()
+Mech map=fun map.getMapMech()
+Device map_handler=varf Mech.map.findDevice(String Scenario)
+endcode

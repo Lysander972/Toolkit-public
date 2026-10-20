@@ -1,0 +1,30 @@
+guid:200fa77a2ed54d7ebb956e27d1ac2593
+meshes:
+[
+ {
+  n:Peach_Half
+ }
+]
+matFolderName:ff1f68236b4d4edb8a30b22624474ee6
+Albedo.UID:ff1f68236b4d4edb8a30b22624474ee6
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.0001118481,0.1345678,-0.02840212]
+bounds.size:[0.3099861,0.2691356,0.1937904]

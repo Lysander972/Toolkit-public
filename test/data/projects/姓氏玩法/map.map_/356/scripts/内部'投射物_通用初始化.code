@@ -1,0 +1,12 @@
+begincodeV2
+name:内部'投射物_通用初始化
+params:UIRect 投射物根节点,UIRawImage 投射物贴图,String 投射物类型,Dict 绑定事件,UIRect 父节点,UIRect 坐标计算基准,Vector3 产生位置,UIRect 目标锚定节点,Float 速度,Float 发射角度,Float 转速,Float 命中角度,Float 延迟,Color basecolor
+lines:
+varf UIRect.投射物根节点.setCustomString(String 类型:var 投射物类型)
+varf UIRect.投射物根节点.setCustomDict(String 事件:var 绑定事件)
+//把投射物放置到位置并瞄准
+varf UIRect.父节点.addSon(var 投射物根节点)
+varf UIRect.投射物根节点.setCanvasPos(var 产生位置)
+act 1101.this.内部'其他特效维护(var 投射物贴图:var 坐标计算基准:var basecolor)
+act 1101./弹幕.虚拟投射物'注册(var 投射物根节点:var 目标锚定节点:var 速度:var 发射角度:var 转速:var 命中角度:var 延迟)
+endcode

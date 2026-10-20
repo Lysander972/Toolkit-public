@@ -1,0 +1,11 @@
+begincodeV2
+name:Button_Game'TestGift7
+lines:
+if{fun create.bool(var IsGM)
+  String test=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "_000QibaGhObMKCOG7C70eTSfCEmFRMlDFdx","sec_gift_id"@1 "pGLo7HKNk1i4djkicmJXf6iWEyd+pfPBjbsHmd3WcX0Ierm2UdnRR7UINvI@3","gift_num"@1 1,"gift_value"@1 10000,"avatar_url"@1 "https@1//p6.douyinpic.com/aweme/720x720/aweme-avatar/tos-cn-avt-0015_26d2605c0f145704542ca11ce389b176.jpeg","nickname"@1 "test","timestamp"@1 1}])
+  if{fun keyboard.keyHeld2(Enum 123)
+    String test=fun create.string(String [{"msg_id"@1 "1","sec_openid"@1 "_000QibaGhObMKCOG7C70eTSfCEmFRMlDFdx","sec_gift_id"@1 "pGLo7HKNk1i4djkicmJXf6iWEyd+pfPBjbsHmd3WcX0Ierm2UdnRR7UINvI@3","gift_num"@1 10,"gift_value"@1 10000,"avatar_url"@1 "https@1//p6.douyinpic.com/aweme/720x720/aweme-avatar/tos-cn-avt-0015_26d2605c0f145704542ca11ce389b176.jpeg","nickname"@1 "test","timestamp"@1 1}])
+  }
+  fun simulate_comment(String live_gift:var test)
+}
+endcode

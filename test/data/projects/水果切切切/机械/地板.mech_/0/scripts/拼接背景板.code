@@ -1,0 +1,106 @@
+begincodeV2
+name:拼接背景板
+params:Color color1,Color color2,Color color3,Color color4
+lines:
+Float 模板序号=fun create.float(Float 8)
+Float 高度修正1=fun create.float(Float 0)
+Float 高度修正2=fun create.float(Float 0)
+Bool alt1=fun create.bool(Bool 0)
+Float size=fun create.float(Float 2)
+Float size2=fun float.multiply(var size:Float 3)
+Mech self=act 1.this.getMech()
+Device core=act 1.this.getDevice()
+Vector3 relativeFix=fun creatVariable.Vector3(Float 0:Float 0:Float 5)
+Vector3 relativeFix=fun vector3.multilply(var relativeFix:var size)
+Long x=fun create.long(Long 0)
+while{fun long.lt(var x:Long 8)
+  Long x1=fun long.BitAnd(var x:Long 1)
+  Bool alt1=fun long.notEqual(var x1:Long 0)
+  Long y=fun create.long(Long 0)
+  while{fun long.lt(var y:Long 14)
+    Long y1=fun long.BitAnd(var y:Long 1)
+    Bool alt2=fun long.notEqual(var y1:Long 0)
+    Bool alt=fun bool.xor(var alt1:var alt2)
+    if{fun create.bool(var alt)
+      Color colora=fun create.color(var color1)
+      Color colorb=fun create.color(var color3)
+    }
+    if{fun bool.not(var alt)
+      Color colora=fun create.color(var color2)
+      Color colorb=fun create.color(var color4)
+    }
+    Float xF=varf Long.x.toFloat()
+    Float yF=varf Long.y.toFloat()
+    //中间一条
+    if{fun long.equal(var x:Long 0)
+      //大板子
+      Float posX=fun float.multiply1(var xF:Float 30:var size)
+      Float posZ=fun float.multiply1(var yF:Float 30:var size)
+      Vector3 relative=fun creatVariable.Vector3(var posX:var 高度修正2:var posZ)
+      Vector3 relative=fun vector3.add(var relative:var relativeFix)
+      Vector3 global=act 1.this.localToWorldPos(var relative)
+      Device dev=fun map.dynAddDevice(var self:var 模板序号:var global:Vector3 0,0,1:Vector3 0,1,0:var size2:var core)
+      varf Device.dev.switchCollider(Bool 0)
+      act 1.this.设置颜色(var colorb:var dev:Bool 1)
+      if{fun long.notEqual(var y:Long 0)
+        //大板子
+        Float posX=fun float.multiply1(var xF:Float -30:var size)
+        Float posZ=fun float.multiply1(var yF:Float -30:var size)
+        Vector3 relative=fun creatVariable.Vector3(var posX:var 高度修正2:var posZ)
+        Vector3 relative=fun vector3.add(var relative:var relativeFix)
+        Vector3 global=act 1.this.localToWorldPos(var relative)
+        Device dev=fun map.dynAddDevice(var self:var 模板序号:var global:Vector3 0,0,1:Vector3 0,1,0:var size2:var core)
+        varf Device.dev.switchCollider(Bool 0)
+        act 1.this.设置颜色(var colorb:var dev:Bool 1)
+      }
+    }
+    //其他部分的板子
+    if{fun long.gt(var x:Long 1)
+      //小板子
+      Float posX=fun float.multiply1(var xF:Float 10:var size)
+      Float posZ=fun float.multiply1(var yF:Float 10:var size)
+      Vector3 relative=fun creatVariable.Vector3(var posX:var 高度修正1:var posZ)
+      Vector3 relative=fun vector3.add(var relative:var relativeFix)
+      Vector3 global=act 1.this.localToWorldPos(var relative)
+      Device dev=fun map.dynAddDevice(var self:var 模板序号:var global:Vector3 0,0,1:Vector3 0,1,0:var size:var core)
+      varf Device.dev.switchCollider(Bool 0)
+      act 1.this.设置颜色(var colora:var dev:Bool 0)
+      if{fun long.notEqual(var x:Long 0)
+        //小板子
+        Float posX=fun float.multiply1(var xF:Float -10:var size)
+        Float posZ=fun float.multiply1(var yF:Float 10:var size)
+        Vector3 relative=fun creatVariable.Vector3(var posX:var 高度修正1:var posZ)
+        Vector3 relative=fun vector3.add(var relative:var relativeFix)
+        Vector3 global=act 1.this.localToWorldPos(var relative)
+        Device dev=fun map.dynAddDevice(var self:var 模板序号:var global:Vector3 0,0,1:Vector3 0,1,0:var size:var core)
+        varf Device.dev.switchCollider(Bool 0)
+        act 1.this.设置颜色(var colora:var dev:Bool 0)
+      }
+      if{fun long.notEqual(var y:Long 0)
+        //小板子
+        Float posX=fun float.multiply1(var xF:Float 10:var size)
+        Float posZ=fun float.multiply1(var yF:Float -10:var size)
+        Vector3 relative=fun creatVariable.Vector3(var posX:var 高度修正1:var posZ)
+        Vector3 relative=fun vector3.add(var relative:var relativeFix)
+        Vector3 global=act 1.this.localToWorldPos(var relative)
+        Device dev=fun map.dynAddDevice(var self:var 模板序号:var global:Vector3 0,0,1:Vector3 0,1,0:var size:var core)
+        varf Device.dev.switchCollider(Bool 0)
+        act 1.this.设置颜色(var colora:var dev:Bool 0)
+        if{fun long.notEqual(var x:Long 0)
+          //小板子
+          Float posX=fun float.multiply1(var xF:Float -10:var size)
+          Float posZ=fun float.multiply1(var yF:Float -10:var size)
+          Vector3 relative=fun creatVariable.Vector3(var posX:var 高度修正1:var posZ)
+          Vector3 relative=fun vector3.add(var relative:var relativeFix)
+          Vector3 global=act 1.this.localToWorldPos(var relative)
+          Device dev=fun map.dynAddDevice(var self:var 模板序号:var global:Vector3 0,0,1:Vector3 0,1,0:var size:var core)
+          varf Device.dev.switchCollider(Bool 0)
+          act 1.this.设置颜色(var colora:var dev:Bool 0)
+        }
+      }
+    }
+    varf Long.y.addEqual(Long 1)
+  }
+  varf Long.x.addEqual(Long 1)
+}
+endcode

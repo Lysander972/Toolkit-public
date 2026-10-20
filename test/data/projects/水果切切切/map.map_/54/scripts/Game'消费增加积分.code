@@ -1,0 +1,24 @@
+begincodeV2
+name:Game'消费增加积分
+params:Long multiplier,Long count,Struct player
+lines:
+//记录积分池
+Long Add=fun long.multiply1(var multiplier:var count:Long 1000)
+Long score=varf Struct.player.getLong(String score:Bool 0)
+varf Long.score.addEqual(var Add)
+varf Long.ScorePool.addEqual(var Add)
+Bool 状态值'自动保存积分需求=fun create.bool(Bool 1)
+//记录消费
+Long Add=fun long.multiply(var multiplier:var count)
+Long consume=varf Struct.player.getLong(String consume:Bool 0)
+varf Long.consume.addEqual(var Add)
+//记录队伍分
+Long team=varf Struct.player.getLong(String team:Bool 1)
+Long Add=fun long.multiply1(var multiplier:var count:Long 1000)
+if{fun long.equal(var team:Long 1)
+  varf Long.蓝队礼物积分.addEqual(var Add)
+}
+if{fun long.equal(var team:Long 2)
+  varf Long.红队礼物积分.addEqual(var Add)
+}
+endcode

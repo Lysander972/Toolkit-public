@@ -1,0 +1,21 @@
+begincodeV2
+color:104,0,255
+name:Model'RegisterType
+comment:注册类型
+params:String modelKey,Long amount
+lines:
+List bullet=fun create.list()
+List bulletUnused=fun create.list()
+Bool exist=varf Struct.Model'All.contains(var modelKey)
+if{fun bool.not(var exist)
+  varf Struct.Model'All.set(var modelKey:var bullet)
+  varf Struct.Model'Unused.set(var modelKey:var bulletUnused)
+}
+Long created=fun create.long(Long 0)
+while{fun long.lt(var created:var amount)
+  Mech model=act 1101.this.Model'SetModel(Vector3 0,-1e+06,0:Vector3 1,0,0:var modelKey)
+  Device core=varf Mech.model.getCoreDevice()
+  varf Device.core.callFun1(String Public'AutoReclaim:var modelKey)
+  varf Long.created.addEqual(Long 1)
+}
+endcode

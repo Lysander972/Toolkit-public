@@ -1,0 +1,18 @@
+[
+ {
+  name:AvatarEmmitUrl
+  type:String
+ }
+ {
+  name:AvatarMainUrl
+  type:String
+ }
+ {
+  name:FrameEmmitFile
+  type:String
+ }
+ {
+  name:FrameMainFile
+  type:String
+ }
+]

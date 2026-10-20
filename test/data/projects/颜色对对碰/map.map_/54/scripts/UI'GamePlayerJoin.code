@@ -1,0 +1,36 @@
+begincodeV2
+color:0,255,151
+name:UI'GamePlayerJoin
+params:Struct $player
+return:Bool ok
+lines:
+Bool ok=fun create.bool(Bool 1)
+Long $rank=varf Struct.$player.getLong(String 排行榜名次:Bool 1)
+Long $team=varf Struct.$player.getLong(String team:Bool 1)
+String $uid=varf Struct.$player.getString(String id:Bool 1)
+Bool 未上榜=fun long.lt(var $rank:Long 0)
+Bool 百名以外=fun long.gte(var $rank:Long 100)
+String $name=varf Struct.$player.getString(String name:Bool 1)
+if{fun bool.or(var 未上榜:var 百名以外)
+  String s=fun string.Format1(String %1加入玩法:var $name)
+  Canvas topUI=fun create.canvas(Canvas canvas@1@3EAEAEQ8ABHR5cGUGBlVJUmVjdARuYW1lBgN0b3ADUG9zBAAAAAAAAADCAAAAAAxwYXJlbnRBbmNob3IYAQAAAAAAAAAGYW5jaG9yGAEAAAAAAAAABHNpemUEwH9vRAAAYEIAAIA/BWNvbG9yDAAAgD8AAIA/AACAPwAAgD8LQm9yZGVyV2lkdGgBAACAvwZSYWRpdXMBAAAgQQ1zbGljZWRQaWNHdWlkBiBmOTI5YTVkMTI2YjM0ODUwOWU5MGIxY2ZiOTM0OTExZA5zbGljZWRCb3JkZXJMQgQAALRCAABeQgAAAAAOc2xpY2VkQm9yZGVyUlQEAAC0QgAAXkIAAAAADHNsaWNlZFJlY3RMQgQAAAAAAAAAAAAAAAAMc2xpY2VkUmVjdFJUBAAANEMAAN5CAAAAAARzb25zEAEAEQ0ABHR5cGUGB1VJTGFiZWwEbmFtZQYFbGFiZWwDUG9zBAAAAAAAAAAAAAAAAAxwYXJlbnRBbmNob3IYBAAAAAAAAAAGYW5jaG9yGAQAAAAAAAAAC3dpZHRoRXh0ZW5kGAEAAAAAAAAADGhlaWdodEV4dGVuZBgBAAAAAAAAAARzaXplBAAAgD8AAIA/AACAPwVjb2xvcgwAAIA/AACAPwAAgD8AAIA/DG91dGxpbmVDb2xvcgwAAAAAAAAAAAAAAAAAAIA/D291dGxpbmVEaXN0YW5jZQQAAIA/AACAvwAAAAAEdGV4dAYBPwhGb250U2l6ZQEAAABC)
+  UIRect top=varf Canvas.topUI.readUIRect(String top)
+  UILabel label=varf Canvas.topUI.readUILabel(String top/label)
+  varf UILabel.label.text(var s)
+  varf UIRect.top.del(Float 3)
+  if{fun long.equal(var $team:Long 1)
+    UIRect parent=varf Canvas.GameUI.readUIRect(String root/leftTop)
+  }
+  if{fun long.equal(var $team:Long 2)
+    UIRect parent=varf Canvas.GameUI.readUIRect(String root/rightTop)
+  }
+  varf UIRect.parent.addSon(var top)
+  Float num=varf UIRect.parent.sonNum()
+  if{fun float.gt(var num:Float 2)
+    varf UIRect.parent.delSon(Float 0)
+  }
+  fun break()
+}
+Mech M=fun createAIMech(String 玩家入场:Float 99:Vector3 0,0,0:Vector3 0,0,1:Enum 0:Bool 0)
+varf Mech.M.callFun2(String 设置排名:var $rank:var $player)
+endcode

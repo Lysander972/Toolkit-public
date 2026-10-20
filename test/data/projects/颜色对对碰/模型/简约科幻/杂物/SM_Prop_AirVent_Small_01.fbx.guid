@@ -1,0 +1,31 @@
+guid:6118362b08d94f5ba2c73bbed7a9ab20
+meshes:
+[
+ {
+  n:SM_Prop_AirVent_Small_01
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.102713,0.2598007,0.03669433]
+bounds.size:[0.967865,0.5196013,0.4840332]

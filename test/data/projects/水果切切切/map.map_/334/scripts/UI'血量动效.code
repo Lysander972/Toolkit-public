@@ -1,0 +1,36 @@
+begincodeV2
+name:UI'血量动效
+lines:
+Float 当前时间=fun time.scaleTime()
+Color 默认颜色=fun create.color(Color 255,255,255,255)
+if{fun float.gt(var UI'血量变化值:Float 0)
+  Color UI突变颜色=fun create.color(Color 84,255,0,255)
+}
+if{fun float.lt(var UI'血量变化值:Float 0)
+  Color UI突变颜色=fun create.color(Color 255,87,0,255)
+}
+Float 已用时间=fun float.minus(var 当前时间:var UI'血量上次更新)
+if{fun float.lte(var 已用时间:Float 0.2)
+  Float 比例=fun float.division(var 已用时间:Float 0.15)
+  Float 比例=fun float.pow(var 比例:Float 0.5)
+  Float 缩放=fun float.lerp(Float 1:Float 1.2:var 比例)
+  Color 显示=varf Color.默认颜色.lerp(var UI突变颜色:var 比例)
+  varf UILabel.UI'血量文本框.scale(var 缩放)
+  varf UILabel.UI'血量文本框.setColor(var 显示)
+}
+if{fun float.gt(var 已用时间:Float 0.2)
+  Float 比例=fun float.minus(var 已用时间:Float 0.25)
+  Float 比例=fun float.division(var 比例:Float 0.15)
+  Float 比例=fun float.pow(var 比例:Float 2)
+  Float 缩放=fun float.lerp(Float 1.2:Float 1:var 比例)
+  Color 显示=varf Color.UI突变颜色.lerp(var 默认颜色:var 比例)
+  varf UILabel.UI'血量文本框.scale(var 缩放)
+  varf UILabel.UI'血量文本框.setColor(var 显示)
+}
+if{fun float.gte(var 已用时间:Float 0.4)
+  varf UILabel.UI'血量文本框.scale(Float 1)
+  varf UILabel.UI'血量文本框.setColor(var 默认颜色)
+  Bool UI'血量动效=fun create.bool(Bool 0)
+  act 1.this.DisableFun(String UI'血量动效)
+}
+endcode

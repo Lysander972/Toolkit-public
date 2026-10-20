@@ -1,0 +1,12 @@
+begincodeV2
+color:8,0,255
+name:Generic'MechPhysics
+params:Mech obj,Bool closePhysics,Float elasticity,Float kFriction,Float sFriction
+lines:
+if{fun create.bool(var closePhysics)
+  varf Mech.obj.enablePhysics(Bool 0)
+}
+varf Mech.obj.setPhysicsMaterial(var elasticity:var kFriction:var sFriction)
+varf Mech.obj.setDrag(Float 0)
+varf Mech.obj.setAngularDrag(Float 1)
+endcode

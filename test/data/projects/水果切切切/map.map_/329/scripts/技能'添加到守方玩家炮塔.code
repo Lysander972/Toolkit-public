@@ -1,0 +1,12 @@
+begincodeV2
+name:技能'添加到守方玩家炮塔
+params:String key,Long amount,Struct player
+lines:
+String uid=varf Struct.player.getString(String id:Bool 1)
+Bool exist=varf Dict.守方炮塔记录.contains(var uid)
+if{fun bool.not(var exist)
+  act 1101.this.炮塔'守方放置或升级(var player:Long 1)
+}
+Mech target=varf Dict.守方炮塔记录.readMech(var uid:Bool 0)
+act 1101.this.技能'通用添加方法(var target:var key:var amount:var player)
+endcode

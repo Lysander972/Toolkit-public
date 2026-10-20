@@ -1,0 +1,19 @@
+begincodeV2
+name:持续物理效果_临时'拉力和方向纠正_group
+params:String key
+lines:
+List list=varf Struct.Base'All.getList(var key:Bool 0)
+Float index=varf List.list.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  Mech mech=varf List.list.readMech(var index)
+  Bool exist=varf Mech.mech.alive()
+  if{fun create.bool(var exist)
+    Device core=varf Mech.mech.getCoreDevice()
+    varf Device.core.addForce(Vector3 0,0,5:Enum 3)
+  }
+  if{fun bool.not(var exist)
+    varf List.list.remove(var index)
+  }
+}
+endcode

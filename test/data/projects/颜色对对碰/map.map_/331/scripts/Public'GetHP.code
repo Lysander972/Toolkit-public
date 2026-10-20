@@ -1,0 +1,8 @@
+begincodeV2
+color:8,0,255
+name:Public'GetHP
+comment:得到此子弹的HP
+return:Float $hp
+lines:
+Float $hp=fun create.float(var HP)
+endcode

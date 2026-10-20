@@ -1,0 +1,7 @@
+begincodeV2
+name:SetLength
+params:Float length
+lines:
+Vector3 size=fun creatVariable.Vector3(Float 1:Float 0.01:var length)
+act 22./白线.setSize(var size)
+endcode

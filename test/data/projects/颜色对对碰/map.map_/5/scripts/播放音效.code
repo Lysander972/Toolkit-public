@@ -1,0 +1,13 @@
+begincodeV2
+name:播放音效
+params:String $file,Float $volume
+lines:
+Float 上次播放限制=varf Dict.音效记录.readFloat(var $file:Bool 0)
+Float 当前时间=fun time.time()
+if{fun float.gte(var 当前时间:var 上次播放限制)
+  =fun audio.playAudioFile(var $file:Vector3 0,0,0:var $volume:Bool 0)
+  Float 阈值=act 1101./参数调节模块.读取(String 声音间隔阈值:Float 0.2:Float 0:Float 0.5:Color 0,144,160,255)
+  Float 下次锁定=fun float.add(var 当前时间:var 阈值)
+  varf Dict.音效记录.insert(var $file:var 下次锁定)
+}
+endcode

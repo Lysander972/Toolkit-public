@@ -1,0 +1,8 @@
+begincodeV2
+name:UI设定
+lines:
+String 对齐方式=fun create.string(String 左上)
+Bool 平面UI开关=fun create.bool(Bool 1)
+Float 相位=fun create.float(Float 0)
+varf List.相位计算.insertMulti(var 相位:Float 5)
+endcode

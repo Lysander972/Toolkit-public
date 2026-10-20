@@ -1,0 +1,8 @@
+begincodeV2
+name:Base'脱离冰冻特效
+params:Vector3 pos,Float scale
+lines:
+Bool 简化特效生效=fun map.getCustomBool(String 简化特效生效标志位)
+Float scale=fun float.multiply(var scale:Float 0.5)
+act 336./碎片粒子发射器.发射碎片(var pos:var scale:Float 15:Color 125,178,255,255,颜色1400_0:Float 2:var 简化特效生效)
+endcode

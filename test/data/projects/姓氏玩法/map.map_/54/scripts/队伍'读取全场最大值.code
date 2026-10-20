@@ -1,0 +1,6 @@
+begincodeV2
+name:队伍'读取全场最大值
+return:Long ret
+lines:
+Long ret=fun create.long(var 局内'全局_最大value)
+endcode

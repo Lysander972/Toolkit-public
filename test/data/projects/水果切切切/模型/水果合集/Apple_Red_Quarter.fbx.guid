@@ -1,0 +1,32 @@
+guid:097862deb1a9419ea8af904570608f5d
+meshes:
+[
+ {
+  n:Apple_Red_Quarter
+ }
+]
+matFolderName:eec42005f6e545ba937c8f47a94d90db
+Albedo.UID:eec42005f6e545ba937c8f47a94d90db
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-0.008578867,0.08102418,0.0001915246]
+bounds.size:[0.2946919,0.1629933,0.2088163]

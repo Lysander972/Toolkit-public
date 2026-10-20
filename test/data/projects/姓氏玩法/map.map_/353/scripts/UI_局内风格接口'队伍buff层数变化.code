@@ -1,0 +1,30 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'队伍buff层数变化
+params:Struct 队伍,Long buff类型,Long 层数变化
+lines:
+if{fun long.equal(var buff类型:Long 3)
+  act 1101.this.内部'事件_减速效果层数变化(var 队伍:var 层数变化:Long 1)
+}
+if{fun long.equal(var buff类型:Long 10)
+  act 1101.this.内部'事件_加速效果层数变化(var 队伍:var 层数变化:Long 1)
+}
+if{fun long.equal(var buff类型:Long 11)
+  act 1101.this.内部'事件_减速效果层数变化(var 队伍:var 层数变化:Long 2)
+}
+if{fun long.equal(var buff类型:Long 13)
+  act 1101.this.内部'事件_加速效果层数变化(var 队伍:var 层数变化:Long 2)
+}
+if{fun long.equal(var buff类型:Long 14)
+  act 1101.this.内部'事件_减速效果层数变化(var 队伍:var 层数变化:Long 3)
+}
+if{fun long.equal(var buff类型:Long 15)
+  act 1101.this.内部'事件_加速效果层数变化(var 队伍:var 层数变化:Long 3)
+}
+if{fun long.equal(var buff类型:Long 16)
+  act 1101.this.内部'事件_减速效果层数变化(var 队伍:var 层数变化:Long 4)
+}
+if{fun long.equal(var buff类型:Long 17)
+  act 1101.this.内部'事件_加速效果层数变化(var 队伍:var 层数变化:Long 4)
+}
+endcode

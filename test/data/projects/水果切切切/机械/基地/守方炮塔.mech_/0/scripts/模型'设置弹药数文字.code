@@ -1,0 +1,7 @@
+begincodeV2
+name:模型'设置弹药数文字
+params:String 文字
+lines:
+UILabel label=act 1102./弹药数文字.getLabel()
+varf UILabel.label.text(var 文字)
+endcode

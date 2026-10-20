@@ -1,0 +1,15 @@
+begincodeV2
+color:255,130,0
+name:调参面板
+lines:
+Bool 是否为GM=act 1101./弹幕.Utils'IsGM()
+if{fun create.bool(var 是否为GM)
+  Float i=fun create.float(Float 0)
+  Float N=varf List.参数调节列表.count()
+  while{fun float.lt(var i:var N)
+    Canvas UI=varf List.参数调节列表.readCanvas(var i)
+    act 1101.this.刷新滑动条(var UI)
+    Float i=fun float.add(var i:Float 1)
+  }
+}
+endcode

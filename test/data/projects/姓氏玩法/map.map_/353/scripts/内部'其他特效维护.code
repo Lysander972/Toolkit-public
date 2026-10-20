@@ -1,0 +1,11 @@
+begincodeV2
+name:内部'其他特效维护
+comment:只包含root和动图
+params:UIRawImage 特效贴图,UIRect 父级,Color basecolor
+lines:
+Bool 全局=varf UIRect.父级.equal(var 图表特效图层)
+varf UIRawImage.特效贴图.setCustomBool(String global:var 全局)
+varf UIRawImage.特效贴图.setCustomUIRect(String parent:var 父级)
+varf UIRawImage.特效贴图.setCustomColor(String basecolor:var basecolor)
+varf List.其他特效维护.add(var 特效贴图)
+endcode

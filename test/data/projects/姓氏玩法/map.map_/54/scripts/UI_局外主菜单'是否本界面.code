@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'是否本界面
+return:Bool ret
+lines:
+Bool ret=fun long.equal(var UI'状态枚举:Long 0)
+endcode

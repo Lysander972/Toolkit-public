@@ -1,0 +1,26 @@
+begincodeV2
+color:255,255,255
+name:局外功能设置'分辨率手动修改监听
+comment:监听用户的手动修改分辨率操作,实时地进行同步
+lines:
+if{fun bool.not(var 局外功能设置'分辨率更新锁定)
+  Vector3 实际分辨率=fun screen.size()
+  Bool 使用默认值=fun vector3.equal(var 实际分辨率:var 局外功能设置'实际分辨率)
+  if{fun bool.not(var 使用默认值)
+    if{fun long.notEqual(var 局外功能设置'分辨率选项:Long 2)
+      fun string.popNotify(String 已自动切换为自定义分辨率模式:Float 3)
+    }
+    Long 局外功能设置'分辨率选项=fun create.long(Long 2)
+    Vector3 局外功能设置'实际分辨率=varf Vector3.实际分辨率.copy()
+    Dict data=fun map.load()
+    varf Dict.data.insert(String 手动分辨率:var 实际分辨率)
+    act 1101./主界面.工具'上传存档(Bool 1)
+    act 1101.this.局外功能设置'分辨率_应用(Long 2)
+    //如果是在局外界面,同时会刷新显示
+    if{act 1101.this.UI_局外主菜单'是否本界面()
+      act 1101.this.UI_局外主菜单'主菜单_刷新全部按钮()
+    }
+  }
+  delay fun create.float(Float 0.2)
+}
+endcode

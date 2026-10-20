@@ -1,0 +1,12 @@
+begincodeV2
+private:1
+name:Private_Physic'OnDeath
+comment:检查当前层,按需调整层
+lines:
+if{fun create.bool(var Physic'NeedSpin)
+  act 1.this.DisableFun(String Private_Physic'Spin_Cycle)
+}
+if{fun create.bool(var Attr'Turret)
+  act 1.this.DisableFun(String Private_Physic'Force_Cycle)
+}
+endcode

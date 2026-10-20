@@ -1,0 +1,23 @@
+{
+  "agent": "codex",
+  "axes": {
+    "evidence": {
+      "reason": "迁移后源文件 Git blob 1bec7a0472b552967e2885854d463e32b5cb185a 与原 spec 相同；C4 文件归属随路径迁移，来源全文可从原生 context 获取。",
+      "score": 2
+    },
+    "parent_fit": {
+      "reason": "完整 repo-layout 的分区、命名、依赖方向、资源唯一源点、冻结、子模块、测试与术语合同全部保留；唯一锁限定 Node workspace，uv.lock 的新增职责明确单列，没有以迁移取消既有边界。",
+      "score": 2
+    },
+    "reasoning": {
+      "reason": "从原文的配置继承和可复现目标导出独立 Python 工具锁；指出旧 SQLite 回归的结束范围和规范区变更，区分继承合同与新版设计。",
+      "score": 2
+    }
+  },
+  "criteria": "quality",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "need": "cfac878d-3d45-4ec9-9f36-c801048a8d34",
+  "reviewed_fingerprint": "a54983e3e4990a543182fd44f12d0f60e15b2f662ea9077ad421ab0868575a0e",
+  "schema": 2,
+  "summary": "逐条核对 repo-layout 的有效合同与明确覆盖条款。"
+}

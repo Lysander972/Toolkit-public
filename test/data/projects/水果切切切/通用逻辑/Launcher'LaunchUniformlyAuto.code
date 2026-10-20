@@ -1,0 +1,59 @@
+begincodeV2
+guid:117ef6cc070042c092a3db9b0552ef7c
+color:255,0,0
+name:Launcher'LaunchUniformlyAuto
+comment:均匀发射多个自动获取玩家
+params:Long type,Float aimedX,Float aimedY,Long amount,Float maxIncAngle,Float offset,Bool limited,String skillKey,Long extraCost,Float HPMul,Float crit,Float initHp,Bool useManualSpeed,Float manualSpeed
+return:Long count
+lines:
+Long totalCost=fun long.add(Long 1:var extraCost)
+Long skillValue=act 1.this.Skills'GetValue(var skillKey)
+Float maxF=fun long.division(var skillValue:var totalCost)
+Long maxL=varf Float.maxF.toLong()
+Long amount=fun long.min(var amount:var maxL)
+if{fun long.lte(var amount:Long 0)
+  fun break()
+}
+if{fun long.equal(var amount:Long 1)
+  Vector3 azimuth=fun creatVariable.Vector3(var aimedX:var aimedY:Float 0)
+  Vector3 bulletDir=act 1.this.Utils'AzimuthToVector(var azimuth)
+  Vector3 bulletDir=act 1.this.localToWorldDir(var bulletDir)
+  Struct player=act 1.this.Skills'GetFirstElement(var skillKey)
+  if{act 1.this.Launcher'Launch(var type:var bulletDir:var offset:var player:var HPMul:var crit:var initHp:var useManualSpeed:var manualSpeed)
+    =act 1.this.Skills'Decrease(var skillKey:var totalCost)
+  }
+  fun break()
+}
+//得到最大扇形角度
+Float temp3=varf Long.amount.toFloat()
+varf Float.temp3.minusEqual(Float 1)
+Float temp0=fun float.multiply(var temp3:var maxIncAngle)
+Float temp1=fun float.minus(var 瞄准角度上限:var 瞄准角度下限)
+Float temp0=fun float.clamp(var temp0:Float 0:var temp1)
+Float actualIncAngle=fun float.division(var temp0:var temp3)
+//得到实际扇形
+Float temp2=fun float.multiply(var temp0:Float 0.5)
+if{fun create.bool(var limited)
+  Float actualMax=fun float.minus(var 瞄准角度上限:var temp2)
+  Float actualMin=fun float.add(var 瞄准角度下限:var temp2)
+  Float aimedX=fun float.clamp(var aimedX:var actualMin:var actualMax)
+}
+//修正中心角度
+Float angle=fun float.minus(var aimedX:var temp2)
+Long count=fun create.long(Long 0)
+while{fun long.lt(var count:var amount)
+  Vector3 azimuth=fun creatVariable.Vector3(var angle:var aimedY:Float 0)
+  Vector3 bulletDir=act 1.this.Utils'AzimuthToVector(var azimuth)
+  Vector3 bulletDir=act 1.this.localToWorldDir(var bulletDir)
+  Struct player=act 1.this.Skills'GetFirstElement(var skillKey)
+  Bool success=act 1.this.Launcher'Launch(var type:var bulletDir:var offset:var player:var HPMul:var crit:var initHp:var useManualSpeed:var manualSpeed)
+  if{fun create.bool(var success)
+    =act 1.this.Skills'Decrease(var skillKey:var totalCost)
+    varf Float.angle.addEqual(var actualIncAngle)
+    varf Long.count.addEqual(Long 1)
+  }
+  if{fun bool.not(var success)
+    fun break()
+  }
+}
+endcode

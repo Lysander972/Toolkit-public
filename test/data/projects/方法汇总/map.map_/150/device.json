@@ -1,0 +1,26 @@
+type:210
+pos:[13.70961,0.2260462,2.418728]
+quat:[-0.7071067,-4.109316E-07,4.109318E-07,0.7071068]
+ext:
+{
+ ctrUIPos:[0.2,0.2]
+ boolTurn:true
+ manualTorque:1
+ wheelDampingRate:0.02
+ suspensionDistance:0.1
+ brakeTorque:0
+ forceAppPointDis:0.1
+ ssSpring:2
+ ssDamper:0.01
+ ssTargetPosition:0.5
+ ffStiffness:1
+ ffAsymptoteSlip:0.8
+ ffAsymptoteValue:0.5
+ ffExtremumSlip:0.4
+ ffExtremumValue:1
+ sfStiffness:1
+ sfAsymptoteSlip:0.5
+ sfAsymptoteValue:0.75
+ sfExtremumSlip:0.2
+ sfExtremumValue:1
+}

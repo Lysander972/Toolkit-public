@@ -1,0 +1,12 @@
+begincodeV2
+name:工具'角度规范
+params:Float 输入
+return:Float 输入
+lines:
+if{fun float.gt(var 输入:Float 180)
+  Float 输入=fun float.minus(var 输入:Float 360)
+}
+if{fun float.lte(var 输入:Float -180)
+  Float 输入=fun float.add(var 输入:Float 360)
+}
+endcode

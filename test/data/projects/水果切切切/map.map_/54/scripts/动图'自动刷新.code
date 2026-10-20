@@ -1,0 +1,27 @@
+begincodeV2
+name:动图'自动刷新
+lines:
+Float index=varf List.动图'维护列表.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  UIRawImage icon=varf List.动图'维护列表.readUIRawImage(var index)
+  Bool exist=varf UIRawImage.icon.exist()
+  if{fun bool.not(var exist)
+    varf List.动图'维护列表.remove(var index)
+  }
+  if{fun create.bool(var exist)
+    if{varf UIRawImage.icon.activeInHierarchy()
+      Float groupindex=varf UIRawImage.icon.customFloat(String groupindex)
+      Float frameindex=varf UIRawImage.icon.customFloat(String frameindex)
+      List namelist=varf List.动图'注册表.readList(var groupindex)
+      Float 修正后序号=varf Float.frameindex.floor()
+      String fileName=varf List.namelist.readString(var 修正后序号)
+      varf UIRawImage.icon.loadPic(var fileName)
+      varf Float.frameindex.addEqual(Float 1)
+      Float max=varf List.namelist.count()
+      Float frameindex=fun float.mod(var frameindex:var max)
+      varf UIRawImage.icon.setCustomFloat(String frameindex:var frameindex)
+    }
+  }
+}
+endcode

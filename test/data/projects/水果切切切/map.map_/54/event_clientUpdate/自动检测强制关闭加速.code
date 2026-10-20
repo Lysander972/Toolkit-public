@@ -1,0 +1,31 @@
+begincodeV2
+name:自动检测强制关闭加速
+lines:
+if{fun map.getCustomBool(String 卡顿检测标志位)
+  Bool 高帧率=fun long.gte(var 功能设置'帧率模式:Long 1)
+  if{fun bool.or(var 高帧率:var 功能开关'玩法加速)
+    String 提示=fun create.string(String )
+    if{fun long.notEqual(var 功能设置'帧率模式:Long 0)
+      Long 功能设置'帧率模式=fun create.long(Long 0)
+      act 1101.this.UI_功能面板'应用并刷新帧率模式显示()
+      act 1101.this.功能设置持久化'上传帧率模式()
+      String 提示=fun create.string(String 自动降低帧率)
+    }
+    if{fun create.bool(var 功能开关'玩法加速)
+      Bool 功能开关'玩法加速=fun create.bool(Bool 0)
+      act 1101.this.UI_功能面板'应用并刷新加速显示()
+      Bool 无其他效果=fun string.equal(var 提示:String )
+      if{fun create.bool(var 无其他效果)
+        String 提示=fun create.string(String 自动关闭加速)
+      }
+      if{fun bool.not(var 无其他效果)
+        String 提示=fun string.add(var 提示:String 并自动关闭加速)
+      }
+    }
+    if{fun string.notEqual(var 提示:String )
+      String 提示=fun string.add1(String 玩法出现卡顿,已:var 提示:String ,如需加速请关闭卡顿保护)
+      fun string.popNotify(var 提示:Float 3)
+    }
+  }
+}
+endcode

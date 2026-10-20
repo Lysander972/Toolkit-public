@@ -1,0 +1,11 @@
+begincodeV2
+name:内部'每帧刷新_更新摄像机_刷新跟随
+lines:
+if{fun create.bool(var 摄像机'自动跟随中)
+  Float 当前时间=fun time.scaleTime()
+  Float 已持续=fun float.minus(var 当前时间:var 摄像机'特写开始时间)
+  if{fun float.gte(var 已持续:Float 10)
+    Bool 摄像机'自动跟随中=fun create.bool(Bool 0)
+  }
+}
+endcode

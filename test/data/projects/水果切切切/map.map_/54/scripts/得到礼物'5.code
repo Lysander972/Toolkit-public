@@ -1,0 +1,80 @@
+begincodeV2
+color:255,0,0
+name:得到礼物'5
+params:Long count,Struct player
+lines:
+if{fun bool.not(var init)
+  Long context=act 1101.this.GetContextId()
+  if{fun long.equal(var context:Long 1)
+    Long price=fun create.long(Long 99)
+    Float 时间或距离=varf Long.price.toFloat()
+    Float 时间或距离=fun float.multiply(var 时间或距离:Float 0.1)
+  }
+  if{fun long.equal(var context:Long 2)
+    Long price=fun create.long(Long 199)
+    Float 时间或距离=varf Long.price.toFloat()
+    Float 时间或距离=fun float.multiply(var 时间或距离:Float 0.05)
+  }
+  String texture=act 1101.this.平台适配器'得到礼物图名(Long 4)
+  Float size=fun create.float(Float 2)
+  Long mode=fun create.long(Long 2)
+  Bool 累积充能=fun bool.and(var 模式'启用充能:var 模式'Tiktok)
+  Bool 累积自动点赞=fun create.bool(var 模式'Tiktok)
+  Bool init=fun create.bool(Bool 1)
+}
+act 1101.this.礼物音效(Float 1)
+act 1101.this.Game'消费增加积分(var price:var count:var player)
+Long team=varf Struct.player.getLong(String team:Bool 1)
+if{fun long.equal(var team:Long 1)
+  if{fun create.bool(var 场外功能设置'启用加时)
+    act 1101.this.加时'加秒数(var 时间或距离:var count:var player)
+  }
+  //累积付费升级进度
+  Long 总价值=fun long.multiply(var count:var price)
+  act 1101./Scenario.炮塔'攻方放置或升级(var player:var 总价值)
+  //累积队伍礼物充能
+  if{fun create.bool(var 累积充能)
+    Long 充能=fun long.multiply(var count:var price)
+    act 1101./Scenario.技能'添加到攻方公共(String 11000:var 充能:var player)
+  }
+  //施加等同于礼物的效果
+  String text=act 1101.this.施加礼物效果'蓝5(var count:var player:Bool 1)
+  //累积自动点赞强度
+  if{fun create.bool(var 累积自动点赞)
+    Long 自动点赞强度=fun long.multiply(var count:var price)
+    act 1101./Scenario.技能'添加到攻方玩家炮塔(String 10000:var 自动点赞强度:var player)
+  }
+  //产生送礼特效
+  act 1101.this.送礼特效'上方(var player:var texture:var size)
+  //播报
+  act 1101.this.播报'礼物(var text:var player:var mode:var 总价值)
+  //首次检查
+  act 1101.this.得到播报'上方送礼检查(var player)
+}
+if{fun long.equal(var team:Long 2)
+  if{fun create.bool(var 场外功能设置'启用加时)
+    act 1101.this.加时'加米数(var 时间或距离:var count:var player)
+  }
+  //累积付费升级进度
+  Long 总价值=fun long.multiply(var count:var price)
+  act 1101./Scenario.炮塔'守方放置或升级(var player:var 总价值)
+  //累积队伍礼物充能
+  if{fun create.bool(var 累积充能)
+    Long 充能=fun long.multiply(var count:var price)
+    act 1101./Scenario.技能'添加到守方公共(String 21000:var 充能:var player)
+  }
+  //施加等同于礼物的效果
+  String text=act 1101.this.施加礼物效果'红5(var count:var player:Bool 1)
+  //累积自动点赞强度
+  if{fun create.bool(var 累积自动点赞)
+    Long 自动点赞强度=fun long.multiply(var count:var price)
+    act 1101./Scenario.技能'添加到守方玩家炮塔(String 20000:var 自动点赞强度:var player)
+  }
+  //播报
+  act 1101.this.播报'礼物(var text:var player:var mode:var 总价值)
+  //产生送礼特效
+  act 1101.this.送礼特效'下方(var player:var texture:var size)
+  //首次检查
+  act 1101.this.得到播报'下方送礼检查(var player)
+}
+endcode

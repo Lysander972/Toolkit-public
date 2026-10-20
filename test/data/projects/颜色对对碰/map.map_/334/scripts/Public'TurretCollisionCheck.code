@@ -1,0 +1,45 @@
+begincodeV2
+color:8,0,255
+name:Public'TurretCollisionCheck
+comment:炮塔反弹
+params:Vector3 $pos
+return:Bool $alive
+lines:
+if{fun create.bool(var Turret)
+  Float $now=fun time.time()
+  if{fun float.gte(var $now:var TurretRebondCD)
+    Long $size=act 1.this.Public'GetMapSize()
+    Float $sizeF=varf Long.$size.toFloat()
+    Vector3 $offset=fun creatVariable.Vector3(var $sizeF:Float 0:var $sizeF)
+    Vector3 $offset=fun vector3.minus(var $offset:Vector3 1,0,1)
+    if{fun long.equal(var Faction:Long 1)
+      Vector3 $offset=fun vector3.multilply(var $offset:Float -0.5)
+    }
+    if{fun long.equal(var Faction:Long 2)
+      Vector3 $offset=fun vector3.multilply(var $offset:Float 0.5)
+    }
+    Vector3 $offset=fun vector3.add(var $offset:var GlobalOffset)
+    Vector3 $selfPos=act 1.this.getPosition()
+    varf Vector3.$selfPos.setY(Float 0)
+    Vector3 direction=fun vector3.minus(var $offset:var $selfPos)
+    Vector3 direction=varf Vector3.direction.setLength(var SpeedExp)
+    Vector3 direction=fun vector3.multilply(var direction:Float 1.1)
+    act 1.this.addForce(var direction:Enum 2)
+    Device $this=act 1.this.getDevice()
+    varf Device.$this.laterCallFun0(String SpeedFix:Float 0)
+    Float TurretRebondCD=fun float.add(var $now:Float 3)
+    fun break()
+    //原本的方法
+    varf Vector3.$pos.setY(Float 0)
+    Vector3 $selfPos=act 1.this.getPosition()
+    varf Vector3.$selfPos.setY(Float 0)
+    Vector3 direction=fun vector3.minus(var $selfPos:var $pos)
+    Vector3 direction=varf Vector3.direction.setLength(var SpeedExp)
+    Vector3 direction=fun vector3.multilply(var direction:Float 1.1)
+    act 1.this.addForce(var direction:Enum 2)
+    Device $this=act 1.this.getDevice()
+    varf Device.$this.laterCallFun0(String SpeedFix:Float 0)
+    Float TurretRebondCD=fun float.add(var $now:Float 3)
+  }
+}
+endcode

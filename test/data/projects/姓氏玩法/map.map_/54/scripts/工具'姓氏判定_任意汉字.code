@@ -1,0 +1,43 @@
+begincodeV2
+color:255,255,255
+name:工具'姓氏判定_任意汉字
+params:String 待判定
+return:String 找到姓
+lines:
+String 找到姓=fun create.string(String )
+String 有效字符串=fun create.string(String )
+Float 字数=varf String.待判定.length()
+if{fun float.lte(var 字数:Float 2)
+  fun break()
+}
+Float 截取长度=fun float.minus(var 字数:Float 2)
+String 有效字符串=varf String.待判定.substring(Float 2:var 截取长度)
+Long 尝试转换结果=varf String.有效字符串.toLong()
+if{fun long.notEqual(var 尝试转换结果:Long 0)
+  String 转换结果字符串=fun create.string(var 尝试转换结果)
+  if{fun string.equal(var 转换结果字符串:var 有效字符串)
+    Long 队伍id=fun long.minus(var 尝试转换结果:Long 1)
+    String 字符串id=fun create.string(var 队伍id)
+    if{varf Dict.局内'队伍_索引_id.contains(var 字符串id)
+      Struct 选中队伍=varf Dict.局内'队伍_索引_id.readStruct(var 字符串id:Bool 1)
+      String 找到姓=act 1101.this.队伍结构'读取_name(var 选中队伍)
+      fun break()
+    }
+  }
+}
+//在已知姓氏表中查找复姓
+String 找到姓=act 1101.this.工具'可用汉字判定_是预设姓氏(var 有效字符串)
+if{fun string.notEqual(var 找到姓:String )
+  fun break()
+}
+//排除黑名单
+if{act 1101.this.工具'可用汉字判定_是黑名单(var 有效字符串)
+  fun break()
+}
+//最后直接取第一个字符,只要是汉字就可通过
+String 有效字符串=varf String.有效字符串.getChar(Float 0)
+Bool 是汉字=act 1101.this.工具'字符串_是汉字(var 有效字符串)
+if{fun create.bool(var 是汉字)
+  String 找到姓=fun create.string(var 有效字符串)
+}
+endcode

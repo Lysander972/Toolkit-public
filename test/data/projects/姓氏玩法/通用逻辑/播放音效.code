@@ -1,0 +1,8 @@
+begincodeV2
+guid:c77f73131ec54daf86b323eab9670f25
+color:57,255,0
+name:播放音效
+params:String 文件,Float 音量
+lines:
+act 1.this.callMapFunc2(String 主界面.播放音效:var 文件:var 音量)
+endcode

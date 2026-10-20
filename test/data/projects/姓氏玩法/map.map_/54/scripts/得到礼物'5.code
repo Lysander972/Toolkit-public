@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:得到礼物'5
+comment:能量电池
+params:Long 数量,Struct 玩家
+lines:
+act 1101.this.工具'礼物音效(Float 1)
+act 1101.this.玩家结构'设置_增加待处理效果层数(var 玩家:String 能量电池:var 数量)
+endcode

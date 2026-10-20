@@ -1,0 +1,22 @@
+begincodeV2
+color:8,0,255
+name:Public'OnEnabled
+comment:启用对象时
+params:Long $faction,Float $maxHP,Float $buleM0,Float $buleM1,Float $redM0,Float $redM1,Vector3 $globalOffset,Float $initialMax,Float $occupiedMax
+lines:
+Float maxHP=fun create.float(var $maxHP)
+/*Long Faction=fun create.long(Long -1)
+/*Float HP=fun create.float(Float -1)
+Bool Occupied=fun create.bool(Bool 0)
+Float BlueMultiple0=fun create.float(var $buleM0)
+Float BlueMultiple1=fun create.float(var $buleM1)
+Float RedMultiple0=fun create.float(var $redM0)
+Float RedMultiple1=fun create.float(var $redM1)
+Float InitialMax=fun create.float(var $initialMax)
+Float OccupiedMax=fun create.float(var $occupiedMax)
+act 1.this.Lifting'Reset()
+act 1.this.Public'Occupy(var $faction)
+varf Mech.Self.setActive(Bool 1)
+varf Mech.Collider.setActive(Bool 1)
+act 1.this.UpdateGlobalOffset(var $globalOffset)
+endcode

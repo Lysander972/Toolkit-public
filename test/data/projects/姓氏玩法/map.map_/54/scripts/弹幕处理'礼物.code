@@ -1,0 +1,90 @@
+begincodeV2
+color:255,255,255
+name:弹幕处理'礼物
+params:Long 礼物数量,String 礼物类型,Struct 玩家
+lines:
+if{fun create.bool(var 局内'已结算)
+  fun break()
+}
+if{fun create.bool(var 局内功能设置'自动下场)
+  act 1101.this.玩家'自动下场检查(var 玩家)
+}
+Bool 首送=act 1101.this.玩家结构'读取_firstgift(var 玩家)
+if{fun bool.not(var 首送)
+  act 1101.this.玩家结构'设置_firstgift(var 玩家:Bool 1)
+  String 显示礼物名=fun create.string(var 礼物类型)
+  if{fun create.bool(var 模式'抖音)
+    String 显示礼物名=act 1101.this.平台适配器'抖音礼物名称映射(var 显示礼物名)
+  }
+  if{fun create.bool(var 模式'快手)
+    String 显示礼物名=act 1101.this.平台适配器'快手礼物名称映射(var 显示礼物名)
+  }
+  String 播报=fun string.Format1(String 首个礼物\n再赠送%1:var 显示礼物名)
+  act 1101.this.播报_检查或新建'礼物(var 播报:Long 1:var 玩家:Long 10:Bool 0)
+  varf Long.礼物数量.addEqual(Long 1)
+}
+if{fun string.equal(var 礼物类型:String 仙女棒)
+  act 1101.this.得到礼物'1(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 1:var 玩家:Float 2)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 1)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 能力药丸)
+  act 1101.this.得到礼物'2(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 2:var 玩家:Float 2)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 40)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 魔法镜)
+  act 1101.this.得到礼物'3(var 礼物数量:var 玩家)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  varf Long.未处理消费.addEqual(Long 19)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 19)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 甜甜圈)
+  act 1101.this.得到礼物'4(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 4:var 玩家:Float 3)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 50)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 能量电池)
+  act 1101.this.得到礼物'5(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 5:var 玩家:Float 3)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 400)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 恶魔炸弹)
+  act 1101.this.得到礼物'6(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 6:var 玩家:Float 4)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 200)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 派对话筒)
+  act 1101.this.得到礼物'7(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 7:var 玩家:Float 4)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 1200)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+if{fun string.equal(var 礼物类型:String 神秘空投)
+  act 1101.this.得到礼物'8(var 礼物数量:var 玩家)
+  act 1101.this.礼物半屏特效'注册(Long 8:var 玩家:Float 5)
+  Long 未处理消费=act 1101.this.玩家结构'读取_unhandledConsume(var 玩家)
+  Long 增加数量=fun long.multiply(var 礼物数量:Long 500)
+  varf Long.未处理消费.addEqual(var 增加数量)
+  act 1101.this.玩家结构'设置_unhandledConsume(var 玩家:var 未处理消费)
+}
+endcode

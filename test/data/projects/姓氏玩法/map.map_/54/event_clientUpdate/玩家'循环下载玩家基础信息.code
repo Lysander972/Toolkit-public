@@ -1,0 +1,16 @@
+begincodeV2
+color:255,255,255
+name:玩家'循环下载玩家基础信息
+comment:下载玩家信息
+lines:
+//这里每次处理一个玩家的数据，这里等待就不会阻塞弹幕消息的处理了
+Float N=varf List.局内'玩家_信息下载队列.count()
+if{fun float.gt(var N:Float 0)
+  Struct 玩家=varf List.局内'玩家_信息下载队列.readStruct(Float 0)
+  varf List.局内'玩家_信息下载队列.remove(Float 0)
+  String id=act 1101.this.玩家结构'读取_id(var 玩家)
+  async Struct 排行榜信息=fun danmu.getByID(var id)
+  act 1101.this.玩家'排行榜信息填充(var 玩家:var 排行榜信息)
+  //下载完成后,会由修改属性触发完整性检查,进而触发入场
+}
+endcode

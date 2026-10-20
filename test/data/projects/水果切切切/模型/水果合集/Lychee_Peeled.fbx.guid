@@ -1,0 +1,30 @@
+guid:8a78e287b8484b99a6fef1014159f574
+meshes:
+[
+ {
+  n:Lychee_Peeled
+ }
+]
+matFolderName:7c558742dda54685aabbe40e504943b2
+Albedo.UID:7c558742dda54685aabbe40e504943b2
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0,0.1164184,7.450581E-09]
+bounds.size:[0.2304,0.2328369,0.2303999]

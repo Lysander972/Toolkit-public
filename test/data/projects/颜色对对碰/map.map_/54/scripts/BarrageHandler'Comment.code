@@ -1,0 +1,50 @@
+begincodeV2
+name:BarrageHandler'Comment
+params:Dict $msgObj
+lines:
+String $uid=varf Dict.$msgObj.readString(String uid:Bool 0)
+String $word=varf Dict.$msgObj.readString(String word:Bool 0)
+if{fun create.bool(var IsGM)
+  =act 1101.this.测试'模拟礼物(var $word:var $msgObj)
+}
+Struct $player=varf Dict.PlayerMap.readStruct(var $uid:Bool 0)
+Bool $exist=varf Struct.$player.exist()
+if{fun create.bool(var $exist)
+  Long $team=varf Struct.$player.getLong(String team:Bool 1)
+  if{fun long.lt(var $team:Long 1)
+    =act 1101.this.Player'SelectFaction(var $word:var $player)
+    fun break()
+  }
+/*  if{fun string.equal(var $word:String 重置地图)
+/*    act 1101.this.Button_Game'ResetMap()
+  }
+  if{fun create.bool(var IsGM)
+    //gm模式为了方便测试，允许中途改变阵营
+    if{fun string.equal(var $word:String 1)
+      =act 1101.this.Player'SelectFaction(var $word:var $player)
+    }
+    if{fun string.equal(var $word:String 2)
+      =act 1101.this.Player'SelectFaction(var $word:var $player)
+    }
+  }
+  if{fun string.equal(var $word:String 6)
+    //评论6替代点赞，因为点赞有频率限制
+    Struct $player=act 1101.this.Player'InfoAutoFill(var $player:var $msgObj)
+    act 1101.this.得到礼物'点赞(Long 10:var $player)
+  }
+}
+if{fun bool.not(var $exist)
+  Bool 是1=fun string.equal(var $word:String 1)
+  Bool 是2=fun string.equal(var $word:String 2)
+  if{fun bool.or(var 是1:var 是2)
+    String $nickname=varf Dict.$msgObj.readString(String name:Bool 0)
+    Struct $player=act 1101.this.Player'New(var $uid:var $nickname:String )
+    =act 1101.this.Player'SelectFaction(var $word:var $player)
+  }
+  if{fun string.equal(var $word:String 6)
+    //评论6替代点赞，因为点赞有频率限制
+    Struct $player=act 1101.this.Player'InfoAutoFill(var $player:var $msgObj)
+    act 1101.this.得到礼物'点赞(Long 10:var $player)
+  }
+}
+endcode

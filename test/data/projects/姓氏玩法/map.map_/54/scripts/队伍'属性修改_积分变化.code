@@ -1,0 +1,9 @@
+begincodeV2
+color:255,255,255
+name:队伍'属性修改_积分变化
+params:Struct 队伍,Long 增加数量
+lines:
+Long 原积分=act 1101.this.队伍结构'读取_score(var 队伍)
+Long 新积分=fun long.add(var 原积分:var 增加数量)
+act 1101.this.队伍结构'设置_score(var 队伍:var 新积分)
+endcode

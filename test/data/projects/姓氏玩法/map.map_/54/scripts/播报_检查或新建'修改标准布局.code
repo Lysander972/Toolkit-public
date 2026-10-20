@@ -1,0 +1,19 @@
+begincodeV2
+color:255,255,255
+name:播报_检查或新建'修改标准布局
+params:Canvas 播报布局,Long 增加数量
+lines:
+//得到根节点
+UIRect 根节点=varf Canvas.播报布局.readUIRect(String background)
+//更新目标数量
+act 1101.this.播报元素'重置数字动效计时(var 播报布局)
+Float 当前数量=varf UIRect.根节点.customFloat(String 当前数量)
+varf UIRect.根节点.setCustomFloat(String 初始数量:var 当前数量)
+Float 原数量=varf UIRect.根节点.customFloat(String 目标数量)
+Float 增加数量F=varf Long.增加数量.toFloat()
+varf Float.原数量.addEqual(var 增加数量F)
+varf UIRect.根节点.setCustomFloat(String 目标数量:var 原数量)
+//缩放突出显示,启用并重置时间
+act 1101.this.播报元素'重置展示时间(var 播报布局)
+act 1101.this.播报元素'重置缩放动效计时(var 播报布局)
+endcode

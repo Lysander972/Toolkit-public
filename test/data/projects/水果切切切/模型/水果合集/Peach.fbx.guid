@@ -1,0 +1,32 @@
+guid:8ad479372a794b2bab60f401ccc7f715
+meshes:
+[
+ {
+  n:Peach
+ }
+]
+matFolderName:ff1f68236b4d4edb8a30b22624474ee6
+Albedo.UID:ff1f68236b4d4edb8a30b22624474ee6
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+collide:3
+OriginType:1
+bounds.center:[0,0,0]
+bounds.size:[0.3096413,0.318063,0.3194283]

@@ -1,0 +1,20 @@
+begincodeV2
+name:播放效果
+params:Float 大小,Float 持续时长,Color 颜色
+lines:
+act 131.1.show(Bool 1)
+/*Color 透明=varf Color.颜色.copy()
+/*varf Color.透明.setA(Float 0)
+Float 已用时间=fun create.float(Float 0)
+while{fun float.lt(var 已用时间:var 持续时长)
+  Float 时间比例=fun float.division(var 已用时间:var 持续时长)
+  Float 缩放=fun float.SmoothStep(Float 0.01:var 大小:var 时间比例)
+  act 131.1.setScale(var 缩放)
+  Color 显示颜色=varf Color.颜色.lerp(Color 0,0,0,0:var 时间比例)
+  act 131.1.setColor(var 显示颜色)
+  delay fun create.float(Float 0)
+  Float 间隔=fun time.deltaTime()
+  varf Float.已用时间.addEqual(var 间隔)
+}
+act 131.1.show(Bool 0)
+endcode

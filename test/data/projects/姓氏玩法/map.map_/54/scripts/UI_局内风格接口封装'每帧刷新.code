@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局内风格接口封装'每帧刷新
+lines:
+act 1101.this.UI_局内风格面板'每帧刷新()
+varf Device.局外功能设置'使用风格实现.callFun0(String UI_局内风格接口'每帧刷新)
+endcode

@@ -1,0 +1,105 @@
+begincodeV2
+color:104,0,255
+name:Bullet'DamageEffect
+comment:受击特效
+params:Long $type,Vector3 $pos
+lines:
+fun break()
+//1000s
+if{fun long.equal(var $type:Long 1000)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.5:Float 3:Color 157,26,46,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 146,26,18,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1001)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.5:Float 3:Color 60,9,14,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 60,9,14,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1002)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.5:Float 3:Color 255,152,93,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 255,152,93,255:Float 1:Bool 0)
+}
+//1100s
+if{fun long.equal(var $type:Long 1100)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.6:Float 3:Color 157,186,27,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 241,230,199,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1110)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.6:Float 3:Color 135,130,16,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 241,230,199,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1120)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.6:Float 3:Color 192,36,36,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 241,230,199,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1130)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.6:Float 3:Color 146,26,18,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.6:Float 1:Color 241,230,199,255:Float 1:Bool 0)
+}
+//1200s
+if{fun long.equal(var $type:Long 1200)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.7:Float 4:Color 235,125,46,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.7:Float 1:Color 248,192,50,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1210)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.7:Float 4:Color 96,12,16,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.7:Float 1:Color 201,28,42,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1220)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.7:Float 4:Color 163,169,30,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.7:Float 1:Color 255,237,200,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1230)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.7:Float 4:Color 239,105,1,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.7:Float 1:Color 252,160,23,255:Float 1:Bool 0)
+}
+//1300s
+if{fun long.equal(var $type:Long 1300)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 137,149,18,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 248,240,211,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1310)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 138,11,32,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 248,240,211,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1320)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 211,156,6,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 248,240,211,255:Float 1:Bool 0)
+}
+if{fun long.equal(var $type:Long 1330)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 211,156,6,255:Float 1:Bool 0)
+  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 248,240,211,255:Float 1:Bool 0)
+}
+//1350
+/*if{fun long.equal(var $type:Long 1350)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 1:Color 59,95,23,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 232,46,41,255:Float 1:Bool 0)
+}
+//1400s
+/*if{fun long.equal(var $type:Long 1400)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 239,105,1,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 254,99,76,255:Float 1:Bool 0)
+}
+/*if{fun long.equal(var $type:Long 1410)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 164,173,111,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 255,148,60,255:Float 1:Bool 0)
+}
+/*if{fun long.equal(var $type:Long 1420)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 108,70,42,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 225,225,225,255:Float 1:Bool 0)
+}
+/*if{fun long.equal(var $type:Long 1430)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 5:Color 115,160,57,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 255,255,255,255:Float 1:Bool 0)
+}
+//1500s
+/*if{fun long.equal(var $type:Long 1500)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 1:Color 59,95,23,255:Float 1:Bool 0)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 3:Color 15,31,3,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 232,46,41,255:Float 1:Bool 0)
+}
+//1600s
+/*if{fun long.equal(var $type:Long 1600)
+/*  act 336./碎片粒子发射器.发射碎片(var $pos:Float 0.85:Float 1:Color 59,95,23,255:Float 1:Bool 0)
+/*  act 336./果汁粒子发射器.发射果汁(var $pos:Float 0.85:Float 1:Color 232,46,41,255:Float 1:Bool 0)
+}
+endcode

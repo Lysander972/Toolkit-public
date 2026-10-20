@@ -1,0 +1,30 @@
+guid:40926237e4d8477d965b239e54731235
+meshes:
+[
+ {
+  n:Watermelon_Slice
+ }
+]
+matFolderName:d4d3411af101482eb60059e6b5caae56
+Albedo.UID:d4d3411af101482eb60059e6b5caae56
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[0.1436837,0.05472161,-0.1436837]
+bounds.size:[0.3082482,0.1094432,0.3082481]

@@ -1,0 +1,30 @@
+guid:4a5ed51ca20943008e098ee01d68557e
+meshes:
+[
+ {
+  n:Pomegranate
+ }
+]
+matFolderName:0096fb6fa33b491a9b89544dbe494dc5
+Albedo.UID:0096fb6fa33b491a9b89544dbe494dc5
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-1.490116E-08,0.2017165,1.490116E-08]
+bounds.size:[0.3957616,0.4034331,0.3957616]

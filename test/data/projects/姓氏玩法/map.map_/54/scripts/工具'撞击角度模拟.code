@@ -1,0 +1,16 @@
+begincodeV2
+name:工具'撞击角度模拟
+params:Float 当前角度,Float 目标角度
+return:Float 撞击角度
+lines:
+Float 角度差=act 1101.this.工具'变换计算(var 当前角度:var 目标角度)
+Float 角度差绝对值=fun float.abs(var 角度差)
+Float 变换=fun float.minus(var 目标角度:var 当前角度)
+Float 变换=act 1101.this.工具'角度标准化(var 变换)
+Float 撞击角度=fun float.add(var 目标角度:var 变换)
+Float 撞击角度=act 1101.this.工具'角度标准化(var 撞击角度)
+if{fun float.gt(var 角度差绝对值:Float 90)
+  Float 撞击角度=fun float.add(var 当前角度:Float 180)
+  Float 撞击角度=act 1101.this.工具'角度标准化(var 撞击角度)
+}
+endcode

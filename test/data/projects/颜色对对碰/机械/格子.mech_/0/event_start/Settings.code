@@ -1,0 +1,12 @@
+begincodeV2
+name:Settings
+lines:
+act 1.this.setLayer(Float 0)
+act 1.this.show(Bool 1)
+act 1.this.enableCollide(Bool 0)
+act 362.4.setLayer(Float 0)
+act 362.4.show(Bool 1)
+act 362.4.enableCollide(Bool 0)
+Float LiftingTarget=fun create.float(Float 0)
+Float RotateRate=fun create.float(Float 0.5)
+endcode

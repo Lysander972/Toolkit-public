@@ -1,0 +1,31 @@
+guid:6a9f1bcc482e422fb8d30edd0dcca596
+meshes:
+[
+ {
+  n:SM_Prop_Medical_Cart_02
+ }
+]
+matFolderName:353d7283ba594d7dbaf5143c94f5637f
+Albedo.UID:353d7283ba594d7dbaf5143c94f5637f
+Metal.UID:be00082197844943b34f99511b0936c4
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[-2.980232E-08,0.811101,0]
+bounds.size:[0.5506961,1.622202,0.5588074]

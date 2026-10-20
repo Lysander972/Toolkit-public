@@ -1,0 +1,10 @@
+begincodeV2
+name:Public'Open
+lines:
+fun break()
+act 362./1.show(Bool 1)
+act 362./2.show(Bool 1)
+act 362./3.show(Bool 1)
+act 1100.6.switchCollider(Bool 1)
+act 22.7.enableCollide(Bool 1)
+endcode

@@ -1,0 +1,10 @@
+type:144
+pos:[4.81143,0,1.749735]
+quat:[-0.7071068,0,0,0.7071068]
+ext:
+{
+ color:[0.2117647,0.3529412,1.498039,1]
+ startLifetimeMultiplier:0.5
+ DisAmount:0.2
+ DisorbRate:0.1
+}

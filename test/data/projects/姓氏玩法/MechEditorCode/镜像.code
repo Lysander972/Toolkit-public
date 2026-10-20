@@ -1,0 +1,32 @@
+begincodeV2
+skip:1
+name:镜像
+lines:
+Device dev=fun mech.focusDevice()
+if{fun keyboard.keyHeld2(Enum 6)
+  if{fun mech.deviceNotNull(var dev)
+    Vector3 坐标=dvf dev.Device.getPos()
+    Float x=varf Vector3.坐标.x()
+    Float x=fun float.multiply(var x:Float -1)
+    Float y=varf Vector3.坐标.y()
+    Float z=varf Vector3.坐标.z()
+    Vector3 新坐标=fun creatVariable.Vector3(var x:var y:var z)
+    Vector3 向前=dvf dev.Device.localToWorldDir(Vector3 0,0,-1)
+    Float x=varf Vector3.向前.x()
+    Float x=fun float.multiply(var x:Float -1)
+    Float y=varf Vector3.向前.y()
+    Float z=varf Vector3.向前.z()
+    Vector3 新向前=fun creatVariable.Vector3(var x:var y:var z)
+    Vector3 上=dvf dev.Device.localToWorldDir(Vector3 0,1,0)
+    Float x=varf Vector3.上.x()
+    Float x=fun float.multiply(var x:Float -1)
+    Float y=varf Vector3.上.y()
+    Float z=varf Vector3.上.z()
+    Vector3 新向上=fun creatVariable.Vector3(var x:var y:var z)
+    Device dev1=fun mech.clone(var dev)
+    dvf dev1.Device.setRot(var 新向前:var 新向上)
+    dvf dev1.Device.setPos(var 新坐标)
+    fun script.skip()
+  }
+}
+endcode

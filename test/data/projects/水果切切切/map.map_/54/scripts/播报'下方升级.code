@@ -1,0 +1,9 @@
+begincodeV2
+color:255,0,228
+name:播报'下方升级
+params:String text,Struct player
+lines:
+Canvas canvas=act 1101.this.播报元素'标准布局填充(var player:var text:Long 1:Bool 0:Float 0.8)
+varf List.播报'等待队列下.add(var canvas)
+act 1101.this.播报元素'注册(var canvas:Float 100:Float 3)
+endcode

@@ -1,0 +1,11 @@
+begincodeV2
+name:发射果汁
+params:Vector3 p,Float scale,Float count,Color color,Float duration,Bool 简化
+lines:
+Vector3 p=act 336.this.wordToLocalPos(var p)
+act 336.this.setPosOffset(var p)
+if{fun create.bool(var 简化)
+  Float duration=fun float.multiply(var duration:Float 0.5)
+}
+act 336.this.shootDir4(Vector3 0,0,0.0001:String 特效:var scale:var count:var color:var duration)
+endcode

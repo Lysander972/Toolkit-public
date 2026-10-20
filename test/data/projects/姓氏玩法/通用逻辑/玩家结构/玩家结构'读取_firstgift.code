@@ -1,0 +1,10 @@
+begincodeV2
+guid:a09b63a16fdb44568b602d9da25075b5
+color:255,255,255
+name:玩家结构'读取_firstgift
+comment:读取玩家是否已经送出首个礼物
+params:Struct 结构
+return:Bool ret
+lines:
+Bool ret=varf Struct.结构.getBool(String firstgift:Bool 0)
+endcode

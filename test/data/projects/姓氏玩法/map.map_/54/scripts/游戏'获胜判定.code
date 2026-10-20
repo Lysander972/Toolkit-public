@@ -1,0 +1,28 @@
+begincodeV2
+color:255,255,255
+name:游戏'获胜判定
+comment:如果某一队达成获胜条件将触发结算
+lines:
+if{fun create.bool(var 局内'游戏中)
+  Float 剩余时间=act 1101.this.局内逻辑'获取剩余时间()
+  //经典规则,倒计时结束获胜,全部模式都有这个规则
+  if{fun float.lte(var 剩余时间:Float 0)
+    act 1101.this.游戏'结算(var 局内'全局_value最大id)
+  }
+  //衍生规则1,触碰某个值可以率先获胜
+  if{fun long.equal(var 局内_游戏规则'获胜规则:Long 1)
+    Float 目标分数F=fun float.multiply1(var 局内_游戏规则'本局时长:Float 100:Float 1024)
+    Long 目标分数=varf Float.目标分数F.toLong()
+    if{fun long.gte(var 局内'全局_最大value:var 目标分数)
+      act 1101.this.游戏'结算(var 局内'全局_value最大id)
+    }
+  }
+  //衍生规则2,压倒所有对手可以率先获胜
+  if{fun long.equal(var 局内_游戏规则'获胜规则:Long 2)
+    Float 分数占比=fun long.division(var 局内'全局_最大value:var 局内'全局_SUM_value)
+    if{fun float.gte(var 分数占比:Float 0.5)
+      act 1101.this.游戏'结算(var 局内'全局_value最大id)
+    }
+  }
+}
+endcode

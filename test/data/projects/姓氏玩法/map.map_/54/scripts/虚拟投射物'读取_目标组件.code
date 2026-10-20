@@ -1,0 +1,7 @@
+begincodeV2
+name:虚拟投射物'读取_目标组件
+params:UIRect 虚拟投射物
+return:UIRect 目标组件
+lines:
+UIRect 目标组件=varf UIRect.虚拟投射物.customUIRect(String 目标组件)
+endcode

@@ -1,0 +1,91 @@
+begincodeV2
+color:255,255,255
+name:UI_局外主菜单'主菜单_进入
+lines:
+Bool 是GM=act 1101./主界面.工具'是GM()
+Bool 启用风格3=fun create.bool(var 是GM)
+Bool 启用风格4=fun create.bool(var 是GM)
+Bool 启用风格2=fun create.bool(Bool 1)
+Bool 启用风格3=fun create.bool(Bool 1)
+Bool 启用风格4=fun create.bool(Bool 1)
+//通用结构@1首先检测是否已经在此界面,是则跳过.随后退出其他界面
+if{act 1101.this.UI_局外主菜单'是否本界面()
+  fun break()
+}
+act 1101.this.UI_局内'游戏主界面_退出()
+act 1101.this.UI_局外结算页面'结算界面_退出()
+//更新页面枚举
+Long UI'状态枚举=fun create.long(Long 0)
+//生成并重置UI
+Bool 已创建=varf Canvas.UI_局外主菜单'布局.exist()
+if{fun bool.not(var 已创建)
+  //2D模式创建UI
+  fun ui.2dmode(Bool 1)
+/*  Canvas UI_局外主菜单'布局=fun create.canvas(Canvas guid@1e7be104ecabd42d29faa51dc32cc2d5e)
+  Canvas UI_局外主菜单'布局=fun create.canvas(Canvas guid@16215837a3f3b40fbac8dd44f95f3b2ab)
+  String 禁用按钮填充=fun create.string(String 更多风格\n<size@324>开发中</size>)
+  //版本号显示
+  UILabel 版本号框=varf Canvas.UI_局外主菜单'布局.readUILabel(String 版本号框)
+  String 原始内容=fun version()
+  String 显示内容=fun string.Format1(String 引擎版本 %1:var 原始内容)
+  varf UILabel.版本号框.text(var 显示内容)
+  varf UILabel.版本号框.active(Bool 1)
+  //平台名称显示
+  UILabel 平台框=varf Canvas.UI_局外主菜单'布局.readUILabel(String 平台框)
+  String 原始内容=fun platform()
+  String 显示内容=fun string.Format1(String 平台 %1:var 原始内容)
+  varf UILabel.平台框.text(var 显示内容)
+  varf UILabel.平台框.active(Bool 0)
+  //读取各按钮并添加回调
+  //3个分辨率按钮
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/分辨率区/排版范围/1:String UI_局外主菜单'按钮_分辨率:Bool 1:Long 0)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/分辨率区/排版范围/2:String UI_局外主菜单'按钮_分辨率:Bool 1:Long 1)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/分辨率区/排版范围/3:String UI_局外主菜单'按钮_分辨率:Bool 1:Long 2)
+  //2个玩法模式按钮
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/玩法模式区/排版范围/1:String UI_局外主菜单'按钮_玩法模式:Bool 1:Long 0)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/玩法模式区/排版范围/2:String UI_局外主菜单'按钮_玩法模式:Bool 0:Long 1)
+  //3个玩法时长按钮
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/玩法时长区/排版范围/1:String UI_局外主菜单'按钮_玩法时长:Bool 1:Long 0)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/玩法时长区/排版范围/2:String UI_局外主菜单'按钮_玩法时长:Bool 1:Long 1)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/玩法时长区/排版范围/3:String UI_局外主菜单'按钮_玩法时长:Bool 1:Long 2)
+  //3个获胜规则按钮
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/获胜规则区/排版范围/1:String UI_局外主菜单'按钮_获胜规则:Bool 1:Long 0)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/获胜规则区/排版范围/2:String UI_局外主菜单'按钮_获胜规则:Bool 0:Long 1)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/获胜规则区/排版范围/3:String UI_局外主菜单'按钮_获胜规则:Bool 0:Long 2)
+  //4个风格设置按钮
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/风格设置区/排版范围/1:String UI_局外主菜单'按钮_风格设置:Bool 1:Long 0)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/风格设置区/排版范围/2:String UI_局外主菜单'按钮_风格设置:var 启用风格2:Long 1)
+  //对于15分钟模式的说明
+  if{fun create.bool(var 是GM)
+    UILabel 文本框1=varf Canvas.UI_局外主菜单'布局.readUILabel(String 菜单框/排版区/玩法时长区/排版范围/1/标题)
+    varf UILabel.文本框1.text(String <size@320>debugmode</size><size@318>\n一局时间为190秒</size>)
+  }
+  //未启用风格的掩盖
+  if{fun bool.not(var 启用风格2)
+    UILabel 文本框1=varf Canvas.UI_局外主菜单'布局.readUILabel(String 菜单框/排版区/风格设置区/排版范围/2/标题)
+    varf UILabel.文本框1.text(var 禁用按钮填充)
+  }
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/风格设置区/排版范围/3:String UI_局外主菜单'按钮_风格设置:var 启用风格3:Long 2)
+  if{fun bool.not(var 启用风格3)
+    UILabel 文本框1=varf Canvas.UI_局外主菜单'布局.readUILabel(String 菜单框/排版区/风格设置区/排版范围/3/标题)
+    varf UILabel.文本框1.text(var 禁用按钮填充)
+  }
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/风格设置区/排版范围/4:String UI_局外主菜单'按钮_风格设置:var 启用风格4:Long 3)
+  if{fun bool.not(var 启用风格4)
+    UILabel 文本框1=varf Canvas.UI_局外主菜单'布局.readUILabel(String 菜单框/排版区/风格设置区/排版范围/4/标题)
+    varf UILabel.文本框1.text(var 禁用按钮填充)
+  }
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/风格设置区/排版范围/5:String UI_局外主菜单'按钮_风格设置:Bool 0:Long 4)
+  act 1101.this.UI_局外主菜单'主菜单_按钮注册(String 菜单框/排版区/风格设置区/排版范围/6:String UI_局外主菜单'按钮_风格设置:Bool 0:Long 5)
+  //进入游戏
+  UIButton 按钮=varf Canvas.UI_局外主菜单'布局.readUIButton(String 菜单框/启动玩法)
+  varf UIButton.按钮.clickCB0(String UI_局外主菜单'按钮_进入游戏主界面)
+}
+//显示根节点
+UIRect 菜单框=varf Canvas.UI_局外主菜单'布局.readUIRect(String 菜单框)
+varf UIRect.菜单框.active(Bool 1)
+//载入分辨率设置
+act 1101.this.局外功能设置'分辨率_下载并应用()
+//刷新全部按钮
+act 1101.this.UI_局外主菜单'主菜单_刷新全部按钮()
+endcode

@@ -1,0 +1,20 @@
+begincodeV2
+name:Launcher'攻方随机放置
+params:Long type,Struct player,Vector3 direction,Float HPMul,Float crit,Float initHp
+return:Bool ret
+lines:
+Float 地图宽度=act 1.this.Map'得到地图宽度()
+Float 攻方区域长度=act 1.this.Map'得到攻方长度()
+Float 随机角度=fun math.rand(Float 0:Float 360)
+Float temp0=fun float.multiply(var 地图宽度:Float 0.5)
+Float 随机距离=fun math.rand(Float 0:var temp0)
+Vector3 random=fun creatVariable.Vector3(Float 0:Float 0:var 随机距离)
+Vector3 random=varf Vector3.random.rotAxis(Vector3 0,1,0:var 随机角度)
+Float z=fun float.multiply(var 地图宽度:Float 0.5)
+Float z=fun float.add1(var z:var 攻方区域长度:Float -50)
+Vector3 relative=fun creatVariable.Vector3(Float 0:Float 0:var z)
+Vector3 relative=fun vector3.add(var relative:var random)
+varf Vector3.relative.setY(Float 70)
+Vector3 position=fun vector3.add(var relative:var ScenarioOffset)
+Bool ret=act 1.this.Launcher'AbstractSetBullet(var position:var direction:var type:var Attr'Faction:var player:var HPMul:var crit:var initHp:Bool 0:Float 0)
+endcode

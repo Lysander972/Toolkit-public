@@ -1,0 +1,34 @@
+guid:246c351c33184e7db5df42fdd7342cc2
+meshes:
+[
+ {
+  n:Fig_Yellow
+ }
+]
+matFolderName:7d48aa323aaa48388512ab71cd531f1c
+Albedo.UID:7d48aa323aaa48388512ab71cd531f1c
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+rotation:[0,359.95,0]
+collide:3
+OriginType:1
+ColliderPos:[0,-0.05,0]
+bounds.center:[0,0,0]
+bounds.size:[0.2409427,0.2905584,0.2292152]

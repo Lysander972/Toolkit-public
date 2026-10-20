@@ -1,0 +1,22 @@
+begincodeV2
+skip:1
+name:核心回原点并等距调整其他零件
+lines:
+UIButton 触发=fun ui.button(Vector3 0.2,0.2,0:Vector3 100,100,0:Color 255,255,255,255:String 核心复位:Float 50:Float 4)
+if{varf UIButton.触发.isDown()
+  fun mech.addStep()
+  Device 核心=fun mech.getDevice(Float 0)
+  Vector3 坐标=dvf 核心.Device.getPos()
+  dvf 核心.Device.setPos(Vector3 0,0,0)
+  Vector3 全部零件坐标补偿=fun vector3.multilply(var 坐标:Float -1)
+  Float 数量=fun mech.deviceNum()
+  Float 循环=fun create.float(Float 1)
+  while{fun float.lt(var 循环:var 数量)
+    Device 其他零件=fun mech.getDevice(var 循环)
+    Vector3 其他零件坐标=dvf 其他零件.Device.getPos()
+    Vector3 其他零件坐标=fun vector3.add(var 其他零件坐标:var 全部零件坐标补偿)
+    dvf 其他零件.Device.setPos(var 其他零件坐标)
+    varf Float.循环.addEqual(Float 1)
+  }
+}
+endcode

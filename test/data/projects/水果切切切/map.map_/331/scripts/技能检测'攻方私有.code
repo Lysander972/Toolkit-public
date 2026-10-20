@@ -1,0 +1,16 @@
+begincodeV2
+name:技能检测'攻方私有
+lines:
+act 1.this.瞄准方向更新'攻方()
+act 1.this.技能'10000()
+act 1.this.技能'LevelUp()
+act 1.this.技能'1000()
+act 1.this.技能'1001_自动暖场()
+act 1.this.技能'1100()
+act 1.this.技能'1200()
+act 1.this.技能'1300()
+act 1.this.技能'1400()
+act 1.this.技能'1500()
+act 1.this.技能'1600()
+act 1.this.技能'1900()
+endcode

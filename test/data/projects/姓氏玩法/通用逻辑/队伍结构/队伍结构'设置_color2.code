@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+guid:2b8c10269151440db4fe382660fd65e5
+color:255,255,255
+name:队伍结构'设置_color2
+params:Struct 结构,Color color2
+lines:
+varf Struct.结构.set(String color2:var color2)
+endcode

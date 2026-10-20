@@ -1,0 +1,12 @@
+begincodeV2
+name:持续刷新六区域
+lines:
+if{fun create.bool(var GameStart)
+  act 1101.this.播报刷新'刷新组内(Bool 0:String root/leftTop:var 播报'展示队列左:var 播报'等待队列左:Float 1000)
+  act 1101.this.播报刷新'刷新组内(Bool 1:String root/rightTop:var 播报'展示队列右:var 播报'等待队列右:Float 1000)
+  act 1101.this.播报刷新'刷新组内(Bool 0:String root/mid0:var 播报'展示队列上:var 播报'等待队列上:Float 500)
+  act 1101.this.播报刷新'刷新组内(Bool 1:String root/mid1:var 播报'展示队列下:var 播报'等待队列下:Float 500)
+  act 1101.this.播报刷新'刷新组内(Bool 0:String root/leftpanel/进度条/进度/背景/播报区:var 播报'展示队列距离:var 播报'等待队列距离:Float 400)
+  act 1101.this.播报刷新'刷新组内(Bool 1:String root/rightpanel/倒计时/播报区:var 播报'展示队列时间:var 播报'等待队列时间:Float 400)
+}
+endcode

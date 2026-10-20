@@ -1,0 +1,14 @@
+begincodeV2
+color:104,0,255
+name:Bullet'ForceReclaimAll
+comment:强制回收全部子弹@4按照模型名@5
+lines:
+Float index=varf List.Bullet'Types.count()
+while{fun float.gt(var index:Float 0)
+  varf Float.index.minusEqual(Float 1)
+  String key=varf List.Bullet'Types.readString(var index)
+  if{fun string.notEqual(var key:String 2500)
+    act 1101.this.Bullet'ForceReclaimByModel(var key)
+  }
+}
+endcode

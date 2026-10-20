@@ -1,0 +1,13 @@
+begincodeV2
+color:255,255,255
+name:局内逻辑'时间间隔
+return:Float ret
+lines:
+Bool 时间停止=act 1101.this.局内逻辑'是否时停()
+if{fun create.bool(var 时间停止)
+  Float ret=fun create.float(Float 0)
+}
+if{fun bool.not(var 时间停止)
+  Float ret=fun time.deltaTime()
+}
+endcode

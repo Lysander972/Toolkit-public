@@ -1,0 +1,56 @@
+begincodeV2
+color:255,243,0
+name:UI'EnterGame
+lines:
+act 1101.this.UI'QuitMenu()
+act 1101.this.UI'QuitSettlement()
+if{fun create.bool(var InGame)
+  fun break()
+}
+Bool InGame=fun create.bool(Bool 1)
+Bool $exist=varf Canvas.GameUI.exist()
+if{fun bool.not(var $exist)
+  fun ui.2dmode(Bool 1)
+  Canvas GameUI=fun create.canvas(Canvas guid@164feba17f23d412fa439268561c4d2f1)
+  UIButton $skill7=varf Canvas.GameUI.readUIButton(String root/skillPanel/panel/skill7)
+  varf UIButton.$skill7.active(Bool 0)
+  String $platform=fun platform()
+  Bool $alternate=fun string.equal(var $platform:String 快手)
+  if{fun create.bool(var $alternate)
+    //快手平台需要替换快手的礼物图标
+    UIRawImage $temp=varf Canvas.GameUI.readUIRawImage(String root/skillPanel/panel/skill1/pic)
+    varf UIRawImage.$temp.loadPic(String 助威火炬.png)
+    UIRawImage $temp=varf Canvas.GameUI.readUIRawImage(String root/skillPanel/panel/skill2/pic)
+    varf UIRawImage.$temp.loadPic(String 火花.png)
+    UIRawImage $temp=varf Canvas.GameUI.readUIRawImage(String root/skillPanel/panel/skill3/pic)
+    varf UIRawImage.$temp.loadPic(String 一叶知秋.png)
+    UIRawImage $temp=varf Canvas.GameUI.readUIRawImage(String root/skillPanel/panel/skill4/pic)
+    varf UIRawImage.$temp.loadPic(String 助威火箭.png)
+    UIRawImage $temp=varf Canvas.GameUI.readUIRawImage(String root/skillPanel/panel/skill5/pic)
+    varf UIRawImage.$temp.loadPic(String 雪糕刺客.png)
+    UIRawImage $temp=varf Canvas.GameUI.readUIRawImage(String root/skillPanel/panel/skill6/pic)
+    varf UIRawImage.$temp.loadPic(String 冲鸭.png)
+  }
+}
+UIRect $root=varf Canvas.GameUI.readUIRect(String root)
+varf UIRect.$root.active(Bool 1)
+UIRect $rect=varf Canvas.GameUI.readUIRect(String root/提前结算倒计时)
+varf UIRect.$rect.active(Bool 0)
+UIInput GameInputField=varf Canvas.GameUI.readUIInput(String root/InputField)
+varf UIInput.GameInputField.active(var IsGM)
+UIRect $screenScale=varf Canvas.GameUI.readUIRect(String root/screen)
+varf UIRect.$screenScale.active(var IsGM)
+Dict $data=fun map.load()
+if{varf Dict.$data.contains(String 礼物图坐标)
+  Vector3 $savedPosition=varf Dict.$data.readVector3(String 礼物图坐标:Bool 0)
+  UIButton $skillPanel=varf Canvas.GameUI.readUIButton(String root/skillPanel)
+  varf UIButton.$skillPanel.setCanvasPos(var $savedPosition)
+}
+UIButton $testingArea=varf Canvas.GameUI.readUIButton(String root/testingArea)
+varf UIButton.$testingArea.active(var IsGM)
+act 1101.this.loopFun(String UI_Loop'Draggable:Float 0)
+act 1101.this.loopFun(String UI_Loop'RefreshRanking:Float 0.25)
+act 1101.this.loopFun(String UI_Loop'RefreshCountdown:Float 0)
+act 1101.this.UI'GameRefreshRankingDisplay(List :String root/leftRank/:String root/leftPlayer/)
+act 1101.this.UI'GameRefreshRankingDisplay(List :String root/rightRank/:String root/rightPlayer/)
+endcode

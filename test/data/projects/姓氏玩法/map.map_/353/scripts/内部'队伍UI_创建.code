@@ -1,0 +1,111 @@
+begincodeV2
+name:内部'队伍UI_创建
+params:Struct 队伍
+lines:
+Long id=act 1101./弹幕.队伍结构'读取_id(var 队伍)
+String 字符串id=fun create.string(var id)
+Long 显示前缀=fun long.add(var id:Long 1)
+String name=act 1101./弹幕.队伍结构'读取_name(var 队伍)
+Color color1=act 1101./弹幕.队伍结构'读取_color1(var 队伍)
+String 标题=fun string.add1(var 显示前缀:String . :var name)
+fun ui.2dmode(var 平面UI开关)
+Canvas 队伍UI=fun create.canvas(Canvas guid@14ede8ad751ee424a853a164494c11817)
+UIRect 队伍根节点=varf Canvas.队伍UI.readUIRect(String 根节点)
+varf UIRect.队伍根节点.setCustomFloat(String 透明度:Float 1)
+List 玩家头像表=fun create.list()
+varf UIRect.队伍根节点.setCustomList(String 玩家头像表:var 玩家头像表)
+//初始化附加变量
+UIRawImage 图片=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/头像框根节点/头像区域/头像)
+varf UIRawImage.图片.setCustomString(String url:String _)
+UIRawImage 图片=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/头像框根节点/头像框)
+varf UIRawImage.图片.setCustomString(String file:String _)
+UIRawImage 图片=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/头像框根节点/称号动图)
+varf UIRawImage.图片.setCustomLong(String 动图编号:Long -1)
+//队伍旗帜
+UILabel 队伍名显示=varf Canvas.队伍UI.readUILabel(String 根节点/进度条/队伍旗帜区/队伍名称显示)
+varf UILabel.队伍名显示.text(var 标题)
+Vector3 旗帜尺寸=varf UILabel.队伍名显示.getTextSize()
+varf Vector3.旗帜尺寸.setY(Float 80)
+Float 旗帜宽度=varf Vector3.旗帜尺寸.x()
+Float 旗帜宽度=fun float.add(var 旗帜宽度:Float 30)
+Float 旗帜宽度=fun float.max(var 旗帜宽度:Float 120)
+varf Vector3.旗帜尺寸.setX(var 旗帜宽度)
+UIRect 队伍旗帜=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/队伍旗帜区)
+varf UIRect.队伍旗帜.size(var 旗帜尺寸)
+Color 旗颜色=varf Color.color1.copy()
+varf Color.旗颜色.setA(Float 0.5)
+varf UIRect.队伍旗帜.setColor(var 旗颜色)
+varf UIRect.队伍旗帜.setCustomColor(String color:var 旗颜色)
+//队伍进度条
+UIRect 进度条=varf Canvas.队伍UI.readUIRect(String 根节点/进度条)
+UIRect 进度条边框=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/边框)
+varf UIRect.进度条.setColor(var color1)
+varf UIRect.进度条.setCustomColor(String color:var color1)
+varf UIRect.进度条边框.active(Bool 0)
+UIRect 队伍根节点=varf Canvas.队伍UI.readUIRect(String 根节点)
+varf UIRect.队伍根节点.parentAnchor(Enum 0)
+varf Dict.队伍UI映射.insert(var 字符串id:var 队伍UI)
+//添加节点并设置初始位置
+varf UIRect.图表基础图层.addSon(var 队伍根节点)
+Vector3 计算目标位置=act 1101.this.内部'工具_计算进度条目标位置(var 队伍:var 队伍根节点)
+varf UIRect.队伍根节点.setCanvasPos(var 计算目标位置)
+//公共锚定节点
+UIRect 公共锚定节点=varf Canvas.队伍UI.readUIRect(String 公共锚定节点)
+varf UIRect.队伍根节点.setCustomUIRect(String 公共锚定节点:var 公共锚定节点)
+varf UIRect.图表基础图层.addSon(var 公共锚定节点)
+//内部锚定节点
+UIRect 内部锚定节点=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/内部锚定节点)
+varf UIRect.队伍根节点.setCustomUIRect(String 内部锚定节点:var 内部锚定节点)
+UIRect 子组件遮罩=varf Canvas.队伍UI.readUIRect(String 根节点/进度条/子组件遮罩)
+varf UIRect.队伍根节点.setCustomUIRect(String 进度条遮罩区域:var 子组件遮罩)
+//1级加速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/1级加速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 14:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//2级加速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/2级加速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 22:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//3级加速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/3级加速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 15:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//4级加速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/4级加速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 24:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//1级减速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/1级减速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 18:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//2级减速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/2级减速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 13:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//3级减速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/3级减速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 19:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//4级减速状态
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/4级减速状态动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 21:Long 0:Bool 0)
+varf UIRawImage.动图.setCustomLong(String 效果层数:Long 0)
+varf UIRawImage.动图.active(Bool 0)
+//最快队伍标记
+UIRawImage 动图=varf Canvas.队伍UI.readUIRawImage(String 根节点/进度条/最快速度动图)
+act 1101./弹幕.动图'应用动图(var 动图:Long 35:Long 0:Bool 0)
+varf UIRawImage.动图.active(Bool 0)
+//创建5个头像位
+Float 循环=fun create.float(Float 0)
+while{fun float.lt(var 循环:Float 5)
+  act 1101.this.内部'队伍UI_添加玩家头像(var 队伍UI)
+  varf Float.循环.addEqual(Float 1)
+}
+endcode

@@ -1,0 +1,38 @@
+begincodeV2
+color:221,0,255
+name:技能'2900
+comment:召唤临时机枪塔玩家
+lines:
+String key=fun create.string(String 2900)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Bool 已有排行榜=varf Struct.属性'玩家.contains(String 排行榜名次)
+  if{fun create.bool(var 已有排行榜)
+    Long 排行榜名次=varf Struct.属性'玩家.getLong(String 排行榜名次:Bool 1)
+    Bool bool1=fun long.gte(var 排行榜名次:Long 0)
+    Bool bool2=fun long.lte(var 排行榜名次:Long 99)
+    if{fun bool.and(var bool1:var bool2)
+      Long 召唤物类型=fun create.long(Long 23)
+      Mech 产生对象=varf Device.map_handler.callReturnMech2(String 炮塔'守方召唤物放置:var 属性'玩家:var 召唤物类型)
+      if{varf Mech.产生对象.alive()
+        Device core=varf Mech.产生对象.getCoreDevice()
+        String skillkey1=fun create.string(String 2910)
+        if{fun long.lt(var 排行榜名次:Long 40)
+          Long amount=fun create.long(Long 300)
+          =act 1.this.Skills'Increase(String 2500:Long 500:var 属性'玩家)
+        }
+        if{fun long.gte(var 排行榜名次:Long 40)
+          Long amount=fun create.long(Long 180)
+          =act 1.this.Skills'Increase(String 2500:Long 300:var 属性'玩家)
+        }
+        varf Device.core.callFun3(String Public'AddBullet:var skillkey1:var amount:var 属性'玩家)
+        String 提示=fun create.string(String 使用专属技能,召唤机枪塔!)
+        Long mode=fun create.long(Long 2)
+        Long value=fun create.long(Long 2)
+        act 1.this.callMapFunc4(String 弹幕.播报'礼物:var 提示:var 属性'玩家:var mode:var value)
+        =act 1.this.Skills'Decrease(var key:Long 1)
+      }
+    }
+  }
+}
+delay fun create.float(Float 0.3)
+endcode

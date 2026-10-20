@@ -1,0 +1,34 @@
+guid:0a8762545e25447fa6b9951b0d47c703
+meshes:
+[
+ {
+  n:煤气罐
+ }
+]
+matFolderName:c5932cb688fb406986e955d270fd6bce
+Albedo.UID:c5932cb688fb406986e955d270fd6bce
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+rotation:[270.0198,0,0]
+OriginType:1
+ColliderSize:[0.9,0.7,0.9]
+ColliderPos:[0,-0.05,0]
+bounds.center:[0,0.6674921,-0.6006692]
+bounds.size:[0.8462468,1.268057,0.8265167]

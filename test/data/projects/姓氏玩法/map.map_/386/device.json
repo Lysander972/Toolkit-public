@@ -1,0 +1,34 @@
+type:362
+pos:[0,0,0]
+quat:[0,1,0,0]
+ignorePress:true
+ext:
+{
+ logicName:地面
+ modelGuid:50997b2ab2a84971b339fe0c3ea5d0bc
+ boolInstanceMat:true
+ shaderName:"Shader Graphs/ColorPBR"
+ shader:
+ [
+  {
+   n:_Color
+   type:Color
+   v:[0,0,0,1]
+  }
+  {
+   n:_Metallic
+   type:Float
+   v:0
+  }
+  {
+   n:_Glossiness
+   type:Float
+   v:1
+  }
+  {
+   n:_Emmit
+   type:Float
+   v:4
+  }
+ ]
+}

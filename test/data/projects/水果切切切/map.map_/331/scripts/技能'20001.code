@@ -1,0 +1,14 @@
+begincodeV2
+color:221,0,255
+name:技能'20001
+comment:处理积存点赞
+lines:
+String key=fun create.string(String 20001)
+if{act 1.this.Skills'GreaterOrEqual(var key:Long 1)
+  Long skill=act 1.this.Skills'GetValue(var key)
+  =act 1.this.Skills'Decrease(var key:var skill)
+  Long 弹药增加量=fun long.multiply(var skill:var 属性'守方点赞乘数)
+  act 1.this.Public'AddBullet(String 2000:var 弹药增加量:var 属性'玩家)
+}
+delay fun create.float(Float 0.5)
+endcode

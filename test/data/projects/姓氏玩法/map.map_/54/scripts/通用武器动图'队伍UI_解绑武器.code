@@ -1,0 +1,11 @@
+begincodeV2
+name:通用武器动图'队伍UI_解绑武器
+params:Canvas 队伍UI,String key
+lines:
+UIRect 队伍根节点=varf Canvas.队伍UI.readUIRect(String 根节点)
+Dict 关联武器=varf UIRect.队伍根节点.customDict(String 关联武器)
+Bool 包含=varf Dict.关联武器.contains(var key)
+if{fun create.bool(var 包含)
+  varf Dict.关联武器.remove(var key)
+}
+endcode

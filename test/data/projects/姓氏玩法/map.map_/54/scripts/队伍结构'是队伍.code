@@ -1,0 +1,12 @@
+begincodeV2
+color:255,255,255
+name:队伍结构'是队伍
+params:Struct 队伍
+return:Bool 是队伍
+lines:
+Bool 是队伍=fun create.bool(Bool 0)
+if{varf Struct.队伍.contains(String 是队伍)
+  Bool 读取=varf Struct.队伍.getBool(String 是队伍:Bool 0)
+  Bool 是队伍=fun create.bool(var 读取)
+}
+endcode

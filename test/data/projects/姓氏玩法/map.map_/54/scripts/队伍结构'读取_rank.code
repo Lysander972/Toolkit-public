@@ -1,0 +1,8 @@
+begincodeV2
+color:255,255,255
+name:队伍结构'读取_rank
+params:Struct 结构
+return:Float ret
+lines:
+Float ret=varf Struct.结构.getFloat(String rank:Bool 0)
+endcode

@@ -1,0 +1,17 @@
+[
+ {
+  guid:4245c577eb70449c8c9d3accff432f2f
+  name:Public'AutoReclaim
+ }
+ 模型'手动刷新显示
+ 模型'开关冰冻效果
+ Public'GetMainDevice
+ Public'GetCenter
+ Public'SetSize
+ Public'SetWeight
+ Public'PreReclaim
+ Public'Open
+ Public'Close
+ Public'SetColor
+ Public'SetLayer
+]

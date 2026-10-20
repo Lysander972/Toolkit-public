@@ -1,0 +1,32 @@
+guid:5a2b06a137b848a8af7b5f1279ff2233
+meshes:
+[
+ {
+  n:Persimmon_Red
+ }
+]
+matFolderName:a701019297c24bda9c44d73c13b61c76
+Albedo.UID:a701019297c24bda9c44d73c13b61c76
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+OriginType:1
+ColliderSize:[0.9,0.8,0.9]
+bounds.center:[0,7.450581E-09,0]
+bounds.size:[0.301405,0.2513668,0.2790182]

@@ -1,0 +1,32 @@
+begincodeV2
+name:自动对齐
+lines:
+if{fun keyboard.keyUp2(Enum 6)
+  Device d=fun mech.focusDevice()
+  dvf d.Device.setRot(Vector3 0,1,0:Vector3 0,0,1)
+}
+if{fun keyboard.keyUp2(Enum 1)
+  Device d=fun mech.focusDevice()
+  if{fun mech.deviceNotNull(var d)
+/*    dvf d.Device.setRot(Vector3 0,0,1:Vector3 0,1,0)
+    Vector3 pos1=dvf d.Device.getCenterPos()
+    Vector3 pos2=dvf d.Device.getPos()
+    Vector3 delta=fun vector3.minus(var pos2:var pos1)
+    Vector3 pos2=fun vector3.add(var pos2:var delta)
+/*    Float x=varf Vector3.pos1.x()
+/*    Float y=varf Vector3.pos1.y()
+/*    Float z=varf Vector3.pos1.z()
+/*    Float x=fun float.division(var x:Float 1)
+/*    Float x=varf Float.x.round()
+/*    Float x=fun float.multiply(var x:Float 1)
+/*    Float y=fun float.division(var y:Float 1)
+/*    Float y=varf Float.y.round()
+/*    Float y=fun float.multiply(var y:Float 1)
+/*    Float z=fun float.division(var z:Float 1)
+/*    Float z=varf Float.z.round()
+/*    Float z=fun float.multiply(var z:Float 1)
+/*    Vector3 pos1=fun creatVariable.Vector3(var x:var y:var z)
+    dvf d.Device.setPos(var pos2)
+  }
+}
+endcode

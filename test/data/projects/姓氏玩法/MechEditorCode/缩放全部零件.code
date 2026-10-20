@@ -1,0 +1,37 @@
+begincodeV2
+skip:1
+name:缩放全部零件
+lines:
+UIButton button=fun ui.button(Vector3 0.6,0.2,0:Vector3 100,100,0:Color 255,255,255,255:String 放大:Float 50:Float 4)
+if{varf UIButton.button.isDown()
+  Float scale=fun create.float(Float 1.2)
+  Float N=fun mech.deviceNum()
+  Float i=fun create.float(Float 0)
+  while{fun float.lt(var i:var N)
+    Device D=fun mech.getDevice(var i)
+    Vector3 p=dvf D.Device.getPos()
+    Vector3 p=fun vector3.multilply(var p:var scale)
+    dvf D.Device.setPos(var p)
+    Float s=dvf D.Device.getScale()
+    Float s=fun float.multiply(var s:var scale)
+    dvf D.Device.setScale(var s)
+    varf Float.i.addEqual(Float 1)
+  }
+}
+UIButton button=fun ui.button(Vector3 0.7,0.2,0:Vector3 100,100,0:Color 255,255,255,255:String 缩小:Float 50:Float 4)
+if{varf UIButton.button.isDown()
+  Float scale=fun create.float(Float 0.8)
+  Float N=fun mech.deviceNum()
+  Float i=fun create.float(Float 0)
+  while{fun float.lt(var i:var N)
+    Device D=fun mech.getDevice(var i)
+    Vector3 p=dvf D.Device.getPos()
+    Vector3 p=fun vector3.multilply(var p:var scale)
+    dvf D.Device.setPos(var p)
+    Float s=dvf D.Device.getScale()
+    Float s=fun float.multiply(var s:var scale)
+    dvf D.Device.setScale(var s)
+    varf Float.i.addEqual(Float 1)
+  }
+}
+endcode

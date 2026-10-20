@@ -1,0 +1,30 @@
+guid:71d67fb80545421aba6e17cff4ed80e4
+meshes:
+[
+ {
+  n:柱体
+ }
+]
+matFolderName:1b085b6ef8e746f68fe7f6cebeab5da7
+Albedo.UID:1b085b6ef8e746f68fe7f6cebeab5da7
+Metal.UID:b00689c68d3a450996697aa042d8df29
+Emission.UID:b9fd9c52b8624045a85a6527da6cf2aa
+shaderName:"Shader Graphs/Device emmit"
+shader:
+[
+ {
+  n:_PaintColor
+  type:Color
+  v:[1,1,1,1]
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+rotation:[270,0,0]
+scale:100
+collide:3
+bounds.center:[0,0,0]
+bounds.size:[2,0.5000007,2]

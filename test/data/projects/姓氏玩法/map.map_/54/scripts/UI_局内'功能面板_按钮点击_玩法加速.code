@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'功能面板_按钮点击_玩法加速
+lines:
+Bool 局内功能设置'玩法加速=fun bool.not(var 局内功能设置'玩法加速)
+act 1101.this.局内功能设置'玩法加速_应用并刷新()
+endcode

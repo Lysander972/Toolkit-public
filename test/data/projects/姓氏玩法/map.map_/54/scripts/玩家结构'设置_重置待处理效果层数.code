@@ -1,0 +1,11 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_重置待处理效果层数
+comment:重置玩家的待处理效果层数
+params:Struct 结构,String key
+lines:
+Dict 待处理效果=act 1101.this.玩家结构'读取待处理效果字典(var 结构)
+Long 新倍数=fun create.long(Long 0)
+varf Dict.待处理效果.insert(var key:var 新倍数)
+endcode

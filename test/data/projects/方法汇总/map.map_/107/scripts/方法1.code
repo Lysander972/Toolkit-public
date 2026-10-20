@@ -1,0 +1,6 @@
+begincodeV2
+name:方法1
+lines:
+act 125.this.setBlackholeColor(Color 0,0,0,255)
+act 125.this.setBlackholeParam(Float 0.35:Float 30:Float 0.2:Float 4.6:Float 0.006:Float 1.5:Float 1.16)
+endcode

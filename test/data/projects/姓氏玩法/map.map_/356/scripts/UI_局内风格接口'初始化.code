@@ -1,0 +1,38 @@
+begincodeV2
+color:255,0,0
+name:UI_局内风格接口'初始化
+params:UIRect 框架根节点_2D,UIRect 框架根节点_3D
+lines:
+=varf UIRect.框架根节点_2D.exist()
+=varf UIRect.框架根节点_3D.exist()
+Bool 存在=varf Canvas.风格主布局.exist()
+if{fun bool.not(var 存在)
+  fun ui.2dmode(var 平面UI开关)
+  Canvas 风格主布局=fun create.canvas(Canvas guid@15bb15bb874024f2cb8e3ceb42dcbe38d)
+  //绑定根节点
+  UIRect 主布局根节点=varf Canvas.风格主布局.readUIRect(String 根节点)
+  if{fun create.bool(var 平面UI开关)
+    varf UIRect.框架根节点_2D.addSon(var 主布局根节点)
+  }
+  if{fun bool.not(var 平面UI开关)
+    varf UIRect.框架根节点_3D.addSon(var 主布局根节点)
+  }
+  //获取列表引用
+  List 激活队伍列表=act 1101./弹幕.队伍'获得激活队伍列表()
+  //图表相关
+  UIRect 图表节点=varf Canvas.风格主布局.readUIRect(String 根节点/图表)
+  UIRect 图表基础图层=varf Canvas.风格主布局.readUIRect(String 根节点/图表/基础图层)
+  UIRect 图表特效图层_减速1=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_减速1)
+  UIRect 图表特效图层_加速1=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_加速1)
+  UIRect 图表特效图层_减速2=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_减速2)
+  UIRect 图表特效图层_加速2=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_加速2)
+  UIRect 图表特效图层_减速3=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_减速3)
+  UIRect 图表特效图层_加速3=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_加速3)
+  UIRect 图表特效图层_减速4=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_减速4)
+  UIRect 图表特效图层_加速4=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_加速4)
+  UIRect 图表特效图层_悬浮=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_悬浮)
+  UIRect 图表特效图层_全屏效果=varf Canvas.风格主布局.readUIRect(String 根节点/图表/特效图层_全屏效果)
+  UIRect 目标线节点=varf Canvas.风格主布局.readUIRect(String 根节点/目标线)
+  UIButton 拖动监听区=varf Canvas.风格主布局.readUIButton(String 根节点/拖动监听区)
+}
+endcode

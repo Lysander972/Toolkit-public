@@ -1,0 +1,26 @@
+begincodeV2
+color:255,255,255
+name:工具'数值简化_外文
+comment:转为XXk/XXM/XXB
+params:Long 数值
+return:String ret
+lines:
+if{fun long.lt(var 数值:Long 1000)
+  String ret=fun create.string(var 数值)
+}
+if{fun long.gte(var 数值:Long 1000)
+  Float tmp=fun long.division(var 数值:Long 1000)
+  Float tmp=fun float.round(var tmp:Float 2)
+  String ret=fun string.add(var tmp:String K)
+}
+if{fun long.gte(var 数值:Long 1000000)
+  Float tmp=fun long.division(var 数值:Long 1000000)
+  Float tmp=fun float.round(var tmp:Float 3)
+  String ret=fun string.add(var tmp:String M)
+}
+if{fun long.gte(var 数值:Long 1000000000)
+  Float tmp=fun long.division(var 数值:Long 1000000000)
+  Float tmp=fun float.round(var tmp:Float 4)
+  String ret=fun string.add(var tmp:String B)
+}
+endcode

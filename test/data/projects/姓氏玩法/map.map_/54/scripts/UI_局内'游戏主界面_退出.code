@@ -1,0 +1,19 @@
+begincodeV2
+color:255,255,255
+name:UI_局内'游戏主界面_退出
+lines:
+if{act 1101.this.UI_局内'是否本界面()
+  if{varf Canvas.UI_局内'主布局_3D.exist()
+    UIRect root=varf Canvas.UI_局内'主布局_3D.readUIRect(String 根节点_3D)
+    varf UIRect.root.active(Bool 0)
+  }
+  if{varf Canvas.UI_局内'主布局_2D.exist()
+    UIRect root=varf Canvas.UI_局内'主布局_2D.readUIRect(String 根节点_2D)
+    varf UIRect.root.active(Bool 0)
+    //重置局内的时间流速设定
+    fun setTimeScale(Float 1)
+  }
+  //退出后重置为无界面状态
+  Long UI'状态枚举=fun create.long(Long -1)
+}
+endcode

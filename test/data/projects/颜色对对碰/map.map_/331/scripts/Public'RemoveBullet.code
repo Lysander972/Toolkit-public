@@ -1,0 +1,11 @@
+begincodeV2
+name:Public'RemoveBullet
+comment:注入各种子弹
+params:String $key,Long $amount
+lines:
+=act 1.this.Skill'Decrease(var $key:var $amount)
+if{fun long.equal(var $type:Long 0)
+  act 1.this.刷新'普攻显示()
+}
+act 1.this.技能'重置暖场()
+endcode

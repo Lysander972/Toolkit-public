@@ -1,0 +1,10 @@
+begincodeV2
+color:255,255,255
+name:玩家'自动下场检查
+comment:自动补充玩家缺失的信息 包括选阵营功能
+params:Struct 玩家
+lines:
+if{fun create.bool(var 局内功能设置'自动下场)
+  act 1101.this.玩家'自动下场(var 玩家)
+}
+endcode

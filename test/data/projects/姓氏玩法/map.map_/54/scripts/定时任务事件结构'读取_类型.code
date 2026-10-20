@@ -1,0 +1,8 @@
+begincodeV2
+color:123,255,0
+name:定时任务事件结构'读取_类型
+params:Dict 定时任务事件
+return:Long ret
+lines:
+Long ret=varf Dict.定时任务事件.readLong(String 类型:Bool 0)
+endcode

@@ -1,0 +1,6 @@
+begincodeV2
+name:按钮点击'删除UI
+params:UIRect ui
+lines:
+varf UIRect.ui.del(Float 0)
+endcode

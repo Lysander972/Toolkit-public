@@ -1,0 +1,7 @@
+begincodeV2
+color:255,255,255
+name:局内功能设置'玩法加速_读取
+return:Bool ret
+lines:
+Bool ret=fun create.bool(var 局内功能设置'玩法加速)
+endcode

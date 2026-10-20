@@ -1,0 +1,10 @@
+type:1
+pos:[0,0,0]
+scale:0.01
+enableManualWeld:true
+attach:
+[
+]
+ext:
+{
+}

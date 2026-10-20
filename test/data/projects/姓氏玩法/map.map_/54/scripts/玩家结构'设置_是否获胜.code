@@ -1,0 +1,9 @@
+begincodeV2
+private:1
+color:255,255,255
+name:玩家结构'设置_是否获胜
+comment:设置玩家分数
+params:Struct 结构,Bool 是否获胜
+lines:
+varf Struct.结构.set(String 是否获胜:var 是否获胜)
+endcode

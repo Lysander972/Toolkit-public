@@ -1,0 +1,13 @@
+begincodeV2
+color:221,0,255
+name:技能'2001_自动暖场
+lines:
+delay fun create.float(Float 2)
+Float 当前时间=fun time.scaleTime()
+if{fun float.gte(var 当前时间:var 自动暖场时间)
+  if{act 1.this.Skills'LessOrEqual(String 2000:Long 1)
+    String key=fun create.string(String 20001)
+    act 1.this.Public'AddBullet(var key:Long 1:var 属性'玩家)
+  }
+}
+endcode

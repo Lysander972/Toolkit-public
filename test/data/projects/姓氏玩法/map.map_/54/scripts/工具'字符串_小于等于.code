@@ -1,0 +1,8 @@
+begincodeV2
+name:工具'字符串_小于等于
+params:String 字符串1,String 字符串2
+return:Bool ret
+lines:
+Long 比较结果=act 1101.this.工具'字符串_比较(var 字符串1:var 字符串2)
+Bool ret=fun long.lte(var 比较结果:Long 0)
+endcode

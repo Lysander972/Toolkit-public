@@ -1,0 +1,6 @@
+begincodeV2
+name:队伍'获得激活队伍列表
+return:List ret
+lines:
+List ret=varf List.局内'队伍_激活队伍列表.ref()
+endcode

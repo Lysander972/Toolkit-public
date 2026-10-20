@@ -1,0 +1,18 @@
+begincodeV2
+color:156,0,255
+name:UI'QuitGame
+lines:
+if{fun bool.not(var InGame)
+  fun break()
+}
+Bool InGame=fun create.bool(Bool 0)
+if{varf Canvas.GameUI.exist()
+  UIRect root=varf Canvas.GameUI.readUIRect(String root)
+  varf UIRect.root.active(Bool 0)
+  act 1101.this.DisableFun(String UI_Loop'Draggable)
+  act 1101.this.DisableFun(String UI_Loop'RefreshRanking)
+  act 1101.this.DisableFun(String UI_Loop'RefreshCountdown)
+  act 1101.this.DisableFun(String UI_Loop'刷新冰冻边框)
+}
+fun setTimeScale(Float 1)
+endcode

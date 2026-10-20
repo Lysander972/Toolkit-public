@@ -1,0 +1,41 @@
+begincodeV2
+color:255,255,255
+name:动图'应用动图
+comment:非合法范围不会注册且将自动隐藏图片
+params:UIRawImage icon,Long 组id,Long 播放次数,Bool 自动删除
+lines:
+if{varf UIRawImage.icon.exist()
+  varf Long.组id.minusEqual(Long 1)
+  Float index=varf Long.组id.toFloat()
+  Float 动图总数=varf List.UI'动图_注册表.count()
+  Bool 条件1=fun float.gte(var index:Float 0)
+  Bool 条件2=fun float.lt(var index:var 动图总数)
+  Bool 有效=fun bool.and(var 条件1:var 条件2)
+  if{fun bool.not(var 有效)
+    varf UIRawImage.icon.loadPic(String 透明贴图.webp)
+    varf UIRawImage.icon.active(Bool 0)
+    if{fun long.gt(var 播放次数:Long 0)
+      varf UIRawImage.icon.del(Float 0)
+    }
+    fun break()
+  }
+  varf UIRawImage.icon.active(Bool 1)
+  Float 上帧时间=fun time.scaleTime()
+  varf UIRawImage.icon.setCustomFloat(String time:var 上帧时间)
+  varf UIRawImage.icon.setCustomFloat(String groupindex:var index)
+  varf UIRawImage.icon.setCustomFloat(String frameindex:Float 0)
+  varf UIRawImage.icon.setCustomLong(String 已播放次数:Long 0)
+  varf UIRawImage.icon.setCustomLong(String 总播放次数:var 播放次数)
+  varf UIRawImage.icon.setCustomBool(String autodelete:var 自动删除)
+  //立即应用图片0
+  List namelist=varf List.UI'动图_注册表.readList(var index)
+  String fileName=varf List.namelist.readString(Float 0)
+  varf UIRawImage.icon.loadPic(var fileName)
+  //添加到维护列表
+  Bool reg=varf UIRawImage.icon.customBool(String reg)
+  if{fun bool.not(var reg)
+    varf UIRawImage.icon.setCustomBool(String reg:Bool 1)
+    varf List.UI'动图_维护列表.add(var icon)
+  }
+}
+endcode

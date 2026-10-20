@@ -1,0 +1,9 @@
+begincodeV2
+guid:fc98dd0dfcbe4315b54c803c3d210d1e
+color:255,255,255
+name:队伍结构'读取_id
+params:Struct 结构
+return:Long ret
+lines:
+Long ret=varf Struct.结构.getLong(String id:Bool 1)
+endcode

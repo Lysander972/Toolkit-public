@@ -1,0 +1,17 @@
+begincodeV2
+name:发射碎片
+params:Vector3 p,Float scale,Float count,Color color,Float duration,Bool 简化
+lines:
+if{fun create.bool(var 简化)
+  Float count=fun float.multiply(var count:Float 0.5)
+  Float duration=fun float.multiply(var duration:Float 0.5)
+  Vector3 p=act 336./简化碎片粒子发射器.wordToLocalPos(var p)
+  act 336./简化碎片粒子发射器.setPosOffset(var p)
+  act 336./简化碎片粒子发射器.shootDir4(Vector3 0,0,0.0001:String 特效:var scale:var count:var color:var duration)
+}
+if{fun bool.not(var 简化)
+  Vector3 p=act 336.this.wordToLocalPos(var p)
+  act 336.this.setPosOffset(var p)
+  act 336.this.shootDir4(Vector3 0,0,0.0001:String 特效:var scale:var count:var color:var duration)
+}
+endcode

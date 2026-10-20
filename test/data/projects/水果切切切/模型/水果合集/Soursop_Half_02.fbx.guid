@@ -1,0 +1,30 @@
+guid:ff9e50ea008845d08a5a69737df780ba
+meshes:
+[
+ {
+  n:Soursop_Half_02
+ }
+]
+matFolderName:36385fe20e7d443eb3adadeffdcb37f9
+Albedo.UID:36385fe20e7d443eb3adadeffdcb37f9
+shaderName:"Shader Graphs/Diffuse"
+shader:
+[
+ {
+  n:_Metallic
+  type:Float
+  v:0
+ }
+ {
+  n:_Smoothness
+  type:Float
+  v:0
+ }
+ {
+  n:_EmmitColor
+  type:Color
+  v:[11.98431,11.98431,11.98431,0]
+ }
+]
+bounds.center:[3.727525E-05,0.09990902,-0.07425227]
+bounds.size:[0.3986866,0.199818,0.4997048]

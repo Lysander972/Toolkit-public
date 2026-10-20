@@ -1,0 +1,10 @@
+begincodeV2
+color:8,0,255
+name:Public'BidirectionalBinding
+comment:双向绑定
+params:Mech $target
+lines:
+Mech Collider=fun creatVariable.mech(var $target)
+Device ColliderCore=varf Mech.Collider.getDevice(Float 0)
+varf Mech.Collider.callFun1(String Public'Binding:var Self)
+endcode

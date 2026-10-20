@@ -1,0 +1,58 @@
+begincodeV2
+color:221,0,255
+name:技能'2600_炮塔模型
+comment:全局效果
+lines:
+Float 当前时间=fun time.scaleTime()
+Bool 显示模型=fun float.lt(var 当前时间:var 炮塔模型'结束时间_2)
+if{fun create.bool(var 显示模型)
+  Float 距开始时间=fun float.minus(var 当前时间:var 炮塔模型'开始时间_2)
+  Float 距结束时间=fun float.minus(var 炮塔模型'结束时间_2:var 当前时间)
+  Float 两侧时间=fun float.min(var 距开始时间:var 距结束时间)
+  Float 缩放比例=fun float.division(var 两侧时间:Float 0.5)
+  Float 缩放比例=fun float.clamp(var 缩放比例:Float 0:Float 1)
+  Float 实际缩放=fun float.SmoothStep(Float 0:Float 1:var 缩放比例)
+  Float 实际缩放=fun float.multiply(var 实际缩放:Float 60)
+  Vector3 炮塔朝向=fun creatVariable.Vector3(Float 0:Float 0:Float -1)
+  Vector3 当前=fun creatVariable.Vector3(Float -27:Float 0:Float -34)
+  Vector3 增量=fun creatVariable.Vector3(Float 6:Float 0:Float 0)
+  if{fun bool.not(var 创建模型)
+    Vector3 初始坐标=fun creatVariable.Vector3(Float 0:Float -100000:Float 0)
+    String key=fun create.string(String 臼炮马甲)
+    List 模型列表=fun create.list()
+    Float 序号=fun create.float(Float 0)
+    while{fun float.lt(var 序号:Float 10)
+      Mech 模型=varf Device.map_handler.callReturnMech3(String Model'SetModel:var 初始坐标:var 炮塔朝向:var key)
+      varf List.模型列表.add(var 模型)
+      varf Float.序号.addEqual(Float 1)
+    }
+    Bool 创建模型=fun create.bool(Bool 1)
+  }
+  Float 序号=fun create.float(Float 0)
+  while{fun float.lt(var 序号:Float 10)
+    act 1.this.炮塔模型'后坐力更新(var 序号)
+    Vector3 后坐力效果=act 1.this.炮塔模型'后坐力数值转坐标差(var 序号)
+    Vector3 修正=fun vector3.add(var 当前:var 后坐力效果)
+    //应用修改
+    Mech 模型=varf List.模型列表.readMech(var 序号)
+    Float 实际缩放=fun float.max(var 实际缩放:Float 0.01)
+    varf Mech.模型.move(var 修正:Enum 0)
+    varf Mech.模型.rot(var 炮塔朝向:Vector3 0,1,0)
+    varf Mech.模型.scale(var 实际缩放)
+    Vector3 当前=fun vector3.add(var 当前:var 增量)
+    varf Float.序号.addEqual(Float 1)
+  }
+}
+if{fun bool.xor(var 显示模型:var 上次显示)
+  Float 序号=fun create.float(Float 0)
+  while{fun float.lt(var 序号:Float 10)
+    Mech 模型=varf List.模型列表.readMech(var 序号)
+    varf Mech.模型.setActive(var 显示模型)
+    varf Float.序号.addEqual(Float 1)
+  }
+}
+Bool 上次显示=fun create.bool(var 显示模型)
+if{fun bool.not(var 显示模型)
+  delay fun create.float(Float 0.1)
+}
+endcode

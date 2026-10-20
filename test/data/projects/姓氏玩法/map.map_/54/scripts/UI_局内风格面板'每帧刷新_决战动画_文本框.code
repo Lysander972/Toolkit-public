@@ -1,0 +1,33 @@
+begincodeV2
+name:UI_局内风格面板'每帧刷新_决战动画_文本框
+params:Float 当前时间,Float 进入开始,Float 进入结束,Float 退出开始,Float 退出结束,UILabel 文本框
+lines:
+Bool 是否显示=varf Float.当前时间.inside(var 进入开始:var 退出结束)
+varf UILabel.文本框.active(var 是否显示)
+Bool 动画阶段1=varf Float.当前时间.inside(var 进入开始:var 进入结束)
+Bool 动画阶段2=varf Float.当前时间.inside(var 进入结束:var 退出开始)
+Bool 动画阶段3=varf Float.当前时间.inside(var 退出开始:var 退出结束)
+if{fun create.bool(var 动画阶段1)
+  Float 时长=fun float.minus(var 进入结束:var 进入开始)
+  Float 已使用=fun float.minus(var 当前时间:var 进入开始)
+  Float 比例=fun float.division(var 已使用:var 时长)
+  Float 平滑比例=fun float.SmoothStep(Float 0:Float 1:var 比例)
+  Float 缩放=fun float.lerp(Float 5:Float 1.3:var 平滑比例)
+  varf UILabel.文本框.scale(var 缩放)
+  Color 当前颜色=fun create.color(Color 255,255,255,0)
+  Color 当前颜色=varf Color.当前颜色.lerp(Color 255,255,255,255:var 比例)
+  varf UILabel.文本框.setColor(var 当前颜色)
+}
+if{fun create.bool(var 动画阶段2)
+  varf UILabel.文本框.scale(Float 1.3)
+  varf UILabel.文本框.setColor(Color 255,255,255,255)
+}
+if{fun create.bool(var 动画阶段3)
+  Float 时长=fun float.minus(var 退出结束:var 退出开始)
+  Float 已使用=fun float.minus(var 当前时间:var 退出开始)
+  Float 比例=fun float.division(var 已使用:var 时长)
+  Color 当前颜色=fun create.color(Color 255,255,255,255)
+  Color 当前颜色=varf Color.当前颜色.lerp(Color 255,255,255,0:var 比例)
+  varf UILabel.文本框.setColor(var 当前颜色)
+}
+endcode

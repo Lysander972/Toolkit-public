@@ -1,0 +1,10 @@
+begincodeV2
+private:1
+guid:90e602ca2c7245539556f392ae24e32f
+color:255,255,255
+name:玩家结构'设置_globalRank
+comment:设置玩家世界榜周榜排名,只在本地修改
+params:Struct 结构,Long globalRank
+lines:
+varf Struct.结构.set(String globalRank:var globalRank)
+endcode

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../res/schemas/package.json",
+  "name": "@toolkit/config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./ConfigSource.ts",
+    "./pi": "./PiConfigSource.ts",
+    "./assets": "./AssetGenerationConfig.ts",
+    "./credentials": "./AssetCredentials.ts"
+  },
+  "dependencies": {
+    "effect": "4.0.0"
+  }
+}

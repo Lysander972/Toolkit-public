@@ -1,0 +1,9 @@
+begincodeV2
+color:255,222,0
+name:样式_按钮按下_变色
+params:UIRect 底板,Color 底板颜色,UIRect 边框,Color 边框颜色,UILabel 文本框,Color 文本颜色
+lines:
+varf UIRect.底板.setColor(var 底板颜色)
+varf UIRect.边框.setColor(var 边框颜色)
+varf UILabel.文本框.setColor(var 文本颜色)
+endcode
