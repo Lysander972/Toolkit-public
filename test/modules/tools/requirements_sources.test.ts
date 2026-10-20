@@ -67,11 +67,14 @@ export class RequirementsSourcesTest {
       copyFileSync(join('requirements', name), join(rootFullPath, 'requirements', name))
     mkdirSync(join(rootFullPath, '_build/requirements'), { recursive: true })
     symlinkSync(
-      resolve('_build/requirements/venv'),
-      join(rootFullPath, '_build/requirements/venv'),
+      resolve('requirements/.venv'),
+      join(rootFullPath, 'requirements/.venv'),
       process.platform === 'win32' ? 'junction' : 'dir',
     )
-    writeFileSync(join(rootFullPath, '.gitignore'), '_build/\nrequirements/.ub_cache/\n')
+    writeFileSync(
+      join(rootFullPath, '.gitignore'),
+      '_build/\nrequirements/.ub_cache/\nrequirements/.venv/\n',
+    )
     writeFileSync(join(rootFullPath, 'requirements/index.rst'), '.. needimport:: toolkit_sources\n')
     writeFileSync(
       join(rootFullPath, 'requirements/bindings.json'),

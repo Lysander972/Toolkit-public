@@ -1,0 +1,24 @@
+{
+  "schema": 2,
+  "criteria": "quality",
+  "reviewed_fingerprint": "e6fc0011d67d02588a0d2c08f508e7d0471df7149965cf839475363b7cf1b999",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "agent": "codex",
+  "summary": "完整核对原生缓存接口、关闭转译磁盘缓存的授权和下游目录设计；清理及综合验收仍有明确缺口。",
+  "axes": {
+    "parent_fit": {
+      "score": 2,
+      "reason": "决策保留共享 uv 与 pnpm 缓存，项目缓存通过官方参数集中，关闭 Jiti/tsx 磁盘缓存与原生显式回收均来自用户已选方案，没有扩张为自研缓存管理器。"
+    },
+    "reasoning": {
+      "score": 2,
+      "reason": "已查阅实际安装版本：Vite 支持 cacheDir/native loader，Storybook builder 提供 configLoader 且 CACHE_DIR 控制缓存根，Knip 创建 Jiti 不开放 fsCache 目录参数，tsx 使用固定 Temp 目录。决策据此选择公开开关，而非补丁第三方实现或修改全局 Temp。"
+    },
+    "evidence": {
+      "score": 1,
+      "reason": "原生前端与预览构建、Knip、严格 Sphinx 构建通过，新增三项真实生命周期测试通过，Stryker 创建环境并在失败后释放沙箱。旧项目缓存目录删除被自动审批拒绝；全量测试与 Stryker 初测因现有语料数量不符失败，Git 测试仓库在场还使 ubCode 开源识别失败，结束后清原生许可缓存恢复341节点读取。",
+      "suggestion": "移除确认过的旧缓存落点后复核不再生成；独立补齐语料基线问题，并向 ubCode 明确解决嵌套 Git 测试仓库影响开源识别的并发问题，再完成综合验收。"
+    }
+  },
+  "need": "420de4b0-7ab8-4154-9a41-ae7174d9c93d"
+}

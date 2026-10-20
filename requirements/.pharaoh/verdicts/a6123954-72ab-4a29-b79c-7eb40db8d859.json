@@ -1,0 +1,23 @@
+{
+  "schema": 2,
+  "need": "a6123954-72ab-4a29-b79c-7eb40db8d859",
+  "criteria": "quality",
+  "reviewed_fingerprint": "3fc202f5bec701f8098a46ee6a2b4753b8cea8454aadd191a3eb83b6e37e1f6b",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "agent": "codex",
+  "summary": "完整核对原生目录解读、候选取舍及下游设计；选择直接使用工具默认目录有原生源码和完整图行为支持。",
+  "axes": {
+    "parent_fit": {
+      "score": 2,
+      "reason": "上游要求清除垃圾、使用官方目录并消除转发层。决策删除仓内 uv 缓存重定向、根转发配置和缓存 Junction，保留锁定版本及官方缓存语义，直接落实上游而未增加用户维护步骤。"
+    },
+    "reasoning": {
+      "score": 2,
+      "reason": "先盘点 uv 和 ubCode 已有能力，再比较逐次删除标记、禁用缓存和原生目录三个候选；以 uv 自建标记与 ubCode 开源扫描的已复现冲突为取舍依据，明确系统原生目录替代 _build 统一缓存的影响。"
+    },
+    "evidence": {
+      "score": 2,
+      "reason": "已读取 uv 0.11.8 create_base_files 的 phony .git 实现及官方缓存文档；同一333节点图仅删除空标记后成功，改用原生布局并发准备后337节点 context和正式领取成功，严格文档构建及49项相关测试通过。下游仍明确保留真实追踪与检视缺口的失败。"
+    }
+  }
+}

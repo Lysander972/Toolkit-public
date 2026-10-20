@@ -1,0 +1,39 @@
+{
+  "ticket": {
+    "id": "e5e699ca-f80d-4dc4-82d1-1025530ade58",
+    "token": "17352454295a4d24e921424d832c8aa83cc1d9ff4364d274ed917da7cb8e8fe7",
+    "snapshot": {
+      "head": "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2",
+      "index": "ead19df5583cea6a8657e546643fc09edb375a09f5ba427e6e3b350d11f7f478",
+      "tree": "99fb0732e9d49d72b015ed60b25b1d2a8b0a2d83",
+      "parents": [
+        "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2"
+      ]
+    },
+    "fingerprint": "2fe247f8b9fd4ee7414ae971efa94899f14a8b032a7ac8641ebccb4be2dd000c",
+    "criteria": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+    "coverage": "70e1620e8a38a3605be83d2e058ea160da95d1d159a5b552813e8e80c44e0121",
+    "subjects": [
+      {
+        "id": "e5e699ca-f80d-4dc4-82d1-1025530ade58",
+        "type": "interpretation",
+        "relation": "anchor",
+        "hash": "e61af1e95a99d618793b3c5ef92626bde76e4753c4f6a32687c74bd35bc73f1b"
+      },
+      {
+        "id": "f9746bea-1617-4f82-90f7-43668a1e48ba",
+        "type": "source",
+        "relation": "implements",
+        "hash": "c5dc1050fd7c8a252ec4aa830b8ebecefeea6d57093fd853e1c77cdd2d45d5ea"
+      },
+      {
+        "id": "420de4b0-7ab8-4154-9a41-ae7174d9c93d",
+        "type": "decision",
+        "relation": "implements_back",
+        "hash": "619c5d031a16d51a51657732f5fd059cc1966766c19f1cebd0e31f3154b1b5b6"
+      }
+    ]
+  },
+  "verdict": "{\n  \"schema\": 2,\n  \"criteria\": \"quality\",\n  \"reviewed_fingerprint\": \"2fe247f8b9fd4ee7414ae971efa94899f14a8b032a7ac8641ebccb4be2dd000c\",\n  \"criteria_fingerprint\": \"d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87\",\n  \"agent\": \"codex\",\n  \"summary\": \"完整核对用户规划选择与上下游正文，解读保留原生环境、集中项目缓存和显式回收边界。\",\n  \"axes\": {\n    \"parent_fit\": {\n      \"score\": 2,\n      \"reason\": \"四项用户选择逐一落实为集中根 _build、显式回收中断残留及关闭 Jiti/tsx 磁盘缓存；保留既有 uv 与 ubCode 原生目录，没有把 Python 依赖字节码歪曲成必须逐次删除的垃圾。\"\n    },\n    \"reasoning\": {\n      \"score\": 2,\n      \"reason\": \"从缓存所有权和生命周期区分共享依赖、项目环境、项目缓存及任务输入，说明正常异常释放与硬中断回收的差别，并明确拒绝新增目录转发、全局 Temp 重定向及自动扫描协议。\"\n    },\n    \"evidence\": {\n      \"score\": 2,\n      \"reason\": \"原文保留用户四项选择和实施指令；下游决策明确使用已有 cacheDir、CACHE_DIR、原生加载器、ignorePatterns 和 finally，对无法配置目录的 Jiti 与 tsx 按用户选择关闭磁盘缓存，未把待执行验收写成全部通过。\"\n    }\n  },\n  \"need\": \"e5e699ca-f80d-4dc4-82d1-1025530ade58\"\n}\n",
+  "recordedAt": "2026-10-20T10:36:55.358Z"
+}

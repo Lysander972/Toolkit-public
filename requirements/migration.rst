@@ -178,7 +178,7 @@
    :implements: 0fea1910-bd2c-402a-a056-66bbdc955aa4
 
    冻结 pnpm install 的 prepare 生命周期调用统一 requirements:prepare；Git 生命周期 hooks 使用同一入口，安装依赖后才启动依赖 tsx 的 CLI。
-   ubCode 发行版与摘要固定，uv 使用受维护的三个目录变量和官方源，锁定解释器与完整依赖图，缓存及构建集中到根 _build。
+   ubCode 发行版与摘要固定，uv 使用官方源、项目默认 .venv、系统原生缓存及托管解释器目录，锁定解释器与完整依赖图；构建与独占输入集中到根 _build。ubCode 使用 requirements/.ub_cache 原生目录，不建立缓存 Junction 或根配置转发。
    验收覆盖冷启动、重复并发准备、Sphinx 严格构建、断链、双重有效解读、正文/关系/评分标准变化拒绝，以及达到阈值但低于满分的提醒。
    CLI 只转接成熟工具；警告仅呈现原生意见及配置，评分通过与新鲜度由 ubCode 判断。
 
@@ -202,7 +202,7 @@ PR 6：渲染与前端，迁移 canvas-render、vscode-frontend、preview，关�
 
 本地预置 pnpm 11.1.2 与 uv 0.11.8，执行 ``pnpm install --frozen-lockfile``。
 prepare 生命周期和 Git hooks 均调用 ``pnpm requirements:prepare``；CI 安装相同 uv 版本并执行相同入口。
-CPython 3.13.12、Sphinx 9.1.0、Sphinx-Needs 9.0.0 与全部传递依赖由 uv 管理，环境及缓存位于根 ``_build``。
+CPython 3.13.12、Sphinx 9.1.0、Sphinx-Needs 9.0.0 与全部传递依赖由 uv 管理，项目环境位于 ``requirements/.venv``，缓存和托管解释器使用 uv 的系统原生位置；ubCode 缓存位于 ``requirements/.ub_cache``。
 ubCode 0.37.0 原生发行版按平台与 SHA256 固定，下载采用原子写入，当前支持 Windows x64 与 Linux x64。
 
 ``pnpm requirements:check`` 检查关系 schema 与工作流配置。

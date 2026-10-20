@@ -1,0 +1,39 @@
+{
+  "ticket": {
+    "id": "be8e9b84-2ef1-4373-85ab-6b1e91e3d060",
+    "token": "cbdb76f7a2c0f22b537c7a26c733d39a930725f2fd13da6e993797c079105458",
+    "snapshot": {
+      "head": "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2",
+      "index": "4a1dbae3a9e161ead1e40cd237c8f0b96e13fb23ee9f36b9f0da5763cbf5a78a",
+      "tree": "86c2183524da60551161310506d18f1a7e8245dc",
+      "parents": [
+        "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2"
+      ]
+    },
+    "fingerprint": "7315a4d7deeed9d8987a0d74d36e3a63c964c919ceb0f48c366619783d23ca48",
+    "criteria": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+    "coverage": "74e55308b5f056108c64188b3612a92367c22a6bf71458f77d15739606eb1433",
+    "subjects": [
+      {
+        "id": "be8e9b84-2ef1-4373-85ab-6b1e91e3d060",
+        "type": "interpretation",
+        "relation": "anchor",
+        "hash": "814e245e7db7a34c63cc32316462c2bed3be0db20cea0c1c0c7c09abebb9d674"
+      },
+      {
+        "id": "808d4bf6-0b1e-4829-9ec1-9bfccd604252",
+        "type": "source",
+        "relation": "implements",
+        "hash": "e3e4e2c0a6c5d4b0c4606ce132ba06cecb20c859af94faeb8f99a4489d0db6ea"
+      },
+      {
+        "id": "a6123954-72ab-4a29-b79c-7eb40db8d859",
+        "type": "decision",
+        "relation": "implements_back",
+        "hash": "baf8a1668205eac77d9865a51db50d95dc2cbd144d54f04e004f8e5b71897371"
+      }
+    ]
+  },
+  "verdict": "{\n  \"schema\": 2,\n  \"need\": \"be8e9b84-2ef1-4373-85ab-6b1e91e3d060\",\n  \"criteria\": \"quality\",\n  \"reviewed_fingerprint\": \"7315a4d7deeed9d8987a0d74d36e3a63c964c919ceb0f48c366619783d23ca48\",\n  \"criteria_fingerprint\": \"d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87\",\n  \"agent\": \"codex\",\n  \"summary\": \"逐字核对本轮原文、解读及相邻决策；原生目录选择和清理边界与用户要求一致，环境可用与正式审计完成被明确区分。\",\n  \"axes\": {\n    \"parent_fit\": {\n      \"score\": 2,\n      \"reason\": \"用户明确要求清除垃圾临时文件、采用官方目录且 CLI 仅稳定封装。解读将其落实为唯一 requirements 配置、原生环境缓存和废弃重定向删除，同时保留源码、锁文件及正式证明，清理对象没有扩张为受维护文件。\"\n    },\n    \"reasoning\": {\n      \"score\": 2,\n      \"reason\": \"正文说明从配置权威与生命周期出发推导原生目录选择，明确替代原有全部缓存进入 _build 的设计；构建输入仍集中 _build，冷启动、并发准备及完整图为稳定性验收，没有将目录选择伪装为用户逐字指定的路径。\"\n    },\n    \"evidence\": {\n      \"score\": 2,\n      \"reason\": \"已直接核对 uv 0.11.8 缓存标记源码；同一333节点图移除零字节标记前失败、移除后成功。正式 prepare 已创建原生 .venv，严格 Sphinx 构建及44项行为测试通过；相邻决策保留缓存语义且没有宣称全部既有审计通过。\"\n    }\n  }\n}\n",
+  "recordedAt": "2026-10-20T09:43:43.203Z"
+}

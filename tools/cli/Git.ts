@@ -20,6 +20,7 @@ export class Git {
       LOCALAPPDATA: process.env.LOCALAPPDATA,
       TEMP: process.env.TEMP,
       TMP: process.env.TMP,
+      TSX_DISABLE_CACHE: '1',
       ...(inheritContext
         ? {
             GIT_DIR: process.env.GIT_DIR,

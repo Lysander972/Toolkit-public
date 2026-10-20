@@ -4,10 +4,12 @@ import { z } from 'zod'
 
 /** @anchor pull-request-format */
 interface PullRequestEvent {
-  readonly pull_request: {
-    readonly title: string
-    readonly body: string | null
-  }
+  readonly pull_request: PullRequestData
+}
+
+interface PullRequestData {
+  readonly title: string
+  readonly body: Option.Option<string>
 }
 
 /** @anchor pull-request-format */
@@ -15,23 +17,29 @@ export class PullRequestFormat {
   private static readonly eventSchema: z.ZodType<PullRequestEvent> = z.object({
     pull_request: z.object({
       title: z.string(),
-      body: z.string().nullable(),
+      body: z.string().nullable().transform(Option.fromNullishOr),
     }),
   })
 
-  private static readonly titlePattern: RegExp =
-    /^(feat|fix|refactor|docs|test|build|ci|chore|perf|revert)(\([a-z0-9][a-z0-9._/-]*\))?!?: \S.*$/
-
   private constructor() {}
 
-  /** @anchor pull-request-format */
-  public static validate(title: string, body: string | null): readonly string[] {
+  /**
+   * @anchor pull-request-format
+   * @format-exempt pull-request-title 外部单行标题的锚定格式校验，不解析正文结构。
+   */
+  public static validate(title: string, body: Option.Option<string>): readonly string[] {
+    const titlePattern: RegExp =
+      /^(feat|fix|refactor|docs|test|build|ci|chore|perf|revert)(\([a-z0-9][a-z0-9._/-]*\))?!?: \S.*$/
     const violations: string[] = []
-    if (Array.from(title).length > 72 || !PullRequestFormat.titlePattern.test(title)) {
+    if (Array.from(title).length > 72 || !titlePattern.test(title)) {
       violations.push('PR 标题必须使用 Conventional Commits 格式且不超过 72 字符')
     }
     const sections: readonly string[] = ['变更', '验证', '追踪', '风险']
-    const lines: readonly string[] = (body ?? '').split('\n')
+    if (Option.isNone(body)) {
+      violations.push('PR 正文必须按顺序包含 ## 变更、## 验证、## 追踪、## 风险')
+      return violations
+    }
+    const lines: readonly string[] = body.value.split('\n')
     const headings: readonly number[] = sections.map((section: string): number =>
       lines.findIndex((line: string): boolean => line === '## ' + section),
     )
@@ -59,7 +67,7 @@ export class PullRequestFormat {
         index + 1 < sections.length
           ? Option.getOrThrow(Option.fromNullishOr(headings[index + 1]))
           : lines.length
-      if (!lines.slice(start, end).some((line: string): boolean => /\S/u.test(line))) {
+      if (!lines.slice(start, end).some((line: string): boolean => line.length > 0)) {
         violations.push(
           'PR 正文章节不得为空：## ' + Option.getOrThrow(Option.fromNullishOr(sections[index])),
         )

@@ -1,0 +1,57 @@
+{
+  "ticket": {
+    "id": "1f643127-49d9-4f3a-825c-e550ab7763c7",
+    "token": "fe727b10ba614834012e833155d61fa47e0896f353f02b8f8db4fbc5fa0ea26c",
+    "snapshot": {
+      "head": "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2",
+      "index": "a541a42339967c5f2908b6bfc8e95f08f7d59ab7230fb11ae83da822e94a18a2",
+      "tree": "0194b9958343740562ca00e712ff2088a4bfa312",
+      "parents": [
+        "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2"
+      ]
+    },
+    "fingerprint": "16526a3da8f8787f5e2be6c3cf9d17fbbbab69179d7034a7d874e370f71e89f6",
+    "criteria": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+    "coverage": "b22b6b359f1d313d1f1ad7a1580c622faec7a3d141723673ed2574adcffe2e67",
+    "subjects": [
+      {
+        "id": "1f643127-49d9-4f3a-825c-e550ab7763c7",
+        "type": "design",
+        "relation": "anchor",
+        "hash": "51fd5c24df79f593184d274ba53ceeca8631c8a24e4e0280ab0043d10f401d07"
+      },
+      {
+        "id": "a6123954-72ab-4a29-b79c-7eb40db8d859",
+        "type": "decision",
+        "relation": "implements",
+        "hash": "baf8a1668205eac77d9865a51db50d95dc2cbd144d54f04e004f8e5b71897371"
+      },
+      {
+        "id": "0e304048-d922-4b0c-9fc7-c2e7ab6f7802",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "705b587de46b00d070e66fc76b38d235ca1d390ce060eeb76d5468e920d01432"
+      },
+      {
+        "id": "2f89ffe8-9c5c-4880-8d5b-10dcb730c25b",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "a9297c3fc2730d20485c96ff061f63341093d0697ae359f8c48c46a7f2a51118"
+      },
+      {
+        "id": "431a2aba-9903-438c-9c9f-9ad7c8f9d76a",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "970c376de9be942470564b1c699929ae097fb70a5c6c6ea5349f27726486990f"
+      },
+      {
+        "id": "b8b1d2e3-4f5a-4678-9abc-def012345678",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "07f992d755f12aecc3a4d2df4429537ea5b0ea4ae3417bf634fd5d664a3ca847"
+      }
+    ]
+  },
+  "verdict": "{\n  \"schema\": 2,\n  \"need\": \"1f643127-49d9-4f3a-825c-e550ab7763c7\",\n  \"criteria\": \"quality\",\n  \"reviewed_fingerprint\": \"16526a3da8f8787f5e2be6c3cf9d17fbbbab69179d7034a7d874e370f71e89f6\",\n  \"criteria_fingerprint\": \"d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87\",\n  \"agent\": \"codex\",\n  \"summary\": \"完整阅读设计、上游决策及四份关联实现全文；原生目录替代重定向，完整索引与正式审计失败保持各自语义。\",\n  \"axes\": {\n    \"parent_fit\": {\n      \"score\": 2,\n      \"reason\": \"设计直接落实决策的项目默认虚拟环境、系统 uv 缓存及项目 ubCode 缓存，移除根配置转发和 Junction；保留冻结同步、发行摘要及失败退出码，范围与上游一致。\"\n    },\n    \"reasoning\": {\n      \"score\": 2,\n      \"reason\": \"准备入口复用 uv sync 原生项目能力；Sphinx 和 AST 入口直接读取同一 .venv，HostProcess 只传 Git.cleanEnv，不再拥有目录设置层。独占输入由 finally 释放，构建仍写根 _build；这些职责在四份完整实现中一致。\"\n    },\n    \"evidence\": {\n      \"score\": 2,\n      \"reason\": \"已核对 RequirementsCli 的下载摘要、冻结同步、独占输入及原生查询分支，HostProcess 的隐藏启动和退出码，环境白名单与 ExecutableRequirements 的正式解释器调用。冷安装、重复并发准备、337节点索引及 context、严格文档构建和49项相关测试已通过；最终 pnpm check 只剩真实图关系及检视缺口，设计明确未把索引成功冒充审计通过。\"\n    }\n  }\n}\n",
+  "recordedAt": "2026-10-20T10:01:16.950Z"
+}

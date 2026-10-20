@@ -1,0 +1,23 @@
+{
+  "schema": 2,
+  "need": "1f643127-49d9-4f3a-825c-e550ab7763c7",
+  "criteria": "quality",
+  "reviewed_fingerprint": "16526a3da8f8787f5e2be6c3cf9d17fbbbab69179d7034a7d874e370f71e89f6",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "agent": "codex",
+  "summary": "完整阅读设计、上游决策及四份关联实现全文；原生目录替代重定向，完整索引与正式审计失败保持各自语义。",
+  "axes": {
+    "parent_fit": {
+      "score": 2,
+      "reason": "设计直接落实决策的项目默认虚拟环境、系统 uv 缓存及项目 ubCode 缓存，移除根配置转发和 Junction；保留冻结同步、发行摘要及失败退出码，范围与上游一致。"
+    },
+    "reasoning": {
+      "score": 2,
+      "reason": "准备入口复用 uv sync 原生项目能力；Sphinx 和 AST 入口直接读取同一 .venv，HostProcess 只传 Git.cleanEnv，不再拥有目录设置层。独占输入由 finally 释放，构建仍写根 _build；这些职责在四份完整实现中一致。"
+    },
+    "evidence": {
+      "score": 2,
+      "reason": "已核对 RequirementsCli 的下载摘要、冻结同步、独占输入及原生查询分支，HostProcess 的隐藏启动和退出码，环境白名单与 ExecutableRequirements 的正式解释器调用。冷安装、重复并发准备、337节点索引及 context、严格文档构建和49项相关测试已通过；最终 pnpm check 只剩真实图关系及检视缺口，设计明确未把索引成功冒充审计通过。"
+    }
+  }
+}

@@ -106,7 +106,7 @@ model {
     editor = container '编辑器配置' {
       #common
       description '声明开发编辑器格式与工作区选项；推荐 VS Code ESLint 扩展以执行仓库现役 ESLint 配置，不作为产品运行配置。'
-      metadata { files ['.editorconfig', '.prettierignore', '.vscode/*.json'] }
+      metadata { files ['.editorconfig', '.prettierignore'] }
     }
   }
   specifications = system '工具链规范' {

@@ -2,7 +2,10 @@ import type { StorybookConfig } from '@storybook/react-vite'
 import type { InlineConfig } from 'vite'
 
 const config: StorybookConfig = {
-  framework: '@storybook/react-vite',
+  framework: {
+    name: '@storybook/react-vite',
+    options: { builder: { configLoader: 'native' } },
+  },
   stories: ['*.stories.tsx'],
   addons: [],
   core: { disableTelemetry: true, disableProjectJson: true },

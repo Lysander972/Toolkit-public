@@ -1,13 +1,12 @@
 import { createHash } from 'node:crypto'
 import { existsSync, globSync, readFileSync } from 'node:fs'
-import { mkdir, mkdtemp, realpath, rm, symlink, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { basename, dirname, join, relative } from 'node:path'
 import writeFileAtomic from 'write-file-atomic'
 import { z } from 'zod'
 import { parse } from 'smol-toml'
 import { Option } from 'effect'
 import { HostProcess } from './HostProcess.ts'
-import { EnvironmentVariables } from './EnvironmentVariables.ts'
 import { Git } from './Git.ts'
 import { RequirementsSources } from './RequirementsSources.ts'
 import type { RequirementsCoverage } from './RequirementsSources.ts'
@@ -259,9 +258,10 @@ export class RequirementsCli {
       if (args.length !== 2) throw new Error('build 需要构建分组名')
       const executable: string =
         process.platform === 'win32' ? 'Scripts/sphinx-build.exe' : 'bin/sphinx-build'
+      // @non-manual-path uv 项目原生虚拟环境的 Sphinx 入口，不是源码枚举范围。
       return HostProcess.run(
         {
-          file: join(repositoryFullPath, '_build/requirements/venv', executable),
+          file: join(repositoryFullPath, 'requirements/.venv', executable),
           args: [
             '-W',
             '--keep-going',
@@ -320,6 +320,19 @@ export class RequirementsCli {
     }
     if (command === 'ubc') {
       if (args.length < 2) throw new Error('ubc 需要正式子命令')
+      if ((args.length === 2 && args[1] === '--help') || args[1] === 'help')
+        return HostProcess.run(
+          { file, args: [...args.slice(1)], windowsHide: true },
+          repositoryFullPath,
+        )
+      if (
+        args[1] === 'license' &&
+        ['show', 'config-file', 'clean'].includes(z.string().parse(args[2]))
+      )
+        return HostProcess.run(
+          { file, args: [...args.slice(1)], windowsHide: true },
+          repositoryFullPath,
+        )
       const readCommands: readonly string[] = [
         'context',
         'audit',
@@ -471,7 +484,6 @@ export class RequirementsCli {
     }
     if (createHash('sha256').update(readFileSync(target)).digest('hex') !== distribution.sha256)
       throw new Error('ubc 文件摘要与锁定版本不符：' + target)
-    await RequirementsCli.cache(repositoryFullPath)
     const result: number = await HostProcess.run(
       {
         file: 'uv',
@@ -490,18 +502,6 @@ export class RequirementsCli {
         windowsHide: true,
       },
       repositoryFullPath,
-      {
-        ...Git.cleanEnv(),
-        [EnvironmentVariables.requirementsEnvironment]: join(
-          repositoryFullPath,
-          '_build/requirements/venv',
-        ),
-        [EnvironmentVariables.requirementsCache]: join(repositoryFullPath, '_build/uv/cache'),
-        [EnvironmentVariables.requirementsInterpreter]: join(
-          repositoryFullPath,
-          '_build/uv/python',
-        ),
-      },
     )
     if (result !== 0) return result
     await RequirementsSources.generate(
@@ -510,20 +510,5 @@ export class RequirementsCli {
       Option.none(),
     )
     return 0
-  }
-
-  private static async cache(repositoryFullPath: string): Promise<void> {
-    const target: string = join(repositoryFullPath, '_build/requirements/ub-cache')
-    // @non-manual-path ubCode 固定原生缓存目录入口，不是源码枚举范围
-    const link: string = join(repositoryFullPath, 'requirements/.ub_cache')
-    await mkdir(target, { recursive: true })
-    try {
-      await symlink(target, link, process.platform === 'win32' ? 'junction' : 'dir')
-    } catch (failure: unknown) {
-      if (!(failure instanceof Error) || !('code' in failure) || failure.code !== 'EEXIST')
-        throw failure
-    }
-    if ((await realpath(link)) !== (await realpath(target)))
-      throw new Error('ubc 缓存必须指向根 _build：' + link)
   }
 }

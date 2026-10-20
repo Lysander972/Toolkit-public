@@ -2,6 +2,7 @@
 # 注意：_build 只允许存在于仓库根（根级唯一）。禁止写成裸 _build/（会匹配任意层级并静默掩盖分裂）。
 /_build/
 /requirements/.ub_cache
+/requirements/.venv/
 
 # 依赖实体：node_modules 为 pnpm 原生布局（内容寻址 store + 链接），各层级均不入库
 node_modules/

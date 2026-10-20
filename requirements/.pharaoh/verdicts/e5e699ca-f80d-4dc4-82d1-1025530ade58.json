@@ -1,0 +1,23 @@
+{
+  "schema": 2,
+  "criteria": "quality",
+  "reviewed_fingerprint": "2fe247f8b9fd4ee7414ae971efa94899f14a8b032a7ac8641ebccb4be2dd000c",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "agent": "codex",
+  "summary": "完整核对用户规划选择与上下游正文，解读保留原生环境、集中项目缓存和显式回收边界。",
+  "axes": {
+    "parent_fit": {
+      "score": 2,
+      "reason": "四项用户选择逐一落实为集中根 _build、显式回收中断残留及关闭 Jiti/tsx 磁盘缓存；保留既有 uv 与 ubCode 原生目录，没有把 Python 依赖字节码歪曲成必须逐次删除的垃圾。"
+    },
+    "reasoning": {
+      "score": 2,
+      "reason": "从缓存所有权和生命周期区分共享依赖、项目环境、项目缓存及任务输入，说明正常异常释放与硬中断回收的差别，并明确拒绝新增目录转发、全局 Temp 重定向及自动扫描协议。"
+    },
+    "evidence": {
+      "score": 2,
+      "reason": "原文保留用户四项选择和实施指令；下游决策明确使用已有 cacheDir、CACHE_DIR、原生加载器、ignorePatterns 和 finally，对无法配置目录的 Jiti 与 tsx 按用户选择关闭磁盘缓存，未把待执行验收写成全部通过。"
+    }
+  },
+  "need": "e5e699ca-f80d-4dc4-82d1-1025530ade58"
+}

@@ -87,6 +87,7 @@ export class CheckConfiguration {
       ...allTypeScript,
       ...rootJavaScript,
       ...jsonFiles,
+      ...WorkspaceFiles.select(repositoryFullPath, ['README.md', '.github/**/*.md']),
       'knip.config.ts',
     ])
     const prettierFiles: string[] = []
@@ -134,7 +135,7 @@ export class CheckConfiguration {
       ...CheckConfiguration.script(
         packageManifest,
         'check:lint',
-        'eslint tools src/toolkit src/canvas_render test/modules src/frontend src/preview knip.config.ts --cache --cache-strategy content --cache-location _build/eslint/cache --max-warnings 0',
+        'TSX_DISABLE_CACHE=1 eslint tools src/toolkit src/canvas_render test/modules src/frontend src/preview knip.config.ts --cache --cache-strategy content --cache-location _build/eslint/cache --max-warnings 0',
       ),
     )
     violations.push(
@@ -145,13 +146,17 @@ export class CheckConfiguration {
       ),
     )
     violations.push(
-      ...CheckConfiguration.script(packageManifest, 'check', 'tsx tools/cli/main.ts check'),
+      ...CheckConfiguration.script(
+        packageManifest,
+        'check',
+        'tsx --no-cache tools/cli/main.ts check',
+      ),
     )
     violations.push(
       ...CheckConfiguration.script(
         packageManifest,
         'check:commit',
-        'tsx tools/cli/main.ts commit-check',
+        'tsx --no-cache tools/cli/main.ts commit-check',
       ),
     )
     violations.push(

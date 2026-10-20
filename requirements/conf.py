@@ -4,6 +4,7 @@ needs_from_toml = 'ubproject.toml'
 needs_build_json = True
 root_doc = 'index'
 language = 'zh_CN'
+exclude_patterns = ['.venv/**', '.ub_cache/**']
 
 def configure_sources(app, config):
     config.needs_import_keys['toolkit_sources'] = config.toolkit_sources_file

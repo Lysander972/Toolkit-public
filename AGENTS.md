@@ -37,8 +37,9 @@
   - 缓存优化: 使用标准工具原生缓存与增量能力，输入变化须正确失效；严禁自造缓存判定、重复执行体系、分裂缓存，以及为工具限制制造缩写路径或一次性缓存补丁。
   - 时长合理: 超长测试、过高 CPU/内存说明存在低效，低成本优化（如缓存短路）必须做；网络不可靠时换源或代理，严禁死磕等待、挥霍用户时间。AIGC 模型须有可靠选型依据，严禁烧钱使用明显过时模型（如 2024 年模型）。
   - 临时文件要求: 
-    - 构建目录唯一为当前仓库顶层 `_build`，仅在其中划分用途与并发任务的独占子目录；严禁随组件、目录或运行起点分裂。Prettier、tsc、ESLint 使用 `_build` 下各自的官方增量目录。Stryker incremental 文件位于 Git common dir，供同一仓库的 worktree 复用；构建与测试产物仍只进入 `_build`。
+    - 构建目录唯一为当前仓库顶层 `_build`，仅在其中划分用途与并发任务的独占子目录；严禁随组件、目录或运行起点分裂。文档工具遵循官方原生布局：uv 项目环境为 `requirements/.venv`，缓存与托管解释器使用系统默认位置，ubCode 缓存为 `requirements/.ub_cache`；不建立目录重定向、缓存 Junction 或配置转发。Prettier、tsc、ESLint 使用 `_build` 下各自的官方增量目录。Stryker incremental 文件位于 Git common dir，供同一仓库的 worktree 复用；构建与测试产物仍只进入 `_build`。
     - 测试确实不可避免的少量必要文件（小型文档、输入夹具）可写系统 Temp 独占目录，成功和失败路径均释放；Temp 严禁承载分裂工作区、持久缓存或大量构建产物，除此之外禁止工作区外随意写入。
+    - Vite、Vitest、Storybook 项目缓存使用原生配置进入根 `_build` 的独立用途目录。Jiti 与 tsx 转译磁盘缓存关闭，保留进程内缓存；受控 Node 子进程固定关闭 tsx 磁盘缓存。沙箱不复制宿主 Python 环境或 ubCode 索引，使用共享依赖缓存建立独立环境。硬中断残留通过明确的原生命令回收，不增加启动扫描或自动清理协议；维护方式见 `requirements/issue-179.rst`。
     - 严禁存储泄漏、一次性垃圾建立后永不释放及 CI 制造垃圾；缓存分裂和残留都是对抗规范的挥霍。禁止每次测试制造超大文件（如 100 MB 以上），禁止反复测试、重试或复制造成磁盘膨胀与无意义磨损；换写入位置不能解决挥霍，必须消除多余写入与计算。
   - CI/CD: CI 使用 GitHub Actions 托管环境并执行同一根 scripts，禁止自制 runner、手改运行态或依赖隐藏状态；事件、并发与审计就绪条件见 [git-workflow「CI 事件与审计就绪」](requirements/sources/git-workflow/spec.md#requirement-ci-事件与审计就绪)。
 4. 语言风格: 
@@ -108,7 +109,7 @@
 
 检视按 `.agents/skills/review-traceability/SKILL.md` 执行：`pnpm requirements review audit --id <UUID>` 原子领取全文、标准及随机一次性令牌；`review record --stdin` 整批校验后事务消费。源码及 LikeC4 正文由 `requirements/bindings.json` 逐文件绑定，经标准 needimport 导入同一图；已迁移 C4 范围漏绑直接失败。正文、覆盖、关联或标准变化要求重新领取。原文直接纠偏，Git 留痕，不另建冻结或取代链。
 
-环境通过 `pnpm install --frozen-lockfile` 建立，prepare 配置 hooks 并调用 `pnpm requirements:prepare`；检出、合并和重写后的 hooks 使用同一入口。文档环境、缓存和独占输入全部进入根 `_build`。根 `pnpm check` 包含结构及评分检查；严格文档构建使用 `pnpm requirements:build`。
+环境通过 `pnpm install --frozen-lockfile` 建立，prepare 配置 hooks 并调用 `pnpm requirements:prepare`；检出、合并和重写后的 hooks 使用同一入口。文档环境及第三方缓存使用上述原生目录，构建与独占输入进入根 `_build`。唯一配置为 `requirements/ubproject.toml`。根 `pnpm check` 包含结构及评分检查；严格文档构建使用 `pnpm requirements:build`。
 
 提交前暂存源码、图配置、正式意见及 receipt，`pnpm check:commit` 核对同一 index；`pnpm requirements:verify:head` 独立读取 HEAD 的同树输入，工作树修改不能替代或阻挡正式审计。检视和检查均不自动暂存或改写提交。原生 Git 管理合并与重写；`review reconcile` 只继承当前 HEAD、合并直接父及所属 rebase 输入中完全匹配的证明，失配和意见冲突保持待审。
 

@@ -2,12 +2,14 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync } from 'node:fs'
 import { z } from 'zod'
+import { fileURLToPath } from 'node:url'
 
 const manifest = z
   .object({ version: z.string() })
   .parse(JSON.parse(readFileSync('src/frontend/package.json', 'utf8')))
 export default defineConfig({
   root: 'src/preview/site',
+  cacheDir: fileURLToPath(new URL('_build/vite/preview', import.meta.url)),
   base: '/MechToolkit/',
   plugins: [react()],
   define: {

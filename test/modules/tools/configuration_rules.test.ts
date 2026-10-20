@@ -18,8 +18,10 @@ export class ConfigurationRulesTest {
       mkdirSync(resolve('_build/tests'), { recursive: true })
       const repositoryFullPath: string = mkdtempSync(resolve('_build/tests/configuration-'))
       try {
-        for (const directory of ['tools', 'src/toolkit', 'test/modules/tools', 'res'])
+        for (const directory of ['tools', 'src/toolkit', 'test/modules/tools', 'res', '.github'])
           mkdirSync(join(repositoryFullPath, directory), { recursive: true })
+        writeFileSync(join(repositoryFullPath, 'README.md'), '# Project\n')
+        writeFileSync(join(repositoryFullPath, '.github/pull_request_template.md'), '## 变更\n')
         const manifest: { scripts: Record<string, string> } = z
           .object({ scripts: z.record(z.string(), z.string()) })
           .parse(JSON.parse(readFileSync('package.json', 'utf8')))
@@ -74,7 +76,7 @@ model {
     }
     reference = document '原文' {
       #doc
-      metadata { files ['res/reference.json'] }
+      metadata { files ['res/reference.json', 'README.md', '.github/*.md'] }
     }
   }
 }`)

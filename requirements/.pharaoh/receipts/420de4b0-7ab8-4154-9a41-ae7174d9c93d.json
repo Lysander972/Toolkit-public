@@ -1,0 +1,39 @@
+{
+  "ticket": {
+    "id": "420de4b0-7ab8-4154-9a41-ae7174d9c93d",
+    "token": "8ce6f708483bd4b0c20c95891750a5671f29ea8a1d432fb4e3e0cbf338ccac48",
+    "snapshot": {
+      "head": "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2",
+      "index": "ead19df5583cea6a8657e546643fc09edb375a09f5ba427e6e3b350d11f7f478",
+      "tree": "99fb0732e9d49d72b015ed60b25b1d2a8b0a2d83",
+      "parents": [
+        "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2"
+      ]
+    },
+    "fingerprint": "e6fc0011d67d02588a0d2c08f508e7d0471df7149965cf839475363b7cf1b999",
+    "criteria": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+    "coverage": "5942a1e536d9f9ae53ca09b8cb1b09f64d4d5ddd222e053b695cade80dcc8e10",
+    "subjects": [
+      {
+        "id": "420de4b0-7ab8-4154-9a41-ae7174d9c93d",
+        "type": "decision",
+        "relation": "anchor",
+        "hash": "619c5d031a16d51a51657732f5fd059cc1966766c19f1cebd0e31f3154b1b5b6"
+      },
+      {
+        "id": "e5e699ca-f80d-4dc4-82d1-1025530ade58",
+        "type": "interpretation",
+        "relation": "implements",
+        "hash": "e61af1e95a99d618793b3c5ef92626bde76e4753c4f6a32687c74bd35bc73f1b"
+      },
+      {
+        "id": "d6418ea2-cb52-4ad3-a819-6e46412a639d",
+        "type": "design",
+        "relation": "implements_back",
+        "hash": "7bf93c3e889cae6592cfc78302ab74c5d1f41020283eab6b7138e347e6c867a1"
+      }
+    ]
+  },
+  "verdict": "{\n  \"schema\": 2,\n  \"criteria\": \"quality\",\n  \"reviewed_fingerprint\": \"e6fc0011d67d02588a0d2c08f508e7d0471df7149965cf839475363b7cf1b999\",\n  \"criteria_fingerprint\": \"d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87\",\n  \"agent\": \"codex\",\n  \"summary\": \"完整核对原生缓存接口、关闭转译磁盘缓存的授权和下游目录设计；清理及综合验收仍有明确缺口。\",\n  \"axes\": {\n    \"parent_fit\": {\n      \"score\": 2,\n      \"reason\": \"决策保留共享 uv 与 pnpm 缓存，项目缓存通过官方参数集中，关闭 Jiti/tsx 磁盘缓存与原生显式回收均来自用户已选方案，没有扩张为自研缓存管理器。\"\n    },\n    \"reasoning\": {\n      \"score\": 2,\n      \"reason\": \"已查阅实际安装版本：Vite 支持 cacheDir/native loader，Storybook builder 提供 configLoader 且 CACHE_DIR 控制缓存根，Knip 创建 Jiti 不开放 fsCache 目录参数，tsx 使用固定 Temp 目录。决策据此选择公开开关，而非补丁第三方实现或修改全局 Temp。\"\n    },\n    \"evidence\": {\n      \"score\": 1,\n      \"reason\": \"原生前端与预览构建、Knip、严格 Sphinx 构建通过，新增三项真实生命周期测试通过，Stryker 创建环境并在失败后释放沙箱。旧项目缓存目录删除被自动审批拒绝；全量测试与 Stryker 初测因现有语料数量不符失败，Git 测试仓库在场还使 ubCode 开源识别失败，结束后清原生许可缓存恢复341节点读取。\",\n      \"suggestion\": \"移除确认过的旧缓存落点后复核不再生成；独立补齐语料基线问题，并向 ubCode 明确解决嵌套 Git 测试仓库影响开源识别的并发问题，再完成综合验收。\"\n    }\n  },\n  \"need\": \"420de4b0-7ab8-4154-9a41-ae7174d9c93d\"\n}\n",
+  "recordedAt": "2026-10-20T10:36:55.578Z"
+}

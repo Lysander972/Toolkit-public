@@ -11,6 +11,7 @@ const { TestMetrics } = await tsImport('./tools/cli/TestMetrics.ts', import.meta
 const model = await ArchitectureProject.load(process.cwd(), Option.none())
 
 export default defineConfig({
+  cacheDir: '_build/vitest',
   plugins: [react()],
   test: {
     reporters: ['default'],

@@ -1,0 +1,81 @@
+{
+  "ticket": {
+    "id": "d6418ea2-cb52-4ad3-a819-6e46412a639d",
+    "token": "585c34eb7542a749a5fbe5ea04478b6d3147e5c8223cb3dceefa5f5e492ba59d",
+    "snapshot": {
+      "head": "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2",
+      "index": "ead19df5583cea6a8657e546643fc09edb375a09f5ba427e6e3b350d11f7f478",
+      "tree": "99fb0732e9d49d72b015ed60b25b1d2a8b0a2d83",
+      "parents": [
+        "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2"
+      ]
+    },
+    "fingerprint": "0c72b5220cf5264cf878fbc531ad71c998f15788a44e6a2afd71ef2c46a4a58a",
+    "criteria": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+    "coverage": "a67bbb144d2809036b90687c4b1a74d0b21dbdda579a92b8c1e1be34a812fee4",
+    "subjects": [
+      {
+        "id": "d6418ea2-cb52-4ad3-a819-6e46412a639d",
+        "type": "design",
+        "relation": "anchor",
+        "hash": "7bf93c3e889cae6592cfc78302ab74c5d1f41020283eab6b7138e347e6c867a1"
+      },
+      {
+        "id": "420de4b0-7ab8-4154-9a41-ae7174d9c93d",
+        "type": "decision",
+        "relation": "implements",
+        "hash": "619c5d031a16d51a51657732f5fd059cc1966766c19f1cebd0e31f3154b1b5b6"
+      },
+      {
+        "id": "00fde074-44ba-4956-885e-69d4f2383508",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "f41ddbc954aef96af6a167d757cfe0f6517aa68eeddc7785e477b51bed6a7270"
+      },
+      {
+        "id": "189e7f4a-5794-4976-8a07-ef0a96a2b747",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "107518252592a3f35812d74d81aa06c147192728d23f55d828920155bf6d443d"
+      },
+      {
+        "id": "2bc177e3-b91f-46d2-8dc0-b62ec08b6125",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "aa09acc027212524a95b07c0af55e855b76e8a2c610749658838956384e1f25e"
+      },
+      {
+        "id": "2f89ffe8-9c5c-4880-8d5b-10dcb730c25b",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "4573468110c3100c6bceedd98592e98965be848b232229f66cedb1e85d5e0258"
+      },
+      {
+        "id": "51f0833e-d283-4aab-805b-73ae3f1fa3a1",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "5010b6c91d651cb6b06ffed51edce409a20d1055d4df022d37f407f2a0e9fdff"
+      },
+      {
+        "id": "8a09fade-4a80-454d-b5d2-cd811c6f8b8c",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "86aa4fd05947f8bc4a303accd8f53896eabce4e542ae22214f70a600f57dc7e1"
+      },
+      {
+        "id": "b8b1d2e3-4f5a-4678-9abc-def012345678",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "07f992d755f12aecc3a4d2df4429537ea5b0ea4ae3417bf634fd5d664a3ca847"
+      },
+      {
+        "id": "d51f190e-2dad-4538-9511-2b220bfb6caa",
+        "type": "implementation",
+        "relation": "implements_back",
+        "hash": "2710fa4439773c66fbcd0c20bded61e943f6646daafbf17b68aede2f86350682"
+      }
+    ]
+  },
+  "verdict": "{\n  \"schema\": 2,\n  \"criteria\": \"quality\",\n  \"reviewed_fingerprint\": \"0c72b5220cf5264cf878fbc531ad71c998f15788a44e6a2afd71ef2c46a4a58a\",\n  \"criteria_fingerprint\": \"d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87\",\n  \"agent\": \"codex\",\n  \"summary\": \"完整阅读设计、上游决策及八份绑定实现；缓存落点与生命周期已落实，旧目录清除和综合验收保留具体待补项。\",\n  \"axes\": {\n    \"parent_fit\": {\n      \"score\": 2,\n      \"reason\": \"设计使用原生 cacheDir、CACHE_DIR 和加载器，保留 uv/ubCode 官方布局，按用户选择关闭 Jiti/tsx 磁盘缓存；沙箱排除宿主环境与索引，任务资源 finally 释放，没有增加目录转发层或自动清理协议。\"\n    },\n    \"reasoning\": {\n      \"score\": 2,\n      \"reason\": \"package.json 将开关限定到实际调用 tsx API 的 ESLint、Knip、Vitest、Stryker；Git.cleanEnv 固定 TSX_DISABLE_CACHE 而非继承任意设置。Vite 路径相对配置文件定位，Storybook 使用其原生版本化目录；Stryker 保持原生准备和释放，ExecutableRequirements 的 AST/Cucumber 资源均有 finally。以上均逐份阅读全文核对。\"\n    },\n    \"evidence\": {\n      \"score\": 1,\n      \"reason\": \"前端 UI、完整预览含 Storybook 构建、Knip、严格 Sphinx、类型、格式和 Lint 已通过；三个新增行为测试证明 AST/Cucumber 成功、失败和并发目录隔离与释放。全量测试397项通过，四个语料相关测试文件失败；Stryker干运行创建并释放独立环境，但因2423脚本与2775基线不符退出1。三个旧项目缓存目录删除被策略拒绝，不能声称冷清理验收完成；嵌套Git测试仓库在场时ubCode开源检测失败仍须解决。\",\n      \"suggestion\": \"移除旧 node_modules 缓存后验证正式入口不再生成这些落点；补齐现有语料数量基线，并解决ubCode对并发嵌套测试仓库的开源识别问题，再完成全链验收。保留真实失败及低于满分意见，禁止缩减测试范围或伪造通过。\"\n    }\n  },\n  \"need\": \"d6418ea2-cb52-4ad3-a819-6e46412a639d\"\n}\n",
+  "recordedAt": "2026-10-20T10:37:52.133Z"
+}

@@ -1,6 +1,79 @@
 需求纠偏追踪
 ============
 
+.. interpretation:: 缓存归属与任务生命周期
+   :id: e5e699ca-f80d-4dc4-82d1-1025530ade58
+   :status: active
+   :implements: f9746bea-1617-4f82-90f7-43668a1e48ba
+
+   出发点是用户要求消除缓存混乱，并选择将其余项目缓存集中到根 _build、硬中断残留显式回收，以及关闭 Jiti 和 tsx 转译磁盘缓存。从所有权和生命周期推导：每种缓存只有一个权威落点，原工具负责失效与复用；uv、托管 Python、pnpm store 和 ubCode 继续使用已确立的官方布局。Python 环境内字节码是环境的一部分，任务临时输入则必须在正常与异常结束时释放。
+
+   目录集中不能通过复制宿主环境、全局 Temp 重定向或自研缓存层实现。强杀和断电跳过 finally，残留由明确的原生维护命令回收；不引入自动扫描、PID 判定或自研锁协议。验收核对真实命令、落点和资源生命周期，不能用配置字符串代替行为。
+
+.. decision:: 使用原生配置收敛项目缓存
+   :id: 420de4b0-7ab8-4154-9a41-ae7174d9c93d
+   :status: active
+   :implements: e5e699ca-f80d-4dc4-82d1-1025530ade58
+
+   已有 Vite/Vitest cacheDir、Storybook CACHE_DIR 与 builder configLoader、Stryker ignorePatterns 和 cleanTempDir，以及任务 finally 释放。选择这些原生接口，将项目缓存集中至 _build，并从沙箱输入排除宿主 .venv 与 .ub_cache。uv 共享缓存继续支持沙箱内的独立环境，避免复制宿主环境及其已安装字节码。
+
+   Knip 内部创建 Jiti，未公开 fsCache 目录参数；JITI_FS_CACHE 只支持布尔开关。tsx 同样没有原生缓存目录配置。用户明确选择关闭两者磁盘缓存，保留进程内复用，以额外转译开销换取确定的存储归属。拒绝修改第三方实现、创建加载器或重定向整个系统 Temp。持久依赖缓存按需使用原生 prune，不设置任意过期时间或定时清空。
+
+.. design:: 项目缓存与临时资源布局
+   :id: d6418ea2-cb52-4ad3-a819-6e46412a639d
+   :status: active
+   :implements: 420de4b0-7ab8-4154-9a41-ae7174d9c93d
+
+   Vite 前端与预览缓存分别进入 _build/vite/frontend 和 _build/vite/preview，配置相对自身文件定位；Vitest 使用 _build/vitest。Storybook 命令局部设置 CACHE_DIR=_build，其原生版本化缓存进入 _build/storybook。主工作区 Vite/Vitest 与 Storybook builder 使用 native 配置加载，避免 bundle 加载器在 node_modules 创建 .vite-temp。Stryker 的官方 Vitest runner 仍使用原生加载器，其临时文件归属于 _build 内沙箱并随沙箱释放。
+
+   根 tsx 命令使用 --no-cache；通过 tsx API 加载 TypeScript 的 ESLint、Knip、Vitest 和 Stryker 命令设置 TSX_DISABLE_CACHE=1。受控子进程环境固定同一开关，使直接通过 Node loader 启动的子进程遵守该策略；不继承任意外部目录设置。Knip 局部设置 JITI_FS_CACHE=false。这些变量在集中白名单登记，CACHE_DIR 只作用于 Storybook 命令。
+
+   Stryker 不复制 requirements/.venv、requirements/.ub_cache 或外部工具生成的 .gitnexus 索引，使用已有 buildCommand 经冻结安装建立独立环境，并保持 cleanTempDir=always。AST、Cucumber、需求图输入和测试夹具使用任务独占目录；finally 只释放自有资源。真实行为验证覆盖正常、异常、并发隔离、原生构建及完整图读取；修改所涉正文和关系后重新领取正式检视。
+
+缓存维护
+--------
+
+uv 缓存、托管 Python 和 pnpm store 采用官方系统位置；requirements/.venv 是安装环境，requirements/.ub_cache 是项目索引。Prettier、ESLint、tsc、Vite、Vitest、Storybook 和 Sphinx 缓存分别归属根 _build 的用途目录。字节码保留在原生 Python 环境或解释器安装目录内，不重定向字节码目录，不逐次清空依赖字节码。
+
+正常和异常结束均释放任务独占输入。强杀、断电残留按需回收，先结束对应任务，再从仓库根执行平台原生命令。下列目标只有可再生的任务临时文件，不包含安装环境、正式证明或持久增量结果。
+
+.. code-block:: powershell
+
+   Remove-Item -LiteralPath './_build/requirements/inputs','./_build/requirements/gherkin','./_build/requirements/tests','./_build/tests','./_build/testing/stryker-sandbox' -Recurse -Force
+
+.. code-block:: sh
+
+   rm -rf -- ./_build/requirements/inputs ./_build/requirements/gherkin ./_build/requirements/tests ./_build/tests ./_build/testing/stryker-sandbox
+
+持久共享缓存按需使用 uv cache prune 或 pnpm store prune；不在 prepare、检查、测试或 hooks 中自动清空。旧版 node_modules/.vite、node_modules/.vite-temp 和 node_modules/.cache/jiti 在配置迁移后按明确路径移除。系统 Temp 中既有 Jiti/tsx 缓存可能被其他工程共享，只有结束其使用者后才按确认的路径移除，不扫描或批量清理整个 Temp。
+
+.. interpretation:: 原生目录与单一配置
+   :id: be8e9b84-2ef1-4373-85ab-6b1e91e3d060
+   :status: active
+   :implements: 808d4bf6-0b1e-4829-9ec1-9bfccd604252
+
+   出发点是用户要求清除垃圾临时文件，并采用官方推荐目录，CLI 只封装已经复现成功的行为。从配置权威与工具生命周期推导：保留 requirements/ubproject.toml 作为唯一配置，移除根目录 extend 转发；uv 使用项目默认 .venv、系统原生缓存与托管解释器目录，ubCode 使用项目原生 .ub_cache。CLI 不再重定向这些目录或建立缓存 Junction。
+
+   此要求替代此前将文档环境及全部第三方缓存集中进 _build 的设计。实际文档构建、独占导入输入及测试产物仍进入根 _build；原生工具维护自己的环境及缓存。清除废弃目录须以实际路径与用途为依据，源码、锁文件和有效检视证明不属于垃圾。验收必须覆盖冷启动、重复并发准备和完整需求图索引，不能只验证小于许可上限的测试图。
+
+.. decision:: 直接使用官方项目布局
+   :id: a6123954-72ab-4a29-b79c-7eb40db8d859
+   :status: active
+   :implements: be8e9b84-2ef1-4373-85ab-6b1e91e3d060
+
+   已有 uv sync --locked、项目默认 .venv、系统原生缓存和托管解释器，以及 ubCode 的项目配置与 .ub_cache。uv 0.11.8 源码的 create_base_files 会在缓存的 sdists-v9 下创建空 .git，以隔离源码包的 Git 元数据探测；ubCode 0.37.0 的开源检测会受仓内该标记影响。移除该标记前完整 333 节点图触发 100 节点许可限制，仅移除后同一入口读取成功。
+
+   候选是每次准备后删除 uv 标记、禁用缓存，或使用工具原生布局。选择最后一项：保留 uv 的缓存语义与增量同步，消除仓内缓存重定向、Junction 和配置转发。代价是环境及第三方缓存遵循官方位置，而不是统一进入 _build。CLI 继续锁定版本与发行摘要，保留失败退出码；不改写第三方缓存结构、许可签名或开源检测逻辑。
+
+.. design:: 原生准备入口与完整图验收
+   :id: 1f643127-49d9-4f3a-825c-e550ab7763c7
+   :status: active
+   :implements: a6123954-72ab-4a29-b79c-7eb40db8d859
+
+   根 pnpm install --frozen-lockfile 的 prepare 和 hooks 调用相同 requirements:prepare。uv sync 使用 requirements 项目、冻结锁文件与托管 CPython 3.13.12；不传环境、缓存或解释器目录变量。Sphinx 与 Gherkin 入口直接读取 requirements/.venv，ubCode 从 requirements 读取唯一配置及原生缓存。根转发 TOML、缓存 Junction 与废弃目录移除；.venv 和 .ub_cache 由 Git 忽略。
+
+   CLI 保留原生帮助和许可 show、config-file、clean 入口，评分登记仍必须使用项目两步审计协议。HostProcess 仅提供原生隐藏启动、受维护环境及退出码传递，不再接收 uv 目录重定向。冷启动及重复并发 prepare 后，实际完整图的 status/context 均须成功读取；严格 Sphinx 构建及原有正文、评分失效、index/HEAD 与事务行为测试继续执行。图中缺失关系和未完成检视由正式 verify 原样报告，索引成功不代表审计通过。
+
 .. interpretation:: 本地技能与可选参考资料的归属
    :id: ecaa6bd2-4e64-4480-ae44-33999eb818e5
    :status: active
@@ -71,7 +144,7 @@
    因此先接通新系统并验证真实失效行为，再移除旧门禁和实现；旧规范按能力域渐进迁移。
    ubCode 工作流仍为 alpha，源码及 LikeC4 全文提取、Git 输入绑定等既有能力须完成实测对照后再替换。
    原文差异使用标准 Git，关系影响使用原生 agent impact，不自研差异算法。
-   ubCode 0.37.0 的 context 在无有效许可、且项目未被检测为公开项目时，最多索引 100 个节点；逐文件覆盖后的 301 节点图会直接失败。完整审计部署须满足其原生运行条件，不能通过合并正文、删减覆盖或分片规避限制。Sphinx 严格构建通过不代表完整检视可用。
+   ubCode 0.37.0 的 context 在无有效许可、且项目未被检测为公开项目时，最多索引 100 个节点。公开项目使用原生开源识别，完整审计不能通过合并正文、删减覆盖或分片规避限制。环境采用下文原生目录设计，Sphinx 严格构建通过不代表完整检视可用。
    评分采用 0/1/2 离散值，每轴下限为 1；这是可调整的设计选择。
 
 .. design:: 文档需求图闭环
@@ -166,7 +239,7 @@
    :status: active
    :implements: 3d79fc70-a490-4d47-855a-afa859515a4b
 
-   验收执行需求结构检查、严格 Sphinx 构建、LikeC4 架构检查、Prettier 格式检查和 PR 格式行为测试。测试验证合法标题与四章节通过，标题不合规、章节缺失、顺序错误和空章节拒绝；工作流验证 pull_request tools job 调用格式入口。旧 OpenSpec 文件删除后不得存在模型或文档引用。ubCode 许可上限导致的既有 HEAD 审计失败继续如实报告。
+   验收执行需求结构检查、严格 Sphinx 构建、LikeC4 架构检查、Prettier 格式检查和 PR 格式行为测试。测试验证合法标题与四章节通过，标题不合规、章节缺失、顺序错误和空章节拒绝；外部 null 正文在 schema 边界转为 Option 并拒绝，空格不作为空值。工作流验证 pull_request tools job 调用格式入口。源码实现指向对应 design，文件级测试指向被测 implementation。格式范围核对包含 README 与 GitHub Markdown，与实际 Prettier 脚本一致。旧 OpenSpec 文件删除后不得存在模型或文档引用；HEAD 正式审计读取完整图，仍按实际追踪与检视缺口判定。
 
 .. interpretation:: 公开资料白名单
    :id: ebca3961-c20e-4286-8d60-4e1cb10c468a

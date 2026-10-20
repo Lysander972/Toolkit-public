@@ -1,0 +1,24 @@
+{
+  "schema": 2,
+  "criteria": "quality",
+  "reviewed_fingerprint": "0c72b5220cf5264cf878fbc531ad71c998f15788a44e6a2afd71ef2c46a4a58a",
+  "criteria_fingerprint": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+  "agent": "codex",
+  "summary": "完整阅读设计、上游决策及八份绑定实现；缓存落点与生命周期已落实，旧目录清除和综合验收保留具体待补项。",
+  "axes": {
+    "parent_fit": {
+      "score": 2,
+      "reason": "设计使用原生 cacheDir、CACHE_DIR 和加载器，保留 uv/ubCode 官方布局，按用户选择关闭 Jiti/tsx 磁盘缓存；沙箱排除宿主环境与索引，任务资源 finally 释放，没有增加目录转发层或自动清理协议。"
+    },
+    "reasoning": {
+      "score": 2,
+      "reason": "package.json 将开关限定到实际调用 tsx API 的 ESLint、Knip、Vitest、Stryker；Git.cleanEnv 固定 TSX_DISABLE_CACHE 而非继承任意设置。Vite 路径相对配置文件定位，Storybook 使用其原生版本化目录；Stryker 保持原生准备和释放，ExecutableRequirements 的 AST/Cucumber 资源均有 finally。以上均逐份阅读全文核对。"
+    },
+    "evidence": {
+      "score": 1,
+      "reason": "前端 UI、完整预览含 Storybook 构建、Knip、严格 Sphinx、类型、格式和 Lint 已通过；三个新增行为测试证明 AST/Cucumber 成功、失败和并发目录隔离与释放。全量测试397项通过，四个语料相关测试文件失败；Stryker干运行创建并释放独立环境，但因2423脚本与2775基线不符退出1。三个旧项目缓存目录删除被策略拒绝，不能声称冷清理验收完成；嵌套Git测试仓库在场时ubCode开源检测失败仍须解决。",
+      "suggestion": "移除旧 node_modules 缓存后验证正式入口不再生成这些落点；补齐现有语料数量基线，并解决ubCode对并发嵌套测试仓库的开源识别问题，再完成全链验收。保留真实失败及低于满分意见，禁止缩减测试范围或伪造通过。"
+    }
+  },
+  "need": "d6418ea2-cb52-4ad3-a819-6e46412a639d"
+}

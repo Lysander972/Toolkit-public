@@ -1117,7 +1117,8 @@
             "ab563261-5497-473c-a849-a51894e83794",
             "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7",
             "e0be7742-fd1d-45bd-9c7f-7bb129150adb",
-            "8dd6f4e1-0b9c-4bdf-8f5e-23c7d6a12459"
+            "8dd6f4e1-0b9c-4bdf-8f5e-23c7d6a12459",
+            "1f643127-49d9-4f3a-825c-e550ab7763c7"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -1193,7 +1194,8 @@
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
             "ab563261-5497-473c-a849-a51894e83794",
-            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7"
+            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -1364,7 +1366,8 @@
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
             "ab563261-5497-473c-a849-a51894e83794",
-            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7"
+            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7",
+            "1f643127-49d9-4f3a-825c-e550ab7763c7"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -1383,7 +1386,9 @@
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
             "ab563261-5497-473c-a849-a51894e83794",
-            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7"
+            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7",
+            "1f643127-49d9-4f3a-825c-e550ab7763c7",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -1630,7 +1635,8 @@
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
             "ab563261-5497-473c-a849-a51894e83794",
-            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7"
+            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -1687,7 +1693,8 @@
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
             "ab563261-5497-473c-a849-a51894e83794",
-            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7"
+            "3e9dc20f-de14-4f9a-8bfa-4da5f73fdfc7",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -6590,7 +6597,8 @@
           "implements": [
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
-            "ab563261-5497-473c-a849-a51894e83794"
+            "ab563261-5497-473c-a849-a51894e83794",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定完整正文；完成范围与未实现项以正文及实际行为检视为准。",
           "bindings": [
@@ -6694,7 +6702,8 @@
           "implements": [
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
-            "ab563261-5497-473c-a849-a51894e83794"
+            "ab563261-5497-473c-a849-a51894e83794",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定根构建配置完整正文；前端与预览业务合同仍在各自未迁移范围。",
           "bindings": [
@@ -6712,7 +6721,8 @@
           "implements": [
             "96840b50-0dbe-41d9-8805-e7613236017f",
             "9ff69cc3-830a-4517-a9db-ae9a137d4ab9",
-            "ab563261-5497-473c-a849-a51894e83794"
+            "ab563261-5497-473c-a849-a51894e83794",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
           ],
           "content": "绑定根构建配置完整正文；前端与预览业务合同仍在各自未迁移范围。",
           "bindings": [
@@ -6727,7 +6737,11 @@
           "type": "implementation",
           "title": "tools/cli/ExecutableRequirements.ts 全文",
           "status": "active",
-          "implements": ["8dd6f4e1-0b9c-4bdf-8f5e-23c7d6a12459"],
+          "implements": [
+            "8dd6f4e1-0b9c-4bdf-8f5e-23c7d6a12459",
+            "1f643127-49d9-4f3a-825c-e550ab7763c7",
+            "d6418ea2-cb52-4ad3-a819-6e46412a639d"
+          ],
           "content": "绑定可执行规范入口完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
             {
@@ -6779,7 +6793,7 @@
           "title": "tools/cli/PullRequestFormat.ts 全文",
           "status": "active",
           "implements": [
-            "3d79fc70-a490-4d47-855a-afa859515a4b"
+            "96b330a6-3ebb-422a-a237-952de74fbd1b"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [
@@ -6795,7 +6809,7 @@
           "title": "test/modules/tools/pull_request_format.test.ts 全文",
           "status": "active",
           "implements": [
-            "6094ad0b-2a4f-4579-b53c-e8567f5e596b"
+            "963eac0b-f9dd-49d0-89b5-357a35648b1a"
           ],
           "content": "绑定该文件完整正文；实现程度与行为证据由检视意见说明。",
           "bindings": [

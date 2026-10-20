@@ -734,8 +734,11 @@ fallback 坏味道 MUST 由成熟规则覆盖：类型已证明无效的空值�
 <!-- @formatExempt id=toml-object-boundary -->
 <!-- @formatExempt id=bescript-canvas-path-split -->
 <!-- @formatExempt id=bescript-statement-category-split -->
+<!-- @formatExempt id=pull-request-title -->
 
 已登记豁免：`architecture-path-annotation`（架构模型固定路径声明）、`environment-text-patterns`（环境变量扫描规则文本）、`toml-object-boundary`（TOML 库 toJS() 返回值的 KV 类型边界，唯一收口于 ConfigurationEditor 的 TomlObject）、`bescript-canvas-path-split`（Canvas GUID 与 HTML 内联格式的独立纯转换分支）、`bescript-statement-category-split`（BEScript 空语句来源校验的独立语义分支）。
+
+`pull-request-title` 仅用于 GitHub 外部单行标题的 Conventional Commits 锚定格式校验。项目没有提交语法解析需求，现有依赖没有该格式的解析入口；该单行字段无需引入正文解析器，正文层级不受此豁免覆盖。
 
 #### Scenario: 裁剪与豁免登记
 

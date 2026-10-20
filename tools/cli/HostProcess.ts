@@ -34,21 +34,12 @@ export class HostProcess {
   }
 
   /** @anchor process-boundary */
-  public static run(
-    launch: HostLaunch,
-    cwd: string,
-    environment: NodeJS.ProcessEnv = Git.cleanEnv(),
-  ): Promise<number> {
+  public static run(launch: HostLaunch, cwd: string): Promise<number> {
     const child: ChildProcess = spawn(launch.file, [...launch.args], {
       cwd,
       stdio: 'inherit',
       windowsHide: launch.windowsHide,
-      env: {
-        ...Git.cleanEnv(),
-        UV_PROJECT_ENVIRONMENT: environment.UV_PROJECT_ENVIRONMENT,
-        UV_CACHE_DIR: environment.UV_CACHE_DIR,
-        UV_PYTHON_INSTALL_DIR: environment.UV_PYTHON_INSTALL_DIR,
-      },
+      env: Git.cleanEnv(),
     })
     return new Promise((resolveResult: (code: number) => void): void => {
       child.once('error', (): void => {

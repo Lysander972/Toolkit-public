@@ -1,4 +1,13 @@
-import { appendFile, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
+import {
+  appendFile,
+  copyFile,
+  mkdir,
+  mkdtemp,
+  readdir,
+  rm,
+  symlink,
+  writeFile,
+} from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import type { GherkinBlock } from '../../../tools/cli/ExecutableRequirements.ts'
@@ -22,6 +31,7 @@ export class ExecutableRequirementsTests {
         [
           'extensions = ["sphinx_needs"]',
           'root_doc = "spec"',
+          'exclude_patterns = [".venv/**"]',
           'needs_types = [{"directive": "design", "title": "Design", "prefix": "", "color": "#ffffff", "style": "node"}]',
           'needs_id_regex = "^[0-9a-f-]+$"',
           'def setup(app):',
@@ -50,6 +60,71 @@ export class ExecutableRequirementsTests {
     const fixture: typeof ExecutableRequirementsTests.fixture = ExecutableRequirementsTests.fixture
     const design: typeof ExecutableRequirementsTests.design = ExecutableRequirementsTests.design
     describe('RST executable requirements', (): void => {
+      it.each(['success', 'failure'])(
+        'releases isolated AST and Cucumber directories after %s',
+        async (outcome: string): Promise<void> => {
+          await fixture(design(feature), async (projectFullPath: string): Promise<void> => {
+            await copyFile(
+              resolve('requirements/gherkin_extract.py'),
+              join(projectFullPath, 'requirements/gherkin_extract.py'),
+            )
+            await symlink(
+              resolve('requirements/.venv'),
+              join(projectFullPath, 'requirements/.venv'),
+              process.platform === 'win32' ? 'junction' : 'dir',
+            )
+            const register: (steps: RequirementSteps) => void = (steps: RequirementSteps): void => {
+              steps.When('校验工程相对路径 {string}', (projectRelativePath: string): void => {
+                expect(projectRelativePath).toBe('地图/123/code')
+                if (outcome === 'failure') throw new Error('lifecycle step failed')
+              })
+              steps.Then('路径校验成功并返回 {string}', (projectRelativePath: string): void => {
+                expect(projectRelativePath).toBe('地图/123/code')
+              })
+            }
+            const result: Promise<number> = ExecutableRequirements.run(
+              projectFullPath,
+              'run',
+              ['requirements/spec.rst'],
+              projectFullPath,
+              register,
+            )
+            if (outcome === 'failure') await expect(result).rejects.toThrow('lifecycle step failed')
+            else expect(await result).toBe(0)
+            expect(await readdir(join(projectFullPath, '_build/requirements/gherkin'))).toEqual([])
+          })
+        },
+      )
+
+      it('keeps concurrent AST tasks isolated and releases both directories', async (): Promise<void> => {
+        await Promise.all(
+          [feature, feature + '\n功能: 重复功能'].map(
+            async (source: string, index: number): Promise<void> => {
+              await fixture(design(source), async (projectFullPath: string): Promise<void> => {
+                await copyFile(
+                  resolve('requirements/gherkin_extract.py'),
+                  join(projectFullPath, 'requirements/gherkin_extract.py'),
+                )
+                await symlink(
+                  resolve('requirements/.venv'),
+                  join(projectFullPath, 'requirements/.venv'),
+                  process.platform === 'win32' ? 'junction' : 'dir',
+                )
+                const result: Promise<unknown> = ExecutableRequirements.parseFiles(
+                  projectFullPath,
+                  ['requirements/spec.rst'],
+                )
+                if (index === 0) await expect(result).resolves.toHaveProperty('blocks.length', 1)
+                else await expect(result).rejects.toThrow('requirements/spec.rst:')
+                expect(await readdir(join(projectFullPath, '_build/requirements/gherkin'))).toEqual(
+                  [],
+                )
+              })
+            },
+          ),
+        )
+      })
+
       it('runs the normative scenarios through the real CLI and through Vitest', async (): Promise<void> => {
         expect(await RequirementsCli.run(repositoryFullPath, ['bdd', 'run'])).toBe(0)
       })

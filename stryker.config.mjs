@@ -21,7 +21,9 @@ export default {
   ignorePatterns: [
     'legacy',
     'docs',
+    '.gitnexus',
     'requirements/.ub_cache',
+    'requirements/.venv',
     '_build/**',
     '!_build/frontend/**',
     '!_build/preview/**',

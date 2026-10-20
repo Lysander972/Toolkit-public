@@ -72,7 +72,7 @@ export class ExecutableRequirements {
       const interpreter: string = process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python'
       // @non-manual-path 正式 CLI 内部受维护的 AST 适配器入口，不是源码扫描范围。
       const { stdout }: ProcessOutput = await promisify(execFile)(
-        resolve(repositoryFullPath, '_build/requirements/venv', interpreter),
+        resolve(repositoryFullPath, 'requirements/.venv', interpreter),
         [
           '-X',
           'utf8',

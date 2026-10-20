@@ -1,0 +1,39 @@
+{
+  "ticket": {
+    "id": "a6123954-72ab-4a29-b79c-7eb40db8d859",
+    "token": "82470bb637543e59143adab0b779699c42085d67a70b6397e244a68e2cc72cf1",
+    "snapshot": {
+      "head": "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2",
+      "index": "a541a42339967c5f2908b6bfc8e95f08f7d59ab7230fb11ae83da822e94a18a2",
+      "tree": "0194b9958343740562ca00e712ff2088a4bfa312",
+      "parents": [
+        "4fb40e23b2f15e802a5c7b40b08dd4440a0120b2"
+      ]
+    },
+    "fingerprint": "3fc202f5bec701f8098a46ee6a2b4753b8cea8454aadd191a3eb83b6e37e1f6b",
+    "criteria": "d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87",
+    "coverage": "432039560f64fd1e253745d6dcceaa549919018b1d9b75fb9cc752ce9978e890",
+    "subjects": [
+      {
+        "id": "a6123954-72ab-4a29-b79c-7eb40db8d859",
+        "type": "decision",
+        "relation": "anchor",
+        "hash": "baf8a1668205eac77d9865a51db50d95dc2cbd144d54f04e004f8e5b71897371"
+      },
+      {
+        "id": "be8e9b84-2ef1-4373-85ab-6b1e91e3d060",
+        "type": "interpretation",
+        "relation": "implements",
+        "hash": "814e245e7db7a34c63cc32316462c2bed3be0db20cea0c1c0c7c09abebb9d674"
+      },
+      {
+        "id": "1f643127-49d9-4f3a-825c-e550ab7763c7",
+        "type": "design",
+        "relation": "implements_back",
+        "hash": "51fd5c24df79f593184d274ba53ceeca8631c8a24e4e0280ab0043d10f401d07"
+      }
+    ]
+  },
+  "verdict": "{\n  \"schema\": 2,\n  \"need\": \"a6123954-72ab-4a29-b79c-7eb40db8d859\",\n  \"criteria\": \"quality\",\n  \"reviewed_fingerprint\": \"3fc202f5bec701f8098a46ee6a2b4753b8cea8454aadd191a3eb83b6e37e1f6b\",\n  \"criteria_fingerprint\": \"d074a87c7624ed4964f95bf62dc8f163e002b18063e3b1a7cf42dc3dda518e87\",\n  \"agent\": \"codex\",\n  \"summary\": \"完整核对原生目录解读、候选取舍及下游设计；选择直接使用工具默认目录有原生源码和完整图行为支持。\",\n  \"axes\": {\n    \"parent_fit\": {\n      \"score\": 2,\n      \"reason\": \"上游要求清除垃圾、使用官方目录并消除转发层。决策删除仓内 uv 缓存重定向、根转发配置和缓存 Junction，保留锁定版本及官方缓存语义，直接落实上游而未增加用户维护步骤。\"\n    },\n    \"reasoning\": {\n      \"score\": 2,\n      \"reason\": \"先盘点 uv 和 ubCode 已有能力，再比较逐次删除标记、禁用缓存和原生目录三个候选；以 uv 自建标记与 ubCode 开源扫描的已复现冲突为取舍依据，明确系统原生目录替代 _build 统一缓存的影响。\"\n    },\n    \"evidence\": {\n      \"score\": 2,\n      \"reason\": \"已读取 uv 0.11.8 create_base_files 的 phony .git 实现及官方缓存文档；同一333节点图仅删除空标记后成功，改用原生布局并发准备后337节点 context和正式领取成功，严格文档构建及49项相关测试通过。下游仍明确保留真实追踪与检视缺口的失败。\"\n    }\n  }\n}\n",
+  "recordedAt": "2026-10-20T09:57:18.565Z"
+}
